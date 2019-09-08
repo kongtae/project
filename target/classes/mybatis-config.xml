@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+		<setting name="jdbcTypeForNull" value="NULL" />	<!-- 파라메터 타입으로 가져온 값이 널을 가지고 있을때 널익셉션을 뿌리는게 아니라 그냥 그값에는 널을 집어넣겠다는 뜻 -->
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="world.festival.VO.UserVO" alias="UserVO" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/UserMapper.xml" />
+	</mappers> 
+</configuration>
