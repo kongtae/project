@@ -59,4 +59,9 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String calendar(Locale locale, Model model) {
+		
+		return "calendar";
+	}
 }
