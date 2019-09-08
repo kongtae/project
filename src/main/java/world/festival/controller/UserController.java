@@ -16,7 +16,6 @@ import world.festival.VO.UserVO;
 import world.festival.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
