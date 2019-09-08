@@ -47,7 +47,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/signupForm", method = RequestMethod.GET)
 	public String signupForm() {
-		return "signupForm";
+		return "register";
 	}
 	
 	@RequestMapping(value = "/check", method = RequestMethod.GET)

@@ -55,7 +55,7 @@
                     <!--Social Box-->
                    <ul class="social-box">
                         <c:if test="${seccionScope.userid==null}">
-                           <li><a href="member/loginForm">회원가입</a></li>
+                           <li><a href="signupForm">회원가입</a></li>
                            <li><a href="loginForm">로그인</a></li>
 <!--                         <li class="share">Connect With Us</li> -->
 <!--                         <li><a href="#"><span class="fab fa-facebook"></span></a></li> -->
