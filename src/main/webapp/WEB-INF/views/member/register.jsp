@@ -52,8 +52,9 @@
 
 			<form action="index.html" method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="ID"> <span
+					<input type="text" class="form-control" placeholder="ID"><input type="button" class="btn btn-primary btn-block btn-flat" value="ID 중복확인"><span
 						class="glyphicon glyphicon-heart form-control-feedback"></span>
+						
 				</div>
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" placeholder="Full name">
