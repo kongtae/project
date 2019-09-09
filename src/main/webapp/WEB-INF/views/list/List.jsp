@@ -86,41 +86,26 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Page 01</a></li>
-                                        <li><a href="index-2.html">Home Page 02</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="speakers.html">Speakers</a></li>
-                                        <li><a href="speakers-details.html">Speaker Details</a></li>
-                                        <li><a href="error-page.html">Error Page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="current dropdown"><a href="#">Shedule</a>
-                                    <ul>
-                                        <li><a href="shedule.html">Shedule</a></li>
-                                        <li><a href="shedule-details.html">Shedule Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Sponsors</a>
-                                    <ul>
-                                        <li><a href="sponsor.html">Sponsors</a></li>
-                                        <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-single.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact us</a></li>
-                            </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Board</a>
+									<ul>
+										<li><a href="#">Board</a></li>
+									</ul></li>
+							</ul>
                         </div>
                         
                     </nav>
@@ -175,41 +160,26 @@
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                        <ul class="navigation clearfix">
-                            <li class="dropdown"><a href="#">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Home Page 01</a></li>
-                                    <li><a href="index-2.html">Home Page 02</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">About</a>
-                                <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="speakers.html">Speakers</a></li>
-                                    <li><a href="speakers-details.html">Speaker Details</a></li>
-                                    <li><a href="error-page.html">Error Page</a></li>
-                                </ul>
-                            </li>
-                            <li class="current dropdown"><a href="#">Shedule</a>
-                                <ul>
-                                    <li><a href="shedule.html">Shedule</a></li>
-                                    <li><a href="shedule-details.html">Shedule Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Sponsors</a>
-                                <ul>
-                                    <li><a href="sponsor.html">Sponsors</a></li>
-                                    <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-single.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">Contact us</a></li>
-                        </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Board</a>
+									<ul>
+										<li><a href="#">Board</a></li>
+									</ul></li>
+							</ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -242,33 +212,13 @@
 <section class="schedule-section" id="schedule-tab">
     <div class="container">
         <div class="schedule-area">
-            <div class="schedule-title">
-                <div class="item active" data-tab-name="day-one">
-                    <div class="item-text">
-                        <h6>DAY 1</h6>
-                        <span>5 jan, 2018</span>
-                    </div>
-                </div>
-                <div class="item" data-tab-name="day-two">
-                    <div class="item-text">
-                        <h6>DAY 2</h6>
-                        <span>15 jan, 2018</span>
-                    </div>                                            
-                </div>
-                <div class="item" data-tab-name="day-three">
-                    <div class="item-text">
-                        <h6>DAY 3</h6>
-                        <span>18 jan, 2018</span>
-                    </div>                                            
-                </div>    
-            </div>
             <div class="schedule-content clearfix">
                 <div id="day-one">
                     <div class="inner-box  table-responsive">
 						<table>                
 			   				<tr>
-								<td class="right" colspan="5">
-									<a href="insertFestival"><img src="/resources/listImages/write.png"></a>
+								<td colspan="5" align="right">
+									<a href="insertFestival"><img src="listImages/write.png"></a>
 								</td>
 							</tr>
 			            </table>        
