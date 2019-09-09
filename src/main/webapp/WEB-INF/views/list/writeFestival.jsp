@@ -177,7 +177,7 @@
 									</ul></li>
 								<li class="dropdown"><a href="#">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="#">Board2</a></li>
 									</ul></li>
 							</ul>
                     </div>
