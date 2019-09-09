@@ -63,7 +63,6 @@
 	$(function() {
 		$("#idcheck").on("click", function(){
 			var userid = $('#userid').val();
-			alert(userid);
 	
 		$.ajax({
 			data : {userid : userid},
