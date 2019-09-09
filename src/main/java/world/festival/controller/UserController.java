@@ -24,7 +24,7 @@ public class UserController {
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom(Locale locale, Model model) {
 		
-		return "loginForm";
+		return "member/loginForm";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -47,7 +47,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/signupForm", method = RequestMethod.GET)
 	public String signupForm() {
-		return "register";
+		return "member/register";
 	}
 	
 	@RequestMapping(value = "/check", method = RequestMethod.GET)
@@ -58,5 +58,6 @@ public class UserController {
 		}
 		return "redirect:/";
 	}
+	
 	
 }

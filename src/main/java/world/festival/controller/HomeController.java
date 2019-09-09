@@ -20,9 +20,5 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-	public String calendar(Locale locale, Model model) {
-		
-		return "calendar";
-	}
+	
 }
