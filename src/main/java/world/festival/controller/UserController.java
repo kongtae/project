@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import world.festival.VO.UserVO;
 import world.festival.dao.UserDAO;
@@ -20,7 +21,30 @@ public class UserController {
 	
 	@Autowired
 	private UserDAO dao ;
+
+	//회원가입 화면 이동
+	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
+	public String register() {
+		return "member/register";
+	}
+
+	//회원가입
+	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
+	public String registermember(UserVO vo, Model model) {
+		System.out.println(vo);
+		dao.registermember(vo);
+		model.addAttribute("UserVO", vo);
+		return "member/loginForm";
+	}
 	
+	//중복체크
+	@ResponseBody
+	@RequestMapping(value="/idcheck")
+	public int idcheck(String userid) {
+		System.out.println(userid);
+		return dao.idcheck(userid);
+	}
+
 	/*@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom(Locale locale, Model model) {
 		
@@ -43,20 +67,6 @@ public class UserController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "main";
-	}
-	
-	//회원가입 화면 이동
-	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
-	public String register() {
-		return "member/register";
-	}
-	
-	//회원가입
-	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
-	public String registermember(UserVO vo, Model model) {
-		dao.registermember(vo);
-		model.addAttribute("UserVO", vo);
-		return "member/loginForm";
 	}
 	
 	/*@RequestMapping(value = "/check", method = RequestMethod.GET)

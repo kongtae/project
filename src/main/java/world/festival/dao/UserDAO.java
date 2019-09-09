@@ -17,4 +17,10 @@ public class UserDAO {
 		return result;
 	}
 
+	public int idcheck(String userid) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		int result = mapper.idcheck(userid);
+		return result;
+	}
+
 }

@@ -7,8 +7,8 @@ public class UserVO {
 	
 	private String userid;
 	private String username;
+	private String useremail;
 	private String userpwd;
-	private String email;
 
 	
 }

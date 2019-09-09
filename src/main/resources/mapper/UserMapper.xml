@@ -3,17 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="choi.hyo.sui.dao.UserMapper">
-	
+<mapper namespace="world.festival.dao.UserMapper">
+
+<!-- 회원가입 -->	
 <insert id="registermember" parameterType="UserVO">
 	INSERT INTO
 		member
 	VALUES (
 		#{userid},
 		#{username},
-		#{userpwd},
-		#{email}
+		#{useremail},
+		#{userpwd}
 	)
 </insert>
-	
+
+<!-- 중복체크 -->
+<select id="idcheck" parameterType="String" resultType="int">
+	SELECT
+		count(*)
+	FROM
+		member
+	WHERE
+		userid = #{userid}
+</select>
+
 </mapper>

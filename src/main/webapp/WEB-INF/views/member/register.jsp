@@ -7,6 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>FESPEDIA | Registration Page</title>
+
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -51,9 +52,38 @@
 	#idcheck{
 		width: 34%;
 		display: inline-block;
-		
+	}
+	#icheck{
+		left: 10%;
 	}
 </style>
+<!-- jquery -->
+<script src="resources/js/jquery-3.4.1.js"></script>
+<script>
+	$(function() {
+		$("#idcheck").on("click", function(){
+			var userid = $('#userid').val();
+			alert(userid);
+	
+		$.ajax({
+			data : {userid : userid},
+			url : "idcheck",
+			success : function(data) {
+				if(id == ""){
+					alert("아이디를 입력해주세요.");
+				} else if(data == '0') {
+					alert("사용 가능한 아이디 입니다.");
+				} else if(data == '1') {
+					alert("이미 사용 중인 아이디 입니다.");
+				}
+			},
+			error : function(data) {
+				alert("error : "+error);
+			}
+		});
+		});
+	});
+</script>
 </head>
 <body class="hold-transition register-page">
 	<div class="register-box">
@@ -68,7 +98,7 @@
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"> <span
 						class="glyphicon glyphicon-heart form-control-feedback" id="heart"></span>
-					<button type="submit" id="idcheck" class="btn btn-primary btn-block btn-flat">重複チェック</button>
+					<button type="button" id="idcheck" class="btn btn-primary btn-block btn-flat" onclick="idcheck()">重複チェック</button>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" name="username" placeholder="お名前">
@@ -89,7 +119,7 @@
 				
 				<div class="row">
 					<div class="col-xs-8">
-						<div class="checkbox icheck">
+						<div class="checkbox icheck" id="icheck">
 							<label> <input type="checkbox"> I agree to the <a href="#">terms</a>
 							</label>
 						</div>
@@ -103,8 +133,7 @@
 			</form>
 
 
-			<a href="login.html" class="text-center">I already have a
-				membership</a>
+			<a href="login.html" class="text-center">I already have a membership</a>
 		</div>
 		<!-- /.form-box -->
 	</div>
@@ -122,8 +151,7 @@
 	<script>
 		$(function() {
 			$('input').iCheck({
-				checkboxClass : '
-				icheckbox_square-blue',
+				checkboxClass : 'icheckbox_square-blue',
 				radioClass : 'iradio_square-blue',
 				increaseArea : '20%' /* optional */
 			});
