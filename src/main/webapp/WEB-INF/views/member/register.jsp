@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 2 | Registration Page</title>
+<title>FESPEDIA | Registration Page</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -40,50 +40,63 @@
 <!-- Google Font -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style>
+	#userid{
+		width: 65%;
+		display: inline-block;
+	}
+	#heart{
+		left: 55%;
+	}
+	#idcheck{
+		width: 34%;
+		display: inline-block;
+		
+	}
+</style>
 </head>
 <body class="hold-transition register-page">
 	<div class="register-box">
 		<div class="register-logo">
-			<a href="/festival"><b>Admin</b>LTE</a>
+			<h1><a href="/festival"><b>FES</b>PEDIA</a></h1>
 		</div>
 
 		<div class="register-box-body">
 			<p class="login-box-msg">Register a new membership</p>
 
-			<form action="index.html" method="post">
+			<form action="registermember" method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="ID"> <span
-						class="glyphicon glyphicon-heart form-control-feedback"></span>
+					<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"> <span
+						class="glyphicon glyphicon-heart form-control-feedback" id="heart"></span>
+					<button type="submit" id="idcheck" class="btn btn-primary btn-block btn-flat">重複チェック</button>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="Full name">
+					<input type="text" class="form-control" name="username" placeholder="お名前">
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" placeholder="Email">
+					<input type="email" class="form-control" name="useremail" placeholder="メールアドレス">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="Password">
+					<input type="password" class="form-control" name="userpwd" id="userpwd" placeholder="パスワード">
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control"
-						placeholder="Retype password"> <span
-						class="glyphicon glyphicon-log-in form-control-feedback"></span>
+					<input type="password" class="form-control" id="check_userpwd" placeholder="パスワード確認"> 
+					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 				</div>
 				
 				<div class="row">
 					<div class="col-xs-8">
 						<div class="checkbox icheck">
-							<label> <input type="checkbox"> I agree to the <a
-								href="#">terms</a>
+							<label> <input type="checkbox"> I agree to the <a href="#">terms</a>
 							</label>
 						</div>
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">登録</button>
 					</div>
 					<!-- /.col -->
 				</div>
@@ -109,7 +122,8 @@
 	<script>
 		$(function() {
 			$('input').iCheck({
-				checkboxClass : 'icheckbox_square-blue',
+				checkboxClass : '
+				icheckbox_square-blue',
 				radioClass : 'iradio_square-blue',
 				increaseArea : '20%' /* optional */
 			});

@@ -11,15 +11,10 @@ public class UserDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public UserVO login(UserVO vo) {
+	public int registermember(UserVO vo) {
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-		return mapper.login(vo);
-		
-	}
-
-	public UserVO check(String id) {
-		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-		return mapper.check(id);
+		int result = mapper.registermember(vo);
+		return result;
 	}
 
 }

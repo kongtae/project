@@ -5,12 +5,15 @@
 
 <mapper namespace="choi.hyo.sui.dao.UserMapper">
 	
-	<select id="login" parameterType="UserVO" resultType="UserVO">
-		SELECT * FROM saki WHERE id = #{id} AND password = #{password}
-	</select>
-	
-	<select id="check" parameterType="String" resultType="UserVO">
-		SELECT * FROM saki WHERE id = #{id}
-	</select>
+<insert id="registermember" parameterType="UserVO">
+	INSERT INTO
+		member
+	VALUES (
+		#{userid},
+		#{username},
+		#{userpwd},
+		#{email}
+	)
+</insert>
 	
 </mapper>

@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import world.festival.VO.UserVO;
-import world.festival.service.UserService;
+import world.festival.dao.UserDAO;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	private UserService service ;
+	private UserDAO dao ;
 	
-	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom(Locale locale, Model model) {
 		
 		return "member/loginForm";
@@ -37,7 +37,7 @@ public class UserController {
 		}
 		model.addAttribute("result", result);
 		return "main";
-	}
+	}*/
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
@@ -45,19 +45,28 @@ public class UserController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/signupForm", method = RequestMethod.GET)
-	public String signupForm() {
+	//회원가입 화면 이동
+	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
+	public String register() {
 		return "member/register";
 	}
 	
-	@RequestMapping(value = "/check", method = RequestMethod.GET)
+	//회원가입
+	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
+	public String registermember(UserVO vo, Model model) {
+		dao.registermember(vo);
+		model.addAttribute("UserVO", vo);
+		return "member/loginForm";
+	}
+	
+	/*@RequestMapping(value = "/check", method = RequestMethod.GET)
 	public String check(String id, Model model) {
 		UserVO result = service.check(id);
 		if(result != null) {
 			model.addAttribute("check", false);
 		}
 		return "redirect:/";
-	}
+	}*/
 	
 	
 }
