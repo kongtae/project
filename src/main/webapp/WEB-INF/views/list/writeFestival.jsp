@@ -253,7 +253,8 @@
 							내용:<textarea rows="10" cols="80" name="content"></textarea><br>
 							<input type="button" value="등록" onclick="insertboard()">
 							<input type="reset" value="취소">
-						</fieldset>                       </div>
+						</fieldset>
+					</div>
                     <div class="event-details">
                         <h5>Event Details</h5>
                         <div class="inner-box  table-responsive">
