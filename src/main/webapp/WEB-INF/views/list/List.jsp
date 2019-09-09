@@ -265,6 +265,13 @@
             <div class="schedule-content clearfix">
                 <div id="day-one">
                     <div class="inner-box  table-responsive">
+						<table>                
+			   				<tr>
+								<td class="right" colspan="5">
+									<a href="insertFestival"><img src="/resources/listImages/write.png"></a>
+								</td>
+							</tr>
+			            </table>        
                         <table class="table table-hover">
                             <thead>
                                 <tr>
