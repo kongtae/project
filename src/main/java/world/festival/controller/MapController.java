@@ -10,7 +10,7 @@ public class MapController {
 	
 	
 	@RequestMapping(value = "/map", method = RequestMethod.GET)
-	public String calendar() {
+	public String map() {
 		
 		return "map/map";
 	}

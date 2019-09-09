@@ -226,11 +226,11 @@
 <section class="page-title" style="background: url(images/background/page-title-2.jpg);">
     <div class="container">
         <div class="title-text text-center">
-            <h3>Events Schedule</h3>
+            <h3>MAP</h3>
             <ul>
                 <li><a href="index.html">home</a></li>
                 <li>/</li>
-                <li>Schedule</li>
+                <li>Map</li>
             </ul>
         </div>                
     </div>

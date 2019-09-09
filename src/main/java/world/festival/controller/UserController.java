@@ -59,5 +59,9 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/memberPage", method = RequestMethod.GET)
+	public String memberPage() {
+		return "member/memberPage";
+	}
 	
 }
