@@ -11,17 +11,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import world.festival.VO.UserVO;
-import world.festival.service.UserService;
+import world.festival.dao.UserDAO;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	private UserService service ;
+	private UserDAO dao ;
+
+	//회원가입 화면 이동
+	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
+	public String register() {
+		return "member/register";
+	}
+
+	//회원가입
+	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
+	public String registermember(UserVO vo, Model model) {
+		System.out.println(vo);
+		dao.registermember(vo);
+		model.addAttribute("UserVO", vo);
+		return "member/loginForm";
+	}
 	
-	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	//중복체크
+	@ResponseBody
+	@RequestMapping(value="/idcheck")
+	public int idcheck(String userid) {
+		System.out.println(userid);
+		return dao.idcheck(userid);
+	}
+
+	/*@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom(Locale locale, Model model) {
 		
 		return "member/loginForm";
@@ -37,7 +61,7 @@ public class UserController {
 		}
 		model.addAttribute("result", result);
 		return "main";
-	}
+	}*/
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
@@ -45,19 +69,14 @@ public class UserController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/signupForm", method = RequestMethod.GET)
-	public String signupForm() {
-		return "member/register";
-	}
-	
-	@RequestMapping(value = "/check", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/check", method = RequestMethod.GET)
 	public String check(String id, Model model) {
 		UserVO result = service.check(id);
 		if(result != null) {
 			model.addAttribute("check", false);
 		}
 		return "redirect:/";
-	}
+	}*/
 	
 	@RequestMapping(value = "/memberPage", method = RequestMethod.GET)
 	public String memberPage() {
