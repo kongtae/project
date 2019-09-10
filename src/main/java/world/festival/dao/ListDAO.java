@@ -1,0 +1,31 @@
+package world.festival.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import world.festival.VO.UserVO;
+@Repository
+public class ListDAO {
+
+	@Autowired
+	SqlSession sqlSession;
+	
+	public int registermember(UserVO vo) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		int result = mapper.registermember(vo);
+		return result;
+	}
+
+	public int idcheck(String userid) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		int result = mapper.idcheck(userid);
+		return result;
+	}
+
+	public int writeFestival() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

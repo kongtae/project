@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -23,8 +22,28 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     
-</head>
 
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+	function writeFestval() {
+		var form = $("#writeFestivalID")[0];
+		var formData = new FormData(form);
+		$.ajax({
+			url:"writeFestival",
+			data:formData,
+			type:"post",
+			contentType:false,
+			processData:false,
+			success: function() {
+				alert("投稿完了");
+			},
+			error: function() {
+				alert("投稿ERROR");
+			}
+		});
+	}
+</script>
+</head>
 <body>
     
 <div class="boxed_wrapper">
@@ -211,6 +230,7 @@
 
 <!--Schedule Details-->
 <section class="schedule-details">
+	<form action="writeFestivalAction" id="writeFestivalID" enctype="application/x-www-form-urlencoded">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
@@ -225,14 +245,14 @@
                     </div>
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> Attachment
-                  <input type="file" name="attachment">
+                  <i class="fa fa-paperclip"></i> ファイル添付
+                  <input type="file" name="uploadfile">
                 </div>
               </div> 
                 <div class="box-footer">
               <div class="pull-right">
               <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
-                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> 投稿</button>
+                <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
                 <button type="reset" class="btn btn-default"><i class="fa fa-ｓtimes"></i>取消</button>
               </div>
             </div>     
@@ -241,48 +261,26 @@
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-     
-    <section class="content">
-      <div class="row">
-        <!-- /.col -->
-        <div class="col-md-9">
-          <div class="box box-primary">
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="form-group">
-              	<h1>祭りの投稿欄</h1>
-              	<br>
-                <input class="form-control" placeholder="祭りの名前を記入してください。">
-              </div>
-              <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" placeholder="内容を記入してください。" style="height: 300px">
-                    </textarea>
-              </div>
-           <!--    <div class="form-group">
-                <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> Attachment
-                  <input type="file" name="attachment">
-                </div>
-                <p class="help-block">Max. 32MB</p>
-              </div> -->
-            </div>
-            
-<!--             <div class="box-footer">
-              <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> 投稿</button>
-                <button type="reset" class="btn btn-default"><i class="fa fa-ｓtimes"></i>取消</button>
-              </div>
-            </div> -->
-            
-          </div>
-          <!-- /. box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+					    <section class="content">
+					      <div class="row">
+					        <!-- /.col -->
+					        <div class="col-md-9">
+					          <div class="box box-primary">
+					            <!-- /.box-header -->
+					            <div class="box-body">
+					              <div class="form-group">
+					              	<h1>祭りの投稿欄</h1>
+					              	<br>
+					                <input class="form-control" placeholder="祭りの名前を記入してください。" id="title">
+					              </div>
+					              <div class="form-group">
+					                    <textarea id="content" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </section>
 					</div>
                     <div class="event-details">
                         <h5>Event Details</h5>
@@ -325,6 +323,7 @@
             </div>
         </div>                
     </div>
+   </form>
 </section>
 <!--End Schedule Details-->
 
