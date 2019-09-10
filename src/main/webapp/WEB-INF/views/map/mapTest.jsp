@@ -14,7 +14,8 @@
 
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+	 <!-- jvectormap -->
+  	<link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
     <!-- master stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
