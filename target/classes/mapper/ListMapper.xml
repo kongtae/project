@@ -11,12 +11,18 @@
 		mainboard
 	VALUES (
 		#{userid},
+<<<<<<< HEAD
 		#{title},
 		#{country},
 		#{adress},
 		#{festival_intro},
 		#{startEvent},
 		#{endEvent}
+=======
+		#{username},
+		#{useremail},
+		#{userpwd}
+>>>>>>> db5eaeafe0a2cd96d65b80322d0b8f8294064255
 	)
 </insert>
 
