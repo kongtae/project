@@ -24,7 +24,6 @@
 <style>
 	.longbar{
 			width: 300px;	
-	
 	}
 
 </style>
