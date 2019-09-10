@@ -21,5 +21,9 @@ public class ListController {
 		
 		return "list/ListDetail";
 	}
-	
+	@RequestMapping(value = "/insertFestival", method = RequestMethod.GET)
+	public String insertFestival() {
+		
+		return "list/writeFestival";
+	}
 }

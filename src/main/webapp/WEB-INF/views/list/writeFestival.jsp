@@ -177,7 +177,7 @@
 									</ul></li>
 								<li class="dropdown"><a href="#">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="#">Board2</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -193,14 +193,14 @@
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(images/background/page-title-4.jpg);">
     <div class="container">
         <div class="title-text text-center">
-            <h3>Events Schedule</h3>
+            <h3>Shedule Details</h3>
             <ul>
                 <li><a href="index.html">home</a></li>
                 <li>/</li>
-                <li>Schedule</li>
+                <li>Shedule Details</li>
             </ul>
         </div>                
     </div>
@@ -208,185 +208,228 @@
 <!-- End Page Title-->
 
 
-<!--Schedule Section-->
-<section class="schedule-section" id="schedule-tab">
+<!--Schedule Details-->
+<section class="schedule-details">
     <div class="container">
-        <div class="schedule-area">
-            <div class="schedule-content clearfix">
-                <div id="day-one">
-                    <div class="inner-box  table-responsive">
-						<table>                
-			   				<tr>
-								<td colspan="5" align="right">
-									<a href="insertFestival"><img src="listImages/write.png"></a>
-								</td>
-							</tr>
-			            </table>        
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="srial">#</th>
-                                    <th class="session">Session</th>
-                                    <th class="speakers">Speakers</th>
-                                    <th class="time">Time</th>
-                                    <th class="venue">Venue</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="srial">01</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Introduction to UI/Ux
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-1.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 AM
-                                    </td>
-                                    <td class="venue">Hall 1</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">02</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-2.jpg" alt="">
-                                        </figure>
-                                        <h6>Jhone Doe</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        10:00 AM
-                                    </td>
-                                    <td class="venue">Hall 2</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">03</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        WP Plugins Installation
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-3.jpg" alt="">
-                                        </figure>
-                                        <h6>Margarita Rose</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        11:00 AM
-                                    </td>
-                                    <td class="venue">Hall 3</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">04</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basic GO Language
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-4.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        12:00 PM
-                                    </td>
-                                    <td class="venue">Hall 4</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">05</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Business Analysis
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-5.jpg" alt="">
-                                        </figure>
-                                        <h6>Donald Pump</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        01:00 PM
-                                    </td>
-                                    <td class="venue">Hall 5</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">06</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Wp Requirements
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-6.jpg" alt="">
-                                        </figure>
-                                        <h6>Lee Mun</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        04:00 PM
-                                    </td>
-                                    <td class="venue">Hall 6</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">07</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-7.jpg" alt="">
-                                        </figure>
-                                        <h6>Baily Lio</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        07:00 PM
-                                    </td>
-                                    <td class="venue">Hall 7</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">08</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Plugin Development
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-8.jpg" alt="">
-                                        </figure>
-                                        <h6>Henri Mong</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 PM
-                                    </td>
-                                    <td class="venue">Hall 8</td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="row">
+            <div class="col-xl-4 col-md-12 col-sm-12">
+                <div class="shedule-left-side">
+                    <div class="text-title">
+                        <h6>Speaker</h6>
                     </div>
+                    <div class="shedule-image-box text-center">
+                        <figure>
+                            <img src="images/resources/schedule-9.jpg" alt="">
+                        </figure>
+                        <h5>Eric Moss</h5>
+                        <a href="#"><p>Info@ericmossion.com</p></a>
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-vine"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="shedule-search-box">
+                        <form method="post" action="index.html">
+                            <input type="search" name="search" placeholder="Search Events..." required="">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>                       
                 </div>
-            
+            </div>
+            <div class="col-xl-8 col-md-12 col-sm-12">
+                <div class="shedule-right-side">
+                    <div class="image-box">
+                        <figure>
+                            <img src="images/resources/schedule-10.jpg" alt="">
+                        </figure>
+                         <fieldset>
+							<input type="hidden" name="userid" value="${sessionScope.userid}">
+							작성자:${sessionScope.userid}<br>
+							제목:<input type="text" name="title"><br>
+							첨부파일:<input type="file" name="uploadFile"><br>
+							내용:<textarea rows="10" cols="80" name="content"></textarea><br>
+							<input type="button" value="등록" onclick="insertboard()">
+							<input type="reset" value="취소">
+						</fieldset>
+					</div>
+                    <div class="event-details">
+                        <h5>Event Details</h5>
+                        <div class="inner-box  table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="start">Start</th>
+                                        <th class="end">End</th>
+                                        <th class="rate">Rate</th>
+                                        <th class="categories">Categories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="start">Jan 5 , 2018  9 Am</td>
+                                        <td class="end">Jan 8 , 2018  4 Pm</td>
+                                        <td class="rate">$23.00</td>
+                                        <td class="categories">Business Events</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--Map Outer-->
+                    <div class="map-outer">
+                        <!--Map Canvas-->
+                        <div class="map-canvas"
+                            data-zoom="12"
+                            data-lat="-37.815038"
+                            data-lng="144.967359"
+                            data-type="roadmap"
+                            data-hue="#ffc400"
+                            data-title="184 Collins Street West Victoria,"
+                            data-icon-path="images/icons/map-marker.png"
+                            data-content="184 Collins Street West Victoria<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>                
+    </div>
 </section>
-<!--End Schedule Section-->
+<!--End Schedule Details-->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Mailbox
+        <small>13 new messages</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Mailbox</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="mailbox.html" class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Folders</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox
+                  <span class="label label-primary pull-right">12</span></a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+                </li>
+                <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Labels</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Compose New Message</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="form-group">
+                <input class="form-control" placeholder="To:">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Subject:">
+              </div>
+              <div class="form-group">
+                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                      <h1><u>Heading Of Message</u></h1>
+                      <h4>Subheading</h4>
+                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+                        was born and I will give you a complete account of the system, and expound the actual teachings
+                        of the great explorer of the truth, the master-builder of human happiness. No one rejects,
+                        dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know
+                        how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again
+                        is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
+                        but because occasionally circumstances occur in which toil and pain can procure him some great
+                        pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,
+                        except to obtain some advantage from it? But who has any right to find fault with a man who
+                        chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that
+                        produces no resultant pleasure? On the other hand, we denounce with righteous indignation and
+                        dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so
+                        blinded by desire, that they cannot foresee</p>
+                      <ul>
+                        <li>List item one</li>
+                        <li>List item two</li>
+                        <li>List item three</li>
+                        <li>List item four</li>
+                      </ul>
+                      <p>Thank you,</p>
+                      <p>John Doe</p>
+                    </textarea>
+              </div>
+              <div class="form-group">
+                <div class="btn btn-default btn-file">
+                  <i class="fa fa-paperclip"></i> Attachment
+                  <input type="file" name="attachment">
+                </div>
+                <p class="help-block">Max. 32MB</p>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <div class="pull-right">
+                <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+              </div>
+              <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Discard</button>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
 
 
 <!--Contact Info-->
@@ -432,6 +475,7 @@
     </div>
 </section>
 <!--End Contact Info-->
+
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">

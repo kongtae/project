@@ -86,41 +86,26 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Page 01</a></li>
-                                        <li><a href="index-2.html">Home Page 02</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="speakers.html">Speakers</a></li>
-                                        <li><a href="speakers-details.html">Speaker Details</a></li>
-                                        <li><a href="error-page.html">Error Page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="current dropdown"><a href="#">Shedule</a>
-                                    <ul>
-                                        <li><a href="shedule.html">Shedule</a></li>
-                                        <li><a href="shedule-details.html">Shedule Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Sponsors</a>
-                                    <ul>
-                                        <li><a href="sponsor.html">Sponsors</a></li>
-                                        <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-single.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact us</a></li>
-                            </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Board</a>
+									<ul>
+										<li><a href="#">Board</a></li>
+									</ul></li>
+							</ul>
                         </div>
                         
                     </nav>
@@ -175,41 +160,26 @@
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                        <ul class="navigation clearfix">
-                            <li class="dropdown"><a href="#">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Home Page 01</a></li>
-                                    <li><a href="index-2.html">Home Page 02</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">About</a>
-                                <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="speakers.html">Speakers</a></li>
-                                    <li><a href="speakers-details.html">Speaker Details</a></li>
-                                    <li><a href="error-page.html">Error Page</a></li>
-                                </ul>
-                            </li>
-                            <li class="current dropdown"><a href="#">Shedule</a>
-                                <ul>
-                                    <li><a href="shedule.html">Shedule</a></li>
-                                    <li><a href="shedule-details.html">Shedule Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Sponsors</a>
-                                <ul>
-                                    <li><a href="sponsor.html">Sponsors</a></li>
-                                    <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-single.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">Contact us</a></li>
-                        </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Board</a>
+									<ul>
+										<li><a href="#">Board</a></li>
+									</ul></li>
+							</ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -322,52 +292,56 @@
     </div>
 </section>
 <!--End Schedule Details-->
-
-
-<!--Contact Info-->
-<section class="contact-info">
-    <div class="container">
-        <div class="info-area">
-            <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-placeholder"></i>
-                        </div>
-                        <div class="text">
-                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
+<section>
+	<div class="blog-left-title">
+                    <h6>Comments (1)</h6>
+                </div>
+                <div class="blog-comment-area">
+                    <div class="image-box">
+                        <figure>
+                            <img src="images/testimonials/4.png" alt="">
+                        </figure>
+                        <h6>John Dou</h6>
+                    </div>
+                    <div class="image-content">
+                        <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology</p>
+                        <div class="link-btn">
+                            <a href="#"><i class="fas fa-reply"></i>Replay</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-phone-call"></i>
+                <div class="blog-left-title">
+                    <h6>Post Comments</h6>
+                </div>
+                <form name="contact_form" class="default-form post-comment" action="sendmail.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Name" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" placeholder="Subject" required="">
+                            </div>                                  
                         </div>
-                        <div class="text">
-                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="website" placeholder="Website" required="">
+                            </div>                                 
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <textarea name="form_message" class="form-control textarea required" placeholder="Your Message"></textarea>
+                            </div>
+                            <div class="form-group bottom">
+                                <button type="submit" class="theme-btn btn-style-one">Send Message</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-e-mail-envelope"></i>
-                        </div>
-                        <div class="text">
-                            <p>
-                                <a href="#">info@wiscon.com</a>
-                                <a href="#">support@wiscon.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>            
-    </div>
+                </form>
 </section>
-<!--End Contact Info-->
-
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">

@@ -57,7 +57,8 @@
 							<!--Social Box-->
 							<ul class="social-box">
 								<c:if test="${seccionScope.userid==null}">
-									<li><a href="signupForm">회원가입</a></li>
+									<li><a href="memberPage">멤버페이지</a></li>
+									<li><a href="registermember">회원가입</a></li>
 									<li><a href="loginForm">로그인</a></li>
 									<!--                         <li class="share">Connect With Us</li> -->
 									<!--                         <li><a href="#"><span class="fab fa-facebook"></span></a></li> -->
@@ -115,11 +116,11 @@
 										</ul></li>
 									<li class="dropdown"><a href="#">Map</a>
 										<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="#">Board</a>
 										<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 									</ul>
 								</div>
@@ -195,11 +196,11 @@
 										</ul></li>
 									<li class="dropdown"><a href="#">Map</a>
 										<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="#">Board</a>
 										<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 								</ul>
 							</div>
