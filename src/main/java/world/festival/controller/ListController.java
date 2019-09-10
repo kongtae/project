@@ -1,11 +1,14 @@
 package world.festival.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import world.festival.VO.ListVO;
 import world.festival.dao.ListDAO;
 
 
@@ -30,9 +33,14 @@ public class ListController {
 		
 		return "list/writeFestival";
 	}
-	@RequestMapping(value = "/writeFestival", method = RequestMethod.GET)
-	public String writeFestival() {
-		int result = dao.writeFestival();
+	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET,RequestMethod.POST})
+	public String writeFestival(ListVO vo, HttpSession session) {
+		String userid = (String)session.getAttribute("loginid");
+		vo.setUserid(userid);
+		int result = dao.writeFestival(vo);
+		if(result!=0){
+			return "error";
+		}
 		return "success";
 	}
 }

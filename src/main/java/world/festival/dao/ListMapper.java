@@ -1,9 +1,9 @@
 package world.festival.dao;
 
-import world.festival.VO.UserVO;
+import world.festival.VO.ListVO;
 
 public interface ListMapper {
 
-	//public int registermember(UserVO vo);
+	public int writeFestival(ListVO vo);
 	
 }
