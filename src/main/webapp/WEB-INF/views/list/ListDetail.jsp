@@ -292,52 +292,56 @@
     </div>
 </section>
 <!--End Schedule Details-->
-
-
-<!--Contact Info-->
-<section class="contact-info">
-    <div class="container">
-        <div class="info-area">
-            <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-placeholder"></i>
-                        </div>
-                        <div class="text">
-                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
+<section>
+	<div class="blog-left-title">
+                    <h6>Comments (1)</h6>
+                </div>
+                <div class="blog-comment-area">
+                    <div class="image-box">
+                        <figure>
+                            <img src="images/testimonials/4.png" alt="">
+                        </figure>
+                        <h6>John Dou</h6>
+                    </div>
+                    <div class="image-content">
+                        <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology</p>
+                        <div class="link-btn">
+                            <a href="#"><i class="fas fa-reply"></i>Replay</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-phone-call"></i>
+                <div class="blog-left-title">
+                    <h6>Post Comments</h6>
+                </div>
+                <form name="contact_form" class="default-form post-comment" action="sendmail.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Name" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" placeholder="Subject" required="">
+                            </div>                                  
                         </div>
-                        <div class="text">
-                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="website" placeholder="Website" required="">
+                            </div>                                 
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <textarea name="form_message" class="form-control textarea required" placeholder="Your Message"></textarea>
+                            </div>
+                            <div class="form-group bottom">
+                                <button type="submit" class="theme-btn btn-style-one">Send Message</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-e-mail-envelope"></i>
-                        </div>
-                        <div class="text">
-                            <p>
-                                <a href="#">info@wiscon.com</a>
-                                <a href="#">support@wiscon.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>            
-    </div>
+                </form>
 </section>
-<!--End Contact Info-->
-
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">

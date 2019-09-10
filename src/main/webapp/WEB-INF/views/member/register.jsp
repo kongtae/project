@@ -6,7 +6,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 2 | Registration Page</title>
+<title>FESPEDIA | Registration Page</title>
+
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -40,59 +41,98 @@
 <!-- Google Font -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style>
+	#userid{
+		width: 65%;
+		display: inline-block;
+	}
+	#heart{
+		left: 55%;
+	}
+	#idcheck{
+		width: 34%;
+		display: inline-block;
+	}
+	#icheck{
+		left: 10%;
+	}
+</style>
+<!-- jquery -->
+<script src="resources/js/jquery-3.4.1.js"></script>
+<script>
+	$(function() {
+		$("#idcheck").on("click", function(){
+			var userid = $('#userid').val();
+	
+		$.ajax({
+			data : {userid : userid},
+			url : "idcheck",
+			success : function(data) {
+				if(id == ""){
+					alert("아이디를 입력해주세요.");
+				} else if(data == '0') {
+					alert("사용 가능한 아이디 입니다.");
+				} else if(data == '1') {
+					alert("이미 사용 중인 아이디 입니다.");
+				}
+			},
+			error : function(data) {
+				alert("error : "+error);
+			}
+		});
+		});
+	});
+</script>
 </head>
 <body class="hold-transition register-page">
 	<div class="register-box">
 		<div class="register-logo">
-			<a href="/festival"><b>Admin</b>LTE</a>
+			<h1><a href="/festival"><b>FES</b>PEDIA</a></h1>
 		</div>
 
 		<div class="register-box-body">
 			<p class="login-box-msg">Register a new membership</p>
 
-			<form action="index.html" method="post">
+			<form action="registermember" method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="ID"><input type="button" class="btn btn-primary btn-block btn-flat" value="ID 중복확인"><span
-						class="glyphicon glyphicon-heart form-control-feedback"></span>
-						
+					<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"> <span
+						class="glyphicon glyphicon-heart form-control-feedback" id="heart"></span>
+					<button type="button" id="idcheck" class="btn btn-primary btn-block btn-flat" onclick="idcheck()">重複チェック</button>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="Full name">
+					<input type="text" class="form-control" name="username" placeholder="お名前">
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" placeholder="Email">
+					<input type="email" class="form-control" name="useremail" placeholder="メールアドレス">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="Password">
+					<input type="password" class="form-control" name="userpwd" id="userpwd" placeholder="パスワード">
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control"
-						placeholder="Retype password"> <span
-						class="glyphicon glyphicon-log-in form-control-feedback"></span>
+					<input type="password" class="form-control" id="check_userpwd" placeholder="パスワード確認"> 
+					<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 				</div>
 				
 				<div class="row">
 					<div class="col-xs-8">
-						<div class="checkbox icheck">
-							<label> <input type="checkbox"> I agree to the <a
-								href="#">terms</a>
+						<div class="checkbox icheck" id="icheck">
+							<label> <input type="checkbox"> I agree to the <a href="#">terms</a>
 							</label>
 						</div>
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+						<button type="submit" class="btn btn-primary btn-block btn-flat">登録</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			</form>
 
 
-			<a href="login.html" class="text-center">I already have a
-				membership</a>
+			<a href="login.html" class="text-center">I already have a membership</a>
 		</div>
 		<!-- /.form-box -->
 	</div>
