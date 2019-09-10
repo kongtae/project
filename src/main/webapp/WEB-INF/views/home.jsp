@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 
-<title>축제사이트</title>
+<title>축제사이트!!</title>
 <!-- responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
