@@ -86,41 +86,26 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Page 01</a></li>
-                                        <li><a href="index-2.html">Home Page 02</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="speakers.html">Speakers</a></li>
-                                        <li><a href="speakers-details.html">Speaker Details</a></li>
-                                        <li><a href="error-page.html">Error Page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="current dropdown"><a href="#">Shedule</a>
-                                    <ul>
-                                        <li><a href="shedule.html">Shedule</a></li>
-                                        <li><a href="shedule-details.html">Shedule Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Sponsors</a>
-                                    <ul>
-                                        <li><a href="sponsor.html">Sponsors</a></li>
-                                        <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-single.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact us</a></li>
-                            </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Board</a>
+									<ul>
+										<li><a href="#">Board</a></li>
+									</ul></li>
+							</ul>
                         </div>
                         
                     </nav>
@@ -175,41 +160,26 @@
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                        <ul class="navigation clearfix">
-                            <li class="dropdown"><a href="#">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Home Page 01</a></li>
-                                    <li><a href="index-2.html">Home Page 02</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">About</a>
-                                <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="speakers.html">Speakers</a></li>
-                                    <li><a href="speakers-details.html">Speaker Details</a></li>
-                                    <li><a href="error-page.html">Error Page</a></li>
-                                </ul>
-                            </li>
-                            <li class="current dropdown"><a href="#">Shedule</a>
-                                <ul>
-                                    <li><a href="shedule.html">Shedule</a></li>
-                                    <li><a href="shedule-details.html">Shedule Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Sponsors</a>
-                                <ul>
-                                    <li><a href="sponsor.html">Sponsors</a></li>
-                                    <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-single.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">Contact us</a></li>
-                        </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Board</a>
+									<ul>
+										<li><a href="#">Board</a></li>
+									</ul></li>
+							</ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -242,33 +212,13 @@
 <section class="schedule-section" id="schedule-tab">
     <div class="container">
         <div class="schedule-area">
-            <div class="schedule-title">
-                <div class="item active" data-tab-name="day-one">
-                    <div class="item-text">
-                        <h6>DAY 1</h6>
-                        <span>5 jan, 2018</span>
-                    </div>
-                </div>
-                <div class="item" data-tab-name="day-two">
-                    <div class="item-text">
-                        <h6>DAY 2</h6>
-                        <span>15 jan, 2018</span>
-                    </div>                                            
-                </div>
-                <div class="item" data-tab-name="day-three">
-                    <div class="item-text">
-                        <h6>DAY 3</h6>
-                        <span>18 jan, 2018</span>
-                    </div>                                            
-                </div>    
-            </div>
             <div class="schedule-content clearfix">
                 <div id="day-one">
                     <div class="inner-box  table-responsive">
 						<table>                
 			   				<tr>
-								<td class="right" colspan="5">
-									<a href="insertFestival"><img src="/resources/listImages/write.png"></a>
+								<td colspan="5" align="right">
+									<a href="insertFestival"><img src="listImages/write.png"></a>
 								</td>
 							</tr>
 			            </table>        
@@ -431,331 +381,10 @@
                         </table>
                     </div>
                 </div>
-                <div id="day-two">
-                    <div class="inner-box  table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="srial">#</th>
-                                    <th class="session">Session</th>
-                                    <th class="speakers">Speakers</th>
-                                    <th class="time">Time</th>
-                                    <th class="venue">Venue</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="srial">01</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Introduction to UI/Ux
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-1.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 AM
-                                    </td>
-                                    <td class="venue">Hall 1</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">02</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-2.jpg" alt="">
-                                        </figure>
-                                        <h6>Jhone Doe</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        10:00 AM
-                                    </td>
-                                    <td class="venue">Hall 2</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">03</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        WP Plugins Installation
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-3.jpg" alt="">
-                                        </figure>
-                                        <h6>Margarita Rose</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        11:00 AM
-                                    </td>
-                                    <td class="venue">Hall 3</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">04</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basic GO Language
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-4.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        12:00 PM
-                                    </td>
-                                    <td class="venue">Hall 4</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">05</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Business Analysis
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-5.jpg" alt="">
-                                        </figure>
-                                        <h6>Donald Pump</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        01:00 PM
-                                    </td>
-                                    <td class="venue">Hall 5</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">06</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Wp Requirements
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-6.jpg" alt="">
-                                        </figure>
-                                        <h6>Lee Mun</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        04:00 PM
-                                    </td>
-                                    <td class="venue">Hall 6</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">07</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-7.jpg" alt="">
-                                        </figure>
-                                        <h6>Baily Lio</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        07:00 PM
-                                    </td>
-                                    <td class="venue">Hall 7</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">08</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Plugin Development
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-8.jpg" alt="">
-                                        </figure>
-                                        <h6>Henri Mong</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 PM
-                                    </td>
-                                    <td class="venue">Hall 8</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div id="day-three">
-                    <div class="inner-box  table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="srial">#</th>
-                                    <th class="session">Session</th>
-                                    <th class="speakers">Speakers</th>
-                                    <th class="time">Time</th>
-                                    <th class="venue">Venue</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="srial">01</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Introduction to UI/Ux
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-1.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 AM
-                                    </td>
-                                    <td class="venue">Hall 1</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">02</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-2.jpg" alt="">
-                                        </figure>
-                                        <h6>Jhone Doe</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        10:00 AM
-                                    </td>
-                                    <td class="venue">Hall 2</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">03</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        WP Plugins Installation
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-3.jpg" alt="">
-                                        </figure>
-                                        <h6>Margarita Rose</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        11:00 AM
-                                    </td>
-                                    <td class="venue">Hall 3</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">04</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basic GO Language
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-4.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        12:00 PM
-                                    </td>
-                                    <td class="venue">Hall 4</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">05</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Business Analysis
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-5.jpg" alt="">
-                                        </figure>
-                                        <h6>Donald Pump</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        01:00 PM
-                                    </td>
-                                    <td class="venue">Hall 5</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">06</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Wp Requirements
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-6.jpg" alt="">
-                                        </figure>
-                                        <h6>Lee Mun</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        04:00 PM
-                                    </td>
-                                    <td class="venue">Hall 6</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">07</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-7.jpg" alt="">
-                                        </figure>
-                                        <h6>Baily Lio</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        07:00 PM
-                                    </td>
-                                    <td class="venue">Hall 7</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">08</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Plugin Development
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-8.jpg" alt="">
-                                        </figure>
-                                        <h6>Henri Mong</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 PM
-                                    </td>
-                                    <td class="venue">Hall 8</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            
                     </div>
                 </div>
             </div>
-        </div>                
-    </div>
 </section>
 <!--End Schedule Section-->
 
