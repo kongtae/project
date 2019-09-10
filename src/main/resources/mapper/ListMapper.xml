@@ -11,9 +11,12 @@
 		mainboard
 	VALUES (
 		#{userid},
-		#{username},
-		#{useremail},
-		#{userpwd}
+		#{title},
+		#{country},
+		#{adress},
+		#{festival_intro},
+		#{startEvent},
+		#{endEvent}
 	)
 </insert>
 

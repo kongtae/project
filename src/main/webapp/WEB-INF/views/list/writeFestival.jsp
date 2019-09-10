@@ -21,8 +21,13 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    
+<style>
+	.longbar{
+			width: 300px;	
+	
+	}
 
+</style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 	function writeFestval() {
@@ -246,7 +251,7 @@
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
                   <i class="fa fa-paperclip"></i> ファイル添付
-                  <input type="file" name="uploadfile">
+                  <input type="file" name="uploadFileName" value="ファイル！">
                 </div>
               </div> 
                 <div class="box-footer">
@@ -271,10 +276,15 @@
 					              <div class="form-group">
 					              	<h1>祭りの投稿欄</h1>
 					              	<br>
-					                <input class="form-control" placeholder="祭りの名前を記入してください。" id="title">
+					                <input class="form-control" placeholder="祭りの名前を記入してください。" name="title">
 					              </div>
 					              <div class="form-group">
-					                    <textarea id="content" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+					                    <textarea name="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+									<table>	
+										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="">から</td></tr>
+										<tr><td>祭りの終了日：<input type="date" name="endEvent">まで行います。</td></tr>
+					             	<tr><td>国家:<input class="longbar" type="text" name="country" placeholder="国の名前を入力してください。"><br> 地域:<input class="longbar" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
+					             	</table>
 					              </div>
 					            </div>
 					          </div>
@@ -326,12 +336,6 @@
    </form>
 </section>
 <!--End Schedule Details-->
-
-  <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper"> -->
-    <!-- Content Header (Page header) -->
- 
-
 
 <!--Contact Info-->
 <section class="contact-info">
