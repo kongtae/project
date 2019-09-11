@@ -22,9 +22,46 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    
-</head>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
 
+		$(function() {
+			printAll();
+		});
+
+	function printAll() {
+		$.ajax({
+			type:'GET',
+			url : 'printAll',
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패");
+			}
+		})
+	}
+
+	function output(result) {
+		var context = '';
+		$.each(result,function(index,item){
+		context += "<tr><th>작성자</th>";
+		context += "<th>작성일</th>";
+		context += "<th>관광지명</th>";
+		context += "<th>리뷰 내용</th>";
+		context += "<th>추천도</th></tr>";
+		context += "<tr><td>"+item.mainBoardNum+"</td>";
+		context += "<td>"+item.adress+"</td>";
+		context += "<td>"+item.country+"</td>";
+		context += "<td>"+item.startEvent+"</td></tr>";
+		// JavaScript 또는 jQuery를 이용하여 전달받은 모든 데이터를 태그 형식의 문자열로 구성한다.
+		// 코드를 작성하세요.
+		})
+		$("#list").html(context);
+	}
+
+
+</script>
+</head>
 <body>
     
 <div class="boxed_wrapper">
@@ -220,7 +257,10 @@
 					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
 				</td>
 			</tr>
-           </table>  
+           </table>
+           	<table id="list"></table>
+           
+             
 			            <div class="inner-box  table-responsive">      
                         <table class="table table-hover">
                             <thead>
@@ -386,6 +426,8 @@
                 </div>
 </section>
 <!--End Schedule Section-->
+
+
 
 
 <!--Contact Info-->

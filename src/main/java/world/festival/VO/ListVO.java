@@ -10,7 +10,7 @@ public class ListVO {
 	private String adminid;
 	private String mainBoardNum;
 	private String userid;
-	private String TITLE;
+	private String title;
 	private String country;
 	private String adress;
 	private String festival_intro;
