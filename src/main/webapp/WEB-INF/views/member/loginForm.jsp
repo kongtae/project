@@ -35,52 +35,73 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style>
+	.col-xs-8{
+		width: 64%;
+	}
+	#submit{
+		width: 110%;
+	}
+</style>
+<!-- jquery -->
+<script src="resources/js/jquery-3.4.1.js"></script>
+<script>
+$(function(){
+	$('#submit').on('click',function(){
+		var userid = $('#userid').val();
+		var userpwd = $('#userpwd').val();
+		
+		if(userid.length == 0) {
+			alert("IDを入力してください。");
+			return false;
+		}
+		else if(userpwd.length == 0){
+			alert("パスワードを入力してください。");
+			return false;
+		}
+		
+		return true;
+	});
+});
+</script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/#"><b>로그인</b>@@@</a>
+    <h1><a href="/festival"><b>FES</b>PEDIA</a></h1>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="loginForm" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="ID" name="userid" id="userid">
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control"  name="userpwd" id="userpwd" placeholder="パスワード">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
-            <label>
+            <!-- <label>
               <input type="checkbox"> Remember Me
-            </label>
+            </label> -->
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit">サインイン</button>
         </div>
         <!-- /.col -->
       </div>
     </form>
 
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
-    </div>
-    <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+    <a href="registermember" class="text-center">Register a new membership</a>
 
   </div>
   <!-- /.login-box-body -->

@@ -12,7 +12,10 @@
 	VALUES (
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
+<<<<<<< HEAD
 		#{title},
+=======
+>>>>>>> e0c612c4c886671b6c59033eb9cd3d0c93e635fb
 		#{country},
 		#{adress},
 		#{festival_intro},

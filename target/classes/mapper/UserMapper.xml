@@ -10,10 +10,11 @@
 	INSERT INTO
 		member
 	VALUES (
+		null,
 		#{userid},
 		#{username},
-		#{useremail},
-		#{userpwd}
+		#{userpwd},
+		#{useremail}
 	)
 </insert>
 
@@ -27,4 +28,16 @@
 		userid = #{userid}
 </select>
 
+<!-- 회원정보 검색 -->
+<select id="selectOne" parameterType="UserVO" resultType="UserVO">
+	SELECT
+		*
+	FROM
+		member
+	WHERE
+		userid = #{userid}
+		<if test="userpwd != null">
+		AND userpwd = #{userpwd}
+		</if>
+</select>
 </mapper>

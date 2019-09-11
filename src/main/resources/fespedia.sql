@@ -11,5 +11,5 @@ CREATE TABLE MEMBER(
    userid      VARCHAR2(20)   NOT NULL PRIMARY KEY,      --USERID
    username    VARCHAR2(20)   NOT NULL UNIQUE,          --USERNAME
    userpwd       VARCHAR2(20)   NOT NULL,                  --USERPWD
-   email       VARCHAR2(50)    NOT NULL                         --메일
+   useremail       VARCHAR2(50)    NOT NULL                         --메일
 );
