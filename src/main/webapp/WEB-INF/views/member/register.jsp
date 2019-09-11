@@ -46,42 +46,85 @@
 		width: 65%;
 		display: inline-block;
 	}
-	#heart{
+	#ok{
 		left: 55%;
 	}
 	#idcheck{
 		width: 34%;
 		display: inline-block;
 	}
-	#icheck{
-		left: 10%;
-	}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
-	$(function() {
-		$("#idcheck").on("click", function(){
-			var userid = $('#userid').val();
-	
-		$.ajax({
-			data : {userid : userid},
-			url : "idcheck",
-			success : function(data) {
-				if(id == ""){
-					alert("아이디를 입력해주세요.");
-				} else if(data == '0') {
-					alert("사용 가능한 아이디 입니다.");
-				} else if(data == '1') {
-					alert("이미 사용 중인 아이디 입니다.");
-				}
-			},
-			error : function(data) {
-				alert("error : "+error);
+$(function() {
+	$("#idcheck").on('click', register);
+	$('#submit').on('click', formcheck);
+});
+
+function register(){
+	var userid = $('#userid').val();
+		
+	if(userid.length == 0) {
+		alert("IDを入力してください。");
+		return false;
+	}
+	if(userid.length < 3 || userid.length > 10) {
+		alert("IDは3～10字以内で入力してください。");
+		return false;
+	}
+
+	$.ajax({
+		data : {userid : userid},
+		url : "idcheck",
+		success : function(data) {
+			if(data == '0') {
+				alert("このIDは利用できます。");
+				document.getElementById("submit").removeAttribute("disabled");
+			} else if(data == '1') {
+				alert("このIDは利用できません。他のIDを指定してください。");
 			}
-		});
-		});
+		},
+		error : function(data) {
+			alert("error : "+error);
+		}
 	});
+};
+
+function formcheck(){
+	var username = $('#username').val();
+	var useremail = $('#useremail').val();
+	var userpwd = $('#userpwd').val();
+	var check_userpwd = $('#check_userpwd').val();
+	var icheck = $('#icheck');
+	
+	if(username.length == 0){
+		alert("お名前を入力してください。");
+		return false;
+	}
+	if(useremail.length == 0){
+		alert("メールアドレスを入力してください。");
+		return false;
+	}
+	if(userpwd.length == 0){
+		alert("パスワードを入力してください。");
+		return false;
+	}
+	if(check_userpwd.length == 0){
+		alert("パスワードを再び入力してください。");
+		return false;
+	}
+	if(userpwd != check_userpwd){
+		alert("パスワードが間違っています。 もう一度入力してください。");
+		$("#check_userpwd").focus();
+		return false;
+	}
+	if($('input:checkbox[id="checkbox"]:checked').length < 1){
+		alert("利用約款をチェックしてください。");
+		return false;
+	}
+	return true; 
+};
 </script>
 </head>
 <body class="hold-transition register-page">
@@ -95,16 +138,16 @@
 
 			<form action="registermember" method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"> <span
-						class="glyphicon glyphicon-heart form-control-feedback" id="heart"></span>
+					<input type="text" class="form-control" id="userid" name="userid" placeholder="ユーザID 3~10字"> <span
+						class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
 					<button type="button" id="idcheck" class="btn btn-primary btn-block btn-flat" onclick="idcheck()">重複チェック</button>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" name="username" placeholder="お名前">
+					<input type="text" class="form-control" name="username" id="username" placeholder="お名前">
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" name="useremail" placeholder="メールアドレス">
+					<input type="email" class="form-control" name="useremail" id="useremail" placeholder="メールアドレス">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
@@ -119,20 +162,20 @@
 				<div class="row">
 					<div class="col-xs-8">
 						<div class="checkbox icheck" id="icheck">
-							<label> <input type="checkbox"> I agree to the <a href="#">terms</a>
+							<label> <input type="checkbox" id="checkbox"> I agree to the <a href="#">terms</a>
 							</label>
 						</div>
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">登録</button>
+						<button type="submit" id="submit" disabled="disabled" class="btn btn-primary btn-block btn-flat">登録</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			</form>
 
 
-			<a href="login.html" class="text-center">I already have a membership</a>
+			<a href="loginForm" class="text-center">I already have a membership</a>
 		</div>
 		<!-- /.form-box -->
 	</div>

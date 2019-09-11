@@ -49,16 +49,17 @@
                     </ul>
                 </div>
                 <!--Top Right-->
-                <div class="top-right">
-                    <!--Social Box-->
-                    <ul class="social-box">
-                        <li class="share">Connect With Us</li>
-                        <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                        <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
-                        <li><a href="#"><span class="fab fa-vimeo"></span></a></li>
-                        <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                    </ul>
+					<div class="top-right">
+					<!--Social Box-->
+					<ul class="social-box">
+						<c:if test="${seccionScope.userid==null}">
+							<li><a href="registermember">会員登録</a></li>
+							<li><a href="loginForm">ログイン</a></li>
+						</c:if>
+						<c:if test="${seccionScope.userid!=null}">
+						<li><a href="memberPage">マイページ</a></li>
+						</c:if>
+					</ul>
                 </div>
             </div>
         </div>
@@ -110,10 +111,10 @@
                         
                     </nav>
                     
-                    <!--Button Box-->
-                    <div class="button-box">
-                        <a href="#" class="theme-btn btn-style-one">Get Ticket</a>
-                    </div>
+					<!--Button Box-->
+					<div class="button-box">
+						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+					</div>
                     
                     <!--Search Box Outer-->
                     <div class="search-box-outer">

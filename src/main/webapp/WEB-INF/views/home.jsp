@@ -56,19 +56,15 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-								<c:if test="${seccionScope.userid==null}">
-									<li><a href="memberPage">멤버페이지</a></li>
-									<li><a href="registermember">회원가입</a></li>
-									<li><a href="loginForm">로그인</a></li>
-									<!--                         <li class="share">Connect With Us</li> -->
-									<!--                         <li><a href="#"><span class="fab fa-facebook"></span></a></li> -->
-									<!--                         <li><a href="#"><span class="fab fa-linkedin"></span></a></li> -->
-									<!--                         <li><a href="#"><span class="fab fa-vimeo"></span></a></li> -->
-									<!--                         <li><a href="#"><span class="fab fa-google-plus"></span></a></li> -->
-									<!--                         <li><a href="#"><span class="fab fa-twitter"></span></a></li> -->
+								<c:if test="${sessionScope.loginid == null}">
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+								</c:if>
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
 								</c:if>
 							</ul>
-
 						</div>
 					</div>
 				</div>

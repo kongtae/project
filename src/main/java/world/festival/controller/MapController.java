@@ -12,7 +12,7 @@ public class MapController {
 	@RequestMapping(value = "/map", method = RequestMethod.GET)
 	public String map() {
 		
-		return "map/map";
+		return "map/mapTest";
 	}
 	
 	

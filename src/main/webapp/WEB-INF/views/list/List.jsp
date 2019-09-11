@@ -49,16 +49,17 @@
                     </ul>
                 </div>
                 <!--Top Right-->
-                <div class="top-right">
-                    <!--Social Box-->
-                    <ul class="social-box">
-                        <li class="share">Connect With Us</li>
-                        <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                        <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
-                        <li><a href="#"><span class="fab fa-vimeo"></span></a></li>
-                        <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                    </ul>
+					<div class="top-right">
+					<!--Social Box-->
+					<ul class="social-box">
+						<c:if test="${seccionScope.userid==null}">
+							<li><a href="registermember">会員登録</a></li>
+							<li><a href="loginForm">ログイン</a></li>
+						</c:if>
+						<c:if test="${seccionScope.userid!=null}">
+						<li><a href="memberPage">マイページ</a></li>
+						</c:if>
+					</ul>
                 </div>
             </div>
         </div>
@@ -110,10 +111,10 @@
                         
                     </nav>
                     
-                    <!--Button Box-->
-                    <div class="button-box">
-                        <a href="#" class="theme-btn btn-style-one">Get Ticket</a>
-                    </div>
+					<!--Button Box-->
+					<div class="button-box">
+						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+					</div>
                     
                     <!--Search Box Outer-->
                     <div class="search-box-outer">
@@ -211,17 +212,16 @@
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
     <div class="container">
-        <div class="schedule-area">
-            <div class="schedule-content clearfix">
-                <div id="day-one">
-                    <div class="inner-box  table-responsive">
-						<table>                
-			   				<tr>
-								<td colspan="5" align="right">
-									<a href="insertFestival"><img src="listImages/write.png"></a>
-								</td>
-							</tr>
-			            </table>        
+          <div class="schedule-area">
+      		<div class="schedule-content clearfix">
+			<table>                
+  				<tr>
+				<td >
+					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+				</td>
+			</tr>
+           </table>  
+			            <div class="inner-box  table-responsive">      
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -384,7 +384,6 @@
             
                     </div>
                 </div>
-            </div>
 </section>
 <!--End Schedule Section-->
 
