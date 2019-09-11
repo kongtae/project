@@ -1,9 +1,5 @@
 package world.festival.controller;
 
-
-
-import java.util.Locale;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,45 +35,36 @@ public class UserController {
 	
 	//중복체크
 	@ResponseBody
-	@RequestMapping(value="/idcheck")
+	@RequestMapping(value="/idcheck", method = RequestMethod.GET)
 	public int idcheck(String userid) {
-		System.out.println(userid);
 		return dao.idcheck(userid);
 	}
 
-	/*@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
-	public String loginFrom(Locale locale, Model model) {
-		
+	//로그인 화면 이동
+	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	public String loginFrom() {
 		return "member/loginForm";
 	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+
+	//로그인
+	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
 	public String login(UserVO vo, HttpSession session, Model model) {
-		UserVO result = service.login(vo, session);
-		System.out.println(result);
-		if(result == null) {
-			model.addAttribute("wrong", false);
-			return "loginForm";
+		UserVO result = dao.selectOne(vo);
+		if(result != null) {
+			session.setAttribute("loginid", result.getUserid());
+			return "redirect:/";
 		}
-		model.addAttribute("result", result);
-		return "main";
-	}*/
+		return "redirect:/loginForm";
+	}
 	
+	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "main";
+		return "redirect:/";
 	}
 	
-	/*@RequestMapping(value = "/check", method = RequestMethod.GET)
-	public String check(String id, Model model) {
-		UserVO result = service.check(id);
-		if(result != null) {
-			model.addAttribute("check", false);
-		}
-		return "redirect:/";
-	}*/
-	
+	//유저페이지 이동
 	@RequestMapping(value = "/memberPage", method = RequestMethod.GET)
 	public String memberPage() {
 		return "member/memberPage";
