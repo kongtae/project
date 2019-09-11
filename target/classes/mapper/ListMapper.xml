@@ -10,13 +10,8 @@
 	INSERT INTO
 		MAINBOARD (mainBoardNum,country,adress,festival_intro,startEvent,endEvent)
 	VALUES (
-<<<<<<< HEAD
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
-=======
-		#{userid},
-		#{title},
->>>>>>> 91f652f4aef584be99a3ff25456c059efd715127
 		#{country},
 		#{adress},
 		#{festival_intro},
