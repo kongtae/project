@@ -65,7 +65,6 @@
 									<li><a href="logout">Logout</a></li>
 								</c:if>
 							</ul>
-
 						</div>
 					</div>
 				</div>

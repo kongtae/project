@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -22,9 +21,38 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    
-</head>
+<style>
+	.longbar{
+			width: 300px;	
+	}
 
+</style>
+<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
+<script>
+	function writeFestival() {
+/* 		var form = $("#writeFestivalID")[0];
+		var formData = new FormData(form);
+		alert(formData); */
+		
+		var formdata2 = $("#writeFestivalID").serialize();
+		alert(formdata2);
+		
+		$.ajax({
+			url:"writeFestival",
+			data:formdata2,
+			type:"post",
+			contentType:false,
+			processData:false,
+			success: function() {
+				alert("投稿完了");
+			},
+			error: function() {
+				alert("投稿ERROR");
+			}
+		});
+	}
+</script>
+</head>
 <body>
     
 <div class="boxed_wrapper">
@@ -49,16 +77,17 @@
                     </ul>
                 </div>
                 <!--Top Right-->
-                <div class="top-right">
-                    <!--Social Box-->
-                    <ul class="social-box">
-                        <li class="share">Connect With Us</li>
-                        <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                        <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
-                        <li><a href="#"><span class="fab fa-vimeo"></span></a></li>
-                        <li><a href="#"><span class="fab fa-google-plus"></span></a></li>
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                    </ul>
+					<div class="top-right">
+					<!--Social Box-->
+					<ul class="social-box">
+						<c:if test="${seccionScope.userid==null}">
+							<li><a href="registermember">会員登録</a></li>
+							<li><a href="loginForm">ログイン</a></li>
+						</c:if>
+						<c:if test="${seccionScope.userid!=null}">
+						<li><a href="memberPage">マイページ</a></li>
+						</c:if>
+					</ul>
                 </div>
             </div>
         </div>
@@ -70,7 +99,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -110,13 +139,13 @@
                         
                     </nav>
                     
-                    <!--Button Box-->
-                    <div class="button-box">
-                        <a href="#" class="theme-btn btn-style-one">Get Ticket</a>
-                    </div>
+					<!--Button Box-->
+					<div class="button-box">
+						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+					</div>
                     
                     <!--Search Box Outer-->
-                    <div class="search-box-outer">
+<!--                     <div class="search-box-outer">
                         <div class="dropdown">
                             <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
@@ -132,7 +161,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     
                 </div>
                
@@ -210,50 +239,63 @@
 
 <!--Schedule Details-->
 <section class="schedule-details">
+	<form action="writeFestival" id="writeFestivalID" method="POST" enctype="multipart/form-data">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
                     <div class="text-title">
-                        <h6>Speaker</h6>
+                        <h6>祭りの写真</h6>
                     </div>
                     <div class="shedule-image-box text-center">
                         <figure>
                             <img src="images/resources/schedule-9.jpg" alt="">
                         </figure>
-                        <h5>Eric Moss</h5>
-                        <a href="#"><p>Info@ericmossion.com</p></a>
-                        <ul class="social-links">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
                     </div>
-                    <div class="shedule-search-box">
-                        <form method="post" action="index.html">
-                            <input type="search" name="search" placeholder="Search Events..." required="">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>                       
+                <div class="form-group">
+                <div class="btn btn-default btn-file">
+                  <i class="fa fa-paperclip"></i> ファイル添付
+                  <!-- <input type="file" name="uploadFileName"> 나중에 다시 볼것-->
+                  <input type="file">
+                </div>
+              </div> 
+                <div class="box-footer">
+              <div class="pull-right">
+              <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
+                <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+                <button type="reset" class="btn btn-default"><i class="fa fa-ｓtimes"></i>取消</button>
+              </div>
+            </div>     
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-                        <figure>
-                            <img src="images/resources/schedule-10.jpg" alt="">
-                        </figure>
-                         <fieldset>
-							<input type="hidden" name="userid" value="${sessionScope.userid}">
-							작성자:${sessionScope.userid}<br>
-							제목:<input type="text" name="title"><br>
-							첨부파일:<input type="file" name="uploadFile"><br>
-							내용:<textarea rows="10" cols="80" name="content"></textarea><br>
-							<input type="button" value="등록" onclick="insertboard()">
-							<input type="reset" value="취소">
-						</fieldset>
+					    <section class="content">
+					      <div class="row">
+					        <!-- /.col -->
+					        <div class="col-md-9">
+					          <div class="box box-primary">
+					            <!-- /.box-header -->
+					            <div class="box-body">
+					              <div class="form-group">
+					              	<h1>祭りの投稿欄</h1>
+					              	<br>
+					                <input type="text" name="TITLE" class="form-control" placeholder="祭りの名前を記入してください。" >
+					              </div>
+					              <div class="form-group">
+					                    <textarea name="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+									<table>	
+										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="">から</td></tr>
+										<tr><td>祭りの終了日：<input type="date" name="endEvent">まで行います。</td></tr>
+					             	<tr><td>国家:<input class="longbar" type="text" name="country" placeholder="国の名前を入力してください。"><br> 地域:<input class="longbar" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
+					             	</table>
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </section>
 					</div>
                     <div class="event-details">
                         <h5>Event Details</h5>
@@ -296,141 +338,9 @@
             </div>
         </div>                
     </div>
+   </form>
 </section>
 <!--End Schedule Details-->
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Mailbox
-        <small>13 new messages</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Mailbox</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-md-3">
-          <a href="mailbox.html" class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
-
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Folders</h3>
-
-              <div class="box-tools">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="box-body no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox
-                  <span class="label label-primary pull-right">12</span></a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
-                <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
-                <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
-                </li>
-                <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
-              </ul>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /. box -->
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Labels</h3>
-
-              <div class="box-tools">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
-              </ul>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Compose New Message</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="form-group">
-                <input class="form-control" placeholder="To:">
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Subject:">
-              </div>
-              <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      <h1><u>Heading Of Message</u></h1>
-                      <h4>Subheading</h4>
-                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-                        was born and I will give you a complete account of the system, and expound the actual teachings
-                        of the great explorer of the truth, the master-builder of human happiness. No one rejects,
-                        dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know
-                        how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again
-                        is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
-                        but because occasionally circumstances occur in which toil and pain can procure him some great
-                        pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,
-                        except to obtain some advantage from it? But who has any right to find fault with a man who
-                        chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that
-                        produces no resultant pleasure? On the other hand, we denounce with righteous indignation and
-                        dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so
-                        blinded by desire, that they cannot foresee</p>
-                      <ul>
-                        <li>List item one</li>
-                        <li>List item two</li>
-                        <li>List item three</li>
-                        <li>List item four</li>
-                      </ul>
-                      <p>Thank you,</p>
-                      <p>John Doe</p>
-                    </textarea>
-              </div>
-              <div class="form-group">
-                <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> Attachment
-                  <input type="file" name="attachment">
-                </div>
-                <p class="help-block">Max. 32MB</p>
-              </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-              <div class="pull-right">
-                <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
-              </div>
-              <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Discard</button>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!-- /. box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-
 
 <!--Contact Info-->
 <section class="contact-info">
@@ -474,8 +384,6 @@
         </div>            
     </div>
 </section>
-<!--End Contact Info-->
-
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">
@@ -525,7 +433,7 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script src="js/jquery.js"></script>
+<script src="js/jquery.js"></script> 
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
