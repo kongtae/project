@@ -5,13 +5,13 @@
 
 <mapper namespace="world.festival.dao.ListMapper">
 
-<!-- 축제등록 -->	
+<!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		mainboard
+		MAINBOARD (mainBoardNum,country,adress,festival_intro,startEvent,endEvent)
 	VALUES (
-		#{userid},
-		#{title},
+		<!-- #{userid}, -->
+		mainboard_seq.nextval,
 		#{country},
 		#{adress},
 		#{festival_intro},

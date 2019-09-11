@@ -23,4 +23,10 @@ public class UserDAO {
 		return result;
 	}
 
+	public UserVO selectOne(UserVO vo) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		UserVO result = mapper.selectOne(vo);
+		return result;
+	}
+
 }

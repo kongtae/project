@@ -27,14 +27,19 @@
 	}
 
 </style>
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
 <script>
-	function writeFestval() {
-		var form = $("#writeFestivalID")[0];
+	function writeFestival() {
+/* 		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
+		alert(formData); */
+		
+		var formdata2 = $("#writeFestivalID").serialize();
+		alert(formdata2);
+		
 		$.ajax({
 			url:"writeFestival",
-			data:formData,
+			data:formdata2,
 			type:"post",
 			contentType:false,
 			processData:false,
@@ -140,7 +145,7 @@
 					</div>
                     
                     <!--Search Box Outer-->
-                    <div class="search-box-outer">
+<!--                     <div class="search-box-outer">
                         <div class="dropdown">
                             <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
@@ -156,7 +161,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     
                 </div>
                
@@ -234,7 +239,7 @@
 
 <!--Schedule Details-->
 <section class="schedule-details">
-	<form action="writeFestivalAction" id="writeFestivalID" enctype="application/x-www-form-urlencoded">
+	<form action="writeFestival" id="writeFestivalID" method="POST" enctype="multipart/form-data">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
@@ -250,7 +255,8 @@
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
                   <i class="fa fa-paperclip"></i> ファイル添付
-                  <input type="file" name="uploadFileName" value="ファイル！">
+                  <!-- <input type="file" name="uploadFileName"> 나중에 다시 볼것-->
+                  <input type="file">
                 </div>
               </div> 
                 <div class="box-footer">
@@ -275,7 +281,7 @@
 					              <div class="form-group">
 					              	<h1>祭りの投稿欄</h1>
 					              	<br>
-					                <input class="form-control" placeholder="祭りの名前を記入してください。" name="title">
+					                <input type="text" name="TITLE" class="form-control" placeholder="祭りの名前を記入してください。" >
 					              </div>
 					              <div class="form-group">
 					                    <textarea name="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
@@ -427,7 +433,7 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script src="js/jquery.js"></script>
+<script src="js/jquery.js"></script> 
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
