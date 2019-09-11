@@ -31,7 +31,6 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
 </head>
 <style>
 .country {
@@ -40,14 +39,12 @@
 	stroke-width: .5px;
 	stroke-linejoin: round;
 }
-
 .graticule {
 	fill: none;
 	stroke: #000;
 	stroke-opacity: .3;
 	stroke-width: .5px;
 }
-
 .graticule.outline {
 	stroke: #333;
 	stroke-opacity: 1;
@@ -66,11 +63,9 @@
 	line-height: 30px;
 }
 </style>
+
 <body>
-
 	<div class="boxed_wrapper">
-
-
 		<!--Start Preloader -->
 		<div class="preloader"></div>
 		<!--End Preloader -->
@@ -365,7 +360,35 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- <script src="js/jquery-3.4.1.js"></script> -->
 <script>
+window.onload =function(){
+	alert("맵화면");
+	selectMap();
+}
+/* 
+$(function() {
+	alert("맵화면");
+	//selectMap();
+});
+ */
+function selectMap(){
+	$.ajax({
+		url : "selectMap",
+		type:"post",
+		dataType:"json",
+		success : function(data) {
+			alert("성공");
+			$(data).each(function(index,item) {
+				alert(item.country + " : " + item.festivalCount);
+			});
+		},
+		error : function(data) {
+			alert("실패");
+		}
+	});
+}
+
 var a = '러시아 축제 1000개';
 //jvectormap data
 var visitorsData = {
@@ -381,51 +404,52 @@ var visitorsData = {
   GB: 320, // Great Britain
   RU: 647 // Russia
 };
-// World map by jvectormap
-$('#world-map').vectorMap({
-  map              : 'world_mill_en',
-  backgroundColor  : 'transparent',
-  enableZoom: true,
-  showTooltip: true,
-  regionStyle      : {
-    initial: {
-      fill            : '#e4e4e4',
-      'fill-opacity'  : 1,
-      stroke          : 'none',
-      'stroke-width'  : 0,
-      'stroke-opacity': 1
-    	},
-		hover        : {
-	      'fill-opacity': 0.7,
-	      cursor        : 'pointer'
-	    },
-	    selected     : {
-	      fill: 'yellow'
-	    },
-	    selectedHover: {}
-	  
-  },
-  series           : {
-    regions: [
-      {
-        values           : visitorsData,
-        scale            : ['#92c1dc', '#ebf4f9'],
-        normalizeFunction: 'polynomial'
-      }
-    ]
-  },
-  onRegionLabelShow: function (e, el, code) {
-    if(code == 'RU'){
-		el.text(a);
-    }else if (typeof visitorsData[code] != 'undefined'){
-        el.html(el.html() + ': ' + visitorsData[code] + ' new Festival');
-    }
-  },
-	onRegionClick: function(event, code, regions){
-		//$('#name').html(regions+" : (" + code + ")");
-		location.href="registermember";
-	}
-});
+
+	// World map by jvectormap
+	$('#world-map').vectorMap({
+	  map              : 'world_mill_en',
+	  backgroundColor  : 'transparent',
+	  enableZoom: true,
+	  showTooltip: true,
+	  regionStyle      : {
+	    initial: {
+	      fill            : '#e4e4e4',
+	      'fill-opacity'  : 1,
+	      stroke          : 'none',
+	      'stroke-width'  : 0,
+	      'stroke-opacity': 1
+	    	},
+			hover        : {
+		      'fill-opacity': 0.7,
+		      cursor        : 'pointer'
+		    },
+		    selected     : {
+		      fill: 'yellow'
+		    },
+		    selectedHover: {}
+		  
+	  },
+	  series           : {
+	    regions: [
+	      {
+	        values           : visitorsData,
+	        scale            : ['#92c1dc', '#ebf4f9'],
+	        normalizeFunction: 'polynomial'
+	      }
+	    ]
+	  },
+	  onRegionLabelShow: function (e, el, code) {
+	    if(code == 'RU'){
+			el.text(a);
+	    }else if (typeof visitorsData[code] != 'undefined'){
+	        el.html(el.html() + ': ' + visitorsData[code] + ' new Festival');
+	    }
+	  },
+		onRegionClick: function(event, code, regions){
+			//$('#name').html(regions+" : (" + code + ")");
+			location.href="registermember";
+		}
+	});
 
 </script>
 </body>
