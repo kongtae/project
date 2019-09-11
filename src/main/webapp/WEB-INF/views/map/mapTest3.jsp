@@ -53,6 +53,18 @@
 	stroke-opacity: 1;
 	stroke-width: 1.5px;
 }
+.jvectormap-label {
+	border:  1px solid white;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	background: #fa334f;
+	color: white;
+	font-family: Arial;
+	padding: auto;
+	font-size:15px;
+	line-height: 30px;
+}
 </style>
 <body>
 
@@ -291,33 +303,15 @@
 
               <i class="fa fa-map-marker"></i>
 
-              <h3 class="box-title">
-                Visitors
-              </h3>
+              <h1 class="box-title">
+                Festival
+              </h1>
+            
+              
             </div>
             <div class="box-body">
               <div id="world-map" style="height: 250px; width: 100%;"></div>
-            </div>
-            <!-- /.box-body-->
-            <div class="box-footer no-border">
-              <div class="row">
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <div id="sparkline-1"></div>
-                  <div class="knob-label">Visitors</div>
-                </div>
-                <!-- ./col -->
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <div id="sparkline-2"></div>
-                  <div class="knob-label">Online</div>
-                </div>
-                <!-- ./col -->
-                <div class="col-xs-4 text-center">
-                  <div id="sparkline-3"></div>
-                  <div class="knob-label">Exists</div>
-                </div>
-                <!-- ./col -->
-              </div>
-              <!-- /.row -->
+              <h1 id="name"></h1>
             </div>
           </div>
           <!-- /.box -->
@@ -368,10 +362,71 @@
 <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script>
+var a = '러시아 축제 1000개';
+//jvectormap data
+var visitorsData = {
+  US: 398, // USA
+  SA: 400, // Saudi Arabia
+  CA: 1000, // Canada
+  DE: 500, // Germany
+  FR: 760, // France
+  CN: 300, // China
+  AU: 700, // Australia
+  BR: 600, // Brazil
+  IN: 800, // India
+  GB: 320, // Great Britain
+  RU: 647 // Russia
+};
+// World map by jvectormap
+$('#world-map').vectorMap({
+  map              : 'world_mill_en',
+  backgroundColor  : 'transparent',
+  enableZoom: true,
+  showTooltip: true,
+  regionStyle      : {
+    initial: {
+      fill            : '#e4e4e4',
+      'fill-opacity'  : 1,
+      stroke          : 'none',
+      'stroke-width'  : 0,
+      'stroke-opacity': 1
+    	},
+		hover        : {
+	      'fill-opacity': 0.7,
+	      cursor        : 'pointer'
+	    },
+	    selected     : {
+	      fill: 'yellow'
+	    },
+	    selectedHover: {}
+	  
+  },
+  series           : {
+    regions: [
+      {
+        values           : visitorsData,
+        scale            : ['#92c1dc', '#ebf4f9'],
+        normalizeFunction: 'polynomial'
+      }
+    ]
+  },
+  onRegionLabelShow: function (e, el, code) {
+    if(code == 'RU'){
+		el.text(a);
+    }else if (typeof visitorsData[code] != 'undefined'){
+        el.html(el.html() + ': ' + visitorsData[code] + ' new Festival');
+    }
+  },
+	onRegionClick: function(event, code, regions){
+		//$('#name').html(regions+" : (" + code + ")");
+		location.href="registermember";
+	}
+});
 
+</script>
 </body>
 </html>
