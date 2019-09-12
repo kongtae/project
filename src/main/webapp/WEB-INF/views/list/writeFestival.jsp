@@ -334,11 +334,11 @@ function writeFestival(event) {
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-                    <div class="shedule-image-box text-center" id="removeImg"> <!-- 미리보기 공간 -->
+<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
-                    </div>
+                    </div> -->
                     <div id="preview">
                     </div>
                 <div class="form-group">

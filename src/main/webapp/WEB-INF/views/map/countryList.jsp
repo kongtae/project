@@ -24,58 +24,16 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
-// document.getElementById()
 
-$(function() {
-			printAll();
-		})
-		
-		function searchDate(value){
-			alert(value);
-			var result00="startEvent";
-			
-			var result11 = document.getElementById("searchKeyword");
-			var result22 = document.getElementById("searchItem").value;
-			var result33 = document.getElementById("searchHidden");
-			alert(result22);
-			if(result22=="startEvent"){
-				result11.setAttribute("type", "date");
-				result33.setAttribute("type", "date");
-				$("#insertmark").append("~");
-			}
-			if(result22!="startEvent"){
-				result11.setAttribute("type", "text");
-				result33.setAttribute("type", "hidden");
-				$("#insertmark").empty();
-				//$("#insertmark").append();
-			}
-		}
-		
-	function selectOne() {
-		var searchItem = $("#searchItem").val();
-		var searchKeyword = $("#searchKeyword").val();
-		var endEvent = $("#searchHidden").val();
-		alert(searchItem);
-		alert(searchKeyword);
+		$(function() {
+			printCountryList();
+		});
+
+	function printCountryList() {
 		$.ajax({
 			type:'GET',
-			url : 'selectOne',					/* , 'endEvent':endEvent */ 
-			data: {'searchItem':searchItem,'searchKeyword':searchKeyword},
-			dataType: 'json',
-			success : output,
-			error: function() {
-				alert("리스트 불러오기 실패");
-			}
-		})
-		
-	}	
-		
-
-	function printAll() {
-		
-		$.ajax({
-			type:'GET',
-			url : 'printAll',
+			url : 'printCountryList',
+			data: {"country" : "${country}"},
 			dataType: 'json',
 			success : output,
 			error: function() {
@@ -97,6 +55,7 @@ $(function() {
 		})
 		$("#list").html(context);
 	}
+
 
 </script>
 </head>
@@ -193,7 +152,7 @@ $(function() {
 					</div>
                     
                     <!--Search Box Outer-->
-                   <!--  <div class="search-box-outer">
+                    <div class="search-box-outer">
                         <div class="dropdown">
                             <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
@@ -209,7 +168,7 @@ $(function() {
                                 </li>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>
                     
                 </div>
                
@@ -270,7 +229,7 @@ $(function() {
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(images/background/page-title-1.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>
@@ -287,40 +246,12 @@ $(function() {
 
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
+	<div style="text-align: center;">
+	<h1 style="font-size: 80px;">${country}</h1>
+	</div>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
-			<table>                
-  				<tr>
-				<td colspan="10">
-					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-				</td>
-			</tr>
-           </table>
-				<form action="searchList" method="get">
-					<table><tr><td>
-					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
-					<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
-					ユーザー名
-					</option>
-					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
-					タイトル
-					</option>
-					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
-					国家
-					</option>
-					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
-					期間
-					</option>
-					</select>
-					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
-					<td id="insertmark"></td>
-					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" onclick="selectOne()">	
-					</td></tr>
-					</table>
-				</form>           
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>

@@ -5,8 +5,8 @@
 
 <mapper namespace="world.festival.dao.MapMapper">
 
-<!-- 맵 리스트 출력 -->	
-<select id="selectMap" resultType="MapVO">
+
+<select id="selectMap1" resultType="MapVO">
 	SELECT 
 		country, COUNT(*) as festivalCount
 	FROM 
@@ -15,5 +15,13 @@
 		country
 </select>
 
+<select id="countryList" parameterType="String" resultType="ListVO">
+	SELECT 
+		*
+	FROM
+		mainboard
+	WHERE
+		country = #{country}
+</select>
 
 </mapper>

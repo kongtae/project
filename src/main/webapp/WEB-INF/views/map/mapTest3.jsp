@@ -371,7 +371,7 @@
 	<!-- <script src="js/jquery-3.4.1.js"></script> -->
 	<script>
 window.onload =function(){
-	alert("맵화면");
+	//alert("맵화면");
 	selectMap();
 }
 /* 
@@ -397,19 +397,21 @@ var visitorsData = {
 function selectMap(){
 	
 	 $.ajax({
-		url : "selectMap",
+		url : "selectMap1",
 		type:"post",
 		dataType:"json",
 		success : function(data) {
 			alert("성공");
 			mapList = data;
-			alert(mapList);
+			
 			/* $(data).each(function(index,item) {
 				alert(item.country + " : " + item.festivalCount);
 					var country = item.country;
 					var festivalCount = item.festivalCount;
 					mapList.item.country = item.festivalCount;
-			}); */
+					객체명.속성명 = 값;
+					ca : 1
+			});   */
 		},
 		error : function(data) {
 			alert("실패");
@@ -421,7 +423,7 @@ var a = '러시아 축제 1000개';
 //jvectormap data
 
 	// World map by jvectormap
-	$('#world-map').vectorMap({
+	var worldmap = $('#world-map').vectorMap({
 	  map              : 'world_mill_en',
 	  backgroundColor  : 'transparent',
 	  enableZoom: true,
@@ -454,26 +456,25 @@ var a = '러시아 축제 1000개';
 	    ]
 	  },
 	  onRegionLabelShow: function (e, el, code) {
-			for (var i = 0; i < el.length; i++) {
+			/* for (var i = 0; i < el.length; i++) {
 				el.html(mapList[code] + " : " + el.count[i]);
-			}	
+			}	 */
 		  
 		   //el.html(mapList[code] + " : " + mapList[count]
 		        //el.html() + " : " + mapList[code]
 		    //);
 		  
-	    /* if(code == 'RU'){
-			el.text(a);
-	    }else if (typeof mapList[code] != 'undefined'){
-	        //el.html(el.html() + ': ' + mapList[code] + ' new Festival');
-	    } */
+	    /*  if(code == 'RU'){
+			el.text(a); */
+	    //}else 
+	    if (typeof mapList[code] != 'undefined'){
+	        el.html(el.html() + ' : ' + mapList[code] + '個');
+	    } 
 	  },
-		onRegionClick: function(event, code, regions){
-			//$('#name').html(regions+" : (" + code + ")");
-			location.href="registermember";
+		onRegionClick: function(event, code, el){
+			location.href="countryList?country="+code;
 		}
 	});
-
 </script>
 </body>
 </html>
