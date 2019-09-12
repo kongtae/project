@@ -20,7 +20,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "festival", method = RequestMethod.GET)
+	@RequestMapping(value = "/festival", method = RequestMethod.GET)
 	public String festival(Locale locale, Model model) {
 		return "home";
 	}

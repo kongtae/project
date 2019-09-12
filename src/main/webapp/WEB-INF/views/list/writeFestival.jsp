@@ -6,6 +6,28 @@
 <head>
 
     <meta charset="UTF-8">
+    
+    <script src="resources/js/jquery.js"></script> 
+<script src="resources/js/popper.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/jquery.fancybox.js"></script>
+<script src="resources/js/owl.js"></script>
+<script src="resources/js/wow.js"></script>
+<script src="resources/js/jquery.countTo.js"></script>
+<script src="resources/js/jquery.countdown.min.js"></script>
+<script src="resources/js/appear.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/isotope.js"></script>
+<script src="resources/js/bxslider.js"></script>
+<script src="resources/js/validate.js"></script>
+
+<!-- Custom script -->
+<script src="resources/js/custom.js"></script>
+
+<!--Google Map-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
+<script src="resources/js/map-script.js"></script>
+<!--End Google Map APi-->
 
     <title>Wiscon || Responsive HTML 5 Template</title>
     <!-- responsive meta -->
@@ -15,42 +37,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- master stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/responsive.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
 <style>
 	.longbar{
 			width: 300px;	
 	}
 
 </style>
-<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
-	function writeFestival() {
+
+
+function writeFestival(event) {
+  		
+		//event.preventDefault();
+	
 /* 		var form = $("#writeFestivalID")[0];
+ 
 		var formData = new FormData(form);
-		alert(formData); */
+		alert(formData);  */
 		
-		var formdata2 = $("#writeFestivalID").serialize();
-		alert(formdata2);
+		var formData = new FormData();
+		formData.append("title",$("#title").val());
+		formData.append("country",$("#country").val());
+		formData.append("adress",$("#adress").val());
+		formData.append("festival_intro",$("#festival_intro").val());
+		formData.append("startEvent",$("#startEvent").val());
+		formData.append("endEvent",$("#endEvent").val());
+		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
+		alert(formData);
+		var TITLE2 = $("#title"); 
+		//alert(TITLE2); 
+		
+ 		var formdata2 = $("#writeFestivalID").serialize();
+		//alert(formdata2);
 		
 		$.ajax({
 			url:"writeFestival",
-			data:formdata2,
+			//enctype: 'multipart/form-data',
+			data:formData,
 			type:"post",
 			contentType:false,
 			processData:false,
-			success: function() {
+			//cache: false,
+			success: function(data) {
 				alert("投稿完了");
 			},
-			error: function() {
+			error: function(request,status,error) {
 				alert("投稿ERROR");
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
-	}
+	} 
+	
+/* 		if(confirm("등록 하시겠습니까?")){
+			var form = document.getElementById("writeFestivalID");
+			form.submit();
+		} */
+		
+
+	
 </script>
 </head>
 <body>
@@ -80,11 +131,11 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${seccionScope.userid==null}">
+						<c:if test="${seccionScope.loginid==null}">
 							<li><a href="registermember">会員登録</a></li>
 							<li><a href="loginForm">ログイン</a></li>
 						</c:if>
-						<c:if test="${seccionScope.userid!=null}">
+						<c:if test="${seccionScope.loginid!=null}">
 						<li><a href="memberPage">マイページ</a></li>
 						</c:if>
 					</ul>
@@ -222,7 +273,7 @@
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-4.jpg);">
+<section class="page-title" style="background: url(resources/images/background/page-title-4.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Shedule Details</h3>
@@ -238,32 +289,33 @@
 
 
 <!--Schedule Details-->
+<form action="writeFestival" id="writeFestivalID" method="post" enctype="multipart/form-data">
 <section class="schedule-details">
-	<form action="writeFestival" id="writeFestivalID" method="POST" enctype="multipart/form-data">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
                     <div class="text-title">
                         <h6>祭りの写真</h6>
-                    </div>
-                    <div class="shedule-image-box text-center">
+                    </div> 
+<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
                         <figure>
-                            <img src="images/resources/schedule-9.jpg" alt="">
+                            <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
+                    </div> -->
+                    <div id="preview">
                     </div>
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
                   <i class="fa fa-paperclip"></i> ファイル添付
-                  <!-- <input type="file" name="uploadFileName"> 나중에 다시 볼것-->
-                  <input type="file">
+                  <input type="file" id="uploadFileName" name="uploadFileName" > 
                 </div>
               </div> 
                 <div class="box-footer">
               <div class="pull-right">
               <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
                 <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
-                <button type="reset" class="btn btn-default"><i class="fa fa-ｓtimes"></i>取消</button>
+                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
               </div>
             </div>     
                 </div>
@@ -281,14 +333,15 @@
 					              <div class="form-group">
 					              	<h1>祭りの投稿欄</h1>
 					              	<br>
-					                <input type="text" name="TITLE" class="form-control" placeholder="祭りの名前を記入してください。" >
+					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" >
 					              </div>
 					              <div class="form-group">
-					                    <textarea name="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
 									<table>	
-										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="">から</td></tr>
-										<tr><td>祭りの終了日：<input type="date" name="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" type="text" name="country" placeholder="国の名前を入力してください。"><br> 地域:<input class="longbar" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
+										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
+										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
+					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
+					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
@@ -330,7 +383,7 @@
                             data-type="roadmap"
                             data-hue="#ffc400"
                             data-title="184 Collins Street West Victoria,"
-                            data-icon-path="images/icons/map-marker.png"
+                            data-icon-path="resources/images/icons/map-marker.png"
                             data-content="184 Collins Street West Victoria<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
                         </div>
                     </div>
@@ -338,7 +391,6 @@
             </div>
         </div>                
     </div>
-   </form>
 </section>
 <!--End Schedule Details-->
 
@@ -384,14 +436,15 @@
         </div>            
     </div>
 </section>
+</form>
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer" style="background: url(resources/images/background/footer.jpg);">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="index.html"><img src="images/logo-2.png" alt=""></a>
+                    <a href="index.html"><img src="resources/images/logo-2.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -433,29 +486,51 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script src="js/jquery.js"></script> 
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/jquery.countTo.js"></script>
-<script src="js/jquery.countdown.min.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/bxslider.js"></script>
-<script src="js/validate.js"></script>
 
-<!-- Custom script -->
-<script src="js/custom.js"></script>
-
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
 
 
 </div>
 </body>
+<script>
+    var upload = document.querySelector('#uploadFileName');
+    var preview = document.querySelector('#preview');
+ 
+    upload.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        /* FileReader 객체 생성 */
+        var reader = new FileReader();
+ 
+        /* reader 시작시 함수 구현 */
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                /* base64 인코딩 된 스트링 데이터 */
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            /* 
+                get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 
+                onload 에 설정했던 return 으로 넘어간다.
+                이와 함게 base64 인코딩 된 스트링 데이터가 result 속성에 담겨진다.
+            */
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        preview.appendChild(image);
+        
+    });
+    
+	 $("#reset").click(function () { 
+ 	 	 $('#preview').empty();
+	 });
+</script>
 </html>

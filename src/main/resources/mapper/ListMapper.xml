@@ -8,17 +8,55 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		MAINBOARD (mainBoardNum,country,adress,festival_intro,startEvent,endEvent)
+		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,uploadFileName,saveFileName)
 	VALUES (
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
+		#{title},
 		#{country},
 		#{adress},
 		#{festival_intro},
+		sysdate,
 		#{startEvent},
 		#{endEvent}
+		<choose>
+			<when test="uploadFileName != null and saveFileName != null">
+			,#{uploadFileName},#{saveFileName}
+			</when>
+			<otherwise>
+			,null,null
+			</otherwise>
+		</choose>
 	)
 </insert>
 
+<select id="printAll" parameterType="ListVO" resultType="ListVO">
+	Select * from MAINBOARD
 
+</select>
+
+<select id="listDetail" parameterType="ListVO" resultType="ListVO">
+	Select * from MAINBOARD where mainBoardNum = #{mainBoardNum}
+</select>
+
+<select id="selectOne" parameterType="SearchVO" resultType="SearchVO">
+		select * from MAINBOARD 
+		WHERE 
+		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
+		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD')
+		order by mainBoardNum DESC
+		
+	</select>
+
+<select id="selectOne2" parameterType="map" resultType="SearchVO">
+		select * from MAINBOARD 
+		WHERE 
+		${searchItem} LIKE '%'||#{searchKeyword}||'%'
+		order by mainBoardNum DESC 
+
+		<!-- SELECT * FROM board WHERE <choose> <when test="searchItem == title">title</when> 
+			<when test="searchItem == userid">userid</when> <when test="searchItem == 
+			content">content</when> </choose> LIKE '%'||#{searchKeyword}||'%' order by 
+			boardnum DESC -->
+	</select>
 </mapper>

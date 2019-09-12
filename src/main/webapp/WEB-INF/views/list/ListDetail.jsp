@@ -24,7 +24,6 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     
 </head>
-
 <body>
     
 <div class="boxed_wrapper">
@@ -52,12 +51,13 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${seccionScope.userid==null}">
-							<li><a href="registermember">会員登録</a></li>
-							<li><a href="loginForm">ログイン</a></li>
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="registermember">Sign up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
-						<c:if test="${seccionScope.userid!=null}">
-						<li><a href="memberPage">マイページ</a></li>
+						<c:if test="${sessionScope.loginid != null}">
+							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -71,7 +71,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -117,7 +117,7 @@
 					</div>
                     
                     <!--Search Box Outer-->
-                    <div class="search-box-outer">
+                <!--     <div class="search-box-outer">
                         <div class="dropdown">
                             <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
@@ -133,7 +133,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     
                 </div>
                
@@ -216,40 +216,63 @@
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
                     <div class="text-title">
-                        <h6>Speaker</h6>
-                    </div>
-                    <div class="shedule-image-box text-center">
+                        <h6>祭りの写真</h6>
+                    </div> 
+<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
                         <figure>
-                            <img src="images/resources/schedule-9.jpg" alt="">
+                            <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
-                        <h5>Eric Moss</h5>
-                        <a href="#"><p>Info@ericmossion.com</p></a>
-                        <ul class="social-links">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
+                    </div> -->
+                    <div id="preview">
                     </div>
-                    <div class="shedule-search-box">
-                        <form method="post" action="index.html">
-                            <input type="search" name="search" placeholder="Search Events..." required="">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>                       
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-                        <figure>
+           <!--              <figure>
                             <img src="images/resources/schedule-10.jpg" alt="">
-                        </figure>
-                        <h5>Business Conference - World Wealth Creation 2018.</h5>
+                        </figure> -->
+                         <div class="event-details">
+                         	<div>
+                         <h1><b>祭りの詳細情報<b></b></h1>
+                         	</div>
+                         	<c:if test="${sessionScope.loginid != null}">
+	                         	<div align="right">
+	                         	<input type="button" value="修正"><input type="button" value="削除">
+							</div>
+							</c:if>                          
+                          <div class="inner-box  table-responsive">
+                        <table class="table table-hover">
+                        	<tr>
+                        	<td><b>分類</b></td><td><b>詳細情報</b></td>
+                        	</tr>
+                         	<tr>
+                        		<td>ユーザー名</td><td>${vo.userid}</td>
+                        	</tr>
+                        	<tr>
+                        		<td>タイトル</td><td>${vo.title}</td>
+                        	</tr>
+                        	<tr>
+                        		<td>内容</td><td>${vo.festival_intro}</td>
+                        	</tr>
+							<tr>
+                        		<td>期間</td><td>${vo.startEvent}~${vo.endEvent}</td>
+                        	</tr>
+                        	<tr>
+                        		<td>国家</td><td>${vo.country}</td>
+                        	</tr>
+							<tr>
+                        		<td>地域および詳細住所</td><td>${vo.adress}</td>
+                        	</tr>
+                        </table>
+                        </div>
+                        </div>
+       <!--                  <h5>Business Conference - World Wealth Creation 2018.</h5>
                         <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
                         <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                    </div>
+        -->            
+        			 </div>
                     <div class="event-details">
                         <h5>Event Details</h5>
                         <div class="inner-box  table-responsive">
