@@ -268,7 +268,7 @@
 						<table>                
 			   				<tr>
 								<td class="right" colspan="5">
-									<a href="insertFestival"><img src="/resources/listImages/write.png"></a>
+									<a href="insertFestival"><img src="resources/listImages/write.png"></a>
 								</td>
 							</tr>
 			            </table>        
