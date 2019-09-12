@@ -23,6 +23,22 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     
+<style>
+	#div_icontext{
+		display: flex;
+		justify-content: flex-end;
+		width: 83%;
+	}
+	#icontext{
+		padding: 1.5%;
+		padding-rigth: 2px;
+		padding-left: 2px;
+		font-family: 'Robtoto', sans-serif;
+		font-size: 30px;
+		color: #fa334f;
+	}
+</style>
+    
 </head>
 
 <body>
@@ -212,16 +228,17 @@
 
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
+	<div id="div_icontext">
+		<h4 id="icontext"><b>投稿する</b></h4>
+		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+	</div>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
-			<table>                
-  				<tr>
-				<td >
-					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-				</td>
-			</tr>
-           </table>  
+				<!-- <div id="div_icontext">
+					<h4 id="icontext"><b>投稿する</b></h4>
+					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+				 </div> -->
 			            <div class="inner-box  table-responsive">      
                         <table class="table table-hover">
                             <thead>
