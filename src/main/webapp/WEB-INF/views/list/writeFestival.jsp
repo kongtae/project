@@ -61,39 +61,75 @@ function writeFestival(event) {
  
 		var formData = new FormData(form);
 		alert(formData);  */
+				
+// 		var formData = new FormData();
+// 		formData.append("title",$("#title").val());
+// 		formData.append("country",$("#country").val());
+// 		formData.append("adress",$("#adress").val());
+// 		formData.append("festival_intro",$("#festival_intro").val());
+// 		formData.append("startEvent",$("#startEvent").val());
+// 		formData.append("endEvent",$("#endEvent").val());
+// 		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
+
+//		내코드
+		var title=$("#title").val()
+		var country=$("#country").val()
+		var adress=$("#adress").val()
+		var festival_intro=$("#festival_intro").val()
+		var startEvent=$("#startEvent").val()
+		var endEvent=$("#endEvent").val()
 		
+		var form=$("#uploadFileName")[0];
 		var formData = new FormData();
-		formData.append("title",$("#title").val());
-		formData.append("country",$("#country").val());
-		formData.append("adress",$("#adress").val());
-		formData.append("festival_intro",$("#festival_intro").val());
-		formData.append("startEvent",$("#startEvent").val());
-		formData.append("endEvent",$("#endEvent").val());
-		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
+		alert(title)
 		alert(formData);
-		var TITLE2 = $("#title"); 
+// 		var TITLE2 = $("#title"); 
 		//alert(TITLE2); 
-		
- 		var formdata2 = $("#writeFestivalID").serialize();
+//  		var formdata2 = $("#writeFestivalID").serialize();
 		//alert(formdata2);
-		
 		$.ajax({
 			url:"writeFestival",
-			//enctype: 'multipart/form-data',
-			data:formData,
 			type:"post",
-			contentType:false,
-			processData:false,
-			//cache: false,
-			success: function(data) {
-				alert("投稿完了");
+			data:{
+				title:title,
+				country:country,
+				adress:adress,
+				festival_intro:festival_intro,
+				startEvent:startEvent,
+				endEvent:endEvent
+				formData
 			},
-			error: function(request,status,error) {
-				alert("投稿ERROR");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			contentType: false,
+			processData: false,
+			success:function()
+			{
+				alert("성공")
+			},
+			error:function(){
+				alert("에러 발생")
 			}
-		});
-	} 
+			});
+		}
+		
+		
+		
+// 		$.ajax({
+// 			url:"writeFestival",
+// 			//enctype: 'multipart/form-data',
+// 			data:{formData,
+// 			type:"post",
+// 			contentType:false,
+// 			processData:false,
+// 			//cache: false,
+// 			success: function(data) {
+// 				alert("投稿完了");
+// 			},
+// 			error: function(request,status,error) {
+// 				alert("投稿ERROR");
+// 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+// 			}
+// 		});
+// 	} 
 	
 /* 		if(confirm("등록 하시겠습니까?")){
 			var form = document.getElementById("writeFestivalID");
