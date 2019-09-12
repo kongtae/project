@@ -11,5 +11,7 @@ public interface ListMapper {
 	public ArrayList<ListVO> printAll();
 
 	public ListVO listDetail(ListVO vo);
+
+	public ArrayList<ListVO> countryList(String country);
 	
 }

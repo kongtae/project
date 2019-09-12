@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import world.festival.VO.ListVO;
 import world.festival.VO.MapVO;
-import world.festival.VO.UserVO;
 @Repository
 public class MapDAO {
 
@@ -19,11 +18,15 @@ public class MapDAO {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.writeFestival(vo);
 	}
-
-	public ArrayList<MapVO> selectMap() {
+	
+	public ArrayList<MapVO> selectMap1() {
 		MapMapper mapper = sqlSession.getMapper(MapMapper.class);
-		ArrayList<MapVO> list =mapper.selectMap();
-		return list;
+		return mapper.selectMap1();
+	}
+	
+	public ArrayList<ListVO> countryList(String country) {
+		MapMapper mapper = sqlSession.getMapper(MapMapper.class);
+		return mapper.countryList(country);
 	}
 
 }
