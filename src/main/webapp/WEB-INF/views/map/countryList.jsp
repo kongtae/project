@@ -229,7 +229,7 @@
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(images/background/page-title-1.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>
@@ -246,17 +246,12 @@
 
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
+	<div style="text-align: center;">
+	<h1 style="font-size: 80px;">${country}</h1>
+	</div>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
-			<table>                
-  				<tr>
-				<td colspan="10">
-					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-				</td>
-			</tr>
-           </table>
-             
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
