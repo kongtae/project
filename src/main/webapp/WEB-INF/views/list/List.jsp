@@ -44,15 +44,11 @@
 	function output(result) {
 		var context = '';
 		$.each(result,function(index,item){
-		context += "<tr><th>작성자</th>";
-		context += "<th>작성일</th>";
-		context += "<th>관광지명</th>";
-		context += "<th>리뷰 내용</th>";
-		context += "<th>추천도</th></tr>";
-		context += "<tr><td>"+item.mainBoardNum+"</td>";
-		context += "<td>"+item.adress+"</td>";
-		context += "<td>"+item.country+"</td>";
-		context += "<td>"+item.startEvent+"</td></tr>";
+		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+		context += "<td class='speakers'>"+item.country+"</td>";
+		context += "<td class='time'>"+item.startEvent+"~"+item.endEvent+"</td>";
+		context += "<td class='venue'>"+item.userid+"</td></tr>";
 		// JavaScript 또는 jQuery를 이용하여 전달받은 모든 데이터를 태그 형식의 문자열로 구성한다.
 		// 코드를 작성하세요.
 		})
@@ -254,172 +250,26 @@
       		<div class="schedule-content clearfix">
 			<table>                
   				<tr>
-				<td >
+				<td colspan="10">
 					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
 				</td>
 			</tr>
            </table>
-           	<table id="list"></table>
-           
              
-			            <div class="inner-box  table-responsive">      
+			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="srial">#</th>
-                                    <th class="session">Session</th>
-                                    <th class="speakers">Speakers</th>
-                                    <th class="time">Time</th>
-                                    <th class="venue">Venue</th>
+                                    <th class="session">タイトル</th>
+                                    <th class="time">国家</th>
+                                    <th class="speakers">期間</th>
+                                    <th class="venue">ユーザー名</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="srial">01</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Introduction to UI/Ux
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-1.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 AM
-                                    </td>
-                                    <td class="venue">Hall 1</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">02</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-2.jpg" alt="">
-                                        </figure>
-                                        <h6>Jhone Doe</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        10:00 AM
-                                    </td>
-                                    <td class="venue">Hall 2</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">03</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        WP Plugins Installation
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-3.jpg" alt="">
-                                        </figure>
-                                        <h6>Margarita Rose</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        11:00 AM
-                                    </td>
-                                    <td class="venue">Hall 3</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">04</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basic GO Language
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-4.jpg" alt="">
-                                        </figure>
-                                        <h6>Henry Keen</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        12:00 PM
-                                    </td>
-                                    <td class="venue">Hall 4</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">05</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Business Analysis
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-5.jpg" alt="">
-                                        </figure>
-                                        <h6>Donald Pump</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        01:00 PM
-                                    </td>
-                                    <td class="venue">Hall 5</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">06</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Wp Requirements
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-6.jpg" alt="">
-                                        </figure>
-                                        <h6>Lee Mun</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        04:00 PM
-                                    </td>
-                                    <td class="venue">Hall 6</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">07</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Basics WordPress
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-7.jpg" alt="">
-                                        </figure>
-                                        <h6>Baily Lio</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        07:00 PM
-                                    </td>
-                                    <td class="venue">Hall 7</td>
-                                </tr>
-                                <tr>
-                                    <td class="srial">08</td>
-                                    <td class="session">
-                                        <i class="fas fa-caret-right"></i>
-                                        Plugin Development
-                                    </td>
-                                    <td class="speakers">
-                                        <figure>
-                                            <img src="images/resources/schedule-8.jpg" alt="">
-                                        </figure>
-                                        <h6>Henri Mong</h6>
-                                    </td>
-                                    <td class="time">
-                                        <i class="far fa-clock"></i>
-                                        09:00 PM
-                                    </td>
-                                    <td class="venue">Hall 8</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <tbody id="list" class="table table-hover"></tbody> 
+                          </table>
+                            
                     </div>
                 </div>
             
