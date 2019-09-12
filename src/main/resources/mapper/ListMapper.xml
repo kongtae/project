@@ -35,4 +35,8 @@
 
 </select>
 
+<select id="listDetail" parameterType="ListVO" resultType="ListVO">
+	Select * from MAINBOARD where mainBoardNum = #{mainBoardNum}
+</select>
+
 </mapper>

@@ -25,4 +25,9 @@ public class ListDAO {
 		return mapper.printAll();
 	}
 
+	public ListVO listDetail(ListVO vo) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.listDetail(vo);
+	}
+
 }
