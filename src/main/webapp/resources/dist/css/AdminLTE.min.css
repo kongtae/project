@@ -5619,15 +5619,15 @@ table.text-center, table.text-center td, table.text-center th {
 }
 
 .bg-light-blue-gradient {
-	background: #fa334f !important;
-	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fa334f),
+	background: #3c8dbc !important;
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3c8dbc),
 		color-stop(1, #67a8ce)) !important;
-	background: -ms-linear-gradient(bottom, #fa334f, #67a8ce) !important;
-	background: -moz-linear-gradient(center bottom, #fa334f 0%, #67a8ce 100%)
+	background: -ms-linear-gradient(bottom, #3c8dbc, #67a8ce) !important;
+	background: -moz-linear-gradient(center bottom, #3c8dbc 0%, #67a8ce 100%)
 		!important;
-	background: -o-linear-gradient(#67a8ce, #fa334f) !important;
+	background: -o-linear-gradient(#67a8ce, #3c8dbc) !important;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#67a8ce',
-		endColorstr='#fa334f', GradientType=0) !important;
+		endColorstr='#3c8dbc', GradientType=0) !important;
 	color: #fff
 }
 
