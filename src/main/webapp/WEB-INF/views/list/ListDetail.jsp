@@ -51,12 +51,13 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${seccionScope.userid==null}">
-							<li><a href="registermember">会員登録</a></li>
-							<li><a href="loginForm">ログイン</a></li>
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="registermember">Sign up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
-						<c:if test="${seccionScope.userid!=null}">
-						<li><a href="memberPage">マイページ</a></li>
+						<c:if test="${sessionScope.loginid != null}">
+							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -217,11 +218,11 @@
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-                    <div class="shedule-image-box text-center" id="removeImg"> <!-- 미리보기 공간 -->
+<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
-                    </div>
+                    </div> -->
                     <div id="preview">
                     </div>
                 </div>
@@ -233,14 +234,21 @@
                             <img src="images/resources/schedule-10.jpg" alt="">
                         </figure> -->
                          <div class="event-details">
+                         	<div>
                          <h1><b>祭りの詳細情報<b></b></h1>
+                         	</div>
+                         	<c:if test="${sessionScope.loginid != null}">
+	                         	<div align="right">
+	                         	<input type="button" value="修正"><input type="button" value="削除">
+							</div>
+							</c:if>                          
                           <div class="inner-box  table-responsive">
                         <table class="table table-hover">
                         	<tr>
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
                         	</tr>
                          	<tr>
-                        		<td>ユーザー名</td><td>${sessionScope.loginid}</td>
+                        		<td>ユーザー名</td><td>${vo.userid}</td>
                         	</tr>
                         	<tr>
                         		<td>タイトル</td><td>${vo.title}</td>

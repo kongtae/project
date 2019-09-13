@@ -22,14 +22,74 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<style>
+	#div_icontext{
+		display: flex;
+		justify-content: flex-end;
+		width: 83%;
+	}
+	#icontext{
+		padding: 1.5%;
+		padding-rigth: 2px;
+		padding-left: 2px;
+		font-family: 'Robtoto', sans-serif;
+		font-size: 30px;
+		color: #fa334f;
+	}
+</style>
+    
+</head>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
+// document.getElementById()
 
-		$(function() {
+$(function() {
 			printAll();
-		});
+		})
+		
+		function searchDate(value){
+			alert(value);
+			var result00="startEvent";
+			
+			var result11 = document.getElementById("searchKeyword");
+			var result22 = document.getElementById("searchItem").value;
+			var result33 = document.getElementById("searchHidden");
+			alert(result22);
+			if(result22=="startEvent"){
+				result11.setAttribute("type", "date");
+				result33.setAttribute("type", "date");
+				$("#insertmark").append("~");
+			}
+			if(result22!="startEvent"){
+				result11.setAttribute("type", "text");
+				result33.setAttribute("type", "hidden");
+				$("#insertmark").empty();
+				//$("#insertmark").append();
+			}
+		}
+		
+	function selectOne() {
+		var searchItem = $("#searchItem").val();
+		var searchKeyword = $("#searchKeyword").val();
+		var endEvent = $("#searchHidden").val();
+		alert(searchItem);
+		alert(searchKeyword);
+		$.ajax({
+			type:'GET',
+			url : 'selectOne',					/* , 'endEvent':endEvent */ 
+			data: {'searchItem':searchItem,'searchKeyword':searchKeyword},
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패");
+			}
+		})
+		
+	}	
+		
 
 	function printAll() {
+		
 		$.ajax({
 			type:'GET',
 			url : 'printAll',
@@ -54,7 +114,6 @@
 		})
 		$("#list").html(context);
 	}
-
 
 </script>
 </head>
@@ -151,7 +210,7 @@
 					</div>
                     
                     <!--Search Box Outer-->
-                    <div class="search-box-outer">
+                   <!--  <div class="search-box-outer">
                         <div class="dropdown">
                             <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
@@ -167,7 +226,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     
                 </div>
                
@@ -245,17 +304,38 @@
 
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
+	<div id="div_icontext">
+		<h4 id="icontext"><b>投稿する</b></h4>
+		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+	</div>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
-			<table>                
-  				<tr>
-				<td colspan="10">
-					<h4><b>投稿する→</b></h4><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-				</td>
-			</tr>
-           </table>
-             
+			            <div class="inner-box  table-responsive">      
+				<form action="searchList" method="get">
+					<table><tr><td>
+					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
+					<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					ユーザー名
+					</option>
+					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
+					タイトル
+					</option>
+					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
+					国家
+					</option>
+					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+					期間
+					</option>
+					</select>
+					</td>
+					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
+					<td id="insertmark"></td>
+					<td><input type="hidden" name="endEvent" id="searchHidden">
+					<input type="button" value="検索" onclick="selectOne()">	
+					</td></tr>
+					</table>
+				</form>           
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
