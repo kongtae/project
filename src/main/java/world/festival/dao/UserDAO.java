@@ -29,4 +29,9 @@ public class UserDAO {
 		return result;
 	}
 
+	public int withdraw(String id) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		return mapper.withdraw(id);
+	}
+
 }

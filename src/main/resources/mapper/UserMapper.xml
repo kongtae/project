@@ -40,4 +40,13 @@
 		AND userpwd = #{userpwd}
 		</if>
 </select>
+
+<!-- 회원 탈퇴 -->
+<delete id="withdraw" parameterType="String">
+	DELETE FROM
+		member
+	WHERE
+		userid = #{id}
+</delete>
+
 </mapper>
