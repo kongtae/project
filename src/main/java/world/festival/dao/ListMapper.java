@@ -17,8 +17,11 @@ public interface ListMapper {
 
 	public ArrayList<ListVO> selectOne2(HashMap<String, String> map);
 	
+<<<<<<< HEAD
 	public ArrayList<ListVO> countryList(String country);
 
 	public int deleteFestival(ListVO vo);
 	
+=======
+>>>>>>> 36af4522ac10a46c63529397051bcea17154aca5
 }
