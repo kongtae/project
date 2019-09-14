@@ -49,5 +49,10 @@ public class ListDAO {
 		return mapper.selectOne2(map);
 	}
 
+	public int deleteFestival(ListVO vo) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.deleteFestival(vo);
+	}
+
 
 }

@@ -95,4 +95,23 @@ public class ListController {
 		return selectOne2;
 		}
 	
+	@RequestMapping(value = "/updateFestival", method = RequestMethod.GET)
+	public String updateFestival(String mainBoardNum,ListVO vo,Model model) {
+		
+		model.addAttribute("mainBoardNum", mainBoardNum);
+		model.addAttribute("vo", vo);
+		return "list/UpdateFestival";
+	}
+	
+	@RequestMapping(value = "/deleteFestival", method = RequestMethod.GET)
+	public String deleteFestival(ListVO vo,RedirectAttributes rttr) {
+		System.out.println("삭제할 vo "+vo);
+		boolean result = service.deleteFestival(vo);
+		System.out.println("삭제된VO "+result);
+		rttr.addFlashAttribute("deleteResult", result);
+		return "redirect:/list/List";
+	}
+	
+	
+	
 }

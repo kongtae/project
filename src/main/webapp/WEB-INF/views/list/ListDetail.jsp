@@ -22,6 +22,19 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+ 
+ <script>
+ 	function UpdateFestival() {
+ 		location.href="updateFestival?mainBoardNum=${vo.mainBoardNum}";
+	}
+  	function DeleteFestival() {
+  			if(confirm("삭제하시겠습니까?")){
+  			location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
+  			}
+  	}
+	
+  
+ </script>
     
 </head>
 <body>
@@ -239,7 +252,8 @@
                          	</div>
                          	<c:if test="${sessionScope.loginid != null}">
 	                         	<div align="right">
-	                         	<input type="button" value="修正"><input type="button" value="削除">
+	                         	<input type="button" value="修正" onclick="UpdateFestival()">
+	                         	<input type="button" value="削除" onclick="DeleteFestival()">
 							</div>
 							</c:if>                          
                           <div class="inner-box  table-responsive">

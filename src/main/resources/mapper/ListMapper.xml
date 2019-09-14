@@ -52,10 +52,13 @@
 		WHERE 
 		${searchItem} LIKE '%'||#{searchKeyword}||'%'
 		order by mainBoardNum DESC 
+</select>
 
-		<!-- SELECT * FROM board WHERE <choose> <when test="searchItem == title">title</when> 
-			<when test="searchItem == userid">userid</when> <when test="searchItem == 
-			content">content</when> </choose> LIKE '%'||#{searchKeyword}||'%' order by 
-			boardnum DESC -->
-	</select>
+<delete id="deleteFestival" parameterType="ListVO">
+		DELETE 
+		MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</delete>
+
 </mapper>
