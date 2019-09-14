@@ -88,7 +88,6 @@ public class ListController {
 		return selectOne1;
 		}
 		ArrayList<ListVO> selectOne2 = dao.selectOne2(searchItem,searchKeyword);
-		/*model.addAttribute("selectOne",selectOne);*/
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);
 		System.out.println("리스트 출력222"+selectOne2);
@@ -96,9 +95,10 @@ public class ListController {
 		}
 	
 	@RequestMapping(value = "/updateFestival", method = RequestMethod.GET)
-	public String updateFestival(String mainBoardNum,ListVO vo,Model model) {
-		
-		model.addAttribute("mainBoardNum", mainBoardNum);
+	public String updateFestival(String mainBoardNum,Model model) {
+		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
+		ListVO vo = dao.readFestival(mainBoardNum);
+		System.out.println("수정할 페이지 찾았나? "+vo);
 		model.addAttribute("vo", vo);
 		return "list/UpdateFestival";
 	}
@@ -109,7 +109,7 @@ public class ListController {
 		boolean result = service.deleteFestival(vo);
 		System.out.println("삭제된VO "+result);
 		rttr.addFlashAttribute("deleteResult", result);
-		return "redirect:/list/List";
+		return "redirect:/listForm"; 
 	}
 	
 	

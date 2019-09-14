@@ -100,7 +100,15 @@ function writeFestival(event) {
 			form.submit();
 		} */
 		
-
+		var dateV = ${vo.startEvent};
+		
+		alert(dateV);	
+	
+		
+		$(document).ready(function() {
+	        $('#startEvent').val(dateV);
+	    });
+	//안된다 모르겠다.
 	
 </script>
 </head>
@@ -135,8 +143,9 @@ function writeFestival(event) {
 							<li><a href="registermember">会員登録</a></li>
 							<li><a href="loginForm">ログイン</a></li>
 						</c:if>
-						<c:if test="${seccionScope.loginid!=null}">
-						<li><a href="memberPage">マイページ</a></li>
+						<c:if test="${sessionScope.loginid != null}">
+							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -333,15 +342,15 @@ function writeFestival(event) {
 					              <div class="form-group">
 					              	<h1>祭りの投稿欄</h1>
 					              	<br>
-					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" >
+					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" value="${vo.title}">
 					              </div>
 					              <div class="form-group">
-					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.festival_intro}</textarea>
 									<table>	
-										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
-					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
+										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" id="startEvent" value="${vo.startEvent}">から</td></tr>
+										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent" value="${vo.endEvent}">まで行います。</td></tr>
+					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br> 
+					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
@@ -532,5 +541,8 @@ function writeFestival(event) {
 	 $("#reset").click(function () { 
  	 	 $('#preview').empty();
 	 });
+	 
+	 
+
 </script>
 </html>

@@ -78,7 +78,6 @@ $(function() {
 			$("#searchKeyword").val("");
 			$("#searchHidden").val("");
 			return false;
-			
 		}
 		}
 		

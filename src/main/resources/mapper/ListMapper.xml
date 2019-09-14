@@ -61,4 +61,10 @@
 		mainBoardNum = #{mainBoardNum}
 </delete>
 
+<select id="readFestival" parameterType="ListVO" resultType="ListVO">
+		select * from MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</select>
+
 </mapper>

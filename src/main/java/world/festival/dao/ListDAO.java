@@ -54,5 +54,10 @@ public class ListDAO {
 		return mapper.deleteFestival(vo);
 	}
 
+	public ListVO readFestival(String mainBoardNum) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.readFestival(mainBoardNum);
+	}
+
 
 }
