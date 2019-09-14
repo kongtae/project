@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import world.festival.VO.ListVO;
-import world.festival.VO.SearchVO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.ListService;
 
@@ -45,7 +44,7 @@ public class ListController {
 	@RequestMapping(value = "/insertFestival", method = RequestMethod.GET)
 	public String insertFestival() {
 		
-		return "list/writeFestival";
+		return "list/WriteFestival";
 	}
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
@@ -57,13 +56,11 @@ public class ListController {
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
 		rttr.addFlashAttribute("insertresult", result);
-		return "list/writeFestival";
+		return "list/WriteFestival";
 	}
 	
 	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<ListVO> printAll(ListVO vo, HttpSession session) {
-		//String userid = (String)session.getAttribute("userid");
-		//vo.setId(userid);
+	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
 		System.out.println("리스트 출력"+list);
 		 return list;
@@ -76,23 +73,21 @@ public class ListController {
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<SearchVO> selectOne(/*SearchVO vo,*/ HttpSession session,Model model,
+	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo, HttpSession session,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
 		System.out.println("keyword "+searchKeyword);
-/*		System.out.println("end "+vo.getEndEvent());
-		ArrayList<SearchVO> selectOne1 =new ArrayList<SearchVO>();
-		vo.setSearchItem(searchItem);
-		vo.setSearchKeyword(searchKeyword);
+		System.out.println("end "+vo.getEndEvent());
+		ArrayList<ListVO> selectOne1 = new ArrayList<ListVO>();
 		System.out.println("vo11 "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = dao.selectOne(vo);	
+		selectOne1 = dao.selectOne(vo,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
-		}*/
-		ArrayList<SearchVO> selectOne2 = dao.selectOne2(searchItem,searchKeyword);
+		}
+		ArrayList<ListVO> selectOne2 = dao.selectOne2(searchItem,searchKeyword);
 		/*model.addAttribute("selectOne",selectOne);*/
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);

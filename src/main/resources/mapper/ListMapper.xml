@@ -39,16 +39,15 @@
 	Select * from MAINBOARD where mainBoardNum = #{mainBoardNum}
 </select>
 
-<select id="selectOne" parameterType="SearchVO" resultType="SearchVO">
-		select * from MAINBOARD 
+<select id="selectOne" parameterType="map" resultType="ListVO">
+ 		select * from MAINBOARD 
 		WHERE 
 		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
 		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD')
-		order by mainBoardNum DESC
-		
+		order by mainBoardNum DESC 
 	</select>
 
-<select id="selectOne2" parameterType="map" resultType="SearchVO">
+<select id="selectOne2" parameterType="map" resultType="ListVO">
 		select * from MAINBOARD 
 		WHERE 
 		${searchItem} LIKE '%'||#{searchKeyword}||'%'
