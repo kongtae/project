@@ -70,11 +70,16 @@ $(function() {
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
 		
+		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
 		if(a>b){
 			alert("検索する期間を間違えて入力しました。");
+			$("#searchKeyword").val("");
+			$("#searchHidden").val("");
 			return false;
+			
+		}
 		}
 		
 		$.ajax({
@@ -125,6 +130,14 @@ $(function() {
 </script>
 </head>
 <body>
+<c:choose>
+	<c:when test="${deleteResult == true}">
+		<script>alert("削除に成功ました。");</script>
+	</c:when>
+	<c:when test="${deleteResult == false}">
+		<script>alert("削除に失敗しました。");</script>
+	</c:when>
+</c:choose>
     
 <div class="boxed_wrapper">
 
