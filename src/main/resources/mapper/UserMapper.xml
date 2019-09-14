@@ -49,4 +49,14 @@
 		userid = #{id}
 </delete>
 
+<!-- 수정 출력 -->
+<select id="select" parameterType="String" resultType="UserVO">
+	SELECT
+		*
+	FROM
+		member
+	WHERE
+		userid = #{userid}
+</select>
+
 </mapper>

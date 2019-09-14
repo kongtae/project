@@ -58,27 +58,34 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <style>
-#userid {
-	width: 65%;
-	display: inline-block;
-}
 
-#ok {
-	left: 55%;
-}
-
-#idcheck {
-	width: 34%;
-	display: inline-block;
-}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
 $(function() {
+	select();
+	
 	$("#idcheck").on('click', register);
 	$('#submit').on('click', formcheck);
 });
+
+function select(){
+	
+	$.ajax({
+		url: "select",
+		type: "post",
+		success : function(result){
+			$('#userid').val(result.userid);
+			$('#username').val(result.username);
+			$('#email').val(result.email);
+		},
+		error: function(){
+			alert("실패");
+		}
+	});
+}
+
 
 function register(){
 	var userid = $('#userid').val();
@@ -111,7 +118,7 @@ function register(){
 
 function formcheck(){
 	var username = $('#username').val();
-	var useremail = $('#useremail').val();
+	var useremail = $('#email').val();
 	var userpwd = $('#userpwd').val();
 	var check_userpwd = $('#check_userpwd').val();
 	var icheck = $('#icheck');
@@ -350,57 +357,56 @@ function formcheck(){
 		</div>
 
 		<div class="register-box-body">
-			<p class="login-box-msg">Register a new membership</p>
+			<p class="login-box-msg">Update a Member Information</p>
 
 			<form action="registermember" method="post">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" id="userid" name="userid"
-						placeholder="ユーザID 3~10字"> <span
-						class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
-					<button type="button" id="idcheck"
-						class="btn btn-primary btn-block btn-flat" onclick="idcheck()">重複チェック</button>
+					<input type="text" class="form-control" id="userid" name="userid" readonly="readonly"> 
+					<span class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" name="username"
-						id="username" placeholder="お名前"> <span
+						id="username" > <span
 						class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" name="useremail"
-						id="useremail" placeholder="メールアドレス"> <span
+					<input type="email" class="form-control" name="email"
+						id="email" > <span
 						class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" name="userpwd"
-						id="userpwd" placeholder="パスワード"> <span
+						id="userpwd" placeholder="現在のパスワード"> <span
 						class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" id="check_userpwd"
-						placeholder="パスワード確認"> <span
+					<input type="password" class="form-control" name="new_userpwd"
+						id="userpwd" placeholder="新しいパスワード"> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" class="form-control" id="check_new_userpwd"
+						placeholder="新しいパスワード確認"> <span
 						class="glyphicon glyphicon-log-in form-control-feedback"></span>
+				</div>
+				<div>
+					<input type = "file" name = "upload" id="imgPreview" value = "사진첨부" accept="image/png,image/jpg,image/gif,image/jpeg">
+					<img id = "image" src ="images/guest.png">
 				</div>
 
 				<div class="row">
 					<div class="col-xs-8">
-						<div class="checkbox icheck" id="icheck">
-							<label> <input type="checkbox" id="checkbox"> I
-								agree to the <a href="#">terms</a>
-							</label>
-						</div>
+						
 					</div>
 					<!-- /.col -->
 					<div class="col-xs-4">
 						<button type="submit" id="submit" disabled="disabled"
-							class="btn btn-primary btn-block btn-flat">登録</button>
+							class="btn btn-primary btn-block btn-flat" >登録</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			</form>
 
-
-			<a href="loginForm" class="text-center">I already have a
-				membership</a>
 		</div>
 		<!-- /.form-box -->
 	</div>

@@ -54,7 +54,8 @@ public class UserController {
 			session.setAttribute("loginid", result.getUserid());
 			return "redirect:/";
 		}
-		return "redirect:/loginForm";
+		model.addAttribute("result", false);
+		return "member/loginForm";
 	}
 
 	//로그아웃
@@ -92,4 +93,13 @@ public class UserController {
 		return result;
 	}
 
+	//수정창에 출력
+		@RequestMapping(value = "/select", method = RequestMethod.POST)
+		@ResponseBody
+		public UserVO select(HttpSession session) {
+			String id = (String)session.getAttribute("loginid");
+			UserVO vo = dao.select(id);
+			System.out.println(vo);
+			return vo;
+		}
 }

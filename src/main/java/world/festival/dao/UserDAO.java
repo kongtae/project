@@ -34,4 +34,9 @@ public class UserDAO {
 		return mapper.withdraw(id);
 	}
 
+	public UserVO select(String id) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		return mapper.select(id);
+	}
+
 }
