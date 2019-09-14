@@ -140,7 +140,7 @@ function formcheck(){
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" id="userid" name="userid" placeholder="ユーザID 3~10字"> <span
 						class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
-					<button type="button" id="idcheck" class="btn btn-primary btn-block btn-flat" onclick="idcheck()">重複チェック</button>
+					<button type="button" id="idcheck" class="btn btn-primary btn-block btn-flat">重複チェック</button>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" name="username" id="username" placeholder="お名前">

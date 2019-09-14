@@ -12,6 +12,7 @@
 		<typeAlias type="world.festival.VO.UserVO" alias="UserVO" />
 		<typeAlias type="world.festival.VO.ListVO" alias="ListVO" />
 		<typeAlias type="world.festival.VO.MapVO" alias="MapVO" />
+		<typeAlias type="world.festival.VO.SearchVO" alias="SearchVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml" />
