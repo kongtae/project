@@ -54,33 +54,10 @@
 
 
 function writeFestival() {
-		//event.preventDefault();
-	
-/* 		var form = $("#writeFestivalID")[0];
- 
-		var formData = new FormData(form);
-		alert(formData);  */
-		
-		/* var formData = new FormData();
-		formData.append("title",$("#title").val());
-		formData.append("country",$("#country").val());
-		formData.append("adress",$("#adress").val());
-		formData.append("festival_intro",$("#festival_intro").val());
-		formData.append("startEvent",$("#startEvent").val());
-		formData.append("endEvent",$("#endEvent").val());
-		formData.append("uploadFileName",$("#uploadFileName")[0]); */
-		//formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
 
-		/* 		var fdata = {'title': $("#title").val(),
-				'country': $("#country").val(),
-				'adress': $("#adress").val(),
-				'festival_intro': $("#festival_intro").val(),
-				'startEvent': $("#startEvent").val(),
-				'endEvent':  $("#endEvent").val(),
-					} */
 		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
-		alert(formData);
+	//	alert(formData);
 		
  	//	var formdata2 = $("#writeFestivalID").serialize();
 		//alert(formdata2);
@@ -102,13 +79,6 @@ function writeFestival() {
 			}
 		});
 	} 
-	
-/* 		if(confirm("등록 하시겠습니까?")){
-			var form = document.getElementById("writeFestivalID");
-			form.submit();
-		} */
-		
-
 	
 </script>
 </head>

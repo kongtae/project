@@ -61,7 +61,7 @@ public class ListController {
 	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = service.printAll();
-		System.out.println("리스트 출력"+list);
+		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
 	@RequestMapping(value = "/listDetailGO", method = RequestMethod.GET)
