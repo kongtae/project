@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import world.festival.VO.ListVO;
 import world.festival.dao.ListDAO;
-import world.festival.dao.ListService;
+import world.festival.service.ListService;
 
 
 @Controller
@@ -30,17 +30,17 @@ public class ListController {
 	@Autowired
 	private ListService service;
 	
-	@RequestMapping(value = "/listForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
 		
 		return "list/List";
 	}
-	@RequestMapping(value = "/listDetailForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/listDetailForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetailForm() {
 		
 		return "list/ListDetail";
 	}
-	@RequestMapping(value = "/insertFestival", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	public String insertFestival() {
 		
 		return "list/WriteFestival";
@@ -55,16 +55,16 @@ public class ListController {
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
 		rttr.addFlashAttribute("insertresult", result);
-		return "redirect:/listForm"; 
+		return "list/List"; 
 	}
 	
-	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = service.printAll();
 		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
-	@RequestMapping(value = "/listDetailGO", method = RequestMethod.GET)
+	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
 		System.out.println(vo1);
