@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import world.festival.VO.ListVO;
-import world.festival.VO.SearchVO;
 
 public interface ListMapper {
 
@@ -14,8 +13,12 @@ public interface ListMapper {
 
 	public ListVO listDetail(ListVO vo);
 
-	public ArrayList<SearchVO> selectOne(SearchVO vo);
-	public ArrayList<SearchVO> selectOne2(HashMap<String, String> map);
-	public ArrayList<ListVO> countryList(String country);
+	public ArrayList<ListVO> selectOne(HashMap<String, String> map);
+
+	public ArrayList<ListVO> selectOne2(HashMap<String, String> map);
+
+	public int deleteFestival(ListVO vo);
+
+	public ListVO readFestival(String mainBoardNum);
 	
 }

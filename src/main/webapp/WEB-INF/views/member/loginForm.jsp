@@ -58,8 +58,7 @@ $(function(){
 		else if(userpwd.length == 0){
 			alert("パスワードを入力してください。");
 			return false;
-		}
-		
+		}	
 		return true;
 	});
 });
@@ -73,7 +72,8 @@ $(function(){
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
-
+    
+    <input type="hidden" value="${result}" id="result">
     <form action="loginForm" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="ID" name="userid" id="userid">
@@ -90,6 +90,7 @@ $(function(){
               <input type="checkbox"> Remember Me
             </label> -->
           </div>
+        	<c:if test="${result == false}"><p style="color: #fa334f;">IDとパスワードが異なります。<p></c:if>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">

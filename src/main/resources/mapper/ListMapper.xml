@@ -39,24 +39,32 @@
 	Select * from MAINBOARD where mainBoardNum = #{mainBoardNum}
 </select>
 
-<select id="selectOne" parameterType="SearchVO" resultType="SearchVO">
-		select * from MAINBOARD 
+<select id="selectOne" parameterType="map" resultType="ListVO">
+ 		select * from MAINBOARD 
 		WHERE 
 		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
 		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD')
-		order by mainBoardNum DESC
-		
+		order by mainBoardNum DESC 
 	</select>
 
-<select id="selectOne2" parameterType="map" resultType="SearchVO">
+<select id="selectOne2" parameterType="map" resultType="ListVO">
 		select * from MAINBOARD 
 		WHERE 
 		${searchItem} LIKE '%'||#{searchKeyword}||'%'
 		order by mainBoardNum DESC 
+</select>
 
-		<!-- SELECT * FROM board WHERE <choose> <when test="searchItem == title">title</when> 
-			<when test="searchItem == userid">userid</when> <when test="searchItem == 
-			content">content</when> </choose> LIKE '%'||#{searchKeyword}||'%' order by 
-			boardnum DESC -->
-	</select>
+<delete id="deleteFestival" parameterType="ListVO">
+		DELETE 
+		MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</delete>
+
+<select id="readFestival" parameterType="ListVO" resultType="ListVO">
+		select * from MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</select>
+
 </mapper>
