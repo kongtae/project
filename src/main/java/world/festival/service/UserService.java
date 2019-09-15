@@ -1,4 +1,4 @@
-package world.festival.dao;
+package world.festival.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.UserVO;
+import world.festival.dao.UserDAO;
 
 @Service
 public class UserService {
@@ -28,6 +29,7 @@ public class UserService {
 			File file = new File("/Users⁩/⁨mac/⁨Desktop/" + oldSavedFilename);
 
 			try {
+				System.out.println();
 				uploadFile.transferTo(new File("/Users⁩/⁨mac/⁨Desktop/" + vo.getSavedFileName()));	
 				//업로드파일에 트랜스퍼투라는 메소드를 호출해서 서버에 저장을 한다. 인자값으로는 파일객체를 전달하는데 파일 객체는 
 			} catch (IllegalStateException | IOException e) {

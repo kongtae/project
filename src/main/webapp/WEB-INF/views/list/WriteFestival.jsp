@@ -507,7 +507,6 @@ function writeFestival() {
 
         $('#removeImg').empty();
         preview.appendChild(image);
-        
     });
     
 	 $("#reset").click(function () { 

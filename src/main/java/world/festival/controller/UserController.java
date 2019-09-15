@@ -1,9 +1,5 @@
 package world.festival.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.UserVO;
 import world.festival.dao.UserDAO;
-import world.festival.dao.UserService;
+import world.festival.service.UserService;
 
 @Controller
 public class UserController {
@@ -114,8 +110,9 @@ public class UserController {
 
 	//업데이트
 	@RequestMapping(value = "/updateMember", method = RequestMethod.POST)
-	public String updateMember(UserVO vo, String new_userpwd, MultipartFile uploadFile) {
-		System.out.println("업로드 파일 : " + uploadFile);
+	@ResponseBody
+	public String updateMember(UserVO vo, String new_userpwd, MultipartFile uploadFileName) {
+		System.out.println("업로드 파일 : " + uploadFileName);
 		if(vo.getUserpwd().isEmpty()) {
 			new_userpwd = null;
 
@@ -126,10 +123,10 @@ public class UserController {
 		vo.setOriginalFileName(result.getOriginalFileName());
 		vo.setSavedFileName(result.getSavedFileName());
 		
-		System.out.println(uploadFile.getOriginalFilename());
+		System.out.println(uploadFileName.getOriginalFilename());
 		
 		System.out.println("vo : " + vo);
-		service.updateMember(vo, uploadFile);
+		service.updateMember(vo, uploadFileName);
 		return "member/memberPage";
 	}
 }

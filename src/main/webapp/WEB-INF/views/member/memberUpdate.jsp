@@ -108,7 +108,33 @@
 		});
 	}
 
-	$('#update').on('click', formcheck);
+	$('#update').on('click', function(){
+		formcheck();
+		updateMember();
+		
+	});
+	
+	function updateMember() {
+
+		var form = $("#updateForm")[0];
+		var formData = new FormData(form);
+
+		$.ajax({
+			url:"updateMember",
+			data:formData,
+			type:"post",
+			contentType:false,
+			processData:false,
+			success: function() {
+				alert("投稿完了");
+				location.href ="memberPage";
+			},
+			error: function(request,status,error) {
+				alert("投稿ERROR");
+			}
+		});
+	}
+	
 
 	function formcheck() {
 		var username = $('#username').val();
@@ -360,7 +386,7 @@
 		<div class="register-box-body">
 			<p class="login-box-msg">Update a Member Information</p>
 
-			<form action="updateMember" method="post" enctype="multipart/form-data">
+			<form action="updateMember" id="updateForm" method="post" enctype="multipart/form-data">
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" id="userid" name="userid"
 						readonly="readonly"> <span
@@ -391,7 +417,7 @@
 						class="glyphicon glyphicon-log-in form-control-feedback"></span>
 				</div>
 				<div>
-					<input type="file" id="imagePreview" name="uploadFile" value="사진첨부"
+					<input type="file" id="imagePreview" name="uploadFileName" value="사진첨부"
 						accept="image/png,image/jpg,image/gif,image/jpeg"> 
 						<img id="image" src="images/guest.png">
 				</div>
@@ -400,7 +426,7 @@
 					<div class="col-xs-8"></div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" id="update"
+						<button id="update"
 							class="btn btn-primary btn-block btn-flat">修正</button>
 					</div>
 					<!-- /.col -->
