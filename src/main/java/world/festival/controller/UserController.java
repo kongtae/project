@@ -18,13 +18,13 @@ public class UserController {
 	@Autowired
 	private UserDAO dao ;
 
-	//회원가입 화면 이동
+	//�쉶�썝媛��엯 �솕硫� �씠�룞
 	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
 	public String register() {
 		return "member/register";
 	}
 
-	//회원가입
+	//�쉶�썝媛��엯
 	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
 	public String registermember(UserVO vo, Model model) {
 		System.out.println(vo);
@@ -33,57 +33,58 @@ public class UserController {
 		return "member/loginForm";
 	}
 
-	//중복체크
+	//以묐났泥댄겕
 	@ResponseBody
 	@RequestMapping(value="/idcheck", method = RequestMethod.GET)
 	public int idcheck(String userid) {
 		return dao.idcheck(userid);
 	}
 
-	//로그인 화면 이동
+	//濡쒓렇�씤 �솕硫� �씠�룞
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom() {
 		return "member/loginForm";
 	}
 
-	//로그인
+	//濡쒓렇�씤
 	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
 	public String login(UserVO vo, HttpSession session, Model model) {
 		UserVO result = dao.selectOne(vo);
 		if(result != null) {
 			session.setAttribute("loginid", result.getUserid());
+			
 			return "redirect:/";
 		}
 		model.addAttribute("result", false);
 		return "member/loginForm";
 	}
 
-	//로그아웃
+	//濡쒓렇�븘�썐
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
 
-	//유저페이지 이동
+	//�쑀���럹�씠吏� �씠�룞
 	@RequestMapping(value = "/memberPage", method = RequestMethod.GET)
 	public String memberPage() {
 		return "member/memberPage";
 	}
 
-	//회원 수정 이동
+	//�쉶�썝 �닔�젙 �씠�룞
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.GET)
 	public String memberUpdate() {
 		return "member/memberUpdate";
 	}
 
-	//회원 탈퇴 이동
+	//�쉶�썝 �깉�눜 �씠�룞
 	@RequestMapping(value = "/WithdrawForm", method = RequestMethod.GET)
 	public String WithdrawForm() {
 		return "member/withdrawForm";
 	}
 
-	//회원 탈퇴
+	//�쉶�썝 �깉�눜
 	@RequestMapping(value = "/withdraw", method = RequestMethod.GET)
 	@ResponseBody
 	public int withdraw(HttpSession session) {
@@ -93,7 +94,7 @@ public class UserController {
 		return result;
 	}
 
-	//수정창에 출력
+	//�닔�젙李쎌뿉 異쒕젰
 		@RequestMapping(value = "/select", method = RequestMethod.POST)
 		@ResponseBody
 		public UserVO select(HttpSession session) {

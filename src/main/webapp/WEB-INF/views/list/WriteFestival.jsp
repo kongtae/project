@@ -72,6 +72,7 @@ function writeFestival() {
 			//cache: false,
 			success: function() {
 				alert("投稿完了");
+				location.href ="listForm";
 			},
 			error: function(request,status,error) {
 				alert("投稿ERROR");
@@ -114,7 +115,7 @@ function writeFestival() {
 							<li><a href="loginForm">ログイン</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="memberPage" onclick='go.history(-1); return false;'>UserPage</a></li>
 							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>
