@@ -93,7 +93,7 @@ function writeFestival(event) {
 			type:"post",
 			enctype: 'multipart/form-data',
 			data:{
-				formData,
+// 				formData,
 				contentType:false,
 				processData:false
 			},
