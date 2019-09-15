@@ -63,14 +63,7 @@ function writeFestival(event) {
 		alert(formData);  */
 				
 // 		var formData = new FormData();
-// 		formData.append("title",$("#title").val());
-// 		formData.append("country",$("#country").val());
-// 		formData.append("adress",$("#adress").val());
-// 		formData.append("festival_intro",$("#festival_intro").val());
-// 		formData.append("startEvent",$("#startEvent").val());
-// 		formData.append("endEvent",$("#endEvent").val());
-// 		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
-
+		
 //		내코드
 		var title=$("#title").val()
 		var country=$("#country").val()
@@ -87,20 +80,23 @@ function writeFestival(event) {
 		//alert(TITLE2); 
 //  		var formdata2 = $("#writeFestivalID").serialize();
 		//alert(formdata2);
+		formData.append("title",$("#title").val());
+		formData.append("country",$("#country").val());
+		formData.append("adress",$("#adress").val());
+		formData.append("festival_intro",$("#festival_intro").val());
+		formData.append("startEvent",$("#startEvent").val());
+		formData.append("endEvent",$("#endEvent").val());
+		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
+
 		$.ajax({
 			url:"writeFestival",
 			type:"post",
+			enctype: 'multipart/form-data',
 			data:{
-				title:title,
-				country:country,
-				adress:adress,
-				festival_intro:festival_intro,
-				startEvent:startEvent,
-				endEvent:endEvent
-				formData
+				formData,
+				contentType:false,
+				processData:false
 			},
-			contentType: false,
-			processData: false,
 			success:function()
 			{
 				alert("성공")
@@ -334,11 +330,11 @@ function writeFestival(event) {
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
+                    <div class="shedule-image-box text-center" id="removeImg"> <!-- 미리보기 공간 -->
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
-                    </div> -->
+                    </div>
                     <div id="preview">
                     </div>
                 <div class="form-group">
