@@ -53,28 +53,13 @@
 <script>
 
 
-function writeFestival(event) {
-  		
-		//event.preventDefault();
-	
-/* 		var form = $("#writeFestivalID")[0];
- 
+function writeFestival() {
+
+		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
-		alert(formData);  */
+	//	alert(formData);
 		
-		var formData = new FormData();
-		formData.append("title",$("#title").val());
-		formData.append("country",$("#country").val());
-		formData.append("adress",$("#adress").val());
-		formData.append("festival_intro",$("#festival_intro").val());
-		formData.append("startEvent",$("#startEvent").val());
-		formData.append("endEvent",$("#endEvent").val());
-		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
-		alert(formData);
-		var TITLE2 = $("#title"); 
-		//alert(TITLE2); 
-		
- 		var formdata2 = $("#writeFestivalID").serialize();
+ 	//	var formdata2 = $("#writeFestivalID").serialize();
 		//alert(formdata2);
 		
 		$.ajax({
@@ -85,7 +70,7 @@ function writeFestival(event) {
 			contentType:false,
 			processData:false,
 			//cache: false,
-			success: function(data) {
+			success: function() {
 				alert("投稿完了");
 			},
 			error: function(request,status,error) {
@@ -94,13 +79,6 @@ function writeFestival(event) {
 			}
 		});
 	} 
-	
-/* 		if(confirm("등록 하시겠습니까?")){
-			var form = document.getElementById("writeFestivalID");
-			form.submit();
-		} */
-		
-
 	
 </script>
 </head>
@@ -135,8 +113,9 @@ function writeFestival(event) {
 							<li><a href="registermember">会員登録</a></li>
 							<li><a href="loginForm">ログイン</a></li>
 						</c:if>
-						<c:if test="${seccionScope.loginid!=null}">
-						<li><a href="memberPage">マイページ</a></li>
+						<c:if test="${sessionScope.loginid != null}">
+							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -289,7 +268,7 @@ function writeFestival(event) {
 
 
 <!--Schedule Details-->
-<form action="writeFestival" id="writeFestivalID" method="post" enctype="multipart/form-data">
+<form action="writeFestival" id="writeFestivalID" method="post" enctype="multipart/form-data" >
 <section class="schedule-details">
     <div class="container">
         <div class="row">
@@ -308,7 +287,7 @@ function writeFestival(event) {
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
                   <i class="fa fa-paperclip"></i> ファイル添付
-                  <input type="file" id="uploadFileName" name="uploadFileName" > 
+                  <input type="file" id="uploadFileName" name="uploadFileName" accept="image/png,image/jpg,image/gif,image/jpeg"> 
                 </div>
               </div> 
                 <div class="box-footer">
@@ -392,6 +371,7 @@ function writeFestival(event) {
         </div>                
     </div>
 </section>
+</form>
 <!--End Schedule Details-->
 
 <!--Contact Info-->
@@ -436,7 +416,7 @@ function writeFestival(event) {
         </div>            
     </div>
 </section>
-</form>
+
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(resources/images/background/footer.jpg);">

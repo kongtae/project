@@ -1,7 +1,6 @@
 package world.festival.controller;
 
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -51,18 +50,18 @@ public class ListController {
 	public String writeFestival(ListVO vo, HttpSession session, MultipartFile uploadFileName, RedirectAttributes rttr) {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("vo:"+vo);
-	//	System.out.println("uploadfile"+uploadfile.getOriginalFilename());
+		System.out.println("인설트VO: "+vo);
+		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
 		rttr.addFlashAttribute("insertresult", result);
-		return "list/WriteFestival";
+		return "redirect:/listForm"; 
 	}
 	
 	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<ListVO> printAll() {
-		ArrayList<ListVO> list = dao.printAll();
-		System.out.println("리스트 출력"+list);
+		ArrayList<ListVO> list = service.printAll();
+		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
 	@RequestMapping(value = "/listDetailGO", method = RequestMethod.GET)
@@ -73,7 +72,7 @@ public class ListController {
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo, HttpSession session,Model model,
+	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
@@ -83,12 +82,11 @@ public class ListController {
 		System.out.println("vo11 "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = dao.selectOne(vo,searchItem,searchKeyword);	
+		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
 		}
-		ArrayList<ListVO> selectOne2 = dao.selectOne2(searchItem,searchKeyword);
-		/*model.addAttribute("selectOne",selectOne);*/
+		ArrayList<ListVO> selectOne2 = service.selectOne2(searchItem,searchKeyword);
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);
 		System.out.println("리스트 출력222"+selectOne2);
@@ -96,10 +94,13 @@ public class ListController {
 		}
 	
 	@RequestMapping(value = "/updateFestival", method = RequestMethod.GET)
-	public String updateFestival(String mainBoardNum,ListVO vo,Model model) {
-		
-		model.addAttribute("mainBoardNum", mainBoardNum);
+	public String updateFestival(String mainBoardNum,Model model) {
+		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
+		ListVO vo = dao.readFestival(mainBoardNum);
+		String startEvent1 = vo.getStartEvent();
+		System.out.println("수정할 페이지 찾았나? "+vo);
 		model.addAttribute("vo", vo);
+		model.addAttribute("startEvent1", startEvent1);
 		return "list/UpdateFestival";
 	}
 	
@@ -109,7 +110,7 @@ public class ListController {
 		boolean result = service.deleteFestival(vo);
 		System.out.println("삭제된VO "+result);
 		rttr.addFlashAttribute("deleteResult", result);
-		return "redirect:/list/List";
+		return "redirect:/listForm"; 
 	}
 	
 	

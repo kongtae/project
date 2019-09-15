@@ -8,7 +8,7 @@ import lombok.Data;
 public class ListVO {
 	
 	private String adminid;
-	private int mainBoardNum;
+	private String mainBoardNum;
 	private String userid;
 	private String title;
 	private String country;
@@ -18,8 +18,7 @@ public class ListVO {
 	private Date inputTime;
 	private String startEvent;
 	private String endEvent;
-	private String uploadFileName;  // originalFileName;
+	private String originalFileName;  // originalFileName;
 	private String saveFileName;
-
 	
 }
