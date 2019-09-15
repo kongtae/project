@@ -1,6 +1,7 @@
 package world.festival.dao;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
 
 @Service
 public class ListService {
@@ -32,7 +34,7 @@ public class ListService {
 		}
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
-		System.out.println("¼­ºñ½º¿¡¼­ÀÇ ¸®ÀýÆ®°ª"+result);
+		System.out.println("ï¿½ï¿½ï¿½ñ½º¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½"+result);
 		return true;
 	}
 
@@ -40,6 +42,17 @@ public class ListService {
 		int result = dao.deleteFestival(vo);
 		if(result!=1){return false;}
 		return true;
+	}
+	//ëŒ“ê¸€ ë‹¬ê¸°
+//	public boolean replywrite(ReplyVO vo) {
+//		int result = dao.replywrite(vo);
+//		if(result!=1){return false;}
+//		return true;
+//	}
+	
+	//ëŒ“ê¸€ ì¶œë ¥
+	public ArrayList<ReplyVO> replyList(int boardnum) {
+		return dao.replyList(boardnum);
 	}
 	
 }

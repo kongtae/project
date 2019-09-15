@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.ListService;
 
@@ -62,14 +63,21 @@ public class ListController {
 	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
+
 		System.out.println("리스트 출력"+list);
 		 return list;
 	}
 	@RequestMapping(value = "/listDetailGO", method = RequestMethod.GET)
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
+		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
+		for (int i = 0; i < replylist.size(); i++) {
+			replylist.get(i).setInputdate(replylist.get(i).getInputdate().substring(0,10));
+		}
+		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
+		model.addAttribute("replylist", replylist);
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
