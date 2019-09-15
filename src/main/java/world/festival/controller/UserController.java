@@ -52,7 +52,6 @@ public class UserController {
 		UserVO result = dao.selectOne(vo);
 		if(result != null) {
 			session.setAttribute("loginid", result.getUserid());
-			
 			return "redirect:/";
 		}
 		model.addAttribute("result", false);
