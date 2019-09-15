@@ -54,7 +54,7 @@
 
 
 function writeFestival(event) {
-  		
+  		//.............
 		//event.preventDefault();
 	
 /* 		var form = $("#writeFestivalID")[0];
