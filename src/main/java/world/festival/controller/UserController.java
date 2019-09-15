@@ -8,15 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.UserVO;
 import world.festival.dao.UserDAO;
+import world.festival.service.UserService;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserDAO dao ;
+	
+	@Autowired
+	private UserService service;
 
 	//�쉶�썝媛��엯 �솕硫� �씠�룞
 	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
@@ -93,13 +98,34 @@ public class UserController {
 		return result;
 	}
 
-	//�닔�젙李쎌뿉 異쒕젰
-		@RequestMapping(value = "/select", method = RequestMethod.POST)
-		@ResponseBody
-		public UserVO select(HttpSession session) {
-			String id = (String)session.getAttribute("loginid");
-			UserVO vo = dao.select(id);
-			System.out.println(vo);
-			return vo;
+	//수정창에 출력
+	@RequestMapping(value = "/select", method = RequestMethod.POST)
+	@ResponseBody
+	public UserVO select(HttpSession session) {
+		String id = (String)session.getAttribute("loginid");
+		UserVO vo = dao.select(id);
+		return vo;
+	}
+
+	//업데이트
+	@RequestMapping(value = "/updateMember", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateMember(UserVO vo, String new_userpwd, MultipartFile uploadFileName) {
+		System.out.println("업로드 파일 : " + uploadFileName);
+		if(vo.getUserpwd().isEmpty()) {
+			new_userpwd = null;
+
 		}
+		vo.setUserpwd(new_userpwd);
+		
+		UserVO result = dao.select(vo.getUserid());
+		vo.setOriginalFileName(result.getOriginalFileName());
+		vo.setSavedFileName(result.getSavedFileName());
+		
+		System.out.println(uploadFileName.getOriginalFilename());
+		
+		System.out.println("vo : " + vo);
+		service.updateMember(vo, uploadFileName);
+		return "member/memberPage";
+	}
 }

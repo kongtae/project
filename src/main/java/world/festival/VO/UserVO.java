@@ -9,6 +9,7 @@ public class UserVO {
 	private String username;
 	private String email;
 	private String userpwd;
-
+	private String originalFileName;
+	private String savedFileName;
 	
 }

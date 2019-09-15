@@ -58,98 +58,125 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <style>
-
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
-$(function() {
-	select();
-	
-	$("#idcheck").on('click', register);
-	$('#submit').on('click', formcheck);
-});
 
-function select(){
+	var savedFileName = "";
+	var password = "";
 	
-	$.ajax({
-		url: "select",
-		type: "post",
-		success : function(result){
-			$('#userid').val(result.userid);
-			$('#username').val(result.username);
-			$('#email').val(result.email);
-		},
-		error: function(){
-			alert("실패");
-		}
+	$(function() {
+		select();
+		$("#imagePreview").on('change',function(){
+			//미리보기함수
+			previewImage(this);
+			//Data 전송하기
+		});
 	});
-}
-
-
-function register(){
-	var userid = $('#userid').val();
-		
-	if(userid.length == 0) {
-		alert("IDを入力してください。");
-		return false;
-	}
-	if(userid.length < 3 || userid.length > 10) {
-		alert("IDは3～10字以内で入力してください。");
-		return false;
-	}
-
-	$.ajax({
-		data : {userid : userid},
-		url : "idcheck",
-		success : function(data) {
-			if(data == '0') {
-				alert("このIDは利用できます。");
-				document.getElementById("submit").removeAttribute("disabled");
-			} else if(data == '1') {
-				alert("このIDは利用できません。他のIDを指定してください。");
+	
+	
+	function previewImage(input){
+		//이미지를 선택하면
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#image').attr('src',e.target.result) //속성 변경
 			}
-		},
-		error : function(data) {
-			alert("error : "+error);
+			reader.readAsDataURL(input.files[0]);
 		}
-	});
-};
-
-function formcheck(){
-	var username = $('#username').val();
-	var useremail = $('#email').val();
-	var userpwd = $('#userpwd').val();
-	var check_userpwd = $('#check_userpwd').val();
-	var icheck = $('#icheck');
+	}
 	
-	if(username.length == 0){
-		alert("お名前を入力してください。");
-		return false;
+	function select() {
+
+		$.ajax({
+			url : "select",
+			type : "post",
+			success : function(result) {
+				$('#userid').val(result.userid);
+				$('#username').val(result.username);
+				$('#email').val(result.email);
+				password = result.userpwd;
+				if(result.savedFileName != null) {
+				savedFileName = "userImages/" +result.savedFileName;
+				$('#image').attr("src", savedFileName);
+				}
+			},
+			error : function() {
+				alert("실패");
+			}
+		});
 	}
-	if(useremail.length == 0){
-		alert("メールアドレスを入力してください。");
-		return false;
+
+	$('#update').on('click', function(){
+		formcheck();
+		updateMember();
+		
+	});
+	
+	function updateMember() {
+
+		var form = $("#updateForm")[0];
+		var formData = new FormData(form);
+
+		$.ajax({
+			url:"updateMember",
+			data:formData,
+			type:"post",
+			contentType:false,
+			processData:false,
+			success: function() {
+				alert("投稿完了");
+				location.href ="memberPage";
+			},
+			error: function(request,status,error) {
+				alert("投稿ERROR");
+			}
+		});
 	}
-	if(userpwd.length == 0){
-		alert("パスワードを入力してください。");
-		return false;
-	}
-	if(check_userpwd.length == 0){
-		alert("パスワードを再び入力してください。");
-		return false;
-	}
-	if(userpwd != check_userpwd){
-		alert("パスワードが間違っています。 もう一度入力してください。");
-		$("#check_userpwd").focus();
-		return false;
-	}
-	if($('input:checkbox[id="checkbox"]:checked').length < 1){
-		alert("利用約款をチェックしてください。");
-		return false;
-	}
-	return true; 
-};
+	
+
+	function formcheck() {
+		var username = $('#username').val();
+		var useremail = $('#email').val();
+		var userpwd = $('#userpwd').val();
+		var new_userpwd = $('#new_userpwd').val();
+		var check_new_userpwd = $('#check_new_userpwd').val();
+		var icheck = $('#icheck');
+		
+		//패스워드 길이 유효성
+		if(userpwd.length == 0) {
+			if(new_userpwd.length != 0){
+				alert("現在パスワードを入力してください。");
+				return false;
+			}
+			if(check_new_userpwd.length != 0){
+				alert("現在パスワードを入力してください。");
+				return false;
+			}
+		}
+		
+		if (userpwd.length != 0) {
+			if (userpwd != password) {
+				alert("現在パスワードと新しいパスワードが異なります。");
+				return false;
+			}
+			if (new_userpwd.length == 0) {
+				alert("新しいパスワードを再び入力してください。");
+				return false;
+			}
+			if (check_new_userpwd.length == 0) {
+				alert("新しいパスワードを再び入力してください。");
+				return false;
+			}
+			if (new_userpwd != check_new_userpwd) {
+				alert("パスワードが間違っています。 もう一度入力してください。");
+				$('#check_new_userpwd').focus();
+				return false;
+			}
+		}
+		return true;
+	};
 </script>
 </head>
 <body class="hold-transition register-page">
@@ -359,20 +386,20 @@ function formcheck(){
 		<div class="register-box-body">
 			<p class="login-box-msg">Update a Member Information</p>
 
-			<form action="registermember" method="post">
+			<form action="updateMember" id="updateForm" method="post" enctype="multipart/form-data">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" id="userid" name="userid" readonly="readonly"> 
-					<span class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
+					<input type="text" class="form-control" id="userid" name="userid"
+						readonly="readonly"> <span
+						class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" name="username"
-						id="username" > <span
+						id="username"> <span
 						class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" name="email"
-						id="email" > <span
-						class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					<input type="email" class="form-control" name="email" id="email">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" name="userpwd"
@@ -381,8 +408,8 @@ function formcheck(){
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" name="new_userpwd"
-						id="userpwd" placeholder="新しいパスワード"> <span
-						class="glyphicon glyphicon-lock form-control-feedback"></span>
+						id="new_userpwd" placeholder="新しいパスワード"> <span
+						class="glyphicon glyphicon-log-in form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" id="check_new_userpwd"
@@ -390,18 +417,17 @@ function formcheck(){
 						class="glyphicon glyphicon-log-in form-control-feedback"></span>
 				</div>
 				<div>
-					<input type = "file" name = "upload" id="imgPreview" value = "사진첨부" accept="image/png,image/jpg,image/gif,image/jpeg">
-					<img id = "image" src ="images/guest.png">
+					<input type="file" id="imagePreview" name="uploadFileName" value="사진첨부"
+						accept="image/png,image/jpg,image/gif,image/jpeg"> 
+						<img id="image" src="images/guest.png">
 				</div>
 
 				<div class="row">
-					<div class="col-xs-8">
-						
-					</div>
+					<div class="col-xs-8"></div>
 					<!-- /.col -->
 					<div class="col-xs-4">
-						<button type="submit" id="submit" disabled="disabled"
-							class="btn btn-primary btn-block btn-flat" >登録</button>
+						<button id="update"
+							class="btn btn-primary btn-block btn-flat">修正</button>
 					</div>
 					<!-- /.col -->
 				</div>
