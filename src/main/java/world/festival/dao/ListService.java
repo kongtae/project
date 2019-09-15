@@ -24,8 +24,9 @@ public class ListService {
 			String savedFilename = UUID.randomUUID().toString();
 			String originalFilename = uploadFileName.getOriginalFilename();
 
-			vo.setUploadFileName(originalFilename);
+			vo.setOriginalFileName(originalFilename);
 			vo.setSaveFileName(savedFilename);
+			System.out.println("서비스단의  vo값 "+vo);
 
 			try {
 				uploadFileName.transferTo(new File("C:/test/"+savedFilename));

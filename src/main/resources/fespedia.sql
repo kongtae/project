@@ -48,7 +48,7 @@ CREATE TABLE MAINBOARD(
     INPUTTIME DATE DEFAULT SYSDATE,  --입력 날자
     STARTEVENT VARCHAR2(20) DEFAULT SYSDATE,   --축제시작날짜
     ENDEVENT VARCHAR2(20),          --축제끝나는날짜
-    UPLOADFILENAME VARCHAR(50),     -- 오리지날파일이름
+    originalFileName VARCHAR(50),     -- 오리지날파일이름
     SAVEFILENAME VARCHAR(50)        -- 세이브파일 이름
 );
 CREATE SEQUENCE MAINBOARD_SEQ;

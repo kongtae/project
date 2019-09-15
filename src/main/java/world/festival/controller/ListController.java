@@ -50,12 +50,12 @@ public class ListController {
 	public String writeFestival(ListVO vo, HttpSession session, MultipartFile uploadFileName, RedirectAttributes rttr) {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("vo:"+vo);
-	//	System.out.println("uploadfile"+uploadfile.getOriginalFilename());
+		System.out.println("인설트VO: "+vo);
+		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
 		rttr.addFlashAttribute("insertresult", result);
-		return "list/WriteFestival";
+		return "redirect:/listForm"; 
 	}
 	
 	@RequestMapping(value = "/printAll", method = RequestMethod.GET)

@@ -18,7 +18,7 @@ public class ListVO {
 	private Date inputTime;
 	private String startEvent;
 	private String endEvent;
-	private String uploadFileName;  // originalFileName;
+	private String originalFileName;  // originalFileName;
 	private String saveFileName;
 	
 }
