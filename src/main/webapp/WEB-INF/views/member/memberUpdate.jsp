@@ -63,7 +63,7 @@
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
 
-	var savedFileName = "";
+	var originalFileName = "";
 	var password = "";
 	
 	$(function() {
@@ -97,9 +97,9 @@
 				$('#username').val(result.username);
 				$('#email').val(result.email);
 				password = result.userpwd;
-				if(result.savedFileName != null) {
-				savedFileName = "userImages/" +result.savedFileName;
-				$('#image').attr("src", savedFileName);
+				if(result.originalFileName != null) {
+					originalFileName = "resources/images/userimage/" +result.originalFileName;
+				$('#image').attr("src", originalFileName);
 				}
 			},
 			error : function() {
@@ -108,14 +108,9 @@
 		});
 	}
 
-	$('#update').on('click', function(){
-		formcheck();
-		updateMember();
-		
-	});
 	
 	function updateMember() {
-
+		formcheck();
 		var form = $("#updateForm")[0];
 		var formData = new FormData(form);
 
@@ -126,10 +121,9 @@
 			contentType:false,
 			processData:false,
 			success: function() {
-				alert("投稿完了");
 				location.href ="memberPage";
 			},
-			error: function(request,status,error) {
+			error: function() {
 				alert("投稿ERROR");
 			}
 		});
@@ -172,6 +166,18 @@
 			if (new_userpwd != check_new_userpwd) {
 				alert("パスワードが間違っています。 もう一度入力してください。");
 				$('#check_new_userpwd').focus();
+				return false;
+			}
+			if(userpwd.length<3||userpwd.length>10){
+				alert("パスワードが間違っています。 もう一度入力してください。");
+				return false;
+			}
+			if(new_userpwd.length<3||new_userpwd.length>10){
+				alert("パスワードが間違っています。 もう一度入力してください。");
+				return false;
+			}
+			if(check_new_userpwd.length<3||check_new_userpwd.length>10){
+				alert("パスワードが間違っています。 もう一度入力してください。");
 				return false;
 			}
 		}
@@ -427,7 +433,7 @@
 					<!-- /.col -->
 					<div class="col-xs-4">
 						<button id="update"
-							class="btn btn-primary btn-block btn-flat">修正</button>
+							class="btn btn-primary btn-block btn-flat" onclick="updateMember()">修正</button>
 					</div>
 					<!-- /.col -->
 				</div>

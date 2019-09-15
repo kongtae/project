@@ -22,8 +22,8 @@
 	<resources mapping="/**" location="/resources/" />
 
 	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/userImages/**"
-		location="/resources/images/userImages/" />
+	<resources mapping="/userimage/**"
+		location="/resources/images/userimage/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->

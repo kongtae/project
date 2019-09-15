@@ -71,7 +71,7 @@ public class UserController {
 	}
 
 	//�쑀���럹�씠吏� �씠�룞
-	@RequestMapping(value = "/memberPage", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberPage", method = {RequestMethod.GET, RequestMethod.POST})
 	public String memberPage() {
 		return "member/memberPage";
 	}
@@ -108,24 +108,30 @@ public class UserController {
 	}
 
 	//업데이트
-	@RequestMapping(value = "/updateMember", method = RequestMethod.POST)
-	@ResponseBody
-	public String updateMember(UserVO vo, String new_userpwd, MultipartFile uploadFileName) {
-		System.out.println("업로드 파일 : " + uploadFileName);
-		if(vo.getUserpwd().isEmpty()) {
-			new_userpwd = null;
+	@RequestMapping(value = "/updateMember", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody void updateMember(UserVO vo, String new_userpwd, MultipartFile uploadFileName) {
+		try {
+			System.out.println("업데이트 시작한다." +vo);
+			
+			System.out.println("업로드 파일 : " + uploadFileName);
+			if(vo.getUserpwd().isEmpty()) {
+				new_userpwd = null;
 
+			}
+			vo.setUserpwd(new_userpwd);
+			
+			UserVO result = dao.select(vo.getUserid());
+			vo.setOriginalFileName(result.getOriginalFileName());
+			vo.setSavedFileName(result.getSavedFileName());
+			
+			System.out.println(uploadFileName.getOriginalFilename());
+			
+			System.out.println("vo : " + vo);
+			boolean res = service.updateMember(vo, uploadFileName);
+			System.out.println(res);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
-		vo.setUserpwd(new_userpwd);
-		
-		UserVO result = dao.select(vo.getUserid());
-		vo.setOriginalFileName(result.getOriginalFileName());
-		vo.setSavedFileName(result.getSavedFileName());
-		
-		System.out.println(uploadFileName.getOriginalFilename());
-		
-		System.out.println("vo : " + vo);
-		service.updateMember(vo, uploadFileName);
-		return "member/memberPage";
 	}
 }

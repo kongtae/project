@@ -54,7 +54,7 @@ public class ListController {
 		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
-		rttr.addFlashAttribute("insertresult", result);
+		//rttr.addFlashAttribute("insertresult", result);
 		return "list/List"; 
 	}
 	

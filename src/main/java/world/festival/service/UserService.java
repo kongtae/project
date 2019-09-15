@@ -18,36 +18,34 @@ public class UserService {
 	private UserDAO dao;
 
 	public Boolean updateMember(UserVO vo, MultipartFile uploadFile) {
-		String oldSavedFilename = vo.getSavedFileName();	//원래 저장파일 변수에다가 저장된 파일명을 담아둔다.
-		//수정내용에 첨부파일이 등록되어 있을 경우
+		String oldSavedFilename = vo.getSavedFileName();	//�썝�옒 ���옣�뙆�씪 蹂��닔�뿉�떎媛� ���옣�맂 �뙆�씪紐낆쓣 �떞�븘�몦�떎.
+		//�닔�젙�궡�슜�뿉 泥⑤��뙆�씪�씠 �벑濡앸릺�뼱 �엳�쓣 寃쎌슦
 		if(!uploadFile.isEmpty()){
-			//vo객체에 새로운 첨부파일명을 set
+			//vo媛앹껜�뿉 �깉濡쒖슫 泥⑤��뙆�씪紐낆쓣 set
 			vo.setOriginalFileName(uploadFile.getOriginalFilename());
-			//vo객체에 새롭게 서버에 저장돌 파일명을 set
+			//vo媛앹껜�뿉 �깉濡�寃� �꽌踰꾩뿉 ���옣�룎 �뙆�씪紐낆쓣 set
 			vo.setSavedFileName(UUID.randomUUID().toString());
 
-			File file = new File("/Users⁩/⁨mac/⁨Desktop/" + oldSavedFilename);
+			File file = new File("C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/" + oldSavedFilename);
 
 			try {
-				System.out.println();
-				uploadFile.transferTo(new File("/Users⁩/⁨mac/⁨Desktop/" + vo.getSavedFileName()));	
-				//업로드파일에 트랜스퍼투라는 메소드를 호출해서 서버에 저장을 한다. 인자값으로는 파일객체를 전달하는데 파일 객체는 
+				uploadFile.transferTo(new File("C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/" + vo.getOriginalFileName()));	
+				//�뾽濡쒕뱶�뙆�씪�뿉 �듃�옖�뒪�띁�닾�씪�뒗 硫붿냼�뱶瑜� �샇異쒗빐�꽌 �꽌踰꾩뿉 ���옣�쓣 �븳�떎. �씤�옄媛믪쑝濡쒕뒗 �뙆�씪媛앹껜瑜� �쟾�떖�븯�뒗�뜲 �뙆�씪 媛앹껜�뒗 
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
-				System.out.println("에러");
 			}
-			//update querry 가 실패했을 경우
+			//update querry 媛� �떎�뙣�뻽�쓣 寃쎌슦
 			if(dao.updateMember(vo) != 1) { 
 				file.delete();
 				return false;
 			}
-			//update querry가 성공할 경우
-			File oldFile = new File("/Users⁩/⁨mac/⁨Desktop/" + oldSavedFilename);
-			//수정전 게시글에 첨부파일이 존재할 경우 삭제
+			//update querry媛� �꽦怨듯븷 寃쎌슦
+			File oldFile = new File("C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/" + oldSavedFilename);
+			//�닔�젙�쟾 寃뚯떆湲��뿉 泥⑤��뙆�씪�씠 議댁옱�븷 寃쎌슦 �궘�젣
 			if(oldFile.exists()) oldFile.delete();
 			return true;
 		}
-		//수정내용에 첨부파일이 등록되어 있지 않은 경우
+		//�닔�젙�궡�슜�뿉 泥⑤��뙆�씪�씠 �벑濡앸릺�뼱 �엳吏� �븡�� 寃쎌슦
 		if(dao.updateMember(vo) != 1) return false;
 		return true;
 	}
