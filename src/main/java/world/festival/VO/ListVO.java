@@ -20,6 +20,5 @@ public class ListVO {
 	private String endEvent;
 	private String uploadFileName;  // originalFileName;
 	private String saveFileName;
-
 	
 }

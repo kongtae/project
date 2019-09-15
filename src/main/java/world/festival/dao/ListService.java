@@ -35,5 +35,11 @@ public class ListService {
 		System.out.println("서비스에서의 리절트값"+result);
 		return true;
 	}
+
+	public boolean deleteFestival(ListVO vo) {
+		int result = dao.deleteFestival(vo);
+		if(result!=1){return false;}
+		return true;
+	}
 	
 }

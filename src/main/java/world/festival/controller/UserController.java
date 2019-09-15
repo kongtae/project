@@ -14,7 +14,7 @@ import world.festival.dao.UserDAO;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserDAO dao ;
 
@@ -32,7 +32,7 @@ public class UserController {
 		model.addAttribute("UserVO", vo);
 		return "member/loginForm";
 	}
-	
+
 	//중복체크
 	@ResponseBody
 	@RequestMapping(value="/idcheck", method = RequestMethod.GET)
@@ -54,20 +54,52 @@ public class UserController {
 			session.setAttribute("loginid", result.getUserid());
 			return "redirect:/";
 		}
-		return "redirect:/loginForm";
+		model.addAttribute("result", false);
+		return "member/loginForm";
 	}
-	
+
 	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	//유저페이지 이동
 	@RequestMapping(value = "/memberPage", method = RequestMethod.GET)
 	public String memberPage() {
 		return "member/memberPage";
 	}
-	
+
+	//회원 수정 이동
+	@RequestMapping(value = "/memberUpdate", method = RequestMethod.GET)
+	public String memberUpdate() {
+		return "member/memberUpdate";
+	}
+
+	//회원 탈퇴 이동
+	@RequestMapping(value = "/WithdrawForm", method = RequestMethod.GET)
+	public String WithdrawForm() {
+		return "member/withdrawForm";
+	}
+
+	//회원 탈퇴
+	@RequestMapping(value = "/withdraw", method = RequestMethod.GET)
+	@ResponseBody
+	public int withdraw(HttpSession session) {
+		String id = (String)session.getAttribute("loginid");
+		int result = dao.withdraw(id);
+		session.invalidate();
+		return result;
+	}
+
+	//수정창에 출력
+		@RequestMapping(value = "/select", method = RequestMethod.POST)
+		@ResponseBody
+		public UserVO select(HttpSession session) {
+			String id = (String)session.getAttribute("loginid");
+			UserVO vo = dao.select(id);
+			System.out.println(vo);
+			return vo;
+		}
 }
