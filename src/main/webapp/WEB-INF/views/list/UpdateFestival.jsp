@@ -99,8 +99,11 @@ function writeFestival(event) {
 			var form = document.getElementById("writeFestivalID");
 			form.submit();
 		} */
+	
 		
-		var dateV = ${vo.startEvent};
+
+		
+/* 		var dateV = ${vo.startEvent};
 		
 		alert(dateV);	
 	
@@ -108,8 +111,9 @@ function writeFestival(event) {
 		$(document).ready(function() {
 	        $('#startEvent').val(dateV);
 	    });
-	//안된다 모르겠다.
+	//안된다 모르겠다. */
 	
+/* 	document.getElementById('startEvent').valueAsDate = new date(); */
 </script>
 </head>
 <body>
@@ -543,6 +547,6 @@ function writeFestival(event) {
 	 });
 	 
 	 
-
+	 
 </script>
 </html>

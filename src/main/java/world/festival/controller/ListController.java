@@ -1,7 +1,6 @@
 package world.festival.controller;
 
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -61,7 +60,7 @@ public class ListController {
 	
 	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<ListVO> printAll() {
-		ArrayList<ListVO> list = dao.printAll();
+		ArrayList<ListVO> list = service.printAll();
 		System.out.println("리스트 출력"+list);
 		 return list;
 	}
@@ -73,7 +72,7 @@ public class ListController {
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo, HttpSession session,Model model,
+	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
@@ -83,11 +82,11 @@ public class ListController {
 		System.out.println("vo11 "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = dao.selectOne(vo,searchItem,searchKeyword);	
+		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
 		}
-		ArrayList<ListVO> selectOne2 = dao.selectOne2(searchItem,searchKeyword);
+		ArrayList<ListVO> selectOne2 = service.selectOne2(searchItem,searchKeyword);
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);
 		System.out.println("리스트 출력222"+selectOne2);
@@ -98,8 +97,10 @@ public class ListController {
 	public String updateFestival(String mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);
+		String startEvent1 = vo.getStartEvent();
 		System.out.println("수정할 페이지 찾았나? "+vo);
 		model.addAttribute("vo", vo);
+		model.addAttribute("startEvent1", startEvent1);
 		return "list/UpdateFestival";
 	}
 	

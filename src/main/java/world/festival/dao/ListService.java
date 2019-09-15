@@ -1,11 +1,14 @@
 package world.festival.dao;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import world.festival.VO.ListVO;
 
@@ -14,6 +17,7 @@ public class ListService {
 
 	@Autowired
 	private ListDAO dao;
+	
 
 	public boolean writeFestival(ListVO vo, MultipartFile uploadFileName) {
 		if(!uploadFileName.isEmpty()){
@@ -40,6 +44,26 @@ public class ListService {
 		int result = dao.deleteFestival(vo);
 		if(result!=1){return false;}
 		return true;
+	}
+
+
+	public ArrayList<ListVO> selectOne(ListVO vo, String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		map.put("endEvent", vo.getEndEvent());
+		return dao.selectOne(map);
+	}
+
+	public ArrayList<ListVO> selectOne2(String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		return dao.selectOne2(map);
+	}
+
+	public ArrayList<ListVO> printAll() {
+		return dao.printAll();
 	}
 	
 }

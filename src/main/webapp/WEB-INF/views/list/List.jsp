@@ -113,9 +113,9 @@ $(function() {
 		$.each(result,function(index,item){
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='speakers'>"+item.country+"</td>";
-		context += "<td class='time'>"+item.startEvent+"~"+item.endEvent+"</td>";
-		context += "<td class='venue'>"+item.userid+"</td></tr>";
+		context += "<td class='Session'>"+item.country+"</td>";
+		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
+		context += "<td class='Session'>"+item.userid+"</td></tr>";
 		})
 		$("#list").html(context);
 		
@@ -125,13 +125,19 @@ $(function() {
 		}
 		
 	}
+	
+/* 	function page() {
+		var reSortColors = function($table) {
+			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
+			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
+			 }; */
 
 </script>
 </head>
 <body>
 <c:choose>
 	<c:when test="${deleteResult == true}">
-		<script>alert("削除に成功ました。");</script>
+		<script>alert("削除に成功しました。");</script>
 	</c:when>
 	<c:when test="${deleteResult == false}">
 		<script>alert("削除に失敗しました。");</script>
@@ -367,6 +373,7 @@ $(function() {
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
+                            
                           </table>
                             
                     </div>

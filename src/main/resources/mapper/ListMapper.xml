@@ -67,4 +67,5 @@
 		mainBoardNum = #{mainBoardNum}
 </select>
 
+
 </mapper>
