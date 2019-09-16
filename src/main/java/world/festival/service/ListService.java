@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
 
 @Service
@@ -27,7 +28,7 @@ public class ListService {
 
 			vo.setOriginalFileName(originalFilename);
 			vo.setSaveFileName(savedFilename);
-			System.out.println("¼­ºñ½º´ÜÀÇ  vo°ª "+vo);
+			System.out.println("ï¿½ï¿½ï¿½ñ½º´ï¿½ï¿½ï¿½  voï¿½ï¿½ "+vo);
 
 			try {
 				uploadFileName.transferTo(new File("C:/test/"+savedFilename));
@@ -38,7 +39,7 @@ public class ListService {
 		}
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
-		System.out.println("¼­ºñ½º¿¡¼­ÀÇ ¸®ÀýÆ®°ª"+result);
+		System.out.println("ï¿½ï¿½ï¿½ñ½º¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½"+result);
 		return true;
 	}
 
@@ -64,8 +65,9 @@ public class ListService {
 		return dao.selectOne2(map);
 	}
 
-	public ArrayList<ListVO> printAll() {
-		return dao.printAll();
+
+	public ArrayList<ReplyVO> replyList(int boardnum) {
+		return dao.replyList(boardnum);
 	}
 	
 }

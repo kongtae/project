@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import world.festival.VO.UserVO;
 import world.festival.dao.UserDAO;
 import world.festival.service.UserService;
+//import world.festival.service.UserService;
 
 @Controller
 public class UserController {
@@ -57,6 +58,7 @@ public class UserController {
 		UserVO result = dao.selectOne(vo);
 		if(result != null) {
 			session.setAttribute("loginid", result.getUserid());
+//			session.setAttribute("username", result.getUsername());
 			return "redirect:/";
 		}
 		model.addAttribute("result", false);

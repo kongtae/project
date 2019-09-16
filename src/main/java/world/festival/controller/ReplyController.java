@@ -20,9 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
-import world.festival.dao.ListService;
 import world.festival.dao.ReplyDAO;
-import world.festival.dao.ReplyService;
+import world.festival.service.ReplyService;
 
 
 @Controller
@@ -38,9 +37,11 @@ public class ReplyController {
 //	return "redirect:/board/boardRead?boardnum="+vo.getBoardnum();
 	//댓글 달기
 		@RequestMapping(value = "/replywrite", method = RequestMethod.POST)
-		public String replywrite(ReplyVO vo,RedirectAttributes rttr, HttpSession session) {
+		public String replywrite(ReplyVO vo,RedirectAttributes rttr, HttpSession session,MultipartFile uploadFile) {
 			vo.setUserid((String)session.getAttribute("loginid"));
+//			vo.setUsername((String)session.getAttribute("username"));
 			System.out.println("로그인 아이디가 아니야?"+(String)session.getAttribute("loginid"));
+			
 			System.out.println("아이디 잘 들어갔는지 확인:"+vo);
 			boolean result = service.replywrite(vo);
 			rttr.addFlashAttribute("replywrite", result);
@@ -58,10 +59,11 @@ public class ReplyController {
 		}
 		//댓글 수정
 		@RequestMapping(value = "replyUpdate", method = RequestMethod.GET)	
-		public String replyUpdate(ReplyVO vo, HttpSession session) {
+		public String replyUpdate(ReplyVO vo, HttpSession session,RedirectAttributes rttr) {
 			vo.setUserid((String)session.getAttribute("loginid"));
 			System.out.println("수정 vo찍기"+vo);
 			service.replyUpdate(vo,session);
+//			rttr.addFlashAttribute("resuldelete", resuldelete);
 			return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum(); 
 		}
 		

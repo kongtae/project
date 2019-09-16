@@ -60,7 +60,8 @@ public class ListDAO {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.readFestival(mainBoardNum);
 	}
-
+	
+	//댓글 출력용
 	public ArrayList<ReplyVO> replyList(int boardnum) {
 		ReplyMapper mapper= sqlSession.getMapper(ReplyMapper.class);
 		return mapper.replyList(boardnum);

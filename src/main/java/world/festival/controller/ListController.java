@@ -18,8 +18,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
+import world.festival.VO.UserVO;
 import world.festival.dao.ListDAO;
-import world.festival.dao.ReplyService;
+import world.festival.dao.UserMapper;
+import world.festival.service.ListService;
+//import world.festival.dao.ReplyService;
 
 
 @Controller
@@ -28,11 +31,11 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
-//	@Autowired
-//	private ListService service;
+	@Autowired
+	private ListService service;
 	
 	@Autowired
-	private ReplyService service;
+//	private ReplyService service;
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -56,9 +59,9 @@ public class ListController {
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
 		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
-//		boolean result = service.writeFestival(vo,uploadFileName);
+		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
-		//rttr.addFlashAttribute("insertresult", result);
+		rttr.addFlashAttribute("insertresult", result);
 		return "list/List"; 
 	}
 	
@@ -71,16 +74,22 @@ public class ListController {
 		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
+	
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
+//		
+//		UserVO membervo = dao.searchmember(vo);
+		//댓글 출력도 같이
 		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
-		for (int i = 0; i < replylist.size(); i++) {
-			replylist.get(i).setInputdate(replylist.get(i).getInputdate().substring(0,10));
-		}
+//		for (int i = 0; i < replylist.size(); i++) {
+//			replylist.get(i).setInputdate(replylist.get(i).getInputdate().substring(0,10));
+//		}
 		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
+		//댓글 갯수
+		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
 		return "list/ListDetail";
 	}
