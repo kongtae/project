@@ -2,6 +2,7 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -47,15 +49,18 @@ public class ListController {
 	}
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public String writeFestival(ListVO vo, HttpSession session, MultipartFile uploadFileName, RedirectAttributes rttr) {
+	public String writeFestival(ListVO vo, HttpSession session,/* MultipartFile uploadFileName,*/ MultipartHttpServletRequest request , RedirectAttributes rttr) {
+		//List<MultipartFile> fileList = request.getFiles("uploadFileName");
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
-		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
-		boolean result = service.writeFestival(vo,uploadFileName);
+		System.out.println("리퀘스트 총 몇개? " +request.toString());
+		//System.out.println("uploadFileName 총 몇개? "+uploadFileName);
+		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
+		boolean result = service.writeFestival(vo,request);
 		System.out.println("result:"+result);
 		//rttr.addFlashAttribute("insertresult", result);
-		return "list/List"; 
+		return "success"; 
 	}
 	
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
