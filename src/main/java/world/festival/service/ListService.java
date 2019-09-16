@@ -1,29 +1,33 @@
-package world.festival.dao;
+package world.festival.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import world.festival.VO.ListVO;
-import world.festival.VO.ReplyVO;
+import world.festival.dao.ListDAO;
 
 @Service
 public class ListService {
 
 	@Autowired
 	private ListDAO dao;
+	
 
 	public boolean writeFestival(ListVO vo, MultipartFile uploadFileName) {
 		if(!uploadFileName.isEmpty()){
 			String savedFilename = UUID.randomUUID().toString();
 			String originalFilename = uploadFileName.getOriginalFilename();
 
-			vo.setUploadFileName(originalFilename);
+			vo.setOriginalFileName(originalFilename);
 			vo.setSaveFileName(savedFilename);
+			System.out.println("¼­ºñ½º´ÜÀÇ  vo°ª "+vo);
 
 			try {
 				uploadFileName.transferTo(new File("C:/test/"+savedFilename));
@@ -34,7 +38,7 @@ public class ListService {
 		}
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
-		System.out.println("ï¿½ï¿½ï¿½ñ½º¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½"+result);
+		System.out.println("¼­ºñ½º¿¡¼­ÀÇ ¸®ÀýÆ®°ª"+result);
 		return true;
 	}
 
@@ -43,16 +47,25 @@ public class ListService {
 		if(result!=1){return false;}
 		return true;
 	}
-	//ëŒ“ê¸€ ë‹¬ê¸°
-//	public boolean replywrite(ReplyVO vo) {
-//		int result = dao.replywrite(vo);
-//		if(result!=1){return false;}
-//		return true;
-//	}
-	
-	//ëŒ“ê¸€ ì¶œë ¥
-	public ArrayList<ReplyVO> replyList(int boardnum) {
-		return dao.replyList(boardnum);
+
+
+	public ArrayList<ListVO> selectOne(ListVO vo, String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		map.put("endEvent", vo.getEndEvent());
+		return dao.selectOne(map);
+	}
+
+	public ArrayList<ListVO> selectOne2(String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		return dao.selectOne2(map);
+	}
+
+	public ArrayList<ListVO> printAll() {
+		return dao.printAll();
 	}
 	
 }

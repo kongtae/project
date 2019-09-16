@@ -1,4 +1,4 @@
---0915 테이블
+--0914 테이블
 
 --관리자 테이블
 CREATE TABLE ADMINMEMBER (

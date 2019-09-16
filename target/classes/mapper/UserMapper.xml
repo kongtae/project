@@ -8,13 +8,13 @@
 <!-- 회원가입 -->	
 <insert id="registermember" parameterType="UserVO">
 	INSERT INTO
-		member
+		member(adminid, userid, username, userpwd, email)
 	VALUES (
 		null,
 		#{userid},
 		#{username},
 		#{userpwd},
-		#{useremail}
+		#{email}
 	)
 </insert>
 
@@ -58,5 +58,21 @@
 	WHERE
 		userid = #{userid}
 </select>
+
+<update id="updateMember" parameterType="UserVO">
+	UPDATE
+		member
+	SET
+		username = #{username},
+			<if test="userpwd != null">
+				userpwd = #{userpwd},		
+			</if>
+		email = #{email}
+		<if test="originalFileName != null and savedFileName != null">
+			, originalfileName = #{originalFileName} ,savedfileName = #{savedFileName}
+		</if>
+	WHERE
+		userid = #{userid}
+</update>
 
 </mapper>
