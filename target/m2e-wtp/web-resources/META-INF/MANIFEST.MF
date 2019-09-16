@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
+Built-By: kita
+Build-Jdk: 1.8.0_202
+=======
 Built-By: ￪ﾹﾀ￬ﾄﾱ￫ﾯﾼ
 Build-Jdk: 1.8.0_221
+>>>>>>> f67b1e27bbe72709c7009e7ee213c15138790c46
 Created-By: Maven Integration for Eclipse
 

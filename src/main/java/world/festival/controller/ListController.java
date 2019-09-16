@@ -2,6 +2,7 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -20,9 +22,14 @@ import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.VO.UserVO;
 import world.festival.dao.ListDAO;
+<<<<<<< HEAD
 import world.festival.dao.UserMapper;
 import world.festival.service.ListService;
 //import world.festival.dao.ReplyService;
+=======
+import world.festival.dao.ReplyService;
+import world.festival.service.ListService;
+>>>>>>> d31b45e75883f7dc6a29c929e35a11af33ad1612
 
 
 @Controller
@@ -31,11 +38,17 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
+<<<<<<< HEAD
 	@Autowired
 	private ListService service;
 	
 	@Autowired
 //	private ReplyService service;
+=======
+	@Autowired
+	private ListService service;
+	
+>>>>>>> d31b45e75883f7dc6a29c929e35a11af33ad1612
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -54,15 +67,28 @@ public class ListController {
 	}
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public String writeFestival(ListVO vo, HttpSession session, MultipartFile uploadFileName, RedirectAttributes rttr) {
+	public String writeFestival(ListVO vo, HttpSession session,/* MultipartFile uploadFileName,*/ MultipartHttpServletRequest request , RedirectAttributes rttr) {
+		//List<MultipartFile> fileList = request.getFiles("uploadFileName");
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
+<<<<<<< HEAD
 		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
 		rttr.addFlashAttribute("insertresult", result);
 		return "list/List"; 
+=======
+		System.out.println("리퀘스트 총 몇개? " +request.toString());
+		//System.out.println("uploadFileName 총 몇개? "+uploadFileName);
+		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
+		boolean result = service.writeFestival(vo,request);
+		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
+//		boolean result = service.writeFestival(vo,uploadFileName);
+		System.out.println("result:"+result);
+		//rttr.addFlashAttribute("insertresult", result);
+		return "success"; 
+>>>>>>> d31b45e75883f7dc6a29c929e35a11af33ad1612
 	}
 	
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
@@ -78,6 +104,7 @@ public class ListController {
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
+<<<<<<< HEAD
 //		
 //		UserVO membervo = dao.searchmember(vo);
 		//댓글 출력도 같이
@@ -91,6 +118,10 @@ public class ListController {
 		//댓글 갯수
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
+=======
+		System.out.println(vo1);
+		model.addAttribute("vo", vo1);
+>>>>>>> d31b45e75883f7dc6a29c929e35a11af33ad1612
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
