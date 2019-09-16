@@ -147,7 +147,7 @@ function formcheck(){
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" name="useremail" id="useremail" placeholder="メールアドレス">
+					<input type="email" class="form-control" name="email" id="useremail" placeholder="メールアドレス">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">

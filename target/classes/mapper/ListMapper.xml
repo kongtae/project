@@ -8,7 +8,7 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,uploadFileName,saveFileName)
+		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName,saveFileName)
 	VALUES (
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
@@ -20,8 +20,8 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="uploadFileName != null and saveFileName != null">
-			,#{uploadFileName},#{saveFileName}
+			<when test="originalFileName != null and saveFileName != null">
+			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
 			,null,null
@@ -31,7 +31,7 @@
 </insert>
 
 <select id="printAll" parameterType="ListVO" resultType="ListVO">
-	Select * from MAINBOARD
+	Select * from MAINBOARD order by mainBoardNum desc
 
 </select>
 
@@ -66,5 +66,6 @@
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </select>
+
 
 </mapper>

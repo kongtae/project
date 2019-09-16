@@ -1,7 +1,6 @@
 package world.festival.controller;
 
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -19,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import world.festival.VO.ListVO;
 import world.festival.dao.ListDAO;
-import world.festival.dao.ListService;
+import world.festival.service.ListService;
 
 
 @Controller
@@ -31,17 +30,17 @@ public class ListController {
 	@Autowired
 	private ListService service;
 	
-	@RequestMapping(value = "/listForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
 		
 		return "list/List";
 	}
-	@RequestMapping(value = "/listDetailForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/listDetailForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetailForm() {
 		
 		return "list/ListDetail";
 	}
-	@RequestMapping(value = "/insertFestival", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	public String insertFestival() {
 		
 		return "list/WriteFestival";
@@ -51,21 +50,21 @@ public class ListController {
 	public String writeFestival(ListVO vo, HttpSession session, MultipartFile uploadFileName, RedirectAttributes rttr) {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("vo:"+vo);
-	//	System.out.println("uploadfile"+uploadfile.getOriginalFilename());
+		System.out.println("인설트VO: "+vo);
+		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
-		rttr.addFlashAttribute("insertresult", result);
-		return "list/WriteFestival";
+		//rttr.addFlashAttribute("insertresult", result);
+		return "list/List"; 
 	}
 	
-	@RequestMapping(value = "/printAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
-		ArrayList<ListVO> list = dao.printAll();
-		System.out.println("리스트 출력"+list);
+		ArrayList<ListVO> list = service.printAll();
+		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
-	@RequestMapping(value = "/listDetailGO", method = RequestMethod.GET)
+	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
 		System.out.println(vo1);
@@ -73,7 +72,7 @@ public class ListController {
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo, HttpSession session,Model model,
+	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
@@ -83,11 +82,11 @@ public class ListController {
 		System.out.println("vo11 "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = dao.selectOne(vo,searchItem,searchKeyword);	
+		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
 		}
-		ArrayList<ListVO> selectOne2 = dao.selectOne2(searchItem,searchKeyword);
+		ArrayList<ListVO> selectOne2 = service.selectOne2(searchItem,searchKeyword);
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);
 		System.out.println("리스트 출력222"+selectOne2);
@@ -98,8 +97,10 @@ public class ListController {
 	public String updateFestival(String mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);
+		String startEvent1 = vo.getStartEvent();
 		System.out.println("수정할 페이지 찾았나? "+vo);
 		model.addAttribute("vo", vo);
+		model.addAttribute("startEvent1", startEvent1);
 		return "list/UpdateFestival";
 	}
 	
