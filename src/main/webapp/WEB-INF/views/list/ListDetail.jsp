@@ -22,8 +22,10 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
- 
  <script>
+ 
+ $(function () {
+ });
  	function UpdateFestival() {
  		location.href="updateFestival?mainBoardNum=${vo.mainBoardNum}";
 	}
@@ -32,7 +34,84 @@
   			location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
   			}
   	}
-	
+  	//댓글 작성시 유효성검사
+  	function replywrite() {
+		var replytext = document.getElementById("replytext");
+			if(replytext.value.length==0)
+				{
+					alert("글일 입력해주세요")
+					return;	/*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
+				}
+			document.getElementById("replywrite").submit();
+		}
+  		//화면 새로고침
+		function refreshMemList(){
+			location.reload();
+		}
+		
+		//댓글 삭제
+  		function replyDelete(replynum)
+  		{
+  			$.ajax({
+  				url:'replyDelete',
+  				type:'get',
+  				data:
+  				{
+  					mainboardnum : document.getElementById("mainboardnum").value,
+  					replynum : replynum
+  				},
+  				success:function(){
+//   					alert("삭제성공")
+  					refreshMemList();
+  				},
+  				error: function(){
+//   					alert("삭제 실패")
+  				}
+  				
+  			});
+  		}
+  		
+  		//댓글 수정 미완성
+//   		world.festival.controller
+  			function replymodify(replynum,text) {
+			document.getElementById("replytext").value=text;
+			document.getElementById("replysubmit").value="댓글 수정";
+			
+			document.getElementById("replysubmit").onclick=function(){
+				var updatext = document.getElementById("replytext").value;
+				location.href="replyUpdate?replynum="+replynum
+						+"&mainBoardNum=${vo.mainBoardNum}&replytext="+updatext;
+			}
+		}
+  		
+  		
+//   		function replymodify(replynum,text) {
+// 			document.getElementById("replytext").value=text;
+// 			document.getElementById("replysubmit").value="댓글 수정";
+			
+// 			{
+// 	  			$.ajax({
+// 	  				url:'replyUpdate',
+// 	  				type:'get',
+// 	  				data:
+// 	  				{
+// 	  					mainboardnum : document.getElementById("mainboardnum").value,
+// 	  					replynum : replynum
+// 	  				},
+// 	  				success:function(){
+// 	   					alert("수정 성공");
+	   					
+// 	  					refreshMemList();
+// 	  				},
+// 	  				error: function(){
+// 	   					alert("수정 실패")
+// 	  				}
+	  				
+// 	  			});
+// 	  		}
+// 		}
+  		
+  		
   
  </script>
     
@@ -339,7 +418,7 @@
                         <figure>
                             <img src="images/testimonials/4.png" alt="">
                         </figure>
-                        <h6>John Dou</h6>
+                        <h6>${vo.userid}</h6>
                     </div>
                     <div class="image-content">
                         <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology</p>
@@ -351,35 +430,64 @@
                 <div class="blog-left-title">
                     <h6>Post Comments</h6>
                 </div>
-                <form name="contact_form" class="default-form post-comment" action="sendmail.php" method="post">
+                <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <input type="text" name="name" placeholder="Name" required="">
+                                <input type="text" name="name" value="${sessionScope.loginid }" id="name" readonly="readonly">
                             </div>
-                            <div class="form-group">
-                                <input type="text" name="subject" placeholder="Subject" required="">
-                            </div>                                  
+<!--                             <div class="form-group"> -->
+<!--                                 <input type="text" name="subject" placeholder="Subject" required=""> -->
+<!--                             </div>                                   -->
+						<input type="hidden" name="mainboardnum" id="mainboardnum" value="${vo.mainBoardNum}">
                         </div>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <input type="text" name="email" placeholder="Email" required="">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="website" placeholder="Website" required="">
-                            </div>                                 
-                        </div>
+<!--                         <div class="col-md-6 col-sm-12 col-xs-12"> -->
+<!--                             <div class="form-group"> -->
+<!--                                 <input type="text" name="email" placeholder="Email" required=""> -->
+<!--                             </div> -->
+<!--                             <div class="form-group"> -->
+<!--                                 <input type="text" name="website" placeholder="Website" required=""> -->
+<!--                             </div>                                  -->
+<!--                         </div> -->
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <textarea name="form_message" class="form-control textarea required" placeholder="Your Message"></textarea>
+                                <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
                             </div>
                             <div class="form-group bottom">
-                                <button type="submit" class="theme-btn btn-style-one">Send Message</button>
+<!--                                 <button type="button" id="replysubmit" value="Send Message"  onclick="replyWrite()" class="theme-btn btn-style-one">Send Message</button> -->
+                                <button type="button" id="replysubmit" onclick="replywrite()" class="theme-btn btn-style-one">Send Message</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                <div>
+                
+	<table class="reply">
+		<c:forEach items="${replylist}" var="replylist">
+			<tr>
+				<td rowspan="1">
+				&nbsp&nbsp	${replylist.userid}
+				</td>
+				<td rowspan="1">
+				&nbsp	&nbsp ${replylist.replytext}
+				</td>
+				<td rowspan="1">
+				&nbsp	&nbsp ${replylist.inputdate}
+				</td>
+			<c:if test="${sessionScope.loginid == replylist.userid}">
+				<td>
+					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
+					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+				</td>
+			</c:if>
+		</tr>
+		</c:forEach>
+	</table>
+</div>
+
 </section>
+
+
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">

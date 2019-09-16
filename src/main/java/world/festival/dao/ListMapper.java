@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 
 import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
 
 public interface ListMapper {
 
@@ -21,5 +22,6 @@ public interface ListMapper {
 	public int deleteFestival(ListVO vo);
 
 	public ListVO readFestival(String mainBoardNum);
+
 	
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--   <insert id="replyWrite" parameterType="ReplyVO"> -->
+<!-- 		insert into reply values (reply_seq.nextval, -->
+<!-- 		#{boardnum}, -->
+<!-- 		#{userid}, -->
+<!-- 		#{replytext}, -->
+<!-- 		sysdate) -->
+<!-- 	</insert> -->
+
+<mapper namespace="world.festival.dao.ReplyMapper">
+
+<!-- 상세페이지 댓글 등록 -->	
+<insert id="replywrite" parameterType="ReplyVO">
+	INSERT INTO
+		REPLY
+		(
+		REPLYNUM,
+		MAINBOARDNUM,
+		USERID,
+		REPLYTEXT,
+		INPUTDATE
+		)
+	VALUES (
+		<!-- #{userid}, -->
+		REPLY_SEQ.nextval,
+		#{mainboardnum},
+		#{userid},
+		#{replytext},
+		sysdate
+	)
+</insert>
+<!-- 댓글 출력 -->
+<select id="replyList" parameterType="ReplyVO" resultType="ReplyVO">
+		select * from reply
+		 where
+		 mainboardnum=#{mainboardnum}
+		  order by 
+		  replynum desc
+</select>
+<!-- 댓글 수정 -->
+<update id="replyUpdate" parameterType="ReplyVO">
+		update reply set replytext=#{replytext} where replynum=#{replynum} and userid=#{userid}
+</update>
+	
+<!-- 댓글 삭제 -->
+	<delete id="replyDelete" parameterType="ReplyVO">
+		delete reply where replynum=#{replynum} and userid=#{userid}
+	</delete>
+
+
+<!-- <select id="printAll" parameterType="ListVO" resultType="ListVO"> -->
+<!-- 	Select * from MAINBOARD -->
+
+<!-- </select> -->
+
+<!-- 댓글 삭제 -->
+<!-- <delete id="deleteFestival" parameterType="ListVO"> -->
+<!-- 		DELETE  -->
+<!-- 		MAINBOARD  -->
+<!-- 		WHERE  -->
+<!-- 		mainBoardNum = #{mainBoardNum} -->
+<!-- </delete> -->
+
+
+</mapper>

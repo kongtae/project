@@ -19,8 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
-import world.festival.service.ListService;
+import world.festival.dao.ReplyService;
 
 
 @Controller
@@ -29,8 +30,11 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
+//	@Autowired
+//	private ListService service;
+	
 	@Autowired
-	private ListService service;
+	private ReplyService service;
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -54,10 +58,15 @@ public class ListController {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
+<<<<<<< HEAD
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		//System.out.println("uploadFileName 총 몇개? "+uploadFileName);
 		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,request);
+=======
+		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
+//		boolean result = service.writeFestival(vo,uploadFileName);
+>>>>>>> f67b1e27bbe72709c7009e7ee213c15138790c46
 		System.out.println("result:"+result);
 		//rttr.addFlashAttribute("insertresult", result);
 		return "success"; 
@@ -65,15 +74,24 @@ public class ListController {
 	
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
-		ArrayList<ListVO> list = service.printAll();
+		ArrayList<ListVO> list = dao.printAll();
+
+		System.out.println("리스트 출력"+list);
+//		ArrayList<ListVO> list = service.printAll();
 		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
+		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
+		for (int i = 0; i < replylist.size(); i++) {
+			replylist.get(i).setInputdate(replylist.get(i).getInputdate().substring(0,10));
+		}
+		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
+		model.addAttribute("replylist", replylist);
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
