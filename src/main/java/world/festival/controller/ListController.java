@@ -22,6 +22,7 @@ import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.ReplyService;
+import world.festival.service.ListService;
 
 
 @Controller
@@ -30,11 +31,9 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
-//	@Autowired
-//	private ListService service;
-	
 	@Autowired
-	private ReplyService service;
+	private ListService service;
+	
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -58,15 +57,12 @@ public class ListController {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
-<<<<<<< HEAD
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		//System.out.println("uploadFileName 총 몇개? "+uploadFileName);
 		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,request);
-=======
-		System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
+		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 //		boolean result = service.writeFestival(vo,uploadFileName);
->>>>>>> f67b1e27bbe72709c7009e7ee213c15138790c46
 		System.out.println("result:"+result);
 		//rttr.addFlashAttribute("insertresult", result);
 		return "success"; 
@@ -84,14 +80,8 @@ public class ListController {
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
-		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
-		for (int i = 0; i < replylist.size(); i++) {
-			replylist.get(i).setInputdate(replylist.get(i).getInputdate().substring(0,10));
-		}
-		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
-		model.addAttribute("replylist", replylist);
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
