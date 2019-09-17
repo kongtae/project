@@ -1,6 +1,7 @@
-package world.festival.dao;
+package world.festival.service;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
+import world.festival.dao.ReplyDAO;
 
 @Service
 public class ReplyService {
@@ -34,11 +36,11 @@ public class ReplyService {
 	}
 
 	public void replyUpdate(ReplyVO vo, HttpSession session) {
-		String userid=(String)session.getAttribute("userid");
+		String userid=(String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		dao.replyUpdate(vo);
 	}
-	
+
 	
 	//댓글 삭제?
 //	public boolean deleteFestival(ListVO vo) {

@@ -51,4 +51,5 @@ public class MapController {
 		ArrayList<ListVO> list = dao.countryList(country);
 		 return list;
 	}
+	
 }

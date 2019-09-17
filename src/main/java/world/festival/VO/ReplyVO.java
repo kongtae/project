@@ -10,5 +10,7 @@ public class ReplyVO {
 	private String userid;
 	private String replytext;
 	private String inputdate;
+	private String originalFileName;  // originalFileName;
+	private String saveFileName;
 	
 }

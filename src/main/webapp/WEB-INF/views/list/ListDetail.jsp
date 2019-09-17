@@ -22,6 +22,15 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+     <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #googleMap {
+        height: 500px;
+        width: 770px;
+      }
+    </style>
+    <script src="js/jquery.js"></script>
  <script>
  
  $(function () {
@@ -37,11 +46,17 @@
   	//댓글 작성시 유효성검사
   	function replywrite() {
 		var replytext = document.getElementById("replytext");
-			if(replytext.value.length==0)
-				{
-					alert("글일 입력해주세요")
-					return;	/*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
-				}
+		var name = document.getElementById("name").value;
+		if(replytext.value.length==0)
+		{
+			alert("글일 입력해주세요");
+			return false;	/*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
+		}
+		if(name.length=="")
+		{
+			alert("로그인을 먼저 해주세요.");
+			return false;
+		}
 			document.getElementById("replywrite").submit();
 		}
   		//화면 새로고침
@@ -71,47 +86,36 @@
   			});
   		}
   		
-  		//댓글 수정 미완성
-//   		world.festival.controller
+  		//댓글 수정
   			function replymodify(replynum,text) {
+  			var offset = $("#updatebtn").offset();
+  			$("html, body").animate({scrollTop:offset.top},400)
+  				
 			document.getElementById("replytext").value=text;
-			document.getElementById("replysubmit").value="댓글 수정";
-			
+			document.getElementById("replysubmit").value="Send Message";
+
 			document.getElementById("replysubmit").onclick=function(){
 				var updatext = document.getElementById("replytext").value;
 				location.href="replyUpdate?replynum="+replynum
-						+"&mainBoardNum=${vo.mainBoardNum}&replytext="+updatext;
+						+"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
 			}
-		}
-  		
-  		
-//   		function replymodify(replynum,text) {
-// 			document.getElementById("replytext").value=text;
-// 			document.getElementById("replysubmit").value="댓글 수정";
 			
-// 			{
-// 	  			$.ajax({
-// 	  				url:'replyUpdate',
-// 	  				type:'get',
-// 	  				data:
-// 	  				{
-// 	  					mainboardnum : document.getElementById("mainboardnum").value,
-// 	  					replynum : replynum
-// 	  				},
-// 	  				success:function(){
-// 	   					alert("수정 성공");
-	   					
-// 	  					refreshMemList();
-// 	  				},
-// 	  				error: function(){
-// 	   					alert("수정 실패")
-// 	  				}
-	  				
-// 	  			});
-// 	  		}
-// 		}
-  		
-  		
+			var message="end";
+			var result00="startEvent";
+			
+			var result33 = document.getElementById("searchHidden");
+			if(message=="end"){
+				result33.setAttribute("type", "reset");
+			}
+			$("input[type='reset']").on('click',
+			function() {
+				result33.setAttribute("type", "hidden");
+				refreshMemList();
+			})
+			
+
+		}
+
   
  </script>
     
@@ -202,7 +206,6 @@
                         </div>
                         
                     </nav>
-                    
 					<!--Button Box-->
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
@@ -328,8 +331,11 @@
                          <div class="event-details">
                          	<div>
                          <h1><b>祭りの詳細情報<b></b></h1>
+
+
+
                          	</div>
-                         	<c:if test="${sessionScope.loginid != null}">
+                         	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
 	                         	<input type="button" value="修正" onclick="UpdateFestival()">
 	                         	<input type="button" value="削除" onclick="DeleteFestival()">
@@ -389,21 +395,12 @@
                             </table>
                         </div>
                     </div>
-                    <!--Map Outer-->
-                    <div class="map-outer">
-                        <!--Map Canvas-->
-                        <div class="map-canvas"
-                            data-zoom="12"
-                            data-lat="-37.815038"
-                            data-lng="144.967359"
-                            data-type="roadmap"
-                            data-hue="#ffc400"
-                            data-title="184 Collins Street West Victoria,"
-                            data-icon-path="images/icons/map-marker.png"
-                            data-content="184 Collins Street West Victoria<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
+                    
+                        <div>
+                        <input type="hidden" id="address" value="${vo.adress}">
+                    	<input id="submit" type="button" value="Geocode">
                         </div>
-                    </div>
-                </div>
+                    <div id="googleMap"></div>
             </div>
         </div>                
     </div>
@@ -411,19 +408,42 @@
 <!--End Schedule Details-->
 <section>
 	<div class="blog-left-title">
-                    <h6>Comments (1)</h6>
+                    <h6>Comments ${replycount}</h6>
                 </div>
-                <div class="blog-comment-area">
+		
+               
+        <table class="reply">
+        <c:forEach items="${replylist}" var="replylist">
+			<tr>
+				<td rowspan="1">
+				 <div class="blog-comment-area">
                     <div class="image-box">
                         <figure>
                             <img src="images/testimonials/4.png" alt="">
+                                             여기가 사용자가 등록한 사진 들어올 곳
+                             ${membervo.originalFileName}
                         </figure>
-                        <h6>${vo.userid}</h6>
+<%--                         <h6>${vo.userid}</h6> --%>
                     </div>
-                    <div class="image-content">
-                        <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology</p>
-                        <div class="link-btn">
-                            <a href="#"><i class="fas fa-reply"></i>Replay</a>
+<!--                     <div class="image-content"> -->
+				</td>
+				<td rowspan="1">
+				&nbsp	&nbsp ${replylist.replytext}
+				</td>
+				<td rowspan="1">
+				&nbsp	&nbsp ${replylist.inputdate}
+				</td>
+			<c:if test="${sessionScope.loginid == replylist.userid}">
+				<td>
+					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
+					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+				</td>
+			</c:if>
+		</tr>
+		</c:forEach>
+	</table>
+                        <div class="link-btn" id="updatebtn">
+                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
                         </div>
                     </div>
                 </div>
@@ -452,37 +472,20 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
+                               
                             </div>
                             <div class="form-group bottom">
 <!--                                 <button type="button" id="replysubmit" value="Send Message"  onclick="replyWrite()" class="theme-btn btn-style-one">Send Message</button> -->
-                                <button type="button" id="replysubmit" onclick="replywrite()" class="theme-btn btn-style-one">Send Message</button>
+                                <button type="button" id="replysubmit" onclick="replywrite()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
+                                 <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
+<!--                                 <input type="reset"> -->
                             </div>
                         </div>
                     </div>
                 </form>
                 <div>
                 
-	<table class="reply">
-		<c:forEach items="${replylist}" var="replylist">
-			<tr>
-				<td rowspan="1">
-				&nbsp&nbsp	${replylist.userid}
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.replytext}
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.inputdate}
-				</td>
-			<c:if test="${sessionScope.loginid == replylist.userid}">
-				<td>
-					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
-				</td>
-			</c:if>
-		</tr>
-		</c:forEach>
-	</table>
+	
 </div>
 
 </section>
@@ -537,7 +540,7 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script src="js/jquery.js"></script>
+
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
@@ -554,12 +557,34 @@
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
+          zoom: 18,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+            geocodeAddress(geocoder, map);
+      }
 
-
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert("없는 주소입니다.");
+          }
+        });
+      }
+    </script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
+    </script>
 </div>
 </body>
 </html>

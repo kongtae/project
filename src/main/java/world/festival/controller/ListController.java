@@ -2,7 +2,6 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,7 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
-import world.festival.dao.ReplyService;
+import world.festival.dao.UserMapper;
+import world.festival.service.ListService;
+//import world.festival.dao.ReplyService;
+import world.festival.service.ListService;
 import world.festival.service.ListService;
 
 
@@ -33,6 +34,9 @@ public class ListController {
 	
 	@Autowired
 	private ListService service;
+	
+	@Autowired
+//	private ReplyService service;
 	
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
@@ -56,7 +60,10 @@ public class ListController {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
+<<<<<<< HEAD
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
+=======
+>>>>>>> 0464ec39aa0ecaaee51fdcde121310747dd8481f
 		boolean result = service.writeFestival(vo,request);
 		System.out.println("result:"+result);
 		return "success"; 
@@ -84,9 +91,17 @@ public class ListController {
 		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
+	
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
+		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
+		System.out.println("댓글 리스트 "+replylist);
+		System.out.println(vo1);
+		model.addAttribute("vo", vo1);
+		//댓글 갯수
+		model.addAttribute("replycount", replylist.size());
+		model.addAttribute("replylist", replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
 		return "list/ListDetail";

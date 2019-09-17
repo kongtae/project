@@ -1,14 +1,10 @@
 package world.festival.service;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
 
 @Service
@@ -26,7 +23,10 @@ public class ListService {
 	
 
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 0464ec39aa0ecaaee51fdcde121310747dd8481f
 		String path = "C:/test/";
 		
 		File dir = new File(path);
@@ -54,10 +54,14 @@ public class ListService {
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
+
 		return true;
 
+<<<<<<< HEAD
 
 		
+=======
+>>>>>>> 0464ec39aa0ecaaee51fdcde121310747dd8481f
 	}
 
 	public boolean deleteFestival(ListVO vo) {
@@ -82,8 +86,9 @@ public class ListService {
 		return dao.selectOne2(map);
 	}
 
-	public ArrayList<ListVO> printAll() {
-		return dao.printAll();
+
+	public ArrayList<ReplyVO> replyList(int boardnum) {
+		return dao.replyList(boardnum);
 	}
 
 	public boolean updateFestival(ListVO vo, MultipartHttpServletRequest request) {

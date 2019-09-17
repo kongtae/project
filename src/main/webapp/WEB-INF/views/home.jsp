@@ -280,7 +280,7 @@
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="/festival"><img src="images/logo-2.png" alt=""></a>
+							<a href="festival"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
 					<ul class="footer-menu">

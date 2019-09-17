@@ -22,14 +22,22 @@
 		MAINBOARDNUM,
 		USERID,
 		REPLYTEXT,
+		originalFileName,
 		INPUTDATE
 		)
 	VALUES (
-		<!-- #{userid}, -->
 		REPLY_SEQ.nextval,
 		#{mainboardnum},
 		#{userid},
 		#{replytext},
+		<choose>
+			<when test="originalFileName != null ">
+			#{originalFileName},
+			</when>
+			<otherwise>
+			null,
+			</otherwise>
+		</choose>
 		sysdate
 	)
 </insert>
