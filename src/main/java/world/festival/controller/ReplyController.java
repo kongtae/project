@@ -19,9 +19,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
+import world.festival.VO.UserVO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.ReplyDAO;
 import world.festival.service.ReplyService;
+import world.festival.service.UserService;
 
 
 @Controller
@@ -33,15 +35,32 @@ public class ReplyController {
 	@Autowired
 	private ReplyService service;
 	
+	@Autowired
+	private UserService uservice;
+	
 	
 //	return "redirect:/board/boardRead?boardnum="+vo.getBoardnum();
 	//댓글 달기
 		@RequestMapping(value = "/replywrite", method = RequestMethod.POST)
 		public String replywrite(ReplyVO vo,RedirectAttributes rttr, HttpSession session,MultipartFile uploadFile) {
-			vo.setUserid((String)session.getAttribute("loginid"));
-//			vo.setUsername((String)session.getAttribute("username"));
-			System.out.println("로그인 아이디가 아니야?"+(String)session.getAttribute("loginid"));
+			String loginid=(String)session.getAttribute("loginid");
+			UserVO userpoto=uservice.selectpot(loginid);
+			vo.setUserid(loginid);
+			System.out.println("오리지널파일네임"+userpoto.getOriginalFileName());
+			if(userpoto.getOriginalFileName()==null || userpoto.getOriginalFileName().equals("null"))
+			{
+				System.out.println("null일때 들어오는 곳");
+//				userpoto.setOriginalFileName("기본아이콘사진이");
+//				vo.setOriginalfilename(userpoto.getOriginalFileName());
+				boolean result = service.replywrite(vo);
+				rttr.addFlashAttribute("replywrite", result);
+				return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum();
+			}
+			vo.setOriginalFileName(userpoto.getOriginalFileName());
 			
+			System.out.println("사진 글자는 무엇이 들어오는가"+userpoto);
+//			vo.setUsername((String)session.getAttribute("username"));
+			System.out.println("로그인 아이디가 아니야?"+loginid);
 			System.out.println("아이디 잘 들어갔는지 확인:"+vo);
 			boolean result = service.replywrite(vo);
 			rttr.addFlashAttribute("replywrite", result);

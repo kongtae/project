@@ -46,4 +46,10 @@ public class UserDAO {
 		return result;
 	}
 
+	public UserVO selectpot(String loginid) {
+		// TODO Auto-generated method stub
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		return mapper.selectpot(loginid);
+	}
+
 }

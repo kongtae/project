@@ -323,6 +323,9 @@
                          <div class="event-details">
                          	<div>
                          <h1><b>祭りの詳細情報<b></b></h1>
+
+
+
                          	</div>
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">

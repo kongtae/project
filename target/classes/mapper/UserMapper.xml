@@ -75,4 +75,15 @@
 		userid = #{userid}
 </update>
 
+<!-- 사진 찾아오기 -->
+<select id="selectpot" parameterType="UserVO" resultType="UserVO">
+	select
+		*
+	from
+	 	member
+	 where
+	 	userid=#{userid}
+</select>
+
+
 </mapper>
