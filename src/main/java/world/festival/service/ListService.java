@@ -1,14 +1,10 @@
 package world.festival.service;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,29 +23,6 @@ public class ListService {
 	
 
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
-		/*if(!uploadFileName.isEmpty()){
-			String savedFilename = UUID.randomUUID().toString();
-			String originalFilename = uploadFileName.getOriginalFilename();
-
-			vo.setOriginalFileName(originalFilename);
-			vo.setSaveFileName(savedFilename);
-			System.out.println("���񽺴���  vo�� "+vo);
-
-			try {
-				uploadFileName.transferTo(new File("C:/test/"+savedFilename));
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-		int result = dao.writeFestival(vo);
-		if(result != 1){return false;}
-		System.out.println("���񽺿����� ����Ʈ��"+result);
-<<<<<<< HEAD
-=======
-		return true;*/
-		
-		
 		String path = "C:/test/";
 		
 		File dir = new File(path);
@@ -76,47 +49,7 @@ public class ListService {
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
->>>>>>> d31b45e75883f7dc6a29c929e35a11af33ad1612
 		return true;
-		
-/*		String path = "C:/test/";
-		String fileName="";
-		File dir = new File(path);
-		if(!dir.isDirectory()){
-			dir.mkdir();
-		}
-		Iterator<String> files = request.getFileNames();
-		MultipartFile mpf = request.getFile(files.next());
-		System.out.println("files "+files);
-		System.out.println("mpf  "+mpf);
-		if(mpf==null||mpf.getSize()<=0){
-			System.out.println("파일용량xxx" );
-			return false;
-		}
-		List<MultipartFile>fileList = request.getFiles("file");
-		System.out.println("fileList  "+fileList);
-		for(MultipartFile filePart:fileList){
-			fileName = filePart.getOriginalFilename();
-			System.out.println("실제파일 이름 " + fileName );
-			long fileSize = filePart.getSize();
-			System.out.println("파일사이즈 : "+fileSize);
-		if(!fileName.equals("")){
-			try {
-				FileOutputStream fs = new FileOutputStream(path+fileName);
-				fs.write(filePart.getBytes());
-				fs.close();
-			} 
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		}
-		int result = dao.writeFestival(vo);
-		if(result != 1){return false;}
-		System.out.println("등록 결과 값: "+result);
-		return true;*/
-		
 	}
 
 	public boolean deleteFestival(ListVO vo) {
