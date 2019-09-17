@@ -59,6 +59,7 @@
 		userid = #{userid}
 </select>
 
+<!-- 수정 -->
 <update id="updateMember" parameterType="UserVO">
 	UPDATE
 		member
@@ -75,6 +76,7 @@
 		userid = #{userid}
 </update>
 
+<<<<<<< HEAD
 <!-- 사진 찾아오기 -->
 <select id="selectpot" parameterType="UserVO" resultType="UserVO">
 	select
@@ -86,4 +88,15 @@
 </select>
 
 
+=======
+<!-- 마이페이지 회원정보 출력 -->
+<select id="memberSelect" parameterType="String" resultType="UserVO">
+	SELECT
+		*
+	FROM
+		member
+	WHERE
+		userid = #{userid}
+</select>
+>>>>>>> 33e902f3a898494709459b8c48910ad5b1fc02ac
 </mapper>

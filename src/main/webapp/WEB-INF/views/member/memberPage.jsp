@@ -61,6 +61,27 @@
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
 
+$(function() {
+	memberSelect();
+});
+
+function memberSelect(){
+	
+	$.ajax({
+		url : "memberSelect",
+		type : "post",
+		success : function(result) {
+			if(result.originalFileName != null) {
+				originalFileName = "resources/images/userimage/" +result.originalFileName;
+			$('#profileImage').attr("src", originalFileName);
+			}
+		},
+		error : function() {
+			alert("실패");
+		}
+	});
+	
+}
 
 
 </script>
@@ -446,7 +467,7 @@
 						<div class="box box-primary">
 							<div class="box-body box-profile">
 								<img class="profile-user-img img-responsive img-circle"
-									src="dist/img/user4-128x128.jpg" alt="User profile picture">
+									src="dist/img/user4-128x128.jpg" id="profileImage" alt="User profile picture">
 
 								<h3 class="profile-username text-center">Nina Mcintire</h3>
 

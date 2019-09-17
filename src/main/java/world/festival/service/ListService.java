@@ -1,14 +1,10 @@
 package world.festival.service;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
 
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +23,6 @@ public class ListService {
 	
 
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
-		
 		String path = "C:/test/";
 		
 		File dir = new File(path);
@@ -56,7 +51,6 @@ public class ListService {
 		System.out.println("등록 결과 값: "+result);
 
 		return true;
-		
 
 	}
 

@@ -2,7 +2,6 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,18 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
-import world.festival.VO.UserVO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.UserMapper;
 import world.festival.service.ListService;
 //import world.festival.dao.ReplyService;
+import world.festival.service.ListService;
 import world.festival.service.ListService;
 
 
@@ -80,13 +78,7 @@ public class ListController {
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
-//		
-//		UserVO membervo = dao.searchmember(vo);
-		//댓글 출력도 같이
 		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
-//		for (int i = 0; i < replylist.size(); i++) {
-//			replylist.get(i).setInputdate(replylist.get(i).getInputdate().substring(0,10));
-//		}
 		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);

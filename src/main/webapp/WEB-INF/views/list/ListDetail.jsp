@@ -22,6 +22,14 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+     <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #googleMap {
+        height: 500px;
+        width: 770px;
+      }
+    </style>
     <script src="js/jquery.js"></script>
  <script>
  
@@ -387,21 +395,12 @@
                             </table>
                         </div>
                     </div>
-                    <!--Map Outer-->
-                    <div class="map-outer">
-                        <!--Map Canvas-->
-                        <div class="map-canvas"
-                            data-zoom="12"
-                            data-lat="-37.815038"
-                            data-lng="144.967359"
-                            data-type="roadmap"
-                            data-hue="#ffc400"
-                            data-title="184 Collins Street West Victoria,"
-                            data-icon-path="images/icons/map-marker.png"
-                            data-content="184 Collins Street West Victoria<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
+                    
+                        <div>
+                        <input type="hidden" id="address" value="${vo.adress}">
+                    	<input id="submit" type="button" value="Geocode">
                         </div>
-                    </div>
-                </div>
+                    <div id="googleMap"></div>
             </div>
         </div>                
     </div>
@@ -558,12 +557,34 @@
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
+          zoom: 18,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+            geocodeAddress(geocoder, map);
+      }
 
-
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert("없는 주소입니다.");
+          }
+        });
+      }
+    </script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
+    </script>
 </div>
 </body>
 </html>
