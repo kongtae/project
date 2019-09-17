@@ -64,13 +64,14 @@ function writeFestival() {
 		
 		$.ajax({
 			url:"writeFestival",
-			//enctype: 'multipart/form-data',
+			enctype: 'multipart/form-data',
 			data:formData,
 			type:"post",
 			contentType:false,
 			processData:false,
+			dataType : 'text',
 			//cache: false,
-			success: function() {
+			success: function(data) {
 				alert("投稿完了");
 				location.href ="listForm";
 			},
@@ -111,8 +112,8 @@ function writeFestival() {
 					<!--Social Box-->
 					<ul class="social-box">
 						<c:if test="${seccionScope.loginid==null}">
-							<li><a href="registermember">会員登録</a></li>
-							<li><a href="loginForm">ログイン</a></li>
+							<li><a href="registermember">Sign up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
@@ -284,11 +285,20 @@ function writeFestival() {
                         </figure>
                     </div> -->
                     <div id="preview">
+                    </div><br>
+                    <div id="preview2">
+                    </div><br>
+                    <div id="preview3">
                     </div>
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> ファイル添付
-                  <input type="file" id="uploadFileName" name="uploadFileName" accept="image/png,image/jpg,image/gif,image/jpeg"> 
+                <i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
+			 	<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
+				<i class="fa fa-paperclip"></i> ファイル添付	
+					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+
                 </div>
               </div> 
                 <div class="box-footer">
@@ -474,7 +484,11 @@ function writeFestival() {
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
+    var upload2 = document.querySelector('#uploadFileName2');
+    var upload3 = document.querySelector('#uploadFileName3');
     var preview = document.querySelector('#preview');
+    var preview2 = document.querySelector('#preview2');
+    var preview3 = document.querySelector('#preview3');
  
     upload.addEventListener('change',function (e) {
         var get_file = e.target.files;
@@ -506,11 +520,66 @@ function writeFestival() {
         }
 
         $('#removeImg').empty();
+        $('#preview').empty();
         preview.appendChild(image);
     });
     
+    upload2.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview2').empty();
+        preview2.appendChild(image);
+    });
+    
+    upload3.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview3').empty();
+        preview3.appendChild(image);
+    }); 
+    
 	 $("#reset").click(function () { 
  	 	 $('#preview').empty();
+ 	 	 $('#preview2').empty();
+ 	 	 $('#preview3').empty();
 	 });
 </script>
 </html>

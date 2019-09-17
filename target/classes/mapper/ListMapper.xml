@@ -8,7 +8,7 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName,saveFileName)
+		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName)
 	VALUES (
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
@@ -20,11 +20,11 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null">
-			,#{originalFileName},#{saveFileName}
+			<when test="originalFileName != null ">
+			,#{originalFileName}
 			</when>
 			<otherwise>
-			,null,null
+			,null
 			</otherwise>
 		</choose>
 	)
