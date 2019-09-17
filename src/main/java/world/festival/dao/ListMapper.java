@@ -25,5 +25,7 @@ public interface ListMapper {
 
 	public int updateFestival(ListVO vo);
 
+	public ListVO imagePrint(ListVO vo);
+
 	
 }

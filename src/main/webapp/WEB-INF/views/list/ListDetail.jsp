@@ -5,7 +5,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <title>Wiscon || Responsive HTML 5 Template</title>
@@ -34,7 +33,34 @@
  <script>
  
  $(function () {
+ 	imagePrint();
+ 
  });
+ 	
+ 	var originalFileName = "";
+ 	var mainb = ${vo.mainBoardNum};
+ 	var imageData = {'mainBoardNum' : mainb};
+ 	function imagePrint() {
+	 		$.ajax({
+				url : "imagePrint",
+				type : "post",
+				data : imageData,
+				dataType: 'json',
+				success : function(result) {
+					if(result != null) {
+						$.each(result,function(index,item){
+							originalFileName = "resources/images/userimage/" +item;
+							$('#preview'+index).attr("src", originalFileName);
+						})
+					}
+				},
+				error : function() {
+					alert("실패");
+				}
+			});
+		}
+ 	
+ 	
  	function UpdateFestival() {
  		location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
 	}
@@ -318,16 +344,25 @@
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-                    <div id="preview">
-                    </div>
+                    
                 </div>
             </div>
+            	<div class="image-box">
+            		<input type="image" src="" id="preview0">
+                    <br>
+                    <input type="image" src="" id="preview1">
+                    <br>
+                    <input type="image" src="" id="preview2">
+            	</div>
+            
+            
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
            <!--              <figure>
                             <img src="images/resources/schedule-10.jpg" alt="">
                         </figure> -->
+                        
                          <div class="event-details">
                          	<div>
                          <h1><b>祭りの詳細情報<b></b></h1>

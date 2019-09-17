@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +23,8 @@ public class ListService {
 	
 
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
-<<<<<<< HEAD
 		
-=======
->>>>>>> 0464ec39aa0ecaaee51fdcde121310747dd8481f
-		String path = "C:/test/";
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
 		
 		File dir = new File(path);
 		if(!dir.isDirectory()){
@@ -35,6 +32,7 @@ public class ListService {
 		}
 		
 		Iterator<String> files = request.getFileNames();
+		String savedFilename = UUID.randomUUID().toString();
 		System.out.println("files"+files);
 		String fileName = "";
 		while(files.hasNext()){
@@ -42,6 +40,7 @@ public class ListService {
 			MultipartFile mFile = request.getFile(uploadFile);
 			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
+			vo.setSaveFileName(savedFilename);
 			vo.setOriginalFileName(fileName);
 			try {
 				mFile.transferTo(new File(path+fileName));
@@ -57,11 +56,8 @@ public class ListService {
 
 		return true;
 
-<<<<<<< HEAD
 
 		
-=======
->>>>>>> 0464ec39aa0ecaaee51fdcde121310747dd8481f
 	}
 
 	public boolean deleteFestival(ListVO vo) {
@@ -93,8 +89,8 @@ public class ListService {
 
 	public boolean updateFestival(ListVO vo, MultipartHttpServletRequest request) {
 	
-		String oldOriginalFilename = vo.getOriginalFileName();
-		String path = "C:/test/";
+		String oldSaveFileName = vo.getSaveFileName();
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
 		
 		File dir = new File(path);
 		if(!dir.isDirectory()){
@@ -102,12 +98,14 @@ public class ListService {
 		}
 		
 		Iterator<String> files = request.getFileNames();
+		String savedFilename = UUID.randomUUID().toString();
 		System.out.println("files"+files);
 		while(files.hasNext()){
 			String uploadFile = files.next();
 			MultipartFile mFile = request.getFile(uploadFile);
 			String fileName = mFile.getOriginalFilename();
 			System.out.println("실제파일이름"+fileName);
+			vo.setSaveFileName(savedFilename);
 			vo.setOriginalFileName(fileName);
 			try {
 				mFile.transferTo(new File(path+fileName));
@@ -122,7 +120,7 @@ public class ListService {
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
 		
-		File file = new File("C:/test/" + oldOriginalFilename);
+		File file = new File(path + oldSaveFileName);
 		if(file.exists()){
 		file.delete();
 		}

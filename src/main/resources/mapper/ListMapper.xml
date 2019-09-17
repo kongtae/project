@@ -8,7 +8,7 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName)
+		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName,saveFileName)
 	VALUES (
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
@@ -20,11 +20,11 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null ">
-			,#{originalFileName}
+			<when test="originalFileName != null and saveFileName !=null">
+			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
-			,null
+			,null,null
 			</otherwise>
 		</choose>
 	)
@@ -79,11 +79,16 @@
 		inputTime = #{inputTime},
 		startEvent = #{startEvent},
 		endEvent = #{endEvent}
-		<if test="originalFileName != null">
+		<if test="originalFileName != null and saveFileName !=null">
 			, originalfileName = #{originalFileName}
+			,saveFileName = #{saveFileName}
 		</if>
 				WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
-
+<select id="imagePrint" parameterType="ListVO" resultType="ListVO">
+		select originalFileName from MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</select>
 </mapper>

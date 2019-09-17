@@ -300,8 +300,6 @@ function writeFestival() {
                     </div><br>
                     <div id="preview3">
                     </div>
-                <div class="form-group">
-                <div class="btn btn-default btn-file">
                 <i class="fa fa-paperclip"></i> ファイル添付
                 	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
 			 	<i class="fa fa-paperclip"></i> ファイル添付
@@ -309,8 +307,6 @@ function writeFestival() {
 				<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 
-                </div>
-              </div> 
                 <div class="box-footer">
               <div class="pull-right">
               <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
@@ -608,7 +604,6 @@ function writeFestival() {
  
             return function (e) {
                 console.log(3);
-                /* base64 인코딩 된 스트링 데이터 */
                 aImg.src = e.target.result
             }
         })(image)

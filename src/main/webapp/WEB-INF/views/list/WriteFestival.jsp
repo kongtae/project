@@ -322,7 +322,6 @@ function writeFestival() {
                 <div class="shedule-right-side">
                     <div class="image-box">
 					    <section class="content">
-					      <div class="row">
 					        <!-- /.col -->
 					        <div class="col-md-9">
 					          <div class="box box-primary">
@@ -334,7 +333,7 @@ function writeFestival() {
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" >
 					              </div>
 					              <div class="form-group">
-					                    <!-- <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea> -->
+					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea> 
 									<div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -363,7 +362,7 @@ function writeFestival() {
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                    <textarea id="editor1" name="festival_intro" rows="10" cols="80">
+      <!--               <textarea id="editor1" name="festival_intro" rows="10" cols="80"> -->
                     </textarea>
             </div>
           </div>
@@ -387,10 +386,8 @@ function writeFestival() {
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-              <form>
                 <textarea class="textarea" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-              </form>
             </div>
           </div>
         </div>
