@@ -66,6 +66,11 @@ public class ListDAO {
 		return mapper.replyList(boardnum);
 	}
 
+	public int updateFestival(ListVO vo) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.updateFestival(vo);
+	}
+
 
 
 }

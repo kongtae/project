@@ -27,7 +27,7 @@
  $(function () {
  });
  	function UpdateFestival() {
- 		location.href="updateFestival?mainBoardNum=${vo.mainBoardNum}";
+ 		location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
 	}
   	function DeleteFestival() {
   			if(confirm("삭제하시겠습니까?")){

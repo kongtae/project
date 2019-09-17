@@ -53,20 +53,27 @@ public class ListController {
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String writeFestival(ListVO vo, HttpSession session,/* MultipartFile uploadFileName,*/ MultipartHttpServletRequest request , RedirectAttributes rttr) {
-		//List<MultipartFile> fileList = request.getFiles("uploadFileName");
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
-		//System.out.println("uploadFileName 총 몇개? "+uploadFileName);
-		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
 		boolean result = service.writeFestival(vo,request);
-		//System.out.println("uploadfile "+uploadFileName.getOriginalFilename());
-//		boolean result = service.writeFestival(vo,uploadFileName);
 		System.out.println("result:"+result);
-		//rttr.addFlashAttribute("insertresult", result);
 		return "success"; 
 	}
+	
+	@RequestMapping(value = "/updateFestival", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String updateFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request , RedirectAttributes rttr) {
+		String userid = (String)session.getAttribute("loginid");
+		vo.setUserid(userid);
+		System.out.println("업데이트VO: "+vo);
+		System.out.println("리퀘스트 총 몇개? " +request.toString());
+		boolean result = service.updateFestival(vo,request);
+		System.out.println("result:"+result);
+		return "success"; 
+	}
+	
 	
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
@@ -106,7 +113,7 @@ public class ListController {
 		return selectOne2;
 		}
 	
-	@RequestMapping(value = "/updateFestival", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateFestivalGO", method = RequestMethod.GET)
 	public String updateFestival(String mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);

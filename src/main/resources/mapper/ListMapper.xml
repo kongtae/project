@@ -67,5 +67,23 @@
 		mainBoardNum = #{mainBoardNum}
 </select>
 
+<update id="updateFestival" parameterType="ListVO">
+	UPDATE
+		MAINBOARD
+	SET
+	
+		title = #{title},
+		country = #{country},
+		adress = #{adress},
+		festival_intro = #{festival_intro},
+		inputTime = #{inputTime},
+		startEvent = #{startEvent},
+		endEvent = #{endEvent}
+		<if test="originalFileName != null">
+			, originalfileName = #{originalFileName}
+		</if>
+				WHERE 
+		mainBoardNum = #{mainBoardNum}
+</update>
 
 </mapper>
