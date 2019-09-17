@@ -134,4 +134,14 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
+	
+	//수정창에 출력
+		@RequestMapping(value = "/memberSelect", method = RequestMethod.POST)
+		@ResponseBody
+		public UserVO memberSelect(HttpSession session) {
+			String id = (String)session.getAttribute("loginid");
+			UserVO vo = dao.memberSelect(id);
+			return vo;
+		}
+	
 }

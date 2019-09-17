@@ -10,5 +10,6 @@ public interface UserMapper {
 	public int withdraw(String id);
 	public UserVO select(String id);
 	public int updateMember(UserVO vo);
+	public UserVO memberSelect(String id);
 	
 }
