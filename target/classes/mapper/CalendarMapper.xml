@@ -8,7 +8,7 @@
   <!-- 달력 출력 -->
 <select id="selectCalendar" resultType="ListVO">
 		SELECT
-			*
+			MAINBOARDNUM, TITLE, STARTEVENT+1 AS STARTEVENT, ENDEVENT+1 AS ENDEVENT
 		FROM
 			MAINBOARD
 </select>

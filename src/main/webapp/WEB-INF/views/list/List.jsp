@@ -82,18 +82,33 @@
 		}
 		
 		if(searchItem=="hashSearch"){
-			$('#hash').append(" "+searchKeyword+" ");
+			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
+			/* var a = [];
+			a += searchkeyword;
+			$.ajax({
+			type:'POST',
+			url : 'hashSearch',					
+			data: {A: A},
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패");
+			}
+		}) 
 			return false;
-			/* $.ajax({
+			S.ONCLIK
+			A -= SEARCHKEYWORD;
+			$.ajax({
 				type:'POST',
 				url : 'hashSearch',					
-				data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
+				data: {A: A},
 				dataType: 'json',
 				success : output,
 				error: function() {
 					alert("리스트 불러오기 실패");
 				}
-			}) */
+			}) 			 */
+			return false;
 		}
 		
 		
@@ -352,9 +367,9 @@
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
 				<form action="searchList" method="get">
-					<div id="hash">
 					
-					</div>
+					<div id="hash"></div>
+					
 					<table>
 					
 					<tr><td>

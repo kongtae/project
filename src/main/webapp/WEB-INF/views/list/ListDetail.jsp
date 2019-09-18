@@ -456,7 +456,7 @@
                     <div class="image-box">
                         <figure>
                             <img src="images/testimonials/4.png" alt="">
-                                             여기가 사용자가 등록한 사진 들어올 곳
+                                             <!-- 여기가 사용자가 등록한 사진 들어올 곳 -->
                              ${membervo.originalFileName}
                         </figure>
 <%--                         <h6>${vo.userid}</h6> --%>
