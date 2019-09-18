@@ -403,7 +403,7 @@ function writeFestival() {
 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
 										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
-					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
+					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
