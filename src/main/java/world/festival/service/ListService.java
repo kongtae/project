@@ -35,15 +35,17 @@ public class ListService {
 		String savedFilename = UUID.randomUUID().toString();
 		System.out.println("files"+files);
 		String fileName = "";
+		String fileName1 = "";
 		while(files.hasNext()){
 			String uploadFile = files.next();
 			MultipartFile mFile = request.getFile(uploadFile);
+			fileName1 = mFile.getOriginalFilename();
 			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
 			vo.setSaveFileName(savedFilename);
 			vo.setOriginalFileName(fileName);
 			try {
-				mFile.transferTo(new File(path+fileName));
+				mFile.transferTo(new File(path+fileName1));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -100,15 +102,18 @@ public class ListService {
 		Iterator<String> files = request.getFileNames();
 		String savedFilename = UUID.randomUUID().toString();
 		System.out.println("files"+files);
+		String fileName1="";
+		String fileName="";
 		while(files.hasNext()){
 			String uploadFile = files.next();
 			MultipartFile mFile = request.getFile(uploadFile);
-			String fileName = mFile.getOriginalFilename();
+			fileName1 = mFile.getOriginalFilename();
+			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
 			vo.setSaveFileName(savedFilename);
 			vo.setOriginalFileName(fileName);
 			try {
-				mFile.transferTo(new File(path+fileName));
+				mFile.transferTo(new File(path+fileName1));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

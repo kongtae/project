@@ -62,7 +62,6 @@ $(function() {
 				result33.setAttribute("type", "hidden");
 				$("#insertmark").empty();
 			}
-
 		}
 		
 		
@@ -116,7 +115,7 @@ $(function() {
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"</td>";
 		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
+		context += "<td class='Session'>"+item.adress+"</td></tr>";
 		})
 		$("#list").html(context);
 		
@@ -127,11 +126,6 @@ $(function() {
 		
 	}
 	
-/* 	function page() {
-		var reSortColors = function($table) {
-			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
-			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
-			 }; */
 
 </script>
 </head>
@@ -341,9 +335,6 @@ $(function() {
 				<form action="searchList" method="get">
 					<table><tr><td>
 					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
-					<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
-					ユーザー名
-					</option>
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
@@ -352,6 +343,9 @@ $(function() {
 					</option>
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
+					</option>
+					<option value="adress" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					住所
 					</option>
 					</select>
 					</td>
@@ -370,7 +364,7 @@ $(function() {
                                     <th class="session">タイトル</th>
                                     <th class="time">国家</th>
                                     <th class="speakers">期間</th>
-                                    <th class="venue">ユーザー名</th>
+                                    <th class="venue">住所</th>
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
