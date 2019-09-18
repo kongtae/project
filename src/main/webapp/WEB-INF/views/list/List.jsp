@@ -65,6 +65,7 @@ $(function() {
 
 		}
 		
+		
 	function selectOne(value) {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
@@ -82,7 +83,7 @@ $(function() {
 		}
 		
 		$.ajax({
-			type:'GET',
+			type:'POST',
 			url : 'selectOne',					
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
 			dataType: 'json',

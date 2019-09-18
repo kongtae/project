@@ -98,7 +98,7 @@ public class ListController {
 		model.addAttribute("replylist", replylist);
 		return "list/ListDetail";
 	}
-	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {

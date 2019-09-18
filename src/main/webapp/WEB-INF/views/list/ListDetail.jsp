@@ -34,7 +34,7 @@
  
  $(function () {
  	imagePrint();
- 
+ 	
  });
  	
  	var originalFileName = "";
@@ -50,7 +50,8 @@
 					if(result != null) {
 						$.each(result,function(index,item){
 							originalFileName = "resources/images/userimage/" +item;
-							$('#preview'+index).attr("src", originalFileName);
+						/*  	$('#preview'+index).attr("src", originalFileName); */ 
+					 	$('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
 						})
 					}
 				},
@@ -344,16 +345,16 @@
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-                    
-                </div>
-            </div>
-            	<div class="image-box">
-            		<input type="image" src="" id="preview0">
+                    <div class="image-box" id="image-box">
+        <!--     		<input type="" src="" id="preview0">
                     <br>
                     <input type="image" src="" id="preview1">
                     <br>
-                    <input type="image" src="" id="preview2">
+                    <input type="image" src="" id="preview2"> -->
             	</div>
+                </div>
+            </div>
+
             
             
             <div class="col-xl-8 col-md-12 col-sm-12">

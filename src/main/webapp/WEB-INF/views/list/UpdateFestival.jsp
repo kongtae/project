@@ -63,9 +63,14 @@
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
+	var se = ${vo.startEvent};
+	
+	function() {
+		$("#startEvent").val();
+	};
 
 
-function writeFestival() {
+function writeFestival() {	
 
 		var form = $("#updateFestivalID")[0];
 		var formData = new FormData(form);
@@ -403,8 +408,8 @@ function writeFestival() {
   <!-- /.content-wrapper -->
 									
 									<table>	
-										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
+										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="${vo.startEvent }" id="startEvent">から</td></tr>
+										<tr><td>祭りの終了日：<input type="date" name="endEvent" value="${vo.endEvent }" id="endEvent">まで行います。</td></tr>
 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br> 
 					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}"></td></tr>
 					             	</table> 
