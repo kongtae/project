@@ -20,6 +20,7 @@ import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
 import world.festival.service.ListService;
+import world.festival.service.WishService;
 //import world.festival.dao.ReplyService;
 
 
@@ -33,8 +34,8 @@ public class ListController {
 	private ListService service;
 	
 	@Autowired
+	private WishService weservice;
 //	private ReplyService service;
-	
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -79,9 +80,7 @@ public class ListController {
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
-
 		System.out.println("리스트 출력"+list);
-//		ArrayList<ListVO> list = service.printAll();
 		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}
@@ -137,6 +136,29 @@ public class ListController {
 		rttr.addFlashAttribute("deleteResult", result);
 		return "redirect:/listForm"; 
 	}
+//	좋아요를 하고싶다!!!	
+//	 ArrayList<ListVO>
+	@RequestMapping(value = "insertwish", method = RequestMethod.GET)
+	public @ResponseBody String like(ListVO vo,RedirectAttributes rttr, HttpSession session, Model model) {
+		String loginid=(String)session.getAttribute("loginid");
+		vo.setUserid(loginid);
+		vo.setMainBoardNum(vo.getMainBoardNum());
+		weservice.insertwish(vo);
+		System.out.println("if가기전"+vo);
+		if(vo.getOriginalFileName()==null || vo.getOriginalFileName().equals("null") || vo.getOriginalFileName().equals(""))
+		{
+			System.out.println("사진이 널일 때");
+			vo.setOriginalFileName("like.png");
+			model.addAttribute("like", "likeclick");
+			System.out.println("if안에서의"+vo);
+			return "data";
+		}
+		
+//		boolean result = service.deleteFestival(vo);
+		System.out.println("like눌렀을시 올 vo"+vo);
+//		rttr.addFlashAttribute("deleteResult"/*, result*/);
+		return "data";
+}
 	@RequestMapping(value = "/imagePrint", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrint(ListVO vo) {

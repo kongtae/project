@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="world.festival.dao.WishMapper">
+
+<!-- 회원가입 -->	
+
+<!-- 	private int wishlistnum; -->
+<!-- 	private int mainboardnum; -->
+<!-- 	private String userid; -->
+<!-- 	private String inputtime; -->
+<insert id="insertwish" parameterType="ListVO">
+	INSERT INTO
+		member
+		(
+		 wishlist_num,
+		 userid,
+		 )
+	VALUES 
+	    (
+		null,
+		#{userid},
+		#{username},
+		#{userpwd},
+		#{email}
+	    )
+</insert>
+
+
+
+<!-- 마이페이지 회원정보 출력 -->
+<!-- <select id="memberSelect" parameterType="String" resultType="UserVO"> -->
+<!-- 	SELECT -->
+<!-- 		* -->
+<!-- 	FROM -->
+<!-- 		member -->
+<!-- 	WHERE -->
+<!-- 		userid = #{userid} -->
+<!-- </select> -->
+
+</mapper>

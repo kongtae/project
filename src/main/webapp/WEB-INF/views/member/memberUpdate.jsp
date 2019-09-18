@@ -271,9 +271,9 @@
 										<ul>
 											<li><a href="#">Map</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="#">Board</a>
+									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
-											<li><a href="#">Board</a></li>
+											<li><a href="boardList">Board</a></li>
 										</ul></li>
 								</ul>
 							</div>

@@ -45,15 +45,14 @@ public class ListService {
 			fileName1 = mFile.getOriginalFilename();
 			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
-			vo.setSaveFileName(savedFilename);
-			vo.setOriginalFileName(fileName);
 			try {
 				mFile.transferTo(new File(path+fileName1));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			
+			vo.setSaveFileName(savedFilename);
+			vo.setOriginalFileName(fileName);
 		}
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
@@ -98,10 +97,11 @@ public class ListService {
 	}
 
 	public boolean updateFestival(ListVO vo, MultipartHttpServletRequest request) {
-	
+
 		String oldSaveFileName = vo.getSaveFileName();
 		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
-		
+		int result;
+
 		File dir = new File(path);
 		if(!dir.isDirectory()){
 			dir.mkdir();
@@ -118,24 +118,23 @@ public class ListService {
 			fileName1 = mFile.getOriginalFilename();
 			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
-			vo.setSaveFileName(savedFilename);
-			vo.setOriginalFileName(fileName);
 			try {
 				mFile.transferTo(new File(path+fileName1));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			
-		}
 		
-		int result = dao.updateFestival(vo);
+			vo.setSaveFileName(savedFilename);
+			vo.setOriginalFileName(fileName);
+		}
+		result = dao.updateFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
 		
 		File file = new File(path + oldSaveFileName);
 		if(file.exists()){
-		file.delete();
+			file.delete();
 		}
 		
 		return true;

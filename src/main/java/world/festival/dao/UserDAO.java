@@ -55,5 +55,12 @@ public class UserDAO {
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 		return mapper.memberSelect(id);
 	}
+	
+	public int updateReply(UserVO vo) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		int result = mapper.updateReply(vo);
+		System.out.println("result : " + result);
+		return result;
+	}
 
 }

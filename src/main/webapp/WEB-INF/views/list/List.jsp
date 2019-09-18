@@ -80,7 +80,7 @@
 			return false;
 		}
 		}
-		
+
 		if(searchItem=="hashSearch"){
 			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
 			/* var a = [];
@@ -119,7 +119,7 @@
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("리스트 불러오기 실패1");
 			}
 		})
 		
@@ -134,7 +134,7 @@
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("리스트 불러오기 실패2");
 			}
 		})
 	}
@@ -142,18 +142,22 @@
 	function output(result) {
 		var context = '';
 		$.each(result,function(index,item){
-		if(item.endEvent==null||item.endEvent==""){
-			item.endEvent=" ";
-		}
 			var s = new Date(item.startEvent);
-			var e = new Date(item.endEvent);
 	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
-	    	var end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"</td>";
 		context += "<td class='Session'>"+start+"~"+end+"</td>";
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
+		context += "<td class='Session'>"+item.adress+"</td></tr>";
 		})
 		$("#list").html(context);
 		
@@ -267,9 +271,9 @@
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -323,9 +327,9 @@
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
