@@ -19,12 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
-import world.festival.dao.UserMapper;
 import world.festival.service.ListService;
 import world.festival.service.WishService;
 //import world.festival.dao.ReplyService;
-import world.festival.service.ListService;
-import world.festival.service.ListService;
 
 
 @Controller
@@ -61,10 +58,24 @@ public class ListController {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
+		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		boolean result = service.writeFestival(vo,request);
 		System.out.println("result:"+result);
 		return "success"; 
 	}
+	
+	@RequestMapping(value = "/updateFestival", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public String updateFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request , RedirectAttributes rttr) {
+		String userid = (String)session.getAttribute("loginid");
+		vo.setUserid(userid);
+		System.out.println("업데이트VO: "+vo);
+		System.out.println("리퀘스트 총 몇개? " +request.toString());
+		boolean result = service.updateFestival(vo,request);
+		System.out.println("result:"+result);
+		return "success"; 
+	}
+	
 	
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
@@ -86,11 +97,9 @@ public class ListController {
 		//댓글 갯수
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
-		System.out.println(vo1);
-		model.addAttribute("vo", vo1);
 		return "list/ListDetail";
 	}
-	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
@@ -112,14 +121,12 @@ public class ListController {
 		return selectOne2;
 		}
 	
-	@RequestMapping(value = "/updateFestival", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateFestivalGO", method = RequestMethod.GET)
 	public String updateFestival(String mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);
-		String startEvent1 = vo.getStartEvent();
 		System.out.println("수정할 페이지 찾았나? "+vo);
 		model.addAttribute("vo", vo);
-		model.addAttribute("startEvent1", startEvent1);
 		return "list/UpdateFestival";
 	}
 	
@@ -153,6 +160,23 @@ public class ListController {
 		System.out.println("like눌렀을시 올 vo"+vo);
 //		rttr.addFlashAttribute("deleteResult"/*, result*/);
 		return "data";
+}
+	@RequestMapping(value = "/imagePrint", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public ArrayList<String> imagePrint(ListVO vo) {
+		System.out.println("이미지프린트 받은 보드넘 : "+vo.getMainBoardNum());
+		ListVO lvo = dao.imagePrint(vo);
+		System.out.println("lvo : " + lvo);
+		ArrayList<String> ilist = new ArrayList<>();
+		String a[] = lvo.getOriginalFileName().split(",");
+		for (int i = 0; i < a.length; i++) {
+			ilist.add(a[i]);
+			System.out.println("포문안에 아이리스트"+ilist);
+		}
+		System.out.println("a는? "+ a);
+		System.out.println("포문밖의 아이리스트" + ilist);
+		
+		return ilist; 
 	}
 	
 }

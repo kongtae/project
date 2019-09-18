@@ -42,7 +42,7 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 
-$(function() {
+		$(function() {
 			printAll();
 		})
 		
@@ -62,8 +62,8 @@ $(function() {
 				result33.setAttribute("type", "hidden");
 				$("#insertmark").empty();
 			}
-
 		}
+		
 		
 	function selectOne(value) {
 		var searchItem = $("#searchItem").val();
@@ -81,8 +81,24 @@ $(function() {
 		}
 		}
 		
+		if(searchItem=="hashSearch"){
+			$('#hash').append(" "+searchKeyword+" ");
+			return false;
+			/* $.ajax({
+				type:'POST',
+				url : 'hashSearch',					
+				data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
+				dataType: 'json',
+				success : output,
+				error: function() {
+					alert("리스트 불러오기 실패");
+				}
+			}) */
+		}
+		
+		
 		$.ajax({
-			type:'GET',
+			type:'POST',
 			url : 'selectOne',					
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
 			dataType: 'json',
@@ -111,10 +127,21 @@ $(function() {
 	function output(result) {
 		var context = '';
 		$.each(result,function(index,item){
+			var s = new Date(item.startEvent);
+	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"</td>";
-		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
+		context += "<td class='Session'>"+start+"~"+end+"</td>";
 		context += "<td class='Session'>"+item.userid+"</td></tr>";
 		})
 		$("#list").html(context);
@@ -126,11 +153,20 @@ $(function() {
 		
 	}
 	
-/* 	function page() {
-		var reSortColors = function($table) {
-			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
-			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
-			 }; */
+  /* 	var content = document.getElementById('hash').innerHTML;
+	var splitedArray = content.split(' ');
+	var linkedContent = '';
+	for(var word in splitedArray)
+	{
+	  word = splitedArray[word];
+	   if(word.indexOf('#') == 0)
+	   {
+	      word = '<a href=\'링크\'>'+word+'</a>';
+	   }
+	   linkedContent += word+' ';
+	}
+	document.getElementById('hash').innerHTML = linkedContent;   */
+	 
 
 </script>
 </head>
@@ -234,24 +270,6 @@ $(function() {
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
-                    <!--Search Box Outer-->
-                   <!--  <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                     
                 </div>
                
@@ -338,11 +356,13 @@ $(function() {
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
 				<form action="searchList" method="get">
-					<table><tr><td>
+					<div id="hash">
+					
+					</div>
+					<table>
+					
+					<tr><td>
 					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
-					<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
-					ユーザー名
-					</option>
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
@@ -352,12 +372,18 @@ $(function() {
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>
+					<option value="adress" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					住所
+					</option>
+					<option value="hashSearch" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					누적검색
+					</option>
 					</select>
 					</td>
 					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" onclick="selectOne(this)">	
+					<input type="button" value="検索" id="searchOne" onclick="selectOne(this)">	
 					</td></tr>
 					</table>
 				</form>           
@@ -369,7 +395,7 @@ $(function() {
                                     <th class="session">タイトル</th>
                                     <th class="time">国家</th>
                                     <th class="speakers">期間</th>
-                                    <th class="venue">ユーザー名</th>
+                                    <th class="venue">住所</th>
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
@@ -378,9 +404,9 @@ $(function() {
                             
                     </div>
                 </div>
-            
-                    </div>
-                </div>
+            </div>
+           </div>
+       </div>
 </section>
 <!--End Schedule Section-->
 
