@@ -89,7 +89,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="/festival"><img src="images/logo.png" alt=""
+								<a href="#"><img src="images/logo.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -111,7 +111,7 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="/festival">Home</a></li>
+										<li class="dropdown"><a href="#">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -125,9 +125,9 @@
 										<ul>
 										<li><a href="map">Map</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="#">Board</a>
+									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 									</ul>
 								</div>
@@ -168,7 +168,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="/festival">Home</a></li>
+									<li class="dropdown"><a href="#">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -182,9 +182,9 @@
 										<ul>
 										<li><a href="map">Map</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="#">Board</a>
+									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 								</ul>
 							</div>
@@ -412,11 +412,11 @@
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="/festival"><img src="images/logo-2.png" alt=""></a>
+							<a href="#"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
 					<ul class="footer-menu">
-						<li><a href="/festival">Home</a></li>
+						<li><a href="#">Home</a></li>
 						<li><a href="listForm">List</a></li>
 						<li><a href="calendar">Calendar</a></li>
 						<li><a href="sponsor.html">Map</a></li>

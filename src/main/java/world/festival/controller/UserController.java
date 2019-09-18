@@ -130,7 +130,9 @@ public class UserController {
 			
 			System.out.println("vo : " + vo);
 			boolean res = service.updateMember(vo, uploadFileName);
+			boolean replyres=service.updateReply(vo, uploadFileName);
 			System.out.println(res);
+			System.out.println("replyres::"+replyres);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

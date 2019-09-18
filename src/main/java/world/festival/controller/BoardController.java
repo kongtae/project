@@ -15,5 +15,10 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	@RequestMapping(value = "/insertBoard", method = RequestMethod.GET)
+	public String insertBoard() {
+		
+		return "board/BoardWrite";
+	}
 	
 }

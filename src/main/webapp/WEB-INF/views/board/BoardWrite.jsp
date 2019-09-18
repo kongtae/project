@@ -53,40 +53,27 @@
 <script>
 
 
-function writeFestival(event) {
-  		
-		//event.preventDefault();
-	
-/* 		var form = $("#writeFestivalID")[0];
- 
+function writeFestival() {
+
+		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
-		alert(formData);  */
+	//	alert(formData);
 		
-		var formData = new FormData();
-		formData.append("title",$("#title").val());
-		formData.append("country",$("#country").val());
-		formData.append("adress",$("#adress").val());
-		formData.append("festival_intro",$("#festival_intro").val());
-		formData.append("startEvent",$("#startEvent").val());
-		formData.append("endEvent",$("#endEvent").val());
-		formData.append("uploadFileName",$("input[type=file]")[0].files[0]);
-		alert(formData);
-		var TITLE2 = $("#title"); 
-		//alert(TITLE2); 
-		
- 		var formdata2 = $("#writeFestivalID").serialize();
+ 	//	var formdata2 = $("#writeFestivalID").serialize();
 		//alert(formdata2);
 		
 		$.ajax({
 			url:"writeFestival",
-			//enctype: 'multipart/form-data',
+			enctype: 'multipart/form-data',
 			data:formData,
 			type:"post",
 			contentType:false,
 			processData:false,
+			dataType : 'text',
 			//cache: false,
 			success: function(data) {
 				alert("投稿完了");
+				location.href ="listForm";
 			},
 			error: function(request,status,error) {
 				alert("投稿ERROR");
@@ -95,25 +82,6 @@ function writeFestival(event) {
 		});
 	} 
 	
-/* 		if(confirm("등록 하시겠습니까?")){
-			var form = document.getElementById("writeFestivalID");
-			form.submit();
-		} */
-	
-		
-
-		
-/* 		var dateV = ${vo.startEvent};
-		
-		alert(dateV);	
-	
-		
-		$(document).ready(function() {
-	        $('#startEvent').val(dateV);
-	    });
-	//안된다 모르겠다. */
-	
-/* 	document.getElementById('startEvent').valueAsDate = new date(); */
 </script>
 </head>
 <body>
@@ -144,8 +112,8 @@ function writeFestival(event) {
 					<!--Social Box-->
 					<ul class="social-box">
 						<c:if test="${seccionScope.loginid==null}">
-							<li><a href="registermember">会員登録</a></li>
-							<li><a href="loginForm">ログイン</a></li>
+							<li><a href="registermember">Sign up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
@@ -302,7 +270,7 @@ function writeFestival(event) {
 
 
 <!--Schedule Details-->
-<form action="writeFestival" id="writeFestivalID" method="post" enctype="multipart/form-data">
+<form action="writeFestival" id="writeFestivalID" method="post" enctype="multipart/form-data" >
 <section class="schedule-details">
     <div class="container">
         <div class="row">
@@ -317,11 +285,20 @@ function writeFestival(event) {
                         </figure>
                     </div> -->
                     <div id="preview">
+                    </div><br>
+                    <div id="preview2">
+                    </div><br>
+                    <div id="preview3">
                     </div>
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> ファイル添付
-                  <input type="file" id="uploadFileName" name="uploadFileName" > 
+                <i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
+			 	<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
+				<i class="fa fa-paperclip"></i> ファイル添付	
+					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+
                 </div>
               </div> 
                 <div class="box-footer">
@@ -346,16 +323,16 @@ function writeFestival(event) {
 					              <div class="form-group">
 					              	<h1>祭りの投稿欄</h1>
 					              	<br>
-					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" value="${vo.title}">
+					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" >
 					              </div>
 					              <div class="form-group">
-					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.festival_intro}</textarea>
-									<table>	
-										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" id="startEvent" value="${vo.startEvent}">から</td></tr>
-										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent" value="${vo.endEvent}">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br> 
-					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}"></td></tr>
-					             	</table>
+					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
+<!-- 									<table>	 -->
+<!-- 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr> -->
+<!-- 										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr> -->
+<!-- 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br>  -->
+<!-- 					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> -->
+<!-- 					             	</table> -->
 					              </div>
 					            </div>
 					          </div>
@@ -405,6 +382,7 @@ function writeFestival(event) {
         </div>                
     </div>
 </section>
+</form>
 <!--End Schedule Details-->
 
 <!--Contact Info-->
@@ -449,7 +427,7 @@ function writeFestival(event) {
         </div>            
     </div>
 </section>
-</form>
+
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(resources/images/background/footer.jpg);">
@@ -506,7 +484,11 @@ function writeFestival(event) {
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
+    var upload2 = document.querySelector('#uploadFileName2');
+    var upload3 = document.querySelector('#uploadFileName3');
     var preview = document.querySelector('#preview');
+    var preview2 = document.querySelector('#preview2');
+    var preview3 = document.querySelector('#preview3');
  
     upload.addEventListener('change',function (e) {
         var get_file = e.target.files;
@@ -538,15 +520,66 @@ function writeFestival(event) {
         }
 
         $('#removeImg').empty();
+        $('#preview').empty();
         preview.appendChild(image);
-        
     });
+    
+    upload2.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview2').empty();
+        preview2.appendChild(image);
+    });
+    
+    upload3.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview3').empty();
+        preview3.appendChild(image);
+    }); 
     
 	 $("#reset").click(function () { 
  	 	 $('#preview').empty();
+ 	 	 $('#preview2').empty();
+ 	 	 $('#preview3').empty();
 	 });
-	 
-	 
-	 
 </script>
 </html>

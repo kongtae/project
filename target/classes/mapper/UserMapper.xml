@@ -76,7 +76,19 @@
 		userid = #{userid}
 </update>
 
-<<<<<<< HEAD
+
+<!-- 수정 -->
+<update id="updateReply" parameterType="UserVO">
+	UPDATE
+		REPLY
+	SET
+		<if test="originalFileName != null and savedFileName != null">
+			originalfileName = #{originalFileName} ,SAVEFILENAME = #{savedFileName}
+		</if>
+	WHERE
+		userid = #{userid}
+</update>
+
 <!-- 사진 찾아오기 -->
 <select id="selectpot" parameterType="UserVO" resultType="UserVO">
 	select
@@ -88,7 +100,6 @@
 </select>
 
 
-=======
 <!-- 마이페이지 회원정보 출력 -->
 <select id="memberSelect" parameterType="String" resultType="UserVO">
 	SELECT
@@ -98,5 +109,4 @@
 	WHERE
 		userid = #{userid}
 </select>
->>>>>>> 33e902f3a898494709459b8c48910ad5b1fc02ac
 </mapper>

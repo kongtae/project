@@ -21,6 +21,7 @@ import world.festival.VO.ReplyVO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.UserMapper;
 import world.festival.service.ListService;
+import world.festival.service.WishService;
 //import world.festival.dao.ReplyService;
 import world.festival.service.ListService;
 import world.festival.service.ListService;
@@ -36,8 +37,8 @@ public class ListController {
 	private ListService service;
 	
 	@Autowired
+	private WishService weservice;
 //	private ReplyService service;
-	
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -130,7 +131,28 @@ public class ListController {
 		rttr.addFlashAttribute("deleteResult", result);
 		return "redirect:/listForm"; 
 	}
-	
-	
+//	좋아요를 하고싶다!!!	
+//	 ArrayList<ListVO>
+	@RequestMapping(value = "insertwish", method = RequestMethod.GET)
+	public @ResponseBody String like(ListVO vo,RedirectAttributes rttr, HttpSession session, Model model) {
+		String loginid=(String)session.getAttribute("loginid");
+		vo.setUserid(loginid);
+		vo.setMainBoardNum(vo.getMainBoardNum());
+		weservice.insertwish(vo);
+		System.out.println("if가기전"+vo);
+		if(vo.getOriginalFileName()==null || vo.getOriginalFileName().equals("null") || vo.getOriginalFileName().equals(""))
+		{
+			System.out.println("사진이 널일 때");
+			vo.setOriginalFileName("like.png");
+			model.addAttribute("like", "likeclick");
+			System.out.println("if안에서의"+vo);
+			return "data";
+		}
+		
+//		boolean result = service.deleteFestival(vo);
+		System.out.println("like눌렀을시 올 vo"+vo);
+//		rttr.addFlashAttribute("deleteResult"/*, result*/);
+		return "data";
+	}
 	
 }

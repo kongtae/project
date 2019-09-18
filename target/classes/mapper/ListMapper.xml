@@ -8,10 +8,11 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName)
+		MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName)
 	VALUES (
 		<!-- #{userid}, -->
 		mainboard_seq.nextval,
+		#{userid},
 		#{title},
 		#{country},
 		#{adress},

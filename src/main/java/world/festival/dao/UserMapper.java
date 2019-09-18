@@ -12,5 +12,6 @@ public interface UserMapper {
 	public int updateMember(UserVO vo);
 	public UserVO selectpot(String loginid);
 	public UserVO memberSelect(String id);
+	public int updateReply(UserVO vo);
 	
 }

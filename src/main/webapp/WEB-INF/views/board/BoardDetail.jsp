@@ -90,15 +90,19 @@
   			function replymodify(replynum,text) {
   			var offset = $("#updatebtn").offset();
   			$("html, body").animate({scrollTop:offset.top},400)
+  				
 			document.getElementById("replytext").value=text;
 			document.getElementById("replysubmit").value="Send Message";
+
 			document.getElementById("replysubmit").onclick=function(){
 				var updatext = document.getElementById("replytext").value;
 				location.href="replyUpdate?replynum="+replynum
 						+"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
 			}
+			
 			var message="end";
 			var result00="startEvent";
+			
 			var result33 = document.getElementById("searchHidden");
 			if(message=="end"){
 				result33.setAttribute("type", "reset");
@@ -108,35 +112,11 @@
 				result33.setAttribute("type", "hidden");
 				refreshMemList();
 			})
+			
+
 		}
 
-  		function insertwish(mainboardnum)
-  	  	{
-  			var mainBoardNum = document.getElementById("mainboardnum").value
-  			var dislike = 
-  	  		$.ajax({
-  	 			url:'insertwish',
-  	 			type:'get',
-    			data:
- 	  			{
-    				mainBoardNum : document.getElementById("mainboardnum").value
-  	  			},
-  	  			success:function(data){
- 	   				alert("여기로 오면 무엇이 되는 거지?")
- 	   				alert(data.mainBoardNum)
-//   	  				refreshMemList();//새로고침
-					if(data.mainBoardNum!=null)
-						{
-							alert("널이 아닌게 왔어요")
-						}
-  	  			},
-  	  			error: function(){
-//  	   				alert("삭제 실패")
-  	  			}
-  	  			
-  	  		});
-  	  	}
-  			
+  
  </script>
     
 </head>
@@ -187,7 +167,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="#"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -204,7 +184,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -218,9 +198,9 @@
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
+								<li class="dropdown"><a href="#">Board</a>
 									<ul>
-										<li><a href="boardList">Board</a></li>
+										<li><a href="#">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -277,7 +257,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -314,7 +294,7 @@
         <div class="title-text text-center">
             <h3>Shedule Details</h3>
             <ul>
-                <li><a href="/festival">home</a></li>
+                <li><a href="index.html">home</a></li>
                 <li>/</li>
                 <li>Shedule Details</li>
             </ul>
@@ -332,21 +312,12 @@
                 <div class="shedule-left-side">
                     <div class="text-title">
                         <h6>祭りの写真</h6>
-                        <img src="images/dislike.png" id="dislike" onclick="like()"/>
-                        ${like}
-<!--                         <a href=listDetailGO?mainBoardNum="+item.mainBoardNum+"> -->
-<%--                        <a href="like?mainBoardNum=${vo.mainBoardNum}"></a> --%>
-<!-- 							    <a href='javascript: like_func();'><img src='images/like.png' id='like_img'></a> -->
-<%-- 							    <a href="like?MainboardNum=${vo.mainBoardNum}"><img src='images/dislike.png'></a> --%>
-<!--                        id="like" onclick="like()"> -->
-<!--                        <img src="images/like.png" id="like" onclick="like()"> -->
                     </div> 
 <!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-                   
                     <div id="preview">
                     </div>
                 </div>
@@ -360,11 +331,10 @@
                          <div class="event-details">
                          	<div>
                          <h1><b>祭りの詳細情報<b></b></h1>
-						 
+
 
 
                          	</div>
-                         	 
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
 	                         	<input type="button" value="修正" onclick="UpdateFestival()">
@@ -372,7 +342,6 @@
 							</div>
 							</c:if>                          
                           <div class="inner-box  table-responsive">
-
                         <table class="table table-hover">
                         	<tr>
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
@@ -539,7 +508,7 @@
                 </figure>
             </div>
             <ul class="footer-menu">
-                <li><a href="/festival">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about-us.html">About</a></li>
                 <li><a href="speakers.html">Speakers</a></li>
                 <li><a href="#">Pages</a></li>
