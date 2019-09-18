@@ -127,13 +127,17 @@
 	function output(result) {
 		var context = '';
 		$.each(result,function(index,item){
-		if(item.endEvent==null||item.endEvent==""){
-			item.endEvent=" ";
-		}
 			var s = new Date(item.startEvent);
-			var e = new Date(item.endEvent);
 	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
-	    	var end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"</td>";
