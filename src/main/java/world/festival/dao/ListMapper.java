@@ -23,5 +23,9 @@ public interface ListMapper {
 
 	public ListVO readFestival(String mainBoardNum);
 
+	public int updateFestival(ListVO vo);
+
+	public ListVO imagePrint(ListVO vo);
+
 	
 }

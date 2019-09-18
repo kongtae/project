@@ -5,7 +5,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <title>Wiscon || Responsive HTML 5 Template</title>
@@ -34,9 +33,37 @@
  <script>
  
  $(function () {
+ 	imagePrint();
+ 	
  });
+ 	
+ 	var originalFileName = "";
+ 	var mainb = ${vo.mainBoardNum};
+ 	var imageData = {'mainBoardNum' : mainb};
+ 	function imagePrint() {
+	 		$.ajax({
+				url : "imagePrint",
+				type : "post",
+				data : imageData,
+				dataType: 'json',
+				success : function(result) {
+					if(result != null) {
+						$.each(result,function(index,item){
+							originalFileName = "resources/images/userimage/" +item;
+						/*  	$('#preview'+index).attr("src", originalFileName); */ 
+					 	$('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
+						})
+					}
+				},
+				error : function() {
+					alert("실패");
+				}
+			});
+		}
+ 	
+ 	
  	function UpdateFestival() {
- 		location.href="updateFestival?mainBoardNum=${vo.mainBoardNum}";
+ 		location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
 	}
   	function DeleteFestival() {
   			if(confirm("삭제하시겠습니까?")){
@@ -318,19 +345,31 @@
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-                    <div id="preview">
-                    </div>
+                    <div class="image-box" id="image-box">
+        <!--     		<input type="" src="" id="preview0">
+                    <br>
+                    <input type="image" src="" id="preview1">
+                    <br>
+                    <input type="image" src="" id="preview2"> -->
+            	</div>
                 </div>
             </div>
+
+            
+            
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
            <!--              <figure>
                             <img src="images/resources/schedule-10.jpg" alt="">
                         </figure> -->
+                        
                          <div class="event-details">
                          	<div>
                          <h1><b>祭りの詳細情報<b></b></h1>
+
+
+
                          	</div>
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">

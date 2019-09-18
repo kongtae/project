@@ -50,4 +50,12 @@ public class UserService {
 		return true;
 	}
 
+	public UserVO selectpot(String loginid) {
+		UserVO pot= dao.selectpot(loginid);
+		return pot;
+	}
+
+
+
+
 }

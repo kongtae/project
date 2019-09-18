@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,8 @@ public class ListService {
 	
 
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
-		String path = "C:/test/";
+		
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
 		
 		File dir = new File(path);
 		if(!dir.isDirectory()){
@@ -34,15 +35,20 @@ public class ListService {
 		}
 		
 		Iterator<String> files = request.getFileNames();
+		String savedFilename = UUID.randomUUID().toString();
 		System.out.println("files"+files);
+		String fileName = "";
+		String fileName1 = "";
 		while(files.hasNext()){
 			String uploadFile = files.next();
 			MultipartFile mFile = request.getFile(uploadFile);
-			String fileName = mFile.getOriginalFilename();
+			fileName1 = mFile.getOriginalFilename();
+			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
+			vo.setSaveFileName(savedFilename);
 			vo.setOriginalFileName(fileName);
 			try {
-				mFile.transferTo(new File(path+fileName));
+				mFile.transferTo(new File(path+fileName1));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -52,7 +58,11 @@ public class ListService {
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
+
 		return true;
+
+
+		
 	}
 
 	public boolean deleteFestival(ListVO vo) {
@@ -85,6 +95,50 @@ public class ListService {
 
 	public ArrayList<ReplyVO> replyList(int boardnum) {
 		return dao.replyList(boardnum);
+	}
+
+	public boolean updateFestival(ListVO vo, MultipartHttpServletRequest request) {
+	
+		String oldSaveFileName = vo.getSaveFileName();
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+		
+		File dir = new File(path);
+		if(!dir.isDirectory()){
+			dir.mkdir();
+		}
+		
+		Iterator<String> files = request.getFileNames();
+		String savedFilename = UUID.randomUUID().toString();
+		System.out.println("files"+files);
+		String fileName1="";
+		String fileName="";
+		while(files.hasNext()){
+			String uploadFile = files.next();
+			MultipartFile mFile = request.getFile(uploadFile);
+			fileName1 = mFile.getOriginalFilename();
+			fileName += mFile.getOriginalFilename()+",";
+			System.out.println("실제파일이름"+fileName);
+			vo.setSaveFileName(savedFilename);
+			vo.setOriginalFileName(fileName);
+			try {
+				mFile.transferTo(new File(path+fileName1));
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+		}
+		
+		int result = dao.updateFestival(vo);
+		if(result != 1){return false;}
+		System.out.println("등록 결과 값: "+result);
+		
+		File file = new File(path + oldSaveFileName);
+		if(file.exists()){
+		file.delete();
+		}
+		
+		return true;
 	}
 	
 }
