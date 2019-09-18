@@ -69,6 +69,7 @@ public class ListDAO {
 
 	public int updateFestival(ListVO vo) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		System.out.println("수정할 다오vo " + vo);
 		return mapper.updateFestival(vo);
 	}
 

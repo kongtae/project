@@ -71,12 +71,10 @@
 	UPDATE
 		MAINBOARD
 	SET
-	
 		title = #{title},
 		country = #{country},
 		adress = #{adress},
 		festival_intro = #{festival_intro},
-		inputTime = #{inputTime},
 		startEvent = #{startEvent},
 		endEvent = #{endEvent}
 		<if test="originalFileName != null and saveFileName !=null">

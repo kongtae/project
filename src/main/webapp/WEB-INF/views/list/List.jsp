@@ -81,20 +81,6 @@
 		}
 		}
 		
-		if(searchItem=="hashSearch"){
-			$('#hash').append(" "+searchKeyword+" ");
-			return false;
-			/* $.ajax({
-				type:'POST',
-				url : 'hashSearch',					
-				data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
-				dataType: 'json',
-				success : output,
-				error: function() {
-					alert("리스트 불러오기 실패");
-				}
-			}) */
-		}
 		
 		
 		$.ajax({
@@ -104,7 +90,7 @@
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("리스트 불러오기 실패1");
 			}
 		})
 		
@@ -119,7 +105,7 @@
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("리스트 불러오기 실패2");
 			}
 		})
 	}
@@ -142,7 +128,7 @@
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"</td>";
 		context += "<td class='Session'>"+start+"~"+end+"</td>";
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
+		context += "<td class='Session'>"+item.adress+"</td></tr>";
 		})
 		$("#list").html(context);
 		

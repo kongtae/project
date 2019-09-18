@@ -50,13 +50,12 @@
 					if(result != null) {
 						$.each(result,function(index,item){
 							originalFileName = "resources/images/userimage/" +item;
-						/*  	$('#preview'+index).attr("src", originalFileName); */ 
 					 	$('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
 						})
 					}
 				},
 				error : function() {
-					alert("실패");
+					alert("이미지 로드 실패");
 				}
 			});
 		}
@@ -398,7 +397,7 @@
                         		<td>国家</td><td>${vo.country}</td>
                         	</tr>
 							<tr>
-                        		<td>地域および詳細住所</td><td>${vo.adress}</td>
+                        		<td>住所</td><td>${vo.adress}</td>
                         	</tr>
                         </table>
                         </div>
