@@ -111,10 +111,14 @@ $(function() {
 	function output(result) {
 		var context = '';
 		$.each(result,function(index,item){
+			var s = new Date(item.startEvent);
+			var e = new Date(item.endEvent);
+	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+	    	var end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"</td>";
-		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
+		context += "<td class='Session'>"+start+"~"+end+"</td>";
 		context += "<td class='Session'>"+item.userid+"</td></tr>";
 		})
 		$("#list").html(context);

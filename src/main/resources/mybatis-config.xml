@@ -19,5 +19,6 @@
 		<mapper resource="mapper/ListMapper.xml" />
 		<mapper resource="mapper/MapMapper.xml" />
 		<mapper resource="mapper/ReplyMapper.xml" />
+		<mapper resource="mapper/CalendarMapper.xml" />
 	</mappers> 
 </configuration>

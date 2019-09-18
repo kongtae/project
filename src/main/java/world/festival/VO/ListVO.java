@@ -16,8 +16,8 @@ public class ListVO {
 	private String festival_intro;
 	private String surround_place;
 	private Date inputTime;
-	private String startEvent;
-	private String endEvent;
+	private Date startEvent;
+	private Date endEvent;
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
 	

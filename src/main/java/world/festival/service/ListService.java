@@ -1,6 +1,9 @@
 package world.festival.service;
 
 import java.io.File;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -63,7 +66,12 @@ public class ListService {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchItem", searchItem);
 		map.put("searchKeyword", searchKeyword);
-		map.put("endEvent", vo.getEndEvent());
+		
+
+		DateFormat sdFormat = new SimpleDateFormat("yy-MM-dd");
+		String endEvent = sdFormat.format(vo.getEndEvent());
+		map.put("endEvent", endEvent);
+		System.out.println(endEvent);
 		return dao.selectOne(map);
 	}
 

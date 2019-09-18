@@ -112,10 +112,8 @@ public class ListController {
 	public String updateFestival(String mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);
-		String startEvent1 = vo.getStartEvent();
 		System.out.println("수정할 페이지 찾았나? "+vo);
 		model.addAttribute("vo", vo);
-		model.addAttribute("startEvent1", startEvent1);
 		return "list/UpdateFestival";
 	}
 	
