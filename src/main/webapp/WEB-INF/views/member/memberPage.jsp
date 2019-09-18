@@ -176,9 +176,9 @@ function memberSelect(){
 											<ul>
 												<li><a href="#">Map</a></li>
 											</ul></li>
-										<li class="dropdown"><a href="#">Board</a>
+										<li class="dropdown"><a href="boardList">Board</a>
 											<ul>
-												<li><a href="#">Board</a></li>
+												<li><a href="boardList">Board</a></li>
 											</ul></li>
 									</ul>
 								</div>
@@ -246,7 +246,7 @@ function memberSelect(){
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="#">Home</a>
+									<li class="dropdown"><a href="/festival">Home</a>
 										<ul>
 											<li><a href="index.html">Home Page 01</a></li>
 											<li><a href="index-2.html">Home Page 02</a></li>
