@@ -25,12 +25,6 @@ public class BoardDAO {
 		return mapper.boardPrintAll();
 	}
 
-/*	public int writeFestival(ListVO vo) {
-		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
-		return mapper.writeFestival(vo);
-		
-	}*/
-
 
 
 }

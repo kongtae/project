@@ -86,7 +86,6 @@
 // 			$('#hash').append(" "+searchKeyword+" ");
 // 			return false;
 			/* $.ajax({
-=======
 			if(a>b){
 				alert("検索する期間を間違えて入力しました。");
 				$("#searchKeyword").val("");
@@ -121,16 +120,9 @@
 				error: function() {
 					alert("리스트 불러오기 실패");
 				}
-<<<<<<< HEAD
 			}) 			 */
 			return false;
 		}
-=======
-			}) */
-// 		}
-	//		return false;
-	//	}
->>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
 		
 		
 		$.ajax({
@@ -147,7 +139,6 @@
 	}
 	
 		
-	}	
 		
 
 	function printAll() {
@@ -573,13 +564,6 @@
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
-<!--Google Map-->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script> -->
-<!-- <script src="js/map-script.js"></script> -->
-=======
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script> -->
-<!--End Google Map APi-->
 
 
 </div>

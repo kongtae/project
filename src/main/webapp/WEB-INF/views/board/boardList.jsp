@@ -109,17 +109,11 @@ $(function() {
 		var context = '';
 		$.each(result,function(index,item){
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-<<<<<<< HEAD
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+		context += "<td class='Session'><a href=BoardDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.userid+"조회수 HIT"+"</td>";
 		context += "<td class='Session'>"+item.inputTime"등록날짜 sysdate"+"</td>"; 
 		context += "<td class='Session'>"+item.adress+"조회수 HIT"+"</td></tr>";
-=======
-		context += "<td class='Session'><a href=BoardDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='Session'>"+item.country+"조회수 HIT"+"</td>";
-		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"등록날짜 sysdate"+"</td>"; 
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
->>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
+		
 		})
 		$("#list").html(context);
 		
@@ -130,11 +124,6 @@ $(function() {
 		
 	}
 	
-/* 	function page() {
-		var reSortColors = function($table) {
-			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
-			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
-			 }; */
 
 </script>
 </head>
