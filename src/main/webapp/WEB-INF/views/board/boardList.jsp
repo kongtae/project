@@ -43,7 +43,7 @@
 <script>
 
 $(function() {
-			printAll();
+			boardPrintAll();
 		})
 		
 		function searchDate(value){
@@ -93,11 +93,11 @@ $(function() {
 		})
 		
 	}	
-	function printAll() {
+	function boardPrintAll() {
 		
 		$.ajax({
 			type:'GET',
-			url : 'printAll',
+			url : 'boardPrintAll',
 			dataType: 'json',
 			success : output,
 			error: function() {
@@ -110,9 +110,10 @@ $(function() {
 		$.each(result,function(index,item){
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 		context += "<td class='Session'><a href=BoardDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='Session'>"+item.country+"조회수 HIT"+"</td>";
-		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"등록날짜 sysdate"+"</td>"; 
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
+		context += "<td class='Session'>"+item.userid+"조회수 HIT"+"</td>";
+		context += "<td class='Session'>"+item.inputTime"등록날짜 sysdate"+"</td>"; 
+		context += "<td class='Session'>"+item.adress+"조회수 HIT"+"</td></tr>";
+		
 		})
 		$("#list").html(context);
 		
@@ -123,11 +124,6 @@ $(function() {
 		
 	}
 	
-/* 	function page() {
-		var reSortColors = function($table) {
-			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
-			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
-			 }; */
 
 </script>
 </head>
@@ -364,9 +360,9 @@ $(function() {
                                 <tr>
                                     <th class="srial">#</th>
                                     <th class="session">タイトル</th>
-                                    <th class="time">国家</th>
-                                    <th class="speakers">期間</th>
-                                    <th class="venue">ユーザー名</th>
+                                    <th class="time">ユーザー名</th>
+                                    <th class="speakers">投稿時間</th>
+                                    <th class="venue">HIT</th>
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 

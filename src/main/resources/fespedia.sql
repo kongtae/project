@@ -62,6 +62,22 @@ CREATE TABLE REPLY(
 	INPUTDATE		DATE  DEFAULT SYSDATE   
 );
 
+CREATE TABLE BUL_BOARD(
+     ADMINID VARCHAR2(20) CONSTRAINT BULLETIN_BOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
+      USERID VARCHAR2(20)   CONSTRAINT  BUL_BOARD_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디
+     BUL_BOARDNUM  NUMBER PRIMARY KEY,                      --자유게시판 
+     TITLE VARCHAR2(20) NOT NULL, 
+     CONTENTS VARCHAR2(1000),
+      COUNTRY VARCHAR2(20),  --나라
+    ADRESS VARCHAR2(100),       --주소
+    INPUTDATE      DATE  DEFAULT SYSDATE,                     --제목
+    HIT NUMBER,                                            --조회수--게시글 내용
+    originalfilename   VARCHAR2(50),                       --사진파일 원본 이름
+    savedfilename   VARCHAR2(50)                          --보여주는 이름
+);
+
+CREATE SEQUENCE BUL_BOARDNUM_SEQ;
+
 
 
 CREATE SEQUENCE REPLY_SEQ;

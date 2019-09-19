@@ -2,6 +2,7 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -85,9 +86,8 @@ public class ListController {
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
-		System.out.println("리스트 출력"+list);
 		System.out.println("전체리스트 출력"+list);
-		 return list;
+		return list;
 	}
 	
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
@@ -117,6 +117,7 @@ public class ListController {
 		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}
+
 	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> selectOne(String endEvent,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
@@ -209,7 +210,4 @@ public class ListController {
 		
 		return ilist; 
 	}
-
-	
-	
 }
