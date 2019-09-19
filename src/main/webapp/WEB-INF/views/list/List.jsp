@@ -66,7 +66,7 @@
 		}
 		
 		
-		window.selectOne = function() {
+		function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
@@ -82,8 +82,8 @@
 			}
 		}
 
-	//	if(searchItem=="hashSearch"){
-	//		$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
+		if(searchItem=="hashSearch"){
+			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
 			/* var a = [];
 			a += searchkeyword;
 			$.ajax({
@@ -109,8 +109,8 @@
 					alert("리스트 불러오기 실패");
 				}
 			}) 			 */
-	//		return false;
-	//	}
+			return false;
+		}
 		
 		
 		$.ajax({
@@ -373,7 +373,6 @@
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
-				<form action="searchList" method="get">
 					
 					<div id="hash"></div>
 					
@@ -401,10 +400,9 @@
 					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> <!-- 엔터치면 서밋을막는 인풋  -->
+					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
 					</td></tr>
 					</table>
-				</form>           
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>

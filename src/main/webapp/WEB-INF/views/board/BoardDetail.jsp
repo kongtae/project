@@ -33,8 +33,7 @@
     <script src="js/jquery.js"></script>
  <script>
  
- $(function () {
- });
+ 
  	function UpdateFestival() {
  		location.href="updateFestival?mainBoardNum=${vo.mainBoardNum}";
 	}

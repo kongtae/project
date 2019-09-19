@@ -3,7 +3,7 @@ package world.festival.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+import world.festival.VO.BoardVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 
@@ -26,6 +26,7 @@ public interface ListMapper {
 	public int updateFestival(ListVO vo);
 
 	public ListVO imagePrint(ListVO vo);
+
 
 	
 }
