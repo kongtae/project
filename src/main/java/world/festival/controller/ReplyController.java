@@ -50,18 +50,11 @@ public class ReplyController {
 			if(userpoto.getOriginalFileName()==null || userpoto.getOriginalFileName().equals("null"))
 			{
 				System.out.println("null일때 들어오는 곳");
-//				userpoto.setOriginalFileName("기본아이콘사진이");
-//				vo.setOriginalfilename(userpoto.getOriginalFileName());
 				boolean result = service.replywrite(vo);
 				rttr.addFlashAttribute("replywrite", result);
 				return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum();
 			}
 			vo.setOriginalFileName(userpoto.getOriginalFileName());
-			
-			System.out.println("사진 글자는 무엇이 들어오는가"+userpoto);
-//			vo.setUsername((String)session.getAttribute("username"));
-			System.out.println("로그인 아이디가 아니야?"+loginid);
-			System.out.println("아이디 잘 들어갔는지 확인:"+vo);
 			boolean result = service.replywrite(vo);
 			rttr.addFlashAttribute("replywrite", result);
 			return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum(); 
@@ -82,7 +75,6 @@ public class ReplyController {
 			vo.setUserid((String)session.getAttribute("loginid"));
 			System.out.println("수정 vo찍기"+vo);
 			service.replyUpdate(vo,session);
-//			rttr.addFlashAttribute("resuldelete", resuldelete);
 			return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum(); 
 		}
 		

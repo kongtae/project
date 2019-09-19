@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.UserVO;
+import world.festival.VO.WishVO;
 import world.festival.dao.UserDAO;
 import world.festival.service.UserService;
 //import world.festival.service.UserService;
@@ -74,9 +75,12 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	//�쑀���럹�씠吏� �씠�룞
+	//맴버페이지
 	@RequestMapping(value = "/memberPage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String memberPage() {
+	public String memberPage(HttpSession session,WishVO vo) {
+		String userid=(String)session.getAttribute("loginid");
+		vo.setUserid(userid);
+		
 		return "member/memberPage";
 	}
 
