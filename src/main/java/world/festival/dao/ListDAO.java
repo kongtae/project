@@ -38,11 +38,6 @@ public class ListDAO {
 
 	public ArrayList<ListVO> selectOne(HashMap<String, String> map) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
-//		HashMap<String, String> map = new HashMap<>();
-//		map.put("searchItem", searchItem);
-//		map.put("searchKeyword", searchKeyword);
-//		map.put("endEvent", vo.getEndEvent());
-		System.out.println("map��"+map);
 		return mapper.selectOne(map);
 	}
 

@@ -43,7 +43,7 @@
  		select * from MAINBOARD 
 		WHERE 
 		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
-		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD')
+		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') 
 		order by mainBoardNum DESC 
 	</select>
 

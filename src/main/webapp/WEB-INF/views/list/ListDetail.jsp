@@ -396,7 +396,7 @@
                         
                          <div class="event-details">
                          	<div>
-                         <h1><b>祭りの詳細情報<b></b></h1>
+                         <h1><b>祭りの詳細情報</b></h1>
 						 
 
 

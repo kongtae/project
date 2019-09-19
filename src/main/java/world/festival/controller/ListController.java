@@ -105,7 +105,7 @@ public class ListController {
 		System.out.println("keyword "+searchKeyword);
 		System.out.println("end "+vo.getEndEvent());
 		ArrayList<ListVO> selectOne1 = new ArrayList<ListVO>();
-		System.out.println("vo11 "+vo);
+		System.out.println("받은 전체 VO : "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
 		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	

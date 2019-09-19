@@ -73,12 +73,12 @@
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
-		if(a>b){
-			alert("検索する期間を間違えて入力しました。");
-			$("#searchKeyword").val("");
-			$("#searchHidden").val("");
-			return false;
-		}
+			if(a>b){
+				alert("検索する期間を間違えて入力しました。");
+				$("#searchKeyword").val("");
+				$("#searchHidden").val("");
+				return false;
+			}
 		}
 
 		if(searchItem=="hashSearch"){
@@ -120,8 +120,9 @@
 			success : output,
 			error: function() {
 				alert("리스트 불러오기 실패1");
+			
 			}
-		})
+		});
 		
 	}	
 		
@@ -387,18 +388,19 @@
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>
-					<option value="adress" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					<option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
 					住所
 					</option>
-					<option value="hashSearch" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					<option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
 					누적검색
 					</option>
 					</select>
 					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
+					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="searchOne" onclick="selectOne(this)">	
+					<input type="button" value="検索" id="selectOne" onclick="selectOne(this)" >	
+					<input type="text" style="display: none;" /> <!-- 엔터치면 서밋을막는 인풋  -->
 					</td></tr>
 					</table>
 				</form>           
