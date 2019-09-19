@@ -3,6 +3,8 @@ package world.festival.service;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,7 @@ public class ListService {
 
 			vo.setOriginalFileName(originalFilename);
 			vo.setSaveFileName(savedFilename);
-			System.out.println("¼­ºñ½º´ÜÀÇ  vo°ª "+vo);
+			System.out.println("ï¿½ï¿½ï¿½ñ½º´ï¿½ï¿½ï¿½  voï¿½ï¿½ "+vo);
 
 			try {
 				uploadFileName.transferTo(new File("C:/test/"+savedFilename));
@@ -38,7 +40,7 @@ public class ListService {
 		}
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
-		System.out.println("¼­ºñ½º¿¡¼­ÀÇ ¸®ÀýÆ®°ª"+result);
+		System.out.println("ï¿½ï¿½ï¿½ñ½º¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½"+result);
 		return true;
 	}
 

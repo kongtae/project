@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
 
     <title>Wiscon || Responsive HTML 5 Template</title>
+    
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,48 +23,225 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
-<style>
-	#div_icontext{
-		display: flex;
-		justify-content: flex-end;
-		width: 83%;
-	}
-	#icontext{
-		padding: 1.5%;
-		padding-rigth: 2px;
-		padding-left: 2px;
-		font-family: 'Robtoto', sans-serif;
-		font-size: 30px;
-		color: #fa334f;
-	}
-</style>
     
+    <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
+
+<style>
+.infoboxes article {
+	color: #191919;
+	background-color: rgba(255, 255, 255, .65);
+}
+.infoboxes article:hover {
+	background-color: #FFFFFF;
+}
+.infoboxes article .fa {
+	color: #FFFFFF;
+	background-color: #CF4845;
+}
+.pagination {
+	display: block;
+	width: 100%;
+	text-align: center;
+	clear: both;
+}
+.pagination li {
+	display: inline-block;
+	margin: 0 2px 0 0;
+}
+.pagination li:last-child {
+	margin-right: 0;
+}
+.pagination a, .pagination strong {
+	display: block;
+	padding: 8px 11px;
+	border: 1px solid;
+	background-clip: padding-box;
+	font-weight: normal;
+	color: #fa334f;
+}
+#div_icontext {
+	display: flex;
+	justify-content: flex-end;
+	width: 83%;
+}
+#icontext {
+	padding: 1.5%;
+	padding-rigth: 2px;
+	padding-left: 2px;
+	font-family: 'Robtoto', sans-serif;
+	font-size: 30px;
+	color: #fa334f;
+}
+</style>
+
 </head>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
+var page = '';
+var countPerPage = 5;
+var pageBlock = 5;
+var pageBlockCount = '';
+var totalPageCount = '';
+var startPageGroup = '';
+var endPageGroup = '';
+var spage, epage;
+
+function setPage() {
+	if(page == '' || page < 0){page = 1;}
+	startPageGroup = ((page-1)*countPerPage);
+	endPageGroup = (startPageGroup + countPerPage);
+}
 
 $(function() {
+		setPage();
+		printAll();
+
+		$("searchBtn").on('click', function() {
+			page = 0;
+			setPage();
 			printAll();
 		})
 		
-		function searchDate(value){
-			var result00="startEvent";
-			
-			var result11 = document.getElementById("searchKeyword");
-			var result22 = document.getElementById("searchItem").value;
-			var result33 = document.getElementById("searchHidden");
-			if(result22=="startEvent"){
-				result11.setAttribute("type", "date");
-				result33.setAttribute("type", "date");
-				$("#insertmark").append("~");
+		
+	})
+		
+	function printAll() {
+		
+		$.ajax({
+			type:'GET',
+			url : 'printAll',
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패");
 			}
-			if(result22!="startEvent"){
-				result11.setAttribute("type", "text");
-				result33.setAttribute("type", "hidden");
-				$("#insertmark").empty();
-			}
+		})
+	}
 
+	function output(result) {
+		totalRecordCount = result.length;
+		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+		pageBlockCount = Math.ceil(page/pageBlock)
+		startPageGroup = ((page-1) * countPerPage);
+		endPageGroup = (startPageGroup + countPerPage);
+		alert(totalRecordCount);
+		
+		if(pageBlockCount > 1) {
+			spage = (pageBlockCount-1)*pageBlock+1;
+		} else {
+			spage = 1;
 		}
+		
+		if((pageBlockCount*pageBlock) >= totalPageCount){
+			epage = totalPageCount;
+		} else {
+			epage = pageBlockCount*pageBlock;
+		}
+		
+		alert(spage);
+		alert(epage);
+		navSet(totalPageCount, spage, epage);
+		tagSet(result, startPageGroup, endPageGroup);
+		
+	   	$(".page-link").on('click',function(){
+	   		if ($(this).attr("data-value") == "first"){
+				page = 1;
+			}else if ($(this).attr("data-value") == "end") {
+				page = totalPageCount;
+			}else if ($(this).attr("data-value") == "next") {
+				page = parseInt(page) + 5;
+				if (page>totalPageCount) {
+					page=totalPageCount;
+				}
+			}else if ($(this).attr("data-value") =="before") {
+				page = parseInt(page) - 5;
+				if(page<5){
+					page = 1;
+				}
+			}else{
+				page= $(this).attr("data-value");
+			}
+			printAll();
+	   	});	
+	}
+		
+	function tagSet(result, startPageGroup, endPageGroup)	{
+		var context = '';
+		$.each(result,function(index,item){
+			
+			if(index>=startPageGroup && index<endPageGroup) {
+				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+				context += "<td class='Session'>"+item.country+"</td>";
+				context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
+				context += "<td class='Session'>"+item.userid+"</td></tr>";
+			}
+		});
+		$("#list").html(context);
+		
+		if(context!=''){
+		$("#searchKeyword").val("");
+		$("#searchHidden").val("");
+		}
+		
+	}
+	
+	function navSet(totalPageCount){
+		var nav = '';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="first" aria-label="Previous">';
+		nav += '<span aria-hidden="true">&laquo;</span>';
+		nav += '<span class="sr-only">Previous</span>';
+		nav += '</a>';
+		nav += '</li>';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="before" aria-label="Previous">';
+		nav += '<span aria-hidden="true">previous</span>';
+		nav += '<span class="sr-only">Previous</span>';
+		nav += '</a>';
+		nav += '</li>';
+		
+		for (var i = spage; i <= epage; i ++) {
+			if(i == page){
+				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+			} else {
+				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
+			}
+		}
+		       
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
+		nav += '<span aria-hidden="true">next</span>';
+		nav += '<span class="sr-only">Next</span>';
+		nav += '</a>';
+		nav += '</li>';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
+		nav += '<span aria-hidden="true">&raquo;</span>';
+		nav += '<span class="sr-only">Next</span>';
+		nav += '</a>';
+		nav += '</li>';
+		    
+		$(".pagination").html(nav);	
+	}
+	
+	function searchDate(value){
+		var result00="startEvent";
+		
+		var result11 = document.getElementById("searchKeyword");
+		var result22 = document.getElementById("searchItem").value;
+		var result33 = document.getElementById("searchHidden");
+		if(result22=="startEvent"){
+			result11.setAttribute("type", "date");
+			result33.setAttribute("type", "date");
+			$("#insertmark").append("~");
+		}
+		if(result22!="startEvent"){
+			result11.setAttribute("type", "text");
+			result33.setAttribute("type", "hidden");
+			$("#insertmark").empty();
+		}
+	}
 		
 	function selectOne(value) {
 		var searchItem = $("#searchItem").val();
@@ -93,45 +271,6 @@ $(function() {
 		})
 		
 	}	
-		
-
-	function printAll() {
-		
-		$.ajax({
-			type:'GET',
-			url : 'printAll',
-			dataType: 'json',
-			success : output,
-			error: function() {
-				alert("리스트 불러오기 실패");
-			}
-		})
-	}
-
-	function output(result) {
-		var context = '';
-		$.each(result,function(index,item){
-		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='Session'>"+item.country+"</td>";
-		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
-		})
-		$("#list").html(context);
-		
-		if(context!=''){
-		$("#searchKeyword").val("");
-		$("#searchHidden").val("");
-		}
-		
-	}
-	
-/* 	function page() {
-		var reSortColors = function($table) {
-			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
-			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
-			 }; */
-
 </script>
 </head>
 <body>
@@ -233,28 +372,7 @@ $(function() {
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-                    
-                    <!--Search Box Outer-->
-                   <!--  <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                    
                 </div>
-               
             </div>
         </div>
     </div>
@@ -328,61 +446,77 @@ $(function() {
 
 
 <!--Schedule Section-->
-<section class="schedule-section" id="schedule-tab">
-	<div id="div_icontext">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-	</div>
-    <div class="container">
-          <div class="schedule-area">
-      		<div class="schedule-content clearfix">
-			            <div class="inner-box  table-responsive">      
-				<form action="searchList" method="get">
-					<table><tr><td>
-					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
-					<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
-					ユーザー名
-					</option>
-					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
-					タイトル
-					</option>
-					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
-					国家
-					</option>
-					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
-					期間
-					</option>
-					</select>
-					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
-					<td id="insertmark"></td>
-					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" onclick="selectOne(this)">	
-					</td></tr>
-					</table>
-				</form>           
-			            <div class="inner-box  table-responsive"> 
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="srial">#</th>
-                                    <th class="session">タイトル</th>
-                                    <th class="time">国家</th>
-                                    <th class="speakers">期間</th>
-                                    <th class="venue">ユーザー名</th>
-                                </tr>
-                            </thead>
-                            <tbody id="list" class="table table-hover"></tbody> 
-                            
-                          </table>
-                            
-                    </div>
-                </div>
-            
-                    </div>
-                </div>
-</section>
-<!--End Schedule Section-->
+		<section class="schedule-section" id="schedule-tab">
+			<div id="div_icontext">
+				<h4 id="icontext">
+					<b>投稿する</b>
+				</h4>
+				<a href="insertFestival"><img src="listImages/write.png"
+					title="投稿"></a>
+			</div>
+			<div class="container">
+				<div class="schedule-area">
+					<div class="schedule-content clearfix">
+						<div class="inner-box  table-responsive">
+							<form action="searchList" method="get">
+								<table>
+									<tr>
+										<td><select name="searchItem" id="searchItem"
+											onchange="searchDate(this)">
+												<option value="userid"
+													<c:if test="${'userid'==searchItem}">selected</c:if>>
+													ユーザー名</option>
+												<option value="title"
+													<c:if test="${'title'==searchItem}">selected</c:if>>
+													タイトル</option>
+												<option value="country"
+													<c:if test="${'country'==searchItem}">selected</c:if>>
+													国家</option>
+												<option value="startEvent"
+													<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+													期間</option>
+										</select></td>
+										<td><input type="text" name="searchKeyword"
+											id="searchKeyword"></td>
+										<td id="insertmark"></td>
+										<td><input type="hidden" name="endEvent"
+											id="searchHidden"> <input type="button" value="検索"
+											onclick="selectOne(this)"></td>
+									</tr>
+								</table>
+							</form>
+							<div class="inner-box  table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th class="srial">#</th>
+											<th class="session">タイトル</th>
+											<th class="time">国家</th>
+											<th class="speakers">期間</th>
+											<th class="venue">ユーザー名</th>
+										</tr>
+									</thead>
+									<tbody id="list" class="table table-hover">
+										<%-- <c:forEach var="member" items="${memberMap}">
+										<tr>
+											<td class='srial'>${member.mainBoardNum}</td>
+											<td class='Session'>${member.title}</td>
+											<td class='Session'>${member.country}</td>
+											<td class='Session'>${member.startEvent} ~ ${member.endEvent}</td>
+											<td class='Session'>${member.userid}</td>
+										</tr>
+										</c:forEach> --%>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<nav class="pagination">
+							
+						</nav>
+					</div>
+				</div>
+		</section>
+		<!--End Schedule Section-->
 
 
 
