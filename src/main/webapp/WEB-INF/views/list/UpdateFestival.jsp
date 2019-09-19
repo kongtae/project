@@ -69,10 +69,6 @@ function writeFestival() {
 
 		var form = $("#updateFestivalID")[0];
 		var formData = new FormData(form);
-	//	alert(formData);
-		
- 	//	var formdata2 = $("#writeFestivalID").serialize();
-		//alert(formdata2);
 		
 		$.ajax({
 			url:"updateFestival",
@@ -332,7 +328,7 @@ function writeFestival() {
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" value="${vo.title}" >
 					              </div>
 					              <div class="form-group">
-					                    <!-- <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea> -->
+					                     <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.festival_intro}</textarea> 
 									<div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -362,8 +358,8 @@ function writeFestival() {
             <!-- /.box-header -->
             <div class="box-body pad">
               
-                    <textarea id="editor1" name="editor1" rows="10" cols="80">
-						${vo.festival_intro}
+                    <!-- <textarea id="editor1" name="editor1" rows="10" cols="80">// -->
+						
                     </textarea>
             </div>
           </div>
@@ -406,7 +402,8 @@ function writeFestival() {
 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="${vo.startEvent }" id="startEvent">から</td></tr>
 										<tr><td>祭りの終了日：<input type="date" name="endEvent" value="${vo.endEvent }" id="endEvent">まで行います。</td></tr>
 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br> 
-					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}"></td></tr>
+					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。" value="${vo.adress}">
+										<input type="hidden" name="mainBoardNum" value="${vo.mainBoardNum }"></td></tr>
 					             	</table> 
 					              </div>
 					            </div>

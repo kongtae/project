@@ -43,7 +43,7 @@
  		select * from MAINBOARD 
 		WHERE 
 		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
-		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD')
+		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') 
 		order by mainBoardNum DESC 
 	</select>
 
@@ -71,12 +71,10 @@
 	UPDATE
 		MAINBOARD
 	SET
-	
 		title = #{title},
 		country = #{country},
 		adress = #{adress},
 		festival_intro = #{festival_intro},
-		inputTime = #{inputTime},
 		startEvent = #{startEvent},
 		endEvent = #{endEvent}
 		<if test="originalFileName != null and saveFileName !=null">

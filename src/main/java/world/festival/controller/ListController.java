@@ -85,9 +85,7 @@ public class ListController {
 	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
-
 		System.out.println("리스트 출력"+list);
-//		ArrayList<ListVO> list = service.printAll();
 		System.out.println("전체리스트 출력"+list);
 		 return list;
 	}

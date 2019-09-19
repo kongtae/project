@@ -50,13 +50,16 @@
 					if(result != null) {
 						$.each(result,function(index,item){
 							originalFileName = "resources/images/userimage/" +item;
-						/*  	$('#preview'+index).attr("src", originalFileName); */ 
 					 	$('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
 						})
 					}
 				},
 				error : function() {
+<<<<<<< HEAD
 // 					alert("실패");
+=======
+					alert("이미지 로드 실패");
+>>>>>>> 15e9d80f8e2b56b64fdc3e792550e406f7174310
 				}
 			});
 		}
@@ -429,7 +432,7 @@
                         
                          <div class="event-details">
                          	<div>
-                         <h1><b>祭りの詳細情報<b></b></h1>
+                         <h1><b>祭りの詳細情報</b></h1>
 						 
 
 
@@ -463,7 +466,7 @@
                         		<td>国家</td><td>${vo.country}</td>
                         	</tr>
 							<tr>
-                        		<td>地域および詳細住所</td><td>${vo.adress}</td>
+                        		<td>住所</td><td>${vo.adress}</td>
                         	</tr>
                         </table>
                         </div>
