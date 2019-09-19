@@ -98,17 +98,16 @@ public class ListController {
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
+	public @ResponseBody ArrayList<ListVO> selectOne(String endEvent,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
 		System.out.println("keyword "+searchKeyword);
-		System.out.println("end "+vo.getEndEvent());
+		System.out.println("end "+endEvent);
 		ArrayList<ListVO> selectOne1 = new ArrayList<ListVO>();
-		System.out.println("받은 전체 VO : "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	
+		selectOne1 = service.selectOne(endEvent,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
 		}

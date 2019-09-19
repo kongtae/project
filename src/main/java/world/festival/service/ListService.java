@@ -71,12 +71,10 @@ public class ListService {
 	}
 
 
-	public ArrayList<ListVO> selectOne(ListVO vo, String searchItem, String searchKeyword) {
+	public ArrayList<ListVO> selectOne(String endEvent, String searchItem, String searchKeyword) {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchItem", searchItem);
 		map.put("searchKeyword", searchKeyword);
-		DateFormat sdFormat = new SimpleDateFormat("yy-MM-dd");
-		String endEvent = sdFormat.format(vo.getEndEvent());
 		map.put("endEvent", endEvent);
 		System.out.println(endEvent);
 		System.out.println("서비스의 맵이 다 처리 되었나 ? 셀렉원1map : "+map);

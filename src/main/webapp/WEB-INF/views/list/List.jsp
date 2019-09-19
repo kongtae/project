@@ -39,7 +39,8 @@
 </style>
     
 </head>
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/jquery.js"></script>
 <script>
 
 		$(function() {
@@ -65,7 +66,7 @@
 		}
 		
 		
-	function selectOne(value) {
+		window.selectOne = function() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
@@ -81,8 +82,8 @@
 			}
 		}
 
-		if(searchItem=="hashSearch"){
-			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
+	//	if(searchItem=="hashSearch"){
+	//		$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
 			/* var a = [];
 			a += searchkeyword;
 			$.ajax({
@@ -108,8 +109,8 @@
 					alert("리스트 불러오기 실패");
 				}
 			}) 			 */
-			return false;
-		}
+	//		return false;
+	//	}
 		
 		
 		$.ajax({
@@ -118,9 +119,9 @@
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
 			dataType: 'json',
 			success : output,
-			error: function() {
+			error: function(request,status,error) {
 				alert("리스트 불러오기 실패1");
-			
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
 		
@@ -141,6 +142,7 @@
 	}
 
 	function output(result) {
+		//$("#list").empty();
 		var context = '';
 		$.each(result,function(index,item){
 			var s = new Date(item.startEvent);
@@ -399,8 +401,7 @@
 					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="selectOne" onclick="selectOne(this)" >	
-					<input type="text" style="display: none;" /> <!-- 엔터치면 서밋을막는 인풋  -->
+					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> <!-- 엔터치면 서밋을막는 인풋  -->
 					</td></tr>
 					</table>
 				</form>           
@@ -522,7 +523,7 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script src="js/jquery.js"></script>
+
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
@@ -540,8 +541,8 @@
 <script src="js/custom.js"></script>
 
 <!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
+<script src="js/map-script.js"></script> -->
 <!--End Google Map APi-->
 
 
