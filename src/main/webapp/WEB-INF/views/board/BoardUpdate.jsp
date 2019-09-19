@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <title>Wiscon || Responsive HTML 5 Template</title>
@@ -32,52 +33,23 @@
     <script src="js/jquery.js"></script>
  <script>
  
-	 $(function () {
-	 	imagePrint();
-	 	
-	 });
- 	
- 	var originalFileName = "";
- 	var mainb = ${vo.mainBoardNum};
- 	var imageData = {'mainBoardNum' : mainb};
- 	function imagePrint() {
-	 		$.ajax({
-				url : "imagePrint",
-				type : "post",
-				data : imageData,
-				dataType: 'json',
-				success : function(result) {
-					if(result != null) {
-						$.each(result,function(index,item){
-							originalFileName = "resources/images/userimage/" +item;
-					 	$('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
-						})
-					}
-				},
-				error : function() {
-// 					alert("실패");
-					alert("이미지 로드 실패");
-				}
-			});
-		}
- 	
- 	
+ 
  	function UpdateFestival() {
- 		location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
+ 		location.href="updateFestival?bul_boardnum=${vo.bul_boardnum}";
 	}
-  	function DeleteFestival() {
+  	function BoardDelete() {
   			if(confirm("삭제하시겠습니까?")){
-  			location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
+  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
   			}
   	}
-  	//댓글 작성시 유효성검사
+ /*  	//댓글 작성시 유효성검사
   	function replywrite() {
 		var replytext = document.getElementById("replytext");
 		var name = document.getElementById("name").value;
 		if(replytext.value.length==0)
 		{
 			alert("글일 입력해주세요");
-			return false;	/*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
+			return false;	리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다
 		}
 		if(name.length=="")
 		{
@@ -112,20 +84,24 @@
   				
   			});
   		}
-  		
+  		 */
   		//댓글 수정
-  			function replymodify(replynum,text) {
+ /*  			function replymodify(replynum,text) {
   			var offset = $("#updatebtn").offset();
   			$("html, body").animate({scrollTop:offset.top},400)
+  				
 			document.getElementById("replytext").value=text;
 			document.getElementById("replysubmit").value="Send Message";
+
 			document.getElementById("replysubmit").onclick=function(){
 				var updatext = document.getElementById("replytext").value;
 				location.href="replyUpdate?replynum="+replynum
 						+"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
-			}
+			}ㄴㄴ
+			
 			var message="end";
 			var result00="startEvent";
+			
 			var result33 = document.getElementById("searchHidden");
 			if(message=="end"){
 				result33.setAttribute("type", "reset");
@@ -135,55 +111,11 @@
 				result33.setAttribute("type", "hidden");
 				refreshMemList();
 			})
-		}
+			
 
-  		//일단은 위시리스트 추가하기
-  		function insertwish()
-  	  	{
-  			var mainBoardNum = document.getElementById("mainboardnum").value
-//   			var dislike = 
-  	  		$.ajax({
-  	 			url:'insertwish',
-  	 			type:'get',
-    			data:
- 	  			{
-    				mainBoardNum : document.getElementById("mainboardnum").value
-  	  			},
-  	  			success:function(data){
-//   	  				refreshMemList();//새로고침
+		} */
 
-  	  			},
-  	  			error: function(){
-//  	   				alert("삭제 실패")
-  	  			}
-  	  			
-  	  		});
-  	  	}
-  		//좋아요 취소
-  		function deletetwish()
-  		{
-  			$.ajax({
-  	 			url:'deletetwish',
-  	 			type:'get',
-    			data:
- 	  			{
-    				mainBoardNum : document.getElementById("mainboardnum").value
-  	  			},
-  	  			success:function(data){
-//   	  				refreshMemList();//새로고침
-					if(data.mainBoardNum!=null)
-						{
-							alert("삭제하기")
-						}
-  	  			},
-  	  			error: function(){
-//  	   				alert("삭제 실패")
-  	  			}
-  	  			
-  	  		});
-  	  	}
-  		
-  			
+  
  </script>
     
 </head>
@@ -234,7 +166,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="#"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -251,7 +183,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -265,9 +197,9 @@
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
+								<li class="dropdown"><a href="#">Board</a>
 									<ul>
-										<li><a href="boardList">Board</a></li>
+										<li><a href="#">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -277,25 +209,6 @@
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-                    
-                    <!--Search Box Outer-->
-                <!--     <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                     
                 </div>
                
@@ -324,7 +237,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -361,7 +274,7 @@
         <div class="title-text text-center">
             <h3>Shedule Details</h3>
             <ul>
-                <li><a href="/festival">home</a></li>
+                <li><a href="index.html">home</a></li>
                 <li>/</li>
                 <li>Shedule Details</li>
             </ul>
@@ -379,72 +292,38 @@
                 <div class="shedule-left-side">
                     <div class="text-title">
                         <h6>祭りの写真</h6>
-                        <c:if test="${like==null}">
-                       <a href=""><img src="images/dislike.png" id="dislike" onclick="insertwish()"/></a>
-                       		${wishlist}
-                       </c:if>
-                       <c:if test="${like!=null}">
-                       <a href=""><img src="images/like.png" id="like" onclick="deletetwish()"/></a>
-                       		${wishlist}
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.loginid == null }">
-					추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
-						<span class="rec_count"></span>					
-					</c:if>
-                    
-<!--                         <a href=listDetailGO?mainBoardNum="+item.mainBoardNum+"> -->
-<%--                        <a href="like?mainBoardNum=${vo.mainBoardNum}"></a> --%>
-<!-- 							    <a href='javascript: like_func();'><img src='images/like.png' id='like_img'></a> -->
-<%-- 							    <a href="like?MainboardNum=${vo.mainBoardNum}"><img src='images/dislike.png'></a> --%>
-<!--                        id="like" onclick="like()"> -->
-<!--                        <img src="images/like.png" id="like" onclick="like()"> -->
                     </div> 
 <!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-                   
                     <div id="preview">
                     </div>
-                    <div class="image-box" id="image-box">
-        <!--     		<input type="" src="" id="preview0">
-                    <br>
-                    <input type="image" src="" id="preview1">
-                    <br>
-                    <input type="image" src="" id="preview2"> -->
-            	</div>
                 </div>
             </div>
-
-            
-            
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
            <!--              <figure>
                             <img src="images/resources/schedule-10.jpg" alt="">
                         </figure> -->
-                        
                          <div class="event-details">
                          	<div>
-                         <h1><b>祭りの詳細情報</b></h1>
-						 
+                         <h1><b>祭りの詳細情報<b></b></h1>
+
 
 
                          	</div>
-                         	 
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
 	                         	<input type="button" value="修正" onclick="UpdateFestival()">
-	                         	<input type="button" value="削除" onclick="DeleteFestival()">
+	                         	<input type="button" value="削除" onclick="BoardDelete()">
 							</div>
 							</c:if>                          
                           <div class="inner-box  table-responsive">
-
                         <table class="table table-hover">
-                        	<tr>
+                        	<tr> <!-- 수정할곳  -->
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
                         	</tr>
                          	<tr>
@@ -454,10 +333,10 @@
                         		<td>タイトル</td><td>${vo.title}</td>
                         	</tr>
                         	<tr>
-                        		<td>内容</td><td>${vo.festival_intro}</td>
+                        		<td>内容</td><td>${vo.contents}</td>
                         	</tr>
 							<tr>
-                        		<td>期間</td><td>${vo.startEvent}~${vo.endEvent}</td>
+                        		<td>期間</td><td>${vo.inputdate}</td>
                         	</tr>
                         	<tr>
                         		<td>国家</td><td>${vo.country}</td>
@@ -468,10 +347,6 @@
                         </table>
                         </div>
                         </div>
-       <!--                  <h5>Business Conference - World Wealth Creation 2018.</h5>
-                        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                        <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-        -->            
         			 </div>
                     <div class="event-details">
                         <h5>Event Details</h5>
@@ -566,7 +441,7 @@
 <!--                             <div class="form-group"> -->
 <!--                                 <input type="text" name="subject" placeholder="Subject" required=""> -->
 <!--                             </div>                                   -->
-						<input type="hidden" name="mainboardnum" id="mainboardnum" value="${vo.mainBoardNum}">
+						<input type="hidden" name="mainboardnum" id="mainboardnum" value="">
                         </div>
 <!--                         <div class="col-md-6 col-sm-12 col-xs-12"> -->
 <!--                             <div class="form-group"> -->
@@ -609,7 +484,7 @@
                 </figure>
             </div>
             <ul class="footer-menu">
-                <li><a href="/festival">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about-us.html">About</a></li>
                 <li><a href="speakers.html">Speakers</a></li>
                 <li><a href="#">Pages</a></li>

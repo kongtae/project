@@ -34,22 +34,22 @@
  <script>
  
  
- 	function UpdateFestival() {
- 		location.href="updateFestival?mainBoardNum=${vo.mainBoardNum}";
+ 	function boardUpdateGO() {
+ 		location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
 	}
-  	function DeleteFestival() {
+  	function BoardDelete() {
   			if(confirm("삭제하시겠습니까?")){
-  			location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
+  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
   			}
   	}
-  	//댓글 작성시 유효성검사
+   	//댓글 작성시 유효성검사
   	function replywrite() {
 		var replytext = document.getElementById("replytext");
 		var name = document.getElementById("name").value;
 		if(replytext.value.length==0)
 		{
 			alert("글일 입력해주세요");
-			return false;	/*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
+			return false;	
 		}
 		if(name.length=="")
 		{
@@ -67,7 +67,7 @@
   		function replyDelete(replynum)
   		{
   			$.ajax({
-  				url:'replyDelete',
+  				url:'replyDeleteBoard',
   				type:'get',
   				data:
   				{
@@ -84,9 +84,9 @@
   				
   			});
   		}
-  		
+  		 
   		//댓글 수정
-  			function replymodify(replynum,text) {
+   			function replymodify(replynum,text) {
   			var offset = $("#updatebtn").offset();
   			$("html, body").animate({scrollTop:offset.top},400)
   				
@@ -95,8 +95,8 @@
 
 			document.getElementById("replysubmit").onclick=function(){
 				var updatext = document.getElementById("replytext").value;
-				location.href="replyUpdate?replynum="+replynum
-						+"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
+				location.href="replyUpdateBoard?replynum="+replynum
+						+"&bul_boardnum=${vo.bul_boardnum}&replytext="+updatext;
 			}
 			
 			var message="end";
@@ -113,7 +113,7 @@
 			})
 			
 
-		}
+		} 
 
   
  </script>
@@ -209,25 +209,6 @@
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-                    
-                    <!--Search Box Outer-->
-                <!--     <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                     
                 </div>
                
@@ -337,12 +318,12 @@
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
 	                         	<input type="button" value="修正" onclick="UpdateFestival()">
-	                         	<input type="button" value="削除" onclick="DeleteFestival()">
+	                         	<input type="button" value="削除" onclick="BoardDelete()">
 							</div>
 							</c:if>                          
                           <div class="inner-box  table-responsive">
                         <table class="table table-hover">
-                        	<tr>
+                        	<tr> <!-- 수정할곳  -->
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
                         	</tr>
                          	<tr>
@@ -352,24 +333,20 @@
                         		<td>タイトル</td><td>${vo.title}</td>
                         	</tr>
                         	<tr>
-                        		<td>内容</td><td>${vo.festival_intro}</td>
+                        		<td>内容</td><td>${vo.contents}</td>
                         	</tr>
 							<tr>
-                        		<td>期間</td><td>${vo.startEvent}~${vo.endEvent}</td>
+                        		<td>期間</td><td>${vo.inputdate}</td>
                         	</tr>
                         	<tr>
                         		<td>国家</td><td>${vo.country}</td>
                         	</tr>
 							<tr>
-                        		<td>地域および詳細住所</td><td>${vo.adress}</td>
+                        		<td>住所</td><td>${vo.adress}</td>
                         	</tr>
                         </table>
                         </div>
                         </div>
-       <!--                  <h5>Business Conference - World Wealth Creation 2018.</h5>
-                        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                        <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-        -->            
         			 </div>
                     <div class="event-details">
                         <h5>Event Details</h5>
@@ -455,35 +432,22 @@
                 <div class="blog-left-title">
                     <h6>Post Comments</h6>
                 </div>
-                <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
+                <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywrite" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <input type="text" name="name" value="${sessionScope.loginid }" id="name" readonly="readonly">
                             </div>
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="subject" placeholder="Subject" required=""> -->
-<!--                             </div>                                   -->
-						<input type="hidden" name="mainboardnum" id="mainboardnum" value="${vo.mainBoardNum}">
+						<input type="hidden" name="bul_boardnum" id="bul_boardnum" value="">
                         </div>
-<!--                         <div class="col-md-6 col-sm-12 col-xs-12"> -->
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="email" placeholder="Email" required=""> -->
-<!--                             </div> -->
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="website" placeholder="Website" required=""> -->
-<!--                             </div>                                  -->
-<!--                         </div> -->
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
                                
                             </div>
                             <div class="form-group bottom">
-<!--                                 <button type="button" id="replysubmit" value="Send Message"  onclick="replyWrite()" class="theme-btn btn-style-one">Send Message</button> -->
                                 <button type="button" id="replysubmit" onclick="replywrite()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
                                  <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
-<!--                                 <input type="reset"> -->
                             </div>
                         </div>
                     </div>

@@ -55,25 +55,20 @@
 
 function writeFestival() {
 
-		var form = $("#writeFestivalID")[0];
+		var form = $("#BoardWriteID")[0];
 		var formData = new FormData(form);
-	//	alert(formData);
-		
- 	//	var formdata2 = $("#writeFestivalID").serialize();
-		//alert(formdata2);
 		
 		$.ajax({
-			url:"writeFestival",
+			url:"BoardWrite",
 			enctype: 'multipart/form-data',
 			data:formData,
 			type:"post",
 			contentType:false,
 			processData:false,
 			dataType : 'text',
-			//cache: false,
-			success: function(data) {
+			success: function() {
 				alert("投稿完了");
-				location.href ="listForm";
+				history.goback();
 			},
 			error: function(request,status,error) {
 				alert("投稿ERROR");
@@ -111,7 +106,7 @@ function writeFestival() {
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${seccionScope.loginid==null}">
+						<c:if test="${sessionScope.loginid==null}">
 							<li><a href="registermember">Sign up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
@@ -175,25 +170,6 @@ function writeFestival() {
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-                    
-                    <!--Search Box Outer-->
-<!--                     <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                     
                 </div>
                
@@ -270,20 +246,15 @@ function writeFestival() {
 
 
 <!--Schedule Details-->
-<form action="writeFestival" id="writeFestivalID" method="post" enctype="multipart/form-data" >
+<form action="BoardWrite" id="BoardWriteID" method="post" enctype="multipart/form-data" >
 <section class="schedule-details">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
                     <div class="text-title">
-                        <h6>祭りの写真</h6>
+                        <h6>写真</h6>
                     </div> 
-<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
-                        <figure>
-                            <img src="resources/images/schedule-9.jpg" alt="" >
-                        </figure>
-                    </div> -->
                     <div id="preview">
                     </div><br>
                     <div id="preview2">
@@ -303,7 +274,6 @@ function writeFestival() {
               </div> 
                 <div class="box-footer">
               <div class="pull-right">
-              <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
                 <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
                 <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
               </div>
@@ -321,18 +291,17 @@ function writeFestival() {
 					            <!-- /.box-header -->
 					            <div class="box-body">
 					              <div class="form-group">
-					              	<h1>祭りの投稿欄</h1>
+					              	<h1>投稿欄</h1>
 					              	<br>
+					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
 					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" >
 					              </div>
 					              <div class="form-group">
-					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
-<!-- 									<table>	 -->
-<!-- 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr> -->
-<!-- 										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr> -->
-<!-- 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br>  -->
-<!-- 					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> -->
-<!-- 					             	</table> -->
+					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
+									<table>	
+ 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br>  
+				           			 住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> 
+					             	</table> 
 					              </div>
 					            </div>
 					          </div>

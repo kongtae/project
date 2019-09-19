@@ -65,7 +65,6 @@
 			}
 		}
 		
-	function selectOne() {
 		
 		function selectOne() {
 		var searchItem = $("#searchItem").val();
@@ -82,21 +81,10 @@
 			}
 		}
 		
-// 		if(searchItem=="hashSearch"){
-// 			$('#hash').append(" "+searchKeyword+" ");
-// 			return false;
-			/* $.ajax({
-			if(a>b){
-				alert("検索する期間を間違えて入力しました。");
-				$("#searchKeyword").val("");
-				$("#searchHidden").val("");
-				return false;
-			}
-		}
 
-		if(searchItem=="hashSearch"){
-			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
-			/* var a = [];
+	/* 	if(searchItem=="hashSearch"){
+			$('#hash').append("<span>"+searchKeyword+"<button value="+searchKeyword+">X</button>   </span>");
+			var a = [];
 			a += searchkeyword;
 			$.ajax({
 			type:'POST',
@@ -120,9 +108,9 @@
 				error: function() {
 					alert("리스트 불러오기 실패");
 				}
-			}) 			 */
+			}) 			 
 			return false;
-		}
+		} */
 		
 		
 		$.ajax({
@@ -137,9 +125,6 @@
 			}
 		});
 	}
-	
-		
-		
 
 	function printAll() {
 		$.ajax({
@@ -183,19 +168,7 @@
 		
 	}
 	
-  /* 	var content = document.getElementById('hash').innerHTML;
-	var splitedArray = content.split(' ');
-	var linkedContent = '';
-	for(var word in splitedArray)
-	{
-	  word = splitedArray[word];
-	   if(word.indexOf('#') == 0)
-	   {
-	      word = '<a href=\'링크\'>'+word+'</a>';
-	   }
-	   linkedContent += word+' ';
-	}
-	document.getElementById('hash').innerHTML = linkedContent;   */
+ 
 	 
 
 </script>
@@ -241,7 +214,7 @@
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout" >Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -385,12 +358,7 @@
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
-<<<<<<< HEAD
-=======
-<!-- 				<form action="selectOne" method="post"> -->
 					<div id="hash">
-<!-- 				<form action="searchList" method="get"> -->
->>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
 					
 					<div id="hash"></div>
 					
@@ -418,17 +386,10 @@
 					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-<<<<<<< HEAD
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
 					</td></tr>
-					</table>
-=======
-					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
-<!-- 					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> 엔터치면 서밋을막는 인풋  -->
-					</td></tr>
-					</table>
 <!-- 				</form>            -->
->>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
+ 					 </table>
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -441,9 +402,10 @@
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
-                            
+                           
                           </table>
-                            
+                         </div> 
+                       
                     </div>
                 </div>
             </div>

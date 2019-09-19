@@ -11,13 +11,13 @@ public class BoardVO {
 	private String bul_boardnum;
 	private String userid;
 	private String title;
-	private String CONTENTS;
+	private String contents;
 	private String country;
 	private String adress;
-	private Date inputTime;
+	private Date inputdate;
 	private int hit;
 	private String originalFileName;  // originalFileName;
-	private String saveFileName;
+	private String savedFileName;
 	
 	
 }

@@ -46,8 +46,9 @@
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
-$(function(){
-	$('#submit').on('click',function(){
+
+	function signOn() {
+	
 		var userid = $('#userid').val();
 		var userpwd = $('#userpwd').val();
 		
@@ -59,9 +60,24 @@ $(function(){
 			alert("パスワードを入力してください。");
 			return false;
 		}	
-		return true;
-	});
-});
+	
+		$.ajax({
+		url:"loginForm",
+		enctype: 'multipart/form-data',
+		data:$("#loginForm").serialize(),
+		type:"post",
+		success: function(data) {
+			alert("로그인 성공");
+			self.location.href = document.referrer;
+			
+		},
+		error: function() {
+			alert("로그인 실패");
+			}
+		});
+	} 
+	
+
 </script>
 </head>
 <body class="hold-transition login-page">
@@ -74,7 +90,7 @@ $(function(){
     <p class="login-box-msg">Sign in to start your session</p>
     
     <input type="hidden" value="${result}" id="result">
-    <form action="loginForm" method="post">
+    <form action="loginForm" method="post" id="loginForm">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="ID" name="userid" id="userid">
         <span class="glyphicon glyphicon-ok form-control-feedback"></span>
@@ -94,7 +110,7 @@ $(function(){
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit" >サインイン</button>
+          <button type="button" class="btn btn-primary btn-block btn-flat" id="submit" onclick="signOn()">サインイン</button>
         </div>
         <!-- /.col -->
       </div>
