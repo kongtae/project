@@ -10,6 +10,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
+
 import world.festival.VO.ListVO;
 
 @Repository
@@ -53,5 +57,23 @@ public class ListDAO {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.readFestival(mainBoardNum);
 	}
+	
+	//댓글 출력용
+	public ArrayList<ReplyVO> replyList(int boardnum) {
+		ReplyMapper mapper= sqlSession.getMapper(ReplyMapper.class);
+		return mapper.replyList(boardnum);
+	}
+
+	public int updateFestival(ListVO vo) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		System.out.println("수정할 다오vo " + vo);
+		return mapper.updateFestival(vo);
+	}
+
+	public ListVO imagePrint(ListVO vo) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.imagePrint(vo);
+	}
+
 
 }

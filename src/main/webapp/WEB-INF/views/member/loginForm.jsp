@@ -94,7 +94,7 @@ $(function(){
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit">サインイン</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit" >サインイン</button>
         </div>
         <!-- /.col -->
       </div>

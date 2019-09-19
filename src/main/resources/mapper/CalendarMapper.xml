@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="world.festival.dao.CalendarMapper">
+  
+  <!-- 달력 출력 -->
+<select id="selectCalendar" resultType="ListVO">
+		SELECT
+			MAINBOARDNUM, TITLE, STARTEVENT+1 AS STARTEVENT, ENDEVENT+1 AS ENDEVENT
+		FROM
+			MAINBOARD
+</select>
+
+</mapper>

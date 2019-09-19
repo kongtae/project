@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="world.festival.dao.WishMapper">
+
+<!-- 회원가입 -->	
+
+<!-- 	private int wishlistnum; -->
+<!-- 	private int mainboardnum; -->
+<!-- 	private String userid; -->
+<!-- 	private String inputtime; -->
+
+<!-- 좋아요 -->
+<insert id="insertwish" parameterType="ListVO">
+	INSERT INTO
+		WISHLIST
+		(
+		 wishlist_num,
+		 MAINBOARDNUM,
+		 userid,
+		 inputtime
+		 )
+	VALUES 
+	    (
+		wishlist_seq.nextval,
+		#{mainBoardNum},
+		#{userid},
+		sysdate
+	    )
+</insert>
+
+
+
+<delete id="deletetwish" parameterType="ListVO">
+	DELETE FROM
+		WISHLIST
+	WHERE
+		userid=#{userid} and
+		MAINBOARDNUM=#{mainBoardNum}
+</delete>
+
+
+<select id="selectWish" parameterType="ListVO" resultType="int">
+	SELECT 
+		count(*)
+		FROM 
+			WISHLIST
+		WHERE
+			userid=#{userid} and MAINBOARDNUM=#{mainBoardNum}
+</select>
+
+<!-- 이 개시물의 전체 좋아요 갯수 -->
+<select id="wishList" parameterType="ListVO" resultType="WishVO">
+		select * from WISHLIST
+		 where
+		 mainboardnum=#{mainboardnum}
+</select>
+	
+<!-- 마이페이지 회원정보 출력 -->
+<!-- <select id="memberSelect" parameterType="String" resultType="UserVO"> -->
+<!-- 	SELECT -->
+<!-- 		* -->
+<!-- 	FROM -->
+<!-- 		member -->
+<!-- 	WHERE -->
+<!-- 		userid = #{userid} -->
+<!-- </select> -->
+
+</mapper>

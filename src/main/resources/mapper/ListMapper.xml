@@ -8,10 +8,10 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName,saveFileName)
+		MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName)
 	VALUES (
-		<!-- #{userid}, -->
 		mainboard_seq.nextval,
+		#{userid},
 		#{title},
 		#{country},
 		#{adress},
@@ -20,7 +20,7 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null">
+			<when test="originalFileName != null and saveFileName !=null">
 			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
@@ -43,7 +43,7 @@
  		select * from MAINBOARD 
 		WHERE 
 		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
-		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD')
+		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') 
 		order by mainBoardNum DESC 
 	</select>
 
@@ -67,5 +67,26 @@
 		mainBoardNum = #{mainBoardNum}
 </select>
 
-
+<update id="updateFestival" parameterType="ListVO">
+	UPDATE
+		MAINBOARD
+	SET
+		title = #{title},
+		country = #{country},
+		adress = #{adress},
+		festival_intro = #{festival_intro},
+		startEvent = #{startEvent},
+		endEvent = #{endEvent}
+		<if test="originalFileName != null and saveFileName !=null">
+			, originalfileName = #{originalFileName}
+			,saveFileName = #{saveFileName}
+		</if>
+				WHERE 
+		mainBoardNum = #{mainBoardNum}
+</update>
+<select id="imagePrint" parameterType="ListVO" resultType="ListVO">
+		select originalFileName from MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</select>
 </mapper>

@@ -75,7 +75,8 @@
 </style>
 
 </head>
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/jquery.js"></script>
 <script>
 var page = '';
 var countPerPage = 5;
@@ -98,11 +99,7 @@ $(function() {
 
 		$("searchBtn").on('click', function() {
 			page = 0;
-			setPage();
-			printAll();
-		})
-		
-		
+			setPage();		
 	})
 		
 	function printAll() {
@@ -168,7 +165,17 @@ $(function() {
 	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
 		$.each(result,function(index,item){
-			
+			var s = new Date(item.startEvent);
+	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
 			if(index>=startPageGroup && index<endPageGroup) {
 				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
@@ -243,11 +250,10 @@ $(function() {
 		}
 	}
 		
-	function selectOne(value) {
+	function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
-		
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
@@ -256,21 +262,123 @@ $(function() {
 			$("#searchKeyword").val("");
 			$("#searchHidden").val("");
 			return false;
-		}
+			}
 		}
 		
-		$.ajax({
-			type:'GET',
-			url : 'selectOne',					
-			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
+// 		if(searchItem=="hashSearch"){
+// 			$('#hash').append(" "+searchKeyword+" ");
+// 			return false;
+			/* $.ajax({
+			if(a>b){
+				alert("検索する期間を間違えて入力しました。");
+				$("#searchKeyword").val("");
+				$("#searchHidden").val("");
+				return false;
+			}
+		}
+
+		if(searchItem=="hashSearch"){
+			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
+			/* var a = [];
+			a += searchkeyword;
+			$.ajax({
+			type:'POST',
+			url : 'hashSearch',					
+			data: {A: A},
 			dataType: 'json',
 			success : output,
 			error: function() {
 				alert("리스트 불러오기 실패");
 			}
-		})
+		}) 
+			return false;
+			S.ONCLIK
+			A -= SEARCHKEYWORD;
+			$.ajax({
+				type:'POST',
+				url : 'hashSearch',					
+				data: {A: A},
+				dataType: 'json',
+				success : output,
+				error: function() {
+					alert("리스트 불러오기 실패");
+				}
+			}) 			 */
+			return false;
+		}
 		
+		
+		$.ajax({
+			type:'POST',
+			url : 'selectOne',					
+			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
+			dataType: 'json',
+			success : output,
+			error: function(request,status,error) {
+				alert("리스트 불러오기 실패1");
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			}
+		});
 	}	
+		
+
+	/* function printAll() {
+		$.ajax({
+			type:'GET',
+			url : 'printAll',
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패2");
+			}
+		});
+	}
+
+	function output(result) {
+		//$("#list").empty();
+		var context = '';
+		$.each(result,function(index,item){
+			var s = new Date(item.startEvent);
+	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
+		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+		context += "<td class='Session'>"+item.country+"</td>";
+		context += "<td class='Session'>"+start+"~"+end+"</td>";
+		context += "<td class='Session'>"+item.adress+"</td></tr>";
+		})
+		$("#list").html(context);
+		
+		if(context!=''){
+		$("#searchKeyword").val("");
+		$("#searchHidden").val("");
+		}
+		
+	} */
+	
+  /* 	var content = document.getElementById('hash').innerHTML;
+	var splitedArray = content.split(' ');
+	var linkedContent = '';
+	for(var word in splitedArray)
+	{
+	  word = splitedArray[word];
+	   if(word.indexOf('#') == 0)
+	   {
+	      word = '<a href=\'링크\'>'+word+'</a>';
+	   }
+	   linkedContent += word+' ';
+	}
+	document.getElementById('hash').innerHTML = linkedContent;   */
+	 
+
 </script>
 </head>
 <body>
@@ -359,9 +467,9 @@ $(function() {
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -372,6 +480,11 @@ $(function() {
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
+<<<<<<< HEAD
+=======
+                    
+                    
+>>>>>>> 9f474c8068d3307d8cd681574c4d6ab1063baeab
                 </div>
             </div>
         </div>
@@ -412,9 +525,9 @@ $(function() {
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -446,6 +559,7 @@ $(function() {
 
 
 <!--Schedule Section-->
+<<<<<<< HEAD
 		<section class="schedule-section" id="schedule-tab">
 			<div id="div_icontext">
 				<h4 id="icontext">
@@ -517,6 +631,83 @@ $(function() {
 				</div>
 		</section>
 		<!--End Schedule Section-->
+=======
+<section class="schedule-section" id="schedule-tab">
+	<div id="div_icontext">
+		<h4 id="icontext"><b>投稿する</b></h4>
+		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+	</div>
+    <div class="container">
+          <div class="schedule-area">
+      		<div class="schedule-content clearfix">
+			            <div class="inner-box  table-responsive">      
+<<<<<<< HEAD
+=======
+<!-- 				<form action="selectOne" method="post"> -->
+					<div id="hash">
+<!-- 				<form action="searchList" method="get"> -->
+>>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
+					
+					<div id="hash"></div>
+					
+					<table>
+					
+					<tr><td>
+					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
+					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
+					タイトル
+					</option>
+					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
+					国家
+					</option>
+					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+					期間
+					</option>
+					<option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
+					住所
+					</option>
+					<option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
+					누적검색
+					</option>
+					</select>
+					</td>
+					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
+					<td id="insertmark"></td>
+					<td><input type="hidden" name="endEvent" id="searchHidden">
+<<<<<<< HEAD
+					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
+					</td></tr>
+					</table>
+=======
+					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
+<!-- 					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> 엔터치면 서밋을막는 인풋  -->
+					</td></tr>
+					</table>
+<!-- 				</form>            -->
+>>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
+			            <div class="inner-box  table-responsive"> 
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="srial">#</th>
+                                    <th class="session">タイトル</th>
+                                    <th class="time">国家</th>
+                                    <th class="speakers">期間</th>
+                                    <th class="venue">住所</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list" class="table table-hover"></tbody> 
+                            
+                          </table>
+                            
+                    </div>
+                </div>
+            </div>
+           </div>
+       </div>
+</section>
+<!--End Schedule Section-->
+>>>>>>> 9f474c8068d3307d8cd681574c4d6ab1063baeab
 
 
 
@@ -613,7 +804,7 @@ $(function() {
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script src="js/jquery.js"></script>
+
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
@@ -630,10 +821,6 @@ $(function() {
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
 
 
 </div>

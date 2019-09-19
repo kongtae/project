@@ -8,11 +8,10 @@
 <!-- 회원가입 -->	
 <insert id="registermember" parameterType="UserVO">
 	INSERT INTO
-		member(adminid, userid, username, userpwd, email)
+		member(adminid, userid, userpwd, email)
 	VALUES (
 		null,
 		#{userid},
-		#{username},
 		#{userpwd},
 		#{email}
 	)
@@ -59,11 +58,11 @@
 		userid = #{userid}
 </select>
 
+<!-- 수정 -->
 <update id="updateMember" parameterType="UserVO">
 	UPDATE
 		member
 	SET
-		username = #{username},
 			<if test="userpwd != null">
 				userpwd = #{userpwd},		
 			</if>
@@ -75,4 +74,37 @@
 		userid = #{userid}
 </update>
 
+
+<!-- 수정 -->
+<update id="updateReply" parameterType="UserVO">
+	UPDATE
+		REPLY
+	SET
+		<if test="originalFileName != null and savedFileName != null">
+			originalfileName = #{originalFileName} ,SAVEFILENAME = #{savedFileName}
+		</if>
+	WHERE
+		userid = #{userid}
+</update>
+
+<!-- 사진 찾아오기 -->
+<select id="selectpot" parameterType="UserVO" resultType="UserVO">
+	select
+		*
+	from
+	 	member
+	 where
+	 	userid=#{userid}
+</select>
+
+
+<!-- 마이페이지 회원정보 출력 -->
+<select id="memberSelect" parameterType="String" resultType="UserVO">
+	SELECT
+		*
+	FROM
+		member
+	WHERE
+		userid = #{userid}
+</select>
 </mapper>

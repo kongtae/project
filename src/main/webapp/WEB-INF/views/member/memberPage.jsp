@@ -61,6 +61,27 @@
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
 
+$(function() {
+	memberSelect();
+});
+
+function memberSelect(){
+	
+	$.ajax({
+		url : "memberSelect",
+		type : "post",
+		success : function(result) {
+			if(result.originalFileName != null) {
+				originalFileName = "resources/images/userimage/" +result.originalFileName;
+			$('#profileImage').attr("src", originalFileName);
+			}
+		},
+		error : function() {
+			alert("실패");
+		}
+	});
+	
+}
 
 
 </script>
@@ -155,9 +176,9 @@
 											<ul>
 												<li><a href="#">Map</a></li>
 											</ul></li>
-										<li class="dropdown"><a href="#">Board</a>
+										<li class="dropdown"><a href="boardList">Board</a>
 											<ul>
-												<li><a href="#">Board</a></li>
+												<li><a href="boardList">Board</a></li>
 											</ul></li>
 									</ul>
 								</div>
@@ -225,7 +246,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="#">Home</a>
+									<li class="dropdown"><a href="/festival">Home</a>
 										<ul>
 											<li><a href="index.html">Home Page 01</a></li>
 											<li><a href="index-2.html">Home Page 02</a></li>
@@ -446,7 +467,7 @@
 						<div class="box box-primary">
 							<div class="box-body box-profile">
 								<img class="profile-user-img img-responsive img-circle"
-									src="dist/img/user4-128x128.jpg" alt="User profile picture">
+									src="dist/img/user4-128x128.jpg" id="profileImage" alt="User profile picture">
 
 								<h3 class="profile-username text-center">Nina Mcintire</h3>
 
@@ -529,7 +550,7 @@
 												<a href="#" class="pull-right btn-box-tool"><i
 													class="fa fa-times"></i></a>
 											</span> <span class="description">Shared publicly - 7:30 PM
-												today</span>
+												today요기군아</span>
 										</div>
 										<!-- /.user-block -->
 										<p>Lorem ipsum represents a long-held tradition for

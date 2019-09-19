@@ -7,7 +7,19 @@
 
     <meta charset="UTF-8">
     
-    <script src="resources/js/jquery.js"></script> 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="resources/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="resources/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+<script src="resources/js/jquery.js"></script> 
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/jquery.fancybox.js"></script>
@@ -64,13 +76,14 @@ function writeFestival() {
 		
 		$.ajax({
 			url:"writeFestival",
-			//enctype: 'multipart/form-data',
+			enctype: 'multipart/form-data',
 			data:formData,
 			type:"post",
 			contentType:false,
 			processData:false,
+			dataType : 'text',
 			//cache: false,
-			success: function() {
+			success: function(data) {
 				alert("投稿完了");
 				location.href ="listForm";
 			},
@@ -111,8 +124,8 @@ function writeFestival() {
 					<!--Social Box-->
 					<ul class="social-box">
 						<c:if test="${seccionScope.loginid==null}">
-							<li><a href="registermember">会員登録</a></li>
-							<li><a href="loginForm">ログイン</a></li>
+							<li><a href="registermember">Sign up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
@@ -161,9 +174,9 @@ function writeFestival() {
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -235,9 +248,9 @@ function writeFestival() {
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board2</a></li>
+										<li><a href="boardList">Board2</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -284,13 +297,18 @@ function writeFestival() {
                         </figure>
                     </div> -->
                     <div id="preview">
+                    </div><br>
+                    <div id="preview2">
+                    </div><br>
+                    <div id="preview3">
                     </div>
-                <div class="form-group">
-                <div class="btn btn-default btn-file">
-                  <i class="fa fa-paperclip"></i> ファイル添付
-                  <input type="file" id="uploadFileName" name="uploadFileName" accept="image/png,image/jpg,image/gif,image/jpeg"> 
-                </div>
-              </div> 
+                <i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
+			 	<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
+				<i class="fa fa-paperclip"></i> ファイル添付	
+					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+
                 <div class="box-footer">
               <div class="pull-right">
               <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
@@ -304,7 +322,6 @@ function writeFestival() {
                 <div class="shedule-right-side">
                     <div class="image-box">
 					    <section class="content">
-					      <div class="row">
 					        <!-- /.col -->
 					        <div class="col-md-9">
 					          <div class="box box-primary">
@@ -316,12 +333,77 @@ function writeFestival() {
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" >
 					              </div>
 					              <div class="form-group">
-					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
+					                    <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea> 
+									<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header">
+              <h3 class="box-title">CK Editor
+                <small>Advanced and full of features</small>
+              </h3>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                  <i class="fa fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+      <!--               <textarea id="editor1" name="festival_intro" rows="10" cols="80"> -->
+                    </textarea>
+            </div>
+          </div>
+          <!-- /.box -->
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Bootstrap WYSIHTML5
+                <small>Simple and fast</small>
+              </h3>
+              <!-- tools box -->
+              <div class="pull-right box-tools">
+                <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                  <i class="fa fa-times"></i></button>
+              </div>
+              <!-- /. tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" placeholder="Place some text here"
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-->
+      </div>
+      <!-- ./row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+									
 									<table>	
 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
 										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
-					             	地域:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr>
+					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
@@ -471,10 +553,39 @@ function writeFestival() {
 
 
 </div>
+
+
+<!-- jQuery 3 -->
+<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="resources/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="resources/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="resources/dist/js/demo.js"></script>
+<!-- CK Editor -->
+<script src="resources/bower_components/ckeditor/ckeditor.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    //bootstrap WYSIHTML5 - text editor
+    $('.textarea').wysihtml5()
+  })
+</script>
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
+    var upload2 = document.querySelector('#uploadFileName2');
+    var upload3 = document.querySelector('#uploadFileName3');
     var preview = document.querySelector('#preview');
+    var preview2 = document.querySelector('#preview2');
+    var preview3 = document.querySelector('#preview3');
  
     upload.addEventListener('change',function (e) {
         var get_file = e.target.files;
@@ -506,11 +617,66 @@ function writeFestival() {
         }
 
         $('#removeImg').empty();
+        $('#preview').empty();
         preview.appendChild(image);
     });
     
+    upload2.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview2').empty();
+        preview2.appendChild(image);
+    });
+    
+    upload3.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview3').empty();
+        preview3.appendChild(image);
+    }); 
+    
 	 $("#reset").click(function () { 
  	 	 $('#preview').empty();
+ 	 	 $('#preview2').empty();
+ 	 	 $('#preview3').empty();
 	 });
 </script>
 </html>

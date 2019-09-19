@@ -2,9 +2,6 @@ package world.festival.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import world.festival.VO.ListVO;
 
 public interface ListMapper {
@@ -22,5 +19,11 @@ public interface ListMapper {
 	public int deleteFestival(ListVO vo);
 
 	public ListVO readFestival(String mainBoardNum);
+
+	public int updateFestival(ListVO vo);
+
+	public ListVO imagePrint(ListVO vo);
+
+
 	
 }
