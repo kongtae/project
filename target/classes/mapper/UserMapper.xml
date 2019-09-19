@@ -8,11 +8,10 @@
 <!-- 회원가입 -->	
 <insert id="registermember" parameterType="UserVO">
 	INSERT INTO
-		member(adminid, userid, username, userpwd, email)
+		member(adminid, userid, userpwd, email)
 	VALUES (
 		null,
 		#{userid},
-		#{username},
 		#{userpwd},
 		#{email}
 	)
@@ -64,7 +63,6 @@
 	UPDATE
 		member
 	SET
-		username = #{username},
 			<if test="userpwd != null">
 				userpwd = #{userpwd},		
 			</if>

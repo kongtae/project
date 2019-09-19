@@ -65,15 +65,28 @@
 			}
 		}
 		
+	function selectOne() {
 		
 		function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
-		
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
+		if(a>b){
+			alert("検索する期間を間違えて入力しました。");
+			$("#searchKeyword").val("");
+			$("#searchHidden").val("");
+			return false;
+			}
+		}
+		
+// 		if(searchItem=="hashSearch"){
+// 			$('#hash').append(" "+searchKeyword+" ");
+// 			return false;
+			/* $.ajax({
+=======
 			if(a>b){
 				alert("検索する期間を間違えて入力しました。");
 				$("#searchKeyword").val("");
@@ -108,15 +121,22 @@
 				error: function() {
 					alert("리스트 불러오기 실패");
 				}
+<<<<<<< HEAD
 			}) 			 */
 			return false;
 		}
+=======
+			}) */
+// 		}
+	//		return false;
+	//	}
+>>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
 		
 		
 		$.ajax({
 			type:'POST',
 			url : 'selectOne',					
-			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
+			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
 			dataType: 'json',
 			success : output,
 			error: function(request,status,error) {
@@ -124,12 +144,13 @@
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
+	}
+	
 		
 	}	
 		
 
 	function printAll() {
-		
 		$.ajax({
 			type:'GET',
 			url : 'printAll',
@@ -138,7 +159,7 @@
 			error: function() {
 				alert("리스트 불러오기 실패2");
 			}
-		})
+		});
 	}
 
 	function output(result) {
@@ -373,6 +394,12 @@
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
+<<<<<<< HEAD
+=======
+<!-- 				<form action="selectOne" method="post"> -->
+					<div id="hash">
+<!-- 				<form action="searchList" method="get"> -->
+>>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
 					
 					<div id="hash"></div>
 					
@@ -400,9 +427,17 @@
 					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
+<<<<<<< HEAD
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
 					</td></tr>
 					</table>
+=======
+					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
+<!-- 					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> 엔터치면 서밋을막는 인풋  -->
+					</td></tr>
+					</table>
+<!-- 				</form>            -->
+>>>>>>> 19d701f21516b7a3da50f5a1b3ef9cd2226d7ecf
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -539,6 +574,9 @@
 <script src="js/custom.js"></script>
 
 <!--Google Map-->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script> -->
+<!-- <script src="js/map-script.js"></script> -->
+=======
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
 <script src="js/map-script.js"></script> -->
 <!--End Google Map APi-->

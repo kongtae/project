@@ -75,6 +75,7 @@ public class ListService {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchItem", searchItem);
 		map.put("searchKeyword", searchKeyword);
+
 		map.put("endEvent", endEvent);
 		System.out.println(endEvent);
 		System.out.println("서비스의 맵이 다 처리 되었나 ? 셀렉원1map : "+map);

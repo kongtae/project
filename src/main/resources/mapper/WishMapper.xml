@@ -11,25 +11,53 @@
 <!-- 	private int mainboardnum; -->
 <!-- 	private String userid; -->
 <!-- 	private String inputtime; -->
+
+<!-- 좋아요 -->
 <insert id="insertwish" parameterType="ListVO">
 	INSERT INTO
-		member
+		WISHLIST
 		(
 		 wishlist_num,
+		 MAINBOARDNUM,
 		 userid,
+		 inputtime
 		 )
 	VALUES 
 	    (
-		null,
+		wishlist_seq.nextval,
+		#{mainBoardNum},
 		#{userid},
-		#{username},
-		#{userpwd},
-		#{email}
+		sysdate
 	    )
 </insert>
 
 
 
+<delete id="deletetwish" parameterType="ListVO">
+	DELETE FROM
+		WISHLIST
+	WHERE
+		userid=#{userid} and
+		MAINBOARDNUM=#{mainBoardNum}
+</delete>
+
+
+<select id="selectWish" parameterType="ListVO" resultType="int">
+	SELECT 
+		count(*)
+		FROM 
+			WISHLIST
+		WHERE
+			userid=#{userid} and MAINBOARDNUM=#{mainBoardNum}
+</select>
+
+<!-- 이 개시물의 전체 좋아요 갯수 -->
+<select id="wishList" parameterType="ListVO" resultType="WishVO">
+		select * from WISHLIST
+		 where
+		 mainboardnum=#{mainboardnum}
+</select>
+	
 <!-- 마이페이지 회원정보 출력 -->
 <!-- <select id="memberSelect" parameterType="String" resultType="UserVO"> -->
 <!-- 	SELECT -->

@@ -550,7 +550,7 @@ function memberSelect(){
 												<a href="#" class="pull-right btn-box-tool"><i
 													class="fa fa-times"></i></a>
 											</span> <span class="description">Shared publicly - 7:30 PM
-												today</span>
+												today요기군아</span>
 										</div>
 										<!-- /.user-block -->
 										<p>Lorem ipsum represents a long-held tradition for

@@ -60,18 +60,4 @@
 	</delete>
 
 
-<!-- <select id="printAll" parameterType="ListVO" resultType="ListVO"> -->
-<!-- 	Select * from MAINBOARD -->
-
-<!-- </select> -->
-
-<!-- 댓글 삭제 -->
-<!-- <delete id="deleteFestival" parameterType="ListVO"> -->
-<!-- 		DELETE  -->
-<!-- 		MAINBOARD  -->
-<!-- 		WHERE  -->
-<!-- 		mainBoardNum = #{mainBoardNum} -->
-<!-- </delete> -->
-
-
 </mapper>
