@@ -2,6 +2,8 @@ package world.festival.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -72,7 +74,6 @@ public class ListDAO {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.imagePrint(vo);
 	}
-
 
 
 }

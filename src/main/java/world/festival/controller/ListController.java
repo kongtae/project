@@ -2,6 +2,7 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -116,6 +117,7 @@ public class ListController {
 		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}
+
 	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> selectOne(String endEvent,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
@@ -207,7 +209,4 @@ public class ListController {
 		
 		return ilist; 
 	}
-
-	
-	
 }

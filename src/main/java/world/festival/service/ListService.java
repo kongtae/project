@@ -24,7 +24,6 @@ public class ListService {
 	@Autowired
 	private ListDAO dao;
 	
-
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
 		
 		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
@@ -57,7 +56,6 @@ public class ListService {
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
-
 		return true;
 
 

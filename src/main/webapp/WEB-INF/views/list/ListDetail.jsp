@@ -182,7 +182,13 @@
   	  			
   	  		});
   	  	}
+  		loginneed
   		
+	function loginneed()
+  	{
+  		alert("좋아요 기능은 로그인시 사용가능합니다.");
+  		return false;
+  	}
   			
  </script>
     
@@ -379,19 +385,27 @@
                 <div class="shedule-left-side">
                     <div class="text-title">
                         <h6>祭りの写真</h6>
-                        <c:if test="${like==null}">
-                       <a href=""><img src="images/dislike.png" id="dislike" onclick="insertwish()"/></a>
-                       		${wishlist}
-                       </c:if>
-                       <c:if test="${like!=null}">
-                       <a href=""><img src="images/like.png" id="like" onclick="deletetwish()"/></a>
-                       		${wishlist}
-                    </c:if>
+                        	<c:if test="${sessionScope.loginid == null }">
+    						 <a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
+    						${wishlist}              	
+                        	</c:if>
+                        	<c:if test="${sessionScope.loginid != null}">
+                        		 <c:if test="${like==null}">
+                     		  <a href="" ><img src="images/dislike.png" id="dislike" onclick="insertwish()" /></a>
+                       			${wishlist}
+                      			 </c:if>
+                     		  <c:if test="${like!=null}">
+                     		  <a href=""><img src="images/like.png" id="like" onclick="deletetwish()"/></a>
+                      	 		${wishlist}
+                   	 			</c:if>
+                        	</c:if>
+                        	
+                       
                     
-                    <c:if test="${sessionScope.loginid == null }">
-					추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
-						<span class="rec_count"></span>					
-					</c:if>
+<%--                     <c:if test="${sessionScope.loginid == null }"> --%>
+<!-- 					추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br /> -->
+<!-- 						<span class="rec_count"></span>					 -->
+<%-- 					</c:if> --%>
                     
 <!--                         <a href=listDetailGO?mainBoardNum="+item.mainBoardNum+"> -->
 <%--                        <a href="like?mainBoardNum=${vo.mainBoardNum}"></a> --%>
