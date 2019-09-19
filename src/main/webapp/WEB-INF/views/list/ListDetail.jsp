@@ -56,7 +56,7 @@
 					}
 				},
 				error : function() {
-					alert("실패");
+// 					alert("실패");
 				}
 			});
 		}
@@ -137,10 +137,11 @@
 			})
 		}
 
-  		function insertwish(mainboardnum)
+  		//일단은 위시리스트 추가하기
+  		function insertwish()
   	  	{
   			var mainBoardNum = document.getElementById("mainboardnum").value
-  			var dislike = 
+//   			var dislike = 
   	  		$.ajax({
   	 			url:'insertwish',
   	 			type:'get',
@@ -149,12 +150,30 @@
     				mainBoardNum : document.getElementById("mainboardnum").value
   	  			},
   	  			success:function(data){
- 	   				alert("여기로 오면 무엇이 되는 거지?")
- 	   				alert(data.mainBoardNum)
+//   	  				refreshMemList();//새로고침
+
+  	  			},
+  	  			error: function(){
+//  	   				alert("삭제 실패")
+  	  			}
+  	  			
+  	  		});
+  	  	}
+  		//좋아요 취소
+  		function deletetwish()
+  		{
+  			$.ajax({
+  	 			url:'deletetwish',
+  	 			type:'get',
+    			data:
+ 	  			{
+    				mainBoardNum : document.getElementById("mainboardnum").value
+  	  			},
+  	  			success:function(data){
 //   	  				refreshMemList();//새로고침
 					if(data.mainBoardNum!=null)
 						{
-							alert("널이 아닌게 왔어요")
+							alert("삭제하기")
 						}
   	  			},
   	  			error: function(){
@@ -163,6 +182,7 @@
   	  			
   	  		});
   	  	}
+  		
   			
  </script>
     
@@ -359,8 +379,20 @@
                 <div class="shedule-left-side">
                     <div class="text-title">
                         <h6>祭りの写真</h6>
-                        <img src="images/dislike.png" id="dislike" onclick="like()"/>
-                        ${like}
+                        <c:if test="${like==null}">
+                       <a href=""><img src="images/dislike.png" id="dislike" onclick="insertwish()"/></a>
+                       		${wishlist}
+                       </c:if>
+                       <c:if test="${like!=null}">
+                       <a href=""><img src="images/like.png" id="like" onclick="deletetwish()"/></a>
+                       		${wishlist}
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.loginid == null }">
+					추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br />
+						<span class="rec_count"></span>					
+					</c:if>
+                    
 <!--                         <a href=listDetailGO?mainBoardNum="+item.mainBoardNum+"> -->
 <%--                        <a href="like?mainBoardNum=${vo.mainBoardNum}"></a> --%>
 <!-- 							    <a href='javascript: like_func();'><img src='images/like.png' id='like_img'></a> -->

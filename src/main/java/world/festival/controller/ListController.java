@@ -18,7 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
+import world.festival.VO.WishVO;
 import world.festival.dao.ListDAO;
+import world.festival.dao.WishDAO;
 import world.festival.service.ListService;
 import world.festival.service.WishService;
 //import world.festival.dao.ReplyService;
@@ -31,10 +33,13 @@ public class ListController {
 	private ListDAO dao;
 	
 	@Autowired
+	private WishDAO wishdao;
+	
+	@Autowired
 	private ListService service;
 	
 	@Autowired
-	private WishService weservice;
+	private WishService wishsrvice;
 //	private ReplyService service;
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
@@ -90,27 +95,41 @@ public class ListController {
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
+		String userid=(String)hs.getAttribute("loginid");
+		vo.setUserid(userid);
 		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
 		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
+		
 		//댓글 갯수
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
+		int wish=wishsrvice.selectWish(vo);
+		System.out.println("위시리스트 여부판단"+wish);
+		//좋아요 여부판단!
+		String like=null;
+		if(wishsrvice.selectWish(vo)>0)
+		{
+			like="like";
+		}
+		model.addAttribute("like", like);
+		//좋아요 갯수 판단
+		ArrayList<WishVO> wishlist=wishsrvice.wishList(Integer.parseInt(vo.getMainBoardNum()));
+		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}
 	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
+	public @ResponseBody ArrayList<ListVO> selectOne(String endEvent,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
 		System.out.println("keyword "+searchKeyword);
-		System.out.println("end "+vo.getEndEvent());
+		System.out.println("end "+endEvent);
 		ArrayList<ListVO> selectOne1 = new ArrayList<ListVO>();
-		System.out.println("vo11 "+vo);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	
+		selectOne1 = service.selectOne(endEvent,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
 		}
@@ -141,26 +160,40 @@ public class ListController {
 //	좋아요를 하고싶다!!!	
 //	 ArrayList<ListVO>
 	@RequestMapping(value = "insertwish", method = RequestMethod.GET)
-	public @ResponseBody String like(ListVO vo,RedirectAttributes rttr, HttpSession session, Model model) {
+	public @ResponseBody ListVO like(ListVO vo,RedirectAttributes rttr, HttpSession session, Model model) {
 		String loginid=(String)session.getAttribute("loginid");
 		vo.setUserid(loginid);
 		vo.setMainBoardNum(vo.getMainBoardNum());
-		weservice.insertwish(vo);
+		wishsrvice.insertwish(vo);
 		System.out.println("if가기전"+vo);
 		if(vo.getOriginalFileName()==null || vo.getOriginalFileName().equals("null") || vo.getOriginalFileName().equals(""))
 		{
 			System.out.println("사진이 널일 때");
 			vo.setOriginalFileName("like.png");
-			model.addAttribute("like", "likeclick");
+			model.addAttribute("like", vo.getOriginalFileName());
 			System.out.println("if안에서의"+vo);
-			return "data";
+			return vo;
 		}
-		
+		model.addAttribute("like", vo.getOriginalFileName());
 //		boolean result = service.deleteFestival(vo);
 		System.out.println("like눌렀을시 올 vo"+vo);
 //		rttr.addFlashAttribute("deleteResult"/*, result*/);
-		return "data";
-}
+		return vo;
+	}
+	
+	//좋아요 취소
+	@RequestMapping(value = "/deletetwish", method = RequestMethod.GET)
+	@ResponseBody
+	public String updatetwish(ListVO vo,HttpSession session, RedirectAttributes rttr) {
+		System.out.println("삭제할 vo "+vo);
+		String userid=(String)session.getAttribute("loginid");
+		vo.setUserid(userid);
+		int result = wishsrvice.deletetwish(vo);
+		System.out.println("삭제된VO "+result);
+		rttr.addFlashAttribute("deleteResult", result);
+		return "redirect:/listForm"; 
+	}
+	
 	@RequestMapping(value = "/imagePrint", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrint(ListVO vo) {
@@ -178,5 +211,7 @@ public class ListController {
 		
 		return ilist; 
 	}
+
+	
 	
 }

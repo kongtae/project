@@ -109,7 +109,7 @@ $(function() {
 		var context = '';
 		$.each(result,function(index,item){
 		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+		context += "<td class='Session'><a href=BoardDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 		context += "<td class='Session'>"+item.country+"조회수 HIT"+"</td>";
 		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"등록날짜 sysdate"+"</td>"; 
 		context += "<td class='Session'>"+item.userid+"</td></tr>";

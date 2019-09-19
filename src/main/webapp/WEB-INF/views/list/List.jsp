@@ -64,12 +64,10 @@
 			}
 		}
 		
-		
-	function selectOne(value) {
+	function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
-		
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
@@ -78,12 +76,12 @@
 			$("#searchKeyword").val("");
 			$("#searchHidden").val("");
 			return false;
-		}
+			}
 		}
 		
-		if(searchItem=="hashSearch"){
-			$('#hash').append(" "+searchKeyword+" ");
-			return false;
+// 		if(searchItem=="hashSearch"){
+// 			$('#hash').append(" "+searchKeyword+" ");
+// 			return false;
 			/* $.ajax({
 				type:'POST',
 				url : 'hashSearch',					
@@ -94,25 +92,20 @@
 					alert("리스트 불러오기 실패");
 				}
 			}) */
-		}
-		
-		
-		$.ajax({
+// 		}
+		$.ajax({  
 			type:'POST',
 			url : 'selectOne',					
-			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent },
+			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
 			dataType: 'json',
 			success : output,
 			error: function() {
 				alert("리스트 불러오기 실패");
 			}
-		})
-		
-	}	
-		
-
+		});
+	}
+	
 	function printAll() {
-		
 		$.ajax({
 			type:'GET',
 			url : 'printAll',
@@ -121,7 +114,7 @@
 			error: function() {
 				alert("리스트 불러오기 실패");
 			}
-		})
+		});
 	}
 
 	function output(result) {
@@ -355,7 +348,7 @@
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
-				<form action="searchList" method="get">
+<!-- 				<form action="selectOne" method="post"> -->
 					<div id="hash">
 					
 					</div>
@@ -383,10 +376,10 @@
 					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="searchOne" onclick="selectOne(this)">	
+					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
 					</td></tr>
 					</table>
-				</form>           
+<!-- 				</form>            -->
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -523,8 +516,8 @@
 <script src="js/custom.js"></script>
 
 <!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script> -->
+<!-- <script src="js/map-script.js"></script> -->
 <!--End Google Map APi-->
 
 

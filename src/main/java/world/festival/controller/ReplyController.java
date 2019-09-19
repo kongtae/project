@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import world.festival.VO.BoardVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.VO.UserVO;
@@ -85,6 +85,9 @@ public class ReplyController {
 //			rttr.addFlashAttribute("resuldelete", resuldelete);
 			return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum(); 
 		}
+		
+		
+
 		
 		
 //		ListDetail로 와줘야 함
