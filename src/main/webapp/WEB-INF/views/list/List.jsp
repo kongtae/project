@@ -119,7 +119,7 @@ $(function() {
 	 function output(result) {
 		totalRecordCount = result.length;
 		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
-		pageBlockCount = Math.ceil(page/pageBlock)
+		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
 		alert("게시글 수"+totalRecordCount); 
@@ -208,6 +208,7 @@ $(function() {
 				}
 		   		selectOne();
 		   	});	
+		   	
 		}  
 	 
 		
@@ -235,7 +236,7 @@ $(function() {
 		});
 		$("#list").html(context);
 		
-		
+
 	} 
 	
 	function navSet(totalPageCount){
@@ -354,7 +355,9 @@ $(function() {
 			}
 		});
 	}
-	
+	function change(){
+		page=1;
+	}
 	
 </script>
 </head>
@@ -566,7 +569,7 @@ $(function() {
 					</option>
 					</select>
 					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
+					<td><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>

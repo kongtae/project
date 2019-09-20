@@ -71,7 +71,7 @@
   			}
   	}
   	//댓글 작성시 유효성검사
-  	function replywrite() {
+  	function replywriteBoard() {
 		var replytext = document.getElementById("replytext");
 		var name = document.getElementById("name").value;
 		if(replytext.value.length==0)
@@ -84,7 +84,7 @@
 			alert("로그인을 먼저 해주세요.");
 			return false;
 		}
-			document.getElementById("replywrite").submit();
+			document.getElementById("replywriteBoard").submit();
 		}
   		//화면 새로고침
 		function refreshMemList(){
@@ -552,33 +552,20 @@
                 <div class="blog-left-title">
                     <h6>Post Comments</h6>
                 </div>
-                <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
+                <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywriteBoard" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <input type="text" name="name" value="${sessionScope.loginid }" id="name" readonly="readonly">
+                                <input type="text" name="userid" value="${sessionScope.loginid }" id="userid" readonly="readonly">
                             </div>
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="subject" placeholder="Subject" required=""> -->
-<!--                             </div>                                   -->
-						<input type="hidden" name="mainboardnum" id="mainboardnum" value="${vo.mainBoardNum}">
+						<input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
                         </div>
-<!--                         <div class="col-md-6 col-sm-12 col-xs-12"> -->
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="email" placeholder="Email" required=""> -->
-<!--                             </div> -->
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="website" placeholder="Website" required=""> -->
-<!--                             </div>                                  -->
-<!--                         </div> -->
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
-                               
                             </div>
                             <div class="form-group bottom">
-<!--                                 <button type="button" id="replysubmit" value="Send Message"  onclick="replyWrite()" class="theme-btn btn-style-one">Send Message</button> -->
-                                <button type="button" id="replysubmit" onclick="replywrite()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
+                                <button type="button" id="replysubmit" onclick="replywriteBoard()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
                                  <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
 <!--                                 <input type="reset"> -->
                             </div>

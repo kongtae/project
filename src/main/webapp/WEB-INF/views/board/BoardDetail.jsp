@@ -48,7 +48,7 @@
 		var name = document.getElementById("name").value;
 		if(replytext.value.length==0)
 		{
-			alert("글일 입력해주세요");
+			alert("글을 입력해주세요");
 			return false;	
 		}
 		if(name.length=="")

@@ -92,9 +92,10 @@ public class ReplyController {
 
 		@RequestMapping(value = "/replywriteBoard", method = RequestMethod.POST)
 		public String replywriteBoard(ReplyVO vo,RedirectAttributes rttr, HttpSession session,MultipartFile uploadFile) {
+			System.out.println("리플라이트보드넘  : "+ vo);
 			String loginid=(String)session.getAttribute("loginid");
 			UserVO userpoto=uservice.selectpot(loginid);
-			vo.setUserid(loginid);
+			//vo.setUserid(loginid);
 			System.out.println("오리지널파일네임"+userpoto.getOriginalFileName());
 			if(userpoto.getOriginalFileName()==null || userpoto.getOriginalFileName().equals("null"))
 			{
