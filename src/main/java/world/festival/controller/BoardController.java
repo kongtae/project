@@ -66,14 +66,15 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/BoardDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
-	public String BoardDetailGO(ReplyVO vo, String bul_boardnum,Model model) {
-		System.out.println("bul_boardnum 의  값 : " + bul_boardnum);
-		BoardVO vo1 = dao.readBoard(bul_boardnum);
+	public String BoardDetailGO(ReplyVO vo,Model model,HttpSession hs) {
+		String userid=(String)hs.getAttribute("loginid");
+		vo.setUserid(userid);
+		System.out.println("bul_boardnum 의  값 : " + vo.getBul_boardnum());
+		BoardVO vo1 = dao.readBoard(vo);
 		model.addAttribute("vo", vo1);
-		System.out.println("보드디테일단의 BoardVO :" + vo1);
-		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainboardnum());
+		System.out.println("보드디테일단의 BoardVO 의 값 :" + vo1);
+		ArrayList<ReplyVO> replylist=service.replyList(vo);
 		System.out.println("댓글 리스트 "+replylist);
-
 		//댓글 갯수
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);

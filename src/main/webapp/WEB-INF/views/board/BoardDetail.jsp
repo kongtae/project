@@ -43,20 +43,21 @@
   			}
   	}
    	//댓글 작성시 유효성검사
-  	function replywrite() {
+  	function replywriteBoard() {
 		var replytext = document.getElementById("replytext");
-		var name = document.getElementById("name").value;
+		var userid = document.getElementById("userid").value;
+		
 		if(replytext.value.length==0)
 		{
 			alert("글을 입력해주세요");
 			return false;	
 		}
-		if(name.length=="")
+		if(userid.length=="")
 		{
 			alert("로그인을 먼저 해주세요.");
 			return false;
 		}
-			document.getElementById("replywrite").submit();
+			document.getElementById("replywriteBoard").submit();
 		}
   		//화면 새로고침
 		function refreshMemList(){
@@ -71,7 +72,7 @@
   				type:'get',
   				data:
   				{
-  					mainboardnum : document.getElementById("mainboardnum").value,
+  					mainboardnum : document.getElementById("bul_boardnum").value,
   					replynum : replynum
   				},
   				success:function(){
@@ -193,13 +194,13 @@
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="Map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="Map">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -432,13 +433,13 @@
                 <div class="blog-left-title">
                     <h6>Post Comments</h6>
                 </div>
-                <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywrite" method="post">
+                <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywriteBoard" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <input type="text" name="name" value="${sessionScope.loginid }" id="name" readonly="readonly">
+                                <input type="text" name="userid" value="${sessionScope.loginid}" id="userid" readonly="readonly">
                             </div>
-						<input type="hidden" name="bul_boardnum" id="bul_boardnum" value="">
+						<input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
@@ -446,15 +447,13 @@
                                
                             </div>
                             <div class="form-group bottom">
-                                <button type="button" id="replysubmit" onclick="replywrite()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
+                                <button type="button" id="replysubmit" onclick="replywriteBoard()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
                                  <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
                             </div>
                         </div>
                     </div>
                 </form>
                 <div>
-                
-	
 </div>
 
 </section>
