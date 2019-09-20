@@ -101,8 +101,9 @@ $(function() {
 			page = 0;
 			setPage();		
 	})
+})
 		
-	function printAll() {
+	 function printAll() {
 		
 		$.ajax({
 			type:'GET',
@@ -110,18 +111,18 @@ $(function() {
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("리스트 불러오기 실패2");
 			}
 		})
-	}
+	} 
 
-	function output(result) {
+	 function output(result) {
 		totalRecordCount = result.length;
 		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
 		pageBlockCount = Math.ceil(page/pageBlock)
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
-		alert(totalRecordCount);
+		alert("게시글 수"+totalRecordCount); 
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -135,8 +136,8 @@ $(function() {
 			epage = pageBlockCount*pageBlock;
 		}
 		
-		alert(spage);
-		alert(epage);
+		alert("시작블락"+spage);
+		alert("마지막블락"+epage);
 		navSet(totalPageCount, spage, epage);
 		tagSet(result, startPageGroup, endPageGroup);
 		
@@ -160,7 +161,7 @@ $(function() {
 			}
 			printAll();
 	   	});	
-	}
+	} 
 		
 	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
@@ -180,8 +181,8 @@ $(function() {
 				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 				context += "<td class='Session'>"+item.country+"</td>";
-				context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"</td>";
-				context += "<td class='Session'>"+item.userid+"</td></tr>";
+				context += "<td class='Session'>"+start+"~"+end+"</td>";
+				context += "<td class='Session'>"+item.adress+"</td></tr>";
 			}
 		});
 		$("#list").html(context);
@@ -191,7 +192,7 @@ $(function() {
 		$("#searchHidden").val("");
 		}
 		
-	}
+	} 
 	
 	function navSet(totalPageCount){
 		var nav = '';
@@ -235,8 +236,6 @@ $(function() {
 	function searchDate(value){
 		var result00="startEvent";
 		
-<<<<<<< HEAD
-=======
 		var result11 = document.getElementById("searchKeyword");
 		var result22 = document.getElementById("searchItem").value;
 		var result33 = document.getElementById("searchHidden");
@@ -251,7 +250,6 @@ $(function() {
 			$("#insertmark").empty();
 		}
 	}
->>>>>>> f71c3d0b358ef611da34132cd518716d4b54577f
 		
 	function selectOne() {
 		var searchItem = $("#searchItem").val();
@@ -311,58 +309,9 @@ $(function() {
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
-<<<<<<< HEAD
 	}
-=======
-	}	
-		
->>>>>>> f71c3d0b358ef611da34132cd518716d4b54577f
-
-	/* function printAll() {
-		$.ajax({
-			type:'GET',
-			url : 'printAll',
-			dataType: 'json',
-			success : output,
-			error: function() {
-				alert("리스트 불러오기 실패2");
-			}
-		});
-	}
-
-	function output(result) {
-		//$("#list").empty();
-		var context = '';
-		$.each(result,function(index,item){
-			var s = new Date(item.startEvent);
-	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
-			var end="";
-	    if(item.endEvent!=null||item.endEvent!=""){	
-	    	var e = new Date(item.endEvent);
-	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
-	    }
-	    if(item.endEvent==null||item.endEvent==""){
-			item.endEvent=" ";
-			end = item.endEvent;
-		}
-		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='Session'>"+item.country+"</td>";
-		context += "<td class='Session'>"+start+"~"+end+"</td>";
-		context += "<td class='Session'>"+item.adress+"</td></tr>";
-		})
-		$("#list").html(context);
-		
-		if(context!=''){
-		$("#searchKeyword").val("");
-		$("#searchHidden").val("");
-		}
-		
-	} */
 	
- 
-	 
-
+	
 </script>
 </head>
 <body>
@@ -464,11 +413,7 @@ $(function() {
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-<<<<<<< HEAD
-=======
                     
-                    
->>>>>>> 9f474c8068d3307d8cd681574c4d6ab1063baeab
                 </div>
             </div>
         </div>
@@ -540,82 +485,9 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-
-
-<!--Schedule Section-->
-<<<<<<< HEAD
-		<section class="schedule-section" id="schedule-tab">
-			<div id="div_icontext">
-				<h4 id="icontext">
-					<b>投稿する</b>
-				</h4>
-				<a href="insertFestival"><img src="listImages/write.png"
-					title="投稿"></a>
-			</div>
-			<div class="container">
-				<div class="schedule-area">
-					<div class="schedule-content clearfix">
-						<div class="inner-box  table-responsive">
-							<form action="searchList" method="get">
-								<table>
-									<tr>
-										<td><select name="searchItem" id="searchItem"
-											onchange="searchDate(this)">
-												<option value="userid"
-													<c:if test="${'userid'==searchItem}">selected</c:if>>
-													ユーザー名</option>
-												<option value="title"
-													<c:if test="${'title'==searchItem}">selected</c:if>>
-													タイトル</option>
-												<option value="country"
-													<c:if test="${'country'==searchItem}">selected</c:if>>
-													国家</option>
-												<option value="startEvent"
-													<c:if test="${'startEvent'==searchItem}">selected</c:if>>
-													期間</option>
-										</select></td>
-										<td><input type="text" name="searchKeyword"
-											id="searchKeyword"></td>
-										<td id="insertmark"></td>
-										<td><input type="hidden" name="endEvent"
-											id="searchHidden"> <input type="button" value="検索"
-											onclick="selectOne(this)"></td>
-									</tr>
-								</table>
-							</form>
-							<div class="inner-box  table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th class="srial">#</th>
-											<th class="session">タイトル</th>
-											<th class="time">国家</th>
-											<th class="speakers">期間</th>
-											<th class="venue">ユーザー名</th>
-										</tr>
-									</thead>
-									<tbody id="list" class="table table-hover">
-										<%-- <c:forEach var="member" items="${memberMap}">
-										<tr>
-											<td class='srial'>${member.mainBoardNum}</td>
-											<td class='Session'>${member.title}</td>
-											<td class='Session'>${member.country}</td>
-											<td class='Session'>${member.startEvent} ~ ${member.endEvent}</td>
-											<td class='Session'>${member.userid}</td>
-										</tr>
-										</c:forEach> --%>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<nav class="pagination">
-							
-						</nav>
-					</div>
-				</div>
-		</section>
+		
+		
 		<!--End Schedule Section-->
-=======
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
 		<h4 id="icontext"><b>投稿する</b></h4>
@@ -676,12 +548,11 @@ $(function() {
                     </div>
                 </div>
             </div>
+            <nav class="pagination"></nav>
            </div>
        </div>
 </section>
 <!--End Schedule Section-->
->>>>>>> 9f474c8068d3307d8cd681574c4d6ab1063baeab
-
 
 
 
