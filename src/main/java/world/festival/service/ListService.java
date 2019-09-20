@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,7 +75,6 @@ public class ListService {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchItem", searchItem);
 		map.put("searchKeyword", searchKeyword);
-
 		map.put("endEvent", endEvent);
 		System.out.println(endEvent);
 		System.out.println("서비스의 맵이 다 처리 되었나 ? 셀렉원1map : "+map);
@@ -136,6 +137,17 @@ public class ListService {
 		}
 		
 		return true;
+	}
+
+	public ArrayList<ListVO> printAll22(String endEvent, String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+
+		map.put("endEvent", endEvent);
+		System.out.println(endEvent);
+		System.out.println("printAll22서비스의 맵이 다 처리 되었나 ?  : "+map);
+		return dao.printAll22(map);
 	}
 	
 }

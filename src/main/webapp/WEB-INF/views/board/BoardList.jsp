@@ -108,7 +108,7 @@
 	}
 	
 	function output(result) {
-		var context = '';
+		var context = "";
 		$.each(result,function(index,item){
 		var date = new Date(item.inputdate);
 	    var inputDate = date.getFullYear() + "-" + ("00" + (date.getMonth() + 1)).slice(-2) + "-" + ("00" + date.getDate()).slice(-2);
@@ -118,7 +118,7 @@
 		context += "<td class='Session'>"+inputDate+"</td>"; 
 		context += "<td class='Session'>"+item.hit+"</td></tr>";
 		
-		})
+		});
 		$("#list").html(context);
 		
 		if(context!=''){

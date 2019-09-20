@@ -83,13 +83,6 @@ public class ListController {
 	}
 	
 	
-	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ArrayList<ListVO> printAll() {
-		ArrayList<ListVO> list = dao.printAll();
-		System.out.println("전체리스트 출력"+list);
-		return list;
-	}
-	
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
@@ -117,6 +110,14 @@ public class ListController {
 		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}
+	
+	@RequestMapping(value = "/printAll", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody ArrayList<ListVO> printAll() {
+		ArrayList<ListVO> list = dao.printAll();
+		System.out.println("전체리스트 출력"+list);
+		return list;
+	}
+	
 
 	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<ListVO> selectOne(String endEvent,Model model,
@@ -138,6 +139,19 @@ public class ListController {
 		System.out.println("리스트 출력222"+selectOne2);
 		return selectOne2;
 		}
+	
+	@RequestMapping(value = "/printAll22", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody ArrayList<ListVO> printAll22(String endEvent,Model model,
+			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
+			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
+		System.out.println("printAll22  item "+searchItem);
+		System.out.println("printAll22  keyword "+searchKeyword);
+		System.out.println("printAll22  end "+endEvent);
+		ArrayList<ListVO> list = service.printAll22(endEvent,searchItem,searchKeyword);
+		System.out.println("printAll22  전체리스트 출력"+list);
+		// 여기 지울예정
+		return list;
+	}
 	
 	@RequestMapping(value = "/updateFestivalGO", method = RequestMethod.GET)
 	public String updateFestival(String mainBoardNum,Model model) {

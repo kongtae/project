@@ -11,9 +11,9 @@
 
 <insert id="BoardWrite" parameterType="BoardVO">
 	INSERT INTO
-		BUL_BOARD (BUL_BOARDNUM,userid,title,contents,country,adress,inputdate,originalFileName,savedFileName)
+		bul_board (bul_boardnum,userid,title,contents,country,adress,inputdate,originalFileName,savedFileName)
 	VALUES (
-		mainboard_seq.nextval,
+		BUL_BOARDNUM_SEQ.nextval,
 		#{userid},
 		#{title},
 		#{contents},
@@ -31,18 +31,18 @@
 	)
 </insert>
 
-<select id="readBoard" parameterType="String" resultType="BoardVO">
-	Select * from BUL_BOARD where BUL_BOARDNUM = #{BUL_BOARDNUM}
+<select id="readBoard" parameterType="BoardVO" resultType="BoardVO">
+	Select * from bul_board where bul_boardnum = #{bul_boardnum}
 </select>
 
 <delete id="BoardDelete" parameterType="BoardVO">
-delete from BUL_BOARD where BUL_BOARDNUM = #{BUL_BOARDNUM} and userid = #{userid}
+delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid}
 </delete>
 
 <select id="replyList" parameterType="ReplyVO" resultType="ReplyVO">
 		select * from reply
 		 where
-		 mainboardnum=#{mainboardnum}
+		 bul_boardnum=#{bul_boardnum}
 		  order by 
 		  replynum desc
 </select>

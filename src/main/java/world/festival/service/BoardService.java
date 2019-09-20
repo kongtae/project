@@ -64,8 +64,8 @@ public class BoardService {
 
 	}
 
-	public ArrayList<ReplyVO> replyList(int mainboardnum) {
-		return dao.replyList(mainboardnum);
+	public ArrayList<ReplyVO> replyList(ReplyVO vo) {
+		return dao.replyList(vo);
 	}
 	
 

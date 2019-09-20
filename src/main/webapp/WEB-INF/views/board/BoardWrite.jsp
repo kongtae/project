@@ -68,7 +68,7 @@ function writeFestival() {
 			dataType : 'text',
 			success: function() {
 				alert("投稿完了");
-				history.goback();
+				location.href ="boardList";
 			},
 			error: function(request,status,error) {
 				alert("投稿ERROR");
