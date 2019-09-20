@@ -1,10 +1,13 @@
 package world.festival.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import world.festival.VO.UserVO;
+import world.festival.VO.WishVO;
 @Repository
 public class UserDAO {
 
@@ -61,6 +64,11 @@ public class UserDAO {
 		int result = mapper.updateReply(vo);
 		System.out.println("result : " + result);
 		return result;
+	}
+
+	public ArrayList<WishVO> selectwish(String userid) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		return mapper.selectwish(userid);
 	}
 
 }

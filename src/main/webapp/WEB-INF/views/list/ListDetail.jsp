@@ -399,26 +399,7 @@
                       	 		${wishlist}
                    	 			</c:if>
                         	</c:if>
-                        	
-                       
-                    
-<%--                     <c:if test="${sessionScope.loginid == null }"> --%>
-<!-- 					추천 기능은 <button type="button" id="newLogin"><b class="w3-text-blue">로그인</b></button> 후 사용 가능합니다.<br /> -->
-<!-- 						<span class="rec_count"></span>					 -->
-<%-- 					</c:if> --%>
-                    
-<!--                         <a href=listDetailGO?mainBoardNum="+item.mainBoardNum+"> -->
-<%--                        <a href="like?mainBoardNum=${vo.mainBoardNum}"></a> --%>
-<!-- 							    <a href='javascript: like_func();'><img src='images/like.png' id='like_img'></a> -->
-<%-- 							    <a href="like?MainboardNum=${vo.mainBoardNum}"><img src='images/dislike.png'></a> --%>
-<!--                        id="like" onclick="like()"> -->
-<!--                        <img src="images/like.png" id="like" onclick="like()"> -->
                     </div> 
-<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
-                        <figure>
-                            <img src="resources/images/schedule-9.jpg" alt="" >
-                        </figure>
-                    </div> -->
                    
                     <div id="preview">
                     </div>
