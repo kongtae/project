@@ -130,35 +130,6 @@ $(function() {
 			spage = 1;
 		}
 		
-// 		function searchDate(value){
-// 			var result00="startEvent";
-			
-// 			var result11 = document.getElementById("searchKeyword");
-// 			var result22 = document.getElementById("searchItem").value;
-// 			var result33 = document.getElementById("searchHidden");
-// 			if(result22=="startEvent"){
-// 				result11.setAttribute("type", "date");
-// 				result33.setAttribute("type", "date");
-// 				$("#insertmark").append("~");
-// 			}
-// 			if(result22!="startEvent"){
-// 				result11.setAttribute("type", "text");
-// 				result33.setAttribute("type", "hidden");
-// 				$("#insertmark").empty();
-// 			}
-// 		}
-// 		nav += '<li class="page-item">';
-// 		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
-// 		nav += '<span aria-hidden="true">next</span>';
-// 		nav += '<span class="sr-only">Next</span>';
-// 		nav += '</a>';
-// 		nav += '</li>';
-// 		nav += '<li class="page-item">';
-// 		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
-// 		nav += '<span aria-hidden="true">&raquo;</span>';
-// 		nav += '<span class="sr-only">Next</span>';
-// 		nav += '</a>';
-// 		nav += '</li>';
 		if((pageBlockCount*pageBlock) >= totalPageCount){
 			epage = totalPageCount;
 		} else {
@@ -303,7 +274,6 @@ $(function() {
 		nav += '<span class="sr-only">Next</span>';
 		nav += '</a>';
 		nav += '</li>';
->>>>>>> ffe187b3004864b737d7bd18bce396128e4ffac3
 		    
 		$(".pagination").html(nav);	
 	}
@@ -340,7 +310,39 @@ $(function() {
 			return false;
 			}
 		}
-	}		 
+		
+
+	/* 	if(searchItem=="hashSearch"){
+			$('#hash').append("<span>"+searchKeyword+"<button value="+searchKeyword+">X</button>   </span>");
+			var a = [];
+			a += searchkeyword;
+			$.ajax({
+			type:'POST',
+			url : 'hashSearch',					
+			data: {A: A},
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패");
+			}
+		}) 
+			return false;
+			S.ONCLIK
+			A -= SEARCHKEYWORD;
+			$.ajax({
+				type:'POST',
+				url : 'hashSearch',					
+				data: {A: A},
+				dataType: 'json',
+				success : output,
+				error: function() {
+					alert("리스트 불러오기 실패");
+				}
+			}) 			 
+			return false;
+		} */
+		
+		
 		$.ajax({
 			type:'POST',
 			url : 'selectOne',					
@@ -353,47 +355,6 @@ $(function() {
 			}
 		});
 	}
-
-	function printAll() {
-		$.ajax({
-			type:'GET',
-			url : 'printAll',
-			dataType: 'json',
-			success : output,
-			error: function() {
-				alert("리스트 불러오기 실패2");
-			}
-		});
-	}
-
-	function output(result) {
-		//$("#list").empty();
-		var context = '';
-		$.each(result,function(index,item){
-			var s = new Date(item.startEvent);
-	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
-			var end="";
-	    if(item.endEvent!=null||item.endEvent!=""){	
-	    	var e = new Date(item.endEvent);
-	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
-	    }
-	    if(item.endEvent==null||item.endEvent==""){
-			item.endEvent=" ";
-			end = item.endEvent;
-		}
-		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='Session'>"+item.country+"</td>";
-		context += "<td class='Session'>"+start+"~"+end+"</td>";
-		context += "<td class='Session'>"+item.adress+"</td></tr>";
-		})
-		$("#list").html(context);
-		
-		if(context!=''){
-		$("#searchKeyword").val("");
-		$("#searchHidden").val("");
-		}
-		
 	function change(){
 		page=1;
 	}
@@ -611,12 +572,6 @@ $(function() {
 					<td><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
-<!-- 					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> 엔터치면 서밋을막는 인풋  -->
-					</td></tr>
-					</table>
-<!-- 				</form>            -->
-<!-- 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'> -->
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
 					</td></tr>
 <!-- 				</form>            -->
