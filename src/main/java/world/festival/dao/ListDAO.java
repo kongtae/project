@@ -75,5 +75,10 @@ public class ListDAO {
 		return mapper.imagePrint(vo);
 	}
 
+	public ArrayList<ListVO> printAll22(HashMap<String, String> map) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.printAll22(map);
+	}
+
 
 }

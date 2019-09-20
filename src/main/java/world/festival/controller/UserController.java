@@ -40,7 +40,7 @@ public class UserController {
 		System.out.println(vo);
 		dao.registermember(vo);
 		model.addAttribute("UserVO", vo);
-		return "member/loginForm";
+		return "member/loginForm2";
 	}
 
 	//以묐났泥댄겕
@@ -57,7 +57,7 @@ public class UserController {
 	}
 
 	//濡쒓렇�씤
-	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginForm1", method = RequestMethod.POST)
 	@ResponseBody
 	public String login(UserVO vo, HttpSession session) {
 		UserVO result = dao.selectOne(vo, session);
@@ -65,12 +65,13 @@ public class UserController {
 		System.out.println("로그인 result값 " + result);
 		return "success";
 	}
+	
 
 	//濡쒓렇�븘�썐
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "member/loginForm";
 	}
 
 	//맴버페이지  서비스==> DAO

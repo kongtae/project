@@ -85,7 +85,7 @@ function writeFestival() {
 			//cache: false,
 			success: function(data) {
 				alert("投稿完了");
-				location.href ="listForm";
+				location.href ="festival";
 			},
 			error: function(request,status,error) {
 				alert("投稿ERROR");

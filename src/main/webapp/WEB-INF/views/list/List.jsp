@@ -136,8 +136,8 @@ $(function() {
 			epage = pageBlockCount*pageBlock;
 		}
 		
-		alert("시작블락"+spage);
-		alert("마지막블락"+epage);
+		//alert("시작블락"+spage);
+		//alert("마지막블락"+epage);
 		navSet(totalPageCount, spage, epage);
 		tagSet(result, startPageGroup, endPageGroup);
 		
@@ -162,6 +162,54 @@ $(function() {
 			printAll();
 	   	});	
 	} 
+	 
+	 function output1(result) {
+			totalRecordCount = result.length;
+			totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+			pageBlockCount = Math.ceil(page/pageBlock)
+			startPageGroup = ((page-1) * countPerPage);
+			endPageGroup = (startPageGroup + countPerPage);
+			alert("셀렉 게시글 수"+totalRecordCount); 
+			
+			if(pageBlockCount > 1) {
+				spage = (pageBlockCount-1)*pageBlock+1;
+			} else {
+				spage = 1;
+			}
+			
+			if((pageBlockCount*pageBlock) >= totalPageCount){
+				epage = totalPageCount;
+			} else {
+				epage = pageBlockCount*pageBlock;
+			}
+			
+			//alert("시작블락"+spage);
+			//alert("마지막블락"+epage);
+			navSet(totalPageCount, spage, epage);
+			tagSet(result, startPageGroup, endPageGroup);
+			
+		   	$(".page-link").on('click',function(){
+		   		if ($(this).attr("data-value") == "first"){
+					page = 1;
+				}else if ($(this).attr("data-value") == "end") {
+					page = totalPageCount;
+				}else if ($(this).attr("data-value") == "next") {
+					page = parseInt(page) + 5;
+					if (page>totalPageCount) {
+						page=totalPageCount;
+					}
+				}else if ($(this).attr("data-value") =="before") {
+					page = parseInt(page) - 5;
+					if(page<5){
+						page = 1;
+					}
+				}else{
+					page= $(this).attr("data-value");
+				}
+		   		selectOne();
+		   	});	
+		}  
+	 
 		
 	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
@@ -187,10 +235,6 @@ $(function() {
 		});
 		$("#list").html(context);
 		
-		if(context!=''){
-		$("#searchKeyword").val("");
-		$("#searchHidden").val("");
-		}
 		
 	} 
 	
@@ -303,7 +347,7 @@ $(function() {
 			url : 'selectOne',					
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
 			dataType: 'json',
-			success : output,
+			success : output1,
 			error: function(request,status,error) {
 				alert("리스트 불러오기 실패1");
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);

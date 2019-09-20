@@ -89,4 +89,20 @@
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </select>
+
+<select id="printAll22" parameterType="map" resultType="ListVO">
+	Select * from MAINBOARD 
+	<choose>
+		<when test="searchKeyword!=null and endEvent!=null">
+		WHERE 
+		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
+		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') 
+		</when>
+		<when test="searchItem!=null and searchKeyword!=null">
+		WHERE 
+		${searchItem} LIKE '%'||#{searchKeyword}||'%' 
+		</when>
+	</choose>
+		order by mainBoardNum desc
+</select>
 </mapper>
