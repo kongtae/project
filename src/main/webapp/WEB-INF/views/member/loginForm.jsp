@@ -62,7 +62,7 @@
 		}	
 	
 		$.ajax({
-		url:"loginForm",
+		url:"loginForm1",
 		enctype: 'multipart/form-data',
 		data:$("#loginForm").serialize(),
 		type:"post",
