@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import world.festival.VO.ListVO;
 import world.festival.VO.UserVO;
 import world.festival.VO.WishVO;
 import world.festival.dao.UserDAO;
@@ -109,9 +110,24 @@ public class UserService {
 	}
 
 	public ArrayList<WishVO> selectwish(String userid) {
-		ArrayList<WishVO> pot= dao.selectwish(userid);
-		return pot;
+		ArrayList<WishVO> wvo= dao.selectwish(userid);
+		return wvo;
 	}
+
+	public ArrayList<ListVO> selectlist(String userid) {
+		ArrayList<ListVO> lvo= dao.selectlist(userid);
+		return lvo;
+	}
+
+	public ArrayList<ListVO> selectlistAll(String userid) {
+		ArrayList<ListVO> listall= dao.selectlistAll(userid);
+		return listall;
+	}
+
+//	public ListVO selectlistAll(ListVO listvo, ArrayList<WishVO> wvo) {
+//		ArrayList<ListVO> listall= dao.selectlist(userid);
+//		return listall;
+//	}
 
 
 

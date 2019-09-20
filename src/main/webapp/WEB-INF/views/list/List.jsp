@@ -47,23 +47,23 @@
 			printAll();
 		})
 		
-		function searchDate(value){
-			var result00="startEvent";
+// 		function searchDate(value){
+// 			var result00="startEvent";
 			
-			var result11 = document.getElementById("searchKeyword");
-			var result22 = document.getElementById("searchItem").value;
-			var result33 = document.getElementById("searchHidden");
-			if(result22=="startEvent"){
-				result11.setAttribute("type", "date");
-				result33.setAttribute("type", "date");
-				$("#insertmark").append("~");
-			}
-			if(result22!="startEvent"){
-				result11.setAttribute("type", "text");
-				result33.setAttribute("type", "hidden");
-				$("#insertmark").empty();
-			}
-		}
+// 			var result11 = document.getElementById("searchKeyword");
+// 			var result22 = document.getElementById("searchItem").value;
+// 			var result33 = document.getElementById("searchHidden");
+// 			if(result22=="startEvent"){
+// 				result11.setAttribute("type", "date");
+// 				result33.setAttribute("type", "date");
+// 				$("#insertmark").append("~");
+// 			}
+// 			if(result22!="startEvent"){
+// 				result11.setAttribute("type", "text");
+// 				result33.setAttribute("type", "hidden");
+// 				$("#insertmark").empty();
+// 			}
+// 		}
 // 		nav += '<li class="page-item">';
 // 		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
 // 		nav += '<span aria-hidden="true">next</span>';
@@ -99,7 +99,6 @@
 		
 	function selectOne() {
 		
-		window.selectOne = function() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
@@ -164,7 +163,6 @@
 	//	}
 // 			}) 			 
 // 			return false;
-		} 
 		
 		
 		$.ajax({
@@ -182,7 +180,7 @@
 	
 		
 // 	}
-	}	
+// 	}	
 
 	function printAll() {
 		$.ajax({
@@ -452,7 +450,7 @@
 					</td></tr>
 					</table>
 <!-- 				</form>            -->
-					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
+<!-- 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'> -->
 					</td></tr>
 <!-- 				</form>            -->
  					 </table>

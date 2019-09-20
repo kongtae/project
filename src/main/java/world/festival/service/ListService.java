@@ -26,8 +26,8 @@ public class ListService {
 	
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
 		
-		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
-		
+//		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
 		File dir = new File(path);
 		if(!dir.isDirectory()){
 			dir.mkdir();
@@ -96,7 +96,8 @@ public class ListService {
 	public boolean updateFestival(ListVO vo, MultipartHttpServletRequest request) {
 
 		String oldSaveFileName = vo.getSaveFileName();
-		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
+//		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
 		int result;
 
 		File dir = new File(path);

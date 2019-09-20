@@ -75,14 +75,12 @@ public class UserController {
 
 	//맴버페이지  서비스==> DAO
 	@RequestMapping(value = "/memberPage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String memberPage(HttpSession session,WishVO wishvo, UserVO uservo, ListVO listvo) {
+	public String memberPage(HttpSession session,ListVO listvo,Model model) {
 		String userid=(String)session.getAttribute("loginid");
-		uservo.setUserid(userid);
-		wishvo.setUserid(userid);
-		listvo.setUserid(userid);
-		
-		ArrayList<WishVO> wvo=service.selectwish(userid);
-		System.out.println("wishList" + wvo);
+		ArrayList<ListVO> result=service.selectlistAll(userid);
+		System.out.println("내가원하는대로 값 가져오는지 확인:"+result);
+		model.addAttribute("list", result);
+		model.addAttribute("listsize", result.size());
 		return "member/memberPage";
 	}
 
