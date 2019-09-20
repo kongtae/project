@@ -1,5 +1,7 @@
 package world.festival.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import world.festival.VO.ListVO;
 import world.festival.VO.UserVO;
 import world.festival.VO.WishVO;
 import world.festival.dao.UserDAO;
@@ -70,12 +73,16 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	//맴버페이지
+	//맴버페이지  서비스==> DAO
 	@RequestMapping(value = "/memberPage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String memberPage(HttpSession session,WishVO vo) {
+	public String memberPage(HttpSession session,WishVO wishvo, UserVO uservo, ListVO listvo) {
 		String userid=(String)session.getAttribute("loginid");
-		vo.setUserid(userid);
+		uservo.setUserid(userid);
+		wishvo.setUserid(userid);
+		listvo.setUserid(userid);
 		
+		ArrayList<WishVO> wvo=service.selectwish(userid);
+		System.out.println("wishList" + wvo);
 		return "member/memberPage";
 	}
 

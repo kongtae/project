@@ -2,6 +2,7 @@ package world.festival.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import world.festival.VO.UserVO;
+import world.festival.VO.WishVO;
 import world.festival.dao.UserDAO;
 
 @Service
@@ -103,6 +105,11 @@ public class UserService {
 
 	public UserVO selectpot(String loginid) {
 		UserVO pot= dao.selectpot(loginid);
+		return pot;
+	}
+
+	public ArrayList<WishVO> selectwish(String userid) {
+		ArrayList<WishVO> pot= dao.selectwish(userid);
 		return pot;
 	}
 

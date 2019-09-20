@@ -107,4 +107,15 @@
 	WHERE
 		userid = #{userid}
 </select>
+<!-- 마이페이지에서 wish boardnum을 가져오기 위해 사용 -->
+
+<select id="selectwish" parameterType="WishVO" resultType="WishVO">
+	SELECT
+		*
+	FORM
+		WISHLIST
+	WHERE
+		userid=#{userid}
+</select>
+
 </mapper>

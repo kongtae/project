@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
 
     <title>Wiscon || Responsive HTML 5 Template</title>
-    
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,61 +22,27 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    
-    <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
-
 <style>
-.infoboxes article {
-	color: #191919;
-	background-color: rgba(255, 255, 255, .65);
-}
-.infoboxes article:hover {
-	background-color: #FFFFFF;
-}
-.infoboxes article .fa {
-	color: #FFFFFF;
-	background-color: #CF4845;
-}
-.pagination {
-	display: block;
-	width: 100%;
-	text-align: center;
-	clear: both;
-}
-.pagination li {
-	display: inline-block;
-	margin: 0 2px 0 0;
-}
-.pagination li:last-child {
-	margin-right: 0;
-}
-.pagination a, .pagination strong {
-	display: block;
-	padding: 8px 11px;
-	border: 1px solid;
-	background-clip: padding-box;
-	font-weight: normal;
-	color: #fa334f;
-}
-#div_icontext {
-	display: flex;
-	justify-content: flex-end;
-	width: 83%;
-}
-#icontext {
-	padding: 1.5%;
-	padding-rigth: 2px;
-	padding-left: 2px;
-	font-family: 'Robtoto', sans-serif;
-	font-size: 30px;
-	color: #fa334f;
-}
+	#div_icontext{
+		display: flex;
+		justify-content: flex-end;
+		width: 83%;
+	}
+	#icontext{
+		padding: 1.5%;
+		padding-rigth: 2px;
+		padding-left: 2px;
+		font-family: 'Robtoto', sans-serif;
+		font-size: 30px;
+		color: #fa334f;
+	}
 </style>
-
+    
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/jquery.js"></script>
 <script>
+<<<<<<< HEAD
 var page = '';
 var countPerPage = 5;
 var pageBlock = 5;
@@ -214,28 +179,52 @@ $(function() {
 				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
 			} else {
 				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
+=======
+
+		$(function() {
+			printAll();
+		})
+		
+		function searchDate(value){
+			var result00="startEvent";
+			
+			var result11 = document.getElementById("searchKeyword");
+			var result22 = document.getElementById("searchItem").value;
+			var result33 = document.getElementById("searchHidden");
+			if(result22=="startEvent"){
+				result11.setAttribute("type", "date");
+				result33.setAttribute("type", "date");
+				$("#insertmark").append("~");
+			}
+			if(result22!="startEvent"){
+				result11.setAttribute("type", "text");
+				result33.setAttribute("type", "hidden");
+				$("#insertmark").empty();
+>>>>>>> bbe1f1b3b23b4459950d4c4e4fb8c6417e82a66f
 			}
 		}
-		       
-		nav += '<li class="page-item">';
-		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
-		nav += '<span aria-hidden="true">next</span>';
-		nav += '<span class="sr-only">Next</span>';
-		nav += '</a>';
-		nav += '</li>';
-		nav += '<li class="page-item">';
-		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
-		nav += '<span aria-hidden="true">&raquo;</span>';
-		nav += '<span class="sr-only">Next</span>';
-		nav += '</a>';
-		nav += '</li>';
+// 		nav += '<li class="page-item">';
+// 		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
+// 		nav += '<span aria-hidden="true">next</span>';
+// 		nav += '<span class="sr-only">Next</span>';
+// 		nav += '</a>';
+// 		nav += '</li>';
+// 		nav += '<li class="page-item">';
+// 		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
+// 		nav += '<span aria-hidden="true">&raquo;</span>';
+// 		nav += '<span class="sr-only">Next</span>';
+// 		nav += '</a>';
+// 		nav += '</li>';
 		    
-		$(".pagination").html(nav);	
-	}
+// 		$(".pagination").html(nav);	
+// 	}
 	
 	function searchDate(value){
 		var result00="startEvent";
+<<<<<<< HEAD
 		
+=======
+>>>>>>> bbe1f1b3b23b4459950d4c4e4fb8c6417e82a66f
 		var result11 = document.getElementById("searchKeyword");
 		var result22 = document.getElementById("searchItem").value;
 		var result33 = document.getElementById("searchHidden");
@@ -252,6 +241,8 @@ $(function() {
 	}
 		
 	function selectOne() {
+		
+		window.selectOne = function() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
@@ -266,10 +257,26 @@ $(function() {
 			}
 		}
 		
+// 		if(searchItem=="hashSearch"){
+// 			$('#hash').append(" "+searchKeyword+" ");
+// 			return false;
+			/* $.ajax({
+			if(a>b){
+				alert("検索する期間を間違えて入力しました。");
+				$("#searchKeyword").val("");
+				$("#searchHidden").val("");
+				return false;
+			}
+		}
+
+	//	if(searchItem=="hashSearch"){
+	//		$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
+			/* var a = [];
 
 	/* 	if(searchItem=="hashSearch"){
 			$('#hash').append("<span>"+searchKeyword+"<button value="+searchKeyword+">X</button>   </span>");
 			var a = [];
+>>>>>>> 6c1d9db14a7f30c4f3c2c538ace7e32aa00ad450
 			a += searchkeyword;
 			$.ajax({
 			type:'POST',
@@ -293,9 +300,14 @@ $(function() {
 				error: function() {
 					alert("리스트 불러오기 실패");
 				}
-			}) 			 
-			return false;
-		} */
+<<<<<<< HEAD
+			}) */
+// 		}
+	//		return false;
+	//	}
+// 			}) 			 
+// 			return false;
+		} 
 		
 		
 		$.ajax({
@@ -309,7 +321,57 @@ $(function() {
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
+<<<<<<< HEAD
 	}
+=======
+	}
+	
+		
+// 	}
+	}	
+
+	function printAll() {
+		$.ajax({
+			type:'GET',
+			url : 'printAll',
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패2");
+			}
+		});
+	}
+
+	function output(result) {
+		//$("#list").empty();
+		var context = '';
+		$.each(result,function(index,item){
+			var s = new Date(item.startEvent);
+	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
+		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+		context += "<td class='Session'>"+item.country+"</td>";
+		context += "<td class='Session'>"+start+"~"+end+"</td>";
+		context += "<td class='Session'>"+item.adress+"</td></tr>";
+		})
+		$("#list").html(context);
+		
+		if(context!=''){
+		$("#searchKeyword").val("");
+		$("#searchHidden").val("");
+		}
+		
+	}
+>>>>>>> bbe1f1b3b23b4459950d4c4e4fb8c6417e82a66f
 	
 	
 </script>
@@ -413,8 +475,13 @@ $(function() {
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> bbe1f1b3b23b4459950d4c4e4fb8c6417e82a66f
                     
                 </div>
+               
             </div>
         </div>
     </div>
@@ -485,9 +552,15 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
+<<<<<<< HEAD
 		
 		
 		<!--End Schedule Section-->
+=======
+
+
+<!--Schedule Section-->
+>>>>>>> bbe1f1b3b23b4459950d4c4e4fb8c6417e82a66f
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
 		<h4 id="icontext"><b>投稿する</b></h4>
@@ -497,6 +570,9 @@ $(function() {
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
+<!-- 				<form action="selectOne" method="post"> -->
+					<div id="hash">
+<!-- 				<form action="searchList" method="get"> -->
 					<div id="hash">
 					
 					<div id="hash"></div>
@@ -525,6 +601,11 @@ $(function() {
 					<td><input type="text" name="searchKeyword" id="searchKeyword" ></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
+					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
+<!-- 					<input type="button" value="検索" id="selectOne" onclick="selectOne()"><input type="text" style='display: none;' /> 엔터치면 서밋을막는 인풋  -->
+					</td></tr>
+					</table>
+<!-- 				</form>            -->
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
 					</td></tr>
 <!-- 				</form>            -->
@@ -553,6 +634,10 @@ $(function() {
        </div>
 </section>
 <!--End Schedule Section-->
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbe1f1b3b23b4459950d4c4e4fb8c6417e82a66f
 
 
 
@@ -665,6 +750,12 @@ $(function() {
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
+<!--Google Map-->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script> -->
+<!-- <script src="js/map-script.js"></script> -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
+<script src="js/map-script.js"></script> -->
+<!--End Google Map APi-->
 
 
 </div>
