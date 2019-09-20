@@ -58,17 +58,12 @@ public class UserController {
 
 	//濡쒓렇�씤
 	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
-	public String login(UserVO vo, HttpSession session, Model model) {
-		UserVO result = dao.selectOne(vo);
+	@ResponseBody
+	public String login(UserVO vo, HttpSession session) {
+		UserVO result = dao.selectOne(vo, session);
 		System.out.println("로그인 vo값 " + vo);
 		System.out.println("로그인 result값 " + result);
-		if(result!=null){
-		session.setAttribute("loginid", result.getUserid());
-		//session.setAttribute("username", result.getUsername());
-		return "redirect:/";
-		}
-		model.addAttribute("result", false);
-		return "member/loginForm";
+		return "success";
 	}
 
 	//濡쒓렇�븘�썐

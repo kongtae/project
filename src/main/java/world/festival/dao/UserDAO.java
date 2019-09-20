@@ -1,6 +1,7 @@
 package world.festival.dao;
 
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,10 @@ public class UserDAO {
 		return result;
 	}
 
-	public UserVO selectOne(UserVO vo) {
+	public UserVO selectOne(UserVO vo,HttpSession session) {
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 		UserVO result = mapper.selectOne(vo);
+		session.setAttribute("loginid", result.getUserid());
 		return result;
 	}
 

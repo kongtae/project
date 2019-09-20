@@ -64,6 +64,38 @@
 				$("#insertmark").empty();
 			}
 		}
+// 		nav += '<li class="page-item">';
+// 		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
+// 		nav += '<span aria-hidden="true">next</span>';
+// 		nav += '<span class="sr-only">Next</span>';
+// 		nav += '</a>';
+// 		nav += '</li>';
+// 		nav += '<li class="page-item">';
+// 		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
+// 		nav += '<span aria-hidden="true">&raquo;</span>';
+// 		nav += '<span class="sr-only">Next</span>';
+// 		nav += '</a>';
+// 		nav += '</li>';
+		    
+// 		$(".pagination").html(nav);	
+// 	}
+	
+	function searchDate(value){
+		var result00="startEvent";
+		var result11 = document.getElementById("searchKeyword");
+		var result22 = document.getElementById("searchItem").value;
+		var result33 = document.getElementById("searchHidden");
+		if(result22=="startEvent"){
+			result11.setAttribute("type", "date");
+			result33.setAttribute("type", "date");
+			$("#insertmark").append("~");
+		}
+		if(result22!="startEvent"){
+			result11.setAttribute("type", "text");
+			result33.setAttribute("type", "hidden");
+			$("#insertmark").empty();
+		}
+	}
 		
 	function selectOne() {
 		
@@ -86,7 +118,6 @@
 // 			$('#hash').append(" "+searchKeyword+" ");
 // 			return false;
 			/* $.ajax({
-=======
 			if(a>b){
 				alert("検索する期間を間違えて入力しました。");
 				$("#searchKeyword").val("");
@@ -98,6 +129,11 @@
 	//	if(searchItem=="hashSearch"){
 	//		$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
 			/* var a = [];
+
+	/* 	if(searchItem=="hashSearch"){
+			$('#hash').append("<span>"+searchKeyword+"<button value="+searchKeyword+">X</button>   </span>");
+			var a = [];
+>>>>>>> 6c1d9db14a7f30c4f3c2c538ace7e32aa00ad450
 			a += searchkeyword;
 			$.ajax({
 			type:'POST',
@@ -121,10 +157,14 @@
 				error: function() {
 					alert("리스트 불러오기 실패");
 				}
+<<<<<<< HEAD
 			}) */
 // 		}
 	//		return false;
 	//	}
+// 			}) 			 
+// 			return false;
+		} 
 		
 		
 		$.ajax({
@@ -141,8 +181,8 @@
 	}
 	
 		
+// 	}
 	}	
-		
 
 	function printAll() {
 		$.ajax({
@@ -186,19 +226,7 @@
 		
 	}
 	
-  /* 	var content = document.getElementById('hash').innerHTML;
-	var splitedArray = content.split(' ');
-	var linkedContent = '';
-	for(var word in splitedArray)
-	{
-	  word = splitedArray[word];
-	   if(word.indexOf('#') == 0)
-	   {
-	      word = '<a href=\'링크\'>'+word+'</a>';
-	   }
-	   linkedContent += word+' ';
-	}
-	document.getElementById('hash').innerHTML = linkedContent;   */
+ 
 	 
 
 </script>
@@ -244,7 +272,7 @@
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout" >Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -391,6 +419,7 @@
 <!-- 				<form action="selectOne" method="post"> -->
 					<div id="hash">
 <!-- 				<form action="searchList" method="get"> -->
+					<div id="hash">
 					
 					<div id="hash"></div>
 					
@@ -423,6 +452,10 @@
 					</td></tr>
 					</table>
 <!-- 				</form>            -->
+					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
+					</td></tr>
+<!-- 				</form>            -->
+ 					 </table>
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -435,9 +468,10 @@
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
-                            
+                           
                           </table>
-                            
+                         </div> 
+                       
                     </div>
                 </div>
             </div>

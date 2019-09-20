@@ -78,10 +78,6 @@ public class ReplyController {
 			return "redirect:/listDetailGO?mainBoardNum="+vo.getMainboardnum(); 
 		}
 		
-		
-
-		
-		
 //		ListDetail로 와줘야 함
 	//댓글 삭제
 //	@RequestMapping(value = "/deleteFestival", method = RequestMethod.GET)
@@ -92,6 +88,52 @@ public class ReplyController {
 //		rttr.addFlashAttribute("deleteResult", result);
 //		return "redirect:/listForm"; 
 //	}
+		
+
+		@RequestMapping(value = "/replywriteBoard", method = RequestMethod.POST)
+		public String replywriteBoard(ReplyVO vo,RedirectAttributes rttr, HttpSession session,MultipartFile uploadFile) {
+			String loginid=(String)session.getAttribute("loginid");
+			UserVO userpoto=uservice.selectpot(loginid);
+			vo.setUserid(loginid);
+			System.out.println("오리지널파일네임"+userpoto.getOriginalFileName());
+			if(userpoto.getOriginalFileName()==null || userpoto.getOriginalFileName().equals("null"))
+			{
+				System.out.println("null일때 들어오는 곳");
+//				userpoto.setOriginalFileName("기본아이콘사진이");
+//				vo.setOriginalfilename(userpoto.getOriginalFileName());
+				boolean result = service.replywrite(vo);
+				rttr.addFlashAttribute("replywrite", result);
+				return "redirect:/BoardDetailGO?bul_boardnum="+vo.getMainboardnum();
+			}
+			vo.setOriginalFileName(userpoto.getOriginalFileName());
+			
+			System.out.println("사진 글자는 무엇이 들어오는가"+userpoto);
+//			vo.setUsername((String)session.getAttribute("username"));
+			System.out.println("로그인 아이디가 아니야?"+loginid);
+			System.out.println("아이디 잘 들어갔는지 확인:"+vo);
+			boolean result = service.replywrite(vo);
+			rttr.addFlashAttribute("replywrite", result);
+			return "redirect:/BoardDetailGO?bul_boardnum="+vo.getMainboardnum(); 
+		}
+		//댓글 삭제
+		@RequestMapping(value = "replyDeleteBoard", method = RequestMethod.GET)	
+		public String replyDeleteBoard(ReplyVO vo, HttpSession session,RedirectAttributes rttr ) {
+			vo.setUserid((String)session.getAttribute("loginid"));
+			System.out.println(vo+"vo찍기");
+			
+			boolean resuldelete=service.replyDelete(vo,session);
+			rttr.addFlashAttribute("resuldelete", resuldelete);
+			return "redirect:/BoardDetailGO?bul_boardnum="+vo.getMainboardnum(); 
+		}
+		//댓글 수정
+		@RequestMapping(value = "replyUpdateBoard", method = RequestMethod.GET)	
+		public String replyUpdateBoard(ReplyVO vo, HttpSession session,RedirectAttributes rttr) {
+			vo.setUserid((String)session.getAttribute("loginid"));
+			System.out.println("수정 vo찍기"+vo);
+			service.replyUpdate(vo,session);
+//			rttr.addFlashAttribute("resuldelete", resuldelete);
+			return "redirect:/BoardDetailGO?bul_boardnum="+vo.getMainboardnum(); 
+		}
 	
 	
 	

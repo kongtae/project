@@ -25,6 +25,25 @@ public class BoardDAO {
 		return mapper.boardPrintAll();
 	}
 
+	public int BoardWrite(BoardVO vo) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.BoardWrite(vo);
+	}
+
+	public BoardVO readBoard(String bul_boardnum) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.readBoard(bul_boardnum);
+	}
+
+	public int BoardDelete(BoardVO vo) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.BoardDelete(vo);
+	}
+
+	public ArrayList<ReplyVO> replyList(int mainboardnum) {
+		BoardMapper mapper= sqlSession.getMapper(BoardMapper.class);
+		return mapper.replyList(mainboardnum);
+	}
 
 
 }

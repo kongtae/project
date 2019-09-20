@@ -60,7 +60,7 @@ public class ListController {
 	}
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public String writeFestival(ListVO vo, HttpSession session,/* MultipartFile uploadFileName,*/ MultipartHttpServletRequest request , RedirectAttributes rttr) {
+	public String writeFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request) {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
@@ -153,7 +153,6 @@ public class ListController {
 		System.out.println("삭제할 vo "+vo);
 		boolean result = service.deleteFestival(vo);
 		System.out.println("삭제된VO "+result);
-		rttr.addFlashAttribute("deleteResult", result);
 		return "redirect:/listForm"; 
 	}
 //	좋아요를 하고싶다!!!	
