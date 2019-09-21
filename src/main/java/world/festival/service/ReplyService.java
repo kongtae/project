@@ -41,6 +41,12 @@ public class ReplyService {
 		dao.replyUpdate(vo);
 	}
 
+	public boolean replywriteBoard(ReplyVO vo) {
+		int result = dao.replywriteBoard(vo);
+		if(result!=1){return false;}
+		return true;
+	}
+
 	
 	//댓글 삭제?
 //	public boolean deleteFestival(ListVO vo) {

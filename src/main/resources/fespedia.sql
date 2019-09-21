@@ -10,7 +10,6 @@ CREATE TABLE ADMINMEMBER (
 CREATE TABLE MEMBER(
    ADMINID VARCHAR2(20) CONSTRAINT MEMBER_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
    userid      VARCHAR2(20)   NOT NULL PRIMARY KEY,      --USERID
-   username    VARCHAR2(20)   NOT NULL UNIQUE,          --USERNAME
    userpwd       VARCHAR2(20)   NOT NULL,                  --USERPWD
    email       VARCHAR2(50)    NOT NULL                         --메일
 );
@@ -26,11 +25,10 @@ CREATE TABLE MEMBER_BLOG(
 CREATE TABLE WISHLIST(
     ADMINID VARCHAR2(20) CONSTRAINT WISHLIST_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
     WISHLIST_NUM NUMBER NOT NULL PRIMARY KEY,   --시퀀스 넘
+    MAINBOARDNUM NUMBER NOT NULL  CONSTRAINT WISHLIST_MAINBOARDNUM_FK REFERENCES MAINBOARD(MAINBOARDNUM) ON DELETE CASCADE,
     USERID VARCHAR2(20)	CONSTRAINT  WISHLIST_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,
-    inputtime DATE DEFAULT SYSDATE,             --등록날짜
-    grade NUMBER,                               --평점
-    originalfilename	VARCHAR2(50),              --프로필 사진  원본 사진
-	savedfilename	VARCHAR2(50)                    --프로필 업로드 할 사진
+    HIT NUMBER,                                 --조회수
+    inputtime DATE DEFAULT SYSDATE
 );
 CREATE SEQUENCE WISHLIST_SEQ;
 --리스트 게시판
@@ -44,8 +42,8 @@ CREATE TABLE MAINBOARD(
     FESTIVAL_INTRO VARCHAR2(1000),  --축제 정보 (내용)
     SURROUND_PLACE VARCHAR2(1000),  --주변 지역 정보
     INPUTTIME DATE DEFAULT SYSDATE,  --입력 날자
-    STARTEVENT VARCHAR2(20) DEFAULT SYSDATE,   --축제시작날짜
-    ENDEVENT VARCHAR2(20),          --축제끝나는날짜
+    STARTEVENT DATE (20) DEFAULT SYSDATE,   --축제시작날짜
+    ENDEVENT DATE (20),          --축제끝나는날짜
     originalFileName VARCHAR(50),     -- 오리지날파일이름
     SAVEFILENAME VARCHAR(50)        -- 세이브파일 이름
 );
@@ -61,6 +59,22 @@ CREATE TABLE REPLY(
     SAVEFILENAME VARCHAR(50),       
 	INPUTDATE		DATE  DEFAULT SYSDATE   
 );
+
+CREATE TABLE BUL_BOARD(
+     ADMINID VARCHAR2(20) CONSTRAINT BULLETIN_BOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
+      USERID VARCHAR2(20)   CONSTRAINT  BUL_BOARD_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디
+     BUL_BOARDNUM  NUMBER PRIMARY KEY,                      --자유게시판 
+     TITLE VARCHAR2(20) NOT NULL, 
+     CONTENTS VARCHAR2(1000),
+      COUNTRY VARCHAR2(20),  --나라
+    ADRESS VARCHAR2(100),       --주소
+    INPUTDATE      DATE  DEFAULT SYSDATE,                     --제목
+    HIT NUMBER,                                            --조회수--게시글 내용
+    originalfilename   VARCHAR2(50),                       --사진파일 원본 이름
+    savedfilename   VARCHAR2(50)                          --보여주는 이름
+);
+
+CREATE SEQUENCE BUL_BOARDNUM_SEQ;
 
 
 

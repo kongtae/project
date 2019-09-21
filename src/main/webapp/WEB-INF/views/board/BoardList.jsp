@@ -42,11 +42,11 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 
-$(function() {
-			printAll();
-		})
+		$(function() {
+			boardPrintAll();
+		});
 		
-		function searchDate(value){
+/* 		function searchDate(value){
 			var result00="startEvent";
 			
 			var result11 = document.getElementById("searchKeyword");
@@ -92,28 +92,33 @@ $(function() {
 			}
 		})
 		
-	}	
-	function printAll() {
+	} */
+	
+	function boardPrintAll() {
 		
 		$.ajax({
 			type:'GET',
-			url : 'printAll',
+			url : 'boardPrintAll',
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("전체 리스트 불러오기 실패");
 			}
-		})
+		});
 	}
+	
 	function output(result) {
-		var context = '';
+		var context = "";
 		$.each(result,function(index,item){
-		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='Session'>"+item.country+"조회수 HIT"+"</td>";
-		context += "<td class='Session'>"+item.startEvent+"~"+item.endEvent+"등록날짜 sysdate"+"</td>"; 
-		context += "<td class='Session'>"+item.userid+"</td></tr>";
-		})
+		var date = new Date(item.inputdate);
+	    var inputDate = date.getFullYear() + "-" + ("00" + (date.getMonth() + 1)).slice(-2) + "-" + ("00" + date.getDate()).slice(-2);
+		context += "<tr><td class='srial'>"+item.bul_boardnum+"</td>";
+		context += "<td class='Session'><a href=BoardDetailGO?bul_boardnum="+item.bul_boardnum+">"+item.title+"</a></td>";
+		context += "<td class='Session'>"+item.userid+"</td>";
+		context += "<td class='Session'>"+inputDate+"</td>"; 
+		context += "<td class='Session'>"+item.hit+"</td></tr>";
+		
+		});
 		$("#list").html(context);
 		
 		if(context!=''){
@@ -123,11 +128,6 @@ $(function() {
 		
 	}
 	
-/* 	function page() {
-		var reSortColors = function($table) {
-			  $('tbody tr:odd td', $table).removeClass('even').removeClass('Session').addClass('odd');
-			  $('tbody tr:even td', $table).removeClass('odd').removeClass('Session').addClass('even');
-			 }; */
 
 </script>
 </head>
@@ -217,9 +217,9 @@ $(function() {
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
@@ -231,24 +231,6 @@ $(function() {
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
-                    <!--Search Box Outer-->
-                   <!--  <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                     
                 </div>
                
@@ -330,52 +312,52 @@ $(function() {
 		<h4 id="icontext"><b>投稿する</b></h4>
 		<a href="insertBoard"><img src="listImages/write.png" title="投稿"></a>
 	</div>
-    <div class="container">
-          <div class="schedule-area">
-      		<div class="schedule-content clearfix">
-			            <div class="inner-box  table-responsive">      
-				<form action="searchList" method="get">
-					<table><tr><td>
-					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
-					<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
-					ユーザー名
-					</option>
-					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
-					タイトル
-					</option>
-					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
-					国家
-					</option>
-					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
-					期間
-					</option>
-					</select>
-					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
-					<td id="insertmark"></td>
-					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" onclick="selectOne(this)">	
-					</td></tr>
-					</table>
-				</form>           
-			            <div class="inner-box  table-responsive"> 
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="srial">#</th>
-                                    <th class="session">タイトル</th>
-                                    <th class="time">国家</th>
-                                    <th class="speakers">期間</th>
-                                    <th class="venue">ユーザー名</th>
-                                </tr>
-                            </thead>
-                            <tbody id="list" class="table table-hover"></tbody> 
-                            
-                          </table>
-                            
-                    </div>
-                </div>
-            
+    			<div class="container">
+			          <div class="schedule-area">
+			      		<div class="schedule-content clearfix">
+						            <div class="inner-box  table-responsive">      
+							<form action="searchList" method="get">
+								<table><tr><td>
+								<select name="searchItem" id="searchItem" onchange="searchDate(this)">
+								<option value="userid" <c:if test="${'userid'==searchItem}">selected</c:if>>
+								ユーザー名
+								</option>
+								<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
+								タイトル
+								</option>
+								<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
+								国家
+								</option>
+								<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+								期間
+								</option>
+								</select>
+								</td>
+								<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
+								<td id="insertmark"></td>
+								<td><input type="hidden" name="endEvent" id="searchHidden">
+								<input type="button" value="検索" onclick="selectOne(this)">	
+								</td></tr>
+								</table>
+							</form>           
+						            <div class="inner-box  table-responsive"> 
+			                        <table class="table table-hover">
+			                            <thead>
+			                                <tr>
+			                                    <th class="srial">#</th>
+			                                    <th class="session">タイトル</th>
+			                                    <th class="time">ユーザー名</th>
+			                                    <th class="speakers">投稿時間</th>
+			                                    <th class="venue">HIT</th>
+			                                </tr>
+			                            </thead>
+			                            <tbody id="list" class="table table-hover"></tbody> 
+			                            
+			                          </table>
+			                            
+			                    </div>
+			                </div>
+			            </div>
                     </div>
                 </div>
 </section>
@@ -492,11 +474,6 @@ $(function() {
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
-
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
 
 
 </div>

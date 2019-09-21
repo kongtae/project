@@ -8,11 +8,10 @@
 <!-- 회원가입 -->	
 <insert id="registermember" parameterType="UserVO">
 	INSERT INTO
-		member(adminid, userid, username, userpwd, email)
+		member(adminid, userid, userpwd, email)
 	VALUES (
 		null,
 		#{userid},
-		#{username},
 		#{userpwd},
 		#{email}
 	)
@@ -64,7 +63,6 @@
 	UPDATE
 		member
 	SET
-		username = #{username},
 			<if test="userpwd != null">
 				userpwd = #{userpwd},		
 			</if>
@@ -109,4 +107,40 @@
 	WHERE
 		userid = #{userid}
 </select>
+<!-- 마이페이지에서 wish boardnum을 가져오기 위해 사용 -->
+
+<select id="selectwish" parameterType="WishVO" resultType="WishVO">
+	SELECT
+		*
+	FROM
+		WISHLIST
+	WHERE
+		userid=#{userid}
+</select>
+
+<select id="selectlist" parameterType="ListVO" resultType="ListVO">
+	SELECT
+		*
+	FROM
+		WISHLIST
+	WHERE
+		userid=#{userid}
+</select>
+
+
+<select id="selectlistAll" parameterType="String" resultType="ListVO">
+SELECT  
+	*
+FROM
+	member mb, WISHLIST wb, MAINBOARD maintb
+WHERE
+	maintb.MAINBOARDNUM = wb.MAINBOARDNUM
+AND  
+	mb.userid = #{userid}
+AND
+	wb.userid = #{userid}
+ORDER BY
+	maintb.MAINBOARDNUM desc
+</select>
+
 </mapper>

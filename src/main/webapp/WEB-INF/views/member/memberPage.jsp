@@ -544,13 +544,14 @@ function memberSelect(){
 									<!-- Post -->
 									<div class="post">
 										<div class="user-block">
+												<c:forEach var="result" items="${list}" varStatus="status"> 
 											<img class="img-circle img-bordered-sm"
-												src="dist/img/user1-128x128.jpg" alt="user image"> <span
-												class="username"> <a href="#">Jonathan Burke Jr.</a>
+												src="dist/img/user1-128x128.jpg" alt="user image">
+												<span class="username"> <a href="#"> <c:out value="${result}"></c:out> </a>
 												<a href="#" class="pull-right btn-box-tool"><i
 													class="fa fa-times"></i></a>
-											</span> <span class="description">Shared publicly - 7:30 PM
-												today</span>
+											</span> <span class="description"></span>
+										</c:forEach>
 										</div>
 										<!-- /.user-block -->
 										<p>Lorem ipsum represents a long-held tradition for

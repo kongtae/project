@@ -32,6 +32,10 @@ public class ReplyDAO {
 		ReplyMapper mapper= sqlSession.getMapper(ReplyMapper.class);
 		mapper.replyUpdate(vo);
 	}
+	public int replywriteBoard(ReplyVO vo) {
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		return mapper.replywriteBoard(vo);
+	}
 
 	
 	

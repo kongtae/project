@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,11 +26,10 @@ public class ListService {
 	@Autowired
 	private ListDAO dao;
 	
-
 	public boolean writeFestival(ListVO vo, MultipartHttpServletRequest request) {
 		
-		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
-		
+//		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
 		File dir = new File(path);
 		if(!dir.isDirectory()){
 			dir.mkdir();
@@ -57,7 +58,6 @@ public class ListService {
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);
-
 		return true;
 
 
@@ -75,12 +75,9 @@ public class ListService {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchItem", searchItem);
 		map.put("searchKeyword", searchKeyword);
-		
-
-		DateFormat sdFormat = new SimpleDateFormat("yy-MM-dd");
-		String endEvent1 = sdFormat.format(endEvent);
-		map.put("endEvent", endEvent1);
-		System.out.println(endEvent1);
+		map.put("endEvent", endEvent);
+		System.out.println(endEvent);
+		System.out.println("서비스의 맵이 다 처리 되었나 ? 셀렉원1map : "+map);
 		return dao.selectOne(map);
 	}
 
@@ -88,6 +85,7 @@ public class ListService {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("searchItem", searchItem);
 		map.put("searchKeyword", searchKeyword);
+		System.out.println("서비스의 맵이 다 처리 되었나 ? 셀렉원2map : "+map);
 		return dao.selectOne2(map);
 	}
 
@@ -99,7 +97,8 @@ public class ListService {
 	public boolean updateFestival(ListVO vo, MultipartHttpServletRequest request) {
 
 		String oldSaveFileName = vo.getSaveFileName();
-		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
+//		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
 		int result;
 
 		File dir = new File(path);
@@ -138,6 +137,17 @@ public class ListService {
 		}
 		
 		return true;
+	}
+
+	public ArrayList<ListVO> printAll22(String endEvent, String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+
+		map.put("endEvent", endEvent);
+		System.out.println(endEvent);
+		System.out.println("printAll22서비스의 맵이 다 처리 되었나 ?  : "+map);
+		return dao.printAll22(map);
 	}
 	
 }

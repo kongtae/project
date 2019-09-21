@@ -2,6 +2,8 @@ package world.festival.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -38,11 +40,6 @@ public class ListDAO {
 
 	public ArrayList<ListVO> selectOne(HashMap<String, String> map) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
-//		HashMap<String, String> map = new HashMap<>();
-//		map.put("searchItem", searchItem);
-//		map.put("searchKeyword", searchKeyword);
-//		map.put("endEvent", vo.getEndEvent());
-		System.out.println("map��"+map);
 		return mapper.selectOne(map);
 	}
 
@@ -82,7 +79,11 @@ public class ListDAO {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.selectHashtag(hashtag1);
 	}
-
+	
+	public ArrayList<ListVO> printAll22(HashMap<String, String> map) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.printAll22(map);
+	}
 
 
 }

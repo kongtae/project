@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="world.festival.dao.BoardMapper">
+
+<select id="boardPrintAll" parameterType="BoardVO" resultType="BoardVO">
+	Select * from BUL_BOARD order by BUL_BOARDNUM desc
+</select>
+
+<insert id="BoardWrite" parameterType="BoardVO">
+	INSERT INTO
+		bul_board (bul_boardnum,userid,title,contents,country,adress,inputdate,originalFileName,savedFileName)
+	VALUES (
+		BUL_BOARDNUM_SEQ.nextval,
+		#{userid},
+		#{title},
+		#{contents},
+		#{country},
+		#{adress},
+		sysdate
+		<choose>
+			<when test="originalFileName != null and savedFileName !=null">
+			,#{originalFileName},#{savedFileName}
+			</when>
+			<otherwise>
+			,null,null
+			</otherwise>
+		</choose>
+	)
+</insert>
+
+<select id="readBoard" parameterType="BoardVO" resultType="BoardVO">
+	Select * from bul_board where bul_boardnum = #{bul_boardnum}
+</select>
+
+<delete id="BoardDelete" parameterType="BoardVO">
+delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid}
+</delete>
+
+<select id="replyList" parameterType="ReplyVO" resultType="ReplyVO">
+		select * from reply
+		 where
+		 bul_boardnum=#{bul_boardnum}
+		  order by 
+		  replynum desc
+</select>
+	
+</mapper>

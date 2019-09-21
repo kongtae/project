@@ -1,5 +1,7 @@
 package world.festival.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import world.festival.VO.ListVO;
 import world.festival.VO.UserVO;
+import world.festival.VO.WishVO;
 import world.festival.dao.UserDAO;
 import world.festival.service.UserService;
 //import world.festival.service.UserService;
@@ -36,7 +40,7 @@ public class UserController {
 		System.out.println(vo);
 		dao.registermember(vo);
 		model.addAttribute("UserVO", vo);
-		return "member/loginForm";
+		return "member/loginForm2";
 	}
 
 	//以묐났泥댄겕
@@ -53,28 +57,31 @@ public class UserController {
 	}
 
 	//濡쒓렇�씤
-	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
-	public String login(UserVO vo, HttpSession session, Model model) {
-		UserVO result = dao.selectOne(vo);
-		if(result != null) {
-			session.setAttribute("loginid", result.getUserid());
-//			session.setAttribute("username", result.getUsername());
-			return "redirect:/";
-		}
-		model.addAttribute("result", false);
-		return "member/loginForm";
+	@RequestMapping(value = "/loginForm1", method = RequestMethod.POST)
+	@ResponseBody
+	public String login(UserVO vo, HttpSession session) {
+		UserVO result = dao.selectOne(vo, session);
+		System.out.println("로그인 vo값 " + vo);
+		System.out.println("로그인 result값 " + result);
+		return "success";
 	}
+	
 
 	//濡쒓렇�븘�썐
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "member/loginForm";
 	}
 
-	//�쑀���럹�씠吏� �씠�룞
+	//맴버페이지  서비스==> DAO
 	@RequestMapping(value = "/memberPage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String memberPage() {
+	public String memberPage(HttpSession session,ListVO listvo,Model model) {
+		String userid=(String)session.getAttribute("loginid");
+		ArrayList<ListVO> result=service.selectlistAll(userid);
+		System.out.println("내가원하는대로 값 가져오는지 확인:"+result);
+		model.addAttribute("list", result);
+		model.addAttribute("listsize", result.size());
 		return "member/memberPage";
 	}
 

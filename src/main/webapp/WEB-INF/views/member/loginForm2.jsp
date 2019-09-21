@@ -63,13 +63,11 @@
 	
 		$.ajax({
 		url:"loginForm1",
-		enctype: 'multipart/form-data',
 		data:$("#loginForm").serialize(),
 		type:"post",
 		success: function(data) {
 			alert("로그인 성공");
-			self.location.href = document.referrer;
-			
+			location.href ="festival";
 		},
 		error: function() {
 			alert("로그인 실패");
