@@ -24,8 +24,8 @@ public interface ListMapper {
 
 	public ListVO imagePrint(ListVO vo);
 
+	public ArrayList<ListVO> selectHashtag(String[] hashtag1);
+	
 	public ArrayList<ListVO> printAll22(HashMap<String, String> map);
 
-
-	
 }

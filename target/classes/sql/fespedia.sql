@@ -1,4 +1,4 @@
---0918 테이블
+--0919 테이블
 
 --관리자 테이블
 CREATE TABLE ADMINMEMBER (
@@ -10,27 +10,26 @@ CREATE TABLE ADMINMEMBER (
 CREATE TABLE MEMBER(
    ADMINID VARCHAR2(20) CONSTRAINT MEMBER_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
    userid      VARCHAR2(20)   NOT NULL PRIMARY KEY,      --USERID
-   username    VARCHAR2(20)   NOT NULL UNIQUE,          --USERNAME
    userpwd       VARCHAR2(20)   NOT NULL,                  --USERPWD
-   email       VARCHAR2(50)    NOT NULL                         --메일
+   email       VARCHAR2(50)    NOT NULL,
+    originalfilename VARCHAR2(200),
+    savedfilename VARCHAR2(200)--메일
 );
 --블로그에서 자기소개
 CREATE TABLE MEMBER_BLOG(
   ADMINID VARCHAR2(20) CONSTRAINT MEMBER_BLOG_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
 	userid		VARCHAR2(20)	CONSTRAINT  MEMBER_BLOG_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,  --USERID
 	self_intro 	VARCHAR2(1000),      --자기소개 내용
-    originalfilename	VARCHAR2(50),                       --프로필 사진  원본 사진
-	savedfilename	VARCHAR2(50)                            --프로필 업로드 할 사진
+    originalfilename	VARCHAR2(200),                       --프로필 사진  원본 사진
+	savedfilename	VARCHAR2(200)                            --프로필 업로드 할 사진
 );
 --가고싶은 축제장소
 CREATE TABLE WISHLIST(
     ADMINID VARCHAR2(20) CONSTRAINT WISHLIST_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
     WISHLIST_NUM NUMBER NOT NULL PRIMARY KEY,   --시퀀스 넘
+    MAINBOARDNUM NUMBER NOT NULL  CONSTRAINT WISHLIST_MAINBOARDNUM_FK REFERENCES MAINBOARD(MAINBOARDNUM) ON DELETE CASCADE,
     USERID VARCHAR2(20)	CONSTRAINT  WISHLIST_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,
-    inputtime DATE DEFAULT SYSDATE,             --등록날짜
-    grade NUMBER,                               --평점
-    originalfilename	VARCHAR2(50),              --프로필 사진  원본 사진
-	savedfilename	VARCHAR2(50)                    --프로필 업로드 할 사진
+    inputtime DATE DEFAULT SYSDATE             --등록날짜
 );
 CREATE SEQUENCE WISHLIST_SEQ;
 --리스트 게시판
@@ -44,10 +43,11 @@ CREATE TABLE MAINBOARD(
     FESTIVAL_INTRO VARCHAR2(1000),  --축제 정보 (내용)
     SURROUND_PLACE VARCHAR2(1000),  --주변 지역 정보
     INPUTTIME DATE DEFAULT SYSDATE,  --입력 날자
-    STARTEVENT DATE DEFAULT SYSDATE, --축제시작날짜
-    ENDEVENT DATE DEFAULT SYSDATE,   --축제끝나는날짜
-    originalFileName VARCHAR(50),    -- 오리지날파일이름
-    SAVEFILENAME VARCHAR(50)        -- 세이브파일 이름
+    STARTEVENT VARCHAR2(20) DEFAULT SYSDATE,   --축제시작날짜
+    ENDEVENT VARCHAR2(20),          --축제끝나는날짜
+    originalFileName VARCHAR(200),     -- 오리지날파일이름
+    SAVEFILENAME VARCHAR(200),        -- 세이브파일 이름
+    HASHTAG VARCHAR2(1000)
 );
 CREATE SEQUENCE MAINBOARD_SEQ;
 --댓글 게시판
@@ -57,27 +57,47 @@ CREATE TABLE REPLY(
    MAINBOARDNUM   NUMBER      NOT NULL CONSTRAINT REPLY_BOARDNUM_FK REFERENCES MAINBOARD(MAINBOARDNUM) ON DELETE CASCADE, --현재 보는 게시판 번호
    USERID      VARCHAR2(20)   NOT NULL CONSTRAINT REPLY_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디  
    REPLYTEXT   VARCHAR2(1000)   NOT NULL,   --댓글 
-    ORIGINALFILENAME VARCHAR(50),   
-    SAVEFILENAME VARCHAR(50),       
+    ORIGINALFILENAME VARCHAR(200),   
+    SAVEFILENAME VARCHAR(200),       
    INPUTDATE      DATE  DEFAULT SYSDATE   
 );
 
+--회원 자유게시판
+CREATE TABLE BUL_BOARD(
+     ADMINID VARCHAR2(20) CONSTRAINT BULLETIN_BOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
+      USERID VARCHAR2(20)   CONSTRAINT  BUL_BOARD_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디
+     BUL_BOARDNUM  NUMBER PRIMARY KEY,                      --자유게시판 
+     TITLE VARCHAR2(20) NOT NULL,                           --제목
+     HIT NUMBER,                                            --조회수
+     CONTENTS VARCHAR2(1000),                               --게시글 내용
+     ORIGINALFILENAME   VARCHAR2(50),                       --사진파일 원본 이름
+    savedfilename   VARCHAR2(50),                          --보여주는 이름
+    INPUTDATE      DATE  DEFAULT SYSDATE               
+);
+
+ALTER TABLE
+   mainboard
+modify(
+   startevent date default SYSDATE
+   , endevent date default SYSDATE
+);
+
+delete from mainboard;
 
 
 CREATE SEQUENCE REPLY_SEQ;
---파일 추가
+
 ALTER TABLE
    member
 ADD(
    originalfilename VARCHAR2(200)
    , savedfilename VARCHAR2(200)
 );
---이벤트 타입 date로 수정
+
 ALTER TABLE
-   mainboard
-modify(
-   startevent date default SYSDATE
-   , endevent date default SYSDATE
+   MAINBOARD
+ADD(
+   HASHTAG VARCHAR2(1000)
 );
 
 DROP SEQUENCE REPLY_SEQ;
@@ -89,13 +109,9 @@ DROP TABLE MEMBER_BLOG;
 DROP TABLE WISHLIST;
 DROP TABLE REPLY;
 DROP TABLE MAINBOARD;
-DROP TABLE ADMINMEMBER;
 
 commit;
 
-INSERT INTO member(userid, username, userpwd, email) VALUES(
-    '123', '이지은', '123', '123@123.123'
-);
 INSERT INTO mainboard(MAINBOARDNUM, USERID, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, STARTEVENT, ENDEVENT) VALUES(
     MAINBOARD_SEQ.nextval, 123, '새암축제', 'RU', '블라디보스토크 500-3', '새암새암하는 축제', '2019-09-11', '2019-09-13'
 );
@@ -114,3 +130,27 @@ INSERT INTO mainboard(MAINBOARDNUM, USERID, TITLE, COUNTRY, ADRESS, FESTIVAL_INT
 INSERT INTO mainboard(MAINBOARDNUM, USERID, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, STARTEVENT, ENDEVENT) VALUES(
     MAINBOARD_SEQ.nextval, 123, '한성이축제', 'US', '미국 10036 뉴욕 맨해튼', '맨해튼한성', '2019-09-24', '2019-09-27'
 );
+
+UPDATE mainboard SET ORIGINALFILENAME = 
+    'externalFile.gif,CFB53A33-A542-4820-990D-EF45DD937BA5.gif,home.jpg'
+    WHERE MAINBOARDNUM = 6;
+
+UPDATE mainboard SET HASHTAG='#음식,#축제'
+    WHERE MAINBOARDNUM = 1;
+    
+UPDATE mainboard SET HASHTAG='#축제,#공원'
+    WHERE MAINBOARDNUM = 7;
+
+INSERT INTO member(userid, username, userpwd, email) VALUES(
+    '123', '이지은', '123', '123@123.123'
+);
+
+UPDATE member SET originalfilename = 'logo.png' WHERE userid = '123';
+
+
+
+
+
+commit;
+
+SELECT * FROM mainboard WHERE hashtag LIKE '%축제%' AND hashtag LIKE '%음식%';

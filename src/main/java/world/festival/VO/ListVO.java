@@ -1,7 +1,6 @@
 package world.festival.VO;
 
 import java.sql.Date;
-import java.util.HashMap;
 
 import lombok.Data;
 
@@ -21,7 +20,4 @@ public class ListVO {
 	private Date endEvent;
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
-//	private HashMap<String, String> hamaList;
-	
-	
 }

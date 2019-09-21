@@ -147,12 +147,12 @@ $(function() {
          }else if ($(this).attr("data-value") == "end") {
             page = totalPageCount;
          }else if ($(this).attr("data-value") == "next") {
-            page = parseInt(page) + 1;
+            page = parseInt(page) + 5;
             if (page>totalPageCount) {
                page=totalPageCount;
             }
          }else if ($(this).attr("data-value") =="before") {
-            page = parseInt(page) - 1;
+            page = parseInt(page) - 5;
             if(page<5){
                page = 1;
             }
@@ -303,45 +303,19 @@ $(function() {
       if(searchItem=="startEvent"){
       var a = $("#searchKeyword").val().split("-");
       var b = $("#searchHidden").val().split("-");
-      if(a>b){
-         alert("検索する期間を間違えて入力しました。");
-         $("#searchKeyword").val("");
-         $("#searchHidden").val("");
-         return false;
+         if(a>b){
+            alert("検索する期間を間違えて入力しました。");
+            $("#searchKeyword").val("");
+            $("#searchHidden").val("");
+            return false;
          }
       }
-      
 
-   /*    if(searchItem=="hashSearch"){
-         $('#hash').append("<span>"+searchKeyword+"<button value="+searchKeyword+">X</button>   </span>");
-         var a = [];
-         a += searchkeyword;
-         $.ajax({
-         type:'POST',
-         url : 'hashSearch',               
-         data: {A: A},
-         dataType: 'json',
-         success : output,
-         error: function() {
-            alert("리스트 불러오기 실패");
-         }
-      }) 
+      if(searchItem=="hashSearch"){
+         $('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
+         selectHashtag(searchKeyword);
          return false;
-         S.ONCLIK
-         A -= SEARCHKEYWORD;
-         $.ajax({
-            type:'POST',
-            url : 'hashSearch',               
-            data: {A: A},
-            dataType: 'json',
-            success : output,
-            error: function() {
-               alert("리스트 불러오기 실패");
-            }
-         })           
-         return false;
-      } */
-      
+      } 
       
       $.ajax({
          type:'POST',
@@ -353,12 +327,51 @@ $(function() {
             alert("리스트 불러오기 실패1");
             alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
          }
-      });
+      })
    }
+   
+      var hashtag1 = "";
+   
+   function selectHashtag(searchKeyword){
+       hashtag1 += searchKeyword+",";
+       $('#xbtn').click(function (){
+          hashtag1.replace(/searchKeyword/gi, '');
+      });
+      $.ajax({
+         type:'POST',
+         url : 'selectHashtag',
+         data : { 'hashtag' : hashtag1 },
+         success : function(result){
+            var context = '';
+            $.each(result,function(index,item){
+               var s = new Date(item.startEvent);
+                var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+               var end="";
+             if(item.endEvent!=null||item.endEvent!=""){   
+                var e = new Date(item.endEvent);
+                end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+             }
+             if(item.endEvent==null||item.endEvent==""){
+               item.endEvent=" ";
+               end = item.endEvent;
+            }
+            context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+            context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+            context += "<td class='Session'>"+item.country+"</td>";
+            context += "<td class='Session'>"+start+"~"+end+"</td>";
+            context += "<td class='Session'>"+item.adress+"</td></tr>";
+            })
+            $("#list").html(context);
+         },
+         error: function() {
+            alert("리스트 불러오기 실패3");
+         }
+      })
+   }
+   
    function change(){
       page=1;
    }
-   
 </script>
 </head>
 <body>
@@ -544,10 +557,7 @@ $(function() {
           <div class="schedule-area">
             <div class="schedule-content clearfix">
                      <div class="inner-box  table-responsive">      
-               <div id="hash">
-               
                <div id="hash"></div>
-               
                <table>
                
                <tr><td>
@@ -565,7 +575,7 @@ $(function() {
                住所
                </option>
                <option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
-               누적검색
+               #HASHTAG
                </option>
                </select>
                </td>
@@ -574,7 +584,6 @@ $(function() {
                <td><input type="hidden" name="endEvent" id="searchHidden">
                <input type="button" value="検索" id="searchOne" onclick='selectOne()'>
                </td></tr>
-<!--             </form>            -->
                  </table>
                      <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
@@ -600,8 +609,6 @@ $(function() {
        </div>
 </section>
 <!--End Schedule Section-->
-
-
 
 <!--Contact Info-->
 <section class="contact-info">
@@ -711,8 +718,6 @@ $(function() {
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
-
-
 
 </div>
 </body>

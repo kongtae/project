@@ -20,11 +20,11 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName !=null">
-			,#{originalFileName},#{saveFileName}
+			<when test="originalFileName != null">
+			,#{originalFileName}
 			</when>
 			<otherwise>
-			,null,null
+			,null
 			</otherwise>
 		</choose>
 	)
@@ -88,6 +88,17 @@
 		select originalFileName from MAINBOARD 
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
+</select>
+
+<select id="selectHashtag" parameterType="String" resultType="ListVO">
+		SELECT 
+			*
+        FROM
+        	MAINBOARD
+        WHERE 
+    <foreach item="item" collection="array" open="" separator="OR" close="">
+            hashtag LIKE '%' ||  #{item} || '%'
+    </foreach>
 </select>
 
 <select id="printAll22" parameterType="map" resultType="ListVO">
