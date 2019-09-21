@@ -65,52 +65,26 @@
 		}
 		
 		
-	function selectOne(value) {
+	function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
-		
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
-		if(a>b){
-			alert("検索する期間を間違えて入力しました。");
-			$("#searchKeyword").val("");
-			$("#searchHidden").val("");
-			return false;
-		}
+			if(a>b){
+				alert("検索する期間を間違えて入力しました。");
+				$("#searchKeyword").val("");
+				$("#searchHidden").val("");
+				return false;
+			}
 		}
 
 		if(searchItem=="hashSearch"){
-			$('#hash').append("<span>"+searchKeyword+"   <button value="+searchKeyword+">X</button>   </span>");
-			/* var a = [];
-			a += searchkeyword;
-			$.ajax({
-			type:'POST',
-			url : 'hashSearch',					
-			data: {A: A},
-			dataType: 'json',
-			success : output,
-			error: function() {
-				alert("리스트 불러오기 실패");
-			}
-		}) 
+			$('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
+			selectHashtag(searchKeyword);
 			return false;
-			S.ONCLIK
-			A -= SEARCHKEYWORD;
-			$.ajax({
-				type:'POST',
-				url : 'hashSearch',					
-				data: {A: A},
-				dataType: 'json',
-				success : output,
-				error: function() {
-					alert("리스트 불러오기 실패");
-				}
-			}) 			 */
-			return false;
-		}
-		
+		} 
 		
 		$.ajax({
 			type:'POST',
@@ -122,8 +96,45 @@
 				alert("리스트 불러오기 실패1");
 			}
 		})
-		
 	}	
+	    var hashtag1 = "";
+	
+	function selectHashtag(searchKeyword){
+	    hashtag1 += searchKeyword+",";
+	    $('#xbtn').click(function (){
+	    	hashtag1.replace(/searchKeyword/gi, '');
+		});
+		$.ajax({
+			type:'POST',
+			url : 'selectHashtag',
+			data : { 'hashtag' : hashtag1 },
+			success : function(result){
+				var context = '';
+				$.each(result,function(index,item){
+					var s = new Date(item.startEvent);
+			    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+					var end="";
+			    if(item.endEvent!=null||item.endEvent!=""){	
+			    	var e = new Date(item.endEvent);
+			    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+			    }
+			    if(item.endEvent==null||item.endEvent==""){
+					item.endEvent=" ";
+					end = item.endEvent;
+				}
+				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+				context += "<td class='Session'>"+item.country+"</td>";
+				context += "<td class='Session'>"+start+"~"+end+"</td>";
+				context += "<td class='Session'>"+item.adress+"</td></tr>";
+				})
+				$("#list").html(context);
+			},
+			error: function() {
+				alert("리스트 불러오기 실패3");
+			}
+		})
+	}
 		
 
 	function printAll() {
@@ -167,22 +178,6 @@
 		}
 		
 	}
-	
-  /* 	var content = document.getElementById('hash').innerHTML;
-	var splitedArray = content.split(' ');
-	var linkedContent = '';
-	for(var word in splitedArray)
-	{
-	  word = splitedArray[word];
-	   if(word.indexOf('#') == 0)
-	   {
-	      word = '<a href=\'링크\'>'+word+'</a>';
-	   }
-	   linkedContent += word+' ';
-	}
-	document.getElementById('hash').innerHTML = linkedContent;   */
-	 
-
 </script>
 </head>
 <body>
@@ -387,18 +382,18 @@
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>
-					<option value="adress" <c:if test="${'userid'==searchItem}">selected</c:if>>
+					<option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
 					住所
 					</option>
-					<option value="hashSearch" <c:if test="${'userid'==searchItem}">selected</c:if>>
-					누적검색
+					<option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
+					#
 					</option>
 					</select>
 					</td>
 					<td><input type="text" name="searchKeyword" id="searchKeyword"></td>
 					<td id="insertmark"></td>
 					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="searchOne" onclick="selectOne(this)">	
+					<input type="button" value="検索" id="searchOne" onclick="selectOne()">	
 					</td></tr>
 					</table>
 				</form>           
@@ -424,9 +419,6 @@
        </div>
 </section>
 <!--End Schedule Section-->
-
-
-
 
 <!--Contact Info-->
 <section class="contact-info">
@@ -536,11 +528,6 @@
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
-
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="js/map-script.js"></script>
-<!--End Google Map APi-->
 
 
 </div>

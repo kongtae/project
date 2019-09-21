@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 
 import world.festival.VO.ListVO;
-import world.festival.VO.ReplyVO;
 
 public interface ListMapper {
 
@@ -26,6 +25,8 @@ public interface ListMapper {
 	public int updateFestival(ListVO vo);
 
 	public ListVO imagePrint(ListVO vo);
+
+	public ArrayList<ListVO> selectHashtag(String[] hashtag1);
 
 	
 }

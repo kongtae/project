@@ -78,6 +78,11 @@ public class ListDAO {
 		return mapper.imagePrint(vo);
 	}
 
+	public ArrayList<ListVO> selectHashtag(String[] hashtag1) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.selectHashtag(hashtag1);
+	}
+
 
 
 }

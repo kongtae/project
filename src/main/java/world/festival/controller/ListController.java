@@ -2,6 +2,7 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -97,18 +98,19 @@ public class ListController {
 		model.addAttribute("replylist", replylist);
 		return "list/ListDetail";
 	}
-	@RequestMapping(value = "/selectOne", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ArrayList<ListVO> selectOne(ListVO vo,Model model,
+	@ResponseBody
+	@RequestMapping(value = "/selectOne", method = RequestMethod.POST)
+	public ArrayList<ListVO> selectOne(String endEvent,Model model,
 			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
 			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
 		System.out.println("item "+searchItem);
 		System.out.println("keyword "+searchKeyword);
-		System.out.println("end "+vo.getEndEvent());
+		System.out.println("end "+endEvent);
 		ArrayList<ListVO> selectOne1 = new ArrayList<ListVO>();
-		System.out.println("vo11 "+vo);
+		System.out.println("vo11 "+endEvent);
 		if(searchItem.equals("startEvent")){
 		System.out.println("if문안으로 들어오나?");
-		selectOne1 = service.selectOne(vo,searchItem,searchKeyword);	
+		selectOne1 = service.selectOne(endEvent,searchItem,searchKeyword);	
 		System.out.println("리스트 출력111"+selectOne1);
 		return selectOne1;
 		}
@@ -175,6 +177,16 @@ public class ListController {
 		System.out.println("포문밖의 아이리스트" + ilist);
 		
 		return ilist; 
+	}
+	
+	@RequestMapping(value = "/selectHashtag", method = RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<ListVO> selectHashtag(String hashtag, Model model, ListVO vo) {
+		System.out.println(hashtag);
+		String[] hashtag1 = hashtag.split(",");
+		ArrayList<ListVO> result = dao.selectHashtag(hashtag1);
+		System.out.println("result : " + result);
+		return result;
 	}
 	
 }
