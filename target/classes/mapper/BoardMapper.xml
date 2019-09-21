@@ -35,17 +35,17 @@
 	Select * from bul_board where bul_boardnum = #{bul_boardnum}
 </select>
 
-<update id="BoardUpdate" parameterType="BoardVO">
+<update id="boardUpdate" parameterType="BoardVO">
 	UPDATE
-		BUL_BOARD
-	SET
+		BUL_BOARD 
+	SET 
 		title = #{title},
-		country = #{country},
-		adress = #{adress},
 		contents = #{contents},
-		<if test="originalFileName != null and saveFileName !=null">
-			, originalfileName = #{originalFileName}
-			,saveFileName = #{saveFileName}
+		country = #{country},
+		adress = #{adress}
+		<if test="originalFileName != null and savedFileName !=null">
+			,originalfileName = #{originalFileName}
+			,savedFileName = #{savedFileName} 
 		</if>
 		WHERE 
 		bul_boardnum = #{bul_boardnum}

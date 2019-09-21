@@ -45,6 +45,12 @@ public class BoardDAO {
 		return mapper.replyList(vo);
 	}
 
+	public int boardUpdate(BoardVO vo) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.boardUpdate(vo);
+	}
+
+
 
 
 }
