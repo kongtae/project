@@ -19,5 +19,7 @@ public interface BoardMapper {
 
 	public ArrayList<ReplyVO> replyList(ReplyVO vo);
 
+	public int boardUpdate(BoardVO vo);
+
 	
 }
