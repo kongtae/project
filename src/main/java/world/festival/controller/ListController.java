@@ -226,9 +226,10 @@ public class ListController {
 	@RequestMapping(value = "/selectHashtag", method = RequestMethod.POST)
 	@ResponseBody
 	public ArrayList<ListVO> selectHashtag(String hashtag, Model model, ListVO vo) {
-		System.out.println(hashtag);
+		System.out.println("hashtag : "+hashtag);
 		String[] hashtag1 = hashtag.split(",");
 		ArrayList<ListVO> result = dao.selectHashtag(hashtag1);
+		System.out.println(result.size());
 		System.out.println("result : " + result);
 		return result;
 	}

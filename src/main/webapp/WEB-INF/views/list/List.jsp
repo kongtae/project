@@ -295,11 +295,24 @@ $(function() {
 			$("#insertmark").empty();
 		}
 	}
-		
+	var sharp = "";
+	var idx = 0;
 	function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
+	
+		if(searchItem=="hashSearch"){//해시태그 생성
+			sharp =  searchKeyword;
+			sharp = sharp.replace("#", "");
+			idx += 1;
+			$('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
+			selectHashtag(searchKeyword);
+			return false;
+		} 
+		if(searchItem!="hashSearch"){//다른 카테고리 선택시 해시태그 삭제
+			$('#hash').empty();
+		}
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
@@ -311,11 +324,6 @@ $(function() {
 			}
 		}
 
-		if(searchItem=="hashSearch"){
-			$('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
-			selectHashtag(searchKeyword);
-			return false;
-		} 
 		
 		$.ajax({
 			type:'POST',
@@ -334,35 +342,32 @@ $(function() {
 	
 	function selectHashtag(searchKeyword){
 	    hashtag1 += searchKeyword+",";
-	    $('#xbtn').click(function (){
-	    	hashtag1.replace(/searchKeyword/gi, '');
-		});
+	   	hashtagPrint();
+	}
+	function btnClick(sharp1){
+		alert("sharp1 : "+sharp1);
+		
+		var key = sharp1.innerHTML;
+		alert("key : "+ key);
+		var a = key.indexOf('(')+1;
+		var b = key.indexOf(')');
+    	var key1 = key.substring(a,b); 
+		var key2 = key1;
+    	key1 = "#"+key1+",";
+    	alert("key1 : "+key1);
+    	alert("key2 : "+key2);
+    	hashtag1 = hashtag1.replace(key1, "");
+    	alert("hashtag1 : "+hashtag1);
+    	hashtagPrint();
+    	$('#'+key2).empty();
+	}
+	
+	function hashtagPrint(){
 		$.ajax({
 			type:'POST',
 			url : 'selectHashtag',
 			data : { 'hashtag' : hashtag1 },
-			success : function(result){
-				var context = '';
-				$.each(result,function(index,item){
-					var s = new Date(item.startEvent);
-			    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
-					var end="";
-			    if(item.endEvent!=null||item.endEvent!=""){	
-			    	var e = new Date(item.endEvent);
-			    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
-			    }
-			    if(item.endEvent==null||item.endEvent==""){
-					item.endEvent=" ";
-					end = item.endEvent;
-				}
-				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-				context += "<td class='Session'>"+item.country+"</td>";
-				context += "<td class='Session'>"+start+"~"+end+"</td>";
-				context += "<td class='Session'>"+item.adress+"</td></tr>";
-				})
-				$("#list").html(context);
-			},
+			success : output1,
 			error: function() {
 				alert("리스트 불러오기 실패3");
 			}
@@ -545,7 +550,6 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-		
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
