@@ -35,7 +35,7 @@
  
  
  	function UpdateFestival() {
- 		location.href="updateFestival?bul_boardnum=${vo.bul_boardnum}";
+ 		location.href="updateFestivaGOl?bul_boardnum=${vo.bul_boardnum}";
 	}
   	function BoardDelete() {
   			if(confirm("삭제하시겠습니까?")){

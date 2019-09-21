@@ -13,12 +13,11 @@ public interface BoardMapper {
 
 	public int BoardWrite(BoardVO vo);
 
-	public BoardVO readBoard(ReplyVO vo);
+	public BoardVO readBoard(BoardVO vo1);
 
 	public int BoardDelete(BoardVO vo);
 
 	public ArrayList<ReplyVO> replyList(ReplyVO vo);
-
 
 	
 }

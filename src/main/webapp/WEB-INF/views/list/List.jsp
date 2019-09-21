@@ -303,7 +303,6 @@ $(function() {
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
-<<<<<<< HEAD
 			if(a>b){
 				alert("検索する期間を間違えて入力しました。");
 				$("#searchKeyword").val("");
@@ -328,10 +327,10 @@ $(function() {
 				alert("리스트 불러오기 실패1");
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
-<<<<<<< HEAD
 		})
-	}	
-	    var hashtag1 = "";
+	}
+	
+	   var hashtag1 = "";
 	
 	function selectHashtag(searchKeyword){
 	    hashtag1 += searchKeyword+",";
@@ -369,7 +368,7 @@ $(function() {
 			}
 		})
 	}
-	}
+	
 	function change(){
 		page=1;
 	}

@@ -42,9 +42,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/boardUpdateGO", method = {RequestMethod.GET, RequestMethod.POST})
-	public String boardUpdate(BoardVO vo,Model model,HttpSession hs) {
-		String userid=(String)hs.getAttribute("loginid");
-		vo.setUserid(userid);
+	public String boardUpdate(BoardVO vo1,Model model) {
+		System.out.println("boardUpdateGO 업데이트할 보드 부이오"+vo1);
+		BoardVO vo2 = dao.readBoard(vo1);
+		model.addAttribute("vo", vo2);
 		return "board/BoardUpdate";
 	}
 	
@@ -66,13 +67,13 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/BoardDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
-	public String BoardDetailGO(ReplyVO vo,Model model,HttpSession hs) {
+	public String BoardDetailGO(BoardVO vo1 , ReplyVO vo,Model model,HttpSession hs) {
 		String userid=(String)hs.getAttribute("loginid");
 		vo.setUserid(userid);
 		System.out.println("bul_boardnum 의  값 : " + vo.getBul_boardnum());
-		BoardVO vo1 = dao.readBoard(vo);
-		model.addAttribute("vo", vo1);
-		System.out.println("보드디테일단의 BoardVO 의 값 :" + vo1);
+		BoardVO vo2 = dao.readBoard(vo1);
+		model.addAttribute("vo", vo2);
+		System.out.println("보드디테일단의 BoardVO 의 값 :" + vo2);
 		ArrayList<ReplyVO> replylist=service.replyList(vo);
 		System.out.println("댓글 리스트 "+replylist);
 		//댓글 갯수
@@ -88,7 +89,7 @@ public class BoardController {
 		System.out.println("삭제할 vo "+vo);
 		int result = dao.BoardDelete(vo);
 		System.out.println("삭제결과 :  "+result);
-		return "board/BoardDetail";
+		return "board/BoardList";
 	}
 }
 

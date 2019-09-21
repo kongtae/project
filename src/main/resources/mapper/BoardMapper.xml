@@ -35,6 +35,22 @@
 	Select * from bul_board where bul_boardnum = #{bul_boardnum}
 </select>
 
+<update id="BoardUpdate" parameterType="BoardVO">
+	UPDATE
+		BUL_BOARD
+	SET
+		title = #{title},
+		country = #{country},
+		adress = #{adress},
+		contents = #{contents},
+		<if test="originalFileName != null and saveFileName !=null">
+			, originalfileName = #{originalFileName}
+			,saveFileName = #{saveFileName}
+		</if>
+		WHERE 
+		bul_boardnum = #{bul_boardnum}
+</update>
+
 <delete id="BoardDelete" parameterType="BoardVO">
 delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid}
 </delete>
@@ -46,5 +62,6 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid
 		  order by 
 		  replynum desc
 </select>
+
 	
 </mapper>
