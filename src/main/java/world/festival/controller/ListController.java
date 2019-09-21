@@ -2,7 +2,6 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -222,5 +221,15 @@ public class ListController {
 		System.out.println("포문밖의 아이리스트" + ilist);
 		
 		return ilist; 
+	}
+	
+	@RequestMapping(value = "/selectHashtag", method = RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<ListVO> selectHashtag(String hashtag, Model model, ListVO vo) {
+		System.out.println(hashtag);
+		String[] hashtag1 = hashtag.split(",");
+		ArrayList<ListVO> result = dao.selectHashtag(hashtag1);
+		System.out.println("result : " + result);
+		return result;
 	}
 }
