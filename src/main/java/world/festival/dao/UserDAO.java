@@ -1,12 +1,15 @@
 package world.festival.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import world.festival.VO.ListVO;
 import world.festival.VO.UserVO;
 import world.festival.VO.WishVO;
 @Repository
@@ -18,6 +21,7 @@ public class UserDAO {
 	public int registermember(UserVO vo) {
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 		int result = mapper.registermember(vo);
+		
 		return result;
 	}
 
@@ -67,10 +71,20 @@ public class UserDAO {
 		System.out.println("result : " + result);
 		return result;
 	}
-
+//위시리스트 가져오기
 	public ArrayList<WishVO> selectwish(String userid) {
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 		return mapper.selectwish(userid);
+	}
+	//Board리스트 가져오기
+	public ArrayList<ListVO> selectlist(String userid) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		return mapper.selectlist(userid);
+	}
+//조인 리스트 데이터 가져오기
+	public ArrayList<ListVO> selectlistAll(String userid) {
+		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		return mapper.selectlistAll(userid);
 	}
 
 }

@@ -16,5 +16,7 @@ public interface ReplyMapper {
 	public boolean replyDelete(ReplyVO vo);
 	//댓글 수정
 	public void replyUpdate(ReplyVO vo);
+	//자유게시판 댓글 입력
+	public int replywriteBoard(ReplyVO vo);
 	
 }

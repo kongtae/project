@@ -32,164 +32,164 @@
     <script src="js/jquery.js"></script>
  <script>
  
-	 $(function () {
-	 	imagePrint();
-	 	
-	 });
- 	
- 	var originalFileName = "";
- 	var mainb = ${vo.mainBoardNum};
- 	var imageData = {'mainBoardNum' : mainb};
- 	function imagePrint() {
-	 		$.ajax({
-				url : "imagePrint",
-				type : "post",
-				data : imageData,
-				dataType: 'json',
-				success : function(result) {
-					if(result != null) {
-						$.each(result,function(index,item){
-							originalFileName = "resources/images/userimage/" +item;
-					 	$('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
-						})
-					}
-				},
-				error : function() {
-// 					alert("실패");
-					alert("이미지 로드 실패");
-				}
-			});
-		}
- 	
- 	
- 	function UpdateFestival() {
- 		location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
-	}
-  	function DeleteFestival() {
-  			if(confirm("삭제하시겠습니까?")){
-  			location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
-  			}
-  	}
-  	//댓글 작성시 유효성검사
-  	function replywriteBoard() {
-		var replytext = document.getElementById("replytext");
-		var name = document.getElementById("name").value;
-		if(replytext.value.length==0)
-		{
-			alert("글일 입력해주세요");
-			return false;	/*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
-		}
-		if(name.length=="")
-		{
-			alert("로그인을 먼저 해주세요.");
-			return false;
-		}
-			document.getElementById("replywriteBoard").submit();
-		}
-  		//화면 새로고침
-		function refreshMemList(){
-			location.reload();
-		}
-		
-		//댓글 삭제
-  		function replyDelete(replynum)
-  		{
-  			$.ajax({
-  				url:'replyDelete',
-  				type:'get',
-  				data:
-  				{
-  					mainboardnum : document.getElementById("mainboardnum").value,
-  					replynum : replynum
-  				},
-  				success:function(){
-//   					alert("삭제성공")
-  					refreshMemList();
-  				},
-  				error: function(){
-//   					alert("삭제 실패")
-  				}
-  				
-  			});
-  		}
-  		
-  		//댓글 수정
-  			function replymodify(replynum,text) {
-  			var offset = $("#updatebtn").offset();
-  			$("html, body").animate({scrollTop:offset.top},400)
-			document.getElementById("replytext").value=text;
-			document.getElementById("replysubmit").value="Send Message";
-			document.getElementById("replysubmit").onclick=function(){
-				var updatext = document.getElementById("replytext").value;
-				location.href="replyUpdate?replynum="+replynum
-						+"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
-			}
-			var message="end";
-			var result00="startEvent";
-			var result33 = document.getElementById("searchHidden");
-			if(message=="end"){
-				result33.setAttribute("type", "reset");
-			}
-			$("input[type='reset']").on('click',
-			function() {
-				result33.setAttribute("type", "hidden");
-				refreshMemList();
-			})
-		}
+    $(function () {
+       imagePrint();
+       
+    });
+    
+    var originalFileName = "";
+    var mainb = ${vo.mainBoardNum};
+    var imageData = {'mainBoardNum' : mainb};
+    function imagePrint() {
+          $.ajax({
+            url : "imagePrint",
+            type : "post",
+            data : imageData,
+            dataType: 'json',
+            success : function(result) {
+               if(result != null) {
+                  $.each(result,function(index,item){
+                     originalFileName = "resources/images/userimage/" +item;
+                   $('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
+                  })
+               }
+            },
+            error : function() {
+//                alert("실패");
+               alert("이미지 로드 실패");
+            }
+         });
+      }
+    
+    
+    function UpdateFestival() {
+       location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
+   }
+     function DeleteFestival() {
+           if(confirm("삭제하시겠습니까?")){
+           location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
+           }
+     }
+     //댓글 작성시 유효성검사
+     function replywrite() {
+      var replytext = document.getElementById("replytext");
+      var name = document.getElementById("name").value;
+      if(replytext.value.length==0)
+      {
+         alert("글일 입력해주세요");
+         return false;   /*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
+      }
+      if(name.length=="")
+      {
+         alert("로그인을 먼저 해주세요.");
+         return false;
+      }
+         document.getElementById("replywrite").submit();
+      }
+        //화면 새로고침
+      function refreshMemList(){
+         location.reload();
+      }
+      
+      //댓글 삭제
+        function replyDelete(replynum)
+        {
+           $.ajax({
+              url:'replyDelete',
+              type:'get',
+              data:
+              {
+                 mainboardnum : document.getElementById("mainboardnum").value,
+                 replynum : replynum
+              },
+              success:function(){
+//                  alert("삭제성공")
+                 refreshMemList();
+              },
+              error: function(){
+//                  alert("삭제 실패")
+              }
+              
+           });
+        }
+        
+        //댓글 수정
+           function replymodify(replynum,text) {
+           var offset = $("#updatebtn").offset();
+           $("html, body").animate({scrollTop:offset.top},400)
+         document.getElementById("replytext").value=text;
+         document.getElementById("replysubmit").value="Send Message";
+         document.getElementById("replysubmit").onclick=function(){
+            var updatext = document.getElementById("replytext").value;
+            location.href="replyUpdate?replynum="+replynum
+                  +"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
+         }
+         var message="end";
+         var result00="startEvent";
+         var result33 = document.getElementById("searchHidden");
+         if(message=="end"){
+            result33.setAttribute("type", "reset");
+         }
+         $("input[type='reset']").on('click',
+         function() {
+            result33.setAttribute("type", "hidden");
+            refreshMemList();
+         })
+      }
 
-  		//일단은 위시리스트 추가하기
-  		function insertwish()
-  	  	{
-  			var mainBoardNum = document.getElementById("mainboardnum").value
-//   			var dislike = 
-  	  		$.ajax({
-  	 			url:'insertwish',
-  	 			type:'get',
-    			data:
- 	  			{
-    				mainBoardNum : document.getElementById("mainboardnum").value
-  	  			},
-  	  			success:function(data){
-//   	  				refreshMemList();//새로고침
+        //일단은 위시리스트 추가하기
+        function insertwish()
+          {
+           var mainBoardNum = document.getElementById("mainboardnum").value
+//            var dislike = 
+             $.ajax({
+               url:'insertwish',
+               type:'get',
+             data:
+               {
+                mainBoardNum : document.getElementById("mainboardnum").value
+                },
+                success:function(data){
+//                    refreshMemList();//새로고침
 
-  	  			},
-  	  			error: function(){
-//  	   				alert("삭제 실패")
-  	  			}
-  	  			
-  	  		});
-  	  	}
-  		//좋아요 취소
-  		function deletetwish()
-  		{
-  			$.ajax({
-  	 			url:'deletetwish',
-  	 			type:'get',
-    			data:
- 	  			{
-    				mainBoardNum : document.getElementById("mainboardnum").value
-  	  			},
-  	  			success:function(data){
-//   	  				refreshMemList();//새로고침
-					if(data.mainBoardNum!=null)
-						{
-							alert("삭제하기")
-						}
-  	  			},
-  	  			error: function(){
-//  	   				alert("삭제 실패")
-  	  			}
-  	  			
-  	  		});
-  	  	}
-  		loginneed
-  		
-	function loginneed()
-  	{
-  		alert("좋아요 기능은 로그인시 사용가능합니다.");
-  		return false;
-  	}
-  			
+                },
+                error: function(){
+//                    alert("삭제 실패")
+                }
+                
+             });
+          }
+        //좋아요 취소
+        function deletetwish()
+        {
+           $.ajax({
+               url:'deletetwish',
+               type:'get',
+             data:
+               {
+                mainBoardNum : document.getElementById("mainboardnum").value
+                },
+                success:function(data){
+//                    refreshMemList();//새로고침
+               if(data.mainBoardNum!=null)
+                  {
+                     alert("삭제하기")
+                  }
+                },
+                error: function(){
+//                    alert("삭제 실패")
+                }
+                
+             });
+          }
+        loginneed
+        
+   function loginneed()
+     {
+        alert("좋아요 기능은 로그인시 사용가능합니다.");
+        return false;
+     }
+           
  </script>
     
 </head>
@@ -217,18 +217,18 @@
                     </ul>
                 </div>
                 <!--Top Right-->
-					<div class="top-right">
-					<!--Social Box-->
-					<ul class="social-box">
-						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign up</a></li>
-							<li><a href="loginForm">Sign in</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
-						</c:if>
-					</ul>
+               <div class="top-right">
+               <!--Social Box-->
+               <ul class="social-box">
+                  <c:if test="${sessionScope.loginid == null}">
+                     <li><a href="registermember">Sign up</a></li>
+                     <li><a href="loginForm">Sign in</a></li>
+                  </c:if>
+                  <c:if test="${sessionScope.loginid != null}">
+                     <li><a href="memberPage">UserPage</a></li>
+                     <li><a href="logout">Logout</a></li>
+                  </c:if>
+               </ul>
                 </div>
             </div>
         </div>
@@ -256,33 +256,33 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
-									<ul>
-										<li><a href="#">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
-									<ul>
-										<li><a href="boardList">Board</a></li>
-									</ul></li>
-							</ul>
+                     <ul class="navigation clearfix">
+                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown"><a href="#">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>
+                              <li><a href="listDetailForm">List Details</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="#">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="#">Map</a>
+                           <ul>
+                              <li><a href="#">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
                         </div>
                         
                     </nav>
-					<!--Button Box-->
-					<div class="button-box">
-						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
-					</div>
+               <!--Button Box-->
+               <div class="button-box">
+                  <a href="#" class="theme-btn btn-style-one">Search Festival</a>
+               </div>
                     
                     <!--Search Box Outer-->
                 <!--     <div class="search-box-outer">
@@ -329,26 +329,26 @@
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
-									<ul>
-										<li><a href="#">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
-									<ul>
-										<li><a href="boardList">Board</a></li>
-									</ul></li>
-							</ul>
+                     <ul class="navigation clearfix">
+                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown"><a href="#">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>
+                              <li><a href="listDetailForm">List Details</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="#">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="#">Map</a>
+                           <ul>
+                              <li><a href="#">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -385,31 +385,31 @@
                 <div class="shedule-left-side">
                     <div class="text-title">
                         <h6>祭りの写真</h6>
-                        	<c:if test="${sessionScope.loginid == null }">
-    						 <a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
-    						${wishlist}              	
-                        	</c:if>
-                        	<c:if test="${sessionScope.loginid != null}">
-                        		 <c:if test="${like==null}">
-                     		  <a href="" ><img src="images/dislike.png" id="dislike" onclick="insertwish()" /></a>
-                       			${wishlist}
-                      			 </c:if>
-                     		  <c:if test="${like!=null}">
-                     		  <a href=""><img src="images/like.png" id="like" onclick="deletetwish()"/></a>
-                      	 		${wishlist}
-                   	 			</c:if>
-                        	</c:if>
+                           <c:if test="${sessionScope.loginid == null }">
+                       <a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
+                      ${wishlist}                 
+                           </c:if>
+                           <c:if test="${sessionScope.loginid != null}">
+                               <c:if test="${like==null}">
+                             <a href="" ><img src="images/dislike.png" id="dislike" onclick="insertwish()" /></a>
+                                ${wishlist}
+                                </c:if>
+                             <c:if test="${like!=null}">
+                             <a href=""><img src="images/like.png" id="like" onclick="deletetwish()"/></a>
+                                ${wishlist}
+                                </c:if>
+                           </c:if>
                     </div> 
                    
                     <div id="preview">
                     </div>
                     <div class="image-box" id="image-box">
-        <!--     		<input type="" src="" id="preview0">
+        <!--           <input type="" src="" id="preview0">
                     <br>
                     <input type="image" src="" id="preview1">
                     <br>
                     <input type="image" src="" id="preview2"> -->
-            	</div>
+               </div>
                 </div>
             </div>
 
@@ -423,43 +423,43 @@
                         </figure> -->
                         
                          <div class="event-details">
-                         	<div>
+                            <div>
                          <h1><b>祭りの詳細情報</b></h1>
-						 
+                   
 
 
-                         	</div>
-                         	 
-                         	<c:if test="${sessionScope.loginid !=null}">
-	                         	<div align="right">
-	                         	<input type="button" value="修正" onclick="UpdateFestival()">
-	                         	<input type="button" value="削除" onclick="DeleteFestival()">
-							</div>
-							</c:if>                          
+                            </div>
+                             
+                            <c:if test="${sessionScope.loginid !=null}">
+                               <div align="right">
+                               <input type="button" value="修正" onclick="UpdateFestival()">
+                               <input type="button" value="削除" onclick="DeleteFestival()">
+                     </div>
+                     </c:if>                          
                           <div class="inner-box  table-responsive">
 
                         <table class="table table-hover">
-                        	<tr>
-                        	<td><b>分類</b></td><td><b>詳細情報</b></td>
-                        	</tr>
-                         	<tr>
-                        		<td>ユーザー名</td><td>${vo.userid}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>タイトル</td><td>${vo.title}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>内容</td><td>${vo.festival_intro}</td>
-                        	</tr>
-							<tr>
-                        		<td>期間</td><td>${vo.startEvent}~${vo.endEvent}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>国家</td><td>${vo.country}</td>
-                        	</tr>
-							<tr>
-                        		<td>住所</td><td>${vo.adress}</td>
-                        	</tr>
+                           <tr>
+                           <td><b>分類</b></td><td><b>詳細情報</b></td>
+                           </tr>
+                            <tr>
+                              <td>ユーザー名</td><td>${vo.userid}</td>
+                           </tr>
+                           <tr>
+                              <td>タイトル</td><td>${vo.title}</td>
+                           </tr>
+                           <tr>
+                              <td>内容</td><td>${vo.festival_intro}</td>
+                           </tr>
+                     <tr>
+                              <td>期間</td><td>${vo.startEvent}~${vo.endEvent}</td>
+                           </tr>
+                           <tr>
+                              <td>国家</td><td>${vo.country}</td>
+                           </tr>
+                     <tr>
+                              <td>住所</td><td>${vo.adress}</td>
+                           </tr>
                         </table>
                         </div>
                         </div>
@@ -467,7 +467,7 @@
                         <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
                         <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
         -->            
-        			 </div>
+                  </div>
                     <div class="event-details">
                         <h5>Event Details</h5>
                         <div class="inner-box  table-responsive">
@@ -494,7 +494,7 @@
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
-                    	<input id="submit" type="button" value="Geocode">
+                       <input id="submit" type="button" value="Geocode">
                         </div>
                     <div id="googleMap"></div>
             </div>
@@ -503,47 +503,47 @@
 </section>
 <!--End Schedule Details-->
 <section>
-	<div class="blog-left-title">
+   <div class="blog-left-title">
                     <h6>Comments ${replycount}</h6>
                 </div>
-		
+      
                
         <table class="reply">
         <c:forEach items="${replylist}" var="replylist">
-			<tr>
-				<td rowspan="1">
-				 <div class="blog-comment-area">
+         <tr>
+            <td rowspan="1">
+             <div class="blog-comment-area">
                     <div class="image-box">
                         <figure>
 <!--                             <img src="images/testimonials/4.png" alt=""> -->
-							<c:if test="${replylist.originalFileName == null}">
-								<img src="images/userimage/login_icon.png" alt="">
-							</c:if>
-							<c:if test="${replylist.originalFileName != null}">
+                     <c:if test="${replylist.originalFileName == null}">
+                        <img src="images/userimage/login_icon.png" alt="">
+                     </c:if>
+                     <c:if test="${replylist.originalFileName != null}">
                              <img src="images/userimage/${replylist.originalFileName}" alt="">
 <!--                                              여기가 사용자가 등록한 사진 들어올 곳 -->
 <%--                              ${replylist.originalFileName} --%>
-							</c:if>
+                     </c:if>
                         </figure>
 <%--                         <h6>${vo.userid}</h6> --%>
                     </div>
 <!--                     <div class="image-content"> -->
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.replytext}
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.inputdate}
-				</td>
-			<c:if test="${sessionScope.loginid == replylist.userid}">
-				<td>
-					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
-				</td>
-			</c:if>
-		</tr>
-		</c:forEach>
-	</table>
+            </td>
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.replytext}
+            </td>
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.inputdate}
+            </td>
+         <c:if test="${sessionScope.loginid == replylist.userid}">
+            <td>
+               &nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
+               <input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+            </td>
+         </c:if>
+      </tr>
+      </c:forEach>
+   </table>
                         <div class="link-btn" id="updatebtn">
                             <a href="#" ><i class="fas fa-reply"></i>Replay</a>
                         </div>
@@ -552,29 +552,29 @@
                 <div class="blog-left-title">
                     <h6>Post Comments</h6>
                 </div>
-                <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywriteBoard" method="post">
+                <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <input type="text" name="userid" value="${sessionScope.loginid }" id="userid" readonly="readonly">
+                                <input type="text" name="name" value="${sessionScope.loginid }" id="name" readonly="readonly">
                             </div>
-						<input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
+                  <input type="hidden" name="mainboardnum" id="mainboardnum" value="${vo.mainBoardNum}">
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
+                               
                             </div>
                             <div class="form-group bottom">
-                                <button type="button" id="replysubmit" onclick="replywriteBoard()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
+                                <button type="button" id="replysubmit" onclick="replywrite()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
                                  <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
-<!--                                 <input type="reset"> -->
                             </div>
                         </div>
                     </div>
                 </form>
                 <div>
                 
-	
+   
 </div>
 
 </section>

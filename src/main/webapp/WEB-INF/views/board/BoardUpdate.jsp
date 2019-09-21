@@ -3,10 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
+    
+    <script src="resources/js/jquery.js"></script> 
+<script src="resources/js/popper.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/jquery.fancybox.js"></script>
+<script src="resources/js/owl.js"></script>
+<script src="resources/js/wow.js"></script>
+<script src="resources/js/jquery.countTo.js"></script>
+<script src="resources/js/jquery.countdown.min.js"></script>
+<script src="resources/js/appear.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/isotope.js"></script>
+<script src="resources/js/bxslider.js"></script>
+<script src="resources/js/validate.js"></script>
+
+<!-- Custom script -->
+<script src="resources/js/custom.js"></script>
+
+<!--Google Map-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
+<script src="resources/js/map-script.js"></script>
+<!--End Google Map APi-->
 
     <title>Wiscon || Responsive HTML 5 Template</title>
     <!-- responsive meta -->
@@ -16,108 +37,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- master stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/responsive.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #googleMap {
-        height: 500px;
-        width: 770px;
-      }
-    </style>
-    <script src="js/jquery.js"></script>
- <script>
- 
- 
- 	function UpdateFestival() {
- 		location.href="updateFestival?bul_boardnum=${vo.bul_boardnum}";
+    <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
+<style>
+	.longbar{
+			width: 300px;	
 	}
-  	function BoardDelete() {
-  			if(confirm("삭제하시겠습니까?")){
-  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
-  			}
-  	}
- /*  	//댓글 작성시 유효성검사
-  	function replywrite() {
-		var replytext = document.getElementById("replytext");
-		var name = document.getElementById("name").value;
-		if(replytext.value.length==0)
-		{
-			alert("글일 입력해주세요");
-			return false;	리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다
-		}
-		if(name.length=="")
-		{
-			alert("로그인을 먼저 해주세요.");
-			return false;
-		}
-			document.getElementById("replywrite").submit();
-		}
-  		//화면 새로고침
-		function refreshMemList(){
-			location.reload();
-		}
+
+</style>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+
+
+function BoardUpdate() {
+
+		var form = $("#BoardUpdateID")[0];
+		var formData = new FormData(form);
 		
-		//댓글 삭제
-  		function replyDelete(replynum)
-  		{
-  			$.ajax({
-  				url:'replyDelete',
-  				type:'get',
-  				data:
-  				{
-  					mainboardnum : document.getElementById("mainboardnum").value,
-  					replynum : replynum
-  				},
-  				success:function(){
-//   					alert("삭제성공")
-  					refreshMemList();
-  				},
-  				error: function(){
-//   					alert("삭제 실패")
-  				}
-  				
-  			});
-  		}
-  		 */
-  		//댓글 수정
- /*  			function replymodify(replynum,text) {
-  			var offset = $("#updatebtn").offset();
-  			$("html, body").animate({scrollTop:offset.top},400)
-  				
-			document.getElementById("replytext").value=text;
-			document.getElementById("replysubmit").value="Send Message";
-
-			document.getElementById("replysubmit").onclick=function(){
-				var updatext = document.getElementById("replytext").value;
-				location.href="replyUpdate?replynum="+replynum
-						+"&mainboardnum=${vo.mainBoardNum}&replytext="+updatext;
-			}ㄴㄴ
-			
-			var message="end";
-			var result00="startEvent";
-			
-			var result33 = document.getElementById("searchHidden");
-			if(message=="end"){
-				result33.setAttribute("type", "reset");
+		$.ajax({
+			url:"boardUpdate",
+			enctype: 'multipart/form-data',
+			data:formData,
+			type:"post",
+			contentType:false,
+			processData:false,
+			dataType : 'text',
+			success: function() {
+				alert("修正完了");
+				location.href ="BoardDetailGO?bul_boardnum="+${vo.bul_boardnum};
+			},
+			error: function(request,status,error) {
+				alert("修正ERROR");
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
-			$("input[type='reset']").on('click',
-			function() {
-				result33.setAttribute("type", "hidden");
-				refreshMemList();
-			})
-			
-
-		} */
-
-  
- </script>
-    
+		});
+	} 
+	
+</script>
 </head>
 <body>
     
@@ -146,7 +106,7 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${sessionScope.loginid == null}">
+						<c:if test="${sessionScope.loginid==null}">
 							<li><a href="registermember">Sign up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
@@ -166,7 +126,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="#"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -183,7 +143,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="#">Home</a></li>
+								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -197,14 +157,15 @@
 									<ul>
 										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                         </div>
                         
                     </nav>
+                    
 					<!--Button Box-->
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
@@ -237,7 +198,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="#">Home</a></li>
+								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -253,7 +214,7 @@
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board</a></li>
+										<li><a href="boardList">Board2</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -269,7 +230,7 @@
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-4.jpg);">
+<section class="page-title" style="background: url(resources/images/background/page-title-4.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Shedule Details</h3>
@@ -285,69 +246,71 @@
 
 
 <!--Schedule Details-->
+<form action="BoardWrite" id="BoardUpdateID" method="post" enctype="multipart/form-data" >
 <section class="schedule-details">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
                     <div class="text-title">
-                        <h6>祭りの写真</h6>
+                        <h6>写真</h6>
                     </div> 
-<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
-                        <figure>
-                            <img src="resources/images/schedule-9.jpg" alt="" >
-                        </figure>
-                    </div> -->
                     <div id="preview">
+                    </div><br>
+                    <div id="preview2">
+                    </div><br>
+                    <div id="preview3">
                     </div>
+                <div class="form-group">
+                <div class="btn btn-default btn-file">
+                <i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
+			 	<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
+				<i class="fa fa-paperclip"></i> ファイル添付	
+					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+
+                </div>
+              </div> 
+                <div class="box-footer">
+              <div class="pull-right">
+                <button type="button" class="btn btn-primary" onclick="BoardUpdate()"><i class="fa fa-envelope-o"></i> 投稿</button>
+                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+              </div>
+            </div>     
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-           <!--              <figure>
-                            <img src="images/resources/schedule-10.jpg" alt="">
-                        </figure> -->
-                         <div class="event-details">
-                         	<div>
-                         <h1><b>祭りの詳細情報<b></b></h1>
-
-
-
-                         	</div>
-                         	<c:if test="${sessionScope.loginid !=null}">
-	                         	<div align="right">
-	                         	<input type="button" value="修正" onclick="UpdateFestival()">
-	                         	<input type="button" value="削除" onclick="BoardDelete()">
-							</div>
-							</c:if>                          
-                          <div class="inner-box  table-responsive">
-                        <table class="table table-hover">
-                        	<tr> <!-- 수정할곳  -->
-                        	<td><b>分類</b></td><td><b>詳細情報</b></td>
-                        	</tr>
-                         	<tr>
-                        		<td>ユーザー名</td><td>${vo.userid}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>タイトル</td><td>${vo.title}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>内容</td><td>${vo.contents}</td>
-                        	</tr>
-							<tr>
-                        		<td>期間</td><td>${vo.inputdate}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>国家</td><td>${vo.country}</td>
-                        	</tr>
-							<tr>
-                        		<td>住所</td><td>${vo.adress}</td>
-                        	</tr>
-                        </table>
-                        </div>
-                        </div>
-        			 </div>
+					    <section class="content">
+					      <div class="row">
+					        <!-- /.col -->
+					        <div class="col-md-9">
+					          <div class="box box-primary">
+					            <!-- /.box-header -->
+					            <div class="box-body">
+					              <div class="form-group">
+					              	<h1>投稿欄</h1>
+					              	<br>
+					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
+					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" value="${vo.title}" >
+					              </div>
+					              <div class="form-group">
+					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px">${vo.contents}</textarea>
+									<table>	
+ 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>  
+				           			 住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}">
+				           			 <input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
+				           			 </td></tr> 
+					             	</table> 
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </section>
+					</div>
                     <div class="event-details">
                         <h5>Event Details</h5>
                         <div class="inner-box  table-responsive">
@@ -371,116 +334,79 @@
                             </table>
                         </div>
                     </div>
-                    
-                        <div>
-                        <input type="hidden" id="address" value="${vo.adress}">
-                    	<input id="submit" type="button" value="Geocode">
+                    <!--Map Outer-->
+                    <div class="map-outer">
+                        <!--Map Canvas-->
+                        <div class="map-canvas"
+                            data-zoom="12"
+                            data-lat="-37.815038"
+                            data-lng="144.967359"
+                            data-type="roadmap"
+                            data-hue="#ffc400"
+                            data-title="184 Collins Street West Victoria,"
+                            data-icon-path="resources/images/icons/map-marker.png"
+                            data-content="184 Collins Street West Victoria<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
                         </div>
-                    <div id="googleMap"></div>
+                    </div>
+                </div>
             </div>
         </div>                
     </div>
 </section>
+</form>
 <!--End Schedule Details-->
-<section>
-	<div class="blog-left-title">
-                    <h6>Comments ${replycount}</h6>
-                </div>
-		
-               
-        <table class="reply">
-        <c:forEach items="${replylist}" var="replylist">
-			<tr>
-				<td rowspan="1">
-				 <div class="blog-comment-area">
-                    <div class="image-box">
-                        <figure>
-<!--                             <img src="images/testimonials/4.png" alt=""> -->
-							<c:if test="${replylist.originalFileName == null}">
-								<img src="images/userimage/login_icon.png" alt="">
-							</c:if>
-							<c:if test="${replylist.originalFileName != null}">
-                             <img src="images/userimage/${replylist.originalFileName}" alt="">
-<!--                                              여기가 사용자가 등록한 사진 들어올 곳 -->
-<%--                              ${replylist.originalFileName} --%>
-							</c:if>
-                        </figure>
-<%--                         <h6>${vo.userid}</h6> --%>
-                    </div>
-<!--                     <div class="image-content"> -->
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.replytext}
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.inputdate}
-				</td>
-			<c:if test="${sessionScope.loginid == replylist.userid}">
-				<td>
-					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
-				</td>
-			</c:if>
-		</tr>
-		</c:forEach>
-	</table>
-                        <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-left-title">
-                    <h6>Post Comments</h6>
-                </div>
-                <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <input type="text" name="name" value="${sessionScope.loginid }" id="name" readonly="readonly">
-                            </div>
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="subject" placeholder="Subject" required=""> -->
-<!--                             </div>                                   -->
-						<input type="hidden" name="mainboardnum" id="mainboardnum" value="">
-                        </div>
-<!--                         <div class="col-md-6 col-sm-12 col-xs-12"> -->
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="email" placeholder="Email" required=""> -->
-<!--                             </div> -->
-<!--                             <div class="form-group"> -->
-<!--                                 <input type="text" name="website" placeholder="Website" required=""> -->
-<!--                             </div>                                  -->
-<!--                         </div> -->
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
-                               
-                            </div>
-                            <div class="form-group bottom">
-<!--                                 <button type="button" id="replysubmit" value="Send Message"  onclick="replyWrite()" class="theme-btn btn-style-one">Send Message</button> -->
-                                <button type="button" id="replysubmit" onclick="replywrite()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
-                                 <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
-<!--                                 <input type="reset"> -->
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div>
-                
-	
-</div>
 
+<!--Contact Info-->
+<section class="contact-info">
+    <div class="container">
+        <div class="info-area">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="contact-info-item-one">
+                        <div class="icon-box">
+                            <i class="flaticon-placeholder"></i>
+                        </div>
+                        <div class="text">
+                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="contact-info-item-one">
+                        <div class="icon-box">
+                            <i class="flaticon-phone-call"></i>
+                        </div>
+                        <div class="text">
+                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="contact-info-item-one">
+                        <div class="icon-box">
+                            <i class="flaticon-e-mail-envelope"></i>
+                        </div>
+                        <div class="text">
+                            <p>
+                                <a href="#">info@wiscon.com</a>
+                                <a href="#">support@wiscon.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
 </section>
 
 
-
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer" style="background: url(resources/images/background/footer.jpg);">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="index.html"><img src="images/logo-2.png" alt=""></a>
+                    <a href="index.html"><img src="resources/images/logo-2.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -523,50 +449,108 @@
 
 
 
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/jquery.countTo.js"></script>
-<script src="js/jquery.countdown.min.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/bxslider.js"></script>
-<script src="js/validate.js"></script>
 
-<!-- Custom script -->
-<script src="js/custom.js"></script>
 
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('googleMap'), {
-          zoom: 18,
-          center: {lat: -34.397, lng: 150.644}
-        });
-        var geocoder = new google.maps.Geocoder();
-            geocodeAddress(geocoder, map);
-      }
-
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert("없는 주소입니다.");
-          }
-        });
-      }
-    </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
-    </script>
 </div>
 </body>
+<script>
+    var upload = document.querySelector('#uploadFileName');
+    var upload2 = document.querySelector('#uploadFileName2');
+    var upload3 = document.querySelector('#uploadFileName3');
+    var preview = document.querySelector('#preview');
+    var preview2 = document.querySelector('#preview2');
+    var preview3 = document.querySelector('#preview3');
+ 
+    upload.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        /* FileReader 객체 생성 */
+        var reader = new FileReader();
+ 
+        /* reader 시작시 함수 구현 */
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                /* base64 인코딩 된 스트링 데이터 */
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            /* 
+                get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 
+                onload 에 설정했던 return 으로 넘어간다.
+                이와 함게 base64 인코딩 된 스트링 데이터가 result 속성에 담겨진다.
+            */
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview').empty();
+        preview.appendChild(image);
+    });
+    
+    upload2.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview2').empty();
+        preview2.appendChild(image);
+    });
+    
+    upload3.addEventListener('change',function (e) {
+        var get_file = e.target.files;
+ 
+        var image = document.createElement('img');
+ 
+        var reader = new FileReader();
+ 
+        reader.onload = (function (aImg) {
+            console.log(1);
+ 
+            return function (e) {
+                console.log(3);
+                aImg.src = e.target.result
+            }
+        })(image)
+ 
+        if(get_file){
+            reader.readAsDataURL(get_file[0]);
+            console.log(2);
+        }
+
+        $('#removeImg').empty();
+        $('#preview3').empty();
+        preview3.appendChild(image);
+    }); 
+    
+	 $("#reset").click(function () { 
+ 	 	 $('#preview').empty();
+ 	 	 $('#preview2').empty();
+ 	 	 $('#preview3').empty();
+	 });
+</script>
 </html>

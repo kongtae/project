@@ -59,5 +59,33 @@
 		delete reply where replynum=#{replynum} and userid=#{userid}
 	</delete>
 
+<!-- 자유게시판 댓글 등록 -->	
+<insert id="replywriteBoard" parameterType="ReplyVO">
+	INSERT INTO
+		REPLY
+		(
+		REPLYNUM,
+		BUL_BOARDNUM,
+		USERID,
+		REPLYTEXT,
+		originalFileName,
+		INPUTDATE
+		)
+	VALUES (
+		REPLY_SEQ.nextval,
+		#{bul_boardnum},
+		#{userid},
+		#{replytext},
+		<choose>
+			<when test="originalFileName != null ">
+			#{originalFileName},
+			</when>
+			<otherwise>
+			null,
+			</otherwise>
+		</choose>
+		sysdate
+	)
+</insert>
 
 </mapper>

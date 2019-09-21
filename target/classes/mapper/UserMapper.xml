@@ -112,10 +112,35 @@
 <select id="selectwish" parameterType="WishVO" resultType="WishVO">
 	SELECT
 		*
-	FORM
+	FROM
 		WISHLIST
 	WHERE
 		userid=#{userid}
+</select>
+
+<select id="selectlist" parameterType="ListVO" resultType="ListVO">
+	SELECT
+		*
+	FROM
+		WISHLIST
+	WHERE
+		userid=#{userid}
+</select>
+
+
+<select id="selectlistAll" parameterType="String" resultType="ListVO">
+SELECT  
+	*
+FROM
+	member mb, WISHLIST wb, MAINBOARD maintb
+WHERE
+	maintb.MAINBOARDNUM = wb.MAINBOARDNUM
+AND  
+	mb.userid = #{userid}
+AND
+	wb.userid = #{userid}
+ORDER BY
+	maintb.MAINBOARDNUM desc
 </select>
 
 </mapper>

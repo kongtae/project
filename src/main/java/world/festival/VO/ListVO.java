@@ -20,5 +20,4 @@ public class ListVO {
 	private Date endEvent;
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
-	
 }

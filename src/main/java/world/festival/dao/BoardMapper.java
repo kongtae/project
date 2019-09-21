@@ -13,12 +13,13 @@ public interface BoardMapper {
 
 	public int BoardWrite(BoardVO vo);
 
-	public BoardVO readBoard(String bul_boardnum);
+	public BoardVO readBoard(BoardVO vo1);
 
 	public int BoardDelete(BoardVO vo);
 
-	public ArrayList<ReplyVO> replyList(int mainboardnum);
+	public ArrayList<ReplyVO> replyList(ReplyVO vo);
 
+	public int boardUpdate(BoardVO vo);
 
 	
 }
