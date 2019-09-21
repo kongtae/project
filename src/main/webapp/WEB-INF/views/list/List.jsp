@@ -328,8 +328,9 @@ $(function() {
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		})
-	}	
-	    var hashtag1 = "";
+	}
+	
+	   var hashtag1 = "";
 	
 	function selectHashtag(searchKeyword){
 	    hashtag1 += searchKeyword+",";
@@ -367,6 +368,7 @@ $(function() {
 			}
 		})
 	}
+
 	function change(){
 		page=1;
 	}

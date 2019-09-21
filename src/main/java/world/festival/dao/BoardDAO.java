@@ -30,9 +30,9 @@ public class BoardDAO {
 		return mapper.BoardWrite(vo);
 	}
 
-	public BoardVO readBoard(ReplyVO vo) {
+	public BoardVO readBoard(BoardVO vo1) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		return mapper.readBoard(vo);
+		return mapper.readBoard(vo1);
 	}
 
 	public int BoardDelete(BoardVO vo) {
@@ -44,6 +44,7 @@ public class BoardDAO {
 		BoardMapper mapper= sqlSession.getMapper(BoardMapper.class);
 		return mapper.replyList(vo);
 	}
+
 
 
 }

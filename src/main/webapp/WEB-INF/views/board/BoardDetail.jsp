@@ -34,12 +34,12 @@
  <script>
  
  
- 	function boardUpdateGO() {
+ 	function BoardUpdateGO() {
  		location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
 	}
   	function BoardDelete() {
   			if(confirm("삭제하시겠습니까?")){
-  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
+  			location.href="BoardDetail?bul_boardnum=${vo.bul_boardnum}";
   			}
   	}
    	//댓글 작성시 유효성검사
@@ -318,7 +318,7 @@
                          	</div>
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
-	                         	<input type="button" value="修正" onclick="UpdateFestival()">
+	                         	<input type="button" value="修正" onclick="BoardUpdateGO()">
 	                         	<input type="button" value="削除" onclick="BoardDelete()">
 							</div>
 							</c:if>                          
