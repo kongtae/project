@@ -141,13 +141,14 @@ function BoardUpdate() {
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${sessionScope.loginid==null}">
-							<li><a href="registermember">Sign up</a></li>
+							<li><a href="adminPage">AdminPage</a></li>
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="registermember">Sign Up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout" >Logout</a></li>
 						</c:if>
 					</ul>
                 </div>

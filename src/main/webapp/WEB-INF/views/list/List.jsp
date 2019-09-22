@@ -290,11 +290,24 @@ $(function() {
 			$("#insertmark").empty();
 		}
 	}
-		
+	var sharp = "";
+	var idx = 0;
 	function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
+	
+		if(searchItem=="hashSearch"){//해시태그 생성
+			sharp =  searchKeyword;
+			sharp = sharp.replace("#", "");
+			idx += 1;
+			$('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
+			selectHashtag(searchKeyword);
+			return false;
+		} 
+		if(searchItem!="hashSearch"){//다른 카테고리 선택시 해시태그 삭제
+			$('#hash').empty();
+		}
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
@@ -306,11 +319,6 @@ $(function() {
 			}
 		}
 
-		if(searchItem=="hashSearch"){
-			$('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
-			selectHashtag(searchKeyword);
-			return false;
-		} 
 		
 		$.ajax({
 			type:'POST',
@@ -329,9 +337,27 @@ $(function() {
 	
 	function selectHashtag(searchKeyword){
 	    hashtag1 += searchKeyword+",";
-	    $('#xbtn').click(function (){
-	    	hashtag1.replace(/searchKeyword/gi, '');
-		});
+	   	hashtagPrint();
+	}
+	function btnClick(sharp1){
+		alert("sharp1 : "+sharp1);
+		
+		var key = sharp1.innerHTML;
+		alert("key : "+ key);
+		var a = key.indexOf('(')+1;
+		var b = key.indexOf(')');
+    	var key1 = key.substring(a,b); 
+		var key2 = key1;
+    	key1 = "#"+key1+",";
+    	alert("key1 : "+key1);
+    	alert("key2 : "+key2);
+    	hashtag1 = hashtag1.replace(key1, "");
+    	alert("hashtag1 : "+hashtag1);
+    	hashtagPrint();
+    	$('#'+key2).empty();
+	}
+	
+	function hashtagPrint(){
 		$.ajax({
 			type:'POST',
 			url : 'selectHashtag',
@@ -383,6 +409,7 @@ $(function() {
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
+							<li><a href="adminPage">AdminPage</a></li>
 						<c:if test="${sessionScope.loginid == null}">
 							<li><a href="registermember">Sign Up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
@@ -519,7 +546,6 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-		
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">

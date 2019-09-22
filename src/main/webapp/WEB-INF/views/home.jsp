@@ -22,6 +22,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 
@@ -56,6 +57,7 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
+									<li><a href="adminPage">AdminPage</a></li>
 								<c:if test="${sessionScope.loginid == null}">
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
