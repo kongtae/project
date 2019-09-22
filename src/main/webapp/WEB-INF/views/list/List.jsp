@@ -208,9 +208,7 @@ $(function() {
 				}
 		   		selectOne();
 		   	});	
-		   	
 		}  
-	 
 		
 	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
@@ -235,8 +233,6 @@ $(function() {
 			}
 		});
 		$("#list").html(context);
-		
-
 	} 
 	
 	function navSet(totalPageCount){
@@ -323,7 +319,6 @@ $(function() {
 				return false;
 			}
 		}
-
 		
 		$.ajax({
 			type:'POST',
@@ -337,7 +332,6 @@ $(function() {
 			}
 		})
 	}
-	
 	   var hashtag1 = "";
 	
 	function selectHashtag(searchKeyword){
@@ -351,7 +345,7 @@ $(function() {
 		alert("key : "+ key);
 		var a = key.indexOf('(')+1;
 		var b = key.indexOf(')');
-    	var key1 = key.substring(a,b); 
+    	var key1 = key.substring(a,b);
 		var key2 = key1;
     	key1 = "#"+key1+",";
     	alert("key1 : "+key1);

@@ -125,7 +125,7 @@
 
 							<!--Button Box-->
 							<div class="button-box">
-								<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
 							<!--Search Box Outer-->
@@ -289,7 +289,7 @@
 						<li><a href="calendar">Calendar</a></li>
 						<li><a href="sponsor.html">Map</a></li>
 						<li><a href="blog.html">Board</a></li>
-						<li><a href="contact-us.html">Search Festival</a></li>
+						<li><a href="searchFestival">Search Festival</a></li>
 					</ul>
 					<ul class="social-links">
 						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

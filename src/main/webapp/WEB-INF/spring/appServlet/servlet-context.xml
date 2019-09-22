@@ -24,6 +24,9 @@
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/userimage/**"
 		location="/resources/images/userimage/" />
+	
+	<resources mapping="/searchFestvial/**"
+		location="/resources/images/searchFestival/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
