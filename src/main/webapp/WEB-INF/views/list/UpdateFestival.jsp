@@ -63,9 +63,41 @@
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
+	$(function () {
+	    imagePrint();
+	    
+	 });
+	 var originalFileName = "";
+	 var mainb = ${vo.mainBoardNum};
+	 var imageData = {'mainBoardNum' : mainb};
+	 function imagePrint() {
+	         $.ajax({
+	            url : "imagePrint",
+	            type : "post",
+	            data : imageData,
+	            dataType: 'json',
+	            success : function(result) {
+	               if(result != null) {
+	            		var arrNumber = new Array();
+	                    $.each(result,function(index,item){
+	  	            	arrNumber.push(item);
+	                  })
+	            var originalFileName1 = "resources/images/userimage/" +arrNumber[0];
+	 			var originalFileName2 = "resources/images/userimage/" +arrNumber[1];
+	 			var originalFileName3 = "resources/images/userimage/" +arrNumber[2];
+                $('#preview1').append("<input type='image' src='"+originalFileName1+"'><br>");
+                $('#preview2').append("<input type='image' src='"+originalFileName2+"'><br>");
+                $('#preview3').append("<input type='image' src='"+originalFileName3+"'><br>");
+	               }
+	            },
+	            error : function() {
+//	                alert("실패");
+	               alert("이미지 로드 실패");
+	            }
+	         });
+	      }
 
-
-function writeFestival() {	
+function updateFestival() {	
 
 		var form = $("#updateFestivalID")[0];
 		var formData = new FormData(form);
@@ -155,18 +187,18 @@ function writeFestival() {
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -272,7 +304,7 @@ function writeFestival() {
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-                    <div id="preview">
+                    <div id="preview1">
                     </div><br>
                     <div id="preview2">
                     </div><br>
@@ -288,7 +320,7 @@ function writeFestival() {
                 <div class="box-footer">
               <div class="pull-right">
               <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
-                <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+                <button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
                 <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
               </div>
             </div>     
@@ -565,7 +597,7 @@ function writeFestival() {
     var upload = document.querySelector('#uploadFileName');
     var upload2 = document.querySelector('#uploadFileName2');
     var upload3 = document.querySelector('#uploadFileName3');
-    var preview = document.querySelector('#preview');
+    var preview1 = document.querySelector('#preview1');
     var preview2 = document.querySelector('#preview2');
     var preview3 = document.querySelector('#preview3');
  
@@ -598,8 +630,8 @@ function writeFestival() {
         }
 
         $('#removeImg').empty();
-        $('#preview').empty();
-        preview.appendChild(image);
+        $('#preview1').empty();
+        preview1.appendChild(image);
     });
     
     upload2.addEventListener('change',function (e) {

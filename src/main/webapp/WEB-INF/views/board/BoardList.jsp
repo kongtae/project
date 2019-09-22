@@ -156,7 +156,7 @@
 					}else{
 						page= $(this).attr("data-value");
 					}
-					printAll();
+			   		boardPrintAll();
 			   	});	
 			} 
 			 
@@ -212,17 +212,8 @@
 			function tagSet(result, startPageGroup, endPageGroup)	{
 				var context = '';
 				$.each(result,function(index,item){
-					var s = new Date(item.startEvent);
-			    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
-					var end="";
-			    if(item.endEvent!=null||item.endEvent!=""){	
-			    	var e = new Date(item.endEvent);
-			    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
-			    }
-			    if(item.endEvent==null||item.endEvent==""){
-					item.endEvent=" ";
-					end = item.endEvent;
-				}
+					var s = new Date(item.inputdate);
+			    	var inputDate = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
 					if(index>=startPageGroup && index<endPageGroup) {
 						context += "<tr><td class='srial'>"+item.bul_boardnum+"</td>";
 						context += "<td class='Session'><a href=BoardDetailGO?bul_boardnum="+item.bul_boardnum+">"+item.title+"</a></td>";
@@ -280,44 +271,22 @@
 				
 				var result11 = document.getElementById("searchKeyword");
 				var result22 = document.getElementById("searchItem").value;
-				var result33 = document.getElementById("searchHidden");
-				if(result22=="startEvent"){
+				if(result22=="inputdate"){
 					result11.setAttribute("type", "date");
-					result33.setAttribute("type", "date");
-					$("#insertmark").append("~");
 				}
-				if(result22!="startEvent"){
+				if(result22!="inputdate"){
 					result11.setAttribute("type", "text");
-					result33.setAttribute("type", "hidden");
-					$("#insertmark").empty();
 				}
 			}
 				
 			function selectOne() {
 				var searchItem = $("#searchItem").val();
 				var searchKeyword = $("#searchKeyword").val();
-				var endEvent = $("#searchHidden").val();
-				if(searchItem=="startEvent"){
-				var a = $("#searchKeyword").val().split("-");
-				var b = $("#searchHidden").val().split("-");
-					if(a>b){
-						alert("検索する期間を間違えて入力しました。");
-						$("#searchKeyword").val("");
-						$("#searchHidden").val("");
-						return false;
-					}
-				}
-
-				if(searchItem=="hashSearch"){
-					$('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
-					selectHashtag(searchKeyword);
-					return false;
-				} 
 				
 				$.ajax({
 					type:'POST',
-					url : 'selectOne',					
-					data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
+					url : 'BoardSelectOne',					
+					data: {'searchItem':searchItem,'searchKeyword':searchKeyword},
 					dataType: 'json',
 					success : output1,
 					error: function(request,status,error) {
@@ -327,29 +296,9 @@
 				})
 			}
 			
-			   var hashtag1 = "";
-			
-			function selectHashtag(searchKeyword){
-			    hashtag1 += searchKeyword+",";
-			    $('#xbtn').click(function (){
-			    	hashtag1.replace(/searchKeyword/gi, '');
-				});
-				$.ajax({
-					type:'POST',
-					url : 'selectHashtag',
-					data : { 'hashtag' : hashtag1 },
-					success : output1,
-					error: function() {
-						alert("리스트 불러오기 실패3");
-					}
-				})
-			}
-			
 			function change(){
 				page=1;
 			}
-	
-
 	
 
 </script>
@@ -427,18 +376,18 @@
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -533,7 +482,7 @@
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
 		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+		<a href="insertBoard"><img src="listImages/write.png" title="投稿"></a>
 	</div>
     <div class="container">
           <div class="schedule-area">
@@ -547,17 +496,11 @@
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
-					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
-					国家
+					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>>
+					ユーザー名
 					</option>
-					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
-					期間
-					</option>
-					<option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
-					住所
-					</option>
-					<option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
-					#HASHTAG
+					<option value="inputdate"<c:if test="${'inputdate'==searchItem}">selected</c:if>>
+					投稿日
 					</option>
 					</select>
 					</td>
@@ -573,9 +516,9 @@
                                 <tr>
                                     <th class="srial">#</th>
                                     <th class="session">タイトル</th>
-                                    <th class="time">国家</th>
-                                    <th class="speakers">期間</th>
-                                    <th class="venue">住所</th>
+                                    <th class="time">ユーザー名</th>
+                                    <th class="speakers">投稿日</th>
+                                    <th class="venue">HIT</th>
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 

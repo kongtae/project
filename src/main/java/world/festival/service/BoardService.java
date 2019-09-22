@@ -112,6 +112,22 @@ public class BoardService {
 		
 		return true;
 	}
+
+	public ArrayList<BoardVO> BoardSelectOne1(String searchItem,String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		System.out.println("보드 서비스 맵  :  "+map);
+		return dao.BoardSelectOne1(map);
+	}
+
+	public ArrayList<BoardVO> BoardSelectOne2(String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		System.out.println("보드 서비스 맵  : "+map);
+		return dao.BoardSelectOne2(map);
+	}
 	
 
 
