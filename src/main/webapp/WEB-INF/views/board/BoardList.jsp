@@ -482,8 +482,10 @@
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
+		<c:if test="${sessionScope.loginid != null}">
 		<h4 id="icontext"><b>投稿する</b></h4>
 		<a href="insertBoard"><img src="listImages/write.png" title="投稿"></a>
+		</c:if>
 	</div>
     <div class="container">
           <div class="schedule-area">

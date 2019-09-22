@@ -71,7 +71,7 @@ public class UserController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "member/loginForm";
+		return "home";
 	}
 
 	//맴버페이지  서비스==> DAO

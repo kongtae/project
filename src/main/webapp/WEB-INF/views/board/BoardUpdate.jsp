@@ -70,12 +70,12 @@ $(function () {
                   $.each(result,function(index,item){
 	            	arrNumber.push(item);
                 	alert("요기요"+arrNumber[index]);
-                	originalFileName = "resources/images/userimage/" +item;
+                	originalFileName = "resources/images/userimage/" +arrNumber[index];
                 	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
                   })
-	 				var originalFileName1 = "resources/images/userimage/" +arrNumber[0];
+	 				/* var originalFileName1 = "resources/images/userimage/" +arrNumber[0];
 	 				var originalFileName2 = "resources/images/userimage/" +arrNumber[1];
-	 				var originalFileName3 = "resources/images/userimage/" +arrNumber[2];
+	 				var originalFileName3 = "resources/images/userimage/" +arrNumber[2]; */
                 //  $('#preview1').append("<input type='image' src='"+originalFileName1+"'><br>");
                 //  $('#preview2').append("<input type='image' src='"+originalFileName2+"'><br>");
                 //  $('#preview3').append("<input type='image' src='"+originalFileName3+"'><br>");
@@ -112,6 +112,21 @@ function BoardUpdate() {
 		});
 	} 
 	
+	function delete1() {
+		$("#uploadFileName").val("");
+		$('#preview0').empty();
+	}
+	
+	function delete2() {
+		$("#uploadFileName2").val("");
+		$('#preview1').empty();
+	}
+	
+	function delete3() {
+		$("#uploadFileName3").val("");
+		$('#preview2').empty();
+	}
+
 </script>
 </head>
 <body>
@@ -291,7 +306,7 @@ function BoardUpdate() {
                     <div class="text-title">
                         <h6>写真</h6>
                     </div> 
-                    <div id="preview">
+                    <div id="preview0">
                     </div><br>
                     <div id="preview1">
                     </div><br>
@@ -306,7 +321,9 @@ function BoardUpdate() {
 					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
 				<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-					
+				<br><input type="button" onclick="delete1()" value="첫번째삭제">	
+				<br><input type="button" onclick="delete2()" value="두번째삭제">	
+				<br><input type="button" onclick="delete3()" value="세번째삭제">	
                 </div>
               </div> 
                 <div class="box-footer">
@@ -494,7 +511,7 @@ function BoardUpdate() {
     var upload = document.querySelector('#uploadFileName');
     var upload2 = document.querySelector('#uploadFileName2');
     var upload3 = document.querySelector('#uploadFileName3');
-    var preview = document.querySelector('#preview');
+    var preview0 = document.querySelector('#preview0');
     var preview1 = document.querySelector('#preview1');
     var preview2 = document.querySelector('#preview2');
  
@@ -528,8 +545,8 @@ function BoardUpdate() {
         }
 
         $('#removeImg').empty();
-        $('#preview').empty();
-        preview.appendChild(image);
+        $('#preview0').empty();
+        preview0.appendChild(image);
     });
     
     upload2.addEventListener('change',function (e) {
@@ -585,9 +602,11 @@ function BoardUpdate() {
     }); 
     
 	 $("#reset").click(function () { 
- 	 	 $('#preview').empty();
+ 	 	 $('#preview0').empty();
  	 	 $('#preview1').empty();
  	 	 $('#preview2').empty();
 	 });
+	 
+	
 </script>
 </html>
