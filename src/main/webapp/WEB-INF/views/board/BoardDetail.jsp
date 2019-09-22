@@ -33,13 +33,42 @@
     <script src="js/jquery.js"></script>
  <script>
  
+ $(function () {
+	    imagePrint();
+	    
+	 });
+ 
+	 var originalFileName = "";
+	 var bulb = ${vo.bul_boardnum};
+	 var imageData = {'bul_boardnum' : bulb};
+	 function imagePrint() {
+	         $.ajax({
+	            url : "imagePrintBoard",
+	            type : "post",
+	            data : imageData,
+	            dataType: 'json',
+	            success : function(result) {
+	               if(result != null) {
+	                  $.each(result,function(index,item){
+	                     originalFileName = "resources/images/userimage/" +item;
+	                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
+	                  })
+	               }
+	            },
+	            error : function() {
+//	                alert("실패");
+	               alert("이미지 로드 실패");
+	            }
+	         });
+	      }
+ 
  
  	function BoardUpdateGO() {
  		location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
 	}
   	function BoardDelete() {
   			if(confirm("삭제하시겠습니까?")){
-  			location.href="BoardDetail?bul_boardnum=${vo.bul_boardnum}";
+  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
   			}
   	}
    	//댓글 작성시 유효성검사
@@ -147,13 +176,14 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
+							<li><a href="adminPage">AdminPage</a></li>
 						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign up</a></li>
+							<li><a href="registermember">Sign Up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout" >Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -184,19 +214,19 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="#">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown"><a href="Home">Home</a></li>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="Map">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="Map">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -301,6 +331,7 @@
                     </div> -->
                     <div id="preview">
                     </div>
+                     <div class="image-box" id="image-box"></div>
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
@@ -311,7 +342,7 @@
                         </figure> -->
                          <div class="event-details">
                          	<div>
-                         <h1><b>祭りの詳細情報<b></b></h1>
+                         <h1><b>祭りの詳細情報</b></h1>
 
 
 

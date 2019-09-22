@@ -22,6 +22,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 </head>
 
@@ -56,6 +57,7 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
+									<li><a href="adminPage">AdminPage</a></li>
 								<c:if test="${sessionScope.loginid == null}">
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
@@ -101,20 +103,20 @@
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
 										<li class="dropdown"><a href="/festival">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
+									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
 											<li><a href="listDetailForm">List Details</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="#">Calendar</a>
+									<li class="dropdown"><a href="Calendar">Calendar</a>
 										<ul>
 											<li><a href="calendar">Calendar</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="#">Map</a>
+									<li class="dropdown"><a href="map">Map</a>
 										<ul>
 										<li><a href="map">Map</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="#">Board</a>
+									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
 										<li><a href="boardList">Board</a></li>
 									</ul></li>

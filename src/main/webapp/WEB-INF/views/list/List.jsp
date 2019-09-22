@@ -73,7 +73,6 @@
 	color: #fa334f;
 }
 </style>
-
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/jquery.js"></script>
@@ -122,7 +121,7 @@ $(function() {
 		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
-		alert("게시글 수"+totalRecordCount); 
+		alert("게시글 수"+totalRecordCount);   // 나중 지울것
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -136,8 +135,6 @@ $(function() {
 			epage = pageBlockCount*pageBlock;
 		}
 		
-		//alert("시작블락"+spage);
-		//alert("마지막블락"+epage);
 		navSet(totalPageCount, spage, epage);
 		tagSet(result, startPageGroup, endPageGroup);
 		
@@ -169,7 +166,7 @@ $(function() {
 			pageBlockCount = Math.ceil(page/pageBlock)
 			startPageGroup = ((page-1) * countPerPage);
 			endPageGroup = (startPageGroup + countPerPage);
-			alert("셀렉 게시글 수"+totalRecordCount); 
+			alert("셀렉 게시글 수"+totalRecordCount);   //나중 지울것
 			
 			if(pageBlockCount > 1) {
 				spage = (pageBlockCount-1)*pageBlock+1;
@@ -183,8 +180,6 @@ $(function() {
 				epage = pageBlockCount*pageBlock;
 			}
 			
-			//alert("시작블락"+spage);
-			//alert("마지막블락"+epage);
 			navSet(totalPageCount, spage, epage);
 			tagSet(result, startPageGroup, endPageGroup);
 			
@@ -408,6 +403,7 @@ $(function() {
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
+							<li><a href="adminPage">AdminPage</a></li>
 						<c:if test="${sessionScope.loginid == null}">
 							<li><a href="registermember">Sign Up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
@@ -446,18 +442,18 @@ $(function() {
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -548,8 +544,10 @@ $(function() {
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
+		<c:if test="${sessionScope.loginid != null}">
 		<h4 id="icontext"><b>投稿する</b></h4>
 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+		</c:if>
 	</div>
     <div class="container">
           <div class="schedule-area">
@@ -601,7 +599,6 @@ $(function() {
                        
                     </div>
                 </div>
-            </div>
             <nav class="pagination"></nav>
            </div>
        </div>

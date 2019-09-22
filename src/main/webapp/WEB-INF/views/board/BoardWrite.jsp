@@ -106,13 +106,14 @@ function writeFestival() {
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${sessionScope.loginid==null}">
-							<li><a href="registermember">Sign up</a></li>
+							<li><a href="adminPage">AdminPage</a></li>
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="registermember">Sign Up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout" >Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -204,13 +205,13 @@ function writeFestival() {
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="Calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="Map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="Map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>

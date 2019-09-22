@@ -28,13 +28,13 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	//�쉶�썝媛��엯 �솕硫� �씠�룞
+	//회원가입 화면이동
 	@RequestMapping(value = "/registermember", method = RequestMethod.GET)
 	public String register() {
 		return "member/register";
 	}
 
-	//�쉶�썝媛��엯
+	//회원가입
 	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
 	public String registermember(UserVO vo, Model model) {
 		System.out.println(vo);
@@ -43,20 +43,20 @@ public class UserController {
 		return "member/loginForm2";
 	}
 
-	//以묐났泥댄겕
+	//중복체크
 	@ResponseBody
 	@RequestMapping(value="/idcheck", method = RequestMethod.GET)
 	public int idcheck(String userid) {
 		return dao.idcheck(userid);
 	}
 
-	//濡쒓렇�씤 �솕硫� �씠�룞
+	//로그인 화면이동
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom() {
 		return "member/loginForm";
 	}
 
-	//濡쒓렇�씤
+	//로그인
 	@RequestMapping(value = "/loginForm1", method = RequestMethod.POST)
 	@ResponseBody
 	public String login(UserVO vo, HttpSession session) {
@@ -67,11 +67,11 @@ public class UserController {
 	}
 	
 
-	//濡쒓렇�븘�썐
+	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "member/loginForm";
+		return "home";
 	}
 
 	//맴버페이지  서비스==> DAO

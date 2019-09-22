@@ -21,5 +21,13 @@ public interface BoardMapper {
 
 	public int boardUpdate(BoardVO vo);
 
+	public ArrayList<BoardVO> BoardSelectOne1(HashMap<String, String> map);
+
+	public ArrayList<BoardVO> BoardSelectOne2(HashMap<String, String> map);
+
+	public void hitcount(BoardVO vo1);
+
+	public BoardVO imagePrintBoard(BoardVO vo);
+
 	
 }

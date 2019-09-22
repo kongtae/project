@@ -214,6 +214,7 @@
 					<div class="top-right">
 						<!--Social Box-->
 						<ul class="social-box">
+								<li><a href="adminPage">AdminPage</a></li>
 							<c:if test="${sessionScope.loginid == null}">
 								<li><a href="registermember">Sign Up</a></li>
 								<li><a href="loginForm">Sign in</a></li>
