@@ -43,7 +43,7 @@ public class UserController {
 		return "member/register";
 	}
 
-	//회원가입 로직
+	//회원가입
 	@RequestMapping(value = "/registermember", method = RequestMethod.POST)
 	public String registermember(UserVO vo, Model model) {
 		System.out.println(vo);
@@ -59,7 +59,7 @@ public class UserController {
 		return dao.idcheck(userid);
 	}
 
-	//로그인폼으로 이동
+	//로그인 화면이동
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public String loginFrom() {
 		return "member/loginForm";
@@ -88,7 +88,7 @@ public class UserController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "member/loginForm";
+		return "home";
 	}
 
 	//맴버페이지  서비스==> DAO

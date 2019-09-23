@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="world.festival.dao.SearchFestivalMapper">
+<!-- hashtag 조회후 증가 -->
+<update id="CheckSearch" parameterType="String">
+	UPDATE 
+		mainboard
+	SET
+		checksearch = checksearch+1
+	WHERE
+		hashtag LIKE '%' ||  #{key} || '%'
+</update>
+<!-- 결과값 출력 -->
+<select id="result" resultType="ListVO">
+	SELECT
+		*
+	FROM
+		mainboard
+	ORDER BY
+		checksearch DESC
+</select>
+<!-- checksearch 초기화 -->
+<update id="reset">
+	UPDATE 
+		mainboard
+	SET
+		CHECKSEARCH = 0
+</update>
+<!-- 축제 추천 출력 -->
+<select id="pushImage" resultType="SearchFestivalVO">
+	SELECT
+		*
+	FROM
+		SEARCHFESTIVAL
+</select>
+</mapper>

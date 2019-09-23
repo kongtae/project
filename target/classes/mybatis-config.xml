@@ -17,6 +17,7 @@
 		<typeAlias type="world.festival.VO.ReplyVO" alias="ReplyVO" />
 		<typeAlias type="world.festival.VO.WishVO" alias="WishVO" />
 		<typeAlias type="world.festival.VO.BoardVO" alias="BoardVO" />
+		<typeAlias type="world.festival.VO.SearchFestivalVO" alias="SearchFestivalVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/AdminMapper.xml" />
@@ -27,5 +28,6 @@
 		<mapper resource="mapper/WishMapper.xml" />
 		<mapper resource="mapper/CalendarMapper.xml" />
 		<mapper resource="mapper/BoardMapper.xml" />
+		<mapper resource="mapper/SearchFestivalMapper.xml" />
 	</mappers> 
 </configuration>

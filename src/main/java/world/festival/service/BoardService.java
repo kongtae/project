@@ -67,6 +67,67 @@ public class BoardService {
 	public ArrayList<ReplyVO> replyList(ReplyVO vo) {
 		return dao.replyList(vo);
 	}
+
+	public boolean boardUpdate(BoardVO vo, MultipartHttpServletRequest request) {
+
+		String oldSaveFileName = vo.getSavedFileName();
+//		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+		int result;
+
+		File dir = new File(path);
+		if(!dir.isDirectory()){
+			dir.mkdir();
+		}
+		
+		Iterator<String> files = request.getFileNames();
+		String savedFilename = UUID.randomUUID().toString();
+		System.out.println("files"+files);
+		String fileName1="";
+		String fileName="";
+		while(files.hasNext()){
+			String uploadFile = files.next();
+			MultipartFile mFile = request.getFile(uploadFile);
+			fileName1 = mFile.getOriginalFilename();
+			fileName += mFile.getOriginalFilename()+",";
+			System.out.println("실제파일이름"+fileName);
+			try {
+				mFile.transferTo(new File(path+fileName1));
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		
+			vo.setSavedFileName(savedFilename);
+			vo.setOriginalFileName(fileName);
+		}
+		result = dao.boardUpdate(vo);
+		if(result != 1){return false;}
+		System.out.println("등록 결과 값: "+result);
+		
+		File file = new File(path + oldSaveFileName);
+		if(file.exists()){
+			file.delete();
+		}
+		
+		return true;
+	}
+
+	public ArrayList<BoardVO> BoardSelectOne1(String searchItem,String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		System.out.println("보드 서비스 맵  :  "+map);
+		return dao.BoardSelectOne1(map);
+	}
+
+	public ArrayList<BoardVO> BoardSelectOne2(String searchItem, String searchKeyword) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchItem", searchItem);
+		map.put("searchKeyword", searchKeyword);
+		System.out.println("보드 서비스 맵  : "+map);
+		return dao.BoardSelectOne2(map);
+	}
 	
 
 

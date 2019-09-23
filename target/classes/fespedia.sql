@@ -4,22 +4,22 @@
 CREATE TABLE ADMINMEMBER (
     ADMINID VARCHAR2(20) PRIMARY KEY,   --관리자 아이디
     ADMINPWD VARCHAR2(20),              --관리자 비번
-    EMAIL VARCHAR2(20)                  --이메일
+    EMAIL VARCHAR2(200)                  --이메일
 );
 --맴버
 CREATE TABLE MEMBER(
    ADMINID VARCHAR2(20) CONSTRAINT MEMBER_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
    userid      VARCHAR2(20)   NOT NULL PRIMARY KEY,      --USERID
    userpwd       VARCHAR2(20)   NOT NULL,                  --USERPWD
-   email       VARCHAR2(50)    NOT NULL                         --메일
+   email       VARCHAR2(200)    NOT NULL                         --메일
 );
 --블로그에서 자기소개
 CREATE TABLE MEMBER_BLOG(
   ADMINID VARCHAR2(20) CONSTRAINT MEMBER_BLOG_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
 	userid		VARCHAR2(20)	CONSTRAINT  MEMBER_BLOG_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,  --USERID
 	self_intro 	VARCHAR2(1000),      --자기소개 내용
-    originalfilename	VARCHAR2(50),                       --프로필 사진  원본 사진
-	savedfilename	VARCHAR2(50)                            --프로필 업로드 할 사진
+    originalfilename	VARCHAR2(200),                       --프로필 사진  원본 사진
+	savedfilename	VARCHAR2(200)                            --프로필 업로드 할 사진
 );
 --가고싶은 축제장소
 CREATE TABLE WISHLIST(
@@ -44,8 +44,8 @@ CREATE TABLE MAINBOARD(
     INPUTTIME DATE DEFAULT SYSDATE,  --입력 날자
     STARTEVENT DATE (20) DEFAULT SYSDATE,   --축제시작날짜
     ENDEVENT DATE (20),          --축제끝나는날짜
-    originalFileName VARCHAR(50),     -- 오리지날파일이름
-    SAVEFILENAME VARCHAR(50)        -- 세이브파일 이름
+    originalFileName VARCHAR(200),     -- 오리지날파일이름
+    SAVEFILENAME VARCHAR(200)        -- 세이브파일 이름
 );
 CREATE SEQUENCE MAINBOARD_SEQ;
 --댓글 게시판
@@ -55,8 +55,8 @@ CREATE TABLE REPLY(
 	MAINBOARDNUM	NUMBER		NOT NULL CONSTRAINT REPLY_BOARDNUM_FK REFERENCES MAINBOARD(MAINBOARDNUM) ON DELETE CASCADE, --현재 보는 게시판 번호
 	USERID		VARCHAR2(20)	NOT NULL CONSTRAINT REPLY_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디  
 	REPLYTEXT	VARCHAR2(1000)	NOT NULL,   --댓글 
-    ORIGINALFILENAME VARCHAR(50),   
-    SAVEFILENAME VARCHAR(50),       
+    ORIGINALFILENAME VARCHAR(200),   
+    SAVEFILENAME VARCHAR(200),       
 	INPUTDATE		DATE  DEFAULT SYSDATE   
 );
 
@@ -69,9 +69,9 @@ CREATE TABLE BUL_BOARD(
       COUNTRY VARCHAR2(20),  --나라
     ADRESS VARCHAR2(100),       --주소
     INPUTDATE      DATE  DEFAULT SYSDATE,                     --제목
-    HIT NUMBER,                                            --조회수--게시글 내용
-    originalfilename   VARCHAR2(50),                       --사진파일 원본 이름
-    savedfilename   VARCHAR2(50)                          --보여주는 이름
+    HIT NUMBER DEFAULT 0,                                            --조회수--게시글 내용
+    originalfilename   VARCHAR2(200),                       --사진파일 원본 이름
+    savedfilename   VARCHAR2(200)                          --보여주는 이름
 );
 
 CREATE SEQUENCE BUL_BOARDNUM_SEQ;

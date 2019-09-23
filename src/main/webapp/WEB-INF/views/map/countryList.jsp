@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -22,12 +21,80 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<style>
+.infoboxes article {
+	color: #191919;
+	background-color: rgba(255, 255, 255, .65);
+}
+.infoboxes article:hover {
+	background-color: #FFFFFF;
+}
+.infoboxes article .fa {
+	color: #FFFFFF;
+	background-color: #CF4845;
+}
+.pagination {
+	display: block;
+	width: 100%;
+	text-align: center;
+	clear: both;
+}
+.pagination li {
+	display: inline-block;
+	margin: 0 2px 0 0;
+}
+.pagination li:last-child {
+	margin-right: 0;
+}
+.pagination a, .pagination strong {
+	display: block;
+	padding: 8px 11px;
+	border: 1px solid;
+	background-clip: padding-box;
+	font-weight: normal;
+	color: #fa334f;
+}
+#div_icontext {
+	display: flex;
+	justify-content: flex-end;
+	width: 83%;
+}
+#icontext {
+	padding: 1.5%;
+	padding-rigth: 2px;
+	padding-left: 2px;
+	font-family: 'Robtoto', sans-serif;
+	font-size: 30px;
+	color: #fa334f;
+}
+</style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
+var page = '';
+var countPerPage = 5;
+var pageBlock = 5;
+var pageBlockCount = '';
+var totalPageCount = '';
+var startPageGroup = '';
+var endPageGroup = '';
+var spage, epage;
 
-		$(function() {
-			printCountryList();
-		});
+function setPage() {
+	if(page == '' || page < 0){page = 1;}
+	startPageGroup = ((page-1)*countPerPage);
+	endPageGroup = (startPageGroup + countPerPage);
+}
+
+
+$(function() {
+		setPage();
+		printCountryList();
+
+		$("searchBtn").on('click', function() {
+			page = 0;
+			setPage();		
+	})
+})
 
 	function printCountryList() {
 		$.ajax({
@@ -42,7 +109,56 @@
 		})
 	}
 
-	function output(result) {
+	 function output(result) {
+		totalRecordCount = result.length;
+		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+		pageBlockCount = Math.ceil(page/pageBlock);
+		startPageGroup = ((page-1) * countPerPage);
+		endPageGroup = (startPageGroup + countPerPage);
+		alert("게시글 수"+totalRecordCount); 
+		
+		if(pageBlockCount > 1) {
+			spage = (pageBlockCount-1)*pageBlock+1;
+		} else {
+			spage = 1;
+		}
+		
+		if((pageBlockCount*pageBlock) >= totalPageCount){
+			epage = totalPageCount;
+		} else {
+			epage = pageBlockCount*pageBlock;
+		}
+		
+		//alert("시작블락"+spage);
+		//alert("마지막블락"+epage);
+		navSet(totalPageCount, spage, epage);
+		tagSet(result, startPageGroup, endPageGroup);
+		
+	   	$(".page-link").on('click',function(){
+	   		if ($(this).attr("data-value") == "first"){
+				page = 1;
+			}else if ($(this).attr("data-value") == "end") {
+				page = totalPageCount;
+			}else if ($(this).attr("data-value") == "next") {
+				page = parseInt(page) + 5;
+				if (page>totalPageCount) {
+					page=totalPageCount;
+				}
+			}else if ($(this).attr("data-value") =="before") {
+				page = parseInt(page) - 5;
+				if(page<5){
+					page = 1;
+				}
+			}else{
+				page= $(this).attr("data-value");
+			}
+	   		printCountryList();
+	   	});	
+	} 
+	 
+	  
+		
+	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
 		$.each(result,function(index,item){
 			var s = new Date(item.startEvent);
@@ -55,18 +171,64 @@
 	    if(item.endEvent==null||item.endEvent==""){
 			item.endEvent=" ";
 			end = item.endEvent;
-		}	
-		context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-		context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-		context += "<td class='speakers'>"+item.country+"</td>";
-		context += "<td class='time'>"+start+"~"+end+"</td>";
-		context += "<td class='venue'>"+item.userid+"</td></tr>";
-		// JavaScript 또는 jQuery를 이용하여 전달받은 모든 데이터를 태그 형식의 문자열로 구성한다.
-		// 코드를 작성하세요.
-		})
+		}
+			if(index>=startPageGroup && index<endPageGroup) {
+				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+				context += "<td class='speakers'>"+item.country+"</td>";
+				context += "<td class='time'>"+start+"~"+end+"</td>";
+				context += "<td class='venue'>"+item.userid+"</td></tr>";
+			}
+		});
 		$("#list").html(context);
-	}
+		
 
+	} 
+	
+	function navSet(totalPageCount){
+		var nav = '';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="first" aria-label="Previous">';
+		nav += '<span aria-hidden="true">&laquo;</span>';
+		nav += '<span class="sr-only">Previous</span>';
+		nav += '</a>';
+		nav += '</li>';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="before" aria-label="Previous">';
+		nav += '<span aria-hidden="true">previous</span>';
+		nav += '<span class="sr-only">Previous</span>';
+		nav += '</a>';
+		nav += '</li>';
+		
+		for (var i = spage; i <= epage; i ++) {
+			if(i == page){
+				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+			} else {
+				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
+			}
+		}
+		       
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
+		nav += '<span aria-hidden="true">next</span>';
+		nav += '<span class="sr-only">Next</span>';
+		nav += '</a>';
+		nav += '</li>';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
+		nav += '<span aria-hidden="true">&raquo;</span>';
+		nav += '<span class="sr-only">Next</span>';
+		nav += '</a>';
+		nav += '</li>';
+		    
+		$(".pagination").html(nav);	
+	}
+	
+
+	function change(){
+		page=1;
+	}
+	
 
 </script>
 </head>
@@ -97,13 +259,14 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
+							<li><a href="adminPage">AdminPage</a></li>
 						<c:if test="${sessionScope.loginid == null}">
 							<li><a href="registermember">Sign Up</a></li>
 							<li><a href="loginForm">Sign in</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginid != null}">
 							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout" >Logout</a></li>
 						</c:if>
 					</ul>
                 </div>
@@ -135,18 +298,18 @@
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -261,25 +424,24 @@
 	<h1 style="font-size: 80px;">${country}</h1>
 	</div>
     <div class="container">
-          <div class="schedule-area">
-      		<div class="schedule-content clearfix">
-			            <div class="inner-box  table-responsive"> 
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="srial">#</th>
-                                    <th class="session">タイトル</th>
-                                    <th class="time">国家</th>
-                                    <th class="speakers">期間</th>
-                                    <th class="venue">ユーザー名</th>
-                                </tr>
-                            </thead>
-                            <tbody id="list" class="table table-hover"></tbody> 
-                          </table>
-                            
-                    </div>
-                </div>
-            
+		          <div class="schedule-area">
+		      		<div class="schedule-content clearfix">
+					            <div class="inner-box  table-responsive"> 
+		                        <table class="table table-hover">
+		                            <thead>
+		                                <tr>
+		                                    <th class="srial">#</th>
+		                                    <th class="session">タイトル</th>
+		                                    <th class="time">国家</th>
+		                                    <th class="speakers">期間</th>
+		                                    <th class="venue">ユーザー名</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody id="list" class="table table-hover"></tbody> 
+		                          </table>
+		                    </div>
+		                </div>
+				    <nav class="pagination"></nav>    
                     </div>
                 </div>
 </section>

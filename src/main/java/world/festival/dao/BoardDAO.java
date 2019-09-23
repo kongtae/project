@@ -30,9 +30,11 @@ public class BoardDAO {
 		return mapper.BoardWrite(vo);
 	}
 
-	public BoardVO readBoard(ReplyVO vo) {
+	public BoardVO readBoard(BoardVO vo1) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		return mapper.readBoard(vo);
+		mapper.hitcount(vo1);
+		System.out.println("DAO히트를 위한 "+vo1);
+		return mapper.readBoard(vo1);
 	}
 
 	public int BoardDelete(BoardVO vo) {
@@ -44,6 +46,28 @@ public class BoardDAO {
 		BoardMapper mapper= sqlSession.getMapper(BoardMapper.class);
 		return mapper.replyList(vo);
 	}
+
+	public int boardUpdate(BoardVO vo) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.boardUpdate(vo);
+	}
+
+	public ArrayList<BoardVO> BoardSelectOne1(HashMap<String, String> map) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.BoardSelectOne1(map);
+	}
+
+	public ArrayList<BoardVO> BoardSelectOne2(HashMap<String, String> map) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.BoardSelectOne2(map);
+	}
+
+	public BoardVO imagePrintBoard(BoardVO vo) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.imagePrintBoard(vo);
+	}
+
+
 
 
 }

@@ -35,6 +35,22 @@
 	Select * from bul_board where bul_boardnum = #{bul_boardnum}
 </select>
 
+<update id="boardUpdate" parameterType="BoardVO">
+	UPDATE
+		BUL_BOARD 
+	SET 
+		title = #{title},
+		contents = #{contents},
+		country = #{country},
+		adress = #{adress}
+		<if test="originalFileName != null and savedFileName !=null">
+			,originalfileName = #{originalFileName}
+			,savedFileName = #{savedFileName} 
+		</if>
+		WHERE 
+		bul_boardnum = #{bul_boardnum}
+</update>
+
 <delete id="BoardDelete" parameterType="BoardVO">
 delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid}
 </delete>
@@ -45,6 +61,35 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid
 		 bul_boardnum=#{bul_boardnum}
 		  order by 
 		  replynum desc
+</select>
+
+<select id="BoardSelectOne1" parameterType="map" resultType="BoardVO">
+ 		select * from BUL_BOARD 
+		WHERE 
+		inputdate LIKE TO_DATE(#{searchKeyword}, 'YY-mm-DD') 
+		order by bul_boardnum DESC 
+</select>
+
+<select id="BoardSelectOne2" parameterType="map" resultType="BoardVO">
+		select * from BUL_BOARD 
+		WHERE 
+		${searchItem} LIKE '%'||#{searchKeyword}||'%'
+		order by bul_boardnum DESC 
+</select>
+
+<update id="hitcount" parameterType="int">
+		UPDATE 
+		BUL_BOARD 
+		SET 
+		hit = hit + 1 
+		WHERE 
+		bul_boardnum=#{bul_boardnum}
+</update>
+
+<select id="imagePrintBoard" parameterType="BoardVO" resultType="BoardVO">
+		select originalFileName from BUL_BOARD 
+		WHERE 
+		bul_boardnum = #{bul_boardnum}
 </select>
 	
 </mapper>

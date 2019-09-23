@@ -67,12 +67,12 @@
 		data:$("#loginForm").serialize(),
 		type:"post",
 		success: function(data) {
-			alert("로그인 성공");
+			alert("ログイン成功");
 			self.location.href = document.referrer;
 			
 		},
 		error: function() {
-			alert("로그인 실패");
+			alert("ログイン失敗");
 			}
 		});
 	} 

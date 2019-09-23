@@ -73,7 +73,6 @@
    color: #fa334f;
 }
 </style>
-
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/jquery.js"></script>
@@ -372,6 +371,272 @@ $(function() {
    function change(){
       page=1;
    }
+		
+	 function printAll() {
+		
+		$.ajax({
+			type:'GET',
+			url : 'printAll',
+			dataType: 'json',
+			success : output,
+			error: function() {
+				alert("리스트 불러오기 실패2");
+			}
+		})
+	} 
+
+	 function output(result) {
+		totalRecordCount = result.length;
+		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+		pageBlockCount = Math.ceil(page/pageBlock);
+		startPageGroup = ((page-1) * countPerPage);
+		endPageGroup = (startPageGroup + countPerPage);
+		alert("게시글 수"+totalRecordCount);   // 나중 지울것
+		
+		if(pageBlockCount > 1) {
+			spage = (pageBlockCount-1)*pageBlock+1;
+		} else {
+			spage = 1;
+		}
+		
+		if((pageBlockCount*pageBlock) >= totalPageCount){
+			epage = totalPageCount;
+		} else {
+			epage = pageBlockCount*pageBlock;
+		}
+		
+		navSet(totalPageCount, spage, epage);
+		tagSet(result, startPageGroup, endPageGroup);
+		
+	   	$(".page-link").on('click',function(){
+	   		if ($(this).attr("data-value") == "first"){
+				page = 1;
+			}else if ($(this).attr("data-value") == "end") {
+				page = totalPageCount;
+			}else if ($(this).attr("data-value") == "next") {
+				page = parseInt(page) + 5;
+				if (page>totalPageCount) {
+					page=totalPageCount;
+				}
+			}else if ($(this).attr("data-value") =="before") {
+				page = parseInt(page) - 5;
+				if(page<5){
+					page = 1;
+				}
+			}else{
+				page= $(this).attr("data-value");
+			}
+			printAll();
+	   	});	
+	} 
+	 
+	 function output1(result) {
+			totalRecordCount = result.length;
+			totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+			pageBlockCount = Math.ceil(page/pageBlock)
+			startPageGroup = ((page-1) * countPerPage);
+			endPageGroup = (startPageGroup + countPerPage);
+			alert("셀렉 게시글 수"+totalRecordCount);   //나중 지울것
+			
+			if(pageBlockCount > 1) {
+				spage = (pageBlockCount-1)*pageBlock+1;
+			} else {
+				spage = 1;
+			}
+			
+			if((pageBlockCount*pageBlock) >= totalPageCount){
+				epage = totalPageCount;
+			} else {
+				epage = pageBlockCount*pageBlock;
+			}
+			
+			navSet(totalPageCount, spage, epage);
+			tagSet(result, startPageGroup, endPageGroup);
+			
+		   	$(".page-link").on('click',function(){
+		   		if ($(this).attr("data-value") == "first"){
+					page = 1;
+				}else if ($(this).attr("data-value") == "end") {
+					page = totalPageCount;
+				}else if ($(this).attr("data-value") == "next") {
+					page = parseInt(page) + 5;
+					if (page>totalPageCount) {
+						page=totalPageCount;
+					}
+				}else if ($(this).attr("data-value") =="before") {
+					page = parseInt(page) - 5;
+					if(page<5){
+						page = 1;
+					}
+				}else{
+					page= $(this).attr("data-value");
+				}
+		   		selectOne();
+		   	});	
+		}  
+		
+	function tagSet(result, startPageGroup, endPageGroup)	{
+		var context = '';
+		$.each(result,function(index,item){
+			var s = new Date(item.startEvent);
+	    	var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+			var end="";
+	    if(item.endEvent!=null||item.endEvent!=""){	
+	    	var e = new Date(item.endEvent);
+	    	end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+	    }
+	    if(item.endEvent==null||item.endEvent==""){
+			item.endEvent=" ";
+			end = item.endEvent;
+		}
+			if(index>=startPageGroup && index<endPageGroup) {
+				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+				context += "<td class='Session'>"+item.country+"</td>";
+				context += "<td class='Session'>"+start+"~"+end+"</td>";
+				context += "<td class='Session'>"+item.adress+"</td></tr>";
+			}
+		});
+		$("#list").html(context);
+	} 
+	
+	function navSet(totalPageCount){
+		var nav = '';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="first" aria-label="Previous">';
+		nav += '<span aria-hidden="true">&laquo;</span>';
+		nav += '<span class="sr-only">Previous</span>';
+		nav += '</a>';
+		nav += '</li>';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="before" aria-label="Previous">';
+		nav += '<span aria-hidden="true">previous</span>';
+		nav += '<span class="sr-only">Previous</span>';
+		nav += '</a>';
+		nav += '</li>';
+		
+		for (var i = spage; i <= epage; i ++) {
+			if(i == page){
+				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+			} else {
+				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
+			}
+		}
+		       
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
+		nav += '<span aria-hidden="true">next</span>';
+		nav += '<span class="sr-only">Next</span>';
+		nav += '</a>';
+		nav += '</li>';
+		nav += '<li class="page-item">';
+		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
+		nav += '<span aria-hidden="true">&raquo;</span>';
+		nav += '<span class="sr-only">Next</span>';
+		nav += '</a>';
+		nav += '</li>';
+		    
+		$(".pagination").html(nav);	
+	}
+	
+	function searchDate(value){
+		var result00="startEvent";
+		
+		var result11 = document.getElementById("searchKeyword");
+		var result22 = document.getElementById("searchItem").value;
+		var result33 = document.getElementById("searchHidden");
+		if(result22=="startEvent"){
+			result11.setAttribute("type", "date");
+			result33.setAttribute("type", "date");
+			$("#insertmark").append("~");
+		}
+		if(result22!="startEvent"){
+			result11.setAttribute("type", "text");
+			result33.setAttribute("type", "hidden");
+			$("#insertmark").empty();
+		}
+	}
+	var sharp = "";
+	var idx = 0;
+	function selectOne() {
+		var searchItem = $("#searchItem").val();
+		var searchKeyword = $("#searchKeyword").val();
+		var endEvent = $("#searchHidden").val();
+	
+		if(searchItem=="hashSearch"){//해시태그 생성
+			sharp =  searchKeyword;
+			sharp = sharp.replace("#", "");
+			idx += 1;
+			$('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
+			selectHashtag(searchKeyword);
+			return false;
+		} 
+		if(searchItem!="hashSearch"){//다른 카테고리 선택시 해시태그 삭제
+			$('#hash').empty();
+		}
+		if(searchItem=="startEvent"){
+		var a = $("#searchKeyword").val().split("-");
+		var b = $("#searchHidden").val().split("-");
+			if(a>b){
+				alert("検索する期間を間違えて入力しました。");
+				$("#searchKeyword").val("");
+				$("#searchHidden").val("");
+				return false;
+			}
+		}
+		
+		$.ajax({
+			type:'POST',
+			url : 'selectOne',					
+			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
+			dataType: 'json',
+			success : output1,
+			error: function(request,status,error) {
+				alert("리스트 불러오기 실패1");
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			}
+		})
+	}
+	   var hashtag1 = "";
+	
+	function selectHashtag(searchKeyword){
+	    hashtag1 += searchKeyword+",";
+	   	hashtagPrint();
+	}
+	function btnClick(sharp1){
+		alert("sharp1 : "+sharp1);
+		
+		var key = sharp1.innerHTML;
+		alert("key : "+ key);
+		var a = key.indexOf('(')+1;
+		var b = key.indexOf(')');
+    	var key1 = key.substring(a,b);
+		var key2 = key1;
+    	key1 = "#"+key1+",";
+    	alert("key1 : "+key1);
+    	alert("key2 : "+key2);
+    	hashtag1 = hashtag1.replace(key1, "");
+    	alert("hashtag1 : "+hashtag1);
+    	hashtagPrint();
+    	$('#'+key2).empty();
+	}
+	
+	function hashtagPrint(){
+		$.ajax({
+			type:'POST',
+			url : 'selectHashtag',
+			data : { 'hashtag' : hashtag1 },
+			success : output1,
+			error: function() {
+				alert("리스트 불러오기 실패3");
+			}
+		})
+	}
+
+	function change(){
+		page=1;
+	}
+>>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461
 </script>
 </head>
 <body>
@@ -418,6 +683,19 @@ $(function() {
                      <li><a href="logout" >Logout</a></li>
                   </c:if>
                </ul>
+					<div class="top-right">
+					<!--Social Box-->
+					<ul class="social-box">
+							<li><a href="adminPage">AdminPage</a></li>
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="registermember">Sign Up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
+						</c:if>
+						<c:if test="${sessionScope.loginid != null}">
+							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="logout" >Logout</a></li>
+						</c:if>
+					</ul>
                 </div>
             </div>
         </div>
@@ -465,6 +743,26 @@ $(function() {
                               <li><a href="boardList">Board</a></li>
                            </ul></li>
                      </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="listForm">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="calendar">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="map">Map</a>
+									<ul>
+										<li><a href="map">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="boardList">Board</a>
+									<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+							</ul>
                         </div>
                         
                     </nav>
@@ -553,6 +851,15 @@ $(function() {
       <h4 id="icontext"><b>投稿する</b></h4>
       <a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
    </div>
+		
+		<!--End Schedule Section-->
+<section class="schedule-section" id="schedule-tab">
+	<div id="div_icontext">
+		<c:if test="${sessionScope.loginid != null}">
+		<h4 id="icontext"><b>投稿する</b></h4>
+		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+		</c:if>
+	</div>
     <div class="container">
           <div class="schedule-area">
             <div class="schedule-content clearfix">
@@ -603,7 +910,6 @@ $(function() {
                        
                     </div>
                 </div>
-            </div>
             <nav class="pagination"></nav>
            </div>
        </div>
