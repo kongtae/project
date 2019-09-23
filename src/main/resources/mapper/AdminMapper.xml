@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="world.festival.dao.AdminMapper">
+
+<select id="selectadmin" parameterType="AdminVO" resultType="AdminVO">
+	SELECT
+		ADMINID, ADMINPWD, EMAIL
+	FROM
+		ADMINMEMBER
+	WHERE
+		ADMINID = #{userid}
+		<if test="userpwd != null">
+		AND ADMINPWD = #{userpwd}
+		</if>
+</select>
+
+<insert id="AdminwriteFestival" parameterType="AdminListVO" >
+INSERT INTO
+		ADMIN_MAINBOARD
+		 (
+		ADMINID,
+		ADMIN_MAINBOARDNUM,
+		MAINBOARDNUM,
+		USERID,
+		TITLE,
+		COUNTRY,		
+		ADRESS,
+		FESTIVAL_INTRO,
+		inputTime,
+		STARTEVENT,
+		ENDEVENT,
+		originalFileName,
+		SAVEFILENAME,
+		datacheck
+		)
+	VALUES
+	 (
+	 	'aa',
+	 	ADMIN_MAINBOARD_SEQ.nextval,
+		#{mainBoardNum},
+		#{userid},
+		#{title},
+		#{country},
+		#{adress},
+		#{festival_intro},
+		sysdate,
+		#{startEvent},
+		#{endEvent}
+		<choose>
+			<when test="originalFileName != null and saveFileName != null">
+			,#{originalFileName} ,#{saveFileName}
+			</when>
+			<otherwise>
+			,null, null
+			</otherwise>
+		</choose>
+		,#{datacheck}
+		)
+</insert>
+<select id="selectList" parameterType="ListVO" resultType="AdminListVO">
+	SELECT
+		 *
+	FROM 
+		MAINBOARD
+	WHERE
+		mainBoardNum=(SELECT MAX(mainBoardNum)FROM MAINBOARD)
+</select>
+
+
+
+</mapper>
