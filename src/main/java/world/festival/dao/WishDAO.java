@@ -42,4 +42,5 @@ public class WishDAO {
 		return mapper.wishList(parseInt);
 	}
 
+
 }

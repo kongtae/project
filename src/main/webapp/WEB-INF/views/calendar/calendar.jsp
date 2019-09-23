@@ -356,87 +356,78 @@
 	<!-- Page specific script -->
 
 	<script>
-		var date = new Date()
-		var d = date.getDate(), m = date.getMonth(), y = date.getFullYear()
-		$('#calendar').fullCalendar(
-				{
-					header : {
-						left : 'prev,next today',
-						center : 'title',
-						right : 'month,agendaWeek,agendaDay'
-					},
-					buttonText : {
-						today : 'today',
-						month : 'month',
-						week : 'week',
-						day : 'day'
-					},
-					//랜덤 기본 이벤트
-					/*   events    : [
-						   
-						  
-					    {
-					      title          : 'Birthday Party',
-					      start          : new Date(y, m, d + 1, 19, 0),
-					      end            : new Date(y, m, d + 1, 22, 30),
-					      allDay         : false,
-					      backgroundColor: '#00a65a', //Success (green)
-					      borderColor    : '#00a65a' //Success (green)
-					    },
-					    {
-					      title          : 'Click for Google',
-					      start          : new Date(y, m, 28),
-					      end            : new Date(y, m, 29),
-					      url            : 'http://google.com/',
-					      backgroundColor: '#3c8dbc', //Primary (light-blue)
-					      borderColor    : '#3c8dbc' //Primary (light-blue)
-					    }  
-					  ]
-					}) */
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+	  $('#calendar').fullCalendar({
+		      header    : {
+		        left  : 'prev,next today',
+		        center: 'title',
+		        right : 'month,agendaWeek,agendaDay'
+		      },
+		      buttonText: {
+		        today: 'today',
+		        month: 'month',
+		        week : 'week',
+		        day  : 'day'
+		      },	
+      		      //랜덤 기본 이벤트
+      		    /*   events    : [
+      		    	   
+      		    	  
+      		        {
+      		          title          : 'Birthday Party',
+      		          start          : new Date(y, m, d + 1, 19, 0),
+      		          end            : new Date(y, m, d + 1, 22, 30),
+      		          allDay         : false,
+      		          backgroundColor: '#00a65a', //Success (green)
+      		          borderColor    : '#00a65a' //Success (green)
+      		        },
+      		        {
+      		          title          : 'Click for Google',
+      		          start          : new Date(y, m, 28),
+      		          end            : new Date(y, m, 29),
+      		          url            : 'http://google.com/',
+      		          backgroundColor: '#3c8dbc', //Primary (light-blue)
+      		          borderColor    : '#3c8dbc' //Primary (light-blue)
+      		        }  
+      		      ]
+      		    }) */
 
-					events : function(start, end, timezone, callback) {
-						$.ajax({
-							url : 'selectCalendar',
-							type : "post",
-							success : function(data) {
-								var events = [];
-								$.each(data, function(i, obj) {
-									var colors = [ '#dd1e2f', '#06a2cb',
-											'#218559', '#d0c6b1', '#88001b',
-											'#ff7f27', '#3f48cc', '#b97a56',
-											'#00a8f3', '#0ed145', '#563c86',
-											'#f3008e', '#e34a39', '#241984',
-											'#57d2b7', '#595d91', '#f4050e',
-											'#fbc2d4' ];
-									var color = colors[Math.floor(Math.random()
-											* colors.length)];
-									var url = "listDetailGO?mainBoardNum="
-											+ obj.mainBoardNum;
-
-									events.push({
-										title : obj.title,
-										start : obj.startEvent,
-										end : obj.endEvent,
-										url : url,
-										color : color
-									});
-								});
-								callback(events);
-							},
-							error : function() {
-								alert("失敗");
-							}
-						});
-					}
-				});
-
-		setTimeout(function() {
-			$('.fc-time').empty();
-		}, 500);
-
-		$(document).ready(function() {
-			$('.fc-time').empty();
-		});
-	</script>
+     events: function (start, end, timezone, callback) {
+         $.ajax({
+          url: 'selectCalendar',
+          type: "post",
+          success: function(data){
+              var events = [];
+              $.each(data, function(i, obj) {
+            	  var colors = ['#dd1e2f', '#06a2cb', '#218559', '#d0c6b1', 
+            		  '#88001b', '#ff7f27', '#3f48cc', '#b97a56', '#00a8f3', 
+            		  '#0ed145', '#563c86', '#f3008e', '#e34a39',
+            		  '#241984', '#57d2b7', '#595d91', '#f4050e', '#fbc2d4'];
+					var color = colors[Math.floor(Math.random() * colors.length)];
+					var url = "listDetailGO?mainBoardNum="+obj.mainBoardNum;
+            	 
+               events.push({title: obj.title, start: obj.startEvent, end: obj.endEvent, url: url, color: color});
+           });
+             	console.log(events);
+              callback(events);
+          },
+          error : function() {
+      			alert("失敗");
+      		}
+         });
+     }
+    });
+    
+    setTimeout(function(){
+    	$('.fc-time').empty(); 
+    	}, 500);  
+    	
+    	$(document).ready(function(){
+    		$('.fc-time').empty();
+    		});
+</script>
 </body>
 </html>

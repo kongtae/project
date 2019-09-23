@@ -51,7 +51,42 @@
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
-
+$(function () {
+    imagePrint();
+    
+ });
+ var originalFileName = "";
+ var bulb = ${vo.bul_boardnum};
+ var imageData = {'bul_boardnum' : bulb};
+ function imagePrint() {
+         $.ajax({
+            url : "imagePrintBoard",
+            type : "post",
+            data : imageData,
+            dataType: 'json',
+            success : function(result) {
+               if(result != null) {
+	            	var arrNumber = new Array();
+                  $.each(result,function(index,item){
+	            	arrNumber.push(item);
+                	alert("요기요"+arrNumber[index]);
+                	originalFileName = "resources/images/userimage/" +arrNumber[index];
+                	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
+                  })
+	 				/* var originalFileName1 = "resources/images/userimage/" +arrNumber[0];
+	 				var originalFileName2 = "resources/images/userimage/" +arrNumber[1];
+	 				var originalFileName3 = "resources/images/userimage/" +arrNumber[2]; */
+                //  $('#preview1').append("<input type='image' src='"+originalFileName1+"'><br>");
+                //  $('#preview2').append("<input type='image' src='"+originalFileName2+"'><br>");
+                //  $('#preview3').append("<input type='image' src='"+originalFileName3+"'><br>");
+               }
+            },
+            error : function() {
+//                alert("실패");
+               alert("이미지 로드 실패");
+            }
+         });
+      }
 
 function BoardUpdate() {
 
@@ -77,6 +112,21 @@ function BoardUpdate() {
 		});
 	} 
 	
+	function delete1() {
+		$("#uploadFileName").val("");
+		$('#preview0').empty();
+	}
+	
+	function delete2() {
+		$("#uploadFileName2").val("");
+		$('#preview1').empty();
+	}
+	
+	function delete3() {
+		$("#uploadFileName3").val("");
+		$('#preview2').empty();
+	}
+
 </script>
 </head>
 <body>
@@ -145,18 +195,18 @@ function BoardUpdate() {
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -256,12 +306,13 @@ function BoardUpdate() {
                     <div class="text-title">
                         <h6>写真</h6>
                     </div> 
-                    <div id="preview">
+                    <div id="preview0">
+                    </div><br>
+                    <div id="preview1">
                     </div><br>
                     <div id="preview2">
-                    </div><br>
-                    <div id="preview3">
                     </div>
+                     <div class="image-box" id="image-box"></div> 
                 <div class="form-group">
                 <div class="btn btn-default btn-file">
                 <i class="fa fa-paperclip"></i> ファイル添付
@@ -270,7 +321,9 @@ function BoardUpdate() {
 					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
 				<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-
+				<br><input type="button" onclick="delete1()" value="첫번째삭제">	
+				<br><input type="button" onclick="delete2()" value="두번째삭제">	
+				<br><input type="button" onclick="delete3()" value="세번째삭제">	
                 </div>
               </div> 
                 <div class="box-footer">
@@ -458,9 +511,9 @@ function BoardUpdate() {
     var upload = document.querySelector('#uploadFileName');
     var upload2 = document.querySelector('#uploadFileName2');
     var upload3 = document.querySelector('#uploadFileName3');
-    var preview = document.querySelector('#preview');
+    var preview0 = document.querySelector('#preview0');
+    var preview1 = document.querySelector('#preview1');
     var preview2 = document.querySelector('#preview2');
-    var preview3 = document.querySelector('#preview3');
  
     upload.addEventListener('change',function (e) {
         var get_file = e.target.files;
@@ -492,8 +545,8 @@ function BoardUpdate() {
         }
 
         $('#removeImg').empty();
-        $('#preview').empty();
-        preview.appendChild(image);
+        $('#preview0').empty();
+        preview0.appendChild(image);
     });
     
     upload2.addEventListener('change',function (e) {
@@ -518,8 +571,8 @@ function BoardUpdate() {
         }
 
         $('#removeImg').empty();
-        $('#preview2').empty();
-        preview2.appendChild(image);
+        $('#preview1').empty();
+        preview1.appendChild(image);
     });
     
     upload3.addEventListener('change',function (e) {
@@ -544,14 +597,16 @@ function BoardUpdate() {
         }
 
         $('#removeImg').empty();
-        $('#preview3').empty();
-        preview3.appendChild(image);
+        $('#preview2').empty();
+        preview2.appendChild(image);
     }); 
     
 	 $("#reset").click(function () { 
- 	 	 $('#preview').empty();
+ 	 	 $('#preview0').empty();
+ 	 	 $('#preview1').empty();
  	 	 $('#preview2').empty();
- 	 	 $('#preview3').empty();
 	 });
+	 
+	
 </script>
 </html>

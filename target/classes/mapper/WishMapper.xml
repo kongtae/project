@@ -57,6 +57,15 @@
 		 where
 		 mainboardnum=#{mainboardnum}
 </select>
+
+<select id="selectphoto" parameterType="String" resultType="String">
+	SELECT DISTINCT
+		mb.originalfilename
+	FROM
+		member mb, MAINBOARD maintb
+	WHERE
+		maintb.userid=#{userid}
+</select>
 	
 <!-- 마이페이지 회원정보 출력 -->
 <!-- <select id="memberSelect" parameterType="String" resultType="UserVO"> -->

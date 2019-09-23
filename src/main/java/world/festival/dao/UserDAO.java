@@ -84,6 +84,7 @@ public class UserDAO {
 //조인 리스트 데이터 가져오기
 	public ArrayList<ListVO> selectlistAll(String userid) {
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+		System.out.println("DAO userid"+userid);
 		return mapper.selectlistAll(userid);
 	}
 
