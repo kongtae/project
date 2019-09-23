@@ -150,6 +150,7 @@
             	 
                events.push({title: obj.title, start: obj.startEvent, end: obj.endEvent, url: url, color: color});
            });
+             	console.log(events);
               callback(events);
           },
           error : function() {

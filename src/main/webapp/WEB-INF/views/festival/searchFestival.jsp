@@ -42,7 +42,6 @@
 	var rn;
 	var fesimages = new Array();
 	var fesnames = new Array();
-	//var myimages = new Array();
 
 	function push_image() {
 		$.ajax({
@@ -50,7 +49,6 @@
 			type: 'post',
 			dataType: "json",
 			success : function(data) {
-				alert("푸시이미지");
 				$.each(data, function(index, item) {
 					fesimages.push(item.image);
 					fesnames.push(item.festivalname);
@@ -63,61 +61,29 @@
 				alert("푸시이미지 실패");
 			} 
 		});
-		
-		/* fesimages.push("images/searchFestival/fall.jpg");
-		fesimages.push("images/searchFestival/winter.jpg");
-		fesimages.push("images/searchFestival/rock.jpg");
-		fesimages.push("images/searchFestival/matsuri.jpg");
-		fesimages.push("images/searchFestival/beer.jpg");
-		fesimages.push("images/searchFestival/culturalFestival.jpg");
-		fesimages.push("images/searchFestival/sea.jpg");
-		fesimages.push("images/searchFestival/spring.jpg");
-		fesimages.push("images/searchFestival/mountain.jpg");
-		fesimages.push("images/searchFestival/sports.jpg");
-		fesimages.push("images/searchFestival/america.jpg");
-		fesimages.push("images/searchFestival/asia.jpg");
-		fesimages.push("images/searchFestival/africa.jpg");
-		fesimages.push("images/searchFestival/expo.jpg");
-		fesimages.push("images/searchFestival/summer.jpg");
-		fesimages.push("images/searchFestival/movie.jpg");
-		fesimages.push("images/searchFestival/oceania.jpg");
-		fesimages.push("images/searchFestival/wine.jpg");
-		fesimages.push("images/searchFestival/europe.jpg");
-		fesimages.push("images/searchFestival/food.jpg");
-		fesimages.push("images/searchFestival/music.jpg");
-		fesimages.push("images/searchFestival/jazz.jpg");
-		fesimages.push("images/searchFestival/religion.jpg");
-		fesimages.push("images/searchFestival/carnival.jpg");
-		fesimages.push("images/searchFestival/costume.jpg");
-		fesimages.push("images/searchFestival/christmas.jpg");
-		fesimages.push("images/searchFestival/specialproduct.jpg");
-		fesimages.push("images/searchFestival/halloween.jpg");
-		fesimages.push("images/searchFestival/hiphop.jpg");  */
+	
 	}
 
 	function random_image() {
 		check += 1;
 		if (check > 4) {
-			alert("끝");
 			result();
 			return false;
 		}
-		alert("check : "+check);
-		alert("랜덤 이미지!!!");
 		ry = Math.floor(Math.random() * (fesimages.length - 1));
 		rn = Math.floor(Math.random() * (fesimages.length - 1));
 		if(ry == rn){
 			alert("중복이라 다시");
 			check -= 1;
-			random_image();
+			return random_image();
 		}
-	 	alert("랭쓰 : "+fesimages.length);
 		$('#image-box').append("<div id='left-box'><div id ='left-text' class='title-text text-center'><h3><a href='javascript:leftBtn();'>"+ fesnames[ry] +"</a>"
 			+"</h3><div id='left-image'><img src=" + fesimages[ry] + " border=0></div></div></div>");
 		$('#image-box').append("<div id='right-box'><div id ='right-text' class='title-text text-center'><h3><a href='javascript:rightBtn();'>"+ fesnames[rn] +"</a>"
 			+"</h3><div id='right-image'><img src=" + fesimages[rn] + " border=0></div></div></div>");
-		console.log("왼쪽 파일명 : "+ fesnames[ry]);
-		console.log("오른쪽 파일명 : "+ fesnames[rn]);
+		console.log("왼쪽 파일명 : "+ fesnames[ry]+"/ry : "+ry);
+		console.log("오른쪽 파일명 : "+ fesnames[rn]+"/rn : "+rn);
+		console.log("랭쓰 : "+fesnames.length);
 	}
 
 	function leftBtn() {
@@ -126,10 +92,19 @@
 		var key1 = "";
 		key1 = fesimages[ry].substring(a, b);
 		CheckSearch(key1);
+		console.log("왼쪽 삭제명 : "+ fesnames[ry]+"/"+ry);
 		fesimages.splice(ry, 1);
-		fesimages.splice(rn, 1);
 		fesnames.splice(ry, 1);
+		if(ry < rn){
+			var rnn = rn-1;
+			console.log("오른쪽 삭제명 : "+ fesnames[rnn]+"/"+rnn);
+			fesimages.splice((rnn), 1);
+			fesnames.splice((rnn), 1);
+		}else{
+			console.log("오른쪽 삭제명 : "+ fesnames[rn]+"/"+rn);
+		fesimages.splice(rn, 1);
 		fesnames.splice(rn, 1);
+		}
 		$('#left-box').remove();
 		$('#right-box').remove();
 		random_image();
@@ -140,10 +115,19 @@
 		var b = fesimages[rn].indexOf('.');
 		var key1 = fesimages[rn].substring(a, b);
 		CheckSearch(key1);
+		console.log("왼쪽 삭제명 : "+ fesnames[ry]+"/"+ry);
 		fesimages.splice(ry, 1);
-		fesimages.splice(rn, 1);
 		fesnames.splice(ry, 1);
+		if(ry < rn){
+			var rnn = rn-1;
+			console.log("오른쪽 삭제명 : "+ fesnames[rnn]+"/"+rnn);
+			fesimages.splice((rnn), 1);
+			fesnames.splice((rnn), 1);
+		}else{
+			console.log("오른쪽 삭제명 : "+ fesnames[rn]+"/"+rn);
+		fesimages.splice(rn, 1);
 		fesnames.splice(rn, 1);
+		}
 		$('#left-box').remove();
 		$('#right-box').remove();
 		random_image();
@@ -157,7 +141,6 @@
 				"key" : key1
 			},
 			success : function(data) {
-				alert("체크 등록 성공");
 			},
 			error : function() {
 				alert("체크 등록 失敗");
@@ -172,7 +155,6 @@
 			url : "result",
 			type : "post",
 			success : function(data) {
-				alert("result 성공!");
 				$.each(data, function(index, item) {
 					selectResult.push(item);
 				});
@@ -225,7 +207,6 @@
 			url : "reset",
 			type : "post",
 			success : function(result) {
-				alert("reset성공 : "+result);
 			},
 			error : function(data) {
 				alert("reset실패");
