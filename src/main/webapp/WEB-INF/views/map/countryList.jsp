@@ -244,7 +244,7 @@
 <section class="page-title" style="background: url(images/background/page-title-1.jpg);">
     <div class="container">
         <div class="title-text text-center">
-            <h3>Events Schedule</h3>
+            <h3>${country}</h3>
             <ul>
                 <li><a href="index.html">home</a></li>
                 <li>/</li>
@@ -258,9 +258,6 @@
 
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
-	<div style="text-align: center;">
-	<h1 style="font-size: 80px;">${country}</h1>
-	</div>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
