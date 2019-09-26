@@ -110,7 +110,7 @@ $(function() {
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("リストを読み込めませんでした。");
+				alert("리스트 불러오기 실패2");
 			}
 		})
 	} 
@@ -406,30 +406,18 @@ $(function() {
                     </ul>
                 </div>
                 <!--Top Right-->
-<<<<<<< HEAD
-=======
-
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-								<c:if test="${sessionScope.loginid == null}" >
-									<c:if test="${sessionScope.adminid == null}" >
-									<li><a href="registermember">Sign Up</a></li>
-									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
-								</c:if>
-								
-								<c:if test="${sessionScope.loginid != null}">
-									<li><a href="memberPage">UserPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
+							<li><a href="adminPage">AdminPage</a></li>
+						<c:if test="${sessionScope.loginid == null}">
+							<li><a href="registermember">Sign Up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
+						</c:if>
+						<c:if test="${sessionScope.loginid != null}">
+							<li><a href="memberPage">UserPage</a></li>
+							<li><a href="logout" >Logout</a></li>
+						</c:if>
 					</ul>
                 </div>
             </div>
@@ -458,10 +446,6 @@ $(function() {
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-<<<<<<< HEAD
-=======
-
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
@@ -562,19 +546,6 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-<<<<<<< HEAD
-=======
-<!-- <<<<<<< HEAD -->
-      
-      
-<!--       End Schedule Section -->
-<!-- <section class="schedule-section" id="schedule-tab"> -->
-<!--    <div id="div_icontext"> -->
-<!--       <h4 id="icontext"><b>投稿する</b></h4> -->
-<!--       <a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
-<!--    </div> -->
-<!-- ======= -->
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
@@ -584,7 +555,6 @@ $(function() {
 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
 		</c:if>
 	</div>
-<!-- >>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461 -->
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
@@ -666,9 +636,7 @@ $(function() {
                         </div>
                     </div>
                 </div>
-              
                 <div class="col-xl-4 col-md-6 col-sm-12">
-              	
                     <div class="contact-info-item-one">
                         <div class="icon-box">
                             <i class="flaticon-e-mail-envelope"></i>
@@ -681,9 +649,9 @@ $(function() {
                         </div>
                     </div>
                 </div>
-			</div>
-		</div>
-	</div>                   
+            </div>
+        </div>            
+    </div>
 </section>
 <!--End Contact Info-->
 

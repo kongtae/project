@@ -49,7 +49,7 @@
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
 									info@wiscon.com</li>
-								<li><span class="icon fa fa-map-marker"></span><strong>Location  ${sessionScope.adminid} +ds</strong>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
 									49 BelWest Lane, TX 26098</li>
 							</ul>
 						</div>
@@ -57,25 +57,15 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-								
-								<c:if test="${sessionScope.loginid == null}" >
-									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="adminPage">AdminPage</a></li>
+								<c:if test="${sessionScope.loginid == null}">
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
 								</c:if>
-								
 								<c:if test="${sessionScope.loginid != null}">
 									<li><a href="memberPage">UserPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
 							</ul>
 						</div>
 					</div>
@@ -90,7 +80,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="festival"><img src="images/logo.png" alt=""
+								<a href="/festival"><img src="images/logo.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -112,13 +102,8 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-<<<<<<< HEAD
-										<li class="dropdown"><a href="festival">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
-=======
 										<li class="dropdown"><a href="/festival">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 										<ul>
 											<li><a href="listForm">List</a></li>
 											<li><a href="listDetailForm">List Details</a></li>
@@ -142,7 +127,7 @@
 
 							<!--Button Box-->
 							<div class="button-box">
-								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
+								<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
 							<!--Search Box Outer-->
@@ -197,7 +182,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="festival">Home</a></li>
+									<li class="dropdown"><a href="/festival">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -297,16 +282,16 @@
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="tourAPI"><img src="images/logo-2.png" alt=""></a>
+							<a href="festival"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
 					<ul class="footer-menu">
-						<li><a href="festival">Home</a></li>
+						<li><a href="/festival">Home</a></li>
 						<li><a href="listForm">List</a></li>
 						<li><a href="calendar">Calendar</a></li>
 						<li><a href="sponsor.html">Map</a></li>
 						<li><a href="blog.html">Board</a></li>
-						<li><a href="searchFestival">Search Festival</a></li>
+						<li><a href="contact-us.html">Search Festival</a></li>
 					</ul>
 					<ul class="social-links">
 						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
