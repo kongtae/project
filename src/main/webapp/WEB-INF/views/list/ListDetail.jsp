@@ -563,9 +563,9 @@
       </tr>
       </c:forEach>
    </table>
-                        <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
-                        </div>
+<!--                         <div class="link-btn" id="updatebtn"> -->
+<!--                             <a href="#" ><i class="fas fa-reply"></i>Replay</a> -->
+<!--                         </div> -->
                     </div>
                 </div>
                 <div class="blog-left-title">

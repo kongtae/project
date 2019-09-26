@@ -19,12 +19,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+<<<<<<< HEAD
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.VO.WishVO;
 import world.festival.controller.utill.Selenium;
+=======
+import world.festival.VO.AdminListVO;
+import world.festival.VO.AdminVO;
+import world.festival.VO.ListVO;
+import world.festival.VO.ReplyVO;
+import world.festival.VO.WishVO;
+import world.festival.dao.AdminDAO;
+>>>>>>> fe4f4d3f0696bd5061aa7a1df4eb330eedcdfcec
 import world.festival.dao.ListDAO;
 import world.festival.dao.WishDAO;
+import world.festival.service.AdminService;
 import world.festival.service.ListService;
 import world.festival.service.WishService;
 //import world.festival.dao.ReplyService;
@@ -44,6 +54,13 @@ public class ListController {
 	
 	@Autowired
 	private WishService wishsrvice;
+	
+	@Autowired
+	private AdminDAO admindao;
+	
+	@Autowired
+	private AdminService adminservice;
+	
 //	private ReplyService service;
 
 	
@@ -62,6 +79,7 @@ public class ListController {
 		
 		return "list/WriteFestival";
 	}
+	//ADMIN도 같이 들어가게끔 서치후 등록!
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String writeFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request) {
@@ -71,9 +89,15 @@ public class ListController {
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		boolean result = service.writeFestival(vo,request);
 		System.out.println("result:"+result);
+		
+		//리스트를 찾아와서 리턴
+		AdminListVO adminvo = adminservice.selectList();
+		System.out.println("잘 찾아 왔는지 확인"+adminvo);
+		adminvo.setDatacheck("feinsert");
+		adminservice.AdminwriteFestival(adminvo, request);
 		return "success"; 
 	}
-	
+	//여기서는 보드넘 셋해서 찾아서 다시 어드민에 값 입력
 	@RequestMapping(value = "/updateFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String updateFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request , RedirectAttributes rttr) {
@@ -169,6 +193,7 @@ public class ListController {
 		String loginid=(String)session.getAttribute("loginid");
 		vo.setUserid(loginid);
 		vo.setMainBoardNum(vo.getMainBoardNum());
+		
 		wishsrvice.insertwish(vo);
 		System.out.println("if가기전"+vo);
 		if(vo.getOriginalFileName()==null || vo.getOriginalFileName().equals("null") || vo.getOriginalFileName().equals(""))

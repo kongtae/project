@@ -16,5 +16,6 @@ public interface WishMapper {
 	public int selectWish(ListVO vo);
 
 	public ArrayList<WishVO> wishList(int parseInt);
+
 	
 }
