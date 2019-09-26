@@ -268,7 +268,7 @@
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
 					<ul>
-						<li><a href="/festval">home</a></li>
+						<li><a href="/festival">home</a></li>
 						<li>/</li>
 						<li>Search Festival</li>
 					</ul>

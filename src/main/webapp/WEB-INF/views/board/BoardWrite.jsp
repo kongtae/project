@@ -67,12 +67,11 @@ function writeFestival() {
 			processData:false,
 			dataType : 'text',
 			success: function() {
-				alert("投稿完了");
+				alert("投稿を完了しました。");
 				location.href ="boardList";
 			},
-			error: function(request,status,error) {
-				alert("投稿ERROR");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			error: function() {
+				alert("投稿に失敗しました。");
 			}
 		});
 	} 

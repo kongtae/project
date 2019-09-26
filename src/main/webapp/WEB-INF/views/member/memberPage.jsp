@@ -56,6 +56,11 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 <style>
+.main-footer {
+	padding-top: 7.5%;
+    padding-bottom: 7.5%;
+    width: -webkit-fill-available;
+}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
@@ -77,7 +82,7 @@ function memberSelect(){
 			}
 		},
 		error : function() {
-			alert("실패");
+			alert("会員を見つけられませんでした。");
 		}
 	});
 	
@@ -727,56 +732,6 @@ function memberSelect(){
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-
-
-		<!--Contact Info-->
-		<section class="contact-info">
-			<div class="container">
-				<div class="info-area">
-					<div class="row">
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-placeholder"></i>
-								</div>
-								<div class="text">
-									<p>
-										184 Collins Street West <br>Victoria, United States, 8007
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-phone-call"></i>
-								</div>
-								<div class="text">
-									<p>
-										(1800) 123 4567 <br>(1800) 123 4568
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-e-mail-envelope"></i>
-								</div>
-								<div class="text">
-									<p>
-										info@wiscon.com <br>support@wiscon.com
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--End Contact Info-->
-
-
 
 		<!-- Main Footer-->
 		<footer class="main-footer"

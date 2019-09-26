@@ -8,28 +8,14 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-		mainboard
-		 (
-		MAINBOARDNUM,
-		USERID,
-		TITLE,
-		COUNTRY,
-		ADRESS,
-		FESTIVAL_INTRO,
-		inputTime,
-		STARTEVENT,
-		ENDEVENT,
-		originalFileName,
-		saveFileName
-		)
-	VALUES
-	 (
+	MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName)
+	VALUES (
 		mainboard_seq.nextval,
-		#{userid},
 		#{title},
 		#{country},
 		#{adress},
 		#{festival_intro},
+		#{surround_place},
 		sysdate,
 		#{startEvent},
 		#{endEvent}
@@ -38,7 +24,7 @@
 			,#{originalFileName} ,#{saveFileName}
 			</when>
 			<otherwise>
-			,null,null
+			,null
 			</otherwise>
 		</choose>
 
@@ -117,19 +103,8 @@
     </foreach>
 </select>
 
-<select id="printAll22" parameterType="map" resultType="ListVO">
-	Select * from MAINBOARD 
-	<choose>
-		<when test="searchKeyword!=null and endEvent!=null">
-		WHERE 
-		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
-		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') 
-		</when>
-		<when test="searchItem!=null and searchKeyword!=null">
-		WHERE 
-		${searchItem} LIKE '%'||#{searchKeyword}||'%' 
-		</when>
-	</choose>
-		order by mainBoardNum desc
+<select id="printCrawling" parameterType="ListVO" resultType="ListVO">
+	Select * from spot where mainBoardNum = #{mainBoardNum}
 </select>
+
 </mapper>

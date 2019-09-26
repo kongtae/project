@@ -66,11 +66,11 @@
 		data:$("#loginForm").serialize(),
 		type:"post",
 		success: function(data) {
-			alert("로그인 성공");
+			alert("ログインに成功しました。");
 			location.href ="festival";
 		},
 		error: function() {
-			alert("로그인 실패");
+			alert("ログインに失敗しました。");
 			}
 		});
 	} 
