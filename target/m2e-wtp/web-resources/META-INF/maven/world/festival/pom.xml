@@ -177,11 +177,11 @@
 			<version>1.16.18</version>
 		</dependency>
 
-	<!-- jackson core -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.9</version>
+			<version>2.9.9.3</version>
 		</dependency>
 
 		<dependency>
@@ -190,6 +190,7 @@
   		<artifactId>jsoup</artifactId>
   		<version>1.12.1</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -207,7 +208,8 @@
     	<groupId>org.seleniumhq.selenium</groupId>
     	<artifactId>selenium-java</artifactId>
     	<version>3.7.1</version>
-		</dependency> 
+		</dependency>
+		
 	</dependencies>
 
 	<build>
