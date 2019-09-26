@@ -56,7 +56,8 @@
 	               }
 	            },
 	            error : function() {
-	               alert("イメージの読み込みに失敗しました。");
+//	                alert("실패");
+	               alert("이미지 로드 실패");
 	            }
 	         });
 	      }
@@ -77,12 +78,12 @@
 		
 		if(replytext.value.length==0)
 		{
-			alert("コメントの内容を入力してください。");
+			alert("글을 입력해주세요");
 			return false;	
 		}
 		if(userid.length=="")
 		{
-			alert("ログインをお先にしてください。");
+			alert("로그인을 먼저 해주세요.");
 			return false;
 		}
 			document.getElementById("replywriteBoard").submit();
@@ -104,10 +105,11 @@
   					replynum : replynum
   				},
   				success:function(){
+//   					alert("삭제성공")
   					refreshMemList();
   				},
   				error: function(){
-   					alert("削除に失敗しました");
+//   					alert("삭제 실패")
   				}
   				
   			});
@@ -386,7 +388,29 @@
                         </div>
                         </div>
         			 </div>
-                  
+                    <div class="event-details">
+                        <h5>Event Details</h5>
+                        <div class="inner-box  table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="start">Start</th>
+                                        <th class="end">End</th>
+                                        <th class="rate">Rate</th>
+                                        <th class="categories">Categories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="start">Jan 5 , 2018  9 Am</td>
+                                        <td class="end">Jan 8 , 2018  4 Pm</td>
+                                        <td class="rate">$23.00</td>
+                                        <td class="categories">Business Events</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
@@ -560,7 +584,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("住所を正しく入力してください。");
+            alert("없는 주소입니다.");
           }
         });
       }

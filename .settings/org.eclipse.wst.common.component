@@ -2,10 +2,20 @@
 	<wb-module deploy-name="festival-1.0.0-BUILD-SNAPSHOT">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+=======
+<<<<<<< HEAD
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+=======
+>>>>>>> b83037427afc1593a67a26e0a7374501e60105e9
+>>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="festival"/>
 	</wb-module>

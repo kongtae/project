@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="world.festival.dao.AdminMapper">
-
+<!-- 어드민 로그인 -->
 <select id="selectadmin" parameterType="AdminVO" resultType="AdminVO">
 	SELECT
 		ADMINID, ADMINPWD, EMAIL
@@ -17,6 +17,7 @@
 		</if>
 </select>
 
+<!-- 어드민에도 정보입력 -->
 <insert id="AdminwriteFestival" parameterType="AdminListVO" >
 INSERT INTO
 		ADMIN_MAINBOARD
@@ -60,6 +61,7 @@ INSERT INTO
 		,#{datacheck}
 		)
 </insert>
+<!-- 리스트 정보 보드넘 찾아서 값 찾아오기 -->
 <select id="selectList" parameterType="ListVO" resultType="AdminListVO">
 	SELECT
 		 *
@@ -69,6 +71,151 @@ INSERT INTO
 		mainBoardNum=(SELECT MAX(mainBoardNum)FROM MAINBOARD)
 </select>
 
+<!-- 자유게시판 보드넘 검색해서 가져오기 -->
+<select id="selectBul" parameterType="BoardVO" resultType="AdminBoardVO">
+	SELECT
+		 *
+	FROM 
+		BUL_BOARD
+	WHERE
+		BUL_BOARDNUM=(SELECT MAX(BUL_BOARDNUM)FROM BUL_BOARD)
+</select>
 
+
+<!-- 어드민 자유게시판 등록 -->
+<insert id="AdminBoardWrite" parameterType="AdminBoardVO">
+	INSERT INTO
+		ADMIN_BUL_BOARD (
+		ADMINID,
+		ADMIN_MAINBOARDNUM,
+		bul_boardnum,
+		userid,
+		title,
+		contents,
+		country,
+		adress,
+		inputdate,
+		originalFileName,
+		savedFileName,
+		DATACHECK
+		)
+	VALUES (
+		'aa',
+		ADMIN_MAINBOARD_SEQ.nextval,
+		#{bul_boardnum},
+		#{userid},
+		#{title},
+		#{contents},
+		#{country},
+		#{adress},
+		sysdate
+		
+		<choose>
+			<when test="originalFileName != null and savedFileName !=null">
+			,#{originalFileName},#{savedFileName}
+			</when>
+			<otherwise>
+			,null,null
+			</otherwise>
+		</choose>
+		,#{datacheck}
+	)
+
+</insert>
+
+<!-- 게시판 update용 보드넘 검색해서 가져오기 -->
+<select id="selectupList" parameterType="ListVO" resultType="AdminListVO">
+	SELECT
+		 *
+	FROM 
+		MAINBOARD
+	WHERE
+		mainBoardNum=#{mainBoardNum}
+</select>
+
+
+<!-- 자유 게시판 update용 보드넘 검색해서 가져오기 -->
+<select id="selectupBoard" parameterType="BoardVO" resultType="AdminBoardVO">
+	SELECT
+		 *
+	FROM 
+		BUL_BOARD
+	WHERE
+		bul_boardnum=#{bul_boardnum}
+</select>
+
+
+<select id="selectListAll" parameterType="AdminListVO" resultType="AdminListVO">
+SELECT
+    *
+FROM
+    ADMIN_MAINBOARD
+		
+
+</select>
+	
+<select id="selectBulAll" parameterType="AdminBoardVO" resultType="AdminBoardVO">
+SELECT
+    *
+FROM
+    ADMIN_BUL_BOARD
+
+</select>	
+
+<!-- 어드민 자유게시판 검색 -->
+<select id="AdminBoardSelectOne1" parameterType="map" resultType="AdminBoardVO">
+ 		select * from ADMIN_BUL_BOARD 
+		WHERE 
+		inputdate LIKE TO_DATE(#{searchKeyword}, 'YY-mm-DD') 
+		order by ADMIN_MAINBOARDNUM DESC 
+</select>
+
+
+<select id="AdminBoardSelectOne2" parameterType="map" resultType="AdminBoardVO">
+		select * from ADMIN_BUL_BOARD 
+		WHERE 
+		${searchItem} LIKE '%'||#{searchKeyword}||'%'
+		order by ADMIN_MAINBOARDNUM DESC 
+</select>
+
+<!-- 어드민 리스트 게시판 검색 -->
+
+<select id="AdminListSelectOne1" parameterType="map" resultType="AdminListVO">
+ 		SELECT * FROM ADMIN_MAINBOARD 
+		WHERE 
+		startEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') or 
+		endEvent BETWEEN TO_DATE(#{searchKeyword}, 'YY-mm-DD') AND TO_DATE(#{endEvent}, 'YY-mm-DD') 
+		order by ADMIN_MAINBOARDNUM DESC 
+</select>
+
+<select id="AdminListSelectOne2" parameterType="map" resultType="AdminListVO">
+	SELECT * FROM ADMIN_MAINBOARD 
+		WHERE 
+		${searchItem} LIKE '%'||#{searchKeyword}||'%'
+		order by ADMIN_MAINBOARDNUM DESC 
+
+</select>
+
+<!-- 어드민 자유게시판 리드 -->
+<select id="readAdminBoard" parameterType="AdminBoardVO" resultType="AdminBoardVO">
+SELECT 
+	*
+FROM 
+	ADMIN_BUL_BOARD
+WHERE
+	ADMIN_MAINBOARDNUM=#{admin_mainBoardNum}	
+	
+</select>
+
+<!-- 어드민 게시판 리드 -->
+<select id="readAdminList" parameterType="AdminListVO" resultType="AdminListVO">
+SELECT 
+	*
+FROM 
+	ADMIN_MAINBOARD
+WHERE
+	ADMIN_MAINBOARDNUM=#{admin_mainBoardNum}	
+	
+</select>
 
 </mapper>

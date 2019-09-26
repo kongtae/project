@@ -190,14 +190,28 @@
   		<artifactId>jsoup</artifactId>
   		<version>1.12.1</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>3.1.11</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 		<!-- selenium -->
  		<dependency>
     	<groupId>org.seleniumhq.selenium</groupId>
     	<artifactId>selenium-java</artifactId>
     	<version>3.7.1</version>
 		</dependency> 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 	</dependencies>
 
 	<build>

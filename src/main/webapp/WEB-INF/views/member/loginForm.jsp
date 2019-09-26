@@ -69,7 +69,6 @@
 		success: function(data) {
 			alert("ログインに成功しました。");
 			self.location.href = document.referrer;
-			
 		},
 		error: function() {
 			alert("ログインに失敗しました。");

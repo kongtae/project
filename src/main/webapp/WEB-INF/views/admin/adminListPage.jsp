@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +73,7 @@
 	color: #fa334f;
 }
 </style>
+
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/jquery.js"></script>
@@ -106,11 +107,11 @@ $(function() {
 		
 		$.ajax({
 			type:'GET',
-			url : 'printAll',
+			url : 'printAlladminListVO',
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("リストを読み込めませんでした。");
+				alert("리스트 불러오기 실패2");
 			}
 		})
 	} 
@@ -121,6 +122,7 @@ $(function() {
 		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
+		alert("게시글 수"+totalRecordCount); 
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -134,6 +136,8 @@ $(function() {
 			epage = pageBlockCount*pageBlock;
 		}
 		
+		//alert("시작블락"+spage);
+		//alert("마지막블락"+epage);
 		navSet(totalPageCount, spage, epage);
 		tagSet(result, startPageGroup, endPageGroup);
 		
@@ -165,6 +169,7 @@ $(function() {
 			pageBlockCount = Math.ceil(page/pageBlock)
 			startPageGroup = ((page-1) * countPerPage);
 			endPageGroup = (startPageGroup + countPerPage);
+			alert("셀렉 게시글 수"+totalRecordCount); 
 			
 			if(pageBlockCount > 1) {
 				spage = (pageBlockCount-1)*pageBlock+1;
@@ -178,6 +183,8 @@ $(function() {
 				epage = pageBlockCount*pageBlock;
 			}
 			
+			//alert("시작블락"+spage);
+			//alert("마지막블락"+epage);
 			navSet(totalPageCount, spage, epage);
 			tagSet(result, startPageGroup, endPageGroup);
 			
@@ -219,15 +226,12 @@ $(function() {
 			item.endEvent=" ";
 			end = item.endEvent;
 		}
-	    if(item.adress==null||item.adress==""){
-	    	item.adress=" ";
-	    }
 			if(index>=startPageGroup && index<endPageGroup) {
 				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
-				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
-				context += "<td class='Session'>"+item.country+"</td>";
+				context += "<td class='Session'><a href=AdminlistDetailGO?admin_mainBoardNum="+item.admin_mainBoardNum+">"+item.title+"</a></td>";
+				context += "<td class='Session'>"+item.userid+"</td>";
 				context += "<td class='Session'>"+start+"~"+end+"</td>";
-				context += "<td class='Session'>"+item.adress+"</td></tr>";
+				context += "<td class='Session'>"+item.datacheck+"</td></tr>";
 			}
 		});
 		$("#list").html(context);
@@ -291,24 +295,11 @@ $(function() {
 			$("#insertmark").empty();
 		}
 	}
-	var sharp = "";
-	var idx = 0;
+		
 	function selectOne() {
 		var searchItem = $("#searchItem").val();
 		var searchKeyword = $("#searchKeyword").val();
 		var endEvent = $("#searchHidden").val();
-	
-		if(searchItem=="hashSearch"){//해시태그 생성
-			sharp =  searchKeyword;
-			sharp = sharp.replace("#", "");
-			idx += 1;
-			$('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
-			selectHashtag(searchKeyword);
-			return false;
-		} 
-		if(searchItem!="hashSearch"){//다른 카테고리 선택시 해시태그 삭제
-			$('#hash').empty();
-		}
 		if(searchItem=="startEvent"){
 		var a = $("#searchKeyword").val().split("-");
 		var b = $("#searchHidden").val().split("-");
@@ -320,15 +311,21 @@ $(function() {
 			}
 		}
 
+		if(searchItem=="hashSearch"){
+			$('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
+			selectHashtag(searchKeyword);
+			return false;
+		} 
 		
 		$.ajax({
 			type:'POST',
-			url : 'selectOne',					
+			url : 'AdminListSelectOne',					
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
 			dataType: 'json',
 			success : output1,
-			error: function() {
-				alert("リストの読み込みに失敗しました。");
+			error: function(request,status,error) {
+				alert("리스트 불러오기 실패1");
+				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		})
 	}
@@ -337,34 +334,16 @@ $(function() {
 	
 	function selectHashtag(searchKeyword){
 	    hashtag1 += searchKeyword+",";
-	   	hashtagPrint();
-	}
-	function btnClick(sharp1){
-		alert("sharp1 : "+sharp1);
-		
-		var key = sharp1.innerHTML;
-		alert("key : "+ key);
-		var a = key.indexOf('(')+1;
-		var b = key.indexOf(')');
-    	var key1 = key.substring(a,b); 
-		var key2 = key1;
-    	key1 = "#"+key1+",";
-    	alert("key1 : "+key1);
-    	alert("key2 : "+key2);
-    	hashtag1 = hashtag1.replace(key1, "");
-    	alert("hashtag1 : "+hashtag1);
-    	hashtagPrint();
-    	$('#'+key2).empty();
-	}
-	
-	function hashtagPrint(){
+	    $('#xbtn').click(function (){
+	    	hashtag1.replace(/searchKeyword/gi, '');
+		});
 		$.ajax({
 			type:'POST',
 			url : 'selectHashtag',
 			data : { 'hashtag' : hashtag1 },
 			success : output1,
 			error: function() {
-				alert("リストの読み込みに失敗しました。");
+				alert("리스트 불러오기 실패3");
 			}
 		})
 	}
@@ -406,30 +385,19 @@ $(function() {
                     </ul>
                 </div>
                 <!--Top Right-->
-<<<<<<< HEAD
-=======
-
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-								<c:if test="${sessionScope.loginid == null}" >
-									<c:if test="${sessionScope.adminid == null}" >
-									<li><a href="registermember">Sign Up</a></li>
-									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
-								</c:if>
-								
-								<c:if test="${sessionScope.loginid != null}">
-									<li><a href="memberPage">UserPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
+							
+						<c:if test="${sessionScope.adminid == null}" >
+							<li><a href="registermember">Sign Up</a></li>
+							<li><a href="loginForm">Sign in</a></li>
+						</c:if>
+						<c:if test="${sessionScope.adminid !=null}">
+							<li><a href="adminListPage">AdminListPage</a></li>
+							<li><a href="adminBulPage">AdminBulPage</a></li>
+							<li><a href="logout">Logout</a></li>
+						</c:if>
 					</ul>
                 </div>
             </div>
@@ -458,24 +426,20 @@ $(function() {
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-<<<<<<< HEAD
-=======
-
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="listForm">List</a>
+								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="calendar">Calendar</a>
+								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="map">Map</a>
+								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="map">Map</a></li>
+										<li><a href="#">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -562,29 +526,14 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-<<<<<<< HEAD
-=======
-<!-- <<<<<<< HEAD -->
-      
-      
-<!--       End Schedule Section -->
-<!-- <section class="schedule-section" id="schedule-tab"> -->
-<!--    <div id="div_icontext"> -->
-<!--       <h4 id="icontext"><b>投稿する</b></h4> -->
-<!--       <a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
-<!--    </div> -->
-<!-- ======= -->
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
+		
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
-		<c:if test="${sessionScope.loginid != null}">
 		<h4 id="icontext"><b>投稿する</b></h4>
 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-		</c:if>
 	</div>
-<!-- >>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461 -->
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
@@ -597,17 +546,14 @@ $(function() {
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
-					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
-					国家
+					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>>
+					USERID
 					</option>
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>
-					<option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
-					住所
-					</option>
-					<option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
-					#HASHTAG
+					<option value="datacheck" <c:if test="${'datacheck'==searchItem}">selected</c:if>>
+					DATACHECK
 					</option>
 					</select>
 					</td>
@@ -623,9 +569,9 @@ $(function() {
                                 <tr>
                                     <th class="srial">#</th>
                                     <th class="session">タイトル</th>
-                                    <th class="time">国家</th>
+                                    <th class="time">USERID</th>
                                     <th class="speakers">期間</th>
-                                    <th class="venue">住所</th>
+                                    <th class="venue">DATACHECK</th>
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
@@ -635,6 +581,7 @@ $(function() {
                        
                     </div>
                 </div>
+            </div>
             <nav class="pagination"></nav>
            </div>
        </div>
@@ -666,9 +613,7 @@ $(function() {
                         </div>
                     </div>
                 </div>
-              
                 <div class="col-xl-4 col-md-6 col-sm-12">
-              	
                     <div class="contact-info-item-one">
                         <div class="icon-box">
                             <i class="flaticon-e-mail-envelope"></i>
@@ -681,44 +626,10 @@ $(function() {
                         </div>
                     </div>
                 </div>
-			</div>
-		</div>
-	</div>                   
-</section>
-<!--End Contact Info-->
-
-<!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
-    <div class="container">
-        <div class="footer-area text-center">
-            <div class="footer-logo">
-                <figure>
-                    <a href="index.html"><img src="images/logo-2.png" alt=""></a>
-                </figure>
             </div>
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="speakers.html">Speakers</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a href="shedule.html">Schedule</a></li>
-                <li><a href="sponsor.html">Sponsors</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact-us.html">Contact</a></li>
-            </ul>
-            <ul class="social-links">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-        </div>            
+        </div>
     </div>
-</footer>
-<!--End Main Footer-->
-
+</section>
 
 <!--Footer Bottom Section-->
 <section class="footer-bottom">
@@ -752,6 +663,6 @@ $(function() {
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
-</div>
+<!-- </div> -->
 </body>
 </html>

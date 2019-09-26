@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="world.festival.dao.tourAPIMapper">
+
+	<insert id="tourAPIinsert" parameterType="ListVO">
+
+		<foreach item="item" collection="list" separator=""
+			open="INSERT ALL" close="SELECT * FROM DUAL">
+			INTO
+			MAINBOARD
+			(mainBoardNum,title,country,adress,festival_intro,startEvent,endEvent,originalFileName)
+			VALUES
+			(
+			#{item.mainBoardNum},
+			#{item.title},
+			#{item.country},
+			#{item.adress},
+			#{item.festival_intro},
+			#{item.surround_place},
+			#{item.saveFileName}
+			<choose>
+				<when test="item.originalFileName != null">
+					,#{item.originalFileName}
+				</when>
+				<otherwise>
+					,null
+				</otherwise>
+			</choose>
+			<!-- #{startEvent}, #{endEvent} <choose> <when test="originalFileName 
+				!= null"> ,#{originalFileName} </when> <otherwise> ,null </otherwise> </choose> -->
+			)
+		</foreach>
+	</insert>
+
+</mapper>
