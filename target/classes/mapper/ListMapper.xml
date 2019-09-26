@@ -8,27 +8,7 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-<<<<<<< HEAD
 		MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName)
-=======
-		mainboard
-		 (
-		MAINBOARDNUM,
-		USERID,
-		TITLE,
-		COUNTRY,
-		ADRESS,
-		FESTIVAL_INTRO,
-		inputTime,
-		STARTEVENT,
-		ENDEVENT,
-		originalFileName,
-		saveFileName
-		)
-	VALUES
-	 (
-		MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,inputTime,startEvent,endEvent,originalFileName,saveFileName)
->>>>>>> fe4f4d3f0696bd5061aa7a1df4eb330eedcdfcec
 	VALUES (
 		mainboard_seq.nextval,
 		#{userid},

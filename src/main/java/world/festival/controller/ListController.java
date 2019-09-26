@@ -2,16 +2,12 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,19 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-<<<<<<< HEAD
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.VO.WishVO;
 import world.festival.controller.utill.Selenium;
-=======
 import world.festival.VO.AdminListVO;
-import world.festival.VO.AdminVO;
-import world.festival.VO.ListVO;
-import world.festival.VO.ReplyVO;
-import world.festival.VO.WishVO;
 import world.festival.dao.AdminDAO;
->>>>>>> fe4f4d3f0696bd5061aa7a1df4eb330eedcdfcec
 import world.festival.dao.ListDAO;
 import world.festival.dao.WishDAO;
 import world.festival.service.AdminService;
