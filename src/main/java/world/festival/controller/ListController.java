@@ -105,7 +105,7 @@ public class ListController {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
 		vo.setUserid(userid);
-		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
+		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
 		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
@@ -123,7 +123,7 @@ public class ListController {
 		}
 		model.addAttribute("like", like);
 		//좋아요 갯수 판단
-		ArrayList<WishVO> wishlist=wishsrvice.wishList(Integer.parseInt(vo.getMainBoardNum()));
+		ArrayList<WishVO> wishlist=wishsrvice.wishList(vo.getMainBoardNum());
 		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}

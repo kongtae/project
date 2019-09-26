@@ -197,9 +197,6 @@
     	<artifactId>selenium-java</artifactId>
     	<version>3.7.1</version>
 		</dependency> 
-		
-
-
 
 	</dependencies>
 

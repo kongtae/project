@@ -8,8 +8,8 @@ import lombok.Data;
 public class AdminListVO {
 	
 	private String adminid;
-	private String admin_mainBoardNum;
-	private String mainBoardNum;
+	private int admin_mainBoardNum;
+	private int mainBoardNum;
 	private String userid;
 	private String title;
 	private String country;

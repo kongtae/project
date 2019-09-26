@@ -57,7 +57,13 @@ import world.festival.VO.ListVO;
 	
 				webElement = driver.findElement(By.name("q")); // searchKeyword
 				String searchKeyword = vo.getCountry();
+				if(searchKeyword == ""||searchKeyword==null){
+					searchKeyword=" ";
+				}
 				String searchKeyword2 = vo.getSurround_place();
+				if(searchKeyword2 ==""||searchKeyword2==null){
+					searchKeyword2 = " ";
+				}
 				String searchKeyword3 ="名所";
 				webElement.sendKeys(searchKeyword+" "+searchKeyword2+" "+searchKeyword3);
 	
@@ -70,8 +76,6 @@ import world.festival.VO.ListVO;
 				List <WebElement> list = driver.findElements(By.className("fzgNVd"));
 				List <WebElement> list2 = driver.findElements(By.className("x34okf"));
 				ArrayList<String> alist =  new ArrayList<String>();
-				//System.out.println(list);
-				//System.out.println(list2);
 				System.out.println("list 의 사이즈 즉 갯수 " + list.size());
 				
 				for (int i = 0; i < list.size(); i++) {
@@ -89,7 +93,6 @@ import world.festival.VO.ListVO;
 			} finally {
 				driver.close();
 			}
-			//return myengso1;
 			return null;
 	
 		}
