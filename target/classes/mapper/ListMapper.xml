@@ -21,15 +21,13 @@
 		#{endEvent}
 		<choose>
 			<when test="originalFileName != null and saveFileName != null">
-			,#{originalFileName} ,#{saveFileName}
+			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
 			,null
 			</otherwise>
 		</choose>
-
 	)
-	
 </insert>
 
 <select id="printAll" parameterType="ListVO" resultType="ListVO">
@@ -103,8 +101,5 @@
     </foreach>
 </select>
 
-<select id="printCrawling" parameterType="ListVO" resultType="ListVO">
-	Select * from spot where mainBoardNum = #{mainBoardNum}
-</select>
 
 </mapper>

@@ -51,7 +51,6 @@
    	var Cdata = {"Country" : Country , "mainBoardNum" : mainB};
     function Crawling() {
     	var src = "";
-		alert("crawling");
           $.ajax({
             url : "crawlingTest",
             type : "get",

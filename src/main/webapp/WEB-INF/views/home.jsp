@@ -112,8 +112,13 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
+<<<<<<< HEAD
+										<li class="dropdown"><a href="festival">Home</a></li>
+									<li class="dropdown"><a href="#">List</a>
+=======
 										<li class="dropdown"><a href="/festival">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
+>>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 										<ul>
 											<li><a href="listForm">List</a></li>
 											<li><a href="listDetailForm">List Details</a></li>
