@@ -8,22 +8,25 @@
 
     <meta charset="UTF-8">
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA | リスト</title>
+    <!-- search -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet" />
+    <link href="resources/css/main.css" rel="stylesheet" />
     
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <!-- master stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
 <style>
@@ -39,10 +42,11 @@
 	background-color: #CF4845;
 }
 .pagination {
-	display: block;
-	width: 100%;
-	text-align: center;
-	clear: both;
+   display: inline;
+   width: 100%;
+   text-align: center;
+   clear: both;
+   padding-top: 4%;
 }
 .pagination li {
 	display: inline-block;
@@ -64,13 +68,16 @@
 	justify-content: flex-end;
 	width: 83%;
 }
-#icontext {
-	padding: 1.5%;
-	padding-rigth: 2px;
-	padding-left: 2px;
-	font-family: 'Robtoto', sans-serif;
-	font-size: 30px;
-	color: #fa334f;
+/* #icontext {
+   padding: 1.5%;
+   padding-rigth: 2px;
+   padding-left: 2px;
+   font-family: 'Robtoto', sans-serif;
+   font-size: 30px;
+   color: #fa334f;
+} */
+#hash {
+	text-align: center;
 }
 </style>
 </head>
@@ -101,6 +108,276 @@ $(function() {
 			setPage();		
 	})
 })
+
+    function printAll() {
+      
+      $.ajax({
+         type:'GET',
+         url : 'printAll',
+         dataType: 'json',
+         success : output,
+         error: function() {
+            alert("리스트 불러오기 실패2");
+         }
+      })
+   } 
+
+    function output(result) {
+      totalRecordCount = result.length;
+      totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+      pageBlockCount = Math.ceil(page/pageBlock);
+      startPageGroup = ((page-1) * countPerPage);
+      endPageGroup = (startPageGroup + countPerPage);
+      alert("게시글 수"+totalRecordCount); 
+      
+      if(pageBlockCount > 1) {
+         spage = (pageBlockCount-1)*pageBlock+1;
+      } else {
+         spage = 1;
+      }
+      
+      if((pageBlockCount*pageBlock) >= totalPageCount){
+         epage = totalPageCount;
+      } else {
+         epage = pageBlockCount*pageBlock;
+      }
+      
+      //alert("시작블락"+spage);
+      //alert("마지막블락"+epage);
+      navSet(totalPageCount, spage, epage);
+      tagSet(result, startPageGroup, endPageGroup);
+      
+         $(".page-link").on('click',function(){
+            if ($(this).attr("data-value") == "first"){
+            page = 1;
+         }else if ($(this).attr("data-value") == "end") {
+            page = totalPageCount;
+         }else if ($(this).attr("data-value") == "next") {
+            page = parseInt(page) + 5;
+            if (page>totalPageCount) {
+               page=totalPageCount;
+            }
+         }else if ($(this).attr("data-value") =="before") {
+            page = parseInt(page) - 5;
+            if(page<5){
+               page = 1;
+            }
+         }else{
+            page= $(this).attr("data-value");
+         }
+         printAll();
+         });   
+   } 
+    
+    function output1(result) {
+         totalRecordCount = result.length;
+         totalPageCount = Math.ceil(totalRecordCount / countPerPage);
+         pageBlockCount = Math.ceil(page/pageBlock)
+         startPageGroup = ((page-1) * countPerPage);
+         endPageGroup = (startPageGroup + countPerPage);
+         alert("셀렉 게시글 수"+totalRecordCount); 
+         
+         if(pageBlockCount > 1) {
+            spage = (pageBlockCount-1)*pageBlock+1;
+         } else {
+            spage = 1;
+         }
+         
+         if((pageBlockCount*pageBlock) >= totalPageCount){
+            epage = totalPageCount;
+         } else {
+            epage = pageBlockCount*pageBlock;
+         }
+         
+         //alert("시작블락"+spage);
+         //alert("마지막블락"+epage);
+         navSet(totalPageCount, spage, epage);
+         tagSet(result, startPageGroup, endPageGroup);
+         
+            $(".page-link").on('click',function(){
+               if ($(this).attr("data-value") == "first"){
+               page = 1;
+            }else if ($(this).attr("data-value") == "end") {
+               page = totalPageCount;
+            }else if ($(this).attr("data-value") == "next") {
+               page = parseInt(page) + 5;
+               if (page>totalPageCount) {
+                  page=totalPageCount;
+               }
+            }else if ($(this).attr("data-value") =="before") {
+               page = parseInt(page) - 5;
+               if(page<5){
+                  page = 1;
+               }
+            }else{
+               page= $(this).attr("data-value");
+            }
+               selectOne();
+            });   
+            
+      }  
+    
+      
+   function tagSet(result, startPageGroup, endPageGroup)   {
+      var context = '';
+      $.each(result,function(index,item){
+         var s = new Date(item.startEvent);
+          var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+         var end="";
+       if(item.endEvent!=null||item.endEvent!=""){   
+          var e = new Date(item.endEvent);
+          end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+       }
+       if(item.endEvent==null||item.endEvent==""){
+         item.endEvent=" ";
+         end = item.endEvent;
+      }
+         if(index>=startPageGroup && index<endPageGroup) {
+            context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+            context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+            context += "<td class='Session'>"+item.country+"</td>";
+            context += "<td class='Session'>"+start+"~"+end+"</td>";
+            context += "<td class='Session'>"+item.adress+"</td></tr>";
+         }
+      });
+      $("#list").html(context);
+      
+
+   } 
+   
+   function navSet(totalPageCount){
+      var nav = '';
+      nav += '<li class="page-item">';
+      nav += '<a class="page-link" href="#" data-value ="first" aria-label="Previous">';
+      nav += '<span aria-hidden="true">&laquo;</span>';
+      nav += '<span class="sr-only">Previous</span>';
+      nav += '</a>';
+      nav += '</li>';
+      nav += '<li class="page-item">';
+      nav += '<a class="page-link" href="#" data-value ="before" aria-label="Previous">';
+      nav += '<span aria-hidden="true">previous</span>';
+      nav += '<span class="sr-only">Previous</span>';
+      nav += '</a>';
+      nav += '</li>';
+      
+      for (var i = spage; i <= epage; i ++) {
+         if(i == page){
+            nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+         } else {
+            nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
+         }
+      }
+             
+      nav += '<li class="page-item">';
+      nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
+      nav += '<span aria-hidden="true">next</span>';
+      nav += '<span class="sr-only">Next</span>';
+      nav += '</a>';
+      nav += '</li>';
+      nav += '<li class="page-item">';
+      nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
+      nav += '<span aria-hidden="true">&raquo;</span>';
+      nav += '<span class="sr-only">Next</span>';
+      nav += '</a>';
+      nav += '</li>';
+          
+      $(".pagination").html(nav);   
+   }
+   
+   function searchDate(value){
+      var result00="startEvent";
+      
+      var result11 = document.getElementById("searchKeyword");
+      var result22 = document.getElementById("searchItem").value;
+      var result33 = document.getElementById("searchHidden");
+      if(result22=="startEvent"){
+         result11.setAttribute("type", "date");
+         result33.setAttribute("type", "date");
+         $("#insertmark").append("~");
+      }
+      if(result22!="startEvent"){
+         result11.setAttribute("type", "text");
+         result33.setAttribute("type", "hidden");
+         $("#insertmark").empty();
+      }
+   }
+      
+   function selectOne() {
+      var searchItem = $("#searchItem").val();
+      var searchKeyword = $("#searchKeyword").val();
+      var endEvent = $("#searchHidden").val();
+      if(searchItem=="startEvent"){
+      var a = $("#searchKeyword").val().split("-");
+      var b = $("#searchHidden").val().split("-");
+         if(a>b){
+            alert("検索する期間を間違えて入力しました。");
+            $("#searchKeyword").val("");
+            $("#searchHidden").val("");
+            return false;
+         }
+      }
+
+      if(searchItem=="hashSearch"){
+         $('#hash').append("<span class='span'>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
+         selectHashtag(searchKeyword);
+         return false;
+      } 
+      
+      $.ajax({
+         type:'POST',
+         url : 'selectOne',               
+         data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
+         dataType: 'json',
+         success : output1,
+         error: function(request,status,error) {
+            alert("리스트 불러오기 실패1");
+            alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+         }
+      })
+   }
+   
+      var hashtag1 = "";
+   
+   function selectHashtag(searchKeyword){
+       hashtag1 += searchKeyword+",";
+       $('#xbtn').click(function (){
+          hashtag1.replace(/searchKeyword/gi, '');
+      });
+      $.ajax({
+         type:'POST',
+         url : 'selectHashtag',
+         data : { 'hashtag' : hashtag1 },
+         success : function(result){
+            var context = '';
+            $.each(result,function(index,item){
+               var s = new Date(item.startEvent);
+                var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+               var end="";
+             if(item.endEvent!=null||item.endEvent!=""){   
+                var e = new Date(item.endEvent);
+                end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+             }
+             if(item.endEvent==null||item.endEvent==""){
+               item.endEvent=" ";
+               end = item.endEvent;
+            }
+            context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
+            context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
+            context += "<td class='Session'>"+item.country+"</td>";
+            context += "<td class='Session'>"+start+"~"+end+"</td>";
+            context += "<td class='Session'>"+item.adress+"</td></tr>";
+            })
+            $("#list").html(context);
+         },
+         error: function() {
+            alert("리스트 불러오기 실패3");
+         }
+      })
+   }
+   
+   function change(){
+      page=1;
+   }
 		
 	 function printAll() {
 		
@@ -201,7 +478,6 @@ $(function() {
 				}
 		   		selectOne();
 		   	});	
-		   	
 		}  
 	 
 		
@@ -406,7 +682,7 @@ $(function() {
                     </ul>
                 </div>
                 <!--Top Right-->
-					<div class="top-right">
+				<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
 						<c:if test="${sessionScope.loginid == null}" >
@@ -475,7 +751,6 @@ $(function() {
 									</ul></li>
 							</ul>
                         </div>
-                        
                     </nav>
                     
 					<!--Button Box-->
@@ -541,7 +816,7 @@ $(function() {
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(images/background/sample.png);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>
@@ -557,45 +832,86 @@ $(function() {
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
-	<div id="div_icontext">
-		<c:if test="${sessionScope.loginid != null}">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-		</c:if>
-	</div>
     <div class="container">
           <div class="schedule-area">
-      		<div class="schedule-content clearfix">
-			            <div class="inner-box  table-responsive">      
-					<div id="hash"></div>
-					<table>
-					
-					<tr><td>
-					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
-					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
-					タイトル
-					</option>
-					<option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
-					国家
-					</option>
-					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
-					期間
-					</option>
-					<option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
-					住所
-					</option>
-					<option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
-					#HASHTAG
-					</option>
-					</select>
-					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></td>
-					<td id="insertmark"></td>
-					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
-					</td></tr>
- 					 </table>
-			            <div class="inner-box  table-responsive"> 
+            <div class="schedule-content clearfix">
+                     <div class="inner-box  table-responsive">      
+               <div id="hash"></div>
+<!--  -->
+							<div class="s132">
+								<form>
+									<div class="inner-form">
+										<div class="input-field first-wrap">
+											<div class="input-select">
+												<select data-trigger="" class="choices-single-defaul"
+													name="searchItem" id="searchItem"
+													onchange="searchDate(this)">
+													<option value="title"
+														<c:if test="${'title'==searchItem}">selected</c:if>>
+														タイトル</option>
+													<option value="country"
+														<c:if test="${'country'==searchItem}">selected</c:if>>
+														国家</option>
+													<option value="startEvent"
+														<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+														期間</option>
+													<option value="adress"
+														<c:if test="${'adress'==searchItem}">selected</c:if>>
+														住所</option>
+													<option value="hashSearch"
+														<c:if test="${'hashSearch'==searchItem}">selected</c:if>>
+														#HASHTAG</option>
+												</select>
+											</div>
+										</div>
+										<div class="input-field second-wrap">
+											<input name="searchKeyword" id="searchKeyword"
+												onchange="change()" type="text" class="input-field_pholder"
+												placeholder="Enter Keywords" />
+										</div>
+										<!-- <div id="insertmark"></div> -->
+										<div class="input-field second-wrap">
+											<input type="hidden" name="endEvent" id="searchHidden">
+										</div>
+										<div class="input-field third-wrap">
+											<button class="btn-search" type="button" id="searchOne"
+												onclick='selectOne()'>Search</button>
+										</div>
+									</div>
+								</form>
+							</div>
+							
+							<!--  -->
+               
+               <%-- <table>
+               <tr><td>
+               <select name="searchItem" id="searchItem" onchange="searchDate(this)">
+               <option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
+               タイトル
+               </option>
+               <option value="country"<c:if test="${'country'==searchItem}">selected</c:if>>
+               国家
+               </option>
+               <option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+               期間
+               </option>
+               <option value="adress" <c:if test="${'adress'==searchItem}">selected</c:if>>
+               住所
+               </option>
+               <option value="hashSearch" <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
+               #HASHTAG
+               </option>
+               </select>
+               </td>
+               <td><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></td>
+               <td id="insertmark"></td>
+               <td><input type="hidden" name="endEvent" id="searchHidden">
+               <input type="button" value="検索" id="searchOne" onclick='selectOne()'>
+               </td></tr>
+               </table> --%>
+               
+               
+                     <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -612,56 +928,20 @@ $(function() {
                          </div> 
                        
                     </div>
+                    <div>
+                    <nav class="pagination"></nav>
+                    <div id="div_icontext">
+					<c:if test="${sessionScope.loginid != null}">
+					<!-- <h4 id="icontext"><b>投稿する</b></h4> -->
+					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+					</c:if>
+					</div>
+				</div>
                 </div>
-            <nav class="pagination"></nav>
            </div>
        </div>
 </section>
 <!--End Schedule Section-->
-
-<!--Contact Info-->
-<section class="contact-info">
-    <div class="container">
-        <div class="info-area">
-            <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-placeholder"></i>
-                        </div>
-                        <div class="text">
-                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-phone-call"></i>
-                        </div>
-                        <div class="text">
-                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-e-mail-envelope"></i>
-                        </div>
-                        <div class="text">
-                            <p>
-                                <a href="#">info@wiscon.com</a>
-                                <a href="#">support@wiscon.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>            
-    </div>
-</section>
-<!--End Contact Info-->
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">
@@ -728,6 +1008,15 @@ $(function() {
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
+<!-- Search script -->
+<script src="js/choices.js"></script>
+<script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+</script>
 </div>
 </body>
 </html>
