@@ -40,6 +40,7 @@ public class WishService {
 		return dao.wishList(parseInt);
 	}
 
+
 	
 //	public UserVO selectpot(String loginid) {
 //		UserVO pot= dao.selectpot(loginid);

@@ -407,9 +407,10 @@
 				url: "withdraw",
 				type: "get",
 				success: function(){
+					alert("会員脱退になりました。");
 					location.href="festival";	
 				},
-				error: function(){alert("エラー");}
+				error: function(){alert("該当作業に失敗しました。");}
 			});
 		});
 		</script>

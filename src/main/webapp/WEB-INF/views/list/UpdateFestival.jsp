@@ -81,7 +81,6 @@
 		            	var arrNumber = new Array();
 		                $.each(result,function(index,item){
 	            		arrNumber.push(item);
-	                	alert("요기요"+arrNumber[index]);
 	                	originalFileName = "resources/images/userimage/" +arrNumber[index];
 	                	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
 	                  })
@@ -89,7 +88,7 @@
 	            },
 	            error : function() {
 //	                alert("실패");
-	               alert("이미지 로드 실패");
+	               alert("イメージの読み込みに失敗しました。");
 	            }
 	         });
 	      }
@@ -108,11 +107,11 @@ function updateFestival() {
 			processData:false,
 			dataType : 'text',
 			success: function(data) {
-				alert("修正完了");
+				alert("修正を完了しました。");
 				location.href ="listDetailGO?mainBoardNum="+${vo.mainBoardNum};
 			},
 			error: function() {
-				alert("修正ERROR");
+				alert("修正に失敗しました。");
 			}
 		});
 	} 
@@ -370,30 +369,7 @@ function updateFestival() {
 					        </div>
 					      </div>
 					    </section>
-					</div>
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+ 					
                     <!--Map Outer-->
                     <div class="map-outer">
                         <!--Map Canvas-->

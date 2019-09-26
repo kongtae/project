@@ -4,10 +4,11 @@ import java.sql.Date;
 
 import lombok.Data;
 
-@Data	
-public class ListVO {
+@Data
+public class AdminListVO {
 	
 	private String adminid;
+	private String admin_mainBoardNum;
 	private String mainBoardNum;
 	private String userid;
 	private String title;
@@ -20,4 +21,5 @@ public class ListVO {
 	private Date endEvent;
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
+	private String datacheck;
 }

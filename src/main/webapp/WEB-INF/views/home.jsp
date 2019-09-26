@@ -57,15 +57,23 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-									<li><a href="adminPage">AdminPage</a></li>
-								<c:if test="${sessionScope.loginid == null}">
+								<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
 								</c:if>
+								
 								<c:if test="${sessionScope.loginid != null}">
 									<li><a href="memberPage">UserPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminPage">AdminPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
 							</ul>
 						</div>
 					</div>
@@ -80,7 +88,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="/festival"><img src="images/logo.png" alt=""
+								<a href="festival"><img src="images/logo.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -102,8 +110,13 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
+<<<<<<< HEAD
+										<li class="dropdown"><a href="festival">Home</a></li>
+									<li class="dropdown"><a href="#">List</a>
+=======
 										<li class="dropdown"><a href="/festival">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
+>>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461
 										<ul>
 											<li><a href="listForm">List</a></li>
 											<li><a href="listDetailForm">List Details</a></li>
@@ -182,7 +195,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="/festival">Home</a></li>
+									<li class="dropdown"><a href="festival">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -286,7 +299,7 @@
 						</figure>
 					</div>
 					<ul class="footer-menu">
-						<li><a href="/festival">Home</a></li>
+						<li><a href="festival">Home</a></li>
 						<li><a href="listForm">List</a></li>
 						<li><a href="calendar">Calendar</a></li>
 						<li><a href="sponsor.html">Map</a></li>

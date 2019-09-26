@@ -10,7 +10,8 @@
     <title>Wiscon || Responsive HTML 5 Template</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
+	
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -21,6 +22,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+     
+     
      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -28,14 +31,55 @@
         height: 500px;
         width: 770px;
       }
+      
+      .pre{
+      	width: 770px;
+      	height: 500px;
+      }
     </style>
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.js" charset="utf-8"></script>
  <script>
  
     $(function () {
        imagePrint();
-       
+       Crawling();
     });
+    
+    
+   	var Country = "${vo.country}";
+   	var mainB = ${vo.mainBoardNum};
+   	var Cdata = {"Country" : Country , "mainBoardNum" : mainB};
+    function Crawling() {
+    	var src = "";
+		alert("crawling");
+          $.ajax({
+            url : "crawlingTest",
+            type : "get",
+            data :	Cdata,
+            dataType: 'json',
+            contentType: "application/json",
+            success : function(result) {
+	            $.each(result,function(index,item){
+	            	if(index==0||index==4){
+	            		src+="<tr>";
+	            	}
+	            	if(index%2 == 0){
+	            		src += "<td>"+item+"</td>";
+	            	}if(index%2 != 0){
+	           			src +="<td><img src="+item+"></td>";	            		
+	            	}
+	            	if(index==3||index==7){
+	            		src+="</tr>"
+	            	}
+	            });
+	            $('#carw').html(src); 
+            },
+            error : function() {
+               alert("国家および都市の情報を読み込めませんでした。");
+            }
+         });
+    }
+    
     
     var originalFileName = "";
     var mainb = ${vo.mainBoardNum};
@@ -55,14 +99,12 @@
 						return false;
                 	  }else{
                      originalFileName = "resources/images/userimage/" +item;
-                	  }
-                   $('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
+                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
                   })
                }
             },
             error : function() {
-//                alert("실패");
-               alert("이미지 로드 실패");
+               alert("イメージの読み込みに失敗しました。");
             }
          });
       }
@@ -82,12 +124,12 @@
       var name = document.getElementById("name").value;
       if(replytext.value.length==0)
       {
-         alert("글일 입력해주세요");
+         alert("コメントを入力してください。");
          return false;   /*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
       }
       if(name.length=="")
       {
-         alert("로그인을 먼저 해주세요.");
+         alert("ログインをお先にしてください。");
          return false;
       }
          document.getElementById("replywrite").submit();
@@ -109,11 +151,10 @@
                  replynum : replynum
               },
               success:function(){
-//                  alert("삭제성공")
                  refreshMemList();
               },
               error: function(){
-//                  alert("삭제 실패")
+                  alert("削除に失敗しました。");
               }
               
            });
@@ -291,25 +332,6 @@
                   <a href="#" class="theme-btn btn-style-one">Search Festival</a>
                </div>
                     
-                    <!--Search Box Outer-->
-                <!--     <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                    
                 </div>
                
             </div>
@@ -408,7 +430,7 @@
                            </c:if>
                     </div> 
                    
-                    <div id="preview">
+                    <div id="preview" class="pre">
                     </div>
                     <div class="image-box" id="image-box">
         <!--           <input type="" src="" id="preview0">
@@ -467,6 +489,7 @@
                      <tr>
                               <td>住所</td><td>${vo.adress}</td>
                            </tr>
+                         <tbody id="CTest"></tbody>
                         </table>
                         </div>
                         </div>
@@ -481,19 +504,13 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
+                                        <th class="spot">名所</th>
+                                        <th class="content">紹介</th>
+                                        <th class="spot">名所</th>
+                                        <th class="content">紹介</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
+                                <tbody id="carw">
                                 </tbody>
                             </table>
                         </div>
@@ -551,9 +568,9 @@
       </tr>
       </c:forEach>
    </table>
-                        <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
-                        </div>
+<!--                         <div class="link-btn" id="updatebtn"> -->
+<!--                             <a href="#" ><i class="fas fa-reply"></i>Replay</a> -->
+<!--                         </div> -->
                     </div>
                 </div>
                 <div class="blog-left-title">

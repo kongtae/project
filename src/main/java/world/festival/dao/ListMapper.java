@@ -26,6 +26,6 @@ public interface ListMapper {
 
 	public ArrayList<ListVO> selectHashtag(String[] hashtag1);
 	
-	public ArrayList<ListVO> printAll22(HashMap<String, String> map);
+	public ArrayList<ListVO> printCrawling(ListVO vo);
 
 }

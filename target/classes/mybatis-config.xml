@@ -9,6 +9,8 @@
 	</settings>
 
 	<typeAliases>
+		<typeAlias type="world.festival.VO.AdminVO" alias="AdminVO" />
+		<typeAlias type="world.festival.VO.AdminListVO" alias="AdminListVO" />
 		<typeAlias type="world.festival.VO.UserVO" alias="UserVO" />
 		<typeAlias type="world.festival.VO.ListVO" alias="ListVO" />
 		<typeAlias type="world.festival.VO.MapVO" alias="MapVO" />
@@ -18,6 +20,7 @@
 		<typeAlias type="world.festival.VO.SearchFestivalVO" alias="SearchFestivalVO" />
 	</typeAliases>
 	<mappers>
+		<mapper resource="mapper/AdminMapper.xml" />
 		<mapper resource="mapper/UserMapper.xml" />
 		<mapper resource="mapper/ListMapper.xml" />
 		<mapper resource="mapper/MapMapper.xml" />
