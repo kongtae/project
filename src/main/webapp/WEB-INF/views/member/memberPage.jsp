@@ -77,7 +77,7 @@ function memberSelect(){
 			}
 		},
 		error : function() {
-			alert("실패");
+			alert("会員を見つけられませんでした。");
 		}
 	});
 	

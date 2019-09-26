@@ -139,15 +139,6 @@ public class ListService {
 		return true;
 	}
 
-	public ArrayList<ListVO> printAll22(String endEvent, String searchItem, String searchKeyword) {
-		HashMap<String, String> map = new HashMap<>();
-		map.put("searchItem", searchItem);
-		map.put("searchKeyword", searchKeyword);
 
-		map.put("endEvent", endEvent);
-		System.out.println(endEvent);
-		System.out.println("printAll22서비스의 맵이 다 처리 되었나 ?  : "+map);
-		return dao.printAll22(map);
-	}
 	
 }

@@ -103,7 +103,7 @@
 				}
 			},
 			error : function() {
-				alert("실패");
+				alert("該当作業に失敗しました。やり直してください。");
 			}
 		});
 	}
@@ -124,7 +124,7 @@
 				location.href ="memberPage";
 			},
 			error: function() {
-				alert("投稿ERROR");
+				alert("アップデートに失敗しました。");
 			}
 		});
 	}

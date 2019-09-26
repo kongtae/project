@@ -32,7 +32,19 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<beans:bean id="FestivalInterceptor" class="world.festival.controller.utill.FestivalInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/boardList"/>
+			<beans:ref bean="FestivalInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 
 	<context:component-scan
 		base-package="world.festival" />
+		
+	
 </beans:beans>

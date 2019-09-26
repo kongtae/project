@@ -143,10 +143,7 @@ public class BoardController {
 		}
 		System.out.println("a는? "+ a);
 		System.out.println("Board포문밖의 아이리스트" + ilist);
-		
 		System.out.println("아이리스트 [0] :" + ilist.get(0));
-		//System.out.println("아이리스트 [1] :" + ilist.get(1));
-		//System.out.println("아이리스트 [2] :" + ilist.get(2));
 
 		return ilist; 
 	}

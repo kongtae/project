@@ -2,12 +2,16 @@ package world.festival.controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.VO.WishVO;
+import world.festival.controller.utill.Selenium;
 import world.festival.dao.ListDAO;
 import world.festival.dao.WishDAO;
 import world.festival.service.ListService;
@@ -41,6 +45,7 @@ public class ListController {
 	@Autowired
 	private WishService wishsrvice;
 //	private ReplyService service;
+
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -114,7 +119,7 @@ public class ListController {
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
 		System.out.println("전체리스트 출력"+list);
-		return list;
+		return list;        //여기가 프린트올
 	}
 	
 
@@ -139,18 +144,7 @@ public class ListController {
 		return selectOne2;
 		}
 	
-	@RequestMapping(value = "/printAll22", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ArrayList<ListVO> printAll22(String endEvent,Model model,
-			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
-			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
-		System.out.println("printAll22  item "+searchItem);
-		System.out.println("printAll22  keyword "+searchKeyword);
-		System.out.println("printAll22  end "+endEvent);
-		ArrayList<ListVO> list = service.printAll22(endEvent,searchItem,searchKeyword);
-		System.out.println("printAll22  전체리스트 출력"+list);
-		// 여기 지울예정
-		return list;
-	}
+
 	
 	@RequestMapping(value = "/updateFestivalGO", method = RequestMethod.GET)
 	public String updateFestival(String mainBoardNum,Model model) {
@@ -233,4 +227,24 @@ public class ListController {
 		System.out.println("result : " + result);
 		return result;
 	}
+	
+	@RequestMapping(value = "/crawlingTest", method = RequestMethod.GET,
+			produces = "application/json; charset=utf8")
+	public @ResponseBody ArrayList<String> crawlingTest(ListVO vo) {
+		System.out.println("crawlingTest으로 갈 브이오 " + vo );
+		Selenium sel = new Selenium();
+		ArrayList<String> result =  sel.crawlingTest(vo);
+		System.out.println("크롤링 리절트 값 "+result);
+		System.out.println("0번째방 "+ result.get(0));
+		System.out.println("1번째방"+ result.get(1));
+		System.out.println("2번째방"+ result.get(2));
+		System.out.println("3번째방"+ result.get(3));
+		System.out.println("4번째방"+ result.get(4));
+		System.out.println("5번째방"+ result.get(5));
+		System.out.println("6번째방"+ result.get(6));
+		System.out.println("7번째방"+ result.get(7));
+
+		return result; 
+	}
+
 }

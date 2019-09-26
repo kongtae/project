@@ -64,15 +64,50 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 
+function checkValue() {
+	var title = document.getElementById("title");
+	var startEvent = document.getElementById("startEvent");
+	var endEvent = document.getElementById("endEvent");
+	var adress = document.getElementById("adress");
+	var country = document.getElementById("country");
+	var surround_place = document.getElementById("surround_place");
+	
+	if (title.value == '' || title.value.length == 0) {
+		alert('タイトルを入力してください。');
+		title.focus();
+		return false;
+	}
+	if (startEvent.value == '' || startEvent.value == null) {
+		alert('始まる日を入力してください。');
+		return false;
+	}
+	if (endEvent.value == '' || endEvent.value == null) {
+		alert('終わる日を入力してください。');
+		return false;
+	}
+	if (country.value == '' || country.value.length == 0) {
+		alert('国家名を入力してください。');
+		country.focus();
+		return false;
+	}
+	if (surround_place.value == '' || surround_place.value.length == 0 ){
+		alert('都市名を入力してください。');
+		surround_place.focus();
+		return false;
+	}
+	if (adress.value == '' || adress.value.length == 0) {
+		alert('住所を入力してください。');
+		adress.focus();
+		return false;
+	}
+}
 
 function writeFestival() {
 
+		checkValue();
+	
 		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
-	//	alert(formData);
-		
- 	//	var formdata2 = $("#writeFestivalID").serialize();
-		//alert(formdata2);
 		
 		$.ajax({
 			url:"writeFestival",
@@ -84,11 +119,11 @@ function writeFestival() {
 			dataType : 'text',
 			//cache: false,
 			success: function(data) {
-				alert("投稿完了");
+				alert("投稿を完了しまいた。");
 				location.href ="listForm";
 			},
 			error: function(request,status,error) {
-				alert("投稿ERROR");
+				alert("投稿に失敗しました。");
 				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
@@ -189,25 +224,6 @@ function writeFestival() {
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
-                    <!--Search Box Outer-->
-<!--                     <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                    
                 </div>
                
             </div>
@@ -292,11 +308,6 @@ function writeFestival() {
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
-                        <figure>
-                            <img src="resources/images/schedule-9.jpg" alt="" >
-                        </figure>
-                    </div> -->
                     <div id="preview">
                     </div><br>
                     <div id="preview2">
@@ -309,7 +320,9 @@ function writeFestival() {
 					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
 				<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-
+				<br><input type="button" onclick="delete1()" value="첫번째삭제">	
+				<br><input type="button" onclick="delete2()" value="두번째삭제">	
+				<br><input type="button" onclick="delete3()" value="세번째삭제">
                 <div class="box-footer">
               <div class="pull-right">
               <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
@@ -339,9 +352,10 @@ function writeFestival() {
   
 									
 									<table>	
-										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
+										<tr><td>祭りの開始日:<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
+										<tr><td>祭りの終了日:<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
+					             	都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
 					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
 					             	</table>
 					              </div>
@@ -350,29 +364,7 @@ function writeFestival() {
 					        </div>
 				</section>
 					
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
                     <!--Map Outer-->
                     <div class="map-outer">
                         <!--Map Canvas-->

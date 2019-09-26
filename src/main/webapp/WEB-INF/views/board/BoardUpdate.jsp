@@ -69,21 +69,13 @@ $(function () {
 	            	var arrNumber = new Array();
                   $.each(result,function(index,item){
 	            	arrNumber.push(item);
-                	alert("요기요"+arrNumber[index]);
                 	originalFileName = "resources/images/userimage/" +arrNumber[index];
                 	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
                   })
-	 				/* var originalFileName1 = "resources/images/userimage/" +arrNumber[0];
-	 				var originalFileName2 = "resources/images/userimage/" +arrNumber[1];
-	 				var originalFileName3 = "resources/images/userimage/" +arrNumber[2]; */
-                //  $('#preview1').append("<input type='image' src='"+originalFileName1+"'><br>");
-                //  $('#preview2').append("<input type='image' src='"+originalFileName2+"'><br>");
-                //  $('#preview3').append("<input type='image' src='"+originalFileName3+"'><br>");
                }
             },
             error : function() {
-//                alert("실패");
-               alert("이미지 로드 실패");
+               alert("イメージの読み込みに失敗しました。");
             }
          });
       }
@@ -102,12 +94,11 @@ function BoardUpdate() {
 			processData:false,
 			dataType : 'text',
 			success: function() {
-				alert("修正完了");
+				alert("修正を完了しました。");
 				location.href ="BoardDetailGO?bul_boardnum="+${vo.bul_boardnum};
 			},
-			error: function(request,status,error) {
-				alert("修正ERROR");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			error: function() {
+				alert("修正に失敗しました。");
 			}
 		});
 	} 
@@ -365,29 +356,7 @@ function BoardUpdate() {
 					      </div>
 					    </section>
 					</div>
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    
                     <!--Map Outer-->
                     <div class="map-outer">
                         <!--Map Canvas-->

@@ -67,12 +67,12 @@
 		data:$("#loginForm").serialize(),
 		type:"post",
 		success: function(data) {
-			alert("ログイン成功");
+			alert("ログインに成功しました。");
 			self.location.href = document.referrer;
 			
 		},
 		error: function() {
-			alert("ログイン失敗");
+			alert("ログインに失敗しました。");
 			}
 		});
 	} 

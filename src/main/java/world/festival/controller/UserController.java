@@ -42,6 +42,11 @@ public class UserController {
 		model.addAttribute("UserVO", vo);
 		return "member/loginForm2";
 	}
+	//인터셉터용 로그인폼2로가기위한 리퀘스트맵핑
+	@RequestMapping(value = "/interseptorLogin", method = RequestMethod.GET)
+	public String interseptorLogin(UserVO vo, Model model) {
+		return "member/loginForm2";
+	}
 
 	//중복체크
 	@ResponseBody

@@ -121,7 +121,6 @@ $(function() {
 		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
-		alert("게시글 수"+totalRecordCount);   // 나중 지울것
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -166,7 +165,6 @@ $(function() {
 			pageBlockCount = Math.ceil(page/pageBlock)
 			startPageGroup = ((page-1) * countPerPage);
 			endPageGroup = (startPageGroup + countPerPage);
-			alert("셀렉 게시글 수"+totalRecordCount);   //나중 지울것
 			
 			if(pageBlockCount > 1) {
 				spage = (pageBlockCount-1)*pageBlock+1;
@@ -221,6 +219,9 @@ $(function() {
 			item.endEvent=" ";
 			end = item.endEvent;
 		}
+	    if(item.adress==null||item.adress==""){
+	    	item.adress=" ";
+	    }
 			if(index>=startPageGroup && index<endPageGroup) {
 				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
@@ -326,9 +327,8 @@ $(function() {
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
 			dataType: 'json',
 			success : output1,
-			error: function(request,status,error) {
-				alert("리스트 불러오기 실패1");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			error: function() {
+				alert("リストの読み込みに失敗しました。");
 			}
 		})
 	}
@@ -364,7 +364,7 @@ $(function() {
 			data : { 'hashtag' : hashtag1 },
 			success : output1,
 			error: function() {
-				alert("리스트 불러오기 실패3");
+				alert("リストの読み込みに失敗しました。");
 			}
 		})
 	}
