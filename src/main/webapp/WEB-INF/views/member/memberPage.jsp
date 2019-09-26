@@ -11,7 +11,7 @@
 <!-- For IE -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>AdminLTE 2 | User Profile</title>
+<title>FESPEDIA | プロフィール</title>
 
 <!-- responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -540,37 +540,8 @@ function memberSelect(){
 					<!-- /.col -->
 					<div class="col-md-9">
 						<div class="nav-tabs-custom">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-								<li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-								<li><a href="#settings" data-toggle="tab">Settings</a></li>
-							</ul>
 							<div class="tab-content">
-								<div class="active tab-pane" id="activity">
-									<!-- Post -->
-									<c:forEach var="result" items="${list}" varStatus="status"  begin="0" > 
-									<div class="post">
-										<div class="user-block">
-<%-- 											<img class="img-circle img-bordered-sm" src="resources/images/userimage/${result.originalFileName}" alt="user image"> --%>
-												<span class="username">
-												 <a href="listDetailGO?mainBoardNum=${result.mainBoardNum}"> <c:out value="${result.title}"></c:out> </a>
-<!-- 												<a href="#" class="pull-right btn-box-tool"><i -->
-<!-- 													class="fa fa-times"></i></a> -->
-											</span>
-											 <span class="description"></span>
-										</div>
-										<!-- /.user-block -->
-										<p><c:out value="${result.festival_intro}"></c:out></p>
-										TITLE : <c:out value="${result.country}"></c:out> <br>
-										축제기간 : <c:out value="${result.startEvent}"></c:out> ~ 
-										<c:out value="${result.endEvent}"></c:out> <br>
-										ADDRESS : <c:out value="${result.adress}"></c:out> 
-
-									</div>
-										</c:forEach>
-								</div>
-								<!-- /.tab-pane -->
-								<div class="tab-pane" id="timeline">
+								<div class="active tab-pane" id="timeline">
 									<!-- The timeline -->
 									<ul class="timeline timeline-inverse">
 										<!-- timeline time label -->
@@ -657,66 +628,6 @@ function memberSelect(){
 										<!-- END timeline item -->
 										<li><i class="fa fa-clock-o bg-gray"></i></li>
 									</ul>
-								</div>
-								<!-- /.tab-pane -->
-
-								<div class="tab-pane" id="settings">
-									<form class="form-horizontal">
-										<div class="form-group">
-											<label for="inputName" class="col-sm-2 control-label">Name</label>
-
-											<div class="col-sm-10">
-												<input type="email" class="form-control" id="inputName"
-													placeholder="Name">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-											<div class="col-sm-10">
-												<input type="email" class="form-control" id="inputEmail"
-													placeholder="Email">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputName" class="col-sm-2 control-label">Name</label>
-
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputName"
-													placeholder="Name">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-											<div class="col-sm-10">
-												<textarea class="form-control" id="inputExperience"
-													placeholder="Experience"></textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-											<div class="col-sm-10">
-												<input type="text" class="form-control" id="inputSkills"
-													placeholder="Skills">
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-10">
-												<div class="checkbox">
-													<label> <input type="checkbox"> I agree to
-														the <a href="#">terms and conditions</a>
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-10">
-												<button type="submit" class="btn btn-danger">Submit</button>
-											</div>
-										</div>
-									</form>
 								</div>
 								<!-- /.tab-pane -->
 							</div>

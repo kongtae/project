@@ -25,7 +25,7 @@ public class SeleniumTest {
 	    
 	    //Properties
 	    public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	    public static final String WEB_DRIVER_PATH = "C:/Users/kita/Desktop/install/chromedriver_win32/chromedriver.exe";
+	    public static final String WEB_DRIVER_PATH = "C:/TeamProject/setupfiles/chromedriver_win32.exe";
 	    
 	    private String base_url;
 	    

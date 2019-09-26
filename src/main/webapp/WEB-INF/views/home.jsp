@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 
-<title>축제사이트!!</title>
+<title>FESPEDIA</title>
 <!-- responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -110,13 +110,8 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-<<<<<<< HEAD
-										<li class="dropdown"><a href="festival">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
-=======
 										<li class="dropdown"><a href="/festival">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
->>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461
 										<ul>
 											<li><a href="listForm">List</a></li>
 											<li><a href="listDetailForm">List Details</a></li>
