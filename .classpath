@@ -33,9 +33,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-=======
-
->>>>>>> 8568591e8c7a7359914634a26ae906d4e30b211e
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
