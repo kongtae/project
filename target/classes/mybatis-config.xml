@@ -11,6 +11,7 @@
 	<typeAliases>
 		<typeAlias type="world.festival.VO.AdminVO" alias="AdminVO" />
 		<typeAlias type="world.festival.VO.AdminListVO" alias="AdminListVO" />
+		<typeAlias type="world.festival.VO.AdminBoardVO" alias="AdminBoardVO" />
 		<typeAlias type="world.festival.VO.UserVO" alias="UserVO" />
 		<typeAlias type="world.festival.VO.ListVO" alias="ListVO" />
 		<typeAlias type="world.festival.VO.MapVO" alias="MapVO" />
@@ -29,5 +30,6 @@
 		<mapper resource="mapper/CalendarMapper.xml" />
 		<mapper resource="mapper/BoardMapper.xml" />
 		<mapper resource="mapper/SearchFestivalMapper.xml" />
+		<mapper resource="mapper/tourAPIMapper.xml" />
 	</mappers> 
 </configuration>

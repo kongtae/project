@@ -31,15 +31,15 @@
 
 <style>
 .infoboxes article {
-   color: #191919;
-   background-color: rgba(255, 255, 255, .65);
+	color: #191919;
+	background-color: rgba(255, 255, 255, .65);
 }
 .infoboxes article:hover {
-   background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 .infoboxes article .fa {
-   color: #FFFFFF;
-   background-color: #CF4845;
+	color: #FFFFFF;
+	background-color: #CF4845;
 }
 .pagination {
    display: inline;
@@ -49,24 +49,24 @@
    padding-top: 4%;
 }
 .pagination li {
-   display: inline-block;
-   margin: 0 2px 0 0;
+	display: inline-block;
+	margin: 0 2px 0 0;
 }
 .pagination li:last-child {
-   margin-right: 0;
+	margin-right: 0;
 }
 .pagination a, .pagination strong {
-   display: block;
-   padding: 8px 11px;
-   border: 1px solid;
-   background-clip: padding-box;
-   font-weight: normal;
-   color: #fa334f;
+	display: block;
+	padding: 8px 11px;
+	border: 1px solid;
+	background-clip: padding-box;
+	font-weight: normal;
+	color: #fa334f;
 }
 #div_icontext {
-   display: flex;
-   justify-content: flex-end;
-   width: 83%;
+	display: flex;
+	justify-content: flex-end;
+	width: 83%;
 }
 /* #icontext {
    padding: 1.5%;
@@ -94,21 +94,21 @@ var endPageGroup = '';
 var spage, epage;
 
 function setPage() {
-   if(page == '' || page < 0){page = 1;}
-   startPageGroup = ((page-1)*countPerPage);
-   endPageGroup = (startPageGroup + countPerPage);
+	if(page == '' || page < 0){page = 1;}
+	startPageGroup = ((page-1)*countPerPage);
+	endPageGroup = (startPageGroup + countPerPage);
 }
 
 $(function() {
-      setPage();
-      printAll();
+		setPage();
+		printAll();
 
-      $("searchBtn").on('click', function() {
-         page = 0;
-         setPage();      
-   })
+		$("searchBtn").on('click', function() {
+			page = 0;
+			setPage();		
+	})
 })
-      
+
     function printAll() {
       
       $.ajax({
@@ -398,7 +398,6 @@ $(function() {
 		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
-		alert("게시글 수"+totalRecordCount);   // 나중 지울것
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -443,7 +442,6 @@ $(function() {
 			pageBlockCount = Math.ceil(page/pageBlock)
 			startPageGroup = ((page-1) * countPerPage);
 			endPageGroup = (startPageGroup + countPerPage);
-			alert("셀렉 게시글 수"+totalRecordCount);   //나중 지울것
 			
 			if(pageBlockCount > 1) {
 				spage = (pageBlockCount-1)*pageBlock+1;
@@ -481,6 +479,7 @@ $(function() {
 		   		selectOne();
 		   	});	
 		}  
+	 
 		
 	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
@@ -496,6 +495,9 @@ $(function() {
 			item.endEvent=" ";
 			end = item.endEvent;
 		}
+	    if(item.adress==null||item.adress==""){
+	    	item.adress=" ";
+	    }
 			if(index>=startPageGroup && index<endPageGroup) {
 				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
@@ -505,6 +507,8 @@ $(function() {
 			}
 		});
 		$("#list").html(context);
+		
+
 	} 
 	
 	function navSet(totalPageCount){
@@ -591,6 +595,7 @@ $(function() {
 				return false;
 			}
 		}
+
 		
 		$.ajax({
 			type:'POST',
@@ -598,12 +603,12 @@ $(function() {
 			data: {'searchItem':searchItem,'searchKeyword':searchKeyword,'endEvent':endEvent},
 			dataType: 'json',
 			success : output1,
-			error: function(request,status,error) {
-				alert("리스트 불러오기 실패1");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+			error: function() {
+				alert("リストの読み込みに失敗しました。");
 			}
 		})
 	}
+	
 	   var hashtag1 = "";
 	
 	function selectHashtag(searchKeyword){
@@ -617,7 +622,7 @@ $(function() {
 		alert("key : "+ key);
 		var a = key.indexOf('(')+1;
 		var b = key.indexOf(')');
-    	var key1 = key.substring(a,b);
+    	var key1 = key.substring(a,b); 
 		var key2 = key1;
     	key1 = "#"+key1+",";
     	alert("key1 : "+key1);
@@ -635,7 +640,7 @@ $(function() {
 			data : { 'hashtag' : hashtag1 },
 			success : output1,
 			error: function() {
-				alert("리스트 불러오기 실패3");
+				alert("リストの読み込みに失敗しました。");
 			}
 		})
 	}
@@ -647,12 +652,12 @@ $(function() {
 </head>
 <body>
 <c:choose>
-   <c:when test="${deleteResult == true}">
-      <script>alert("削除に成功しました。");</script>
-   </c:when>
-   <c:when test="${deleteResult == false}">
-      <script>alert("削除に失敗しました。");</script>
-   </c:when>
+	<c:when test="${deleteResult == true}">
+		<script>alert("削除に成功しました。");</script>
+	</c:when>
+	<c:when test="${deleteResult == false}">
+		<script>alert("削除に失敗しました。");</script>
+	</c:when>
 </c:choose>
     
 <div class="boxed_wrapper">
@@ -740,10 +745,10 @@ $(function() {
                         </div>
                     </nav>
                     
-               <!--Button Box-->
-               <div class="button-box">
-                  <a href="#" class="theme-btn btn-style-one">Search Festival</a>
-               </div>
+					<!--Button Box-->
+					<div class="button-box">
+						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+					</div>
                     
                 </div>
             </div>
@@ -770,26 +775,26 @@ $(function() {
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                     <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
-                           <ul>
-                              <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
-                           <ul>
-                              <li><a href="calendar">Calendar</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
-                           <ul>
-                              <li><a href="#">Map</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="boardList">Board</a>
-                           <ul>
-                              <li><a href="boardList">Board</a></li>
-                           </ul></li>
-                     </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="boardList">Board</a>
+									<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+							</ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -816,8 +821,7 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-      
-
+		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
     <div class="container">
@@ -868,6 +872,7 @@ $(function() {
 									</div>
 								</form>
 							</div>
+							
 							<!--  -->
                
                <%-- <table>

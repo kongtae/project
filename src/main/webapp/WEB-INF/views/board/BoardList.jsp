@@ -108,7 +108,7 @@
 				dataType: 'json',
 				success : output,
 				error: function() {
-					alert("전체 리스트 불러오기 실패");
+					alert("リストの読み込みに失敗しました。");
 				}
 			});
 		}
@@ -119,7 +119,6 @@
 				pageBlockCount = Math.ceil(page/pageBlock);
 				startPageGroup = ((page-1) * countPerPage);
 				endPageGroup = (startPageGroup + countPerPage);
-				alert("게시글 수"+totalRecordCount); 
 				
 				if(pageBlockCount > 1) {
 					spage = (pageBlockCount-1)*pageBlock+1;
@@ -133,8 +132,6 @@
 					epage = pageBlockCount*pageBlock;
 				}
 				
-				//alert("시작블락"+spage);
-				//alert("마지막블락"+epage);
 				navSet(totalPageCount, spage, epage);
 				tagSet(result, startPageGroup, endPageGroup);
 				
@@ -166,7 +163,6 @@
 					pageBlockCount = Math.ceil(page/pageBlock)
 					startPageGroup = ((page-1) * countPerPage);
 					endPageGroup = (startPageGroup + countPerPage);
-					alert("셀렉 게시글 수"+totalRecordCount); 
 					
 					if(pageBlockCount > 1) {
 						spage = (pageBlockCount-1)*pageBlock+1;
@@ -180,8 +176,7 @@
 						epage = pageBlockCount*pageBlock;
 					}
 					
-					//alert("시작블락"+spage);
-					//alert("마지막블락"+epage);
+					
 					navSet(totalPageCount, spage, epage);
 					tagSet(result, startPageGroup, endPageGroup);
 					
@@ -289,9 +284,8 @@
 					data: {'searchItem':searchItem,'searchKeyword':searchKeyword},
 					dataType: 'json',
 					success : output1,
-					error: function(request,status,error) {
-						alert("리스트 불러오기 실패1");
-						alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+					error: function() {
+						alert("リストの読み込みに失敗しました。");
 					}
 				})
 			}
@@ -338,15 +332,23 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-							<li><a href="adminPage">AdminPage</a></li>
-						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign Up</a></li>
-							<li><a href="loginForm">Sign in</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout" >Logout</a></li>
-						</c:if>
+						<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
 					</ul>
                 </div>
             </div>

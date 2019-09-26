@@ -53,7 +53,7 @@ public class ListDAO {
 		return mapper.deleteFestival(vo);
 	}
 
-	public ListVO readFestival(String mainBoardNum) {
+	public ListVO readFestival(int mainBoardNum) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.readFestival(mainBoardNum);
 	}
@@ -80,9 +80,10 @@ public class ListDAO {
 		return mapper.selectHashtag(hashtag1);
 	}
 	
-	public ArrayList<ListVO> printAll22(HashMap<String, String> map) {
+
+	public ArrayList<ListVO> printCrawling(ListVO vo) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
-		return mapper.printAll22(map);
+		return mapper.printCrawling(vo);
 	}
 
 

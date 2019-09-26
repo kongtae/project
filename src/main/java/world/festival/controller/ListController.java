@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import world.festival.VO.AdminListVO;
-import world.festival.VO.AdminVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.VO.WishVO;
+import world.festival.controller.utill.Selenium;
+import world.festival.VO.AdminListVO;
 import world.festival.dao.AdminDAO;
 import world.festival.dao.ListDAO;
 import world.festival.dao.WishDAO;
@@ -35,22 +35,20 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
-	@Autowired
-	private WishDAO wishdao;
+
 	
 	@Autowired
 	private ListService service;
 	
 	@Autowired
 	private WishService wishsrvice;
-	
-	@Autowired
-	private AdminDAO admindao;
+
 	
 	@Autowired
 	private AdminService adminservice;
 	
 //	private ReplyService service;
+
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
@@ -95,6 +93,11 @@ public class ListController {
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		boolean result = service.updateFestival(vo,request);
 		System.out.println("result:"+result);
+		
+		AdminListVO adminlist= adminservice.selectupList(vo.getMainBoardNum());
+		adminlist.setDatacheck("feupdate");
+		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
+		adminservice.AdminwriteFestival(adminlist, request);
 		return "success"; 
 	}
 	
@@ -104,7 +107,7 @@ public class ListController {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
 		vo.setUserid(userid);
-		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
+		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
 		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
@@ -122,7 +125,7 @@ public class ListController {
 		}
 		model.addAttribute("like", like);
 		//좋아요 갯수 판단
-		ArrayList<WishVO> wishlist=wishsrvice.wishList(Integer.parseInt(vo.getMainBoardNum()));
+		ArrayList<WishVO> wishlist=wishsrvice.wishList(vo.getMainBoardNum());
 		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}
@@ -131,7 +134,7 @@ public class ListController {
 	public @ResponseBody ArrayList<ListVO> printAll() {
 		ArrayList<ListVO> list = dao.printAll();
 		System.out.println("전체리스트 출력"+list);
-		return list;
+		return list;        //여기가 프린트올
 	}
 	
 
@@ -156,21 +159,10 @@ public class ListController {
 		return selectOne2;
 		}
 	
-	@RequestMapping(value = "/printAll22", method = {RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody ArrayList<ListVO> printAll22(String endEvent,Model model,
-			@RequestParam(value="searchItem",defaultValue="title")String searchItem,
-			@RequestParam(value="searchKeyword",defaultValue="")String searchKeyword) {
-		System.out.println("printAll22  item "+searchItem);
-		System.out.println("printAll22  keyword "+searchKeyword);
-		System.out.println("printAll22  end "+endEvent);
-		ArrayList<ListVO> list = service.printAll22(endEvent,searchItem,searchKeyword);
-		System.out.println("printAll22  전체리스트 출력"+list);
-		// 여기 지울예정
-		return list;
-	}
+
 	
 	@RequestMapping(value = "/updateFestivalGO", method = RequestMethod.GET)
-	public String updateFestival(String mainBoardNum,Model model) {
+	public String updateFestival(int mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);
 		System.out.println("수정할 페이지 찾았나? "+vo);
@@ -180,9 +172,16 @@ public class ListController {
 	
 	@RequestMapping(value = "/deleteFestival", method = RequestMethod.GET)
 	public String deleteFestival(ListVO vo,RedirectAttributes rttr) {
+		AdminListVO adminvo=adminservice.selectupList(vo.getMainBoardNum());
+		adminvo.setDatacheck("fedelete");
+		System.out.println("잘 찾와왔느지 확인");
+		adminservice.AdminwriteFestival(adminvo);
+		
 		System.out.println("삭제할 vo "+vo);
 		boolean result = service.deleteFestival(vo);
 		System.out.println("삭제된VO "+result);
+		
+		
 		return "redirect:/listForm"; 
 	}
 //	좋아요를 하고싶다!!!	
@@ -230,14 +229,15 @@ public class ListController {
 		ListVO lvo = dao.imagePrint(vo);
 		System.out.println("lvo : " + lvo);
 		ArrayList<String> ilist = new ArrayList<>();
-		String a[] = lvo.getOriginalFileName().split(",");
-		for (int i = 0; i < a.length; i++) {
-			ilist.add(a[i]);
-			System.out.println("포문안에 아이리스트"+ilist);
+		if(lvo != null) {
+			String a[] = lvo.getOriginalFileName().split(",");
+			for (int i = 0; i < a.length; i++) {
+				ilist.add(a[i]);
+				System.out.println("포문안에 아이리스트"+ilist);
+			}
+			System.out.println("a는? "+ a);
+			System.out.println("포문밖의 아이리스트" + ilist);			
 		}
-		System.out.println("a는? "+ a);
-		System.out.println("포문밖의 아이리스트" + ilist);
-		
 		return ilist; 
 	}
 	
@@ -251,4 +251,24 @@ public class ListController {
 		System.out.println("result : " + result);
 		return result;
 	}
+	
+	@RequestMapping(value = "/crawlingTest", method = RequestMethod.GET,
+			produces = "application/json; charset=utf8")
+	public @ResponseBody ArrayList<String> crawlingTest(ListVO vo) {
+		System.out.println("crawlingTest으로 갈 브이오 " + vo );
+		Selenium sel = new Selenium();
+		ArrayList<String> result =  sel.crawlingTest(vo);
+		System.out.println("크롤링 리절트 값 "+result);
+		System.out.println("0번째방 "+ result.get(0));
+		System.out.println("1번째방"+ result.get(1));
+		System.out.println("2번째방"+ result.get(2));
+		System.out.println("3번째방"+ result.get(3));
+		System.out.println("4번째방"+ result.get(4));
+		System.out.println("5번째방"+ result.get(5));
+		System.out.println("6번째방"+ result.get(6));
+		System.out.println("7번째방"+ result.get(7));
+
+		return result; 
+	}
+
 }

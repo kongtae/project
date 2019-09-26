@@ -56,8 +56,7 @@
 	               }
 	            },
 	            error : function() {
-//	                alert("실패");
-	               alert("이미지 로드 실패");
+	               alert("イメージの読み込みに失敗しました。");
 	            }
 	         });
 	      }
@@ -78,12 +77,12 @@
 		
 		if(replytext.value.length==0)
 		{
-			alert("글을 입력해주세요");
+			alert("コメントの内容を入力してください。");
 			return false;	
 		}
 		if(userid.length=="")
 		{
-			alert("로그인을 먼저 해주세요.");
+			alert("ログインをお先にしてください。");
 			return false;
 		}
 			document.getElementById("replywriteBoard").submit();
@@ -105,11 +104,10 @@
   					replynum : replynum
   				},
   				success:function(){
-//   					alert("삭제성공")
   					refreshMemList();
   				},
   				error: function(){
-//   					alert("삭제 실패")
+   					alert("削除に失敗しました");
   				}
   				
   			});
@@ -176,15 +174,23 @@
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-							<li><a href="adminPage">AdminPage</a></li>
-						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign Up</a></li>
-							<li><a href="loginForm">Sign in</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout" >Logout</a></li>
-						</c:if>
+							<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
 					</ul>
                 </div>
             </div>
@@ -380,29 +386,7 @@
                         </div>
                         </div>
         			 </div>
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                  
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
@@ -576,7 +560,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("없는 주소입니다.");
+            alert("住所を正しく入力してください。");
           }
         });
       }
