@@ -1,4 +1,4 @@
-package world.festival.controller.WebCrawling;
+package world.festival.controller.utill;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
