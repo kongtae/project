@@ -439,9 +439,9 @@
 
                             </div>
                              
-                            <c:if test="${sessionScope.loginid !=null}">
+                            <c:if test="${sessionScope.adminid !=null}">
                                <div align="right">
-                               <input type="button" value="修正" onclick="UpdateFestival()">
+                               <input type="button" value="復旧" onclick="ListRecovery()">
                                <input type="button" value="削除" onclick="DeleteFestival()">
                      </div>
                      </c:if>                          
