@@ -49,7 +49,13 @@
             success : function(result) {
                if(result != null) {
                   $.each(result,function(index,item){
+                	  if(item.substring(0,1) == 'h'){
+                		  originalFileName = item;
+                	  }else if(item == null){                		  
+						return false;
+                	  }else{
                      originalFileName = "resources/images/userimage/" +item;
+                	  }
                    $('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
                   })
                }

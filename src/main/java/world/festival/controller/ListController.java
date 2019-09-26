@@ -212,14 +212,15 @@ public class ListController {
 		ListVO lvo = dao.imagePrint(vo);
 		System.out.println("lvo : " + lvo);
 		ArrayList<String> ilist = new ArrayList<>();
-		String a[] = lvo.getOriginalFileName().split(",");
-		for (int i = 0; i < a.length; i++) {
-			ilist.add(a[i]);
-			System.out.println("포문안에 아이리스트"+ilist);
+		if(lvo != null) {
+			String a[] = lvo.getOriginalFileName().split(",");
+			for (int i = 0; i < a.length; i++) {
+				ilist.add(a[i]);
+				System.out.println("포문안에 아이리스트"+ilist);
+			}
+			System.out.println("a는? "+ a);
+			System.out.println("포문밖의 아이리스트" + ilist);			
 		}
-		System.out.println("a는? "+ a);
-		System.out.println("포문밖의 아이리스트" + ilist);
-		
 		return ilist; 
 	}
 	

@@ -26,5 +26,6 @@
 		<mapper resource="mapper/CalendarMapper.xml" />
 		<mapper resource="mapper/BoardMapper.xml" />
 		<mapper resource="mapper/SearchFestivalMapper.xml" />
+		<mapper resource="mapper/tourAPIMapper.xml" />
 	</mappers> 
 </configuration>
