@@ -35,17 +35,14 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
-	@Autowired
-	private WishDAO wishdao;
+
 	
 	@Autowired
 	private ListService service;
 	
 	@Autowired
 	private WishService wishsrvice;
-	
-	@Autowired
-	private AdminDAO admindao;
+
 	
 	@Autowired
 	private AdminService adminservice;
@@ -95,6 +92,11 @@ public class ListController {
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		boolean result = service.updateFestival(vo,request);
 		System.out.println("result:"+result);
+		
+		AdminListVO adminlist= adminservice.selectupList(vo.getMainBoardNum());
+		adminlist.setDatacheck("feupdate");
+		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
+		adminservice.AdminwriteFestival(adminlist, request);
 		return "success"; 
 	}
 	
@@ -104,7 +106,7 @@ public class ListController {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
 		vo.setUserid(userid);
-		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
+		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
 		System.out.println("댓글 리스트 "+replylist);
 		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
@@ -122,7 +124,7 @@ public class ListController {
 		}
 		model.addAttribute("like", like);
 		//좋아요 갯수 판단
-		ArrayList<WishVO> wishlist=wishsrvice.wishList(Integer.parseInt(vo.getMainBoardNum()));
+		ArrayList<WishVO> wishlist=wishsrvice.wishList(vo.getMainBoardNum());
 		model.addAttribute("wishlist", wishlist.size());
 		return "list/ListDetail";
 	}
@@ -170,7 +172,7 @@ public class ListController {
 	}
 	
 	@RequestMapping(value = "/updateFestivalGO", method = RequestMethod.GET)
-	public String updateFestival(String mainBoardNum,Model model) {
+	public String updateFestival(int mainBoardNum,Model model) {
 		System.out.println("메인보드넘 들어왔나? "+mainBoardNum);
 		ListVO vo = dao.readFestival(mainBoardNum);
 		System.out.println("수정할 페이지 찾았나? "+vo);
@@ -180,9 +182,16 @@ public class ListController {
 	
 	@RequestMapping(value = "/deleteFestival", method = RequestMethod.GET)
 	public String deleteFestival(ListVO vo,RedirectAttributes rttr) {
+		AdminListVO adminvo=adminservice.selectupList(vo.getMainBoardNum());
+		adminvo.setDatacheck("fedelete");
+		System.out.println("잘 찾와왔느지 확인");
+		adminservice.AdminwriteFestival(adminvo);
+		
 		System.out.println("삭제할 vo "+vo);
 		boolean result = service.deleteFestival(vo);
 		System.out.println("삭제된VO "+result);
+		
+		
 		return "redirect:/listForm"; 
 	}
 //	좋아요를 하고싶다!!!	

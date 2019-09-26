@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import world.festival.VO.AdminBoardVO;
 import world.festival.VO.BoardVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
@@ -66,6 +67,7 @@ public class BoardDAO {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		return mapper.imagePrintBoard(vo);
 	}
+
 
 
 

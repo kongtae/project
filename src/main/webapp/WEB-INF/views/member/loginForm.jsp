@@ -68,8 +68,8 @@
 		type:"post",
 		success: function(data) {
 			alert("ログイン成功");
-			self.location.href = document.referrer;
-			
+// 			self.location.href = document.referrer;
+			window.location = data;
 		},
 		error: function() {
 			alert("ログイン失敗");

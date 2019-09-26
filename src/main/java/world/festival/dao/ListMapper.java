@@ -18,7 +18,7 @@ public interface ListMapper {
 
 	public int deleteFestival(ListVO vo);
 
-	public ListVO readFestival(String mainBoardNum);
+	public ListVO readFestival(int mainBoardNum);
 
 	public int updateFestival(ListVO vo);
 

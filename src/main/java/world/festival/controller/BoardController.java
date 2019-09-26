@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import world.festival.VO.AdminBoardVO;
+import world.festival.VO.AdminListVO;
 import world.festival.VO.BoardVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.ReplyVO;
 import world.festival.dao.BoardDAO;
+import world.festival.service.AdminService;
 import world.festival.service.BoardService;
 
 
@@ -30,6 +33,10 @@ public class BoardController {
 
 	@Autowired
 	private BoardDAO dao;
+	
+	@Autowired
+	private AdminService adminservice;
+	
 
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
 	public String boardList() {
@@ -60,9 +67,15 @@ public class BoardController {
 		System.out.println("boardUpdate 진짜 실행 할 거다! 업데이트할 보드 부이오"+vo);
 		boolean result = service.boardUpdate(vo,request);
 		System.out.println("boardUpdate 진짜 실행했다! 그 결과 값은??" + result);
+		
+		AdminBoardVO adminlist= adminservice.selectupBoard(vo.getBul_boardnum());
+		adminlist.setDatacheck("bulupdate");
+		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
+		adminservice.AdminBoardWrite(adminlist, request);
+		
 		return "success";
 	}
-	
+	//admin도 같이 등록 되게 추가
 	@RequestMapping(value = "/BoardWrite", method = RequestMethod.POST)
 	@ResponseBody
 	public String BoardWrite(BoardVO vo, HttpSession session, MultipartHttpServletRequest request) {
@@ -71,6 +84,13 @@ public class BoardController {
 		System.out.println("보드라이트의 vo : "+vo);
 		boolean result = service.BoardWrite(vo,request);
 		System.out.println("보드 인설트 result:"+result);
+		
+		
+		//자유게시판을 찾아와서 admin에 추가
+		AdminBoardVO adminvo = adminservice.selectBul();
+		System.out.println("잘 찾아 왔는지 확인"+adminvo);
+		adminvo.setDatacheck("bulinsert");
+		adminservice.AdminBoardWrite(adminvo, request);
 		return "success";
 	}
 	@RequestMapping(value = "/boardPrintAll", method = {RequestMethod.GET, RequestMethod.POST})
@@ -122,6 +142,11 @@ public class BoardController {
 	public String BoardDelete(BoardVO vo, HttpSession hs) {
 		String userid=(String)hs.getAttribute("loginid");
 		vo.setUserid(userid);
+		AdminBoardVO adminlist = adminservice.selectupBoard(vo.getBul_boardnum());
+		adminlist.setDatacheck("buldelete");
+		adminservice.AdminBoardWrite(adminlist);
+		
+		
 		System.out.println("삭제할 vo "+vo);
 		int result = dao.BoardDelete(vo);
 		System.out.println("삭제결과 :  "+result);

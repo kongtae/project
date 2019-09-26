@@ -53,7 +53,7 @@ public class ListDAO {
 		return mapper.deleteFestival(vo);
 	}
 
-	public ListVO readFestival(String mainBoardNum) {
+	public ListVO readFestival(int mainBoardNum) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
 		return mapper.readFestival(mainBoardNum);
 	}

@@ -636,7 +636,6 @@ $(function() {
 	function change(){
 		page=1;
 	}
->>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461
 </script>
 </head>
 <body>
@@ -671,30 +670,27 @@ $(function() {
                     </ul>
                 </div>
                 <!--Top Right-->
-               <div class="top-right">
-               <!--Social Box-->
-               <ul class="social-box">
-                  <c:if test="${sessionScope.loginid == null}">
-                     <li><a href="registermember">Sign Up</a></li>
-                     <li><a href="loginForm">Sign in</a></li>
-                  </c:if>
-                  <c:if test="${sessionScope.loginid != null}">
-                     <li><a href="memberPage">UserPage</a></li>
-                     <li><a href="logout" >Logout</a></li>
-                  </c:if>
-               </ul>
+
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-							<li><a href="adminPage">AdminPage</a></li>
-						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign Up</a></li>
-							<li><a href="loginForm">Sign in</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout" >Logout</a></li>
-						</c:if>
+								<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
 					</ul>
                 </div>
             </div>
@@ -723,26 +719,7 @@ $(function() {
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                     <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
-                           <ul>
-                              <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
-                           <ul>
-                              <li><a href="calendar">Calendar</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
-                           <ul>
-                              <li><a href="#">Map</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="boardList">Board</a>
-                           <ul>
-                              <li><a href="boardList">Board</a></li>
-                           </ul></li>
-                     </ul>
+
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
@@ -843,14 +820,16 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
+<!-- <<<<<<< HEAD -->
       
       
-      <!--End Schedule Section-->
-<section class="schedule-section" id="schedule-tab">
-   <div id="div_icontext">
-      <h4 id="icontext"><b>投稿する</b></h4>
-      <a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-   </div>
+<!--       End Schedule Section -->
+<!-- <section class="schedule-section" id="schedule-tab"> -->
+<!--    <div id="div_icontext"> -->
+<!--       <h4 id="icontext"><b>投稿する</b></h4> -->
+<!--       <a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
+<!--    </div> -->
+<!-- ======= -->
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
@@ -860,6 +839,7 @@ $(function() {
 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
 		</c:if>
 	</div>
+<!-- >>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461 -->
     <div class="container">
           <div class="schedule-area">
             <div class="schedule-content clearfix">

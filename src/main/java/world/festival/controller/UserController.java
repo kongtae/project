@@ -75,12 +75,12 @@ public class UserController {
 		if(adminvo.getUserid().length()==2 )
 		{
 			admindao.selectadmin(adminvo,session);
-			return "admin";
+			return "/festival";
 		}
 		UserVO result = dao.selectOne(vo, session);
 		System.out.println("로그인 vo값 " + vo);
 		System.out.println("로그인 result값 " + result);
-		return "success";
+		return "/festival";
 	}
 	
 
@@ -105,13 +105,8 @@ public class UserController {
 		return "member/memberPage";
 	}
 	
-	//어드민 페이지!
-	@RequestMapping(value = "/adminPage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String adminPage(HttpSession session,ListVO listvo,Model model) {
-		String adminid=(String)session.getAttribute("adminid");
-		System.out.println(adminid);
-		return "admin/adminPage";
-	}
+	
+	
 	//회원정보 수정 창으로 이동
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.GET)
 	public String memberUpdate() {

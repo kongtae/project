@@ -49,7 +49,7 @@
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
 									info@wiscon.com</li>
-								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location  ${sessionScope.adminid} +ds</strong>
 									49 BelWest Lane, TX 26098</li>
 							</ul>
 						</div>
@@ -57,6 +57,7 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
+								
 								<c:if test="${sessionScope.loginid == null}" >
 									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
@@ -70,7 +71,8 @@
 								</c:if>
 								
 								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminPage">AdminPage</a></li>
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
 								
@@ -110,13 +112,9 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-<<<<<<< HEAD
-										<li class="dropdown"><a href="festival">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
-=======
+
 										<li class="dropdown"><a href="/festival">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
->>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461
 										<ul>
 											<li><a href="listForm">List</a></li>
 											<li><a href="listDetailForm">List Details</a></li>
