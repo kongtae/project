@@ -76,6 +76,7 @@ public class ListController {
 		vo.setUserid(userid);
 		System.out.println("인설트VO: "+vo);
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
+		System.out.println("hashtag : "+vo.getHashtag());
 		boolean result = service.writeFestival(vo,request);
 		System.out.println("result:"+result);
 		
@@ -104,6 +105,12 @@ public class ListController {
 	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
+		String hashtag = vo1.getHashtag();
+		int i = hashtag.lastIndexOf(',');
+		hashtag = hashtag.replace(hashtag.substring(i), "");
+	System.out.println("hashtag = "+hashtag);
+		vo1.setHashtag(hashtag);
+		System.out.println(vo1.getHashtag());
 		vo.setUserid(userid);
 		ArrayList<ReplyVO> replylist=service.replyList(Integer.parseInt(vo.getMainBoardNum()));
 		System.out.println("댓글 리스트 "+replylist);

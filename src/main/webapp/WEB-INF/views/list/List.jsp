@@ -636,7 +636,6 @@ $(function() {
 	function change(){
 		page=1;
 	}
->>>>>>> 6a2d5db4016eabc21a04677d9c4df4bf8ebc2461
 </script>
 </head>
 <body>

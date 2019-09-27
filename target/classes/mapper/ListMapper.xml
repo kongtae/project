@@ -9,7 +9,7 @@
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
 
-		MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName)
+		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
 	VALUES (
 		mainboard_seq.nextval,
 		#{title},
@@ -28,6 +28,7 @@
 			,null
 			</otherwise>
 		</choose>
+		,#{hashtag}
 
 	)
 	

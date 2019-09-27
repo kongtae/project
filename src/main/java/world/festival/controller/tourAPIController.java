@@ -91,7 +91,7 @@ public class tourAPIController {
 	public int tourAPIinsert(@RequestBody ArrayList<ListVO> list) {
 		
 		
-		int i = 200;
+		int i = 300;
 		for (ListVO vo : list) {
 			//vo.setStartEvent();
 			vo.setMainBoardNum(Integer.toString(i));
