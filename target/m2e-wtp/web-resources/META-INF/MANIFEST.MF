@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: kita
-=======
-Built-By: mac
->>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 Build-Jdk: 1.8.0_202
 Created-By: Maven Integration for Eclipse
 
