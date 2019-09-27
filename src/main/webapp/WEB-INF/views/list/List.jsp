@@ -8,69 +8,76 @@
 
     <meta charset="UTF-8">
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA | リスト</title>
+    <!-- search -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet" />
+    <link href="resources/css/main.css" rel="stylesheet" />
     
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <!-- master stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
 <style>
 .infoboxes article {
-   color: #191919;
-   background-color: rgba(255, 255, 255, .65);
+	color: #191919;
+	background-color: rgba(255, 255, 255, .65);
 }
 .infoboxes article:hover {
-   background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 .infoboxes article .fa {
-   color: #FFFFFF;
-   background-color: #CF4845;
+	color: #FFFFFF;
+	background-color: #CF4845;
 }
 .pagination {
-   display: block;
+   display: inline;
    width: 100%;
    text-align: center;
    clear: both;
+   padding-top: 4%;
 }
 .pagination li {
-   display: inline-block;
-   margin: 0 2px 0 0;
+	display: inline-block;
+	margin: 0 2px 0 0;
 }
 .pagination li:last-child {
-   margin-right: 0;
+	margin-right: 0;
 }
 .pagination a, .pagination strong {
-   display: block;
-   padding: 8px 11px;
-   border: 1px solid;
-   background-clip: padding-box;
-   font-weight: normal;
-   color: #fa334f;
+	display: block;
+	padding: 8px 11px;
+	border: 1px solid;
+	background-clip: padding-box;
+	font-weight: normal;
+	color: #fa334f;
 }
 #div_icontext {
-   display: flex;
-   justify-content: flex-end;
-   width: 83%;
+	display: flex;
+	justify-content: flex-end;
+	width: 83%;
 }
-#icontext {
+/* #icontext {
    padding: 1.5%;
    padding-rigth: 2px;
    padding-left: 2px;
    font-family: 'Robtoto', sans-serif;
    font-size: 30px;
    color: #fa334f;
+} */
+#hash {
+	text-align: center;
 }
 </style>
 </head>
@@ -87,21 +94,21 @@ var endPageGroup = '';
 var spage, epage;
 
 function setPage() {
-   if(page == '' || page < 0){page = 1;}
-   startPageGroup = ((page-1)*countPerPage);
-   endPageGroup = (startPageGroup + countPerPage);
+	if(page == '' || page < 0){page = 1;}
+	startPageGroup = ((page-1)*countPerPage);
+	endPageGroup = (startPageGroup + countPerPage);
 }
 
 $(function() {
-      setPage();
-      printAll();
+		setPage();
+		printAll();
 
-      $("searchBtn").on('click', function() {
-         page = 0;
-         setPage();      
-   })
+		$("searchBtn").on('click', function() {
+			page = 0;
+			setPage();		
+	})
 })
-      
+
     function printAll() {
       
       $.ajax({
@@ -311,7 +318,7 @@ $(function() {
       }
 
       if(searchItem=="hashSearch"){
-         $('#hash').append("<span>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
+         $('#hash').append("<span class='span'>"+searchKeyword+"<button id='xbtn' value="+searchKeyword+">X</button></span>");
          selectHashtag(searchKeyword);
          return false;
       } 
@@ -472,6 +479,7 @@ $(function() {
 		   		selectOne();
 		   	});	
 		}  
+	 
 		
 	function tagSet(result, startPageGroup, endPageGroup)	{
 		var context = '';
@@ -499,6 +507,8 @@ $(function() {
 			}
 		});
 		$("#list").html(context);
+		
+
 	} 
 	
 	function navSet(totalPageCount){
@@ -585,6 +595,7 @@ $(function() {
 				return false;
 			}
 		}
+
 		
 		$.ajax({
 			type:'POST',
@@ -597,6 +608,7 @@ $(function() {
 			}
 		})
 	}
+	
 	   var hashtag1 = "";
 	
 	function selectHashtag(searchKeyword){
@@ -610,7 +622,7 @@ $(function() {
 		alert("key : "+ key);
 		var a = key.indexOf('(')+1;
 		var b = key.indexOf(')');
-    	var key1 = key.substring(a,b);
+    	var key1 = key.substring(a,b); 
 		var key2 = key1;
     	key1 = "#"+key1+",";
     	alert("key1 : "+key1);
@@ -640,12 +652,12 @@ $(function() {
 </head>
 <body>
 <c:choose>
-   <c:when test="${deleteResult == true}">
-      <script>alert("削除に成功しました。");</script>
-   </c:when>
-   <c:when test="${deleteResult == false}">
-      <script>alert("削除に失敗しました。");</script>
-   </c:when>
+	<c:when test="${deleteResult == true}">
+		<script>alert("削除に成功しました。");</script>
+	</c:when>
+	<c:when test="${deleteResult == false}">
+		<script>alert("削除に失敗しました。");</script>
+	</c:when>
 </c:choose>
     
 <div class="boxed_wrapper">
@@ -670,19 +682,7 @@ $(function() {
                     </ul>
                 </div>
                 <!--Top Right-->
-               <div class="top-right">
-               <!--Social Box-->
-               <ul class="social-box">
-                  <c:if test="${sessionScope.loginid == null}">
-                     <li><a href="registermember">Sign Up</a></li>
-                     <li><a href="loginForm">Sign in</a></li>
-                  </c:if>
-                  <c:if test="${sessionScope.loginid != null}">
-                     <li><a href="memberPage">UserPage</a></li>
-                     <li><a href="logout" >Logout</a></li>
-                  </c:if>
-               </ul>
-					<div class="top-right">
+				<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
 							<li><a href="adminPage">AdminPage</a></li>
@@ -722,26 +722,6 @@ $(function() {
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                     <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
-                           <ul>
-                              <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
-                           <ul>
-                              <li><a href="calendar">Calendar</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
-                           <ul>
-                              <li><a href="#">Map</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="boardList">Board</a>
-                           <ul>
-                              <li><a href="boardList">Board</a></li>
-                           </ul></li>
-                     </ul>
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
@@ -763,13 +743,12 @@ $(function() {
 									</ul></li>
 							</ul>
                         </div>
-                        
                     </nav>
                     
-               <!--Button Box-->
-               <div class="button-box">
-                  <a href="#" class="theme-btn btn-style-one">Search Festival</a>
-               </div>
+					<!--Button Box-->
+					<div class="button-box">
+						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+					</div>
                     
                 </div>
             </div>
@@ -796,26 +775,26 @@ $(function() {
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                     <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
-                           <ul>
-                              <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
-                           <ul>
-                              <li><a href="calendar">Calendar</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
-                           <ul>
-                              <li><a href="#">Map</a></li>
-                           </ul></li>
-                        <li class="dropdown"><a href="boardList">Board</a>
-                           <ul>
-                              <li><a href="boardList">Board</a></li>
-                           </ul></li>
-                     </ul>
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+										<li><a href="listDetailForm">List Details</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="boardList">Board</a>
+									<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+							</ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -829,7 +808,7 @@ $(function() {
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(images/background/sample.png);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>
@@ -842,30 +821,61 @@ $(function() {
     </div>
 </section>
 <!-- End Page Title-->
-      
-      
-      <!--End Schedule Section-->
-<section class="schedule-section" id="schedule-tab">
-   <div id="div_icontext">
-      <h4 id="icontext"><b>投稿する</b></h4>
-      <a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-   </div>
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
-	<div id="div_icontext">
-		<c:if test="${sessionScope.loginid != null}">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-		</c:if>
-	</div>
     <div class="container">
           <div class="schedule-area">
             <div class="schedule-content clearfix">
                      <div class="inner-box  table-responsive">      
                <div id="hash"></div>
-               <table>
+<!--  -->
+							<div class="s132">
+								<form>
+									<div class="inner-form">
+										<div class="input-field first-wrap">
+											<div class="input-select">
+												<select data-trigger="" class="choices-single-defaul"
+													name="searchItem" id="searchItem"
+													onchange="searchDate(this)">
+													<option value="title"
+														<c:if test="${'title'==searchItem}">selected</c:if>>
+														タイトル</option>
+													<option value="country"
+														<c:if test="${'country'==searchItem}">selected</c:if>>
+														国家</option>
+													<option value="startEvent"
+														<c:if test="${'startEvent'==searchItem}">selected</c:if>>
+														期間</option>
+													<option value="adress"
+														<c:if test="${'adress'==searchItem}">selected</c:if>>
+														住所</option>
+													<option value="hashSearch"
+														<c:if test="${'hashSearch'==searchItem}">selected</c:if>>
+														#HASHTAG</option>
+												</select>
+											</div>
+										</div>
+										<div class="input-field second-wrap">
+											<input name="searchKeyword" id="searchKeyword"
+												onchange="change()" type="text" class="input-field_pholder"
+												placeholder="Enter Keywords" />
+										</div>
+										<!-- <div id="insertmark"></div> -->
+										<div class="input-field second-wrap">
+											<input type="hidden" name="endEvent" id="searchHidden">
+										</div>
+										<div class="input-field third-wrap">
+											<button class="btn-search" type="button" id="searchOne"
+												onclick='selectOne()'>Search</button>
+										</div>
+									</div>
+								</form>
+							</div>
+							
+							<!--  -->
                
+               <%-- <table>
                <tr><td>
                <select name="searchItem" id="searchItem" onchange="searchDate(this)">
                <option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
@@ -890,7 +900,9 @@ $(function() {
                <td><input type="hidden" name="endEvent" id="searchHidden">
                <input type="button" value="検索" id="searchOne" onclick='selectOne()'>
                </td></tr>
-                 </table>
+               </table> --%>
+               
+               
                      <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -908,56 +920,20 @@ $(function() {
                          </div> 
                        
                     </div>
+                    <div>
+                    <nav class="pagination"></nav>
+                    <div id="div_icontext">
+					<c:if test="${sessionScope.loginid != null}">
+					<!-- <h4 id="icontext"><b>投稿する</b></h4> -->
+					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+					</c:if>
+					</div>
+				</div>
                 </div>
-            <nav class="pagination"></nav>
            </div>
        </div>
 </section>
 <!--End Schedule Section-->
-
-<!--Contact Info-->
-<section class="contact-info">
-    <div class="container">
-        <div class="info-area">
-            <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-placeholder"></i>
-                        </div>
-                        <div class="text">
-                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-phone-call"></i>
-                        </div>
-                        <div class="text">
-                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-e-mail-envelope"></i>
-                        </div>
-                        <div class="text">
-                            <p>
-                                <a href="#">info@wiscon.com</a>
-                                <a href="#">support@wiscon.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>            
-    </div>
-</section>
-<!--End Contact Info-->
 
 <!-- Main Footer-->
 <footer class="main-footer" style="background: url(images/background/footer.jpg);">
@@ -1024,6 +1000,15 @@ $(function() {
 <!-- Custom script -->
 <script src="js/custom.js"></script>
 
+<!-- Search script -->
+<script src="js/choices.js"></script>
+<script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+</script>
 </div>
 </body>
 </html>

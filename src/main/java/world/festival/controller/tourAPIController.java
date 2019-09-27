@@ -94,7 +94,7 @@ public class tourAPIController {
 		int i = 300;
 		for (ListVO vo : list) {
 			//vo.setStartEvent();
-			vo.setMainBoardNum(Integer.toString(i));
+			vo.setMainBoardNum(i);
 			i++;
 			vo.setCountry("KR");
 			vo.setFestival_intro(vo.getTitle());

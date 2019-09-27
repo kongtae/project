@@ -8,7 +8,7 @@ import lombok.Data;
 public class ListVO {
 	
 	private String adminid;
-	private String mainBoardNum;
+	private int mainBoardNum;
 	private String userid;
 	private String title;
 	private String country;

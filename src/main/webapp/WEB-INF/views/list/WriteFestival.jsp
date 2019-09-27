@@ -176,9 +176,8 @@ function writeFestival() {
 				alert("投稿を完了しまいた。");
 				location.href ="listForm";
 			},
-			error: function(request,status,error) {
+			error: function() {
 				alert("投稿に失敗しました。");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
 			}
 		});
 	} 
