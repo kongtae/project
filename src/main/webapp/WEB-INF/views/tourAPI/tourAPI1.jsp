@@ -108,13 +108,13 @@
 		setPage();
 		
 		$('#listSearch').on('click', function() {
-			
 			tourAPIselect();
-		})
-
-		$("searchBtn").on('click', function() {
 			page = 0;
 			setPage();
+		})
+
+		$("#insertBtn").on('click', function() {
+			tourAPIinsert();
 		})
 	})
 
@@ -511,7 +511,8 @@
 									<td>
 									<input type="button" value="search" id="listSearch">
 									</td>
-									<td id="btn">
+									<td >
+									<input type='button' id="insertBtn" value='登録'>
 									</td>
 								</tr>
 							</table>

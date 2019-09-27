@@ -58,7 +58,7 @@ public class ListDAO {
 		return mapper.readFestival(mainBoardNum);
 	}
 	
-	//댓글 출력용
+	//�뙎湲� 異쒕젰�슜
 	public ArrayList<ReplyVO> replyList(int boardnum) {
 		ReplyMapper mapper= sqlSession.getMapper(ReplyMapper.class);
 		return mapper.replyList(boardnum);
@@ -66,7 +66,6 @@ public class ListDAO {
 
 	public int updateFestival(ListVO vo) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
-		System.out.println("수정할 다오vo " + vo);
 		return mapper.updateFestival(vo);
 	}
 

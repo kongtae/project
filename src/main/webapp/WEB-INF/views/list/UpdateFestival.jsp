@@ -10,15 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="resources/bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    
+
 <script src="resources/js/jquery.js"></script> 
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
@@ -32,14 +24,27 @@
 <script src="resources/js/isotope.js"></script>
 <script src="resources/js/bxslider.js"></script>
 <script src="resources/js/validate.js"></script>
-
+<style>
+#hashtagPlus{
+		width: 6%;
+	    display: inline;
+	    padding: 1.6%;
+	    background: #fa334f;
+	    border-color: #fa334f;
+	    border-radius: 10%;
+	    color: white;
+	    -webkit-text-stroke-width: thick;
+	}
+	#hashtag1{
+		width: 92%;
+    	display: inline;
+    	margin-bottom: 2%;
+    	margin-right: 1%;
+	}
+</style>
 <!-- Custom script -->
 <script src="resources/js/custom.js"></script>
 
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="resources/js/map-script.js"></script>
-<!--End Google Map APi-->
 
     <title>Wiscon || Responsive HTML 5 Template</title>
     <!-- responsive meta -->
@@ -59,17 +64,69 @@
 	.longbar{
 			width: 300px;	
 	}
+	
+	.pre1{
+		width: 370px;
+		height: auto;
+	}
 
+	.buttonL{
+		width: 680px;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 	$(function () {
 	    imagePrint();
-	    
+	    $('#hashtagPlus').on('click', hashtag2);
+	    hashtagPrint();
 	 });
+	
 	 var originalFileName = "";
 	 var mainb = ${vo.mainBoardNum};
 	 var imageData = {'mainBoardNum' : mainb};
+	 
+	 function checkValue() {
+			
+			var title = document.getElementById("title");
+			var startEvent = document.getElementById("startEvent");
+			var endEvent = document.getElementById("endEvent");
+			var adress = document.getElementById("adress");
+			var country = document.getElementById("country");
+			var surround_place = document.getElementById("surround_place");
+			
+			
+			
+			if (title.value == '' || title.value.length == 0) {
+				alert('タイトルを入力してください。');
+				title.focus();
+				return false;
+			}
+			if (startEvent.value == '' || startEvent.value == null) {
+				alert('始まる日を入力してください。');
+				return false;
+			}
+			if (endEvent.value == '' || endEvent.value == null) {
+				alert('終わる日を入力してください。');
+				return false;
+			}
+			if (country.value == '' || country.value.length == 0) {
+				alert('国家名を入力してください。');
+				country.focus();
+				return false;
+			}
+			if (surround_place.value == '' || surround_place.value.length == 0 ){
+				alert('都市名を入力してください。');
+				surround_place.focus();
+				return false;
+			}
+			if (adress.value == '' || adress.value.length == 0) {
+				alert('住所を入力してください。');
+				adress.focus();
+				return false;
+			}
+		}
+	 
 	 function imagePrint() {
 	         $.ajax({
 	            url : "imagePrint",
@@ -82,7 +139,7 @@
 		                $.each(result,function(index,item){
 	            		arrNumber.push(item);
 	                	originalFileName = "resources/images/userimage/" +arrNumber[index];
-	                	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
+	                	$('#preview'+index).append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
 	                  })
 	               }
 	            },
@@ -92,9 +149,76 @@
 	            }
 	         });
 	      }
-
-function updateFestival() {	
-
+	 
+	var sharp = [];
+	var hashtagBtn = "${vo.hashtag}";	//#ㅁㄴㅇ,#123,
+	 function hashtagPrint() {
+		var hashtagBtn1 = hashtagBtn;
+		var a ;
+		var flag = true;
+		var i = 0;
+		while(flag){
+			a = hashtagBtn1.indexOf(',');
+			if(a < 0){
+				flag = false;
+			}else {
+				var key = hashtagBtn1.substring(0,a);
+				sharp.push(key);
+				var key1 = sharp[i].replace("#", "");
+				$('#hash').append("<span id="+key1+">"+key+"<button id="+i+" value="+key+" onclick='btnClick("+key1+")'>X</button></span>");
+				key = key+',';
+				hashtagBtn1 = hashtagBtn1.replace(key, "");
+				i ++;
+			}
+		}
+	 }
+	 var hashtag = "";
+	 var sharp1 = "";
+	 var idx = 0;
+	 
+	 function hashtag2() {
+	 	var hashtag1 = document.getElementById("hashtag1").value;
+	 	if(hashtag1.charAt(0) != '#') {
+	 		alert("「＃」を入力してください。");
+	 		return false;
+	 	}
+	 	if(hashtag1.charAt(1) == 1 || hashtag1.charAt(1) == 2 || hashtag1.charAt(1) == 3 || hashtag1.charAt(1) == 4 || hashtag1.charAt(1) == 5 || hashtag1.charAt(1) == 6 || hashtag1.charAt(1) == 7 || hashtag1.charAt(1) == 8 || hashtag1.charAt(1) == 9 || hashtag1.charAt(1) == 0 ) {
+	 		alert("文字を先に入力してください。");
+	 		return false;
+	 	}
+	 	sharp1 = hashtag1;
+	 	alert(sharp1);
+	 	sharp1 = sharp1.replace("#", "");
+	 	idx += 1;
+	 	$('#hash').append("<span id="+sharp1+">"+hashtag1+"<button id="+idx+" value="+hashtag1+" onclick='btnClick("+sharp1+")'>X</button></span>");
+	 	hashtagBtn += hashtag1+',';
+	 	alert("hashtagBtn : "+hashtagBtn);
+	 	return false;
+	 }
+	 
+	 
+	 function btnClick(sharp1){
+			alert("sharp1 : "+sharp1);
+			
+			var key3 = sharp1.innerHTML;
+			alert("key : "+ key3);
+			var a = key3.indexOf('(')+1;
+			var b = key3.indexOf(')');
+			var key1 = key3.substring(a,b);
+			var key2 = key1;
+			key1 = "#"+key1+",";
+			alert("key1 : "+key1);
+			alert("key2 : "+key2);
+			hashtagBtn = hashtagBtn.replace(key1, "");
+			$('#'+key2).remove();
+			alert("hashtagBtn : "+hashtagBtn);
+			return false;
+		}
+	 
+	function updateFestival() {	
+		
+		checkValue();
+		$('#hashtag').val(hashtagBtn);
 		var form = $("#updateFestivalID")[0];
 		var formData = new FormData(form);
 		
@@ -199,18 +323,18 @@ function updateFestival() {
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="listForm">List</a>
+								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="calendar">Calendar</a>
+								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="map">Map</a>
+								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="map">Map</a></li>
+										<li><a href="#">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -225,7 +349,6 @@ function updateFestival() {
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-                    
                     
                 </div>
                
@@ -260,13 +383,13 @@ function updateFestival() {
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="Calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="Map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="Map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -311,31 +434,26 @@ function updateFestival() {
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-                    <div id="preview0">
-                    </div><br>
-                    <div id="preview1">
-                    </div><br>
-                    <div id="preview2">
-                    </div>
-                <i class="fa fa-paperclip"></i> ファイル添付
-                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
-			 	<i class="fa fa-paperclip"></i> ファイル添付
-					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
-				<i class="fa fa-paperclip"></i> ファイル添付	
+			  
+                    <div id="preview0"></div>
+                	<i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" onclick="delete1()" value="1番目の写真を消す">
+                     
+                    <div id="preview1"></div>
+			 		<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" onclick="delete2()" value="2番目の写真を消す">	
+                    
+                    <div id="preview2"></div>	
+					<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-                <br><input type="button" onclick="delete1()" value="첫번째삭제">	
-				<br><input type="button" onclick="delete2()" value="두번째삭제">	
-				<br><input type="button" onclick="delete3()" value="세번째삭제">	
-
-                <div class="box-footer">
-              <div class="pull-right">
-              <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
-                <button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
-                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+					<input type="button" onclick="delete3()" value="3番目の写真を消す">
+					
+			    </div>
               </div>
-            </div>     
-                </div>
-            </div>
+
+
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
@@ -343,33 +461,45 @@ function updateFestival() {
 					      <div class="row">
 					        <!-- /.col -->
 					        <div class="col-md-9">
-					          <div class="box box-primary">
 					            <!-- /.box-header -->
 					            <div class="box-body">
 					              <div class="form-group">
-					              	<h1>祭りの投稿欄</h1>
+	
+		              <table class="buttonL">
+		                <tr>
+		              	<td align="left"><h1>祭りの投稿欄</h1></td>
+		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                </td>
+						</tr>					              
+		              </table>
+					              	
+					              	<br>
+					              	<div id="hash"></div>
+					              	<input type="text" id="hashtag1" class="form-control" placeholder="#HashTag">
+					          		<button type="button" id="hashtagPlus" class="btn">+</button>
+					          		<input type="hidden" id="hashtag" name="hashtag">
 					              	<br>
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" value="${vo.title}" >
-					              </div>
-					              <div class="form-group">
+								        </div> 
+								    <div class="form-group">
 					                     <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.festival_intro}</textarea> 
-									<div class="wrapper">
- 
 									
 									<table>	
 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="${vo.startEvent }" id="startEvent">から</td></tr>
 										<tr><td>祭りの終了日：<input type="date" name="endEvent" value="${vo.endEvent }" id="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br> 
+					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>
+					             	都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place" value="${vo.surround_place}"><br> 
 					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。" value="${vo.adress}">
 										<input type="hidden" name="mainBoardNum" value="${vo.mainBoardNum }"></td></tr>
 					             	</table> 
 					              </div>
 					            </div>
-					          </div>
 					        </div>
 					      </div>
 					    </section>
- 					
+ 					</div>
+ 
                     <!--Map Outer-->
                     <div class="map-outer">
                         <!--Map Canvas-->
@@ -488,6 +618,8 @@ function updateFestival() {
 
 
 </div>
+<<<<<<< HEAD
+=======
 
 
 <!-- jQuery 3 -->
@@ -500,19 +632,18 @@ function updateFestival() {
 <script src="resources/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="resources/dist/js/demo.js"></script>
-<!-- CK Editor -->
-<script src="resources/bower_components/ckeditor/ckeditor.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script>
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('editor1')
+   // CKEDITOR.replace('editor1')
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
   })
 </script>
+>>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
@@ -536,7 +667,7 @@ function updateFestival() {
  
             return function (e) {
                 console.log(3);
-                aImg.src = e.target.result
+                aImg.src = e.target.result;
             }
         })(image)
  
@@ -567,7 +698,7 @@ function updateFestival() {
  
             return function (e) {
                 console.log(3);
-                aImg.src = e.target.result
+                aImg.src = e.target.result;
             }
         })(image)
  
@@ -593,7 +724,7 @@ function updateFestival() {
  
             return function (e) {
                 console.log(3);
-                aImg.src = e.target.result
+                aImg.src = e.target.result;
             }
         })(image)
  

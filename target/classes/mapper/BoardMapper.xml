@@ -49,6 +49,7 @@
 		</if>
 		WHERE 
 		bul_boardnum = #{bul_boardnum}
+		and userid = #{userid}
 </update>
 
 <delete id="BoardDelete" parameterType="BoardVO">
@@ -80,8 +81,11 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid
 <update id="hitcount" parameterType="int">
 		UPDATE 
 		BUL_BOARD 
-		SET 
-		hit = hit + 1 
+		SET
+		<choose> 
+		<when test="userid==#{userid}">hit = hit + 0</when>
+		<otherwise>hit = hit + 1</otherwise>
+		</choose> 
 		WHERE 
 		bul_boardnum=#{bul_boardnum}
 </update>

@@ -8,9 +8,9 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-	MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
-	VALUES (      <!-- userid를 지울지 말지 고민하자 -->
-		mainboard_seq.nextval,
+		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
+	VALUES (
+		MAINBOARDNUM_SEQ.nextval,
 		#{title},
 		#{country},
 		#{adress},
@@ -24,12 +24,10 @@
 			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
-			,null
-			,null
+			,null,null
 			</otherwise>
 		</choose>
 		,#{hashtag}
-		
 	)
 </insert>
 

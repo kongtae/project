@@ -832,6 +832,7 @@ $(function() {
 		
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
+
     <div class="container">
           <div class="schedule-area">
             <div class="schedule-content clearfix">
