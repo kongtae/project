@@ -99,6 +99,7 @@
                 	  }else{
                      originalFileName = "resources/images/userimage/" +item;
                    $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
+                	  }
                   })
                }
             },
@@ -186,7 +187,8 @@
         //일단은 위시리스트 추가하기
         function insertwish()
           {
-           var mainBoardNum = document.getElementById("mainboardnum").value
+//            alert("여기가 안와?")
+        	var mainBoardNum = document.getElementById("mainboardnum").value
 //            var dislike = 
              $.ajax({
                url:'insertwish',

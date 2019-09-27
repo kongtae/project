@@ -150,7 +150,7 @@ SELECT
     *
 FROM
     ADMIN_MAINBOARD
-		
+order by ADMIN_MAINBOARDNUM DESC 		
 
 </select>
 	
@@ -159,7 +159,7 @@ SELECT
     *
 FROM
     ADMIN_BUL_BOARD
-
+order by ADMIN_MAINBOARDNUM DESC 
 </select>	
 
 <!-- 어드민 자유게시판 검색 -->
@@ -217,5 +217,37 @@ WHERE
 	ADMIN_MAINBOARDNUM=#{admin_mainBoardNum}	
 	
 </select>
+
+
+<select id="RecoveryRead" parameterType="ListVO" resultType="ListVO">
+SELECT
+    MAINBOARDNUM,
+    USERID,
+    TITLE,
+    COUNTRY,
+    ADRESS,
+    FESTIVAL_INTRO,
+    SURROUND_PLACE,
+    INPUTTIME,
+    STARTEVENT,
+    ENDEVENT,
+    originalFileName,
+    SAVEFILENAME,
+    HASHTAG
+FROM
+	ADMIN_MAINBOARD
+WHERE
+	ADMIN_MAINBOARDNUM=#{admin_mainBoardNum}
+</select>
+
+
+
+<delete id="AdminDeleteList" parameterType="ListVO" >
+		DELETE 
+		MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
+</delete>
+
 
 </mapper>

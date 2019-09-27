@@ -139,6 +139,16 @@ public class ListService {
 		return true;
 	}
 
+	public void RewriteFestival(ListVO vo1) {
+		dao.RewriteFestival(vo1);
+		
+	}
+
+	public void ReupdateFestival(ListVO vo1) {
+		dao.ReupdateFestival(vo1);
+		
+	}
+
 
 	
 }

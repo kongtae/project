@@ -518,8 +518,9 @@ $(function() {
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+		
+		<a href="adminListPage"><h4 id="icontext"><b>To&nbspAdminListPage</b></h4></a>
+<!-- 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
 	</div>
     <div class="container">
           <div class="schedule-area">

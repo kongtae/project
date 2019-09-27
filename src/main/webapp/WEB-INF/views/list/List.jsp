@@ -931,10 +931,10 @@ $(function() {
                     <div>
                     <nav class="pagination"></nav>
                     <div id="div_icontext">
-					<c:if test="${sessionScope.loginid != null}">
+<%-- 					<c:if test="${sessionScope.loginid != null}"> --%>
 					<!-- <h4 id="icontext"><b>投稿する</b></h4> -->
 					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-					</c:if>
+<%-- 					</c:if> --%>
 					</div>
 				</div>
                 </div>

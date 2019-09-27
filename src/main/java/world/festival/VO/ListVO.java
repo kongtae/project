@@ -9,6 +9,7 @@ public class ListVO {
 	
 	private String adminid;
 	private int mainBoardNum;
+	private int admin_mainBoardNum;
 	private String userid;
 	private String title;
 	private String country;
@@ -20,4 +21,6 @@ public class ListVO {
 	private Date endEvent;
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
+	private String hashtag;
+	private String datacheck;
 }

@@ -8,8 +8,8 @@
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
 	INSERT INTO
-	MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName)
-	VALUES (
+	MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
+	VALUES (      <!-- userid를 지울지 말지 고민하자 -->
 		mainboard_seq.nextval,
 		#{title},
 		#{country},
@@ -25,8 +25,11 @@
 			</when>
 			<otherwise>
 			,null
+			,null
 			</otherwise>
 		</choose>
+		,#{hashtag}
+		
 	)
 </insert>
 
@@ -76,7 +79,8 @@
 		adress = #{adress},
 		festival_intro = #{festival_intro},
 		startEvent = #{startEvent},
-		endEvent = #{endEvent}
+		endEvent = #{endEvent},
+		hashtag = #{hashtag}
 		<if test="originalFileName != null and saveFileName !=null">
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}
@@ -100,6 +104,64 @@
             hashtag LIKE '%' ||  #{item} || '%'
     </foreach>
 </select>
+
+<!-- 복구된 파일 쓰기 -->
+<insert id="RewriteFestival" parameterType="ListVO">
+	INSERT INTO
+	MAINBOARD (
+	mainBoardNum,
+	title,
+	country,
+	adress,
+	festival_intro,
+	surround_place,
+	inputTime,
+	startEvent,
+	endEvent,
+	originalFileName,
+	saveFileName,
+	hashtag
+	)
+	VALUES (
+		#{mainBoardNum},
+		#{title},
+		#{country},
+		#{adress},
+		#{festival_intro},
+		#{surround_place},
+		sysdate,
+		#{startEvent},
+		#{endEvent}
+		<choose>
+			<when test="originalFileName != null and saveFileName != null">
+			,#{originalFileName},#{saveFileName}
+			</when>
+			<otherwise>
+			,null,null
+			</otherwise>
+		</choose>
+		,#{hashtag}
+		)
+</insert>
+
+<update id="ReupdateFestival" parameterType="ListVO">
+		UPDATE
+		MAINBOARD
+	SET
+		title = #{title},
+		country = #{country},
+		adress = #{adress},
+		festival_intro = #{festival_intro},
+		startEvent = #{startEvent},
+		endEvent = #{endEvent},
+		hashtag = #{hashtag}
+		<if test="originalFileName != null and saveFileName !=null">
+			, originalfileName = #{originalFileName}
+			,saveFileName = #{saveFileName}
+		</if>
+				WHERE 
+		mainBoardNum = #{mainBoardNum}
+</update>
 
 
 </mapper>

@@ -86,5 +86,16 @@ public class ListDAO {
 		return mapper.printCrawling(vo);
 	}
 
+	public void RewriteFestival(ListVO vo) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		mapper.RewriteFestival(vo);
+	}
+
+	public void ReupdateFestival(ListVO vo1) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		mapper.ReupdateFestival(vo1);
+		
+	}
+
 
 }
