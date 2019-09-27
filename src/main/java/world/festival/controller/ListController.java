@@ -35,8 +35,6 @@ public class ListController {
 	@Autowired
 	private ListDAO dao;
 	
-
-	
 	@Autowired
 	private ListService service;
 	

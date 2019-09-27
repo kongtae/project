@@ -34,7 +34,6 @@ public class BoardDAO {
 	public BoardVO readBoard(BoardVO vo1) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		mapper.hitcount(vo1);
-		System.out.println("DAO히트를 위한 "+vo1);
 		return mapper.readBoard(vo1);
 	}
 

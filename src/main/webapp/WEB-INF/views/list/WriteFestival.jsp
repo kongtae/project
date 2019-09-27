@@ -10,15 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="resources/bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    
+ 
 <script src="resources/js/jquery.js"></script> 
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
@@ -58,6 +50,15 @@
 <style>
 	.longbar{
 			width: 300px;	
+	}
+	
+	.pre1{
+		width: 370px;
+		height: auto;
+	}
+	
+	.buttonL{
+		width: 645px;
 	}
 
 </style>
@@ -127,6 +128,21 @@ function writeFestival() {
 			}
 		});
 	} 
+	
+	function delete1() {
+		$("#uploadFileName").val("");
+		$('#preview').empty();
+	}
+	
+	function delete2() {
+		$("#uploadFileName2").val("");
+		$('#preview1').empty();
+	}
+	
+	function delete3() {
+		$("#uploadFileName3").val("");
+		$('#preview2').empty();
+	}
 	
 </script>
 </head>
@@ -307,28 +323,22 @@ function writeFestival() {
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-                    <div id="preview">
-                    </div><br>
-                    <div id="preview2">
-                    </div><br>
-                    <div id="preview3">
-                    </div>
-                <i class="fa fa-paperclip"></i> ファイル添付
-                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
-			 	<i class="fa fa-paperclip"></i> ファイル添付
-					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
-				<i class="fa fa-paperclip"></i> ファイル添付	
+                    
+           <div id="preview"></div>
+                	<i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" onclick="delete1()" value="1番目の写真を消す">
+                     
+                    <div id="preview2"></div>
+			 		<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" onclick="delete2()" value="2番目の写真を消す">	
+                    
+                    <div id="preview3"></div>	
+					<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-				<br><input type="button" onclick="delete1()" value="첫번째삭제">	
-				<br><input type="button" onclick="delete2()" value="두번째삭제">	
-				<br><input type="button" onclick="delete3()" value="세번째삭제">
-                <div class="box-footer">
-              <div class="pull-right">
-              <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
-                <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
-                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
-              </div>
-            </div>     
+					<input type="button" onclick="delete3()" value="3番目の写真を消す">
+               
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
@@ -337,11 +347,21 @@ function writeFestival() {
 					    <section class="content">
 					        <!-- /.col -->
 					        <div class="col-md-9">
+
 					          <div class="box box-primary">
 					            <!-- /.box-header -->
 					            <div class="box-body">
 					              <div class="form-group">
-					              	<h1>祭りの投稿欄</h1>
+					      
+	 					<table class="buttonL">
+		                <tr>
+		              	<td align="left"><h1>祭りの投稿欄</h1></td>
+		                <td><button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
+		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                </td>
+						</tr>					              
+		              </table>
+					      
 					              	<br>
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" >
 					              </div>
@@ -361,6 +381,7 @@ function writeFestival() {
 					            </div>
 					          </div>
 					        </div>
+					     </div>  
 				</section>
 					
 
@@ -381,6 +402,7 @@ function writeFestival() {
                 </div>
             </div>
         </div>                
+    </div>
     </div>
 </section>
 </form>
@@ -545,7 +567,6 @@ function writeFestival() {
             console.log(2);
         }
 
-        $('#removeImg').empty();
         $('#preview').empty();
         preview.appendChild(image);
     });
@@ -571,7 +592,6 @@ function writeFestival() {
             console.log(2);
         }
 
-        $('#removeImg').empty();
         $('#preview2').empty();
         preview2.appendChild(image);
     });
@@ -597,7 +617,6 @@ function writeFestival() {
             console.log(2);
         }
 
-        $('#removeImg').empty();
         $('#preview3').empty();
         preview3.appendChild(image);
     }); 
