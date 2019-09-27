@@ -10,17 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<<<<<<< HEAD
 
-=======
-  <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="resources/bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    
->>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 <script src="resources/js/jquery.js"></script> 
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>

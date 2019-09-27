@@ -7,15 +7,10 @@
 
 <!-- 축제등록 테스트중 -->	
 <insert id="writeFestival" parameterType="ListVO">
-<<<<<<< HEAD
-	INSERT INTO	MAINBOARD (mainBoardNum,userid,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName)
-=======
 	INSERT INTO
 		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
->>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 	VALUES (
 		MAINBOARDNUM_SEQ.nextval,
-		#{userid},
 		#{title},
 		#{country},
 		#{adress},

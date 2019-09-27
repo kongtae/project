@@ -164,19 +164,11 @@
                 	  }else if(item == null){                		  
 						return false;
                 	  }else{
-<<<<<<< HEAD
                      originalFileName = "resources/images/userimage/" +item;
                    $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
                 	 }
                   })  
             	}
-=======
-                     	originalFileName = "resources/images/userimage/" +item;
-                   		$('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
-                	  }
-                  });
-               }
->>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
             },
             error : function() {
                alert("イメージの読み込みに失敗しました。");

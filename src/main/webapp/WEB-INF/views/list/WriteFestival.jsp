@@ -45,7 +45,6 @@
 	.longbar{
 			width: 300px;	
 	}
-<<<<<<< HEAD
 	
 	.pre1{
 		width: 370px;
@@ -54,7 +53,7 @@
 	
 	.buttonL{
 		width: 645px;
-=======
+
 	#hashtagPlus{
 		width: 6%;
 	    display: inline;
@@ -70,7 +69,7 @@
     	display: inline;
     	margin-bottom: 2%;
     	margin-right: 1%;
->>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
+
 	}
 
 </style>
@@ -192,12 +191,12 @@ function writeFestival() {
 	
 	function delete2() {
 		$("#uploadFileName2").val("");
-		$('#preview1').empty();
+		$('#preview2').empty();
 	}
 	
 	function delete3() {
 		$("#uploadFileName3").val("");
-		$('#preview2').empty();
+		$('#preview3').empty();
 	}
 	
 </script>
