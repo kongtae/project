@@ -7,7 +7,6 @@
 
     <meta charset="UTF-8">
     
-  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
@@ -28,11 +27,6 @@
 <!-- Custom script -->
 <script src="resources/js/custom.js"></script>
 
-<!--Google Map-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-<script src="resources/js/map-script.js"></script>
-<!--End Google Map APi-->
-
     <title>Wiscon || Responsive HTML 5 Template</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +45,7 @@
 	.longbar{
 			width: 300px;	
 	}
+<<<<<<< HEAD
 	
 	.pre1{
 		width: 370px;
@@ -59,19 +54,46 @@
 	
 	.buttonL{
 		width: 645px;
+=======
+	#hashtagPlus{
+		width: 6%;
+	    display: inline;
+	    padding: 1.6%;
+	    background: #fa334f;
+	    border-color: #fa334f;
+	    border-radius: 10%;
+	    color: white;
+	    -webkit-text-stroke-width: thick;
+	}
+	#hashtag1{
+		width: 92%;
+    	display: inline;
+    	margin-bottom: 2%;
+    	margin-right: 1%;
+>>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 	}
 
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 
+$(function() {
+	$('#hashtagPlus').on('click', hashtag2);
+});
+
+var sharp = "";
+var idx = 0;
+
 function checkValue() {
+	
 	var title = document.getElementById("title");
 	var startEvent = document.getElementById("startEvent");
 	var endEvent = document.getElementById("endEvent");
 	var adress = document.getElementById("adress");
 	var country = document.getElementById("country");
 	var surround_place = document.getElementById("surround_place");
+	
+	
 	
 	if (title.value == '' || title.value.length == 0) {
 		alert('タイトルを入力してください。');
@@ -103,10 +125,44 @@ function checkValue() {
 	}
 }
 
+var hashtag = "";
+
+function hashtag2() {
+	var hashtag1 = document.getElementById("hashtag1").value;
+	if(hashtag1.charAt(0) != '#') {
+		alert("「＃」を入力してください。");
+		return false;
+	}
+	sharp = hashtag1;
+	alert(sharp);
+	sharp = sharp.replace("#", "");
+	idx += 1;
+	$('#hash').append("<span id="+sharp+">"+hashtag1+"<button id="+idx+" value="+hashtag1+" onclick='btnClick("+sharp+")'>X</button></span>");
+	hashtag += hashtag1+',';
+	return false;
+}
+function btnClick(sharp1){
+	alert("sharp1 : "+sharp1);
+	
+	var key = sharp1.innerHTML;
+	alert("key : "+ key);
+	var a = key.indexOf('(')+1;
+	var b = key.indexOf(')');
+	var key1 = key.substring(a,b);
+	var key2 = key1;
+	key1 = "#"+key1+",";
+	alert("key1 : "+key1);
+	alert("key2 : "+key2);
+	hashtag = hashtag.replace(key1, "");
+	alert("hashtag : "+hashtag);
+	//hashtagPrint();
+	$('#'+key2).empty();
+}
+
 function writeFestival() {
 
 		checkValue();
-	
+		$('#hashtag').val(hashtag);
 		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
 		
@@ -362,6 +418,11 @@ function writeFestival() {
 						</tr>					              
 		              </table>
 					      
+					              	<br>
+					              	<div id="hash"></div>
+					              	<input type="text" id="hashtag1" class="form-control" placeholder="#HashTag">
+					          		<button type="button" id="hashtagPlus" class="btn">+</button>
+					          		<input type="hidden" id="hashtag" name="hashtag">
 					              	<br>
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" >
 					              </div>

@@ -164,11 +164,19 @@
                 	  }else if(item == null){                		  
 						return false;
                 	  }else{
+<<<<<<< HEAD
                      originalFileName = "resources/images/userimage/" +item;
                    $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
                 	 }
                   })  
             	}
+=======
+                     	originalFileName = "resources/images/userimage/" +item;
+                   		$('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
+                	  }
+                  });
+               }
+>>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
             },
             error : function() {
                alert("イメージの読み込みに失敗しました。");
@@ -532,12 +540,10 @@
 
                             </div>
                              
-                            <c:if test="${sessionScope.loginid !=null}">
                                <div align="right">
                                <input type="button" class="buttonS" value="修正" onclick="UpdateFestival()">
                                <input type="button" class="buttonD" value="削除" onclick="DeleteFestival()">
                      </div>
-                     </c:if>                          
                           <div class="inner-box  table-responsive">
 
                         <table class="table table-hover">
@@ -545,7 +551,7 @@
                            <td><b>分類</b></td><td><b>詳細情報</b></td>
                            </tr>
                             <tr>
-                              <td>ユーザー名</td><td>${vo.userid}</td>
+                              <td>#HASHTAG</td><td>${vo.hashtag}</td>
                            </tr>
                            <tr>
                               <td>タイトル</td><td>${vo.title}</td>

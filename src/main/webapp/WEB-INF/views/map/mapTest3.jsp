@@ -268,7 +268,7 @@
 
 				<i class="fa fa-map-marker"></i>
 
-				<h1 class="box-title">Festival</h1>
+				<h1 class="box-title">FESPEDIA</h1>
 
 
 			</div>
@@ -377,15 +377,9 @@
 	<!-- <script src="js/jquery-3.4.1.js"></script> -->
 	<script>
 window.onload =function(){
-	//alert("맵화면");
 	selectMap();
 }
-/* 
-$(function() {
-	alert("맵화면");
-	//selectMap();
-});
- */
+
 var visitorsData = {
   US: 398, // USA
   SA: 400, // Saudi Arabia
@@ -406,18 +400,9 @@ function selectMap(){
 		url : "selectMap1",
 		type:"post",
 		dataType:"json",
-		success : function(data) {
-			alert("성공");
+		success : function(data) {	//데이터를 hashmap으로 갖고온다.
 			mapList = data;
-			
-			/* $(data).each(function(index,item) {
-				alert(item.country + " : " + item.festivalCount);
-					var country = item.country;
-					var festivalCount = item.festivalCount;
-					mapList.item.country = item.festivalCount;
-					객체명.속성명 = 값;
-					ca : 1
-			});   */
+		
 		},
 		error : function(data) {
 			alert("실패");
@@ -425,7 +410,6 @@ function selectMap(){
 	});
 }
 
-var a = '러시아 축제 1000개';
 //jvectormap data
 
 	// World map by jvectormap
@@ -455,24 +439,14 @@ var a = '러시아 축제 1000개';
 	  series           : {
 	    regions: [
 	      {
-	        values           : mapList,
+	        values           : mapList,	//밸류에 mapList 주고
 	        scale            : ['#92c1dc', '#ebf4f9'],
 	        normalizeFunction: 'polynomial'
 	      }
 	    ]
 	  },
 	  onRegionLabelShow: function (e, el, code) {
-			/* for (var i = 0; i < el.length; i++) {
-				el.html(mapList[code] + " : " + el.count[i]);
-			}	 */
-		  
-		   //el.html(mapList[code] + " : " + mapList[count]
-		        //el.html() + " : " + mapList[code]
-		    //);
-		  
-	    /*  if(code == 'RU'){
-			el.text(a); */
-	    //}else 
+		
 	    if (typeof mapList[code] != 'undefined'){
 	        el.html(el.html() + ' : ' + mapList[code] + '個');
 	    } 
