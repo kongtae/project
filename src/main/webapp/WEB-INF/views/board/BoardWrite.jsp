@@ -47,13 +47,19 @@
 	.longbar{
 			width: 300px;	
 	}
+	
+	.buttonL{
+			width: 910px;
+	}
+	
+
 
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 
 
-function writeFestival() {
+function writeBoard() {
 
 		var form = $("#BoardWriteID")[0];
 		var formData = new FormData(form);
@@ -75,6 +81,21 @@ function writeFestival() {
 			}
 		});
 	} 
+	
+	function delete1() {
+		$("#uploadFileName").val("");
+		$('#preview').empty();
+	}
+	
+	function delete2() {
+		$("#uploadFileName2").val("");
+		$('#preview2').empty();
+	}
+	
+	function delete3() {
+		$("#uploadFileName3").val("");
+		$('#preview3').empty();
+	}
 	
 </script>
 </head>
@@ -147,7 +168,6 @@ function writeFestival() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -202,7 +222,6 @@ function writeFestival() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="Calendar">Calendar</a>
 									<ul>
@@ -214,7 +233,7 @@ function writeFestival() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board2</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -255,31 +274,27 @@ function writeFestival() {
                     <div class="text-title">
                         <h6>写真</h6>
                     </div> 
-                    <div id="preview">
-                    </div><br>
-                    <div id="preview2">
-                    </div><br>
-                    <div id="preview3">
-                    </div>
-                <div class="form-group">
-                <div class="btn btn-default btn-file">
+                    
+                    <div id="preview"></div>
                 <i class="fa fa-paperclip"></i> ファイル添付
-                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
+                <input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+                <input type="button" onclick="delete1()" value="1番目の写真を消す"> 
+                    
+                <div id="preview2"></div>
 			 	<i class="fa fa-paperclip"></i> ファイル添付
-					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
+				<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+                <input type="button" onclick="delete2()" value="2番目の写真を消す">
+                    
+                <div id="preview3"></div>
 				<i class="fa fa-paperclip"></i> ファイル添付	
-					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-
-                </div>
-              </div> 
-                <div class="box-footer">
-              <div class="pull-right">
-                <button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
-                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
-              </div>
-            </div>     
+				<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+				<input type="button" onclick="delete3()" value="3番目の写真を消す">
+          
+         
                 </div>
             </div>
+            
+            
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
@@ -291,7 +306,15 @@ function writeFestival() {
 					            <!-- /.box-header -->
 					            <div class="box-body">
 					              <div class="form-group">
-					              	<h1>投稿欄</h1>
+           
+            <table class="buttonL">
+			<tr>	              	
+             <td align="left"><h1>投稿欄</h1></td>
+            <td> <button type="button" class="btn btn-primary" onclick="writeBoard()"><i class="fa fa-envelope-o"></i> 投稿</button>
+              <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+             </td>
+             </tr>
+            </table>  
 					              	<br>
 					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
 					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" >
@@ -300,38 +323,17 @@ function writeFestival() {
 					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
 									<table>	
  					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br>  
-				           			 住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> 
+				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
+				           			住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> 
 					             	</table> 
 					              </div>
 					            </div>
 					          </div>
 					        </div>
 					      </div>
-					    </section>
-					</div>
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+				    </section>
+						</div>
+ 
                     <!--Map Outer-->
                     <div class="map-outer">
                         <!--Map Canvas-->
@@ -488,7 +490,6 @@ function writeFestival() {
             console.log(2);
         }
 
-        $('#removeImg').empty();
         $('#preview').empty();
         preview.appendChild(image);
     });
@@ -514,7 +515,6 @@ function writeFestival() {
             console.log(2);
         }
 
-        $('#removeImg').empty();
         $('#preview2').empty();
         preview2.appendChild(image);
     });
@@ -540,7 +540,6 @@ function writeFestival() {
             console.log(2);
         }
 
-        $('#removeImg').empty();
         $('#preview3').empty();
         preview3.appendChild(image);
     }); 

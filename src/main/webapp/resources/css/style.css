@@ -1235,6 +1235,7 @@ select:focus {
   width: 100%;
   float: right;
   display: block;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .slide{
@@ -1243,6 +1244,7 @@ select:focus {
   background-size:cover;
   background-repeat:no-repeat;
   background-position:center center;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h2{
@@ -1263,6 +1265,7 @@ select:focus {
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .active h2{
@@ -1273,20 +1276,24 @@ select:focus {
   -o-transform: translateY(0);
   transform: translateY(0);
   transition-delay: 1300ms;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h2.style-two{
   font-weight:500;
   margin-bottom: 40px;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h2.style-three{
   font-weight:500;
   margin-bottom: 20px;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h2.alternate{
   margin-bottom: 35px;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h3{
@@ -1307,7 +1314,10 @@ select:focus {
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
+  text-shadow: 0 0 5px #000;
 }
+
+
 
 .main-slider h3:before{
   position:absolute;
@@ -1317,6 +1327,7 @@ select:focus {
   width:30px;
   height: 2px;
   background-color: #ffffff;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h3.style-three:after{
@@ -1327,10 +1338,12 @@ select:focus {
   width:30px;
   height: 2px;
   background-color: #ffffff;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h3.style-two:before{
   background-color: #ee2d50;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .active h3{
@@ -1341,10 +1354,12 @@ select:focus {
   -o-transform: translateY(0);
   transform: translateY(0);
   transition-delay: 1000ms;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider h3.alternate::before{
   display:none;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .text{
@@ -1365,6 +1380,7 @@ select:focus {
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .active .text{
@@ -1375,6 +1391,7 @@ select:focus {
   -o-transform: translateY(0);
   transform: translateY(0);
   transition-delay: 2000ms;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .link-box{
@@ -1389,10 +1406,12 @@ select:focus {
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .link-box .theme-btn{
   margin-right:10px;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .active .link-box{
@@ -1403,6 +1422,7 @@ select:focus {
   -o-transform: translateY(0);
   transform: translateY(0);
   transition-delay: 2500ms;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .content .title{
@@ -1423,6 +1443,7 @@ select:focus {
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .content .title:after{
@@ -1434,6 +1455,7 @@ select:focus {
   height: 1px;
   margin-left: -35px;
   background-color: #ffffff;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .active .title{
@@ -1444,6 +1466,7 @@ select:focus {
   -o-transform: translateY(0);
   transform: translateY(0);
   transition-delay: 600ms;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .owl-dots{
@@ -1454,6 +1477,7 @@ select:focus {
     margin-left: -50px;
     width: 100%;
     text-align: center;
+    text-shadow: 0 0 5px #000;
 }
 
 .main-slider .owl-dots .owl-dot{
@@ -1470,6 +1494,7 @@ select:focus {
   -webkit-transition:all 500ms ease;
   -ms-transition:all 500ms ease;
   -o-transition:all 500ms ease;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .owl-dots .owl-dot:before{
@@ -1485,6 +1510,7 @@ select:focus {
   -webkit-transition:all 500ms ease;
   -ms-transition:all 500ms ease;
   -o-transition:all 500ms ease;
+  text-shadow: 0 0 5px #000;
 }
 
 .main-slider .owl-dots .owl-dot.active::before,
@@ -3791,7 +3817,7 @@ select:focus {
   font-weight: 400;
 }
 .event-details .inner-box{
-  background: #f1f1f1;
+  background: orange;
   padding: 45px 40px;
   margin-top: 25px;
   margin-bottom: 30px;

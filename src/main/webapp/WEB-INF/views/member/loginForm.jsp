@@ -68,7 +68,7 @@
 		type:"post",
 		success: function(data) {
 			alert("ログインに成功しました。");
-			self.location.href = document.referrer;
+			location.href="festival";
 		},
 		error: function() {
 			alert("ログインに失敗しました。");

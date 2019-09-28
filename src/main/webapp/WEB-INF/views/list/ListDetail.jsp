@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
@@ -33,9 +34,72 @@
       }
       
       .pre{
-      	width: 770px;
-      	height: 500px;
+      	width: 370px;
+      	height: auto;
       }
+      
+      .buttonS{
+        background-color: #3c8dbc;
+    	border-color: #367fa9;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      
+        .buttonD{
+        background-color: red;
+    	border-color: red;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      
+      .tableSecond{
+
+	  padding: 45px 40px;
+	  margin-top: 25px;
+	  margin-bottom: 30px;
+	  text-align: center;
+	  background: #ffffff;
+	  border: 3px solid #eaeaea;
+	  font-family: 'Poppins', sans-serif;
+	  text-transform: uppercase;  
+	  font-size: 15px;
+	  text-align: center;
+      
+      
+      }
+      
+      
+      
     </style>
     <script src="js/jquery.js" charset="utf-8"></script>
  <script>
@@ -48,7 +112,8 @@
     
    	var Country = "${vo.country}";
    	var mainB = ${vo.mainBoardNum};
-   	var Cdata = {"Country" : Country , "mainBoardNum" : mainB};
+   	var sur = "${vo.surround_place}";
+   	var Cdata = {"Country" : Country , "mainBoardNum" : mainB , "surround_place": sur};
     function Crawling() {
     	var src = "";
           $.ajax({
@@ -98,9 +163,11 @@
 						return false;
                 	  }else{
                      originalFileName = "resources/images/userimage/" +item;
-                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
-                  })
-               }
+
+                   $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
+                	 }
+                  })  
+            	}
             },
             error : function() {
                alert("イメージの読み込みに失敗しました。");
@@ -186,7 +253,8 @@
         //일단은 위시리스트 추가하기
         function insertwish()
           {
-           var mainBoardNum = document.getElementById("mainboardnum").value
+//            alert("여기가 안와?")
+        	var mainBoardNum = document.getElementById("mainboardnum").value
 //            var dislike = 
              $.ajax({
                url:'insertwish',
@@ -219,7 +287,7 @@
 //                    refreshMemList();//새로고침
                if(data.mainBoardNum!=null)
                   {
-                     alert("삭제하기")
+                     alert("削除します。")
                   }
                 },
                 error: function(){
@@ -232,9 +300,11 @@
         
    function loginneed()
      {
-        alert("좋아요 기능은 로그인시 사용가능합니다.");
+        alert("「いいね」をするには、ログインをお先にしてください。");
         return false;
      }
+        
+   
            
  </script>
     
@@ -316,7 +386,6 @@
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
@@ -370,7 +439,6 @@
                         <li class="dropdown"><a href="#">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="#">Calendar</a>
                            <ul>
@@ -440,11 +508,7 @@
                     <div id="preview" class="pre">
                     </div>
                     <div class="image-box" id="image-box">
-        <!--           <input type="" src="" id="preview0">
-                    <br>
-                    <input type="image" src="" id="preview1">
-                    <br>
-                    <input type="image" src="" id="preview2"> -->
+
                </div>
                 </div>
             </div>
@@ -466,20 +530,18 @@
 
                             </div>
                              
-                            <c:if test="${sessionScope.loginid !=null}">
                                <div align="right">
-                               <input type="button" value="修正" onclick="UpdateFestival()">
-                               <input type="button" value="削除" onclick="DeleteFestival()">
+                               <input type="button" class="buttonS" value="修正" onclick="UpdateFestival()">
+                               <input type="button" class="buttonD" value="削除" onclick="DeleteFestival()">
                      </div>
-                     </c:if>                          
-                          <div class="inner-box  table-responsive">
-
+                     <br>
+                          <div class="tableSecond">
                         <table class="table table-hover">
                            <tr>
                            <td><b>分類</b></td><td><b>詳細情報</b></td>
                            </tr>
                             <tr>
-                              <td>ユーザー名</td><td>${vo.userid}</td>
+                              <td>#HASHTAG</td><td>${vo.hashtag}</td>
                            </tr>
                            <tr>
                               <td>タイトル</td><td>${vo.title}</td>
@@ -493,6 +555,9 @@
                            <tr>
                               <td>国家</td><td>${vo.country}</td>
                            </tr>
+                            <tr>
+                              <td>都市</td><td>${vo.surround_place}</td>
+                           </tr>
                      <tr>
                               <td>住所</td><td>${vo.adress}</td>
                            </tr>
@@ -500,21 +565,17 @@
                         </table>
                         </div>
                         </div>
-       <!--                  <h5>Business Conference - World Wealth Creation 2018.</h5>
-                        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                        <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-        -->            
                   </div>
                     <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
+                        <h5><b>${vo.country}・${vo.surround_place}の名所</b></h5>
+                        <div class="tableSecond">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th class="spot">名所</th>
-                                        <th class="content">紹介</th>
-                                        <th class="spot">名所</th>
-                                        <th class="content">紹介</th>
+                                        <th class="spot">名所紹介</th>
+                                        <th class="content">写真</th>
+                                        <th class="spot">名所紹介</th>
+                                        <th class="content">写真</th>
                                     </tr>
                                 </thead>
                                 <tbody id="carw">
@@ -525,13 +586,15 @@
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
-                       <input id="submit" type="button" value="Geocode">
+                      <!--  <input id="submit" type="button" value="Geocode"> -->
                         </div>
                     <div id="googleMap"></div>
             </div>
         </div>                
     </div>
 </section>
+<br>
+
 <!--End Schedule Details-->
 <section>
    <div class="blog-left-title">
@@ -568,18 +631,16 @@
             </td>
          <c:if test="${sessionScope.loginid == replylist.userid}">
             <td>
-               &nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-               <input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+               &nbsp&nbsp
+               <input type="button" class="buttonS" value="修正" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+           		<input type="button" class="buttonD" value="削除" onclick="replyDelete('${replylist.replynum}')">
             </td>
          </c:if>
       </tr>
       </c:forEach>
    </table>
-<!--                         <div class="link-btn" id="updatebtn"> -->
-<!--                             <a href="#" ><i class="fas fa-reply"></i>Replay</a> -->
-<!--                         </div> -->
+
                     </div>
-                </div>
                 <div class="blog-left-title">
                     <h6>Post Comments</h6>
                 </div>
@@ -608,7 +669,6 @@
    
 </div>
 
-</section>
 
 
 
@@ -644,6 +704,7 @@
 </footer>
 <!--End Main Footer-->
 
+</section>
 
 <!--Footer Bottom Section-->
 <section class="footer-bottom">
@@ -705,6 +766,5 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
     </script>
-</div>
 </body>
 </html>

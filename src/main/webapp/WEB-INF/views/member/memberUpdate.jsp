@@ -262,7 +262,6 @@
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
-											<li><a href="listDetailForm">List Details</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="#">Calendar</a>
 										<ul>

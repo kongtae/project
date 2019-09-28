@@ -27,5 +27,11 @@ public interface ListMapper {
 	public ArrayList<ListVO> selectHashtag(String[] hashtag1);
 	
 	public ArrayList<ListVO> printCrawling(ListVO vo);
+	//복구 파일로 쓰기!
+	public void RewriteFestival(ListVO vo);
+	//업데이트
+	public void ReupdateFestival(ListVO vo1);
+
+	public ArrayList<ListVO> selectMain();
 
 }

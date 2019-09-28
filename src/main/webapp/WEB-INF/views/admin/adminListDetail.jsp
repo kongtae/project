@@ -55,33 +55,84 @@
                }
             },
             error : function() {
-//                alert("실패");
-               alert("이미지 로드 실패");
+               alert("リストを読み込めませんでした。");
             }
          });
       }
     
     
-    function UpdateFestival() {
-       location.href="AdminupdateFestivalGO?adminboardnum=${vo.mainBoardNum}";
-   }
-     function DeleteFestival() {
+	function ListRecovery() {
+		var mainBoardNum =${vo.mainBoardNum};
+		var admin_mainBoardNum =${vo.admin_mainBoardNum};
+		var datacheck ="${vo.datacheck}";
+// 		alert(mainBoardNum);
+		if(datacheck=="feinsert")
+		{	
+			alert("복구할게 없습니다.");
+			return false;
+		}
+		else if(datacheck=="Recovery")
+		{
+			alert("이미 복구된 내용입니다.")
+			return false;
+		}
+		$.ajax({
+			url:"ListRecovery",
+			type:"post",
+			data : {mainBoardNum : mainBoardNum,
+				admin_mainBoardNum : admin_mainBoardNum,
+				datacheck : datacheck},
+			success:function(result){
+				location.href="adminListPage";
+			}
+// 			},
+// 			error{
+// 				alert("실패");
+// 			}
+		});
+	}
+	
+	
+	function AdminDeleteFestival() {
+		var mainBoardNum = ${vo.mainBoardNum};
+		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
+		var datacheck ="${vo.datacheck}";
+// 		alert(mainBoardNum);
+
+		$.ajax({
+			url:"AdminDeleteList",
+			type:"post",
+			data : {mainBoardNum : mainBoardNum,
+					admin_mainBoardNum : admin_mainBoardNum
+					},
+			success:function(result){
+				location.href="adminListPage";
+			}
+// 			},
+// 			error{
+// 				alert("실패");
+// 			}
+		});
+	}
+	
+// 	updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
+    function DeleteFestival() {
            if(confirm("삭제하시겠습니까?")){
-           location.href="AdmindeleteFestival?adminboardnum=${vo.mainBoardNum}";
-           }
-     }
+          location.href="AdmindeleteFestival?adminboardnum=${vo.mainBoardNum}";
+          }
+    }
      //댓글 작성시 유효성검사
      function replywrite() {
       var replytext = document.getElementById("replytext");
       var name = document.getElementById("name").value;
       if(replytext.value.length==0)
       {
-         alert("글일 입력해주세요");
+         alert("コメントの内容を入力してください。");
          return false;   /*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
       }
       if(name.length=="")
       {
-         alert("로그인을 먼저 해주세요.");
+         alert("ログインをお先にしてください。.");
          return false;
       }
          document.getElementById("replywrite").submit();
@@ -103,11 +154,9 @@
                  replynum : replynum
               },
               success:function(){
-//                  alert("삭제성공")
                  refreshMemList();
               },
               error: function(){
-//                  alert("삭제 실패")
               }
               
            });
@@ -150,11 +199,9 @@
                 mainBoardNum : document.getElementById("mainboardnum").value
                 },
                 success:function(data){
-//                    refreshMemList();//새로고침
 
                 },
                 error: function(){
-//                    alert("삭제 실패")
                 }
                 
              });
@@ -170,14 +217,13 @@
                 mainBoardNum : document.getElementById("mainboardnum").value
                 },
                 success:function(data){
-//                    refreshMemList();//새로고침
+//                    refreshMemList();
                if(data.mainBoardNum!=null)
                   {
-                     alert("삭제하기")
+                     alert("削除します。")
                   }
                 },
                 error: function(){
-//                    alert("삭제 실패")
                 }
                 
              });
@@ -186,7 +232,7 @@
         
    function loginneed()
      {
-        alert("좋아요 기능은 로그인시 사용가능합니다.");
+        alert("「いいね」をするには、ログインをお先にしてください。");
         return false;
      }
            
@@ -269,8 +315,7 @@
                         <li class="dropdown"><a href="/festival">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
-                              <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
+                              <li><a href="listForm">List</a></li>                     
                            </ul></li>
                         <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
@@ -343,7 +388,7 @@
                         <li class="dropdown"><a href="#">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
+                          
                            </ul></li>
                         <li class="dropdown"><a href="#">Calendar</a>
                            <ul>
@@ -439,10 +484,11 @@
 
                             </div>
                              
-                            <c:if test="${sessionScope.loginid !=null}">
+                            <c:if test="${sessionScope.adminid !=null}">
                                <div align="right">
-                               <input type="button" value="修正" onclick="UpdateFestival()">
-                               <input type="button" value="削除" onclick="DeleteFestival()">
+                               <input type="button" value="復旧" onclick="ListRecovery()">
+                               <input type="button" value="削除" onclick="AdminDeleteFestival()">
+<!--                                <input type="button" value="削除" onclick="DeleteFestival()"> -->
                      </div>
                      </c:if>                          
                           <div class="inner-box  table-responsive">
@@ -675,7 +721,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("없는 주소입니다.");
+            alert("住所を正しく入力してください。");
           }
         });
       }

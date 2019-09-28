@@ -63,7 +63,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("없는 주소입니다");
+            alert("住所を正しく入力してください。");
           }
         });
       }

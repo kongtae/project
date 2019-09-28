@@ -41,49 +41,54 @@ public class tourAPIController {
 
 	@RequestMapping(value = "/tourAPIselect", method = RequestMethod.GET)
 	public void tourAPIselect(HttpServletRequest request, HttpServletResponse response, String startEvent, String endEvent) throws ServletException, IOException{
-				System.out.println("tourAPIselect");
-				request.setCharacterEncoding("utf-8");
-				response.setContentType("text/html; charset=utf-8");
-				
-				String addr = "http://api.visitkorea.or.kr/openapi/service/rest/JpnService/searchFestival?ServiceKey=";
-				String serviceKey = "wjn%2Fnwpg1YkdtXVp0wSFtiNqGn1WCDSVejgj1yp8geKpVbn4UJNJAx392w7bdIPmE9RSJBxl97WAp0fTN7182w%3D%3D";
-				String parameter = "";
-//				serviceKey = URLEncoder.encode(serviceKey,"utf-8");
-				PrintWriter out = response.getWriter();
-//				parameter = parameter + "&" + "areaCode=1";
-				parameter = parameter + "&" + "eventStartDate="+startEvent;
-				parameter = parameter + "&" + "eventEndDate="+endEvent;
-				parameter = parameter + "&" + "pageNo=1&numOfRows=100";
-				parameter = parameter + "&" + "MobileOS=ETC";
-				parameter = parameter + "&" + "MobileApp=aa";
-				parameter = parameter + "&" + "_type=json";
-				
-				
-				addr = addr + serviceKey + parameter;
-				URL url = new URL(addr);
-
-				System.out.println(addr);
-				
-//				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-
-				InputStream in = url.openStream(); 
-//				CachedOutputStream bos = new CachedOutputStream();
-				ByteArrayOutputStream  bos1 = new ByteArrayOutputStream();
-				IOUtils.copy(in, bos1);
-				in.close();
-				bos1.close();
-			    
-				String mbos = bos1.toString("UTF-8");
-				System.out.println("mbos: "+mbos);
-			    
-				byte[] b = mbos.getBytes("UTF-8");
-				String s = new String(b, "UTF-8");
-				out.println(s);
-				
-				JSONObject json = new JSONObject();
-				json.put("data", s);
-				//json.put("data", data);
-				System.out.println("json: "+json);
+		String[] sa = startEvent.split("-");
+		String start = sa[0] + sa[1] + sa[2];
+		String[] ea = endEvent.split("-");
+		String end = ea[0] + ea[1] + ea[2];
+		System.out.println("start : "+start);
+		System.out.println("end : "+end);
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/JpnService/searchFestival?ServiceKey=";
+		String serviceKey = "wjn%2Fnwpg1YkdtXVp0wSFtiNqGn1WCDSVejgj1yp8geKpVbn4UJNJAx392w7bdIPmE9RSJBxl97WAp0fTN7182w%3D%3D";
+		String parameter = "";
+		//				serviceKey = URLEncoder.encode(serviceKey,"utf-8");
+		PrintWriter out = response.getWriter();
+		//				parameter = parameter + "&" + "areaCode=1";
+		parameter = parameter + "&" + "eventStartDate="+start;
+		parameter = parameter + "&" + "eventEndDate="+end;
+		parameter = parameter + "&" + "pageNo=1&numOfRows=1000";
+		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "MobileApp=aa";
+		parameter = parameter + "&" + "_type=json";
+		
+		
+		addr = addr + serviceKey + parameter;
+		URL url = new URL(addr);
+		
+		System.out.println(addr);
+		
+		//				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+		
+		InputStream in = url.openStream(); 
+		//				CachedOutputStream bos = new CachedOutputStream();
+		ByteArrayOutputStream  bos1 = new ByteArrayOutputStream();
+		IOUtils.copy(in, bos1);
+		in.close();
+		bos1.close();
+		
+		String mbos = bos1.toString("UTF-8");
+		System.out.println("mbos: "+mbos);
+		
+		byte[] b = mbos.getBytes("UTF-8");
+		String s = new String(b, "UTF-8");
+		out.println(s);
+		
+		JSONObject json = new JSONObject();
+		json.put("data", s);
+		//json.put("data", data);
+		System.out.println("json: "+json);
 	}
 
 	@RequestMapping(value = "/tourAPIinsert", method = RequestMethod.POST)
@@ -91,7 +96,7 @@ public class tourAPIController {
 	public int tourAPIinsert(@RequestBody ArrayList<ListVO> list) {
 		
 		
-		int i = 200;
+		int i = 300;
 		for (ListVO vo : list) {
 			//vo.setStartEvent();
 			vo.setMainBoardNum(i);

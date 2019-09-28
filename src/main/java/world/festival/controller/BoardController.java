@@ -52,9 +52,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "/boardUpdateGO", method = {RequestMethod.GET, RequestMethod.POST})
 	public String boardUpdate(BoardVO vo1,Model model) {
-		System.out.println("boardUpdateGO 업데이트할 보드 부이오"+vo1);
+		System.out.println("boardUpdateGO �뾽�뜲�씠�듃�븷 蹂대뱶 遺��씠�삤"+vo1);
 		BoardVO vo2 = dao.readBoard(vo1);
-		System.out.println("boardUpdateGO 다 찾은 브이오" + vo2);
+		System.out.println("boardUpdateGO �떎 李얠� 釉뚯씠�삤" + vo2);
 		model.addAttribute("vo", vo2);
 		return "board/BoardUpdate";
 	}
@@ -64,31 +64,31 @@ public class BoardController {
 	public String boardUpdate(BoardVO vo, HttpSession session, MultipartHttpServletRequest request) {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("boardUpdate 진짜 실행 할 거다! 업데이트할 보드 부이오"+vo);
+		System.out.println("boardUpdate 吏꾩쭨 �떎�뻾 �븷 嫄곕떎! �뾽�뜲�씠�듃�븷 蹂대뱶 遺��씠�삤"+vo);
 		boolean result = service.boardUpdate(vo,request);
-		System.out.println("boardUpdate 진짜 실행했다! 그 결과 값은??" + result);
+		System.out.println("boardUpdate 吏꾩쭨 �떎�뻾�뻽�떎! 洹� 寃곌낵 媛믪�??" + result);
 		
 		AdminBoardVO adminlist= adminservice.selectupBoard(vo.getBul_boardnum());
 		adminlist.setDatacheck("bulupdate");
-		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
+		System.out.println("�뼱�뱶誘� �옒 李얠븘�솕�뒗吏� �솗�씤"+adminlist);
 		adminservice.AdminBoardWrite(adminlist, request);
 		
 		return "success";
 	}
-	//admin도 같이 등록 되게 추가
+	//admin�룄 媛숈씠 �벑濡� �릺寃� 異붽�
 	@RequestMapping(value = "/BoardWrite", method = RequestMethod.POST)
 	@ResponseBody
 	public String BoardWrite(BoardVO vo, HttpSession session, MultipartHttpServletRequest request) {
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("보드라이트의 vo : "+vo);
+		System.out.println("蹂대뱶�씪�씠�듃�쓽 vo : "+vo);
 		boolean result = service.BoardWrite(vo,request);
-		System.out.println("보드 인설트 result:"+result);
+		System.out.println("蹂대뱶 �씤�꽕�듃 result:"+result);
 		
 		
-		//자유게시판을 찾아와서 admin에 추가
+		//�옄�쑀寃뚯떆�뙋�쓣 李얠븘���꽌 admin�뿉 異붽�
 		AdminBoardVO adminvo = adminservice.selectBul();
-		System.out.println("잘 찾아 왔는지 확인"+adminvo);
+		System.out.println("�옒 李얠븘 �솕�뒗吏� �솗�씤"+adminvo);
 		adminvo.setDatacheck("bulinsert");
 		adminservice.AdminBoardWrite(adminvo, request);
 		return "success";
@@ -96,7 +96,7 @@ public class BoardController {
 	@RequestMapping(value = "/boardPrintAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<BoardVO> boardPrintAll() {
 		ArrayList<BoardVO> list = dao.boardPrintAll();
-		System.out.println("자유게시판 전체출력" + list);
+		System.out.println("�옄�쑀寃뚯떆�뙋 �쟾泥댁텧�젰" + list);
 		return list;
 	}
 	
@@ -108,15 +108,15 @@ public class BoardController {
 		System.out.println("keyword "+searchKeyword);
 		ArrayList<BoardVO> BoardSelectOne1 = new ArrayList<BoardVO>();
 		if(searchItem.equals("inputdate")){
-		System.out.println("if문안으로 들어오나?");
+		System.out.println("if臾몄븞�쑝濡� �뱾�뼱�삤�굹?");
 		BoardSelectOne1 = service.BoardSelectOne1(searchItem,searchKeyword);	
-		System.out.println("BoardSelectOne리스트 출력111"+BoardSelectOne1);
+		System.out.println("BoardSelectOne由ъ뒪�듃 異쒕젰111"+BoardSelectOne1);
 		return BoardSelectOne1;
 		}
 		ArrayList<BoardVO> BoardSelectOne2 = service.BoardSelectOne2(searchItem,searchKeyword);
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);
-		System.out.println("BoardSelectOne리스트 출력222"+BoardSelectOne2);
+		System.out.println("BoardSelectOne由ъ뒪�듃 異쒕젰222"+BoardSelectOne2);
 		return BoardSelectOne2;
 		}
 	
@@ -125,14 +125,14 @@ public class BoardController {
 	public String BoardDetailGO(BoardVO vo1 , ReplyVO vo,Model model,HttpSession hs) {
 		String userid=(String)hs.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("bul_boardnum 의  값111 : " + vo1.getBul_boardnum());
-		System.out.println("bul 현재 히트 수 " +  vo1.getHit());
+		System.out.println("bul_boardnum �쓽  媛�111 : " + vo1.getBul_boardnum());
+		System.out.println("bul �쁽�옱 �엳�듃 �닔 " +  vo1.getHit());
 		BoardVO vo2 = dao.readBoard(vo1);
 		model.addAttribute("vo", vo2);
-		System.out.println("보드디테일단의 BoardVO 의 값 :" + vo2);
+		System.out.println("蹂대뱶�뵒�뀒�씪�떒�쓽 BoardVO �쓽 媛� :" + vo2);
 		ArrayList<ReplyVO> replylist=service.replyList(vo);
-		System.out.println("댓글 리스트 "+replylist);
-		//댓글 갯수
+		System.out.println("�뙎湲� 由ъ뒪�듃 "+replylist);
+		//�뙎湲� 媛��닔
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
 		return "board/BoardDetail";
@@ -147,28 +147,28 @@ public class BoardController {
 		adminservice.AdminBoardWrite(adminlist);
 		
 		
-		System.out.println("삭제할 vo "+vo);
+		System.out.println("�궘�젣�븷 vo "+vo);
 		int result = dao.BoardDelete(vo);
-		System.out.println("삭제결과 :  "+result);
+		System.out.println("�궘�젣寃곌낵 :  "+result);
 		return "board/BoardList";
 	}
 	
 	@RequestMapping(value = "/imagePrintBoard", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrintBoard(BoardVO vo) {
-		System.out.println("이미지프린트 받은 불보드넘 : "+vo.getBul_boardnum());
+		System.out.println("�씠誘몄��봽由고듃 諛쏆� 遺덈낫�뱶�꽆 : "+vo.getBul_boardnum());
 		BoardVO lvo = dao.imagePrintBoard(vo);
 		System.out.println("lvo : " + lvo);
 		ArrayList<String> ilist = new ArrayList<>();
 		String a[] = lvo.getOriginalFileName().split(",");
 		for (int i = 0; i < a.length; i++) {
 			ilist.add(a[i]);
-			System.out.println("Board포문안에 아이리스트"+ilist);
+			System.out.println("Board�룷臾몄븞�뿉 �븘�씠由ъ뒪�듃"+ilist);
 			
 		}
-		System.out.println("a는? "+ a);
-		System.out.println("Board포문밖의 아이리스트" + ilist);
-		System.out.println("아이리스트 [0] :" + ilist.get(0));
+		System.out.println("a�뒗? "+ a);
+		System.out.println("Board�룷臾몃컰�쓽 �븘�씠由ъ뒪�듃" + ilist);
+		System.out.println("�븘�씠由ъ뒪�듃 [0] :" + ilist.get(0));
 
 		return ilist; 
 	}

@@ -111,7 +111,7 @@ $(function() {
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패2");
+				alert("リストを読み込めませんでした。");
 			}
 		})
 	} 
@@ -122,7 +122,6 @@ $(function() {
 		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
-		alert("게시글 수"+totalRecordCount); 
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -136,8 +135,6 @@ $(function() {
 			epage = pageBlockCount*pageBlock;
 		}
 		
-		//alert("시작블락"+spage);
-		//alert("마지막블락"+epage);
 		navSet(totalPageCount, spage, epage);
 		tagSet(result, startPageGroup, endPageGroup);
 		
@@ -169,7 +166,6 @@ $(function() {
 			pageBlockCount = Math.ceil(page/pageBlock)
 			startPageGroup = ((page-1) * countPerPage);
 			endPageGroup = (startPageGroup + countPerPage);
-			alert("셀렉 게시글 수"+totalRecordCount); 
 			
 			if(pageBlockCount > 1) {
 				spage = (pageBlockCount-1)*pageBlock+1;
@@ -183,8 +179,6 @@ $(function() {
 				epage = pageBlockCount*pageBlock;
 			}
 			
-			//alert("시작블락"+spage);
-			//alert("마지막블락"+epage);
 			navSet(totalPageCount, spage, epage);
 			tagSet(result, startPageGroup, endPageGroup);
 			
@@ -324,8 +318,7 @@ $(function() {
 			dataType: 'json',
 			success : output1,
 			error: function(request,status,error) {
-				alert("리스트 불러오기 실패1");
-				alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+				alert("リストを読み込めませんでした。");
 			}
 		})
 	}
@@ -343,7 +336,7 @@ $(function() {
 			data : { 'hashtag' : hashtag1 },
 			success : output1,
 			error: function() {
-				alert("리스트 불러오기 실패3");
+				alert("リストを読み込めませんでした。");
 			}
 		})
 	}
@@ -354,14 +347,7 @@ $(function() {
 </script>
 </head>
 <body>
-<c:choose>
-	<c:when test="${deleteResult == true}">
-		<script>alert("削除に成功しました。");</script>
-	</c:when>
-	<c:when test="${deleteResult == false}">
-		<script>alert("削除に失敗しました。");</script>
-	</c:when>
-</c:choose>
+
     
 <div class="boxed_wrapper">
 
@@ -430,8 +416,7 @@ $(function() {
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
+										<li><a href="listForm">List</a></li>									
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -485,7 +470,6 @@ $(function() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -531,9 +515,13 @@ $(function() {
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+<!-- 	<h4><a href="adminListPage">AdminListPage</a></h4> -->
+		<a href="adminBulPage"><h4 id="icontext"><b>To&nbspAdminBulPage</b></h4></a>
+<!-- 		<h4 id="icontext"><b>投稿する</b></h4> -->
+<!-- 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
+
 	</div>
+	<br>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
@@ -546,9 +534,9 @@ $(function() {
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
-					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>>
-					USERID
-					</option>
+<%-- 					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>> --%>
+<!-- 					USERID -->
+<!-- 					</option> -->
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>

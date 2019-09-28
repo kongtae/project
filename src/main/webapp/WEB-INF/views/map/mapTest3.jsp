@@ -179,7 +179,6 @@
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
-											<li><a href="listDetailForm">List Details</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="calendar">Calendar</a>
 										<ul>
@@ -239,7 +238,7 @@
 
 
 		<!-- Page Title-->
-		<section class="page-title" style="background: url(images/background/page-title-2.jpg); margin-top: 6%;">
+		<section class="page-title" style="background: url(resources/images/userimage/불꽃놀이.jpg); margin-top: 6%;">
     	<div class="container">
         	<div class="title-text text-center">
            	 <h3>MAP</h3>
@@ -268,7 +267,7 @@
 
 				<i class="fa fa-map-marker"></i>
 
-				<h1 class="box-title">Festival</h1>
+				<h1 class="box-title">FESPEDIA</h1>
 
 
 			</div>
@@ -297,14 +296,23 @@
 				<li><a href="contact-us.html">Search Festival</a></li>
             </ul>
             <ul class="social-links">
-                <c:if test="${sessionScope.loginid == null}">
-					<li><a href="registermember">Sign Up</a></li>
-					<li><a href="loginForm">Sign in</a></li>
-				</c:if>
-				<c:if test="${sessionScope.loginid != null}">
-					<li><a href="memberPage">UserPage</a></li>
-					<li><a href="logout">Logout</a></li>
-				</c:if>
+					<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
             </ul>
         </div>            
     </div>
@@ -377,15 +385,9 @@
 	<!-- <script src="js/jquery-3.4.1.js"></script> -->
 	<script>
 window.onload =function(){
-	//alert("맵화면");
 	selectMap();
 }
-/* 
-$(function() {
-	alert("맵화면");
-	//selectMap();
-});
- */
+
 var visitorsData = {
   US: 398, // USA
   SA: 400, // Saudi Arabia
@@ -406,26 +408,16 @@ function selectMap(){
 		url : "selectMap1",
 		type:"post",
 		dataType:"json",
-		success : function(data) {
-			alert("성공");
+		success : function(data) {	//데이터를 hashmap으로 갖고온다.
 			mapList = data;
-			
-			/* $(data).each(function(index,item) {
-				alert(item.country + " : " + item.festivalCount);
-					var country = item.country;
-					var festivalCount = item.festivalCount;
-					mapList.item.country = item.festivalCount;
-					객체명.속성명 = 값;
-					ca : 1
-			});   */
+		
 		},
 		error : function(data) {
-			alert("실패");
+			alert("マップを読み込めませんでした。");
 		}
 	});
 }
 
-var a = '러시아 축제 1000개';
 //jvectormap data
 
 	// World map by jvectormap
@@ -455,24 +447,14 @@ var a = '러시아 축제 1000개';
 	  series           : {
 	    regions: [
 	      {
-	        values           : mapList,
+	        values           : mapList,	//밸류에 mapList 주고
 	        scale            : ['#92c1dc', '#ebf4f9'],
 	        normalizeFunction: 'polynomial'
 	      }
 	    ]
 	  },
 	  onRegionLabelShow: function (e, el, code) {
-			/* for (var i = 0; i < el.length; i++) {
-				el.html(mapList[code] + " : " + el.count[i]);
-			}	 */
-		  
-		   //el.html(mapList[code] + " : " + mapList[count]
-		        //el.html() + " : " + mapList[code]
-		    //);
-		  
-	    /*  if(code == 'RU'){
-			el.text(a); */
-	    //}else 
+		
 	    if (typeof mapList[code] != 'undefined'){
 	        el.html(el.html() + ' : ' + mapList[code] + '個');
 	    } 

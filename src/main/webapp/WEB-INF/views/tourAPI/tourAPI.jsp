@@ -28,7 +28,6 @@
 			success : function(data) {
 				console.log(data);
 				if(flag != 0){
-					alert("aa");
 					$('#btn').append("<tr><th id='tt' colspan='2'><input type='button' value='축제 값 등록' onclick='tourAPIinsert()'></th></tr>"); 
 					return false;
 				}
@@ -62,8 +61,7 @@
 					//tourAPIinsert(tour);
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert("Status: " + textStatus);
-				alert("Error: " + errorThrown);
+			
 			}
 		});  
 		}
@@ -76,11 +74,11 @@
 			contentType : "application/json; charset=utf-8",
 			data: JSON.stringify(tour),
 			success: function(){
-				alert("insert success");
+				alert("登録を完了しました。");
 				
 			},
 			error: function(){
-				alert("insert error");				
+				alert("登録が失敗しました。");				
 			}
 		 });
 	 }

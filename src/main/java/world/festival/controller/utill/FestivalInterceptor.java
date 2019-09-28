@@ -15,7 +15,9 @@ public class FestivalInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		
 		String loginid = (String)session.getAttribute("loginid");
+		String adminid = (String)session.getAttribute("adminid");
 		if(loginid==null){
+			
 			String path = request.getContextPath();
 			System.out.println(path);
 			response.sendRedirect("interseptorLogin");
