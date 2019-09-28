@@ -134,7 +134,7 @@
 									<ul class="navigation clearfix">
 										<li class="dropdown"><a href="#">Home</a>
 											<ul>
-												<li><a href="index.html">Home Page 01</a></li>
+												<li><a href="festival">Home Page 01</a></li>
 												<li><a href="index-2.html">Home Page 02</a></li>
 											</ul></li>
 										<li class="dropdown"><a href="#">About</a>
@@ -209,7 +209,7 @@
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="index.html" class="img-responsive"><img
+						<a href="festival" class="img-responsive"><img
 							src="images/logo.png" alt="" title=""></a>
 					</div>
 
@@ -230,7 +230,7 @@
 								<ul class="navigation clearfix">
 									<li class="dropdown"><a href="#">Home</a>
 										<ul>
-											<li><a href="index.html">Home Page 01</a></li>
+											<li><a href="festival">Home Page 01</a></li>
 											<li><a href="index-2.html">Home Page 02</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="#">About</a>
@@ -277,7 +277,7 @@
 				<div class="title-text text-center">
 					<h3>MAP</h3>
 					<ul>
-						<li><a href="index.html">home</a></li>
+						<li><a href="festival">home</a></li>
 						<li>/</li>
 						<li>Map</li>
 					</ul>
