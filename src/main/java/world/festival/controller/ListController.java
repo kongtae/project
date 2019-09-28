@@ -107,12 +107,8 @@ public class ListController {
 		String userid=(String)hs.getAttribute("loginid");
 		String hashtag = vo1.getHashtag();
 		int i = hashtag.lastIndexOf(',');
-		System.out.println("i : " + i);
-		System.out.println("섭스트링 : "+hashtag.substring(i));
 		hashtag = hashtag.replace(hashtag.substring(i), "");
-		System.out.println("hashtag = "+hashtag);
 		vo1.setHashtag(hashtag);
-		System.out.println(vo1.getHashtag());
 		vo.setUserid(userid);
 		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
 		System.out.println("댓글 리스트 "+replylist);

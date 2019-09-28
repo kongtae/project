@@ -23,7 +23,11 @@
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<style>
+.main-footer:before {
+	background: #191919;
+}
+</style>
 </head>
 
 <body>
@@ -136,29 +140,9 @@
 
 							<!--Button Box-->
 							<div class="button-box">
-								<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
-							<!--Search Box Outer-->
-							<!--  
-                    <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> 
-                    -->
 
 						</div>
 

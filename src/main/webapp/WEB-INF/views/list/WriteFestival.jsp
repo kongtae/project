@@ -53,8 +53,8 @@
 	
 	.buttonL{
 		width: 645px;
-
-	#hashtagPlus{
+	}
+	#hashtagPlus {
 		width: 6%;
 	    display: inline;
 	    padding: 1.6%;

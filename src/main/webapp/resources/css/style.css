@@ -2643,7 +2643,7 @@ select:focus {
   height: 100%;
   content: '';
   z-index: -1;
-  background: rgba(13, 13, 13, 0.92);
+  background: #191919;
 }
 .main-footer .footer-area{
   max-width: 690px;
