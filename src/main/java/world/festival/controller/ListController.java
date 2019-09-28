@@ -107,23 +107,23 @@ public class ListController {
 		String userid=(String)hs.getAttribute("loginid");
 		String hashtag = vo1.getHashtag();
 		int i = hashtag.lastIndexOf(',');
-		System.out.println("i : " + i);
-		System.out.println("섭스트링 : "+hashtag.substring(i));
+//		System.out.println("i : " + i);
+//		System.out.println("섭스트링 : "+hashtag.substring(i));
 		hashtag = hashtag.replace(hashtag.substring(i), "");
-		System.out.println("hashtag = "+hashtag);
+//		System.out.println("hashtag = "+hashtag);
 		vo1.setHashtag(hashtag);
-		System.out.println(vo1.getHashtag());
+//		System.out.println(vo1.getHashtag());
 		vo.setUserid(userid);
 		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
-		System.out.println("댓글 리스트 "+replylist);
-		System.out.println(vo1);
+//		System.out.println("댓글 리스트 "+replylist);
+//		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
 		
 		//댓글 갯수
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
 		int wish=wishsrvice.selectWish(vo);
-		System.out.println("위시리스트 여부판단"+wish);
+//		System.out.println("위시리스트 여부판단"+wish);
 		//좋아요 여부판단!
 		String like=null;
 		if(wishsrvice.selectWish(vo)>0)
@@ -232,18 +232,13 @@ public class ListController {
 	@RequestMapping(value = "/imagePrint", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrint(ListVO vo) {
-		System.out.println("이미지프린트 받은 보드넘 : "+vo.getMainBoardNum());
 		ListVO lvo = dao.imagePrint(vo);
-		System.out.println("lvo : " + lvo);
 		ArrayList<String> ilist = new ArrayList<>();
 		if(lvo != null) {
 			String a[] = lvo.getOriginalFileName().split(",");
 			for (int i = 0; i < a.length; i++) {
 				ilist.add(a[i]);
-				System.out.println("포문안에 아이리스트"+ilist);
 			}
-			System.out.println("a는? "+ a);
-			System.out.println("포문밖의 아이리스트" + ilist);			
 		}
 		return ilist; 
 	}
@@ -287,8 +282,6 @@ public class ListController {
 		for (int i = 0; i < 3; i++) {
 				
 			int r = (int) Math.floor(Math.random() * (result.size() - 1));
-			System.out.println("r : "+r);
-			System.out.println("list["+r+"] : "+result.get(r));
 			if(result.get(r).getOriginalFileName() == null) {
 				i--;
 			}else if(result.get(r).getOriginalFileName().equals(",,,")){

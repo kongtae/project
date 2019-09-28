@@ -495,9 +495,8 @@ $(function() {
 </header>
 <!--End Main Header -->
 
-
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(resources/images/userimage/등축제.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>
@@ -534,9 +533,6 @@ $(function() {
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
-<%-- 					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>> --%>
-<!-- 					USERID -->
-<!-- 					</option> -->
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>

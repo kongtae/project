@@ -472,19 +472,15 @@
 				 <div class="blog-comment-area">
                     <div class="image-box">
                         <figure>
-<!--                             <img src="images/testimonials/4.png" alt=""> -->
 							<c:if test="${replylist.originalFileName == null}">
 								<img src="images/userimage/login_icon.png" alt="">
 							</c:if>
 							<c:if test="${replylist.originalFileName != null}">
                              <img src="images/userimage/${replylist.originalFileName}" alt="">
-<!--                                              여기가 사용자가 등록한 사진 들어올 곳 -->
-<%--                              ${replylist.originalFileName} --%>
 							</c:if>
+							${replylist.userid}
                         </figure>
-<%--                         <h6>${vo.userid}</h6> --%>
                     </div>
-<!--                     <div class="image-content"> -->
 				</td>
 				<td rowspan="1">
 				&nbsp	&nbsp ${replylist.replytext}
@@ -537,7 +533,7 @@
 
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">

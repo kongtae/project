@@ -62,9 +62,34 @@
 	      }
  
  
- 	function BoardUpdateGO() {
- 		location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
+ 	function BulRecovery() {
+		var bul_boardnum =${vo.bul_boardnum};
+		var admin_mainBoardNum =${vo.admin_mainBoardNum};
+		var datacheck ="${vo.datacheck}";
+// 		alert(mainBoardNum);
+		else if(datacheck=="Recovery")
+		{
+			alert("이미 복구된 내용입니다.")
+			return false;
+		}
+		$.ajax({
+			url:"BulRecovery",
+			type:"post",
+			data : {bul_boardnum : bul_boardnum,
+				admin_mainBoardNum : admin_mainBoardNum,
+				datacheck : datacheck},
+			success:function(result){
+				location.href="adminBulPage";
+			}
+// 			},
+// 			error{
+// 				alert("실패");
+// 			}
+		});
 	}
+ 	
+ 	
+ 	
   	function BoardDelete() {
   			if(confirm("삭제하시겠습니까?")){
   			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
@@ -351,12 +376,13 @@
 
 
                          	</div>
-                         	<c:if test="${sessionScope.loginid !=null}">
-	                         	<div align="right">
-	                         	<input type="button" value="修正" onclick="BoardUpdateGO()">
-	                         	<input type="button" value="削除" onclick="BoardDelete()">
-							</div>
-							</c:if>                          
+                         	                      <c:if test="${sessionScope.adminid !=null}">
+                               <div align="right">
+                               <input type="button" value="復旧" onclick="BulRecovery()">
+                               <input type="button" value="削除" onclick="AdminDeleteFestival()">
+<!--                                <input type="button" value="削除" onclick="DeleteFestival()"> -->
+                     		</div>
+                    		 </c:if>                      
                           <div class="inner-box  table-responsive">
                         <table class="table table-hover">
                         	<tr> <!-- 수정할곳  -->
@@ -496,7 +522,7 @@
 
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">

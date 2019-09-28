@@ -220,7 +220,6 @@ WHERE
 <select id="RecoveryRead" parameterType="ListVO" resultType="ListVO">
 SELECT
     MAINBOARDNUM,
-    USERID,
     TITLE,
     COUNTRY,
     ADRESS,
@@ -247,5 +246,33 @@ WHERE
 		mainBoardNum = #{mainBoardNum}
 </delete>
 
+
+<select id="RecoveryReadBul" parameterType="BoardVO" resultType="BoardVO">
+SELECT
+    BUL_BOARDNUM,
+    USERID,
+    TITLE,
+    HIT,
+    CONTENTS,
+    COUNTRY,
+    SURROUND_PLACE,
+    ADRESS,
+    ORIGINALFILENAME,
+    savedfilename,
+    INPUTDATE
+FROM
+	ADMIN_BUL_BOARD
+WHERE
+	ADMIN_MAINBOARDNUM=#{admin_mainBoardNum}
+</select>
+
+<!-- AdminwriteBoard -->
+
+<!-- <delete id="AdminDeleteBul" parameterType="BoardVO" > -->
+<!-- 		DELETE  -->
+<!-- 		BUL_BOARD  -->
+<!-- 		WHERE  -->
+<!-- 		BUL_BOARDNUM = #{bul_boardnum} -->
+<!-- </delete> -->
 
 </mapper>
