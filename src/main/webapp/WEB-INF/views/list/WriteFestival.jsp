@@ -167,6 +167,7 @@ function writeFestival() {
 
 		checkValue();
 		$('#hashtag').val(hashtag);
+		//alert($('#hashtag').val());
 		var form = $("#writeFestivalID")[0];
 		var formData = new FormData(form);
 		
@@ -225,8 +226,10 @@ function writeFestival() {
                 <!--Top Left-->
                 <div class="top-left">
                     <ul class="header-info-list">
-                        <li><span class="icon fa fa-envelope"></span><strong>Email</strong> info@wiscon.com</li>
-                        <li><span class="icon fa fa-map-marker"></span><strong>Location</strong> 49 BelWest Lane, TX 26098</li>
+                       			<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+									SC.IT@MASTER.COM</li>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
                     </ul>
                 </div>
                 <!--Top Right-->
@@ -359,11 +362,11 @@ function writeFestival() {
 <section class="page-title" style="background: url(resources/images/background/page-title-4.jpg);">
     <div class="container">
         <div class="title-text text-center">
-            <h3>Shedule Details</h3>
+           <h3>祭り掲示板</h3>
             <ul>
-                <li><a href="index.html">home</a></li>
+                <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Shedule Details</li>
+                <li><a href="listForm">List</a></li>
             </ul>
         </div>                
     </div>
@@ -473,47 +476,6 @@ function writeFestival() {
 <!--End Schedule Details-->
 
 <!--Contact Info-->
-<section class="contact-info">
-    <div class="container">
-        <div class="info-area">
-            <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-placeholder"></i>
-                        </div>
-                        <div class="text">
-                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-phone-call"></i>
-                        </div>
-                        <div class="text">
-                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-e-mail-envelope"></i>
-                        </div>
-                        <div class="text">
-                            <p>
-                                <a href="#">info@wiscon.com</a>
-                                <a href="#">support@wiscon.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>            
-    </div>
-</section>
 
 
 <!-- Main Footer-->
@@ -526,14 +488,12 @@ function writeFestival() {
                 </figure>
             </div>
             <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="speakers.html">Speakers</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a href="shedule.html">Schedule</a></li>
-                <li><a href="sponsor.html">Sponsors</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="festival">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
             <ul class="social-links">
                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
