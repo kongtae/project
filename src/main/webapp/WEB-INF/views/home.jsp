@@ -139,26 +139,7 @@
 								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
-							<!--Search Box Outer-->
-							<!--  
-                    <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> 
-                    -->
+			
 
 						</div>
 
@@ -172,7 +153,7 @@
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="index.html" class="img-responsive"><img
+						<a href="festival" class="img-responsive"><img
 							src="images/logo.png" alt="" title=""></a>
 					</div>
 

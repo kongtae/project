@@ -270,7 +270,7 @@
 					<ul>
 						<li><a href="/festival">home</a></li>
 						<li>/</li>
-						<li>Search Festival</li>
+						<li><a href="/searchFestival">Search Festival</a></li>
 					</ul>
 				</div>
 			</div>

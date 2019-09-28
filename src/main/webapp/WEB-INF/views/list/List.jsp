@@ -750,7 +750,7 @@ $(function() {
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="index.html" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -929,7 +929,7 @@ $(function() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="index.html"><img src="images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">

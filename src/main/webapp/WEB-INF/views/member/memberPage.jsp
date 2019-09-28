@@ -232,7 +232,7 @@ function memberSelect(){
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="index.html" class="img-responsive"><img
+						<a href="festival" class="img-responsive"><img
 							src="images/logo.png" alt="" title=""></a>
 					</div>
 
@@ -253,7 +253,7 @@ function memberSelect(){
 								<ul class="navigation clearfix">
 									<li class="dropdown"><a href="/festival">Home</a>
 										<ul>
-											<li><a href="index.html">Home Page 01</a></li>
+											<li><a href="festival">Home Page 01</a></li>
 											<li><a href="index-2.html">Home Page 02</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="#">About</a>
@@ -298,7 +298,7 @@ function memberSelect(){
         <div class="title-text text-center">
             <h3>Our Sponsors</h3>
             <ul>
-                <li><a href="index.html">home</a></li>
+                <li><a href="festival">home</a></li>
                 <li>/</li>
                 <li>Our Sponsors</li>
             </ul>
@@ -606,7 +606,7 @@ function memberSelect(){
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="index.html"><img src="images/logo-2.png" alt=""></a>
+							<a href="festival"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
             <ul class="footer-menu">
