@@ -575,6 +575,7 @@
 
 </div>
 
+<<<<<<< HEAD
 <!-- jQuery 3 -->
 <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -587,6 +588,8 @@
 <script src="resources/dist/js/demo.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+=======
+>>>>>>> f9af3e339696fc69fac7f2afc72c7f50e8e2cf15
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

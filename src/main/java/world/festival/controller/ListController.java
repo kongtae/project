@@ -283,12 +283,9 @@ public class ListController {
 	public ArrayList<ListVO> selectMain() {
 		ArrayList<ListVO> result = dao.selectMain();
 		ArrayList<ListVO> list = new ArrayList<>();
-				
+
 		for (int i = 0; i < 3; i++) {
-				
 			int r = (int) Math.floor(Math.random() * (result.size() - 1));
-			System.out.println("r : "+r);
-			System.out.println("list["+r+"] : "+result.get(r));
 			if(result.get(r).getOriginalFileName() == null) {
 				i--;
 			}else if(result.get(r).getOriginalFileName().equals(",,,")){

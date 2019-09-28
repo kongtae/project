@@ -226,11 +226,11 @@
 
 			<div class="main-slider-carousel owl-carousel owl-theme">
 
-				<div class="slide info0" style="background-image:url(images/main-slider/image-2.jpg)"></div>
+				<div class="slide info0"></div>
 
-				<div class="slide info1" style="background-image:url(images/main-slider/image-2.jpg)"></div>
+				<div class="slide info1"></div>
 
-				<div class="slide info2" style="background-image:url(images/main-slider/image-2.jpg)"></div>
+				<div class="slide info2"></div>
 
 			</div>
 		</section>
