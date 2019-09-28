@@ -111,15 +111,15 @@ public class ListController {
 		vo1.setHashtag(hashtag);
 		vo.setUserid(userid);
 		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
-		System.out.println("댓글 리스트 "+replylist);
-		System.out.println(vo1);
+//		System.out.println("댓글 리스트 "+replylist);
+//		System.out.println(vo1);
 		model.addAttribute("vo", vo1);
 		
 		//댓글 갯수
 		model.addAttribute("replycount", replylist.size());
 		model.addAttribute("replylist", replylist);
 		int wish=wishsrvice.selectWish(vo);
-		System.out.println("위시리스트 여부판단"+wish);
+//		System.out.println("위시리스트 여부판단"+wish);
 		//좋아요 여부판단!
 		String like=null;
 		if(wishsrvice.selectWish(vo)>0)
@@ -228,18 +228,13 @@ public class ListController {
 	@RequestMapping(value = "/imagePrint", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrint(ListVO vo) {
-		System.out.println("이미지프린트 받은 보드넘 : "+vo.getMainBoardNum());
 		ListVO lvo = dao.imagePrint(vo);
-		System.out.println("lvo : " + lvo);
 		ArrayList<String> ilist = new ArrayList<>();
 		if(lvo != null) {
 			String a[] = lvo.getOriginalFileName().split(",");
 			for (int i = 0; i < a.length; i++) {
 				ilist.add(a[i]);
-				System.out.println("포문안에 아이리스트"+ilist);
 			}
-			System.out.println("a는? "+ a);
-			System.out.println("포문밖의 아이리스트" + ilist);			
 		}
 		return ilist; 
 	}

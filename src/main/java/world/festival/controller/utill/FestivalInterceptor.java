@@ -16,13 +16,12 @@ public class FestivalInterceptor extends HandlerInterceptorAdapter {
 		
 		String loginid = (String)session.getAttribute("loginid");
 		String adminid = (String)session.getAttribute("adminid");
-		if(loginid==null){
+		if(loginid==null && adminid==null){
 			
-			String path = request.getContextPath();
-			System.out.println(path);
 			response.sendRedirect("interseptorLogin");
 			return false;
 		}
+		
 		return true;
 		
 	}
@@ -30,13 +29,11 @@ public class FestivalInterceptor extends HandlerInterceptorAdapter {
 		@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-			System.out.println("���� postHandle");
 	}
 		
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("���� afterCompletion");
 	}
 	
 }

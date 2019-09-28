@@ -104,27 +104,33 @@
 					<!--Top Left-->
 					<div class="top-left">
 						<ul class="header-info-list">
-							<li><span class="icon fa fa-envelope"
-								style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Email</strong>
-								info@wiscon.com</li>
-							<li><span class="icon fa fa-map-marker"
-								style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Location</strong>
-								49 BelWest Lane, TX 26098</li>
+								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+									SC.IT@MASTER.COM</li>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 						</ul>
 					</div>
 					<!--Top Right-->
 					<div class="top-right">
 						<!--Social Box-->
 						<ul class="social-box">
-							<li><a href="adminPage">AdminPage</a></li>
-							<c:if test="${sessionScope.loginid == null}">
-								<li><a href="registermember">Sign Up</a></li>
-								<li><a href="loginForm">Sign in</a></li>
-							</c:if>
-							<c:if test="${sessionScope.loginid != null}">
-								<li><a href="memberPage">UserPage</a></li>
-								<li><a href="logout">Logout</a></li>
-							</c:if>
+							<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
 						</ul>
 					</div>
 				</div>
@@ -185,7 +191,7 @@
 
 						<!--Button Box-->
 						<div class="button-box">
-							<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+							<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 						</div>
 
 						<!--Search Box Outer-->
@@ -227,11 +233,11 @@
 	<section class="page-title" style="background: url(resources/images/userimage/춤추는모양.jpg); margin-top: 6%;">
     	<div class="container">
         	<div class="title-text text-center">
-           	 <h3>Events Schedule</h3>
+           	 <h3>カレンダー</h3>
            	 <ul>
-                <li><a href="index.html">home</a></li>
+                <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Schedule</li>
+                <li><a href="calendar">calendar</a></li>
             </ul>
         	</div>                
    		</div>
@@ -259,7 +265,7 @@
 	<!-- /.content -->
 
 	<!-- Main Footer-->
-	<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+	<footer class="main-footer">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">
@@ -273,26 +279,9 @@
                 <li><a href="Calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
-				<li><a href="contact-us.html">Search Festival</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
             <ul class="social-links">
-              		 		<c:if test="${sessionScope.loginid == null}" >
-								<c:if test="${sessionScope.adminid == null}" >
-									<li><a href="registermember">Sign Up</a></li>
-									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
-								</c:if>
-								
-								<c:if test="${sessionScope.loginid != null}">
-									<li><a href="memberPage">UserPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
             </ul>
         </div>            
     </div>
@@ -314,7 +303,7 @@
 		<span class="fa fa-angle-up"></span>
 	</div>
 
-	<script src="js/jquery.js"></script>
+<!-- 	<script src="js/jquery.js"></script> -->
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.fancybox.js"></script>

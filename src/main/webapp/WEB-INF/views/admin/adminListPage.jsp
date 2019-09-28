@@ -366,8 +366,10 @@ $(function() {
                 <!--Top Left-->
                 <div class="top-left">
                     <ul class="header-info-list">
-                        <li><span class="icon fa fa-envelope"></span><strong>Email</strong> info@wiscon.com</li>
-                        <li><span class="icon fa fa-map-marker"></span><strong>Location</strong> 49 BelWest Lane, TX 26098</li>
+                       		<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+									SC.IT@MASTER.COM</li>
+							<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
                     </ul>
                 </div>
                 <!--Top Right-->
@@ -437,7 +439,7 @@ $(function() {
                     
 					<!--Button Box-->
 					<div class="button-box">
-						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+						<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
                 </div>
@@ -495,16 +497,15 @@ $(function() {
 </header>
 <!--End Main Header -->
 
-
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(resources/images/userimage/등축제.jpg);">
     <div class="container">
         <div class="title-text text-center">
-            <h3>Events Schedule</h3>
+           	<h3>「管理者用」祭り掲示板</h3>
             <ul>
-                <li><a href="index.html">home</a></li>
+                <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Schedule</li>
+                <li><a href="adminListPage">AdminListPage</a></li>
             </ul>
         </div>                
     </div>
@@ -534,9 +535,6 @@ $(function() {
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
-<%-- 					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>> --%>
-<!-- 					USERID -->
-<!-- 					</option> -->
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>

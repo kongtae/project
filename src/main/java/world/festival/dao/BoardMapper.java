@@ -29,5 +29,9 @@ public interface BoardMapper {
 
 	public BoardVO imagePrintBoard(BoardVO vo);
 
+	public void RewriteBoard(BoardVO vo1);
+
+	public void ReupdateBoard(BoardVO vo1);
+
 	
 }

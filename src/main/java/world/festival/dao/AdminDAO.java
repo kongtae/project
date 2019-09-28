@@ -107,10 +107,10 @@ public class AdminDAO {
 		return mapper.RecoveryRead(vo);
 	}
 
-	public AdminListVO selectReList(int mainBoardNum) {
-		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
-		return mapper.selectReList(mainBoardNum);
-	}
+//	public AdminListVO selectReList(int mainBoardNum) {
+//		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+//		return mapper.selectReList(mainBoardNum);
+//	}
 
 
 
@@ -118,82 +118,17 @@ public class AdminDAO {
 		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
 		mapper.AdminDeleteList(vo1);
 	}
+
+	public BoardVO RecoveryReadBul(BoardVO vo) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		return mapper.RecoveryReadBul(vo);
+	}
+
+	public void AdminwriteBoard(AdminBoardVO adminvo1) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		mapper.AdminwriteBoard(adminvo1);
 		
-	
-	
-	
-//	public int registermember(UserVO vo) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		int result = mapper.registermember(vo);
-//		
-//		return result;
-//	}
-//
-//	public int idcheck(String userid) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		int result = mapper.idcheck(userid);
-//		return result;
-//	}
-//
-//	public UserVO selectOne(UserVO vo,HttpSession session) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		UserVO result = mapper.selectOne(vo);
-//		session.setAttribute("loginid", result.getUserid());
-//		return result;
-//	}
-//
-//	public int withdraw(String id) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		return mapper.withdraw(id);
-//	}
-//
-//	public UserVO select(String id) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		return mapper.select(id);
-//	}
-//
-//	public int updateMember(UserVO vo) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		int result = mapper.updateMember(vo);
-//		System.out.println("result : " + result);
-//		return result;
-//	}
-//
-//	public UserVO selectpot(String loginid) {
-//		// TODO Auto-generated method stub
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		return mapper.selectpot(loginid);
-//	}
-//	public UserVO memberSelect(String id) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		return mapper.memberSelect(id);
-//	}
-//	
-//	public int updateReply(UserVO vo) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		int result = mapper.updateReply(vo);
-//		System.out.println("result : " + result);
-//		return result;
-//	}
-////위시리스트 가져오기
-//	public ArrayList<WishVO> selectwish(String userid) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		return mapper.selectwish(userid);
-//	}
-//	//Board리스트 가져오기
-//	public ArrayList<ListVO> selectlist(String userid) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		return mapper.selectlist(userid);
-//	}
-////조인 리스트 데이터 가져오기
-//	public ArrayList<ListVO> selectlistAll(String userid) {
-//		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//		System.out.println("DAO userid"+userid);
-//		return mapper.selectlistAll(userid);
-//	}
-//
-
-
+	}
 
 
 }

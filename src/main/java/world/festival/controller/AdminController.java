@@ -36,6 +36,9 @@ public class AdminController {
 	private ListService listserivce;
 	
 	@Autowired
+	private BoardService boardserivce;
+	
+	@Autowired
 	private ListDAO listdao;
 	
 	@Autowired
@@ -179,4 +182,31 @@ public class AdminController {
 			return "list/List";
 		}
 		
+		
+//		ListRecovery
+		@RequestMapping(value = "/BulRecovery", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String BulRecovery(BoardVO vo, AdminBoardVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
+			BoardVO vo1 = adminservice.RecoveryReadBul(vo);
+			AdminBoardVO adminvo1 = admindao.readAdminBoard(adminvo);
+			System.out.println("불 vo"+vo);
+			if(adminvo.getDatacheck().equals("buldelete"))
+			{
+				boardserivce.RewriteBoard(vo1);
+				adminvo1.setDatacheck("delRecovery");
+				adminservice.AdminBoardWrite(adminvo1);
+				return "board/BoardList";
+			}
+			else if(adminvo.getDatacheck().equals("bulupdate"))
+			{
+				boardserivce.ReupdateBoard(vo1);
+				adminvo1.setDatacheck("upRecovery");
+				adminservice.AdminBoardWrite(adminvo1);
+				return "board/BoardList";
+			}
+
+			return "board/BoardList";
+		}
+		
+//		AdminDeleteBul
 }

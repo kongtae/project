@@ -114,23 +114,31 @@ function memberSelect(){
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"
 									style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Email</strong>
-									info@wiscon.com</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 								<li><span class="icon fa fa-map-marker"
 									style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Location</strong>
-									49 BelWest Lane, TX 26098</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 							</ul>
 						</div>
 						<!--Top Right-->
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-									<li><a href="adminPage">AdminPage</a></li>
-								<c:if test="${sessionScope.loginid == null}">
+								<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
 								</c:if>
+								
 								<c:if test="${sessionScope.loginid != null}">
 									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
 							</ul>
@@ -192,7 +200,7 @@ function memberSelect(){
 
 							<!--Button Box-->
 							<div class="button-box">
-								<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
 							<!--Search Box Outer-->
@@ -543,45 +551,22 @@ function memberSelect(){
 									<!-- Post -->
 									<c:forEach var="result" items="${list}" varStatus="status"  begin="0" > 
 									<div class="post">
-										<div class="user-block">
-<%-- 											<img class="img-circle img-bordered-sm" src="resources/images/userimage/${result.originalFileName}" alt="user image"> --%>
+										<div >
 												<span class="username">
-												 <a href="listDetailGO?mainBoardNum=${result.mainBoardNum}"> <c:out value="${result.title}"></c:out> </a>
-<!-- 												<a href="#" class="pull-right btn-box-tool"><i -->
-<!-- 													class="fa fa-times"></i></a> -->
+												 <a href="listDetailGO?mainBoardNum=${result.mainBoardNum}">TITLE: <c:out value="${result.title}"></c:out> </a>
 											</span>
-											 <span class="description"></span>
+<!-- 											 <span class="description"></span> -->
 										</div>
-										<!-- /.user-block -->
-										<p><c:out value="${result.festival_intro}"></c:out></p>
-										TITLE : <c:out value="${result.country}"></c:out> <br>
-										축제기간 : <c:out value="${result.startEvent}"></c:out> ~ 
+<!-- 										/.user-block -->
+										<p> FESTIVAL_INTRO <c:out value="${result.festival_intro}"></c:out></p>
+										COUNTRY : <c:out value="${result.country}"></c:out> <br>
+										祭りの期間 : <c:out value="${result.startEvent}"></c:out> ~ 
 										<c:out value="${result.endEvent}"></c:out> <br>
 										ADDRESS : <c:out value="${result.adress}"></c:out> 
 
 									</div>
 										</c:forEach>
-										<li><i class="fa fa-camera bg-purple"></i>
-
-											<div class="timeline-item">
-												<span class="time"><i class="fa fa-clock-o"></i> 2
-													days ago</span>
-
-												<h3 class="timeline-header">
-													<a href="#">Mina Lee</a> uploaded new photos
-												</h3>
-
-												<div class="timeline-body">
-													<img src="http://placehold.it/150x100" alt="..."
-														class="margin"> <img
-														src="http://placehold.it/150x100" alt="..." class="margin">
-													<img src="http://placehold.it/150x100" alt="..."
-														class="margin"> <img
-														src="http://placehold.it/150x100" alt="..." class="margin">
-												</div>
-											</div></li>
 										<!-- END timeline item -->
-										<li><i class="fa fa-clock-o bg-gray"></i></li>
 									</ul>
 								</div>
 								<!-- /.tab-pane -->
@@ -600,8 +585,7 @@ function memberSelect(){
 		<!-- /.content-wrapper -->
 
 		<!-- Main Footer-->
-		<footer class="main-footer"
-			style="background: url(images/background/footer.jpg);">
+		<footer class="main-footer">
 			<div class="container">
 				<div class="footer-area text-center">
 					<div class="footer-logo">
@@ -609,16 +593,14 @@ function memberSelect(){
 							<a href="index.html"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
-					<ul class="footer-menu">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about-us.html">About</a></li>
-						<li><a href="speakers.html">Speakers</a></li>
-						<li><a href="#">Pages</a></li>
-						<li><a href="shedule.html">Schedule</a></li>
-						<li><a href="sponsor.html">Sponsors</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact-us.html">Contact</a></li>
-					</ul>
+            <ul class="footer-menu">
+                <li><a href="festival">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
+            </ul>
 					<ul class="social-links">
 						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
