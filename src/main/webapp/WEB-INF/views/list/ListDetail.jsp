@@ -163,7 +163,6 @@
 						return false;
                 	  }else{
                      originalFileName = "resources/images/userimage/" +item;
-
                    $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
                 	 }
                   })  
@@ -406,7 +405,7 @@
                     </nav>
                <!--Button Box-->
                <div class="button-box">
-                  <a href="#" class="theme-btn btn-style-one">Search Festival</a>
+                  <a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
                </div>
                     
                 </div>

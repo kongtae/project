@@ -211,7 +211,7 @@ function BoardUpdate() {
                     
 					<!--Button Box-->
 					<div class="button-box">
-						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+						<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
                 </div>
