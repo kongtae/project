@@ -32,4 +32,6 @@ public interface ListMapper {
 	//업데이트
 	public void ReupdateFestival(ListVO vo1);
 
+	public ArrayList<ListVO> selectMain();
+
 }

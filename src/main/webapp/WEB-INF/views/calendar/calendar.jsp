@@ -165,7 +165,6 @@
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
-											<li><a href="listDetailForm">List Details</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="calendar">Calendar</a>
 										<ul>
@@ -424,7 +423,7 @@
               callback(events);
           },
           error : function() {
-      			alert("失敗");
+      			alert("マップを読み込めませんでした。");
       		}
          });
      }

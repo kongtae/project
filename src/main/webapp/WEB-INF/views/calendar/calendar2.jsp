@@ -153,7 +153,7 @@
               callback(events);
           },
           error : function() {
-      			alert("失敗");
+      			alert("マップを読み込めませんでした。");
       		}
          });
      }

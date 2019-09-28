@@ -10,7 +10,7 @@
 	INSERT INTO
 		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
 	VALUES (
-		MAINBOARDNUM_SEQ.nextval,
+		MAINBOARD_SEQ.nextval,
 		#{title},
 		#{country},
 		#{adress},
@@ -83,9 +83,11 @@
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}
 		</if>
-				WHERE 
+		,hashtag = #{hashtag}
+		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
+
 <select id="imagePrint" parameterType="ListVO" resultType="ListVO">
 		select originalFileName from MAINBOARD 
 		WHERE 
@@ -101,6 +103,16 @@
     <foreach item="item" collection="array" open="" separator="OR" close="">
             hashtag LIKE '%' ||  #{item} || '%'
     </foreach>
+</select>
+
+<select id="selectMain" resultType="ListVO">
+		SELECT 
+			*
+        FROM
+        	MAINBOARD
+        WHERE 
+    		startEvent BETWEEN SYSDATE-7 AND SYSDATE or 
+			endEvent BETWEEN SYSDATE AND SYSDATE+7
 </select>
 
 <!-- 복구된 파일 쓰기 -->
@@ -160,6 +172,5 @@
 				WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
-
 
 </mapper>

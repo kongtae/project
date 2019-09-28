@@ -168,7 +168,6 @@ function writeBoard() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -223,7 +222,6 @@ function writeBoard() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="Calendar">Calendar</a>
 									<ul>
@@ -235,7 +233,7 @@ function writeBoard() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board2</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -325,7 +323,8 @@ function writeBoard() {
 					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
 									<table>	
  					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br>  
-				           			 住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> 
+				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
+				           			住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> 
 					             	</table> 
 					              </div>
 					            </div>

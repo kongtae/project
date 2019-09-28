@@ -72,6 +72,11 @@
 
 	}
 
+	.uploadButton {
+
+	  }
+
+
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -133,7 +138,7 @@ function hashtag2() {
 		return false;
 	}
 	sharp = hashtag1;
-	alert(sharp);
+//	alert(sharp);
 	sharp = sharp.replace("#", "");
 	idx += 1;
 	$('#hash').append("<span id="+sharp+">"+hashtag1+"<button id="+idx+" value="+hashtag1+" onclick='btnClick("+sharp+")'>X</button></span>");
@@ -141,19 +146,19 @@ function hashtag2() {
 	return false;
 }
 function btnClick(sharp1){
-	alert("sharp1 : "+sharp1);
+//	alert("sharp1 : "+sharp1);
 	
 	var key = sharp1.innerHTML;
-	alert("key : "+ key);
+//	alert("key : "+ key);
 	var a = key.indexOf('(')+1;
 	var b = key.indexOf(')');
 	var key1 = key.substring(a,b);
 	var key2 = key1;
 	key1 = "#"+key1+",";
-	alert("key1 : "+key1);
-	alert("key2 : "+key2);
+//	alert("key1 : "+key1);
+//	alert("key2 : "+key2);
 	hashtag = hashtag.replace(key1, "");
-	alert("hashtag : "+hashtag);
+//	alert("hashtag : "+hashtag);
 	//hashtagPrint();
 	$('#'+key2).empty();
 }
@@ -270,7 +275,6 @@ function writeFestival() {
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
@@ -325,7 +329,6 @@ function writeFestival() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -337,7 +340,7 @@ function writeFestival() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board2</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -380,9 +383,10 @@ function writeFestival() {
                     </div> 
                     
            <div id="preview"></div>
+           			<div class="uploadButton">
                 	<i class="fa fa-paperclip"></i> ファイル添付
-                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-					<input type="button" onclick="delete1()" value="1番目の写真を消す">
+                	<input type="file" class="uploadButton" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" class="uploadButton" onclick="delete1()" value="1番目の写真を消す">
                      
                     <div id="preview2"></div>
 			 		<i class="fa fa-paperclip"></i> ファイル添付
@@ -393,7 +397,7 @@ function writeFestival() {
 					<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" onclick="delete3()" value="3番目の写真を消す">
-               
+               		</div>
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">

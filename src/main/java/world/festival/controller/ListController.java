@@ -102,13 +102,15 @@ public class ListController {
 	
 	
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
-	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
+	public String listDetail(ListVO vo,Model model, HttpSession hs) {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
 		String hashtag = vo1.getHashtag();
 		int i = hashtag.lastIndexOf(',');
+		System.out.println("i : " + i);
+		System.out.println("섭스트링 : "+hashtag.substring(i));
 		hashtag = hashtag.replace(hashtag.substring(i), "");
-	System.out.println("hashtag = "+hashtag);
+		System.out.println("hashtag = "+hashtag);
 		vo1.setHashtag(hashtag);
 		System.out.println(vo1.getHashtag());
 		vo.setUserid(userid);
@@ -274,6 +276,30 @@ public class ListController {
 		System.out.println("7번째방"+ result.get(7));
 
 		return result; 
+	}
+	
+	@RequestMapping(value = "/selectMain", method = RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<ListVO> selectMain() {
+		ArrayList<ListVO> result = dao.selectMain();
+		ArrayList<ListVO> list = new ArrayList<>();
+				
+		for (int i = 0; i < 3; i++) {
+				
+			int r = (int) Math.floor(Math.random() * (result.size() - 1));
+			System.out.println("r : "+r);
+			System.out.println("list["+r+"] : "+result.get(r));
+			if(result.get(r).getOriginalFileName() == null) {
+				i--;
+			}else if(result.get(r).getOriginalFileName().equals(",,,")){
+				i--;
+			}else {
+				list.add(result.get(r));
+				result.remove(r);			
+			}
+		}
+		
+		return list;
 	}
 
 }

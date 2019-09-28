@@ -179,7 +179,6 @@
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
-											<li><a href="listDetailForm">List Details</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="calendar">Calendar</a>
 										<ul>
@@ -414,7 +413,7 @@ function selectMap(){
 		
 		},
 		error : function(data) {
-			alert("실패");
+			alert("マップを読み込めませんでした。");
 		}
 	});
 }
