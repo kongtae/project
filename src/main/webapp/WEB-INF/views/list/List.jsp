@@ -685,7 +685,7 @@ $(function() {
 				<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-						<c:if test="${sessionScope.loginid == null}" >
+								<c:if test="${sessionScope.loginid == null}" >
 									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
@@ -816,7 +816,8 @@ $(function() {
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/sample.png);">
+<section class="page-title" style="background: url(resources/images/userimage/장군님.jpg);">
+
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>
@@ -932,10 +933,7 @@ $(function() {
                     <div>
                     <nav class="pagination"></nav>
                     <div id="div_icontext">
-<%-- 					<c:if test="${sessionScope.loginid != null}"> --%>
-					<!-- <h4 id="icontext"><b>投稿する</b></h4> -->
 					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-<%-- 					</c:if> --%>
 					</div>
 				</div>
                 </div>

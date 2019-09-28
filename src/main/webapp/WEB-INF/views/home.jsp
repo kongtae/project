@@ -229,53 +229,53 @@
 			<div class="main-slider-carousel owl-carousel owl-theme">
 
 				<div class="slide"
-					style="background-image: url(images/main-slider/image-1.jpg)">
+					style="background-image: url(resources/images/userimage/fefe.jpg)">
 					<div class="container">
 						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
+<!-- 							<h3>Digital Conference 2018</h3> -->
+<!-- 							<h2> -->
+<!-- 								The New Era of Technical <br> Companies -->
+<!-- 							</h2> -->
+<!-- 							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div> -->
+<!-- 							<div class="link-box"> -->
+<!-- 								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a -->
+<!-- 									href="#" class="theme-btn btn-style-three">View Details</a> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 				</div>
 
 				<div class="slide"
-					style="background-image: url(images/main-slider/image-2.jpg)">
+					style="background-image: url(resources/images/userimage/fes4.jpg)">
 					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
+<!-- 						<div class="content"> -->
+<!-- 							<h3>Digital Conference 2018</h3> -->
+<!-- 							<h2> -->
+<!-- 								The New Era of Technical <br> Companies -->
+<!-- 							</h2> -->
+<!-- 							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div> -->
+<!-- 							<div class="link-box"> -->
+<!-- 								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a -->
+<!-- 									href="#" class="theme-btn btn-style-three">View Details</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 					</div>
 				</div>
 
 				<div class="slide"
-					style="background-image: url(images/main-slider/image-3.jpg)">
+					style="background-image: url(resources/images/userimage/fes5.jpg)">
 					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
+<!-- 						<div class="content"> -->
+<!-- 							<h3>Digital Conference 2018</h3> -->
+<!-- 							<h2> -->
+<!-- 								The New Era of Technical <br> Companies -->
+<!-- 							</h2> -->
+<!-- 							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div> -->
+<!-- 							<div class="link-box"> -->
+<!-- 								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a -->
+<!-- 									href="#" class="theme-btn btn-style-three">View Details</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 					</div>
 				</div>
 

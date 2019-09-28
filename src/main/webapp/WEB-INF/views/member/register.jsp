@@ -92,16 +92,11 @@ function register(){
 };
 
 function formcheck(){
-	var username = $('#username').val();
 	var useremail = $('#useremail').val();
 	var userpwd = $('#userpwd').val();
 	var check_userpwd = $('#check_userpwd').val();
 	var icheck = $('#icheck');
 	
-	if(username.length == 0){
-		alert("お名前を入力してください。");
-		return false;
-	}
 	if(useremail.length == 0){
 		alert("メールアドレスを入力してください。");
 		return false;
@@ -141,10 +136,6 @@ function formcheck(){
 					<input type="text" class="form-control" id="userid" name="userid" placeholder="ユーザID 3~10字"> <span
 						class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
 					<button type="button" id="idcheck" class="btn btn-primary btn-block btn-flat">重複チェック</button>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="text" class="form-control" name="username" id="username" placeholder="お名前">
-					<span class="glyphicon glyphicon-user form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
 					<input type="email" class="form-control" name="email" id="useremail" placeholder="メールアドレス">
