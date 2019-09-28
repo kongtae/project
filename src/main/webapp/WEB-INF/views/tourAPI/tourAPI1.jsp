@@ -80,46 +80,39 @@
 	font-size: 30px;
 	color: #fa334f;
 }
+.btn-tt {
+    ont-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 26px;
+    background: #fa334f;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid #fa334f;
+    text-transform: uppercase;
+    /* font-family: 'Poppins', sans-serif; */
+    letter-spacing: 1px;
+}
 </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="js/jquery.js"></script>
 <script>
-	var page = '';
-	var countPerPage = 10;
-	var pageBlock = 5;
-	var pageBlockCount = '';
-	var totalPageCount = '';
-	var startPageGroup = '';
-	var endPageGroup = '';
-	var spage, epage;
-	var tour = [];
-	var flag = 0;
-
-	function setPage() {
-		if (page == '' || page < 0) {
-			page = 1;
-		}
-		startPageGroup = ((page - 1) * countPerPage);
-		endPageGroup = (startPageGroup + countPerPage);
-	}
 
 	$(function() {
-		setPage();
-		
 		$('#listSearch').on('click', function() {
 			tourAPIselect();
-			page = 0;
-			setPage();
 		})
-
 		$("#insertBtn").on('click', function() {
 			tourAPIinsert();
 		})
 	})
+		var tour = [];
 
 	function tourAPIselect() {
-	
+		
+		$('#count').empty();
+		
 		var startEvent = $('#startEvent').val();
 		var endEvent = $('#endEvent').val();
 		
@@ -156,8 +149,9 @@
 			}
 		})
 	}
-
+	
 	function output(result) {
+<<<<<<< HEAD
 		totalRecordCount = result.length;
 		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
 		pageBlockCount = Math.ceil(page / pageBlock);
@@ -202,23 +196,18 @@
 	}
 
 	function tagSet(result, startPageGroup, endPageGroup) {
+=======
+>>>>>>> d7b361a2bd4a7a4a831d2d194760b9b4654ab5b9
 		
 		var context = "";
-		console.log(result);
-		/* if (flag != 0) {
-			$('#btn').append("<input type='button' value='登録' onclick='tourAPIinsert()'>");
-			return false;
-		} */
+		
 		var myItem = result.response.body.items.item;
-		console.log(myItem.length);
 		for (var i = 0; myItem.length; i++) {
-
 			var title = myItem[i].title;
 			var adress = myItem[i].addr1;
 			var originalFileName = myItem[i].firstimage;
 			var startEvent = myItem[i].eventstartdate;
 			var endEvent = myItem[i].eventenddate;
-
 			tour.push({
 				title : title,
 				adress : adress,
@@ -226,76 +215,45 @@
 				surround_place : startEvent,
 				saveFileName : endEvent
 			});
-			
-			if (i >= startPageGroup && i < endPageGroup) {
-				context += "<tr><td class='srial'>"
-						+ (i+1) + "</td>";
-				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="
-						+ i
-						+ ">"
-						+ title
-						+ "</a></td>";
-				context += "<td class='Session'><img src="
-						+ originalFileName + "></td>";
-				context += "<td class='Session'>" + startEvent + "~"
-						+ endEvent + "</td>";
-				context += "<td class='Session'>" + adress
-						+ "</td></tr>";
+			context += "<tr><td class='srial'>"+ (i+1) + "</td>";
+			context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+ i + ">" + title + "</a></td>";
+			context += "<td class='Session'><img src=" + originalFileName + "></td>";
+			context += "<td class='Session'>" + startEvent + "~" + endEvent + "</td>";
+			context += "<td class='Session'>" + adress + "</td></tr>";
+			$("#list").html(context);
+			if(i==myItem.length-1){
+				console.log(myItem.length);
+				$('#count').append("<h3>&nbsp;全て&nbsp;"+myItem.length+"&nbsp;個</h3>");
 			}
-			/* if (i == myItem.length - 1) {
-				flag = 1;
-				return tourAPIselect();
-			} */
-		$("#list").html(context);
 		};
 	}
 
-	function navSet(totalPageCount) {
-		var nav = '';
-		nav += '<li class="page-item">';
-		nav += '<a class="page-link" href="#" data-value ="first" aria-label="Previous">';
-		nav += '<span aria-hidden="true">&laquo;</span>';
-		nav += '<span class="sr-only">Previous</span>';
-		nav += '</a>';
-		nav += '</li>';
-		nav += '<li class="page-item">';
-		nav += '<a class="page-link" href="#" data-value ="before" aria-label="Previous">';
-		nav += '<span aria-hidden="true">previous</span>';
-		nav += '<span class="sr-only">Previous</span>';
-		nav += '</a>';
-		nav += '</li>';
-
-		for (var i = spage; i <= epage; i++) {
-			if (i == page) {
-				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'
-						+ i + '</strong></a></li>';
-			} else {
-				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'
-						+ i + '</a></li>';
-			}
-		}
-		nav += '<li class="page-item">';
-		nav += '<a class="page-link" href="#" data-value ="next" aria-label="Next">';
-		nav += '<span aria-hidden="true">next</span>';
-		nav += '<span class="sr-only">Next</span>';
-		nav += '</a>';
-		nav += '</li>';
-		nav += '<li class="page-item">';
-		nav += '<a class="page-link" href="#" data-value ="end" aria-label="Next">';
-		nav += '<span aria-hidden="true">&raquo;</span>';
-		nav += '<span class="sr-only">Next</span>';
-		nav += '</a>';
-		nav += '</li>';
-
-		$(".pagination").html(nav);
-	}
-
-	function change() {
-		page = 1;
-	}
-
 	function tourAPIinsert() {
-		alert(tour.length);
+		
+		var startEvent = $('#startEvent').val();
+		var endEvent = $('#endEvent').val();
+		
+		var a = startEvent.split("-");
+		var b = endEvent.split("-");
+		if(a>b){
+			alert("検索する期間を間違えて入力しました。");
+			$('#startEvent').val("");
+			$('#endEvent').val("");
+			return false;
+		}
+		if (startEvent == null || endEvent == "") {
+			startEvent = " ";
+			alert("始まる日を入力してください。");
+			return false;
+		}
+		if (endEvent == null || endEvent == "") {
+			endEvent = " ";
+			alert("終わる日を入力してください。");
+			return false;
+		}
+		if(tour.length == 0) {
+			alert("登録するデーターがありません。");
+		}
 		$.ajax({
 			url : "tourAPIinsert",
 			type : "post",
@@ -303,7 +261,10 @@
 			data : JSON.stringify(tour),
 			success : function() {
 				alert("登録を完了しました。");
+<<<<<<< HEAD
 
+=======
+>>>>>>> d7b361a2bd4a7a4a831d2d194760b9b4654ab5b9
 			},
 			error : function() {
 				alert("登録が失敗しました。");
@@ -499,18 +460,15 @@
 						<div class="inner-box  table-responsive">
 							<table>
 								<tr>
-									<td>祭りがは祭りの開始日：<input type="date" name="startEvent"
-										value="" id="startEvent">から
-									</td>
-									<td>祭りの終了日：<input type="date" name="endEvent"
-										id="endEvent">まで行います。
-									</td>
-									<td>
-									<input type="button" value="search" id="listSearch">
-									</td>
-									<td >
-									<input type='button' id="insertBtn" value='登録'>
-									</td>
+									<td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="" id="startEvent">から</td>
+									<td>&nbsp;&nbsp;</td>
+									<td>祭りの終了日：<input type="date" name="endEvent" id="endEvent">まで行います。 </td>
+									<td>&nbsp;&nbsp;</td>
+									<td><input type="button" value="search" class="btn-tt" id="listSearch"></td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<td><input type='button' id="insertBtn" class="btn-tt" value='登録'></td>
+									<td>&nbsp;&nbsp;</td>
+									<td id="count"></td>
 								</tr>
 							</table>
 							<div class="inner-box  table-responsive">
@@ -531,7 +489,6 @@
 
 						</div>
 					</div>
-					<nav class="pagination"></nav>
 				</div>
 			</div>
 		</section>

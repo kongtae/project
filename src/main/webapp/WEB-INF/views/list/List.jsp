@@ -665,15 +665,23 @@ $(function() {
 				<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-							<li><a href="adminPage">AdminPage</a></li>
-						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign Up</a></li>
-							<li><a href="loginForm">Sign in</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout" >Logout</a></li>
-						</c:if>
+						<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
 					</ul>
                 </div>
             </div>
@@ -899,6 +907,7 @@ $(function() {
                          </div> 
                        
                     </div>
+<<<<<<< HEAD
                     
                     <table>
                     <tr><td><nav class="pagination"></nav></td>
@@ -906,6 +915,13 @@ $(function() {
                     </td></tr>
                     </table>
                     
+=======
+                    <div>
+                    <nav class="pagination"></nav>
+                    <div id="div_icontext">
+					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+					</div>
+>>>>>>> d7b361a2bd4a7a4a831d2d194760b9b4654ab5b9
 				</div>
                 </div>
            </div>

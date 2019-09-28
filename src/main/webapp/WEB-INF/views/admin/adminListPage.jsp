@@ -515,9 +515,13 @@ $(function() {
 		<!--End Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+<!-- 	<h4><a href="adminListPage">AdminListPage</a></h4> -->
+		<a href="adminBulPage"><h4 id="icontext"><b>To&nbspAdminBulPage</b></h4></a>
+<!-- 		<h4 id="icontext"><b>投稿する</b></h4> -->
+<!-- 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
+
 	</div>
+	<br>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
@@ -530,9 +534,9 @@ $(function() {
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
-					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>>
-					USERID
-					</option>
+<%-- 					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>> --%>
+<!-- 					USERID -->
+<!-- 					</option> -->
 					<option value="startEvent"<c:if test="${'startEvent'==searchItem}">selected</c:if>>
 					期間
 					</option>

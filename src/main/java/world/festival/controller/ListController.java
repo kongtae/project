@@ -277,5 +277,29 @@ public class ListController {
 
 		return result; 
 	}
+	
+	@RequestMapping(value = "/selectMain", method = RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<ListVO> selectMain() {
+		ArrayList<ListVO> result = dao.selectMain();
+		ArrayList<ListVO> list = new ArrayList<>();
+				
+		for (int i = 0; i < 3; i++) {
+				
+			int r = (int) Math.floor(Math.random() * (result.size() - 1));
+			System.out.println("r : "+r);
+			System.out.println("list["+r+"] : "+result.get(r));
+			if(result.get(r).getOriginalFileName() == null) {
+				i--;
+			}else if(result.get(r).getOriginalFileName().equals(",,,")){
+				i--;
+			}else {
+				list.add(result.get(r));
+				result.remove(r);			
+			}
+		}
+		
+		return list;
+	}
 
 }

@@ -274,6 +274,23 @@ public class AdminService {
 		return admindao.AdminListSelectOne2(map);
 	}
 
+	public ListVO RecoveryRead(ListVO vo) {
+		ListVO listvo = admindao.RecoveryRead(vo);
+		return listvo;
+	}
+
+	public AdminListVO selectReList(int mainBoardNum) {
+		AdminListVO adminlistvo = admindao.selectReList(mainBoardNum);
+		return adminlistvo;
+	}
+
+
+
+	public void AdminDeleteList(ListVO vo1) {
+		admindao.AdminDeleteList(vo1);
+		
+	}
+
 	
 	
 

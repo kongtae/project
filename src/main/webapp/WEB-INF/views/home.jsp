@@ -57,15 +57,25 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-									<li><a href="adminPage">AdminPage</a></li>
-								<c:if test="${sessionScope.loginid == null}">
+							
+							<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
 								</c:if>
+								
 								<c:if test="${sessionScope.loginid != null}">
 									<li><a href="memberPage">UserPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
 							</ul>
 						</div>
 					</div>
@@ -216,56 +226,11 @@
 
 			<div class="main-slider-carousel owl-carousel owl-theme">
 
-				<div class="slide"
-					style="background-image: url(images/main-slider/image-1.jpg)">
-					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="slide info0" style="background-image:url(images/main-slider/image-2.jpg)"></div>
 
-				<div class="slide"
-					style="background-image: url(images/main-slider/image-2.jpg)">
-					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="slide info1" style="background-image:url(images/main-slider/image-2.jpg)"></div>
 
-				<div class="slide"
-					style="background-image: url(images/main-slider/image-3.jpg)">
-					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="slide info2" style="background-image:url(images/main-slider/image-2.jpg)"></div>
 
 			</div>
 		</section>
@@ -280,7 +245,7 @@
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="festival"><img src="images/logo-2.png" alt=""></a>
+							<a href="tourAPI"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
 					<ul class="footer-menu">
@@ -337,8 +302,49 @@
 
 		<!-- Custom script -->
 		<script src="js/custom.js"></script>
+		<script>
+		$(function() {
+			selectMain();
+		});
 
-
+		function selectMain() {
+			$.ajax({
+				url: 'selectMain',
+				type: 'post',
+				success: function(data){
+					$(data).each(function(index, item){
+						var s = new Date(item.startEvent);
+				          var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+				         var end="";
+				       if(item.endEvent!=null||item.endEvent!=""){   
+				          var e = new Date(item.endEvent);
+				          end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+				       }
+						var image = item.originalFileName;
+						var adress = item.adress;
+						var title = item.title;
+						
+						if(image.charAt(0)=='h'){
+							imageurl = image;
+						}else {
+							var a= image.indexOf(',');
+							imageurl = "resources/images/userimage/"; 
+							imageurl += image.substring(0,a);
+						}
+						$(".info"+index).attr('style', 'background-image: url('+imageurl+')');
+						$(".info"+index).append("<div class='container'><div class='content'>"+								
+							"<h3>"+start+" ~ "+end+"</h3><h2>"+title+"</h2>"+
+							"<div class='text hh'>"+adress+"</div>"+
+							"<div class='link-box'><a href='map' class='theme-btn btn-style-two'>Map</a>"+
+							"<a href=listDetailGO?mainBoardNum="+item.mainBoardNum+" class='theme-btn btn-style-three'>View Details</a></div></div></div>");
+					});						
+				},
+				error: function(){
+					alert("실패");
+				}
+			});
+		}
+		</script>
 	</div>
 </body>
 </html>
