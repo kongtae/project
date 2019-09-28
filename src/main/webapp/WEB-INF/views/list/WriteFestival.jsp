@@ -340,7 +340,7 @@ function writeFestival() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board2</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
