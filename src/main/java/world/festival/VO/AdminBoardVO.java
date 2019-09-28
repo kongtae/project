@@ -14,6 +14,7 @@ public class AdminBoardVO {
 	private String title;
 	private String contents;
 	private String country;
+	private String surround_place;
 	private String adress;
 	private Date inputdate;
 	private int hit;

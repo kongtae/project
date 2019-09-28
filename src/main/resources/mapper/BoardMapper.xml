@@ -94,5 +94,62 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid
 		WHERE 
 		bul_boardnum = #{bul_boardnum}
 </select>
+
+
+<insert id="RewriteBoard" parameterType="BoardVO">
+	INSERT INTO
+		bul_board (
+		bul_boardnum,
+		userid,
+		title,
+		hit,
+		contents,
+		country,
+		surround_place,
+		adress,
+		inputdate,
+		originalFileName,
+		savedFileName)
+	VALUES (
+		#{bul_boardnum},
+		#{userid},
+		#{title},
+		#{hit},
+		#{contents},
+		#{country},
+		#{surround_place},
+		#{adress},
+		sysdate
+		<choose>
+			<when test="originalFileName != null and savedFileName !=null">
+			,#{originalFileName},#{savedFileName}
+			</when>
+			<otherwise>
+			,null,null
+			</otherwise>
+		</choose>
+		)
+</insert>
+
+<update id="ReupdateBoard" parameterType="BoardVO">
+	UPDATE
+		BUL_BOARD 
+	SET 
+		title = #{title},
+		hit = #{hit},
+		contents = #{contents},
+		country = #{country},
+		surround_place = #{surround_place},
+		adress = #{adress}
+		<if test="originalFileName != null and savedFileName !=null">
+			,originalfileName = #{originalFileName}
+			,savedFileName = #{savedFileName} 
+		</if>
+		WHERE 
+		bul_boardnum = #{bul_boardnum}
+		and userid = #{userid}
+</update>
+
+
 	
 </mapper>

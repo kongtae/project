@@ -8,6 +8,7 @@ import lombok.Data;
 public class BoardVO {
 	
 	private String adminid;
+	private int admin_mainBoardNum;
 	private int bul_boardnum;
 	private String userid;
 	private String title;
@@ -19,6 +20,6 @@ public class BoardVO {
 	private int hit;
 	private String originalFileName;  // originalFileName;
 	private String savedFileName;
-	
+	private String datacheck;
 	
 }

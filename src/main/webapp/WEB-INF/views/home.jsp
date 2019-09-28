@@ -221,7 +221,7 @@
 
 		<!-- Main Footer-->
 		<footer class="main-footer"
-			style="background: url(images/background/footer.jpg);">
+			>
 			<div class="container">
 				<div class="footer-area text-center">
 					<div class="footer-logo">

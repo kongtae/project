@@ -6,6 +6,7 @@ import java.util.HashMap;
 import world.festival.VO.AdminBoardVO;
 import world.festival.VO.AdminListVO;
 import world.festival.VO.AdminVO;
+import world.festival.VO.BoardVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.WishVO;
 
@@ -46,8 +47,12 @@ public interface AdminMapper {
 	//복구를 위한 리스트 불러오기 작업
 	public ListVO RecoveryRead(ListVO vo);
 	//복구한 친구 불러와서 어드민에 넣어주기
-	public AdminListVO selectReList(int mainBoardNum);
+//	public AdminListVO selectReList(int mainBoardNum);
 	//List삭제
 	public void AdminDeleteList(ListVO vo1);
+
+	public BoardVO RecoveryReadBul(BoardVO vo);
+
+	public void AdminwriteBoard(AdminBoardVO adminvo1);
 	
 }

@@ -486,7 +486,7 @@ $(function() {
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(resources/images/userimage/환호.jpg)">
     <div class="container">
         <div class="title-text text-center">
             <h3>「管理者用」会員掲示板</h3>

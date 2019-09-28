@@ -258,15 +258,23 @@ $(function() {
 					<div class="top-right">
 					<!--Social Box-->
 					<ul class="social-box">
-							<li><a href="adminPage">AdminPage</a></li>
-						<c:if test="${sessionScope.loginid == null}">
-							<li><a href="registermember">Sign Up</a></li>
-							<li><a href="loginForm">Sign in</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginid != null}">
-							<li><a href="memberPage">UserPage</a></li>
-							<li><a href="logout" >Logout</a></li>
-						</c:if>
+					<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
+									<li><a href="registermember">Sign Up</a></li>
+									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+								
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
 					</ul>
                 </div>
             </div>
@@ -400,7 +408,7 @@ $(function() {
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-1.jpg);">
+<section class="page-title" style="background: url(resources/images/userimage/강한이미지.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>${country}</h3>
@@ -489,7 +497,7 @@ $(function() {
 <!--End Contact Info-->
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">
