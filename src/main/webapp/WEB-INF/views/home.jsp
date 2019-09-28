@@ -218,11 +218,11 @@
 
 			<div class="main-slider-carousel owl-carousel owl-theme">
 
-				<div id="info0" class="slide"></div>
+				<div class="slide info0" style="background-image:url(images/main-slider/image-2.jpg)"></div>
 
-				<div id="info1" class="slide"></div>
+				<div class="slide info1" style="background-image:url(images/main-slider/image-2.jpg)"></div>
 
-				<div id="info2" class="slide"></div>
+				<div class="slide info2" style="background-image:url(images/main-slider/image-2.jpg)"></div>
 
 			</div>
 		</section>
@@ -295,34 +295,24 @@
 		<!-- Custom script -->
 		<script src="js/custom.js"></script>
 		<script>
-		
 		$(function() {
-			//selectMain();
-			func(selectMain);
+			selectMain();
 		});
-		
-		function func(callback) {
-		    console.log( typeof (callback) );
-		    // 넘어온 함수 실행하기
-		    callback();
-		}
-		 
-		var aFunc = function () {
-		    console.log("익명함수 호출됨...")
-		}
-		 
-
 
 		function selectMain() {
 			$.ajax({
 				url: 'selectMain',
 				type: 'post',
 				success: function(data){
-					alert("성공");
 					$(data).each(function(index, item){
+						var s = new Date(item.startEvent);
+				          var start = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2) + "-" + ("00" + s.getDate()).slice(-2);
+				         var end="";
+				       if(item.endEvent!=null||item.endEvent!=""){   
+				          var e = new Date(item.endEvent);
+				          end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2) + "-" + ("00" + e.getDate()).slice(-2);
+				       }
 						var image = item.originalFileName;
-						var start = item.startEvent;
-						var end = item.endEvent;
 						var adress = item.adress;
 						var title = item.title;
 						
@@ -332,16 +322,14 @@
 							var a= image.indexOf(',');
 							imageurl = "resources/images/userimage/"; 
 							imageurl += image.substring(0,a);
-							
 						}
-						$("#info"+index).attr('style', 'background-image: url('+imageurl+')');
-						alert('#info'+index+"");
-						$("#info"+index).append("<div class='container'><div class='content'>"+								
-							"<h3>"+start+" - "+end+"</h3><h2>"+title+"</h2>"+
-							"<div class='text'>"+adress+"</div>"+
+						$(".info"+index).attr('style', 'background-image: url('+imageurl+')');
+						$(".info"+index).append("<div class='container'><div class='content'>"+								
+							"<h3>"+start+" ~ "+end+"</h3><h2>"+title+"</h2>"+
+							"<div class='text hh'>"+adress+"</div>"+
 							"<div class='link-box'><a href='map' class='theme-btn btn-style-two'>Map</a>"+
-							"<a href='++' class='theme-btn btn-style-three'>View Details</a></div></div></div>");
-					});
+							"<a href=listDetailGO?mainBoardNum="+item.mainBoardNum+" class='theme-btn btn-style-three'>View Details</a></div></div></div>");
+					});						
 				},
 				error: function(){
 					alert("실패");
@@ -349,8 +337,6 @@
 			});
 		}
 		</script>
-
-
 	</div>
 </body>
 </html>

@@ -299,9 +299,7 @@ public class ListController {
 				list.add(result.get(r));
 				result.remove(r);			
 			}
-			System.out.println("i : "+i);
 		}
-		System.out.println("list크기 : "+list.size());
 		
 		return list;
 	}
