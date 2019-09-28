@@ -218,56 +218,11 @@
 
 			<div class="main-slider-carousel owl-carousel owl-theme">
 
-				<div class="slide"
-					style="background-image: url(images/main-slider/image-1.jpg)">
-					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="info0" class="slide"></div>
 
-				<div class="slide"
-					style="background-image: url(images/main-slider/image-2.jpg)">
-					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="info1" class="slide"></div>
 
-				<div class="slide"
-					style="background-image: url(images/main-slider/image-3.jpg)">
-					<div class="container">
-						<div class="content">
-							<h3>Digital Conference 2018</h3>
-							<h2>
-								The New Era of Technical <br> Companies
-							</h2>
-							<div class="text">18 - 21 DECEMBER, 2017, Alaska</div>
-							<div class="link-box">
-								<a href="#" class="theme-btn btn-style-two">Official Site</a> <a
-									href="#" class="theme-btn btn-style-three">View Details</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="info2" class="slide"></div>
 
 			</div>
 		</section>
@@ -282,7 +237,7 @@
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="festival"><img src="images/logo-2.png" alt=""></a>
+							<a href="tourAPI"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
 					<ul class="footer-menu">
@@ -339,6 +294,61 @@
 
 		<!-- Custom script -->
 		<script src="js/custom.js"></script>
+		<script>
+		
+		$(function() {
+			//selectMain();
+			func(selectMain);
+		});
+		
+		function func(callback) {
+		    console.log( typeof (callback) );
+		    // 넘어온 함수 실행하기
+		    callback();
+		}
+		 
+		var aFunc = function () {
+		    console.log("익명함수 호출됨...")
+		}
+		 
+
+
+		function selectMain() {
+			$.ajax({
+				url: 'selectMain',
+				type: 'post',
+				success: function(data){
+					alert("성공");
+					$(data).each(function(index, item){
+						var image = item.originalFileName;
+						var start = item.startEvent;
+						var end = item.endEvent;
+						var adress = item.adress;
+						var title = item.title;
+						
+						if(image.charAt(0)=='h'){
+							imageurl = image;
+						}else {
+							var a= image.indexOf(',');
+							imageurl = "resources/images/userimage/"; 
+							imageurl += image.substring(0,a);
+							
+						}
+						$("#info"+index).attr('style', 'background-image: url('+imageurl+')');
+						alert('#info'+index+"");
+						$("#info"+index).append("<div class='container'><div class='content'>"+								
+							"<h3>"+start+" - "+end+"</h3><h2>"+title+"</h2>"+
+							"<div class='text'>"+adress+"</div>"+
+							"<div class='link-box'><a href='map' class='theme-btn btn-style-two'>Map</a>"+
+							"<a href='++' class='theme-btn btn-style-three'>View Details</a></div></div></div>");
+					});
+				},
+				error: function(){
+					alert("실패");
+				}
+			});
+		}
+		</script>
 
 
 	</div>

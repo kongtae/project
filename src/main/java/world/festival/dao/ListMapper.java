@@ -28,4 +28,6 @@ public interface ListMapper {
 	
 	public ArrayList<ListVO> printCrawling(ListVO vo);
 
+	public ArrayList<ListVO> selectMain();
+
 }

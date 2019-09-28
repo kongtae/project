@@ -86,5 +86,10 @@ public class ListDAO {
 		return mapper.printCrawling(vo);
 	}
 
+	public ArrayList<ListVO> selectMain() {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.selectMain();
+	}
+
 
 }

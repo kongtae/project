@@ -24,7 +24,7 @@
 			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
-			,null
+			,null,null
 			</otherwise>
 		</choose>
 		,#{hashtag}
@@ -82,9 +82,11 @@
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}
 		</if>
-				WHERE 
+		,hashtag = #{hashtag}
+		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
+
 <select id="imagePrint" parameterType="ListVO" resultType="ListVO">
 		select originalFileName from MAINBOARD 
 		WHERE 
@@ -102,5 +104,14 @@
     </foreach>
 </select>
 
+<select id="selectMain" resultType="ListVO">
+		SELECT 
+			*
+        FROM
+        	MAINBOARD
+        WHERE 
+    		startEvent BETWEEN SYSDATE-7 AND SYSDATE or 
+			endEvent BETWEEN SYSDATE AND SYSDATE+7
+</select>
 
 </mapper>

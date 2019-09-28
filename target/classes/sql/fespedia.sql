@@ -1,4 +1,4 @@
---0921 테이블
+--0927 테이블
 
 --관리자 테이블
 CREATE TABLE ADMINMEMBER (
@@ -28,7 +28,7 @@ CREATE TABLE MAINBOARD(
     ADMINID VARCHAR2(20) CONSTRAINT MAINBOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
     MAINBOARDNUM NUMBER NOT NULL PRIMARY KEY,       --리스트 보드 넘
     USERID VARCHAR2(20)   CONSTRAINT  MAINBOARD_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디
-    TITLE VARCHAR2(50) not null,  -- 제목
+    TITLE VARCHAR2(1000) not null,  -- 제목
     COUNTRY VARCHAR2(20) NOT NULL,  --나라
     ADRESS VARCHAR2(100),       --주소
     FESTIVAL_INTRO VARCHAR2(1000),  --축제 정보 (내용)
@@ -38,7 +38,8 @@ CREATE TABLE MAINBOARD(
     ENDEVENT DATE DEFAULT SYSDATE,          --축제끝나는날짜
     originalFileName VARCHAR(200),     -- 오리지날파일이름
     SAVEFILENAME VARCHAR(200),        -- 세이브파일 이름
-    HASHTAG VARCHAR2(1000) DEFAULT '#축제'
+    HASHTAG VARCHAR2(1000) DEFAULT '#축제,',
+    CHECKSEARCH NUMBER DEFAULT 0
 );
 CREATE SEQUENCE MAINBOARD_SEQ;
 --댓글 게시판
@@ -59,7 +60,7 @@ CREATE TABLE BUL_BOARD(
       USERID VARCHAR2(20)   CONSTRAINT  BUL_BOARD_USERID_FK REFERENCES MEMBER(userid) ON DELETE CASCADE,    --유저아이디
      BUL_BOARDNUM  NUMBER PRIMARY KEY,                      --자유게시판 
      TITLE VARCHAR2(20) NOT NULL,                           --제목
-     HIT NUMBER,                                            --조회수
+     HIT NUMBER DEFAULT 0,                                            --조회수
      CONTENTS VARCHAR2(1000),                               --게시글 내용
      ORIGINALFILENAME   VARCHAR2(50),                       --사진파일 원본 이름
     savedfilename   VARCHAR2(50),                          --보여주는 이름
@@ -74,6 +75,52 @@ CREATE TABLE WISHLIST(
     inputtime DATE DEFAULT SYSDATE             --등록날짜
 );
 CREATE SEQUENCE WISHLIST_SEQ;
+--축제 추천 테이블
+CREATE TABLE SEARCHFESTIVAL(
+    FESTIVALNAME VARCHAR2(100),
+    IMAGE VARCHAR2(200) 
+);
+--관리자 리스트 게시판
+CREATE TABLE ADMIN_MAINBOARD(
+    ADMINID VARCHAR2(20) CONSTRAINT ADMIN_MAINBOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
+    ADMIN_MAINBOARDNUM NUMBER NOT NULL PRIMARY KEY,       --어드민 보드 넘
+    MAINBOARDNUM NUMBER NOT NULL,  --리스트 보드 넘
+    USERID VARCHAR2(20),    --유저아이디
+    TITLE VARCHAR2(1000) not null,  -- 제목
+    COUNTRY VARCHAR2(20) NOT NULL,  --나라
+    ADRESS VARCHAR2(100),       --주소
+    FESTIVAL_INTRO VARCHAR2(1000),  --축제 정보 (내용)
+    SURROUND_PLACE VARCHAR2(1000),  --주변 지역 정보
+    INPUTTIME DATE DEFAULT SYSDATE,  --입력 날자
+    STARTEVENT DATE DEFAULT SYSDATE,   --축제시작날짜
+    ENDEVENT DATE DEFAULT SYSDATE,          --축제끝나는날짜
+    originalFileName VARCHAR(200),     -- 오리지날파일이름
+    SAVEFILENAME VARCHAR(200),        -- 세이브파일 이름
+    HASHTAG VARCHAR2(1000) DEFAULT '#축제,',
+    DATACHECK VARCHAR2(100) NOT NULL         --인설트,수정,삭제 타입 구별
+);
+--ADMIN 자유게시판
+CREATE TABLE ADMIN_BUL_BOARD(
+     ADMINID VARCHAR2(20) CONSTRAINT ADMIN_BUL_BOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
+     ADMIN_MAINBOARDNUM NUMBER NOT NULL PRIMARY KEY,       --어드민 보드 넘
+     USERID VARCHAR2(20) NOT NULL,    --유저아이디
+      BUL_BOARDNUM NUMBER NOT NULL,  --리스트 보드 넘
+     TITLE VARCHAR2(20) NOT NULL, 
+     CONTENTS VARCHAR2(1000),
+      COUNTRY VARCHAR2(20),  --나라
+    ADRESS VARCHAR2(100),       --주소
+    INPUTDATE      DATE  DEFAULT SYSDATE,                     --제목
+    HIT NUMBER DEFAULT 0,                                            --조회수--게시글 내용
+    ORIGINALFILENAME   VARCHAR2(200),                       --사진파일 원본 이름
+    SAVEDFILENAME   VARCHAR2(200),                          --보여주는 이름
+    DATACHECK VARCHAR2(100) NOT NULL                        --데이터 타입 체크
+);
+
+CREATE SEQUENCE ADMIN_MAINBOARD_SEQ;
+
+insert into ADMINMEMBER 
+    values('aa','aa','aaa@naver.com');
+
 
 INSERT INTO member(userid, userpwd, email) VALUES(
     '123', '123', '123@123.123'
@@ -107,6 +154,10 @@ UPDATE mainboard SET HASHTAG='#음식,#축제'
 UPDATE mainboard SET HASHTAG='#축제,#공원'
     WHERE MAINBOARDNUM = 17;
 
+ALTER TABLE mainboard
+ADD (CHECKSEARCH NUMBER DEFAULT 0);
+
+UPDATE mainboard SET CHECKSEARCH = 0;
 
 commit;
 
@@ -121,5 +172,50 @@ DROP TABLE WISHLIST;
 DROP TABLE REPLY;
 DROP TABLE MAINBOARD;
 DROP TABLE BUL_BOARD;
-
 --------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/fall.jpg', '#가을');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/winter.jpg', '#겨울');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/rock.jpg', '#락페스티벌');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/matsuri.jpg', '#마쯔리');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/beer.jpg', '#맥주');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/culturalFestival.jpg', '#문화제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/sea.jpg', '#바다');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/spring.jpg', '#봄');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/mountain.jpg', '#산');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/sports.jpg', '#스포츠');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/america.jpg', '#아메리카 축제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/asia.jpg', '#아시아 축제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/africa.jpg', '#아프리카 축제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/expo.jpg', '#엑스포');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/summer.jpg', '#여름');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/movie.jpg', '#영화제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/oceania.jpg', '#오세아니아 축제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/wine.jpg', '#와인');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/europe.jpg', '#유럽');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/food.jpg', '#음식');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/music.jpg', '#음악');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/jazz.jpg', '#재즈');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/religion.jpg', '#종교');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/carnival.jpg', '#축제');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/costume.jpg', '#코스튬');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/christmas.jpg', '#크리스마스');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/specialproduct.jpg', '#특산물');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/halloween.jpg', '#할로윈');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/hiphop.jpg', '#힙합');
+
+SELECT * FROM MAINBOARD WHERE hashtag LIKE '%' ||  '' || '%';
+
+UPDATE mainboard SET checksearch = checksearch+1 WHERE hashtag LIKE '%' ||  '음식' || '%';
+
+UPDATE mainboard SET checksearch = 0;
+
+INSERT ALL
+    INTO MAINBOARD (mainBoardNum, title, country, adress, festival_intro) VALUES (1, '1', 'KR', '1', '1')
+    INTO MAINBOARD (mainBoardNum, title, country, adress, festival_intro) VALUES (2, '2', 'KR', '2', '2')   
+SELECT * FROM DUAL;
+
+insert INTO MAINBOARD (mainBoardNum, title, country, adress, festival_intro) VALUES (mainboard_seq.nextval, '1', 'KR', '1', '1');
+
+SELECT * FROM MAINBOARD WHERE 
+startEvent BETWEEN SYSDATE-7 AND  SYSDATE or 
+endEvent BETWEEN SYSDATE AND SYSDATE+7;
