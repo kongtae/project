@@ -74,9 +74,9 @@
 						<div class="top-left">
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									info@wiscon.com</li>
+									SC.IT@MASTER.COM</li>
 								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									49 BelWest Lane, TX 26098</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 							</ul>
 						</div>
 						<!--Top Right-->
@@ -159,7 +159,7 @@
 
 							<!--Button Box-->
 							<div class="button-box">
-								<a href="#" class="theme-btn btn-style-one">Get Ticket</a>
+								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
 							<!--Search Box Outer-->

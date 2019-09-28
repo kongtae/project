@@ -118,12 +118,10 @@
 					<!--Top Left-->
 					<div class="top-left">
 						<ul class="header-info-list">
-							<li><span class="icon fa fa-envelope"
-								style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Email</strong>
-								info@wiscon.com</li>
-							<li><span class="icon fa fa-map-marker"
-								style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Location</strong>
-								49 BelWest Lane, TX 26098</li>
+								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+									SC.IT@MASTER.COM</li>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 						</ul>
 					</div>
 					<!--Top Right-->
@@ -207,7 +205,7 @@
 
 						<!--Button Box-->
 						<div class="button-box">
-							<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+							<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 						</div>
 
 						<!--Search Box Outer-->
@@ -249,11 +247,11 @@
 		<section class="page-title" style="background: url(resources/images/userimage/불꽃놀이.jpg); margin-top: 6%;">
     	<div class="container">
         	<div class="title-text text-center">
-           	 <h3>MAP</h3>
+           	 <h3>マップ</h3>
            	 <ul>
                 <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Map</li>
+                <li><a href="map">Map</a></li>
             </ul>
         	</div>                
    		</div>
@@ -301,7 +299,7 @@
                 <li><a href="Calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
-				<li><a href="contact-us.html">Search Festival</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
             <ul class="social-links">
 					
