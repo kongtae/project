@@ -68,16 +68,14 @@
 	justify-content: flex-end;
 	width: 83%;
 }
-/* #icontext {
-   padding: 1.5%;
-   padding-rigth: 2px;
-   padding-left: 2px;
-   font-family: 'Robtoto', sans-serif;
-   font-size: 30px;
-   color: #fa334f;
-} */
+
 #hash {
 	text-align: center;
+}
+
+.longterm{
+	width: 650px;
+	right: 20px;
 }
 </style>
 </head>
@@ -117,7 +115,7 @@ $(function() {
          dataType: 'json',
          success : output,
          error: function() {
-            alert("리스트 불러오기 실패2");
+            alert("リストを読み込めませんでした。");
          }
       })
    } 
@@ -128,7 +126,6 @@ $(function() {
       pageBlockCount = Math.ceil(page/pageBlock);
       startPageGroup = ((page-1) * countPerPage);
       endPageGroup = (startPageGroup + countPerPage);
-      alert("게시글 수"+totalRecordCount); 
       
       if(pageBlockCount > 1) {
          spage = (pageBlockCount-1)*pageBlock+1;
@@ -142,8 +139,6 @@ $(function() {
          epage = pageBlockCount*pageBlock;
       }
       
-      //alert("시작블락"+spage);
-      //alert("마지막블락"+epage);
       navSet(totalPageCount, spage, epage);
       tagSet(result, startPageGroup, endPageGroup);
       
@@ -175,7 +170,6 @@ $(function() {
          pageBlockCount = Math.ceil(page/pageBlock)
          startPageGroup = ((page-1) * countPerPage);
          endPageGroup = (startPageGroup + countPerPage);
-         alert("셀렉 게시글 수"+totalRecordCount); 
          
          if(pageBlockCount > 1) {
             spage = (pageBlockCount-1)*pageBlock+1;
@@ -189,8 +183,6 @@ $(function() {
             epage = pageBlockCount*pageBlock;
          }
          
-         //alert("시작블락"+spage);
-         //alert("마지막블락"+epage);
          navSet(totalPageCount, spage, epage);
          tagSet(result, startPageGroup, endPageGroup);
          
@@ -330,7 +322,7 @@ $(function() {
          dataType: 'json',
          success : output1,
          error: function(request,status,error) {
-            alert("리스트 불러오기 실패1");
+            alert("リストを読み込めませんでした。");
             alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
          }
       })
@@ -370,7 +362,7 @@ $(function() {
             $("#list").html(context);
          },
          error: function() {
-            alert("리스트 불러오기 실패3");
+            alert("リストを読み込めませんでした。");
          }
       })
    }
@@ -379,18 +371,7 @@ $(function() {
       page=1;
    }
 		
-	 function printAll() {
-		
-		$.ajax({
-			type:'GET',
-			url : 'printAll',
-			dataType: 'json',
-			success : output,
-			error: function() {
-				alert("리스트 불러오기 실패2");
-			}
-		})
-	} 
+
 
 	 function output(result) {
 		totalRecordCount = result.length;
@@ -551,7 +532,6 @@ $(function() {
 	}
 	
 	function searchDate(value){
-		var result00="startEvent";
 		
 		var result11 = document.getElementById("searchKeyword");
 		var result22 = document.getElementById("searchItem").value;
@@ -616,7 +596,7 @@ $(function() {
 	   	hashtagPrint();
 	}
 	function btnClick(sharp1){
-		alert("sharp1 : "+sharp1);
+		//alert("sharp1 : "+sharp1);
 		
 		var key = sharp1.innerHTML;
 		alert("key : "+ key);
@@ -625,10 +605,10 @@ $(function() {
     	var key1 = key.substring(a,b); 
 		var key2 = key1;
     	key1 = "#"+key1+",";
-    	alert("key1 : "+key1);
-    	alert("key2 : "+key2);
+    	//alert("key1 : "+key1);
+    	//alert("key2 : "+key2);
     	hashtag1 = hashtag1.replace(key1, "");
-    	alert("hashtag1 : "+hashtag1);
+    	//alert("hashtag1 : "+hashtag1);
     	hashtagPrint();
     	$('#'+key2).empty();
 	}
@@ -727,7 +707,6 @@ $(function() {
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
@@ -780,7 +759,6 @@ $(function() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -921,14 +899,13 @@ $(function() {
                          </div> 
                        
                     </div>
-                    <div>
-                    <nav class="pagination"></nav>
-                    <div id="div_icontext">
-					<c:if test="${sessionScope.loginid != null}">
-					<!-- <h4 id="icontext"><b>投稿する</b></h4> -->
-					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-					</c:if>
-					</div>
+                    
+                    <table>
+                    <tr><td><nav class="pagination"></nav></td>
+                    <td align="right" class="longterm"><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+                    </td></tr>
+                    </table>
+                    
 				</div>
                 </div>
            </div>

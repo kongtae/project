@@ -102,13 +102,15 @@ public class ListController {
 	
 	
 	@RequestMapping(value = "/listDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
-	public String listDetail(ListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
+	public String listDetail(ListVO vo,Model model, HttpSession hs) {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
 		String hashtag = vo1.getHashtag();
 		int i = hashtag.lastIndexOf(',');
+		System.out.println("i : " + i);
+		System.out.println("섭스트링 : "+hashtag.substring(i));
 		hashtag = hashtag.replace(hashtag.substring(i), "");
-	System.out.println("hashtag = "+hashtag);
+		System.out.println("hashtag = "+hashtag);
 		vo1.setHashtag(hashtag);
 		System.out.println(vo1.getHashtag());
 		vo.setUserid(userid);

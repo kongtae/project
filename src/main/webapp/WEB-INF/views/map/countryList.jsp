@@ -104,7 +104,7 @@ $(function() {
 			dataType: 'json',
 			success : output,
 			error: function() {
-				alert("리스트 불러오기 실패");
+				alert("リストを読み込めませんでした。");
 			}
 		})
 	}
@@ -115,7 +115,6 @@ $(function() {
 		pageBlockCount = Math.ceil(page/pageBlock);
 		startPageGroup = ((page-1) * countPerPage);
 		endPageGroup = (startPageGroup + countPerPage);
-		alert("게시글 수"+totalRecordCount); 
 		
 		if(pageBlockCount > 1) {
 			spage = (pageBlockCount-1)*pageBlock+1;
@@ -129,8 +128,6 @@ $(function() {
 			epage = pageBlockCount*pageBlock;
 		}
 		
-		//alert("시작블락"+spage);
-		//alert("마지막블락"+epage);
 		navSet(totalPageCount, spage, epage);
 		tagSet(result, startPageGroup, endPageGroup);
 		
@@ -301,7 +298,6 @@ $(function() {
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
@@ -375,7 +371,6 @@ $(function() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
