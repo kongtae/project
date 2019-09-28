@@ -55,8 +55,7 @@
                }
             },
             error : function() {
-//                alert("실패");
-               alert("이미지 로드 실패");
+               alert("リストを読み込めませんでした。");
             }
          });
       }
@@ -128,12 +127,12 @@
       var name = document.getElementById("name").value;
       if(replytext.value.length==0)
       {
-         alert("글일 입력해주세요");
+         alert("コメントの内容を入力してください。");
          return false;   /*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
       }
       if(name.length=="")
       {
-         alert("로그인을 먼저 해주세요.");
+         alert("ログインをお先にしてください。.");
          return false;
       }
          document.getElementById("replywrite").submit();
@@ -155,11 +154,9 @@
                  replynum : replynum
               },
               success:function(){
-//                  alert("삭제성공")
                  refreshMemList();
               },
               error: function(){
-//                  alert("삭제 실패")
               }
               
            });
@@ -202,11 +199,9 @@
                 mainBoardNum : document.getElementById("mainboardnum").value
                 },
                 success:function(data){
-//                    refreshMemList();//새로고침
 
                 },
                 error: function(){
-//                    alert("삭제 실패")
                 }
                 
              });
@@ -222,14 +217,13 @@
                 mainBoardNum : document.getElementById("mainboardnum").value
                 },
                 success:function(data){
-//                    refreshMemList();//새로고침
+//                    refreshMemList();
                if(data.mainBoardNum!=null)
                   {
-                     alert("삭제하기")
+                     alert("削除します。")
                   }
                 },
                 error: function(){
-//                    alert("삭제 실패")
                 }
                 
              });
@@ -238,7 +232,7 @@
         
    function loginneed()
      {
-        alert("좋아요 기능은 로그인시 사용가능합니다.");
+        alert("「いいね」をするには、ログインをお先にしてください。");
         return false;
      }
            
@@ -321,8 +315,7 @@
                         <li class="dropdown"><a href="/festival">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
-                              <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
+                              <li><a href="listForm">List</a></li>                     
                            </ul></li>
                         <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
@@ -395,7 +388,7 @@
                         <li class="dropdown"><a href="#">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
+                          
                            </ul></li>
                         <li class="dropdown"><a href="#">Calendar</a>
                            <ul>
@@ -728,7 +721,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("없는 주소입니다.");
+            alert("住所を正しく入力してください。");
           }
         });
       }

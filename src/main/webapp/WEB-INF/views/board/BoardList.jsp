@@ -381,8 +381,7 @@
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
+										<li><a href="listForm">List</a></li>									
 									</ul></li>
 								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
@@ -437,8 +436,7 @@
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
+										<li><a href="listForm">List</a></li>										
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -466,7 +464,7 @@
 
 
 <!-- Page Title-->
-<section class="page-title" style="background: url(images/background/page-title-2.jpg);">
+<section class="page-title" style="background: url(resources/images/userimage/환호.jpg);">
     <div class="container">
         <div class="title-text text-center">
             <h3>Events Schedule</h3>

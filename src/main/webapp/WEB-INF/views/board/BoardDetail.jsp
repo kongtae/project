@@ -29,6 +29,68 @@
         height: 500px;
         width: 770px;
       }
+      
+           .buttonS{
+        background-color: #3c8dbc;
+    	border-color: #367fa9;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      
+        .buttonD{
+        background-color: red;
+    	border-color: red;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      
+      .tableSecond{
+
+	  padding: 45px 40px;
+	  margin-top: 25px;
+	  margin-bottom: 30px;
+	  text-align: center;
+	  background: #ffffff;
+	  border: 3px solid #eaeaea;
+	  font-family: 'Poppins', sans-serif;
+	  text-transform: uppercase;  
+	  font-size: 15px;
+	  text-align: center;
+      
+      
+      }
+      
+      
     </style>
     <script src="js/jquery.js"></script>
  <script>
@@ -223,8 +285,7 @@
 								<li class="dropdown"><a href="Home">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
+										<li><a href="listForm">List</a></li>										
 									</ul></li>
 								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
@@ -277,8 +338,7 @@
 								<li class="dropdown"><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
+										<li><a href="listForm">List</a></li>									
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -343,9 +403,7 @@
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-           <!--              <figure>
-                            <img src="images/resources/schedule-10.jpg" alt="">
-                        </figure> -->
+
                          <div class="event-details">
                          	<div>
                          <h1><b>祭りの詳細情報</b></h1>
@@ -355,13 +413,13 @@
                          	</div>
                          	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
-	                         	<input type="button" value="修正" onclick="BoardUpdateGO()">
-	                         	<input type="button" value="削除" onclick="BoardDelete()">
+	                         	<input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
+	                         	<input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
 							</div>
 							</c:if>                          
-                          <div class="inner-box  table-responsive">
+                          <div class="tableSecond">
                         <table class="table table-hover">
-                        	<tr> <!-- 수정할곳  -->
+                        	<tr>
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
                         	</tr>
                          	<tr>
@@ -379,6 +437,9 @@
                         	<tr>
                         		<td>国家</td><td>${vo.country}</td>
                         	</tr>
+                        	<tr>
+                        		<td>都市</td><td>${vo.surround_place}</td>
+                        	</tr>
 							<tr>
                         		<td>住所</td><td>${vo.adress}</td>
                         	</tr>
@@ -390,7 +451,7 @@
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
-                    	<input id="submit" type="button" value="Geocode">
+                    	<!-- <input id="submit" type="button" value="Geocode"> -->
                         </div>
                     <div id="googleMap"></div>
             </div>
@@ -433,8 +494,8 @@
 				</td>
 			<c:if test="${sessionScope.loginid == replylist.userid}">
 				<td>
-					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+					&nbsp&nbsp<input type="button" value="修正" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+					<input type="button" value="削除" class="buttonD" onclick="replyDelete('${replylist.replynum}')">
 				</td>
 			</c:if>
 		</tr>

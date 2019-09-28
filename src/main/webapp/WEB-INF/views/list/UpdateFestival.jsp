@@ -144,7 +144,6 @@
 	               }
 	            },
 	            error : function() {
-//	                alert("실패");
 	               alert("イメージの読み込みに失敗しました。");
 	            }
 	         });
@@ -187,31 +186,31 @@
 	 		return false;
 	 	}
 	 	sharp1 = hashtag1;
-	 	alert(sharp1);
+	 //	alert(sharp1);
 	 	sharp1 = sharp1.replace("#", "");
 	 	idx += 1;
 	 	$('#hash').append("<span id="+sharp1+">"+hashtag1+"<button id="+idx+" value="+hashtag1+" onclick='btnClick("+sharp1+")'>X</button></span>");
 	 	hashtagBtn += hashtag1+',';
-	 	alert("hashtagBtn : "+hashtagBtn);
+	 //	alert("hashtagBtn : "+hashtagBtn);
 	 	return false;
 	 }
 	 
 	 
 	 function btnClick(sharp1){
-			alert("sharp1 : "+sharp1);
+		//	alert("sharp1 : "+sharp1);
 			
 			var key3 = sharp1.innerHTML;
-			alert("key : "+ key3);
+		//	alert("key : "+ key3);
 			var a = key3.indexOf('(')+1;
 			var b = key3.indexOf(')');
 			var key1 = key3.substring(a,b);
 			var key2 = key1;
 			key1 = "#"+key1+",";
-			alert("key1 : "+key1);
-			alert("key2 : "+key2);
+		//	alert("key1 : "+key1);
+		//	alert("key2 : "+key2);
 			hashtagBtn = hashtagBtn.replace(key1, "");
 			$('#'+key2).remove();
-			alert("hashtagBtn : "+hashtagBtn);
+		//	alert("hashtagBtn : "+hashtagBtn);
 			return false;
 		}
 	 
@@ -326,7 +325,6 @@
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -381,7 +379,6 @@
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="Calendar">Calendar</a>
 									<ul>
@@ -393,7 +390,7 @@
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board2</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -618,32 +615,7 @@
 
 
 </div>
-<<<<<<< HEAD
-=======
 
-
-<!-- jQuery 3 -->
-<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="resources/bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="resources/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="resources/dist/js/demo.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script>
-  $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-   // CKEDITOR.replace('editor1')
-    //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
-  })
-</script>
->>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

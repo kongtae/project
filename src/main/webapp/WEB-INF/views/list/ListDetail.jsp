@@ -82,21 +82,19 @@
 	    color: white;
       }
       
-      .class{
-      text-align: center;
-      padding: 22px 0px;
-      box-shadow: #fa333f;
+      .tableSecond{
+
 	  padding: 45px 40px;
 	  margin-top: 25px;
 	  margin-bottom: 30px;
 	  text-align: center;
 	  background: #ffffff;
-	  border: 1px solid #eaeaea;
-	  font-size: 15px
-	  font-weight: 500;
+	  border: 3px solid #eaeaea;
 	  font-family: 'Poppins', sans-serif;
 	  text-transform: uppercase;  
-	  font-size: 15px
+	  font-size: 15px;
+	  text-align: center;
+      
       
       }
       
@@ -114,8 +112,8 @@
     
    	var Country = "${vo.country}";
    	var mainB = ${vo.mainBoardNum};
-   	var sul = "${vo.surround_place}";
-   	var Cdata = {"Country" : Country , "mainBoardNum" : mainB , "surround_place": sul};
+   	var sur = "${vo.surround_place}";
+   	var Cdata = {"Country" : Country , "mainBoardNum" : mainB , "surround_place": sur};
     function Crawling() {
     	var src = "";
           $.ajax({
@@ -289,7 +287,7 @@
 //                    refreshMemList();//새로고침
                if(data.mainBoardNum!=null)
                   {
-                     alert("삭제하기")
+                     alert("削除します。")
                   }
                 },
                 error: function(){
@@ -302,7 +300,7 @@
         
    function loginneed()
      {
-        alert("좋아요 기능은 로그인시 사용가능합니다.");
+        alert("「いいね」をするには、ログインをお先にしてください。");
         return false;
      }
         
@@ -388,7 +386,6 @@
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
@@ -442,7 +439,6 @@
                         <li class="dropdown"><a href="#">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
-                              <li><a href="listDetailForm">List Details</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="#">Calendar</a>
                            <ul>
@@ -538,8 +534,8 @@
                                <input type="button" class="buttonS" value="修正" onclick="UpdateFestival()">
                                <input type="button" class="buttonD" value="削除" onclick="DeleteFestival()">
                      </div>
-                          <div class="inner-box  table-responsive">
-
+                     <br>
+                          <div class="tableSecond">
                         <table class="table table-hover">
                            <tr>
                            <td><b>分類</b></td><td><b>詳細情報</b></td>
@@ -558,6 +554,9 @@
                            </tr>
                            <tr>
                               <td>国家</td><td>${vo.country}</td>
+                           </tr>
+                            <tr>
+                              <td>都市</td><td>${vo.surround_place}</td>
                            </tr>
                      <tr>
                               <td>住所</td><td>${vo.adress}</td>

@@ -10,7 +10,7 @@
 	INSERT INTO
 		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
 	VALUES (
-		MAINBOARDNUM_SEQ.nextval,
+		MAINBOARD_SEQ.nextval,
 		#{title},
 		#{country},
 		#{adress},

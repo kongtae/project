@@ -188,8 +188,7 @@ function BoardUpdate() {
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
+										<li><a href="listForm">List</a></li>								
 									</ul></li>
 								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
@@ -244,7 +243,6 @@ function BoardUpdate() {
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
-										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
@@ -256,7 +254,7 @@ function BoardUpdate() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="boardList">Board2</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -345,7 +343,8 @@ function BoardUpdate() {
 					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px">${vo.contents}</textarea>
 									<table>	
  					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>  
-				           			 住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}">
+				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
+				           			住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}">
 				           			 <input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
 				           			 </td></tr> 
 					             	</table> 

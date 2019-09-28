@@ -11,13 +11,14 @@
 
 <insert id="BoardWrite" parameterType="BoardVO">
 	INSERT INTO
-		bul_board (bul_boardnum,userid,title,contents,country,adress,inputdate,originalFileName,savedFileName)
+		bul_board (bul_boardnum,userid,title,contents,country,surround_place,adress,inputdate,originalFileName,savedFileName)
 	VALUES (
 		BUL_BOARDNUM_SEQ.nextval,
 		#{userid},
 		#{title},
 		#{contents},
 		#{country},
+		#{surround_place},
 		#{adress},
 		sysdate
 		<choose>
@@ -42,6 +43,7 @@
 		title = #{title},
 		contents = #{contents},
 		country = #{country},
+		surround_place = #{surround_place},
 		adress = #{adress}
 		<if test="originalFileName != null and savedFileName !=null">
 			,originalfileName = #{originalFileName}
@@ -81,12 +83,9 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and userid = #{userid
 <update id="hitcount" parameterType="int">
 		UPDATE 
 		BUL_BOARD 
-		SET
-		<choose> 
-		<when test="userid==#{userid}">hit = hit + 0</when>
-		<otherwise>hit = hit + 1</otherwise>
-		</choose> 
-		WHERE 
+		SET 
+		hit = hit + 1 
+		WHERE  
 		bul_boardnum=#{bul_boardnum}
 </update>
 
