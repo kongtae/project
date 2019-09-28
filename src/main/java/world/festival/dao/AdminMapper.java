@@ -43,5 +43,11 @@ public interface AdminMapper {
 	public AdminBoardVO readAdminBoard(AdminBoardVO vo1);
 
 	public AdminListVO readAdminList(AdminListVO vo);
+	//복구를 위한 리스트 불러오기 작업
+	public ListVO RecoveryRead(ListVO vo);
+	//복구한 친구 불러와서 어드민에 넣어주기
+	public AdminListVO selectReList(int mainBoardNum);
+	//List삭제
+	public void AdminDeleteList(ListVO vo1);
 	
 }

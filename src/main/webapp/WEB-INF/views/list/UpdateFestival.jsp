@@ -10,13 +10,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="resources/bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    
+
 <script src="resources/js/jquery.js"></script> 
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
@@ -70,7 +64,15 @@
 	.longbar{
 			width: 300px;	
 	}
+	
+	.pre1{
+		width: 370px;
+		height: auto;
+	}
 
+	.buttonL{
+		width: 680px;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -137,7 +139,7 @@
 		                $.each(result,function(index,item){
 	            		arrNumber.push(item);
 	                	originalFileName = "resources/images/userimage/" +arrNumber[index];
-	                	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
+	                	$('#preview'+index).append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
 	                  })
 	               }
 	            },
@@ -321,18 +323,18 @@
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="listForm">List</a>
+								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="calendar">Calendar</a>
+								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="map">Map</a>
+								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="map">Map</a></li>
+										<li><a href="#">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -347,7 +349,6 @@
 					<div class="button-box">
 						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
-                    
                     
                 </div>
                
@@ -382,13 +383,13 @@
 										<li><a href="listForm">List</a></li>
 										<li><a href="listDetailForm">List Details</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="Calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="Map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="Map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -433,31 +434,26 @@
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-                    <div id="preview0">
-                    </div><br>
-                    <div id="preview1">
-                    </div><br>
-                    <div id="preview2">
-                    </div>
-                <i class="fa fa-paperclip"></i> ファイル添付
-                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
-			 	<i class="fa fa-paperclip"></i> ファイル添付
-					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
-				<i class="fa fa-paperclip"></i> ファイル添付	
+			  
+                    <div id="preview0"></div>
+                	<i class="fa fa-paperclip"></i> ファイル添付
+                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" onclick="delete1()" value="1番目の写真を消す">
+                     
+                    <div id="preview1"></div>
+			 		<i class="fa fa-paperclip"></i> ファイル添付
+					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+					<input type="button" onclick="delete2()" value="2番目の写真を消す">	
+                    
+                    <div id="preview2"></div>	
+					<i class="fa fa-paperclip"></i> ファイル添付	
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-                <br><input type="button" onclick="delete1()" value="첫번째삭제">	
-				<br><input type="button" onclick="delete2()" value="두번째삭제">	
-				<br><input type="button" onclick="delete3()" value="세번째삭제">	
-
-                <div class="box-footer">
-              <div class="pull-right">
-              <!--   <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button> -->
-                <button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
-                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+					<input type="button" onclick="delete3()" value="3番目の写真を消す">
+					
+			    </div>
               </div>
-            </div>     
-                </div>
-            </div>
+
+
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
@@ -465,11 +461,19 @@
 					      <div class="row">
 					        <!-- /.col -->
 					        <div class="col-md-9">
-					          <div class="box box-primary">
 					            <!-- /.box-header -->
 					            <div class="box-body">
 					              <div class="form-group">
-					              	<h1>祭りの投稿欄</h1>
+	
+		              <table class="buttonL">
+		                <tr>
+		              	<td align="left"><h1>祭りの投稿欄</h1></td>
+		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                </td>
+						</tr>					              
+		              </table>
+					              	
 					              	<br>
 					              	<div id="hash"></div>
 					              	<input type="text" id="hashtag1" class="form-control" placeholder="#HashTag">
@@ -477,11 +481,9 @@
 					          		<input type="hidden" id="hashtag" name="hashtag">
 					              	<br>
 					                <input type="text" id="title" name="title" class="form-control" placeholder="祭りの名前を記入してください。" value="${vo.title}" >
-					              </div>
-					              <div class="form-group">
+								        </div> 
+								    <div class="form-group">
 					                     <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.festival_intro}</textarea> 
-									<div class="wrapper">
- 
 									
 									<table>	
 										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="${vo.startEvent }" id="startEvent">から</td></tr>
@@ -493,11 +495,11 @@
 					             	</table> 
 					              </div>
 					            </div>
-					          </div>
 					        </div>
 					      </div>
 					    </section>
- 					
+ 					</div>
+ 
                     <!--Map Outer-->
                     <div class="map-outer">
                         <!--Map Canvas-->
@@ -616,6 +618,8 @@
 
 
 </div>
+<<<<<<< HEAD
+=======
 
 
 <!-- jQuery 3 -->
@@ -639,6 +643,7 @@
     $('.textarea').wysihtml5()
   })
 </script>
+>>>>>>> a7f0833109087f41e9c24e239a4debe475d0c2a4
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

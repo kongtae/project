@@ -62,14 +62,66 @@
       }
     
     
-    function UpdateFestival() {
-       location.href="AdminupdateFestivalGO?adminboardnum=${vo.mainBoardNum}";
-   }
-     function DeleteFestival() {
+	function ListRecovery() {
+		var mainBoardNum =${vo.mainBoardNum};
+		var admin_mainBoardNum =${vo.admin_mainBoardNum};
+		var datacheck ="${vo.datacheck}";
+// 		alert(mainBoardNum);
+		if(datacheck=="feinsert")
+		{	
+			alert("복구할게 없습니다.");
+			return false;
+		}
+		else if(datacheck=="Recovery")
+		{
+			alert("이미 복구된 내용입니다.")
+			return false;
+		}
+		$.ajax({
+			url:"ListRecovery",
+			type:"post",
+			data : {mainBoardNum : mainBoardNum,
+				admin_mainBoardNum : admin_mainBoardNum,
+				datacheck : datacheck},
+			success:function(result){
+				location.href="adminListPage";
+			}
+// 			},
+// 			error{
+// 				alert("실패");
+// 			}
+		});
+	}
+	
+	
+	function AdminDeleteFestival() {
+		var mainBoardNum = ${vo.mainBoardNum};
+		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
+		var datacheck ="${vo.datacheck}";
+// 		alert(mainBoardNum);
+
+		$.ajax({
+			url:"AdminDeleteList",
+			type:"post",
+			data : {mainBoardNum : mainBoardNum,
+					admin_mainBoardNum : admin_mainBoardNum
+					},
+			success:function(result){
+				location.href="adminListPage";
+			}
+// 			},
+// 			error{
+// 				alert("실패");
+// 			}
+		});
+	}
+	
+// 	updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
+    function DeleteFestival() {
            if(confirm("삭제하시겠습니까?")){
-           location.href="AdmindeleteFestival?adminboardnum=${vo.mainBoardNum}";
-           }
-     }
+          location.href="AdmindeleteFestival?adminboardnum=${vo.mainBoardNum}";
+          }
+    }
      //댓글 작성시 유효성검사
      function replywrite() {
       var replytext = document.getElementById("replytext");
@@ -439,10 +491,11 @@
 
                             </div>
                              
-                            <c:if test="${sessionScope.loginid !=null}">
+                            <c:if test="${sessionScope.adminid !=null}">
                                <div align="right">
-                               <input type="button" value="修正" onclick="UpdateFestival()">
-                               <input type="button" value="削除" onclick="DeleteFestival()">
+                               <input type="button" value="復旧" onclick="ListRecovery()">
+                               <input type="button" value="削除" onclick="AdminDeleteFestival()">
+<!--                                <input type="button" value="削除" onclick="DeleteFestival()"> -->
                      </div>
                      </c:if>                          
                           <div class="inner-box  table-responsive">

@@ -19,7 +19,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
-		<attributes>
+		<attributes>ㄴ
 			<attribute name="test" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -35,6 +35,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0"/>
 	<classpathentry kind="lib" path="/Users/mac/.m2/repository/org/jsoup/jsoup/1.12.1/jsoup-1.12.1.jar"/>
 	<classpathentry kind="lib" path="/Users/mac/Desktop/SCIT마스터/우리조 팀 프로젝트/jar/selenium-java-3.141.59/client-combined-3.141.59.jar"/>
@@ -43,5 +44,5 @@
 	<classpathentry kind="lib" path="/Users/mac/Desktop/SCIT마스터/우리조 팀 프로젝트/jar/selenium-java-3.141.59/libs/guava-25.0-jre.jar"/>
 	<classpathentry kind="lib" path="/Users/mac/Desktop/SCIT마스터/우리조 팀 프로젝트/jar/selenium-java-3.141.59/libs/okhttp-3.11.0.jar"/>
 	<classpathentry kind="lib" path="/Users/mac/Desktop/SCIT마스터/우리조 팀 프로젝트/jar/selenium-java-3.141.59/libs/okio-1.14.0.jar"/>
-	<classpathentry kind="output" path="target/classes"/>
+ㄴ	<classpathentry kind="output" path="target/classes"/>
 </classpath>

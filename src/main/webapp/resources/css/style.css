@@ -3817,7 +3817,7 @@ select:focus {
   font-weight: 400;
 }
 .event-details .inner-box{
-  background: #f1f1f1;
+  background: orange;
   padding: 45px 40px;
   margin-top: 25px;
   margin-bottom: 30px;

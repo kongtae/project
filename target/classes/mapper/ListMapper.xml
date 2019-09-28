@@ -10,7 +10,7 @@
 	INSERT INTO
 		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
 	VALUES (
-		mainboard_seq.nextval,
+		MAINBOARDNUM_SEQ.nextval,
 		#{title},
 		#{country},
 		#{adress},
@@ -77,7 +77,8 @@
 		adress = #{adress},
 		festival_intro = #{festival_intro},
 		startEvent = #{startEvent},
-		endEvent = #{endEvent}
+		endEvent = #{endEvent},
+		hashtag = #{hashtag}
 		<if test="originalFileName != null and saveFileName !=null">
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}
@@ -113,5 +114,63 @@
     		startEvent BETWEEN SYSDATE-7 AND SYSDATE or 
 			endEvent BETWEEN SYSDATE AND SYSDATE+7
 </select>
+
+<!-- 복구된 파일 쓰기 -->
+<insert id="RewriteFestival" parameterType="ListVO">
+	INSERT INTO
+	MAINBOARD (
+	mainBoardNum,
+	title,
+	country,
+	adress,
+	festival_intro,
+	surround_place,
+	inputTime,
+	startEvent,
+	endEvent,
+	originalFileName,
+	saveFileName,
+	hashtag
+	)
+	VALUES (
+		#{mainBoardNum},
+		#{title},
+		#{country},
+		#{adress},
+		#{festival_intro},
+		#{surround_place},
+		sysdate,
+		#{startEvent},
+		#{endEvent}
+		<choose>
+			<when test="originalFileName != null and saveFileName != null">
+			,#{originalFileName},#{saveFileName}
+			</when>
+			<otherwise>
+			,null,null
+			</otherwise>
+		</choose>
+		,#{hashtag}
+		)
+</insert>
+
+<update id="ReupdateFestival" parameterType="ListVO">
+		UPDATE
+		MAINBOARD
+	SET
+		title = #{title},
+		country = #{country},
+		adress = #{adress},
+		festival_intro = #{festival_intro},
+		startEvent = #{startEvent},
+		endEvent = #{endEvent},
+		hashtag = #{hashtag}
+		<if test="originalFileName != null and saveFileName !=null">
+			, originalfileName = #{originalFileName}
+			,saveFileName = #{saveFileName}
+		</if>
+				WHERE 
+		mainBoardNum = #{mainBoardNum}
+</update>
 
 </mapper>

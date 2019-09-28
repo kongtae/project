@@ -99,10 +99,26 @@ public class AdminDAO {
 
 	public AdminListVO readAdminList(AdminListVO vo) {
 		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
-//		mapper.hitcount(vo1);
-//		System.out.println("DAO히트를 위한 "+vo1);
 		return mapper.readAdminList(vo);
 	}
+
+	public ListVO RecoveryRead(ListVO vo) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		return mapper.RecoveryRead(vo);
+	}
+
+	public AdminListVO selectReList(int mainBoardNum) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		return mapper.selectReList(mainBoardNum);
+	}
+
+
+
+	public void AdminDeleteList(ListVO vo1) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		mapper.AdminDeleteList(vo1);
+	}
+		
 	
 	
 	

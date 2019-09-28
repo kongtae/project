@@ -22,21 +22,21 @@ import world.festival.VO.ReplyVO;
 import world.festival.VO.WishVO;
 import world.festival.dao.AdminDAO;
 import world.festival.dao.BoardDAO;
+import world.festival.dao.ListDAO;
 import world.festival.service.AdminService;
 import world.festival.service.BoardService;
+import world.festival.service.ListService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class AdminController {
+	@Autowired
+	private ListService listserivce;
 	
 	@Autowired
-	private BoardService service;
-
-	@Autowired
-	private BoardDAO dao;
-	
+	private ListDAO listdao;
 	
 	@Autowired
 	private AdminService adminservice;
@@ -127,49 +127,56 @@ public class AdminController {
 		//어드민 보드(자유게시판) 디테일
 		@RequestMapping(value = "/AdminBoardDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 		public String AdminBoardDetailGO(AdminBoardVO vo1 , ReplyVO vo,Model model,HttpSession hs) {
-			String userid=(String)hs.getAttribute("loginid");
-			vo.setUserid(userid);
-			System.out.println("bul_boardnum 의  값111 : " + vo1.getBul_boardnum());
-			System.out.println("bul 현재 히트 수 " +  vo1.getHit());
 			AdminBoardVO vo2 = admindao.readAdminBoard(vo1);
 			model.addAttribute("vo", vo2);
 			System.out.println("보드디테일단의 BoardVO 의 값 :" + vo2);
-//			ArrayList<ReplyVO> replylist=service.replyList(vo);
-//			System.out.println("댓글 리스트 "+replylist);
-			//댓글 갯수
-//			model.addAttribute("replycount", replylist.size());
-//			model.addAttribute("replylist", replylist);
+
 			return "admin/adminBoardDetail";
 		}
 		
 		
 		
 		@RequestMapping(value = "/AdminlistDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
-		public String AdminlistDetailGO(AdminListVO vo,Model model, HttpSession hs,RedirectAttributes rttr) {
-			AdminListVO vo1 = admindao.readAdminList(vo);
-			String userid=(String)hs.getAttribute("loginid");
-			vo.setUserid(userid);
-//			ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());
-//			System.out.println("댓글 리스트 "+replylist);
-			System.out.println(vo1);
-			model.addAttribute("vo", vo1);
-			
-			//댓글 갯수
-//			model.addAttribute("replycount", replylist.size());
-//			model.addAttribute("replylist", replylist);
-//			int wish=wishsrvice.selectWish(vo);
-//			System.out.println("위시리스트 여부판단"+wish);
-			//좋아요 여부판단!
-//			String like=null;
-//			if(wishsrvice.selectWish(vo)>0)
-//			{
-//				like="like";
-//			}
-//			model.addAttribute("like", like);
-			//좋아요 갯수 판단
-//			ArrayList<WishVO> wishlist=wishsrvice.wishList(vo.getMainBoardNum());
-//			model.addAttribute("wishlist", wishlist.size());
+		public String AdminlistDetailGO(AdminListVO vo1,Model model, HttpSession hs,RedirectAttributes rttr) {
+			AdminListVO vo2 = admindao.readAdminList(vo1);
+			model.addAttribute("vo", vo2);
+			System.out.println("보드디테일단의 BoardVO 의 값 :" + vo2);
+
+				
 			return "admin/adminListDetail";
+		}
+//		ListRecovery
+		@RequestMapping(value = "/ListRecovery", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String ListRecovery(ListVO vo, AdminListVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
+			ListVO vo1 = adminservice.RecoveryRead(vo);
+			AdminListVO adminvo1 = admindao.readAdminList(adminvo);
+			if(adminvo.getDatacheck().equals("fedelete"))
+			{
+				listserivce.RewriteFestival(vo1);
+				adminvo1.setDatacheck("delRecovery");
+				adminservice.AdminwriteFestival(adminvo1);
+				return "list/List";
+			}
+			else if(adminvo.getDatacheck().equals("feupdate"))
+			{
+				listserivce.ReupdateFestival(vo1);
+				adminvo1.setDatacheck("upRecovery");
+				adminservice.AdminwriteFestival(adminvo1);
+				return "list/List";
+			}
+			
+
+			return "list/List";
+		}
+		
+		@RequestMapping(value = "/AdminDeleteList", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String AdminDeleteList(ListVO vo, AdminListVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
+			ListVO vo1 = adminservice.RecoveryRead(vo);
+			
+			adminservice.AdminDeleteList(vo1);
+			return "list/List";
 		}
 		
 }
