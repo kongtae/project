@@ -55,6 +55,7 @@ public class ListService {
 			vo.setSaveFileName(savedFilename);
 			vo.setOriginalFileName(fileName);
 		}
+		
 		int result = dao.writeFestival(vo);
 		if(result != 1){return false;}
 		System.out.println("등록 결과 값: "+result);

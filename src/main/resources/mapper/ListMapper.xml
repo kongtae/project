@@ -82,7 +82,6 @@
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}
 		</if>
-		,hashtag = #{hashtag}
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>

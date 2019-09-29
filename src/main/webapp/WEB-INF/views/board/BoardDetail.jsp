@@ -114,12 +114,19 @@
 	            data : imageData,
 	            dataType: 'json',
 	            success : function(result) {
-	               if(result != null) {
-	                  $.each(result,function(index,item){
-	                     originalFileName = "resources/images/userimage/" +item;
-	                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
-	                  })
-	               }
+	            	if(result != null) {
+	                    $.each(result,function(index,item){
+	                  	  if(item.charAt(0)=='h'){
+	                  		  originalFileName = item;
+	                  		  $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>");
+	                  	  }else if(item == null){                		  
+	  						return false;
+	                  	  }else{
+	                       originalFileName = "resources/images/userimage/" +item;
+	                     $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
+	                  	 }
+	                    })  
+	              	}
 	            },
 	            error : function() {
 	            }

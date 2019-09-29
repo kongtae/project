@@ -324,14 +324,14 @@ table{
 		</header>
 		<!-- Page Title-->
 		<section class="page-title"
-			style="background: url(images/background/page-title-2.jpg);">
+			style="background: url(images/userimage/turkey balloon.jpg);">
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
 					<ul>
-						<li><a href="/festival">home</a></li>
+						<li><a href="">home</a></li>
 						<li>/</li>
-						<li><a href="/searchFestival">Search Festival</a></li>
+						<li><a href="searchFestival">Search Festival</a></li>
 					</ul>
 				</div>
 			</div>

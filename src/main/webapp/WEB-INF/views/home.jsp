@@ -94,7 +94,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="/festival"><img src="images/logo.png" alt=""
+								<a href=""><img src="images/Fespedia_logo.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -116,7 +116,7 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="/festival">Home</a></li>
+										<li class="dropdown"><a href="">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -155,8 +155,8 @@
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="festival" class="img-responsive"><img
-							src="images/logo.png" alt="" title=""></a>
+						<a href="" class="img-responsive"><img
+							src="images/Fespedia_logo.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -174,7 +174,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="/festival">Home</a></li>
+									<li class="dropdown"><a href="">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -228,24 +228,29 @@
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
+						<c:if test="${sessionScope.adminid != null}">
 							<a href="tourAPI"><img src="images/logo-2.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/logo-2.png" alt=""></a>
+						</c:if>
 						</figure>
 					</div>
             <ul class="footer-menu">
-                <li><a href="festival">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
 					<ul class="social-links">
-						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fab fa-vine"></i></a></li>
-						<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
 					</ul>
 				</div>
 			</div>
