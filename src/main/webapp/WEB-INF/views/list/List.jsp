@@ -323,7 +323,7 @@ $(function() {
          success : output1,
          error: function(request,status,error) {
             alert("リストを読み込めませんでした。");
-            alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+            //alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
          }
       })
    }
@@ -556,6 +556,15 @@ $(function() {
    
       if(searchItem=="hashSearch"){//해시태그 생성
          sharp =  searchKeyword;
+      	$('#searchKeyword').val("");//해시태그 생성시 해시태그 입력창 지우기
+		if(sharp.charAt(0) != '#') {//해시태그로 시작안하면 빠꾸
+			alert("「＃」を入力してください。");
+			return false;
+		}
+		if(sharp.charAt(1) == 1 || sharp.charAt(1) == 2 || sharp.charAt(1) == 3 || sharp.charAt(1) == 4 || sharp.charAt(1) == 5 || sharp.charAt(1) == 6 || sharp.charAt(1) == 7 || sharp.charAt(1) == 8 || sharp.charAt(1) == 9 || sharp.charAt(1) == 0 ) {
+			alert("文字を先に入力してください。");
+			return false;
+		}
          sharp = sharp.replace("#", "");
          idx += 1;
          $('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
@@ -599,7 +608,7 @@ $(function() {
       //alert("sharp1 : "+sharp1);
       
       var key = sharp1.innerHTML;
-      alert("key : "+ key);
+      //alert("key : "+ key);
       var a = key.indexOf('(')+1;
       var b = key.indexOf(')');
        var key1 = key.substring(a,b); 
