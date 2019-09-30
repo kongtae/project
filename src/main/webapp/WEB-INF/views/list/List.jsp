@@ -908,21 +908,11 @@ $(function() {
                          </div> 
                        
                     </div>
-<<<<<<< HEAD
-                    
                     <table>
                     <tr><td><nav class="pagination"></nav></td>
                     <td align="right" class="longterm"><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
                     </td></tr>
                     </table>
-                    
-=======
-                    <div>
-                    <nav class="pagination"></nav>
-                    <div id="div_icontext">
-					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-					</div>
->>>>>>> d7b361a2bd4a7a4a831d2d194760b9b4654ab5b9
 				</div>
                 </div>
            </div>
