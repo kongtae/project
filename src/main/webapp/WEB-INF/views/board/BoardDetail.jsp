@@ -90,6 +90,10 @@
       
       }
       
+      .redColor{
+      		color: 
+      }
+      
       
     </style>
     <script src="js/jquery.js"></script>
@@ -110,15 +114,21 @@
 	            data : imageData,
 	            dataType: 'json',
 	            success : function(result) {
-	               if(result != null) {
-	                  $.each(result,function(index,item){
-	                     originalFileName = "resources/images/userimage/" +item;
-	                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
-	                  })
-	               }
+	            	if(result != null) {
+	                    $.each(result,function(index,item){
+	                  	  if(item.charAt(0)=='h'){
+	                  		  originalFileName = item;
+	                  		  $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>");
+	                  	  }else if(item == null){                		  
+	  						return false;
+	                  	  }else{
+	                       originalFileName = "resources/images/userimage/" +item;
+	                     $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
+	                  	 }
+	                    })  
+	              	}
 	            },
 	            error : function() {
-	               alert("イメージの読み込みに失敗しました。");
 	            }
 	         });
 	      }
@@ -228,8 +238,10 @@
                 <!--Top Left-->
                 <div class="top-left">
                     <ul class="header-info-list">
-                        <li><span class="icon fa fa-envelope"></span><strong>Email</strong> info@wiscon.com</li>
-                        <li><span class="icon fa fa-map-marker"></span><strong>Location</strong> 49 BelWest Lane, TX 26098</li>
+                    			<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+									SC.IT@MASTER.COM</li>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
                     </ul>
                 </div>
                 <!--Top Right-->
@@ -305,7 +317,7 @@
                     </nav>
 					<!--Button Box-->
 					<div class="button-box">
-						<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+						<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
                 </div>
@@ -320,7 +332,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="index.html" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -369,11 +381,11 @@
 <section class="page-title" style="background: url(images/background/page-title-4.jpg);">
     <div class="container">
         <div class="title-text text-center">
-            <h3>Shedule Details</h3>
+            <h3>会員掲示板</h3>
             <ul>
-                <li><a href="index.html">home</a></li>
+                <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Shedule Details</li>
+                <li><a href="boardList">Board</a></li>
             </ul>
         </div>                
     </div>
@@ -432,7 +444,7 @@
                         		<td>内容</td><td>${vo.contents}</td>
                         	</tr>
 							<tr>
-                        		<td>期間</td><td>${vo.inputdate}</td>
+                        		<td>投稿日</td><td>${vo.inputdate}</td>
                         	</tr>
                         	<tr>
                         		<td>国家</td><td>${vo.country}</td>
@@ -472,19 +484,15 @@
 				 <div class="blog-comment-area">
                     <div class="image-box">
                         <figure>
-<!--                             <img src="images/testimonials/4.png" alt=""> -->
 							<c:if test="${replylist.originalFileName == null}">
 								<img src="images/userimage/login_icon.png" alt="">
 							</c:if>
 							<c:if test="${replylist.originalFileName != null}">
                              <img src="images/userimage/${replylist.originalFileName}" alt="">
-<!--                                              여기가 사용자가 등록한 사진 들어올 곳 -->
-<%--                              ${replylist.originalFileName} --%>
 							</c:if>
+							${replylist.userid}
                         </figure>
-<%--                         <h6>${vo.userid}</h6> --%>
                     </div>
-<!--                     <div class="image-content"> -->
 				</td>
 				<td rowspan="1">
 				&nbsp	&nbsp ${replylist.replytext}
@@ -537,23 +545,21 @@
 
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="index.html"><img src="images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="speakers.html">Speakers</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a href="shedule.html">Schedule</a></li>
-                <li><a href="sponsor.html">Sponsors</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="festival">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
             <ul class="social-links">
                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

@@ -104,7 +104,7 @@
 			tourAPIselect();
 		})
 		$("#insertBtn").on('click', function() {
-			tourAPIinsert();
+			mainBoardNumSelect();
 		})
 	})
 		var tour = [];
@@ -151,54 +151,7 @@
 	}
 	
 	function output(result) {
-<<<<<<< HEAD
-		totalRecordCount = result.length;
-		totalPageCount = Math.ceil(totalRecordCount / countPerPage);
-		pageBlockCount = Math.ceil(page / pageBlock);
-		startPageGroup = ((page - 1) * countPerPage);
-		endPageGroup = (startPageGroup + countPerPage);
 
-		if (pageBlockCount > 1) {
-			spage = (pageBlockCount - 1) * pageBlock + 1;
-		} else {
-			spage = 1;
-		}
-
-		if ((pageBlockCount * pageBlock) >= totalPageCount) {
-			epage = totalPageCount;
-		} else {
-			epage = pageBlockCount * pageBlock;
-		}
-
-		navSet(totalPageCount, spage, epage);
-		tagSet(result, startPageGroup, endPageGroup);
-
-		$(".page-link").on('click', function() {
-			if ($(this).attr("data-value") == "first") {
-				page = 1;
-			} else if ($(this).attr("data-value") == "end") {
-				page = totalPageCount;
-			} else if ($(this).attr("data-value") == "next") {
-				page = parseInt(page) + 5;
-				if (page > totalPageCount) {
-					page = totalPageCount;
-				}
-			} else if ($(this).attr("data-value") == "before") {
-				page = parseInt(page) - 5;
-				if (page < 5) {
-					page = 1;
-				}
-			} else {
-				page = $(this).attr("data-value");
-			}
-			tourAPIselect();
-		});
-	}
-
-	function tagSet(result, startPageGroup, endPageGroup) {
-=======
->>>>>>> d7b361a2bd4a7a4a831d2d194760b9b4654ab5b9
-		
 		var context = "";
 		
 		var myItem = result.response.body.items.item;
@@ -228,6 +181,45 @@
 		};
 	}
 
+	function mainBoardNumSelect() {
+		
+		var startEvent = $('#startEvent').val();
+		var endEvent = $('#endEvent').val();
+		
+		var a = startEvent.split("-");
+		var b = endEvent.split("-");
+		if(a>b){
+			alert("検索する期間を間違えて入力しました。");
+			$('#startEvent').val("");
+			$('#endEvent').val("");
+			return false;
+		}
+		if (startEvent == null || endEvent == "") {
+			startEvent = " ";
+			alert("始まる日を入力してください。");
+			return false;
+		}
+		if (endEvent == null || endEvent == "") {
+			endEvent = " ";
+			alert("終わる日を入力してください。");
+			return false;
+		}
+		if(tour.length == 0) {
+			alert("登録するデーターがありません。");
+		}
+		
+		$.ajax({
+			type : 'post',
+			url : 'mainBoardNumSelect',
+			success : function(data){
+				tourAPIinsert();
+			},
+			error : function() {
+				alert("番号を確認できませんでした。");
+			}
+		})
+	}
+	
 	function tourAPIinsert() {
 		
 		var startEvent = $('#startEvent').val();
@@ -254,6 +246,7 @@
 		if(tour.length == 0) {
 			alert("登録するデーターがありません。");
 		}
+		
 		$.ajax({
 			url : "tourAPIinsert",
 			type : "post",
@@ -261,16 +254,13 @@
 			data : JSON.stringify(tour),
 			success : function() {
 				alert("登録を完了しました。");
-<<<<<<< HEAD
-
-=======
->>>>>>> d7b361a2bd4a7a4a831d2d194760b9b4654ab5b9
 			},
 			error : function() {
 				alert("登録が失敗しました。");
 			}
 		});
 	}
+
 </script>
 </head>
 <body>
@@ -294,9 +284,9 @@
 						<div class="top-left">
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									info@wiscon.com</li>
+									SC.IT@MASTER.COM</li>
 								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									49 BelWest Lane, TX 26098</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 							</ul>
 						</div>
 						<!--Top Right-->
@@ -551,16 +541,14 @@
 							<a href="index.html"><img src="images/logo-2.png" alt=""></a>
 						</figure>
 					</div>
-					<ul class="footer-menu">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about-us.html">About</a></li>
-						<li><a href="speakers.html">Speakers</a></li>
-						<li><a href="#">Pages</a></li>
-						<li><a href="shedule.html">Schedule</a></li>
-						<li><a href="sponsor.html">Sponsors</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact-us.html">Contact</a></li>
-					</ul>
+            <ul class="footer-menu">
+                <li><a href="festival">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
+            </ul>
 					<ul class="social-links">
 						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 						<li><a href="#"><i class="fab fa-twitter"></i></a></li>

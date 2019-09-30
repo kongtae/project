@@ -67,6 +67,18 @@ public class BoardDAO {
 		return mapper.imagePrintBoard(vo);
 	}
 
+	public void RewriteBoard(BoardVO vo1) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.RewriteBoard(vo1);
+		
+	}
+
+	public void ReupdateBoard(BoardVO vo1) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		mapper.ReupdateBoard(vo1);
+		
+	}
+
 
 
 

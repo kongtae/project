@@ -82,9 +82,9 @@
 						<div class="top-left">
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									info@wiscon.com</li>
+									SC.IT@MASTER.COM</li>
 								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									49 BelWest Lane, TX 26098</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 							</ul>
 						</div>
 						<!--Top Right-->
@@ -134,7 +134,7 @@
 									<ul class="navigation clearfix">
 										<li class="dropdown"><a href="#">Home</a>
 											<ul>
-												<li><a href="index.html">Home Page 01</a></li>
+												<li><a href="festival">Home Page 01</a></li>
 												<li><a href="index-2.html">Home Page 02</a></li>
 											</ul></li>
 										<li class="dropdown"><a href="#">About</a>
@@ -209,7 +209,7 @@
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="index.html" class="img-responsive"><img
+						<a href="festival" class="img-responsive"><img
 							src="images/logo.png" alt="" title=""></a>
 					</div>
 
@@ -230,7 +230,7 @@
 								<ul class="navigation clearfix">
 									<li class="dropdown"><a href="#">Home</a>
 										<ul>
-											<li><a href="index.html">Home Page 01</a></li>
+											<li><a href="festival">Home Page 01</a></li>
 											<li><a href="index-2.html">Home Page 02</a></li>
 										</ul></li>
 									<li class="dropdown"><a href="#">About</a>
@@ -277,7 +277,7 @@
 				<div class="title-text text-center">
 					<h3>MAP</h3>
 					<ul>
-						<li><a href="index.html">home</a></li>
+						<li><a href="festival">home</a></li>
 						<li>/</li>
 						<li>Map</li>
 					</ul>

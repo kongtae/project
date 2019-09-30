@@ -25,10 +25,40 @@
 <style>
 #left-box {
 	float: left;
+	width: 50%;
+	
 }
-
 #right-box {
 	float: right;
+	width: 50%;
+}
+#left-image {
+	height: 70%;
+}
+#right-image {
+	height: 70%;
+}
+#tit1 {
+	text-align: center;
+	color: hotpink;
+	font-weight: bold;
+}
+#tit2 {
+	text-align: center;
+	color: dodgerblue;
+    font-weight: bold;
+}
+.detailview {
+	text-align: center;
+	color: midnightblue;
+}
+table{
+	text-align: center;
+}
+.tableSecond{
+	border-right-style: inset;
+    border-right-width: thick;
+    border-right-color: darkgray;
 }
 </style>
 <script src="js/jquery.js"></script>
@@ -53,7 +83,7 @@
 					fesimages.push(item.image);
 					fesnames.push(item.festivalname);
 				});
-				if(check < 4 ){
+				if(check < 5 ){
 				random_image();
 				}
 			},
@@ -66,14 +96,13 @@
 
 	function random_image() {
 		check += 1;
-		if (check > 4) {
+		if (check > 5) {
 			result();
 			return false;
 		}
 		ry = Math.floor(Math.random() * (fesimages.length - 1));
 		rn = Math.floor(Math.random() * (fesimages.length - 1));
 		if(ry == rn){
-			alert("중복이라 다시");
 			check -= 1;
 			return random_image();
 		}
@@ -81,9 +110,6 @@
 			+"</h3><div id='left-image'><img src=" + fesimages[ry] + " border=0></div></div></div>");
 		$('#image-box').append("<div id='right-box'><div id ='right-text' class='title-text text-center'><h3><a href='javascript:rightBtn();'>"+ fesnames[rn] +"</a>"
 			+"</h3><div id='right-image'><img src=" + fesimages[rn] + " border=0></div></div></div>");
-		console.log("왼쪽 파일명 : "+ fesnames[ry]+"/ry : "+ry);
-		console.log("오른쪽 파일명 : "+ fesnames[rn]+"/rn : "+rn);
-		console.log("랭쓰 : "+fesnames.length);
 	}
 
 	function leftBtn() {
@@ -92,16 +118,13 @@
 		var key1 = "";
 		key1 = fesimages[ry].substring(a, b);
 		CheckSearch(key1);
-		console.log("왼쪽 삭제명 : "+ fesnames[ry]+"/"+ry);
 		fesimages.splice(ry, 1);
 		fesnames.splice(ry, 1);
 		if(ry < rn){
 			var rnn = rn-1;
-			console.log("오른쪽 삭제명 : "+ fesnames[rnn]+"/"+rnn);
 			fesimages.splice((rnn), 1);
 			fesnames.splice((rnn), 1);
 		}else{
-			console.log("오른쪽 삭제명 : "+ fesnames[rn]+"/"+rn);
 		fesimages.splice(rn, 1);
 		fesnames.splice(rn, 1);
 		}
@@ -115,16 +138,13 @@
 		var b = fesimages[rn].indexOf('.');
 		var key1 = fesimages[rn].substring(a, b);
 		CheckSearch(key1);
-		console.log("왼쪽 삭제명 : "+ fesnames[ry]+"/"+ry);
 		fesimages.splice(ry, 1);
 		fesnames.splice(ry, 1);
 		if(ry < rn){
 			var rnn = rn-1;
-			console.log("오른쪽 삭제명 : "+ fesnames[rnn]+"/"+rnn);
 			fesimages.splice((rnn), 1);
 			fesnames.splice((rnn), 1);
 		}else{
-			console.log("오른쪽 삭제명 : "+ fesnames[rn]+"/"+rn);
 		fesimages.splice(rn, 1);
 		fesnames.splice(rn, 1);
 		}
@@ -173,6 +193,25 @@
 		var country = selectResult[0].country;
 		var adress = selectResult[0].adress;
 		var intro = selectResult[0].festival_intro;
+		var hashtag = selectResult[0].hashtag;
+		var surround_place = selectResult[0].surround_place;
+		var mainBoardNum = selectResult[0].mainBoardNum;
+		if(hashtag == null){
+			hashtag = ''; 
+		}
+		if(intro == null){
+			intro = '';
+		}
+		if(surround_place == null){
+			surround_place = '';
+		}
+		if(country == null){
+			country = '';
+		}
+		if(adress == null){
+			adress = '';
+		}
+			
 		var s = new Date(selectResult[0].startEvent);
 		var start = s.getFullYear() + "-"
 				+ ("00" + (s.getMonth() + 1)).slice(-2) + "-"
@@ -181,8 +220,10 @@
 		var end = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2)
 				+ "-" + ("00" + s.getDate()).slice(-2);
 		$('#image-box').append(
-				"<div id='left-box'>" + title + country + adress + intro
-						+ start + end + "</div>");
+				"<div id='left-box'><div class='tableSecond'><br><h1 id='tit1'>お勧め①</h1><br><table class='table table-hover'><tr><td><b>分類</b></td><td><b>詳細情報</b></td></tr>"+
+                 "<tr><td>#HASHTAG</td><td>"+hashtag+"</td></tr><tr><td>タイトル</td><td>"+title+"</td></tr><tr><td>内容</td><td>"+intro+"</td>"+
+                "</tr><tr><td>期間</td><td>"+start+"~"+end+"</td></tr><tr><td>国家</td><td>"+country+"</td></tr>"+
+                "<tr><td>都市</td><td>"+surround_place+"</td></tr><tr><td>住所</td><td>"+adress+"</td></tr></table><a href=listDetailGO?mainBoardNum="+mainBoardNum+" class='detailview'><h3 class='detailview1'>➡️Detail View</h3></a></div>");
 	}
 
 	function rightResult() {
@@ -190,6 +231,24 @@
 		var country = selectResult[1].country;
 		var adress = selectResult[1].adress;
 		var intro = selectResult[1].festival_intro;
+		var hashtag = selectResult[1].hashtag;
+		var surround_place = selectResult[1].surround_place;
+		var mainBoardNum = selectResult[1].mainBoardNum;
+		if(hashtag == null){
+			hashtag = ''; 
+		}
+		if(intro == null){
+			intro = '';
+		}
+		if(surround_place == null){
+			surround_place = '';
+		}
+		if(country == null){
+			country = '';
+		}
+		if(adress == null){
+			adress = '';
+		}
 		var s = new Date(selectResult[1].startEvent);
 		var start = s.getFullYear() + "-"
 				+ ("00" + (s.getMonth() + 1)).slice(-2) + "-"
@@ -198,8 +257,10 @@
 		var end = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2)
 				+ "-" + ("00" + s.getDate()).slice(-2);
 		$('#image-box').append(
-				"<div id='right-box'>" + title + country + adress + intro
-						+ start + end + "</div>");
+				"<div id='left-box'><div class='tableSecond'><br><h1 id='tit2'>お勧め②</h1><br><table class='table table-hover'><tr><td><b>分類</b></td><td><b>詳細情報</b></td></tr>"+
+                 "<tr><td>#HASHTAG</td><td>"+hashtag+"</td></tr><tr><td>タイトル</td><td>"+title+"</td></tr><tr><td>内容</td><td>"+intro+"</td>"+
+                "</tr><tr><td>期間</td><td>"+start+"~"+end+"</td></tr><tr><td>国家</td><td>"+country+"</td></tr>"+
+                "<tr><td>都市</td><td>"+surround_place+"</td></tr><tr><td>住所</td><td>"+adress+"</td></tr></table><a href=listDetailGO?mainBoardNum="+mainBoardNum+" class='detailview'><h3 class='detailview1'>➡️Detail View</h3></a></div>");
 	}
 
 	function reset() {
@@ -238,9 +299,9 @@
 						<div class="top-left">
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									info@wiscon.com</li>
+									SC.IT@MASTER.COM</li>
 								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									49 BelWest Lane, TX 26098</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 							</ul>
 						</div>
 						<!--Top Right-->
@@ -263,38 +324,21 @@
 		</header>
 		<!-- Page Title-->
 		<section class="page-title"
-			style="background: url(images/background/page-title-2.jpg);">
+			style="background: url(images/userimage/turkey balloon.jpg);">
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
 					<ul>
-						<li><a href="/festival">home</a></li>
+						<li><a href="">home</a></li>
 						<li>/</li>
-						<li>Search Festival</li>
+						<li><a href="searchFestival">Search Festival</a></li>
 					</ul>
 				</div>
 			</div>
 		</section>
 		<!-- End Page Title-->
 		<div class="slide">
-			<div id="image-box">
-				<!-- <div id="left-box">
-					<div class="title-text text-center">
-						<h3>
-							<a href="javascript:leftBtn();" >#음악</a>
-						</h3>
-						<div id="left-image"></div>
-					</div>
-				</div>
-				<div id="right-box">
-					<div class="title-text text-center">
-						<h3>
-							<a href="javascript:rightBtn();">#영화</a>
-						</h3>
-						<div id="right-image"></div>
-					</div>
-				</div> -->
-			</div>
+			<div id="image-box"></div>
 		</div>
 
 

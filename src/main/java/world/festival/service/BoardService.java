@@ -128,6 +128,16 @@ public class BoardService {
 		System.out.println("보드 서비스 맵  : "+map);
 		return dao.BoardSelectOne2(map);
 	}
+
+	public void RewriteBoard(BoardVO vo1) {
+		dao.RewriteBoard(vo1);
+		
+	}
+
+	public void ReupdateBoard(BoardVO vo1) {
+		dao.ReupdateBoard(vo1);
+		
+	}
 	
 
 

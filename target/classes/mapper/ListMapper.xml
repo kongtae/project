@@ -20,14 +20,13 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null">
-			,#{originalFileName},#{saveFileName}
+			<when test="originalFileName != null and saveFileName != null and hashtag != ''">
+			,#{originalFileName},#{saveFileName},#{hashtag}
 			</when>
 			<otherwise>
-			,null,null
+			,null,null,'#축제,'
 			</otherwise>
 		</choose>
-		,#{hashtag}
 	)
 </insert>
 
@@ -83,7 +82,6 @@
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}
 		</if>
-		,hashtag = #{hashtag}
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>

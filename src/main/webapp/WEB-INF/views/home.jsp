@@ -23,7 +23,11 @@
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<style>
+.main-footer:before {
+	background: #191919;
+}
+</style>
 </head>
 
 <body>
@@ -48,9 +52,9 @@
 						<div class="top-left">
 							<ul class="header-info-list">
 								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									info@wiscon.com</li>
+									SC.IT@MASTER.COM</li>
 								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									49 BelWest Lane, TX 26098</li>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
 							</ul>
 						</div>
 						<!--Top Right-->
@@ -90,7 +94,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="/festival"><img src="images/logo.png" alt=""
+								<a href=""><img src="images/Fespedia_logo.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -112,7 +116,7 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="/festival">Home</a></li>
+										<li class="dropdown"><a href="">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -136,29 +140,8 @@
 
 							<!--Button Box-->
 							<div class="button-box">
-								<a href="#" class="theme-btn btn-style-one">Search Festival</a>
+								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
-
-							<!--Search Box Outer-->
-							<!--  
-                    <div class="search-box-outer">
-                        <div class="dropdown">
-                            <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
-                            <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                <li class="panel-outer">
-                                    <div class="form-container">
-                                        <form method="post" action="blog.html">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> 
-                    -->
 
 						</div>
 
@@ -172,8 +155,8 @@
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="index.html" class="img-responsive"><img
-							src="images/logo.png" alt="" title=""></a>
+						<a href="" class="img-responsive"><img
+							src="images/Fespedia_logo.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -191,7 +174,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="/festival">Home</a></li>
+									<li class="dropdown"><a href="">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -240,29 +223,34 @@
 
 		<!-- Main Footer-->
 		<footer class="main-footer"
-			style="background: url(images/background/footer.jpg);">
+			>
 			<div class="container">
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
+						<c:if test="${sessionScope.adminid != null}">
 							<a href="tourAPI"><img src="images/logo-2.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/logo-2.png" alt=""></a>
+						</c:if>
 						</figure>
 					</div>
-					<ul class="footer-menu">
-						<li><a href="/festival">Home</a></li>
-						<li><a href="listForm">List</a></li>
-						<li><a href="calendar">Calendar</a></li>
-						<li><a href="sponsor.html">Map</a></li>
-						<li><a href="blog.html">Board</a></li>
-						<li><a href="contact-us.html">Search Festival</a></li>
-					</ul>
+            <ul class="footer-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
+            </ul>
 					<ul class="social-links">
-						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fab fa-vine"></i></a></li>
-						<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
 					</ul>
 				</div>
 			</div>
