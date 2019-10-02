@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+<link rel="icon" href="images/f.png" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
 .main-footer:before {
@@ -94,7 +94,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href=""><img src="images/Fespedia_logo.png" alt=""
+								<a href=""><img src="images/fespedia.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -156,7 +156,7 @@
 					<!--Logo-->
 					<div class="logo float-left">
 						<a href="" class="img-responsive"><img
-							src="images/Fespedia_logo.png" alt="" title=""></a>
+							src="images/fespedia.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -229,10 +229,10 @@
 					<div class="footer-logo">
 						<figure>
 						<c:if test="${sessionScope.adminid != null}">
-							<a href="tourAPI"><img src="images/logo-2.png" alt=""></a>
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
 						</c:if>
 						<c:if test="${sessionScope.adminid == null}">
-							<a href=""><img src="images/logo-2.png" alt=""></a>
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
 						</c:if>
 						</figure>
 					</div>

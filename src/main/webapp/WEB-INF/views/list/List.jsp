@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">    
+    <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+    <link rel="icon" href="images/f.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
 <style>
@@ -705,7 +705,7 @@ $(function() {
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -759,7 +759,7 @@ $(function() {
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -883,17 +883,19 @@ $(function() {
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
-                           
                           </table>
                          </div> 
-                       
                     </div>
-
-                    <div>
+                    <table>
+                    <tr><td><nav class="pagination"></nav></td>
+                    <td align="right" class="longterm"><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+                    </td></tr>
+                    </table>
+                    <!-- <div>
                     <nav class="pagination"></nav>
                     <div id="div_icontext">
 					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-					</div>
+					</div> -->
 				</div>
                 </div>
            </div>
@@ -907,7 +909,7 @@ $(function() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
