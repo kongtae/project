@@ -21,8 +21,8 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+<link rel="icon" href="images/f.png" type="image/x-icon">
 
 <!-- == -->
 <!-- Tell the browser to be responsive to screen width -->
@@ -56,6 +56,9 @@
    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 <style>
+.content-wrapper {
+	width: 100%
+}
 .main-footer {
    padding-top: 7.5%;
     padding-bottom: 7.5%;
@@ -154,7 +157,7 @@ function memberSelect(){
 
                   <div class="float-left logo-box">
                      <div class="logo" style="width: 179px; height: 80px;">
-                        <a href="/festival"><img src="images/logo.png" alt=""
+                        <a href="/festival"><img src="images/fespedia.png" alt=""
                            title=""></a>
                      </div>
                   </div>
@@ -241,7 +244,7 @@ function memberSelect(){
                <!--Logo-->
                <div class="logo float-left">
                   <a href="index.html" class="img-responsive"><img
-                     src="images/logo.png" alt="" title=""></a>
+                     src="images/fespedia.png" alt="" title=""></a>
                </div>
 
                <!--Right Col-->
@@ -481,7 +484,7 @@ function memberSelect(){
                      <div class="box-body box-profile">
                         <img class="profile-user-img img-responsive img-circle"
                            src="dist/img/user4-128x128.jpg" id="profileImage" alt="User profile picture">
-
+<!-- 
                         <h3 class="profile-username text-center">Nina Mcintire</h3>
 
                         <p class="text-muted text-center">Software Engineer</p>
@@ -493,7 +496,7 @@ function memberSelect(){
                               class="pull-right">543</a></li>
                            <li class="list-group-item"><b>Friends</b> <a
                               class="pull-right">13,287</a></li>
-                        </ul>
+                        </ul> -->
                         <a href="memberUpdate" class="btn btn-primary btn-block"><b>Update</b></a>
                         <a href="WithdrawForm" class="btn btn-primary btn-block"><b>Withdraw</b></a>
                      </div>
@@ -502,11 +505,11 @@ function memberSelect(){
                   <!-- /.box -->
 
                   <!-- About Me Box -->
-                  <div class="box box-primary">
+                  <!-- <div class="box box-primary">
                      <div class="box-header with-border">
                         <h3 class="box-title">About Me</h3>
                      </div>
-                     <!-- /.box-header -->
+                     /.box-header
                      <div class="box-body">
                         <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
 
@@ -540,40 +543,51 @@ function memberSelect(){
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                            Etiam fermentum enim neque.</p>
                      </div>
-                     <!-- /.box-body -->
-                  </div>
+                     /.box-body
+                  </div> -->
                   <!-- /.box -->
                </div>
-               <!-- /.col -->
-               <div class="col-md-9">
-                  <div class="nav-tabs-custom">
-                     <div class="active tab-pane" id="activity">
-                           <!-- Post -->
-                           <c:forEach var="result" items="${list}" varStatus="status"  begin="0" > 
-                           <div class="post">
-                              <div >
-                                    <span class="username">
-                                     <a href="listDetailGO?mainBoardNum=${result.mainBoardNum}">TITLE: <c:out value="${result.title}"></c:out> </a>
-                                 </span>
-<!--                                   <span class="description"></span> -->
-                              </div>
-<!--                               /.user-block -->
-                              <p> FESTIVAL_INTRO <c:out value="${result.festival_intro}"></c:out></p>
-                              COUNTRY : <c:out value="${result.country}"></c:out> <br>
-                              祭りの期間 : <c:out value="${result.startEvent}"></c:out> ~ 
-                              <c:out value="${result.endEvent}"></c:out> <br>
-                              ADDRESS : <c:out value="${result.adress}"></c:out> 
-
-                           </div>
-                              </c:forEach>
-                              <!-- END timeline item -->
-                           </ul>
-                        </div>
-                        <!-- /.tab-pane -->
-                     </div>
-                     <!-- /.tab-content -->
-                  </div>
-                  <!-- /.nav-tabs-custom -->
+					<!-- /.col -->
+					<div class="col-md-9">
+						<div class="box box-primary">
+						<div class="nav-tabs-custom">
+						<div class="tab-content">
+							<div class="active tab-pane" id="activity">
+								<!-- Post -->
+								<c:forEach var="result" items="${list}" varStatus="status"
+									begin="0">
+									<div class="post">
+										<div>
+											<span class="username"> <strong><a href="listDetailGO?mainBoardNum=${result.mainBoardNum}">
+											TITLE:
+											<c:out value="${result.title}"></c:out></strong>
+											</a>
+											</span>
+											<!-- <span class="description"></span> -->
+										</div>
+										<!-- /.user-block -->
+										<p>
+										FESTIVAL_INTRO
+										<c:out value="${result.festival_intro}"></c:out>
+										</p>
+										COUNTRY :
+										<c:out value="${result.country}"></c:out>
+										<br> 祭りの期間 :
+										<c:out value="${result.startEvent}"></c:out>
+										~
+										<c:out value="${result.endEvent}"></c:out>
+										<br> ADDRESS :
+										<c:out value="${result.adress}"></c:out>
+									</div>
+								</c:forEach>
+								<!-- END timeline item -->
+								</ul>
+							</div>
+							<!-- /.tab-pane -->
+						</div>
+						<!-- /.tab-content -->
+					</div>
+					<!-- /.nav-tabs-custom -->
                </div>
                <!-- /.col -->
             </div>
@@ -590,7 +604,7 @@ function memberSelect(){
             <div class="footer-area text-center">
                <div class="footer-logo">
                   <figure>
-                     <a href="index.html"><img src="images/logo-2.png" alt=""></a>
+                     <a href="index.html"><img src="images/fespedia_w.png" alt=""></a>
                   </figure>
                </div>
             <ul class="footer-menu">
