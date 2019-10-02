@@ -142,4 +142,15 @@ ORDER BY
 	maintb.MAINBOARDNUM desc
 </select>
 
+<!-- 비밀번호찾기 -->
+<select id="Findpassword" parameterType="UserVO" resultType="UserVO">
+	SELECT
+		*
+	FROM
+		member
+	WHERE
+		userid=#{userid} AND
+		email=#{email}
+</select>
+
 </mapper>
