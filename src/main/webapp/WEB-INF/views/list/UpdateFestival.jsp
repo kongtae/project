@@ -308,7 +308,11 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
+<<<<<<< HEAD
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
+=======
                     <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
+>>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -470,7 +474,7 @@
 		              <table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
@@ -594,7 +598,6 @@
 
 
 </div>
-
 
 </body>
 <script>

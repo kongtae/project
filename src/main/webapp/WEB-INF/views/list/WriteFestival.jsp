@@ -317,6 +317,45 @@ function writeFestival() {
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    <!--End Header Upper-->
+    
+    <!--Sticky Header-->
+    <div class="sticky-header stricky">
+        <div class="container clearfix">
+            <!--Logo-->
+            <div class="logo float-left">
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
+            </div>
+            
+            <!--Right Col-->
+            <div class="right-col float-right">
+                <!-- Main Menu -->
+                <nav class="main-menu navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+							<ul class="navigation clearfix">
+								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
+									<ul>
+										<li><a href="listForm">List</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Calendar</a>
+									<ul>
+										<li><a href="calendar">Calendar</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#">Map</a>
+									<ul>
+										<li><a href="#">Map</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="boardList">Board</a>
+									<ul>
+=======
    <!--End Header Upper-->
 
 			<!--Sticky Header-->
@@ -358,6 +397,7 @@ function writeFestival() {
 										</ul></li>
 									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
+>>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
 										<li><a href="boardList">Board</a></li>
 									</ul></li>
 								</ul>

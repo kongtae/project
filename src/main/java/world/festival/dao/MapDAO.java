@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import world.festival.VO.CountryNameVO;
 import world.festival.VO.ListVO;
 import world.festival.VO.MapVO;
 @Repository
@@ -27,6 +28,16 @@ public class MapDAO {
 	public ArrayList<ListVO> countryList(String country) {
 		MapMapper mapper = sqlSession.getMapper(MapMapper.class);
 		return mapper.countryList(country);
+	}
+
+	public ArrayList<CountryNameVO> selectCountry() {
+		MapMapper mapper = sqlSession.getMapper(MapMapper.class);
+		return mapper.selectCountry();
+	}
+
+	public ArrayList<MapVO> selectMap() {
+		MapMapper mapper = sqlSession.getMapper(MapMapper.class);
+		return mapper.selectMap();
 	}
 
 }
