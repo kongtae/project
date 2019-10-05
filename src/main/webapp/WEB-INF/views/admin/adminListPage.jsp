@@ -220,10 +220,14 @@ $(function() {
 			item.endEvent=" ";
 			end = item.endEvent;
 		}
+	    	
+		    var input = new Date(item.inputTime);
+		 	input = input.getFullYear() + "-" + ("00" + (input.getMonth() + 1)).slice(-2) + "-" + ("00" + input.getDate()).slice(-2);
 			if(index>=startPageGroup && index<endPageGroup) {
+				
 				context += "<tr><td class='srial'>"+item.mainBoardNum+"</td>";
 				context += "<td class='Session'><a href=AdminlistDetailGO?admin_mainBoardNum="+item.admin_mainBoardNum+">"+item.title+"</a></td>";
-				context += "<td class='Session'>"+item.userid+"</td>";
+				context += "<td class='Session'>"+input+"</td>";
 				context += "<td class='Session'>"+start+"~"+end+"</td>";
 				context += "<td class='Session'>"+item.datacheck+"</td></tr>";
 			}
@@ -555,7 +559,7 @@ $(function() {
                                 <tr>
                                     <th class="srial">#</th>
                                     <th class="session">タイトル</th>
-                                    <th class="time">USERID</th>
+                                    <th class="time">등록날짜</th>
                                     <th class="speakers">期間</th>
                                     <th class="venue">DATACHECK</th>
                                 </tr>

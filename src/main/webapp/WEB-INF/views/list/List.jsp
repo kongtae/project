@@ -62,20 +62,28 @@
    background-clip: padding-box;
    font-weight: normal;
    color: #fa334f;
+   border-color: white;
+}
+.longterm {
+	position: absolute;
+    right: 7%;
+    width: 35%;
 }
 #div_icontext {
-   display: flex;
-   justify-content: flex-end;
-   width: 83%;
+	display: flex;
+	justify-content: flex-end;
+	width: 83%;
 }
-
+#icontext {
+    position: absolute;
+    left: 58%;
+    padding-top: 1%;
+	font-family: 'Robtoto', sans-serif;
+	font-size: 27px;
+	color: #fa334f;
+}
 #hash {
    text-align: center;
-}
-
-.longterm{
-   width: 650px;
-   right: 20px;
 }
 </style>
 </head>
@@ -509,7 +517,7 @@ $(function() {
       
       for (var i = spage; i <= epage; i ++) {
          if(i == page){
-            nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+            nav += '<li class="page-item"><a class="page-link" style="padding: 1px; border-color: red;" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
          } else {
             nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
          }
@@ -837,20 +845,15 @@ $(function() {
                                        name="searchItem" id="searchItem"
                                        onchange="searchDate(this)">
                                        <option value="title"
-                                          <c:if test="${'title'==searchItem}">selected</c:if>>
-                                          タイトル</option>
+                                          <c:if test="${'title'==searchItem}">selected</c:if>>タイトル</option>
                                        <option value="country"
-                                          <c:if test="${'country'==searchItem}">selected</c:if>>
-                                          国家</option>
+                                          <c:if test="${'country'==searchItem}">selected</c:if>>国家</option>
                                        <option value="startEvent"
-                                          <c:if test="${'startEvent'==searchItem}">selected</c:if>>
-                                          期間</option>
+                                          <c:if test="${'startEvent'==searchItem}">selected</c:if>>期間</option>
                                        <option value="adress"
-                                          <c:if test="${'adress'==searchItem}">selected</c:if>>
-                                          住所</option>
+                                          <c:if test="${'adress'==searchItem}">selected</c:if>>住所</option>
                                        <option value="hashSearch"
-                                          <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
-                                          #HASHTAG</option>
+                                          <c:if test="${'hashSearch'==searchItem}">selected</c:if>>#HASHTAG</option>
                                     </select>
                                  </div>
                               </div>
@@ -888,7 +891,7 @@ $(function() {
                     </div>
                     <table>
                     <tr><td><nav class="pagination"></nav></td>
-                    <td align="right" class="longterm"><a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
+                    <td align="right" class="longterm"><a href="insertFestival"><h4 id="icontext"><b>投稿する</b></h4><img src="listImages/write_.png" title="投稿"></a>
                     </td></tr>
                     </table>
                     <!-- <div>
@@ -904,7 +907,7 @@ $(function() {
 <!--End Schedule Section-->
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer" >
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">

@@ -308,12 +308,21 @@ table{
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-								<c:if test="${sessionScope.loginid == null}">
+								<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
 								</c:if>
+								
 								<c:if test="${sessionScope.loginid != null}">
 									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
 							</ul>
@@ -323,8 +332,12 @@ table{
 			</div>
 		</header>
 		<!-- Page Title-->
+<<<<<<< HEAD
+			<section class="page-title" style="background: url(resources/images/userimage/얼음축제.jpg); margin-top: 6%;">
+=======
 		<section class="page-title"
 			style="background: url(images/userimage/turkey balloon.jpg);">
+>>>>>>> b9cf20934eac9efdf0d7995ccd94ae735db4daa6
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
