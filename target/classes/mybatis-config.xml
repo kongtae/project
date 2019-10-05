@@ -32,6 +32,6 @@
 		<mapper resource="mapper/BoardMapper.xml" />
 		<mapper resource="mapper/SearchFestivalMapper.xml" />
 		<mapper resource="mapper/tourAPIMapper.xml" />
-		<mapper resource="mapper/CountryNameVO.xml" />
+		<mapper resource="mapper/CountryName.xml" />
 	</mappers> 
 </configuration>
