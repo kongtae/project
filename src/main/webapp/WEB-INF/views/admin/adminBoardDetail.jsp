@@ -301,7 +301,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -505,7 +505,6 @@
 		</c:forEach>
 	</table>
                         <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
                         </div>
                     </div>
                 </div>

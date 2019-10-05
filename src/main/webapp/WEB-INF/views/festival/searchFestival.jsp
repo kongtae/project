@@ -448,7 +448,12 @@ table{
 			</div>
 			<!--End Sticky Header-->
 		<!-- Page Title-->
+<<<<<<< HEAD
+			<section class="page-title" style="background: url(resources/images/userimage/turkeyBalloon.jpg); margin-top: 6%;">
+
+=======
 			<section class="page-title" style="background: url(resources/images/userimage/turkeyballoon.jpg); margin-top: 6%;">
+>>>>>>> 8a798b09baba47c09478ba6dd2b096846ba15885
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>

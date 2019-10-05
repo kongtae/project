@@ -32,12 +32,14 @@
         height: 500px;
         width: 770px;
       }
-      
       .pre{
       	width: 370px;
       	height: auto;
       }
-      
+      .info_ {
+      	position: absolute;
+      	padding-left: 5%;
+      }
       .buttonS{
         background-color: #3c8dbc;
     	border-color: #367fa9;
@@ -59,7 +61,6 @@
 	    user-select: none;
 	    color: white;
       }
-      
         .buttonD{
         background-color: red;
     	border-color: red;
@@ -81,9 +82,7 @@
 	    user-select: none;
 	    color: white;
       }
-      
       .tableSecond{
-
 	  padding: 45px 40px;
 	  margin-top: 25px;
 	  margin-bottom: 30px;
@@ -92,9 +91,12 @@
 	  border: 3px solid #eaeaea;
 	  font-size: 15px;
 	  text-align: center;
-      
       }
-      
+      .comments {
+      	padding-left: 4%;
+ 	    padding-right: 4%;
+    	padding-bottom: 3%;
+      }
     </style>
     <script src="js/jquery.js" charset="utf-8"></script>
  <script>
@@ -416,7 +418,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -486,8 +488,8 @@
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                            <c:if test="${sessionScope.loginid == null }">
-                       <a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
-                      ${wishlist}                 
+                       		<a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
+                      		${wishlist}                 
                            </c:if>
                            <c:if test="${sessionScope.loginid != null}">
                                <c:if test="${like==null}">
@@ -519,11 +521,8 @@
                         </figure> -->
                         
                          <div class="event-details">
-                            <div>
-                         <h1><b>祭りの詳細情報</b></h1>
-                   
-
-
+                            <div class="info_">
+                         	<h1><b>祭りの詳細情報</b></h1>
                             </div>
                              
                                <div align="right">
@@ -592,7 +591,7 @@
 <br>
 
 <!--End Schedule Details-->
-<section>
+<section class="comments">
    <div class="blog-left-title">
                     <h6>Comments ${replycount}</h6>
                 </div>
@@ -604,17 +603,18 @@
             <td rowspan="1">
              <div class="blog-comment-area">
                     <div class="image-box">
-                        <figure>
                      <c:if test="${replylist.originalFileName == null}">
-                        <img src="images/userimage/login_icon.png" alt="">
+                        <img src="images/userimage/user_icon.png" alt="">
                      </c:if>
                      <c:if test="${replylist.originalFileName != null}">
-                             <img src="images/userimage/${replylist.originalFileName}" alt="">
+                        <img src="images/userimage/${replylist.originalFileName}" alt="">
                      </c:if>
-                     ${replylist.userid}
+                    </div>
                     </div>
             </td>
-            
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.userid}
+            </td>
             <td rowspan="1">
             &nbsp   &nbsp ${replylist.replytext}
             </td>
@@ -631,11 +631,8 @@
       </tr>
       </c:forEach>
    </table>
+   </section>
 
-                    </div>
-                <div class="blog-left-title">
-                    <h6>Post Comments</h6>
-                </div>
                 <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -656,7 +653,6 @@
                         </div>
                     </div>
                 </form>
-                <div>
                 
    
 </div>
@@ -670,7 +666,7 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">

@@ -59,7 +59,6 @@
 .s000 form .inner-form .input-field input {
   border: 0;
   display: inline-block;
-  width: 100%;
   padding: 10px 32px;
   font-size: 16px;
   color: #6c757d;
@@ -551,7 +550,7 @@
 					</div>
 					</div>
 					<div class="input-field second-wrap">
-					<input type="text" name="searchKeyword" id="searchKeyword" onchange="change()">
+					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter Keywords" onchange="change()">
 					<!-- <div id="insertmark"></div> -->
 					<input type="hidden" name="endEvent" id="searchHidden">
 					</div>
@@ -564,6 +563,10 @@
 					
  					<div id="div_icontext">
 		<c:if test="${sessionScope.loginid != null}">
+		<h4 id="icontext"><b>投稿する</b></h4>
+		<a href="insertBoard"><img src="listImages/write_.png" title="投稿"></a>
+		</c:if>
+		<c:if test="${sessionScope.adminid != null}">
 		<h4 id="icontext"><b>投稿する</b></h4>
 		<a href="insertBoard"><img src="listImages/write_.png" title="投稿"></a>
 		</c:if>
