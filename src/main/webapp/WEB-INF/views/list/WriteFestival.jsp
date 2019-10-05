@@ -45,7 +45,6 @@
 	.longbar{
 			width: 300px;	
 	}
-	
 	.pre1{
 		width: 370px;
 		height: auto;
@@ -71,12 +70,46 @@
     	margin-right: 1%;
 
 	}
-
-	.uploadButton {
-
-	  }
-
-
+	.filebox {
+	padding-bottom: 5%;
+	}
+	.filebox label { 
+	position: absolute; 
+	display: inline-block; 
+	padding: .5em .75em; 
+	color: white; 
+	font-size: inherit; 
+	line-height: normal; 
+	vertical-align: middle; 
+	background-color: #fa334f; 
+	cursor: pointer; 
+	border: 1px solid #ebebeb; 
+	border-bottom-color: #e2e2e2; 
+	border-radius: .25em; 
+	} 
+	.filebox input[type="file"] {
+	position: absolute; 
+	width: 1px; 
+	height: 1px; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+	}
+	.filebox input[type="button"] {
+	margin-left: 35%;
+    display: inline-block;
+    padding: .5em .75em;
+    color: black;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #DDDDDD;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -389,25 +422,34 @@ function writeFestival() {
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%;">
                         <h6>祭りの写真</h6>
                     </div> 
                     
            <div id="preview"></div>
            			<div class="uploadButton">
                 	<i class="fa fa-paperclip"></i> ファイル添付
+                	<div class="filebox">
+                	<label for="uploadFileName">ファイル選択</label>
                 	<input type="file" class="uploadButton" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" class="uploadButton" onclick="delete1()" value="1番目の写真を消す">
-                     
+					</div>
+                    
                     <div id="preview2"></div>
 			 		<i class="fa fa-paperclip"></i> ファイル添付
+			 		<div class="filebox">
+			 		<label for="uploadFileName2">ファイル選択</label>
 					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" onclick="delete2()" value="2番目の写真を消す">	
+                    </div>
                     
                     <div id="preview3"></div>	
-					<i class="fa fa-paperclip"></i> ファイル添付	
+					<i class="fa fa-paperclip"></i> ファイル添付
+					<div class="filebox">
+			 		<label for="uploadFileName3">ファイル選択</label>
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" onclick="delete3()" value="3番目の写真を消す">
+               		</div>
                		</div>
                 </div>
             </div>
@@ -426,7 +468,7 @@ function writeFestival() {
 	 					<table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
+		                <td><button type="button" class="btn btn-primary" style="background-color: #fa334f; border-color: #fa334f;" onclick="writeFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
