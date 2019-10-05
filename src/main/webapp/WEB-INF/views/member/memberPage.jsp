@@ -302,7 +302,7 @@ function memberSelect(){
                   <div class="box box-primary">
                      <div class="box-body box-profile">
                         <img class="profile-user-img img-responsive img-circle"
-                           src="dist/img/user4-128x128.jpg" id="profileImage" alt="User profile picture">
+                           src="images/userimage/ico_login.png" id="profileImage" alt="User profile picture">
 <!-- 
                         <h3 class="profile-username text-center">Nina Mcintire</h3>
 

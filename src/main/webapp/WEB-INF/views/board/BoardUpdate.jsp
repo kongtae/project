@@ -47,7 +47,15 @@
 	.longbar{
 			width: 300px;	
 	}
+	
+	.pre1{
+		width: 370px;
+		height: auto;
+	}
 
+	.buttonL{
+		width: 900px;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -70,7 +78,7 @@ $(function () {
                   $.each(result,function(index,item){
 	            	arrNumber.push(item);
                 	originalFileName = "resources/images/userimage/" +arrNumber[index];
-                	$('#preview'+index).append("<input type='image' src='"+originalFileName+"'><br>");
+                	$('#preview'+index).append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
                   })
                }
             },
@@ -305,34 +313,36 @@ function BoardUpdate() {
                     <div class="text-title">
                         <h6>写真</h6>
                     </div> 
-                    <div id="preview0">
-                    </div><br>
-                    <div id="preview1">
-                    </div><br>
-                    <div id="preview2">
-                    </div>
-                     <div class="image-box" id="image-box"></div> 
-                <div class="form-group">
-                <div class="btn btn-default btn-file">
-                <i class="fa fa-paperclip"></i> ファイル添付
-                	<input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"> <br>
+              
+              
+             	 <div id="preview0"></div>
+              	 <i class="fa fa-paperclip"></i> ファイル添付
+              	 <input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+				<input type="button" onclick="delete1()" value="1番目の写真を消す">
+                     
+                <div id="preview1"></div>
 			 	<i class="fa fa-paperclip"></i> ファイル添付
-					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg"><br>
+				<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+				<input type="button" onclick="delete2()" value="2番目の写真を消す">	
+                    
+                <div id="preview2"></div>	
 				<i class="fa fa-paperclip"></i> ファイル添付	
-					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-				<br><input type="button" onclick="delete1()" value="첫번째삭제">	
-				<br><input type="button" onclick="delete2()" value="두번째삭제">	
-				<br><input type="button" onclick="delete3()" value="세번째삭제">	
+				<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
+				<input type="button" onclick="delete3()" value="3番目の写真を消す">    
+                  
+             
                 </div>
               </div> 
-                <div class="box-footer">
+              
+              
+    <!--             <div class="box-footer">
               <div class="pull-right">
                 <button type="button" class="btn btn-primary" onclick="BoardUpdate()"><i class="fa fa-envelope-o"></i> 投稿</button>
                 <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
               </div>
             </div>     
                 </div>
-            </div>
+            </div> -->
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
@@ -344,7 +354,15 @@ function BoardUpdate() {
 					            <!-- /.box-header -->
 					            <div class="box-body">
 					              <div class="form-group">
-					              	<h1>投稿欄</h1>
+					              
+					  <table class="buttonL">
+		                <tr>
+		              	<td align="left"><h1>投稿欄</h1></td>
+		                <td><button type="button" class="btn btn-primary" onclick="BoardUpdate()"><i class="fa fa-envelope-o"></i>投稿</button>
+		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                </td>
+						</tr>					              
+		              </table>
 					              	<br>
 					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
 					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" value="${vo.title}" >

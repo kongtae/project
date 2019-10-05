@@ -30,7 +30,7 @@
         width: 770px;
       }
       
-           .buttonS{
+      .buttonS{
         background-color: #3c8dbc;
     	border-color: #367fa9;
     	margin-right: 5px;
@@ -87,11 +87,11 @@
       
       
       }
-      
-      .redColor{
-      		color: 
-      }
-      
+ 
+    .pre1{
+		width: 370px;
+		height: auto;
+	}
       
     </style>
     <script src="js/jquery.js"></script>
@@ -116,12 +116,12 @@
 	                    $.each(result,function(index,item){
 	                  	  if(item.charAt(0)=='h'){
 	                  		  originalFileName = item;
-	                  		  $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>");
+	                  		  $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
 	                  	  }else if(item == null){                		  
 	  						return false;
 	                  	  }else{
 	                       originalFileName = "resources/images/userimage/" +item;
-	                     $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
+	                     $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>"); 
 	                  	 }
 	                    })  
 	              	}

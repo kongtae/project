@@ -320,7 +320,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -376,7 +376,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -481,7 +481,7 @@
 		              <table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
@@ -544,7 +544,7 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="resources/images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -589,7 +589,7 @@
 
 </div>
 
-<<<<<<< HEAD
+
 <!-- jQuery 3 -->
 <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -602,8 +602,7 @@
 <script src="resources/dist/js/demo.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-=======
->>>>>>> f9af3e339696fc69fac7f2afc72c7f50e8e2cf15
+
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
