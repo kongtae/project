@@ -138,7 +138,7 @@ create table countryname (
 );
 
 
-into countryname values('BD', 'Bangladesh', 'バングラデシュ', '방글라데시');
+Insert into countryname values('BD', 'Bangladesh', 'バングラデシュ', '방글라데시');
 Insert into countryname values( 'BE', 'Belgium', 'ベルギー', '벨기에' );
 Insert into countryname values('BF', 'Burkina Faso', 'ブルキナファソ', ' 부르키나파소');
 Insert into countryname values( 'BG' , 'Bulgaria', 'ブルガリア', '불가리아' );
