@@ -36,11 +36,12 @@
 	background-color: #CF4845;
 }
 .s000 {
+  position: absolute;
   display: flex;
   justify-content: end;
   align-items: baseline;
+  padding-left: 1%;
   font-family: 'Poppins', sans-serif;
-  padding-bottom: 15px;
 }
 .s000 form {
   width: 100%;
@@ -52,19 +53,33 @@
   justify-content: space-between;
   align-items: baseline;
 }
-/* #searchItem {
-	padding: 5%;
-    border: 1px solid #6c757d;
-    font-family: 'Robtoto', sans-serif;
-    font-size: 15px;
-    color: #6c757d;
+.s000 form .inner-form .input-field {
+  height: 68px;
 }
-#searchKeyword {
-	padding-top: 2%;
-	padding-bottom: 1.5%;
-    border: 1px solid #6c757d;
-    color: #6c757d;
-} */
+.s000 form .inner-form .input-field input {
+  border: 0;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 32px;
+  font-size: 16px;
+  color: #6c757d;
+}
+#searchItem {
+    border: 0;
+    font-family: 'Robtoto', sans-serif;
+    font-size: 17px;
+    color: #fa334f;
+    padding-top: 10%;
+    padding-bottom: 12%;
+}
+#searchOne {
+	border-radius: 3%;
+    background: #fa334f;
+    color: white;
+}
+.inner-box {
+	padding-top: 1.5%;
+}
 .pagination {
 	display: block;
 	width: 100%;
@@ -90,14 +105,12 @@
 #div_icontext {
 	display: flex;
 	justify-content: flex-end;
-	width: 83%;
+	width: 96%;
 }
 #icontext {
-	padding: 1.5%;
-	padding-rigth: 2px;
-	padding-left: 2px;
+    padding-top: 0.5%;
 	font-family: 'Robtoto', sans-serif;
-	font-size: 30px;
+	font-size: 29px;
 	color: #fa334f;
 }
 </style>
@@ -515,24 +528,16 @@
 
 <!--Schedule Section-->
 <section class="schedule-section" id="schedule-tab">
-	<div id="div_icontext">
-		<c:if test="${sessionScope.loginid != null}">
-		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertBoard"><img src="listImages/write_.png" title="投稿"></a>
-		</c:if>
-	</div>
     <div class="container">
           <div class="schedule-area">
       		<div class="schedule-content clearfix">
-			            <div class="inner-box  table-responsive">      
-					<div id="hash"></div>
-					
+			    <div class="inner-box  table-responsive">      					
 					<div class="s000">
 					<form>
 					<div class="inner-form">
 					<div class="input-field first-wrap">
 					<div class="input-select">
-					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
+					<select name="searchItem" class="choices-single-defaul" id="searchItem" onchange="searchDate(this)">
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 						タイトル
 					</option>
@@ -545,15 +550,24 @@
 					</select>
 					</div>
 					</div>
-					<div><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></div>
-					<div id="insertmark"></div>
-					<div><input type="hidden" name="endEvent" id="searchHidden">
+					<div class="input-field second-wrap">
+					<input type="text" name="searchKeyword" id="searchKeyword" onchange="change()">
+					<!-- <div id="insertmark"></div> -->
+					<input type="hidden" name="endEvent" id="searchHidden">
+					</div>
+					<div class="input-field third-wrap">
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
 					</div>
 					</div>
 					</form>
 					</div>
- 					
+					
+ 					<div id="div_icontext">
+		<c:if test="${sessionScope.loginid != null}">
+		<h4 id="icontext"><b>投稿する</b></h4>
+		<a href="insertBoard"><img src="listImages/write_.png" title="投稿"></a>
+		</c:if>
+	</div>
 			        
 			        <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
@@ -570,11 +584,10 @@
                            
                           </table>
                          </div> 
-                       
+                       <nav class="pagination"></nav>
                     </div>
                 </div>
             </div>
-            <nav class="pagination"></nav>
            </div>
        </div>
 </section>
