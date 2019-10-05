@@ -422,7 +422,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->

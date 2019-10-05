@@ -28,13 +28,79 @@
         height: 500px;
         width: 770px;
       }
+      .pre{
+      	width: 370px;
+      	height: auto;
+      }
+      .info_ {
+      	position: absolute;
+      	padding-left: 5%;
+      }
+      .buttonS{
+        background-color: #3c8dbc;
+    	border-color: #367fa9;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+        .buttonD{
+        background-color: red;
+    	border-color: red;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      .tableSecond{
+	  padding: 45px 40px;
+	  margin-top: 25px;
+	  margin-bottom: 30px;
+	  text-align: center;
+	  background: #ffffff;
+	  border: 3px solid #eaeaea;
+	  font-size: 15px;
+	  text-align: center;
+      }
+      .comments {
+      	padding-left: 4%;
+ 	    padding-right: 4%;
+    	padding-bottom: 3%;
+      }
+      
+>>>>>>> 42317027842b3a0e7f5394475c674382185d8196
     </style>
-    <script src="js/jquery.js"></script>
+   <script src="js/jquery.js" charset="utf-8"></script>
  <script>
  
     $(function () {
        imagePrint();
-       
     });
     
     var originalFileName = "";
@@ -50,7 +116,7 @@
                if(result != null) {
                   $.each(result,function(index,item){
                      originalFileName = "resources/images/userimage/" +item;
-                   $('#image-box').append("<input type='image' src='"+originalFileName+"'><br>"); 
+                   $('#image-box').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
                   })
                }
             },
@@ -68,12 +134,12 @@
 // 		alert(mainBoardNum);
 		if(datacheck=="feinsert")
 		{	
-			alert("복구할게 없습니다.");
+			alert("復旧するものがありません。");
 			return false;
 		}
 		else if(datacheck=="Recovery")
 		{
-			alert("이미 복구된 내용입니다.")
+			alert("すでに復旧されたものです。")
 			return false;
 		}
 		$.ajax({
@@ -117,7 +183,7 @@
 	
 // 	updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
     function DeleteFestival() {
-           if(confirm("삭제하시겠습니까?")){
+           if(confirm("この掲示物を削除しますか。")){
           location.href="AdmindeleteFestival?adminboardnum=${vo.mainBoardNum}";
           }
     }
@@ -297,7 +363,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -354,7 +420,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -471,19 +537,18 @@
                              
                             <c:if test="${sessionScope.adminid !=null}">
                                <div align="right">
-                               <input type="button" value="復旧" onclick="ListRecovery()">
-                               <input type="button" value="削除" onclick="AdminDeleteFestival()">
+                               <input type="button" value="復旧" class="buttonS" onclick="ListRecovery()">
+                               <input type="button" value="削除" class="buttonD" onclick="AdminDeleteFestival()">
 <!--                                <input type="button" value="削除" onclick="DeleteFestival()"> -->
                      </div>
                      </c:if>                          
-                          <div class="inner-box  table-responsive">
-
+                         <div class="tableSecond">
                         <table class="table table-hover">
                            <tr>
                            <td><b>分類</b></td><td><b>詳細情報</b></td>
                            </tr>
                             <tr>
-                              <td>ユーザー名</td><td>${vo.userid}</td>
+                              <td>#HASHTAG</td><td>${vo.hashtag}</td>
                            </tr>
                            <tr>
                               <td>タイトル</td><td>${vo.title}</td>
@@ -497,44 +562,22 @@
                            <tr>
                               <td>国家</td><td>${vo.country}</td>
                            </tr>
+                            <tr>
+                              <td>都市</td><td>${vo.surround_place}</td>
+                           </tr>
                      <tr>
                               <td>住所</td><td>${vo.adress}</td>
                            </tr>
+                         <tbody id="CTest"></tbody>
                         </table>
                         </div>
+                        
                         </div>
-       <!--                  <h5>Business Conference - World Wealth Creation 2018.</h5>
-                        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                        <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-        -->            
                   </div>
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
-                       <input id="submit" type="button" value="Geocode">
+                      
                         </div>
                     <div id="googleMap"></div>
             </div>
@@ -542,7 +585,7 @@
     </div>
 </section>
 <!--End Schedule Details-->
-<section>
+<section class="comments">
    <div class="blog-left-title">
                     <h6>Comments ${replycount}</h6>
                 </div>
@@ -577,13 +620,14 @@
             </td>
          <c:if test="${sessionScope.loginid == replylist.userid}">
             <td>
-               &nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-               <input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+               &nbsp&nbsp<input type="button" value="修正" class="buttonD" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+ 			<input type="button" class="buttonD" value="削除" onclick="replyDelete('${replylist.replynum}')">           
             </td>
          </c:if>
       </tr>
       </c:forEach>
    </table>
+   </section>
 <!--                         <div class="link-btn" id="updatebtn"> -->
 <!--                             <a href="#" ><i class="fas fa-reply"></i>Replay</a> -->
 <!--                         </div> -->
@@ -617,7 +661,7 @@
    
 </div>
 
-</section>
+
 
 
 

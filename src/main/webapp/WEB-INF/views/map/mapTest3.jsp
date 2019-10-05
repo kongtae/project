@@ -239,6 +239,57 @@
 			</div>
 		</div>
 			<!--End Header Upper-->
+			
+			<!--Sticky Header-->
+			<div class="sticky-header stricky">
+				<div class="container clearfix">
+					<!--Logo-->
+					<div class="logo float-left" style="width: 135px; height: 82px;" >
+						<a href="" class="img-responsive"><img
+							src="images/fespedia.png" alt="" title=""></a>
+					</div>
+
+					<!--Right Col-->
+					<div class="right-col float-right">
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent1"
+								aria-controls="navbarSupportedContent1" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+
+							<div class="navbar-collapse collapse clearfix"
+								id="navbarSupportedContent1">
+								<ul class="navigation clearfix">
+									<li class="dropdown"><a href="fastival">Home</a></li>
+									<li class="dropdown"><a href="listForm">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+								</ul>
+							</div>
+						</nav>
+						<!-- Main Menu End-->
+					</div>
+
+				</div>
+			</div>
+			<!--End Sticky Header-->
 		</header>
 		<!--End Main Header -->
 
@@ -290,7 +341,7 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">

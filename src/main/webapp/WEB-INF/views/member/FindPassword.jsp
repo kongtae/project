@@ -44,6 +44,15 @@
 		left: -33px;
 		width: 150%;
 	}
+	
+	.wrapper{
+		background:  url(resources/images/userimage/벚꽃2.jpg);
+		width: auto;
+		height: auto;
+	}
+	#title{
+		color: white;	
+	}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
@@ -91,10 +100,11 @@
 
 </script>
 </head>
+<body class="wrapper">
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <h1><a href="/festival"><b>FES</b>PEDIA</a></h1>
+    <h1><a href="/festival" id="title"><b>FES</b>PEDIA</a></h1>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -147,5 +157,6 @@
     });
   });
 </script>
+</body>
 </body>
 </html>

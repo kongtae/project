@@ -10,20 +10,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 
-<script src="resources/js/jquery.js"></script> 
-<script src="resources/js/popper.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-<script src="resources/js/jquery.fancybox.js"></script>
-<script src="resources/js/owl.js"></script>
-<script src="resources/js/wow.js"></script>
-<script src="resources/js/jquery.countTo.js"></script>
-<script src="resources/js/jquery.countdown.min.js"></script>
-<script src="resources/js/appear.js"></script>
-<script src="resources/js/jquery-ui.js"></script>
-<script src="resources/js/isotope.js"></script>
-<script src="resources/js/bxslider.js"></script>
-<script src="resources/js/validate.js"></script>
 <style>
 #hashtagPlus{
 		width: 6%;
@@ -314,13 +302,17 @@
         </div>
     </div>
     
-    <!--Header-Upper-->
+     <!--Header-Upper-->
     <div class="header-upper">
         <div class="container">
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+<<<<<<< HEAD
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
+=======
+                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
+>>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -338,11 +330,11 @@
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
 								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="List">List</a>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
+										<li><a href="listForm">List</a></li>									
 									</ul></li>
-								<li class="dropdown"><a href="Calendar">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
@@ -364,6 +356,7 @@
 						<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 					</div>
                     
+                    
                 </div>
                
             </div>
@@ -371,12 +364,12 @@
     </div>
     <!--End Header Upper-->
     
-    <!--Sticky Header-->
+     <!--Sticky Header-->
     <div class="sticky-header stricky">
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -394,19 +387,19 @@
 								<li class="dropdown"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
-										<li><a href="listForm">List</a></li>
+										<li><a href="listForm">List</a></li>										
 									</ul></li>
-								<li class="dropdown"><a href="Calendar">Calendar</a>
+								<li class="dropdown"><a href="#">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="Map">Map</a>
+								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="Map">Map</a></li>
+										<li><a href="#">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
+								<li class="dropdown"><a href="#">Board</a>
 									<ul>
-										<li><a href="boardList">Board</a></li>
+										<li><a href="#">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>
@@ -481,7 +474,7 @@
 		              <table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i> 投稿</button>
+		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
@@ -544,7 +537,7 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="resources/images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="resources/images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -583,27 +576,29 @@
 <!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/isotope.js"></script>
+<script src="js/bxslider.js"></script>
+<script src="js/validate.js"></script>
+
+<!-- Custom script -->
+<script src="js/custom.js"></script>
+
 
 
 
 
 </div>
 
-<<<<<<< HEAD
-<!-- jQuery 3 -->
-<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="resources/bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="resources/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="resources/dist/js/demo.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-=======
->>>>>>> f9af3e339696fc69fac7f2afc72c7f50e8e2cf15
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

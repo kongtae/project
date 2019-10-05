@@ -402,7 +402,7 @@ $(function() {
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -457,7 +457,7 @@ $(function() {
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
