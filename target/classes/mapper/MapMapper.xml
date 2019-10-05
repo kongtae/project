@@ -24,4 +24,18 @@
 		country = #{country}
 </select>
 
+<select id="selectCountry" resultType="CountryNameVO">
+	SELECT 
+		*
+	FROM
+		countryname
+</select>
+
+<select id="selectMap" resultType="MapVO">
+	SELECT 
+		*
+	FROM 
+		mainboard
+</select>
+
 </mapper>

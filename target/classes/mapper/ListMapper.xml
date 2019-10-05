@@ -31,7 +31,12 @@
 </insert>
 
 <select id="printAll" parameterType="ListVO" resultType="ListVO">
-	Select * from MAINBOARD order by mainBoardNum desc
+	SELECT 
+		* 
+	FROM 
+		MAINBOARD 
+	ORDER BY 
+		mainBoardNum desc
 
 </select>
 
