@@ -53,6 +53,12 @@
 		width: 34%;
 		display: inline-block;
 	}
+	.wrapper{
+		background:  url(resources/images/userimage/turkeyBalloon.jpg);
+	}
+	#title{
+		color: white;	
+	}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
@@ -60,16 +66,10 @@
 $(function() {
 	$("#idcheck").on('click', register);
 	$('#submit').on('click', formcheck);
-	alert("bbbba");
 	document.getElementById("userid").onkeydown = function(){
-		alert("keydown");
-	if($('#submit').disabled == ''){
-		alert("123");
-		$('#submit').setAttribute("disabled");
-	}else{
-		alert("4565");
-	}
-		
+		  if(document.getElementById("submit").getAttribute('disabled') == null){
+			$('#submit').attr('disabled', 'disabled');
+		}
 	};
 });
 
@@ -133,10 +133,12 @@ function formcheck(){
 };
 </script>
 </head>
+<body class="wrapper">
 <body class="hold-transition register-page">
+	<div class="wrapper">
 	<div class="register-box">
 		<div class="register-logo">
-			<h1><a href="/festival"><b>FES</b>PEDIA</a></h1>
+			<h1><a href="/festival" id="title"><b>FES</b>PEDIA</a></h1>
 		</div>
 
 		<div class="register-box-body">
@@ -182,7 +184,7 @@ function formcheck(){
 		<!-- /.form-box -->
 	</div>
 	<!-- /.register-box -->
-
+</div>
 	<!-- jQuery 3 -->
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->
@@ -205,5 +207,6 @@ function formcheck(){
 			})
 		});
 	</script>
+</body>
 </body>
 </html>

@@ -109,8 +109,8 @@
         FROM
         	MAINBOARD
         WHERE 
-    		startEvent BETWEEN SYSDATE-7 AND SYSDATE or 
-			endEvent BETWEEN SYSDATE AND SYSDATE+7
+    		startEvent BETWEEN SYSDATE AND SYSDATE+30 or 
+			endEvent BETWEEN SYSDATE AND SYSDATE+30
 </select>
 
 <!-- 복구된 파일 쓰기 -->
