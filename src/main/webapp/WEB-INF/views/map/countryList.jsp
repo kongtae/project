@@ -176,7 +176,7 @@ $(function() {
 				context += "<td class='Session'><a href=listDetailGO?mainBoardNum="+item.mainBoardNum+">"+item.title+"</a></td>";
 				context += "<td class='speakers'>"+item.country+"</td>";
 				context += "<td class='time'>"+start+"~"+end+"</td>";
-				context += "<td class='venue'>"+item.userid+"</td></tr>";
+				context += "<td class='venue'>"+item.adress+"</td></tr>";
 			}
 		});
 		$("#list").html(context);
@@ -437,7 +437,7 @@ $(function() {
 		                                    <th class="session">タイトル</th>
 		                                    <th class="time">国家</th>
 		                                    <th class="speakers">期間</th>
-		                                    <th class="venue">ユーザー名</th>
+		                                    <th class="venue">住所</th>
 		                                </tr>
 		                            </thead>
 		                            <tbody id="list" class="table table-hover"></tbody> 
