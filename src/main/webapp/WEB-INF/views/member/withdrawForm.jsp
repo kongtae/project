@@ -29,10 +29,10 @@
 
 	<div class="boxed_wrapper">
 
-
 		<!--Start Preloader -->
 		<div class="preloader"></div>
 		<!--End Preloader -->
+		<div class="sdfasd"></div>
 
 		<!-- Main Header-->
 		<header class="main-header">
@@ -54,20 +54,31 @@
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-									<li><a href="adminPage">AdminPage</a></li>
-								<c:if test="${sessionScope.loginid == null}">
+							
+							<c:if test="${sessionScope.loginid == null}" >
+									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
+									</c:if>
 								</c:if>
+								
 								<c:if test="${sessionScope.loginid != null}">
 									<li><a href="memberPage">UserPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
+								
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+								
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
+
 
 			<!--Header-Upper-->
 			<div class="header-upper">
@@ -76,9 +87,8 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="/festival"><img src="images/fespedia.png" alt=""
-									title=""></a>
-							</div>
+								<a href="festival"><img src="images/fespedia.png" alt=""></a>
+			</div>
 						</div>
 
 						<div class="nav-outer clearfix">
@@ -98,34 +108,23 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="#">Home</a>
-											<ul>
-												<li><a href="festival">Home Page 01</a></li>
-												<li><a href="index-2.html">Home Page 02</a></li>
-											</ul></li>
-										<li class="dropdown"><a href="#">About</a>
-											<ul>
-												<li><a href="about-us.html">About Us</a></li>
-												<li><a href="speakers.html">Speakers</a></li>
-												<li><a href="speakers-details.html">Speaker Details</a></li>
-												<li><a href="error-page.html">Error Page</a></li>
-											</ul></li>
-										<li class="current dropdown"><a href="#">Shedule</a>
-											<ul>
-												<li><a href="shedule.html">Shedule</a></li>
-												<li><a href="shedule-details.html">Shedule Details</a></li>
-											</ul></li>
-										<li class="dropdown"><a href="#">Sponsors</a>
-											<ul>
-												<li><a href="sponsor.html">Sponsors</a></li>
-												<li><a href="sponsor-details.html">Sponsor Details</a></li>
-											</ul></li>
-										<li class="dropdown"><a href="#">Blog</a>
-											<ul>
-												<li><a href="blog.html">Blog</a></li>
-												<li><a href="blog-single.html">Blog Details</a></li>
-											</ul></li>
-										<li><a href="contact-us.html">Contact us</a></li>
+										<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown"><a href="listForm">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="Calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
 									</ul>
 								</div>
 
@@ -136,33 +135,6 @@
 								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
 							</div>
 
-							<!--Search Box Outer-->
-							<div class="search-box-outer">
-								<div class="dropdown">
-									<button class="search-box-btn dropdown-toggle" type="button"
-										id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										<span class="fa fa-search"></span>
-									</button>
-									<ul class="dropdown-menu pull-right search-panel"
-										aria-labelledby="dropdownMenu3">
-										<li class="panel-outer">
-											<div class="form-container">
-												<form method="post" action="blog.html">
-													<div class="form-group">
-														<input type="search" name="field-name" value=""
-															placeholder="Search Here" required>
-														<button type="submit" class="search-btn">
-															<span class="fa fa-search"></span>
-														</button>
-													</div>
-												</form>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-
 						</div>
 
 					</div>
@@ -171,74 +143,57 @@
 			<!--End Header Upper-->
 
 			<!--Sticky Header-->
-			<div class="sticky-header stricky">
-				<div class="container clearfix">
-					<!--Logo-->
-					<div class="logo float-left">
-						<a href="festival" class="img-responsive"><img
-							src="images/logo.png" alt="" title=""></a>
-					</div>
+    <div class="sticky-header stricky">
+        <div class="container clearfix">
+            <!--Logo-->
+            <div class="logo float-left">
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
+            </div>
+            
+            <!--Right Col-->
+            <div class="right-col float-right">
+                <!-- Main Menu -->
+                <nav class="main-menu navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                     <ul class="navigation clearfix">
+                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="map">Map</a>
+                           <ul>
+                              <li><a href="map">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
+                    </div>
+                </nav><!-- Main Menu End-->
+            </div>
+            
+        </div>
+    </div>
+    <!--End Sticky Header-->
 
-					<!--Right Col-->
-					<div class="right-col float-right">
-						<!-- Main Menu -->
-						<nav class="main-menu navbar-expand-md">
-							<button class="navbar-toggler" type="button"
-								data-toggle="collapse" data-target="#navbarSupportedContent1"
-								aria-controls="navbarSupportedContent1" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-
-							<div class="navbar-collapse collapse clearfix"
-								id="navbarSupportedContent1">
-								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="#">Home</a>
-										<ul>
-											<li><a href="festival">Home Page 01</a></li>
-											<li><a href="index-2.html">Home Page 02</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">About</a>
-										<ul>
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="speakers.html">Speakers</a></li>
-											<li><a href="speakers-details.html">Speaker Details</a></li>
-											<li><a href="error-page.html">Error Page</a></li>
-										</ul></li>
-									<li class="current dropdown"><a href="#">Shedule</a>
-										<ul>
-											<li><a href="shedule.html">Shedule</a></li>
-											<li><a href="shedule-details.html">Shedule Details</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">Sponsors</a>
-										<ul>
-											<li><a href="sponsor.html">Sponsors</a></li>
-											<li><a href="sponsor-details.html">Sponsor Details</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">Blog</a>
-										<ul>
-											<li><a href="blog.html">Blog</a></li>
-											<li><a href="blog-single.html">Blog Details</a></li>
-										</ul></li>
-									<li><a href="contact-us.html">Contact us</a></li>
-								</ul>
-							</div>
-						</nav>
-						<!-- Main Menu End-->
-					</div>
-
-				</div>
-			</div>
-			<!--End Sticky Header-->
-
-		</header>
-		<!--End Main Header -->
+</header>
+<!--End Main Header -->
 
 
 		<!-- Page Title-->
-		<section class="page-title"
-			style="background: url(images/background/page-title-2.jpg);">
+		<section class="page-title" style="background: url(resources/images/userimage/얼음축제.jpg);">
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Withdraw</h3>
@@ -274,64 +229,23 @@
 		<!--End Schedule Section-->
 
 
-		<!--Contact Info-->
-		<section class="contact-info">
-			<div class="container">
-				<div class="info-area">
-					<div class="row">
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-placeholder"></i>
-								</div>
-								<div class="text">
-									<p>
-										184 Collins Street West <br>Victoria, United States, 8007
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-phone-call"></i>
-								</div>
-								<div class="text">
-									<p>
-										(1800) 123 4567 <br>(1800) 123 4568
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-e-mail-envelope"></i>
-								</div>
-								<div class="text">
-									<p>
-										<a href="#">info@wiscon.com</a> <a href="#">support@wiscon.com</a>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--End Contact Info-->
-
-		<!-- Main Footer-->
-		<footer class="main-footer">
+	<!-- Main Footer-->
+		<footer class="main-footer"
+			>
 			<div class="container">
 				<div class="footer-area text-center">
 					<div class="footer-logo">
 						<figure>
-							<a href="festival"><img src="images/logo-2.png" alt=""></a>
+						<c:if test="${sessionScope.adminid != null}">
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
 						</figure>
 					</div>
             <ul class="footer-menu">
-                <li><a href="festival">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
                 <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
@@ -339,29 +253,28 @@
 				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
 					<ul class="social-links">
-						<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fab fa-vine"></i></a></li>
-						<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
 					</ul>
 				</div>
 			</div>
 		</footer>
 		<!--End Main Footer-->
 
-
 		<!--Footer Bottom Section-->
 		<section class="footer-bottom">
 			<div class="container">
 				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
+					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Reserved
 				</div>
 			</div>
 		</section>
 		<!--End Footer Bottom Section-->
-
 
 		<!--Scroll to top-->
 		<div class="scroll-to-top scroll-to-target" data-target="html">
