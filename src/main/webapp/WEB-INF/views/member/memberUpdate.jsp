@@ -243,7 +243,7 @@
 
 					<div class="float-left logo-box">
 						<div class="logo" style="width: 179px; height: 80px;">
-							<a href="/festival"><img src="images/logo.png" alt=""
+							<a href="/festival"><img src="images/fespedia.png" alt=""
 								title=""></a>
 						</div>
 					</div>

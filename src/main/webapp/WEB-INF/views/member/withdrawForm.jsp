@@ -76,7 +76,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="/festival"><img src="images/logo.png" alt=""
+								<a href="/festival"><img src="images/fespedia.png" alt=""
 									title=""></a>
 							</div>
 						</div>

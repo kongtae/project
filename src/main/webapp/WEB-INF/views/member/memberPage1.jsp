@@ -89,7 +89,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="#"><img src="images/logo.png" alt=""
+								<a href="#"><img src="images/fespedia.png" alt=""
 									title=""></a>
 							</div>
 						</div>
