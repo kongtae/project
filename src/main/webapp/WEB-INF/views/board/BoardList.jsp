@@ -22,6 +22,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     <link rel="icon" href="images/f.png" type="image/x-icon">
+
 <style>
 .infoboxes article {
 	color: #191919;
@@ -34,6 +35,36 @@
 	color: #FFFFFF;
 	background-color: #CF4845;
 }
+.s000 {
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 15px;
+}
+.s000 form {
+  width: 100%;
+  max-width: 380px;
+}
+.s000 form .inner-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+}
+/* #searchItem {
+	padding: 5%;
+    border: 1px solid #6c757d;
+    font-family: 'Robtoto', sans-serif;
+    font-size: 15px;
+    color: #6c757d;
+}
+#searchKeyword {
+	padding-top: 2%;
+	padding-bottom: 1.5%;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+} */
 .pagination {
 	display: block;
 	width: 100%;
@@ -54,6 +85,7 @@
 	background-clip: padding-box;
 	font-weight: normal;
 	color: #fa334f;
+	border-color: white;
 }
 #div_icontext {
 	display: flex;
@@ -239,9 +271,9 @@
 				
 				for (var i = spage; i <= epage; i ++) {
 					if(i == page){
-						nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+						nav += '<li class="page-item"><a class="page-link" style="padding: 1px; border-color: red;" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
 					} else {
-						nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
+						nav += '<li class="page-item"><a class="page-link" style="padding: 1px; border-color: red;" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
 					}
 				}
 				       
@@ -486,7 +518,7 @@
 	<div id="div_icontext">
 		<c:if test="${sessionScope.loginid != null}">
 		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertBoard"><img src="listImages/write.png" title="投稿"></a>
+		<a href="insertBoard"><img src="listImages/write_.png" title="投稿"></a>
 		</c:if>
 	</div>
     <div class="container">
@@ -494,28 +526,36 @@
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
 					<div id="hash"></div>
-					<table>
 					
-					<tr><td>
+					<div class="s000">
+					<form>
+					<div class="inner-form">
+					<div class="input-field first-wrap">
+					<div class="input-select">
 					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
-					タイトル
+						タイトル
 					</option>
 					<option value="userid"<c:if test="${'userid'==searchItem}">selected</c:if>>
-					ユーザー名
+						ユーザー名
 					</option>
 					<option value="inputdate"<c:if test="${'inputdate'==searchItem}">selected</c:if>>
-					投稿日
+						投稿日
 					</option>
 					</select>
-					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></td>
-					<td id="insertmark"></td>
-					<td><input type="hidden" name="endEvent" id="searchHidden">
+					</div>
+					</div>
+					<div><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></div>
+					<div id="insertmark"></div>
+					<div><input type="hidden" name="endEvent" id="searchHidden">
 					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
-					</td></tr>
- 					 </table>
-			            <div class="inner-box  table-responsive"> 
+					</div>
+					</div>
+					</form>
+					</div>
+ 					
+			        
+			        <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
                                 <tr>
