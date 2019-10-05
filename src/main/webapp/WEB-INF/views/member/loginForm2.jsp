@@ -115,7 +115,7 @@
     </form>
 
 
-    <a href="#">I forgot my password</a><br>
+    <a href="FindPassword">I forgot my password</a><br>
     <a href="registermember" class="text-center">Register a new membership</a>
 
   </div>
