@@ -4311,7 +4311,7 @@ select:focus {
   position: absolute;
   right: 0px;
   top: 0px;
-  width: 1px;
+  width: 0px;
   height: 125px;
   content: '';
   background: #e4e4e4;

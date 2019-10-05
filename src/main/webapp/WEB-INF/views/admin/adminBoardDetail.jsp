@@ -29,6 +29,69 @@
         height: 500px;
         width: 770px;
       }
+      
+        .buttonS{
+        background-color: #3c8dbc;
+    	border-color: #367fa9;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      
+        .buttonD{
+        background-color: red;
+    	border-color: red;
+    	margin-right: 5px;
+    	display: white;
+	    margin-bottom: 0;
+	    font-weight: 400;
+	    text-align: center;
+	    white-space: nowrap;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    border-radius: 4px;
+	    user-select: none;
+	    color: white;
+      }
+      
+      .tableSecond{
+
+	  padding: 45px 40px;
+	  margin-top: 25px;
+	  margin-bottom: 30px;
+	  text-align: center;
+	  background: #ffffff;
+	  border: 3px solid #eaeaea;
+	  font-size: 15px;
+	  text-align: center;
+      
+      
+      }
+ 
+    .pre1{
+		width: 370px;
+		height: auto;
+	}
     </style>
     <script src="js/jquery.js"></script>
  <script>
@@ -51,7 +114,7 @@
 	               if(result != null) {
 	                  $.each(result,function(index,item){
 	                     originalFileName = "resources/images/userimage/" +item;
-	                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
+	                   $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>"); 
 	                  })
 	               }
 	            },
@@ -69,7 +132,7 @@
 // 		alert(mainBoardNum);
 		if(datacheck=="Recovery")
 		{
-			alert("이미 복구된 내용입니다.")
+			alert("すでに復旧されたものです。")
 			return false;
 		}
 		$.ajax({
@@ -91,7 +154,7 @@
  	
  	
 	function AdminDeleteBul() {
-		var mainBoardNum = ${vo.mainBoardNum};
+		var bul_boardnum = ${vo.bul_boardnum};
 		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
 // 		alert(mainBoardNum);
@@ -99,7 +162,7 @@
 		$.ajax({
 			url:"AdminDeleteList",
 			type:"post",
-			data : {mainBoardNum : mainBoardNum,
+			data : {bul_boardnum : bul_boardnum,
 					admin_mainBoardNum : admin_mainBoardNum
 					},
 			success:function(result){
@@ -245,7 +308,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -301,7 +364,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -371,11 +434,7 @@
                     <div class="text-title">
                         <h6>祭りの写真</h6>
                     </div> 
-<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
-                        <figure>
-                            <img src="resources/images/schedule-9.jpg" alt="" >
-                        </figure>
-                    </div> -->
+
                     <div id="preview">
                     </div>
                      <div class="image-box" id="image-box"></div>
@@ -396,14 +455,14 @@
                          	</div>
                          	                      <c:if test="${sessionScope.adminid !=null}">
                                <div align="right">
-                               <input type="button" value="復旧" onclick="BulRecovery()">
-                               <input type="button" value="削除" onclick="AdminDeleteBul()">
+                               <input type="button" class="buttonS" value="復旧" onclick="BulRecovery()">
+                               <input type="button" class="buttonD" value="削除" onclick="AdminDeleteBul()">
 <!--                                <input type="button" value="削除" onclick="DeleteFestival()"> -->
                      		</div>
                     		 </c:if>                      
-                          <div class="inner-box  table-responsive">
-                        <table class="table table-hover">
-                        	<tr> <!-- 수정할곳  -->
+                          <div class="tableSecond">
+                         <table class="table table-hover">
+                        	<tr>
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
                         	</tr>
                          	<tr>
@@ -416,10 +475,13 @@
                         		<td>内容</td><td>${vo.contents}</td>
                         	</tr>
 							<tr>
-                        		<td>期間</td><td>${vo.inputdate}</td>
+                        		<td>投稿日</td><td>${vo.inputdate}</td>
                         	</tr>
                         	<tr>
                         		<td>国家</td><td>${vo.country}</td>
+                        	</tr>
+                        	<tr>
+                        		<td>都市</td><td>${vo.surround_place}</td>
                         	</tr>
 							<tr>
                         		<td>住所</td><td>${vo.adress}</td>
@@ -428,33 +490,10 @@
                         </div>
                         </div>
         			 </div>
-                    <div class="event-details">
-                        <h5>Event Details</h5>
-                        <div class="inner-box  table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="start">Start</th>
-                                        <th class="end">End</th>
-                                        <th class="rate">Rate</th>
-                                        <th class="categories">Categories</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="start">Jan 5 , 2018  9 Am</td>
-                                        <td class="end">Jan 8 , 2018  4 Pm</td>
-                                        <td class="rate">$23.00</td>
-                                        <td class="categories">Business Events</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
-                    	<input id="submit" type="button" value="Geocode">
                         </div>
                     <div id="googleMap"></div>
             </div>
@@ -497,15 +536,14 @@
 				</td>
 			<c:if test="${sessionScope.loginid == replylist.userid}">
 				<td>
-					&nbsp&nbsp<input type="button" value="삭제" onclick="replyDelete('${replylist.replynum}')">
-					<input type="button" value="수정" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+					&nbsp&nbsp<input type="button" value="수정" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+					<input type="button" class="buttonD" value="삭제" onclick="replyDelete('${replylist.replynum}')">
 				</td>
 			</c:if>
 		</tr>
 		</c:forEach>
 	</table>
                         <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
                         </div>
                     </div>
                 </div>

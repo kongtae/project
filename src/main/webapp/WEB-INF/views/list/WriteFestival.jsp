@@ -219,24 +219,25 @@ function writeFestival() {
 <!-- Main Header-->
 <header class="main-header">
     
-    <!--Header Top-->
-    <div class="header-top">
-        <div class="container">
-            <div class="clearfix">
-                <!--Top Left-->
-                <div class="top-left">
-                    <ul class="header-info-list">
-                       			<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+   <!--Header Top-->
+			<div class="header-top">
+				<div class="container">
+					<div class="clearfix">
+						<!--Top Left-->
+						<div class="top-left">
+							<ul class="header-info-list">
+								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
 									SC.IT@MASTER.COM</li>
 								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
 									Trade Center COEX, SEOUL 135-731 KOREA</li>
-                    </ul>
-                </div>
-                <!--Top Right-->
-					<div class="top-right">
-					<!--Social Box-->
-					<ul class="social-box">
-						<c:if test="${sessionScope.loginid == null}" >
+							</ul>
+						</div>
+						<!--Top Right-->
+						<div class="top-right">
+							<!--Social Box-->
+							<ul class="social-box">
+							
+							<c:if test="${sessionScope.loginid == null}" >
 									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
@@ -253,13 +254,15 @@ function writeFestival() {
 									<li><a href="adminBulPage">AdminBulPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
-					</ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!--Header-Upper-->
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!--Header-Upper-->
     <div class="header-upper">
         <div class="container">
             <div class="clearfix">
@@ -314,6 +317,7 @@ function writeFestival() {
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <!--End Header Upper-->
     
     <!--Sticky Header-->
@@ -321,7 +325,7 @@ function writeFestival() {
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -351,19 +355,63 @@ function writeFestival() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
+=======
+   <!--End Header Upper-->
+
+			<!--Sticky Header-->
+			<div class="sticky-header stricky">
+				<div class="container clearfix">
+					<!--Logo-->
+					<div class="logo float-left">
+						<a href="" class="img-responsive"><img
+							src="images/fespedia.png" alt="" title=""></a>
+					</div>
+
+					<!--Right Col-->
+					<div class="right-col float-right">
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent1"
+								aria-controls="navbarSupportedContent1" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+
+							<div class="navbar-collapse collapse clearfix"
+								id="navbarSupportedContent1">
+								<ul class="navigation clearfix">
+									<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown"><a href="#">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+>>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
 										<li><a href="boardList">Board</a></li>
 									</ul></li>
-							</ul>
-                    </div>
-                </nav><!-- Main Menu End-->
-            </div>
-            
-        </div>
-    </div>
-    <!--End Sticky Header-->
+								</ul>
+							</div>
+						</nav>
+						<!-- Main Menu End-->
+					</div>
 
-</header>
-<!--End Main Header -->
+				</div>
+			</div>
+			<!--End Sticky Header-->
+
+		</header>
+		<!--End Main Header -->
 
 
 <!-- Page Title-->

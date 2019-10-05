@@ -410,4 +410,16 @@ MAINBOARD_SEQ.nextval, 'バレンシア花火大会' , 'ES' , 'バレンシア�
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, 'オクトーバーペスト' , 'DE' ,  'ドイツ ミュンヘン'　,'オクトーバーフェスト(Oktoberfest)はドイツ南部のバイエルン(Bayern)州の州都ミュンヘン(Mrennchen)で開催される、世界で最も規模の大きい民俗祭りであり、ビール祭りである。'  , 'ミュンヘン' ,  sysdate , '2019-09-21' , '2019-10-06' , 'https://dbscthumb-phinf.pstatic.net/2890_000_1/20140127154334633_X3ZGS80NP.jpg/fb40_5_i1.jpg?type=w575_fst&wm=N,' , '#ヨーロッパ,#ビール,');
 
+INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
+MAINBOARD_SEQ.nextval, 'ノッティングヒルカーニバル' , 'GB' , 'ノッティングヒル' , 'ノッティング・ヒルカーニバル(Notting Hill Carnival)は、英ロンドンのノッティング・ヒル地域に主に居住していたアフロ・カリブ(Afro-Caribbean)移民者たちが1964年に自分たちの文化と伝統を知らせるという趣旨で始めた街の祝祭だ。' , 'ロンドン' ,  sysdate , '2019-08-24' , '2019-08-26', 'https://cafeptthumb-phinf.pstatic.net/20150902_238/vbxn6761_1441121837367Wih7b_JPEG/AFP_Getty-15082368811.jpg?type=w740,' ,'#ロンドン, #音楽, #街角,');
+
+INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
+MAINBOARD_SEQ.nextval, 'クリームフィールズ' , 'GB' , '英国チェッシャー デアーズベリー ' , '英国チェシャー デアズベリーで毎年8月、バンクホリデー の週末に開かれるダンス音楽フェスティバルだ。 2001年から始まった同祭りは平均万人以上の観覧客が訪問し、世界的に有名なダンスアイコンになった。 音楽公演、ダンス公演、キャンプを一緒に楽しむことができる。' , 'チェッシャ' ,  sysdate , '2020-08-27' , '2020-08-30', 'https://postfiles.pstatic.net/20140529_39/crazyiva_1401290972924DGXrT_JPEG/creamfields14.jpg?type=w2,' ,'#チェシャ, #音楽,');
+
+INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
+MAINBOARD_SEQ.nextval, 'ケーケンホープ' , 'NL' , 'オランダのジョイトホラント州リセ' , 'ケッケンホフは、よく「花の国」と呼ばれるオランダの名声を反映する世界的な花祭りだ 毎年3~5月中に約二ヵ月間、オランダ莉世のコペンハーゲン公園で行われる花祭りは、第2次世界大戦が終わった後1949年に始まり、今日まで続いている。 オランダはチューリップの主産地であるだけでなく、全世界に最も多い花卉類を輸出する園芸強国だ。 ケッケンホフを単にチューリップ祭りとして知っている場合が多いが、実際にケッケンホフはチューリップはもちろん、水仙花、ヒヤシンス、カーネーション、フリジア、バラなど数百万個の球根植物を一堂に集めた地上最大の球根花卉類の展示場であり、花祭りである。' , 'ザウィットホラント州リセ。' ,  sysdate , '2020-03-21' , '2020-05-10', 'https://post-phinf.pstatic.net/20160405_262/1459840668577BwCVe_JPEG/a_02.jpg?type=w1200,https://post-phinf.pstatic.net/20160405_176/1459840819810GFPo4_JPEG/a_06.jpg?type=w1200,' ,'# 花, #チューリップ,');
+
+INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
+MAINBOARD_SEQ.nextval, '世界ボディーペインティング フェスティバル' , 'AT' , 'ケルテン州' , 'ボディー・ペインティングの分野で最も大きな規模でオーストリアのケルンテン州(Karnten、カリンティア(Carinthia)とも呼ばれた)で毎年7月頃開催される。 人の体を美しい芸術作品で表現するボディーペインティングショーとともに最高のアーティストを選定する競争大会を行う。 全世界で60人余りのアーティストたちが参加して万人が超える人々が訪問する。 1998年ケルンテン主義の幾つかの都市で開催し、2017年からケルンテン州の州都であるがクラーゲンフルト(Klagenfurt)で開催した。' , 'ケルテン州' ,  sysdate , '2020-07-09' , '2020-07-11', 'https://postfiles.pstatic.net/MjAxOTA3MTVfMTgz/MDAxNTYzMTcwNTU4OTY0.OJDznOxIm2hZqe-2LK19Xe5PeWoQebho29xhdtvC4FYg.2rVhrteVHBQYFq5QLyz02KPdInY83AC4L2eKLjKo-qgg.JPEG.oea5581/KakaoTalk_20190715_142956777.jpg?type=w966,http://pokute.com/wp-content/uploads/1/cfile28.uf.2758DC5053D26E11295179.jpg,' ,'#芸術, #ボディ,');
+
 commit;
