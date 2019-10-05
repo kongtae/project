@@ -945,7 +945,7 @@ $(function() {
 <!--End Schedule Section-->
 
 <!-- Main Footer-->
-<footer class="main-footer" style="background: url(images/background/footer.jpg);">
+<footer class="main-footer" >
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">

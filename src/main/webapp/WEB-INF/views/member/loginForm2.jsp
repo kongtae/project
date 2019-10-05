@@ -40,54 +40,41 @@
 		width: 64%;
 	}
 	#submit{
-		position: relative;
-		left: -33px;
-		width: 150%;
+		width: 110%;
 	}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script>
-	$(function(){
-		$('#submit').on('click', Findpassword);
-	});
 
-
-	function Findpassword() {
+	function signOn() {
 	
 		var userid = $('#userid').val();
-		var email = $('#email').val();
+		var userpwd = $('#userpwd').val();
 		
 		if(userid.length == 0) {
 			alert("IDを入力してください。");
 			return false;
 		}
-		else if(email.length == 0){
-			alert("メールを入力してください。");
+		else if(userpwd.length == 0){
+			alert("パスワードを入力してください。");
 			return false;
 		}	
 	
 		$.ajax({
-		url: "Findpassword",
-		data: {
-			userid : userid,
-			email : email
-		},
-		type: "post",
-		success: function(result) {
-			console.log(result);
-			if(result == ""){
-			alert("確認に失敗しました。");
-			return false;
-			}
-			alert("会員修正ページに移動します。");
-			location.href="memberUpdate";				
+		url:"loginForm1",
+		data:$("#loginForm").serialize(),
+		type:"post",
+		success: function(data) {
+			alert("ログインに成功しました。");
+			location.href ="festival";
 		},
 		error: function() {
-			alert("確認に失敗しました。");
+			alert("ログインに失敗しました。");
 			}
 		});
 	} 
+	
 
 </script>
 </head>
@@ -98,15 +85,17 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Find Password</p>
+    <p class="login-box-msg">Sign in to start your session</p>
     
+    <input type="hidden" value="${result}" id="result">
+    <form action="loginForm" method="post" id="loginForm">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="ID" name="userid" id="userid">
         <span class="glyphicon glyphicon-ok form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control"  name="email" id="email" placeholder="メール">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="password" class="form-control"  name="userpwd" id="userpwd" placeholder="パスワード">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
@@ -119,12 +108,14 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="button" class="btn btn-primary btn-block btn-flat" id="submit">パスワードを探す</button>
+          <button type="button" class="btn btn-primary btn-block btn-flat" id="submit" onclick="signOn()">サインイン</button>
         </div>
         <!-- /.col -->
       </div>
+    </form>
 
 
+    <a href="FindPassword">I forgot my password</a><br>
     <a href="registermember" class="text-center">Register a new membership</a>
 
   </div>

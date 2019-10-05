@@ -60,6 +60,17 @@
 $(function() {
 	$("#idcheck").on('click', register);
 	$('#submit').on('click', formcheck);
+	alert("bbbba");
+	document.getElementById("userid").onkeydown = function(){
+		alert("keydown");
+	if($('#submit').disabled == ''){
+		alert("123");
+		$('#submit').setAttribute("disabled");
+	}else{
+		alert("4565");
+	}
+		
+	};
 });
 
 function register(){
