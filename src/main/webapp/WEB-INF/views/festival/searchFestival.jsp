@@ -332,12 +332,8 @@ table{
 			</div>
 		</header>
 		<!-- Page Title-->
-<<<<<<< HEAD
-			<section class="page-title" style="background: url(resources/images/userimage/얼음축제.jpg); margin-top: 6%;">
-=======
-		<section class="page-title"
-			style="background: url(images/userimage/turkey balloon.jpg);">
->>>>>>> b9cf20934eac9efdf0d7995ccd94ae735db4daa6
+			<section class="page-title" style="background: url(resources/images/userimage/turkeyBalloon.jpg); margin-top: 6%;">
+
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
