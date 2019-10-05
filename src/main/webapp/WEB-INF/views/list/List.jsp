@@ -872,7 +872,7 @@ $(function() {
                <div id="hash"></div>
                      <div class="s132">
                         <form>
-                           <div class="inner-form">
+                           <div class="inner-form" style="box-shadow: 20px">
                               <div class="input-field first-wrap">
                                  <div class="input-select">
                                     <select data-trigger="" class="choices-single-defaul"

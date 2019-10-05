@@ -95,10 +95,7 @@
 	  font-size: 15px;
 	  text-align: center;
       
-      
       }
-      
-      
       
     </style>
     <script src="js/jquery.js" charset="utf-8"></script>
@@ -295,7 +292,7 @@
                 
              });
           }
-        loginneed
+     
         
    function loginneed()
      {

@@ -81,10 +81,6 @@
 	    $('#hashtagPlus').on('click', hashtag2);
 	    hashtagPrint();
 	 });
-	
-	 var originalFileName = "";
-	 var mainb = ${vo.mainBoardNum};
-	 var imageData = {'mainBoardNum' : mainb};
 	 
 	 function checkValue() {
 			
@@ -127,6 +123,9 @@
 			}
 		}
 	 
+	 var originalFileName = "";
+	 var mainb = ${vo.mainBoardNum};
+	 var imageData = {'mainBoardNum' : mainb};
 	 function imagePrint() {
 	         $.ajax({
 	            url : "imagePrint",
@@ -137,10 +136,17 @@
 	               if(result != null) {
 		            	var arrNumber = new Array();
 		                $.each(result,function(index,item){
-	            		arrNumber.push(item);
-	                	originalFileName = "resources/images/userimage/" +arrNumber[index];
-	                	$('#preview'+index).append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
-	                  })
+		            		arrNumber.push(item);
+			                if(item.charAt(0)=='h'){
+			                	originalFileName = arrNumber[index];
+			                	$('#preview'+index).append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
+			                }else if(item == null){
+			                	return false;
+			                }else{
+			                	originalFileName = "resources/images/userimage/" +arrNumber[index];
+			                	$('#preview'+index).append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
+			                }
+		               })
 	               }
 	            },
 	            error : function() {
