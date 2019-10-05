@@ -90,8 +90,6 @@
 	  text-align: center;
 	  background: #ffffff;
 	  border: 3px solid #eaeaea;
-	  font-family: 'Poppins', sans-serif;
-	  text-transform: uppercase;  
 	  font-size: 15px;
 	  text-align: center;
       
