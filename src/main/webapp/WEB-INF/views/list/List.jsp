@@ -10,12 +10,12 @@
 
     <title>FESPEDIA | リスト</title>
     <!-- search -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="colorlib.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet" />
-    <link href="resources/css/main.css" rel="stylesheet" />
+    <link href="resources/css/main.css" rel="stylesheet" /> -->
     
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,45 +41,79 @@
    color: #FFFFFF;
    background-color: #CF4845;
 }
+.s132 {
+  position: absolute;
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+  padding-left: 1%;
+  font-family: 'Poppins', sans-serif;
+}
+.s132 form {
+  width: 100%;
+  max-width: 380px;
+}
+.s132 form .inner-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.s132 form .inner-form .input-field input {
+  border: 0;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 32px;
+  font-size: 16px;
+  color: #6c757d;
+}
+#searchItem {
+    border: 0;
+    font-family: 'Robtoto', sans-serif;
+    font-size: 17px;
+    color: #fa334f;
+    padding-top: 10%;
+    padding-bottom: 12%;
+}
+#searchOne {
+	border-radius: 3%;
+    background: #fa334f;
+    color: white;
+}
+.inner-box {
+	padding-top: 1.5%;
+}
 .pagination {
-   display: inline;
-   width: 100%;
-   text-align: center;
-   clear: both;
-   padding-top: 4%;
+	display: block;
+	width: 100%;
+	text-align: center;
+	clear: both;
 }
 .pagination li {
-   display: inline-block;
-   margin: 0 2px 0 0;
+	display: inline-block;
+	margin: 0 2px 0 0;
 }
 .pagination li:last-child {
-   margin-right: 0;
+	margin-right: 0;
 }
 .pagination a, .pagination strong {
-   display: block;
-   padding: 8px 11px;
-   border: 1px solid;
-   background-clip: padding-box;
-   font-weight: normal;
-   color: #fa334f;
-   border-color: white;
-}
-.longterm {
-	position: absolute;
-    right: 7%;
-    width: 35%;
+	display: block;
+	padding: 8px 11px;
+	border: 1px solid;
+	background-clip: padding-box;
+	font-weight: normal;
+	color: #fa334f;
+	border-color: white;
 }
 #div_icontext {
 	display: flex;
 	justify-content: flex-end;
-	width: 83%;
+	width: 96%;
 }
 #icontext {
-    position: absolute;
-    left: 58%;
-    padding-top: 1%;
+    padding-top: 0.5%;
 	font-family: 'Robtoto', sans-serif;
-	font-size: 27px;
+	font-size: 29px;
 	color: #fa334f;
 }
 #hash {
@@ -859,20 +893,23 @@ $(function() {
                               </div>
                               <div class="input-field second-wrap">
                                  <input name="searchKeyword" id="searchKeyword"
-                                    onchange="change()" type="text" class="input-field_pholder"
-                                    placeholder="Enter Keywords" />
+                                    onchange="change()" type="text" class="input-field_pholder" />
                               </div>
                               <!-- <div id="insertmark"></div> -->
                               <div class="input-field second-wrap">
                                  <input type="hidden" name="endEvent" id="searchHidden">
                               </div>
                               <div class="input-field third-wrap">
-                                 <button class="btn-search" type="button" id="searchOne"
-                                    onclick='selectOne()'>Search</button>
+                                 <input type="button" value="検索" id="searchOne" onclick='selectOne()'>
                               </div>
                            </div>
                         </form>
                      </div>
+ 
+ 					<div id="div_icontext">
+ 					<h4 id="icontext"><b>投稿する</b></h4>
+ 					<a href="insertFestival"><img src="listImages/write_.png" title="投稿"></a>
+ 					</div>
  
                      <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
@@ -889,11 +926,12 @@ $(function() {
                           </table>
                          </div> 
                     </div>
-                    <table>
+                    <nav class="pagination"></nav>
+                    <!-- <table>
                     <tr><td><nav class="pagination"></nav></td>
                     <td align="right" class="longterm"><a href="insertFestival"><h4 id="icontext"><b>投稿する</b></h4><img src="listImages/write_.png" title="投稿"></a>
                     </td></tr>
-                    </table>
+                    </table> -->
                     <!-- <div>
                     <nav class="pagination"></nav>
                     <div id="div_icontext">
@@ -970,14 +1008,14 @@ $(function() {
 <script src="js/custom.js"></script>
 
 <!-- Search script -->
-<script src="js/choices.js"></script>
+<!-- <script src="js/choices.js"></script>
 <script>
       const choices = new Choices('[data-trigger]',
       {
         searchEnabled: false,
         itemSelectText: '',
       });
-</script>
+</script> -->
 </div>
 </body>
 </html>
