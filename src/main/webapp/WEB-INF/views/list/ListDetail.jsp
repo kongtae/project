@@ -89,8 +89,6 @@
 	  text-align: center;
 	  background: #ffffff;
 	  border: 3px solid #eaeaea;
-	  font-family: 'Poppins', sans-serif;
-	  text-transform: uppercase;  
 	  font-size: 15px;
 	  text-align: center;
       }
@@ -294,7 +292,7 @@
                 
              });
           }
-        loginneed
+     
         
    function loginneed()
      {
@@ -365,7 +363,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -674,7 +672,7 @@
             <ul class="footer-menu">
                 <li><a href="festival">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>

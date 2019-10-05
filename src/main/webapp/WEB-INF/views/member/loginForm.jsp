@@ -42,6 +42,12 @@
 	#submit{
 		width: 110%;
 	}
+	.wrapper{
+		background:  url(resources/images/userimage/turkeyBalloon.jpg);
+	}
+	#title{
+		color: white;	
+	}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
@@ -79,10 +85,11 @@
 
 </script>
 </head>
+<body class="wrapper">
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <h1><a href="/festival"><b>FES</b>PEDIA</a></h1>
+    <h1><a href="/festival" id="title"><b>FES</b>PEDIA</a></h1>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -123,7 +130,6 @@
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -139,5 +145,6 @@
     });
   });
 </script>
+</body>
 </body>
 </html>

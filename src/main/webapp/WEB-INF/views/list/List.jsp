@@ -816,17 +816,17 @@ $(function() {
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
                         <li class="dropdown"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
+                        <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
                            </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
                               <li><a href="calendar">Calendar</a></li>
                            </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
+                        <li class="dropdown"><a href="map">Map</a>
                            <ul>
-                              <li><a href="#">Map</a></li>
+                              <li><a href="map">Map</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="boardList">Board</a>
                            <ul>
@@ -939,8 +939,8 @@ $(function() {
 				</div>
                 </div>
            </div>
+	</section>
        </div>
-</section>
 <!--End Schedule Section-->
 
 <!-- Main Footer-->
@@ -955,7 +955,7 @@ $(function() {
             <ul class="footer-menu">
                 <li><a href="festival">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
             <li><a href="searchFestival">Search Festival</a></li>
@@ -1015,6 +1015,6 @@ $(function() {
         itemSelectText: '',
       });
 </script> -->
-</div>
+
 </body>
 </html>

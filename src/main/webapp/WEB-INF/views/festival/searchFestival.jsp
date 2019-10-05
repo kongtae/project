@@ -308,7 +308,8 @@ table{
 						<div class="top-right">
 							<!--Social Box-->
 							<ul class="social-box">
-								<c:if test="${sessionScope.loginid == null}" >
+							
+							<c:if test="${sessionScope.loginid == null}" >
 									<c:if test="${sessionScope.adminid == null}" >
 									<li><a href="registermember">Sign Up</a></li>
 									<li><a href="loginForm">Sign in</a></li>
@@ -325,24 +326,139 @@ table{
 									<li><a href="adminBulPage">AdminBulPage</a></li>
 									<li><a href="logout">Logout</a></li>
 								</c:if>
+								
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-		</header>
+
+
+			<!--Header-Upper-->
+			<div class="header-upper">
+				<div class="container">
+					<div class="clearfix">
+
+						<div class="float-left logo-box">
+							<div class="logo">
+								<a href="festival"><img src="images/fespedia.png" alt=""
+									title=""></a>
+							</div>
+						</div>
+
+						<div class="nav-outer clearfix">
+
+							<!-- Main Menu -->
+							<nav class="main-menu navbar-expand-md">
+								<div class="navbar-header">
+									<button class="navbar-toggler" type="button"
+										data-toggle="collapse" data-target="#navbarSupportedContent"
+										aria-controls="navbarSupportedContent" aria-expanded="false"
+										aria-label="Toggle navigation">
+										<span class="icon-bar"></span> <span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+
+								<div class="navbar-collapse collapse clearfix"
+									id="navbarSupportedContent">
+									<ul class="navigation clearfix">
+										<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown"><a href="listForm">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="Calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+									</ul>
+								</div>
+
+							</nav>
+
+							<!--Button Box-->
+							<div class="button-box">
+								<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!--End Header Upper-->
+
+			<!--Sticky Header-->
+			<div class="sticky-header stricky">
+				<div class="container clearfix">
+					<!--Logo-->
+					<div class="logo float-left">
+						<a href="festival" class="img-responsive"><img
+							src="images/fespedia.png" alt="" title=""></a>
+					</div>
+
+					<!--Right Col-->
+					<div class="right-col float-right">
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent1"
+								aria-controls="navbarSupportedContent1" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+
+							<div class="navbar-collapse collapse clearfix"
+								id="navbarSupportedContent1">
+								<ul class="navigation clearfix">
+									<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown"><a href="#">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+								</ul>
+							</div>
+						</nav>
+						<!-- Main Menu End-->
+					</div>
+
+				</div>
+			</div>
+			<!--End Sticky Header-->
 		<!-- Page Title-->
 <<<<<<< HEAD
-			<section class="page-title" style="background: url(resources/images/userimage/얼음축제.jpg); margin-top: 6%;">
+			<section class="page-title" style="background: url(resources/images/userimage/turkeyBalloon.jpg); margin-top: 6%;">
+
 =======
-		<section class="page-title"
-			style="background: url(images/userimage/turkey balloon.jpg);">
->>>>>>> b9cf20934eac9efdf0d7995ccd94ae735db4daa6
+			<section class="page-title" style="background: url(resources/images/userimage/turkeyballoon.jpg); margin-top: 6%;">
+>>>>>>> 8a798b09baba47c09478ba6dd2b096846ba15885
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
 					<ul>
-						<li><a href="">home</a></li>
+						<li><a href="festival">home</a></li>
 						<li>/</li>
 						<li><a href="searchFestival">Search Festival</a></li>
 					</ul>
@@ -353,8 +469,9 @@ table{
 		<div class="slide">
 			<div id="image-box"></div>
 		</div>
-
-
+		
+		</header>
+		
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.fancybox.js"></script>

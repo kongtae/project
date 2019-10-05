@@ -238,70 +238,54 @@ function memberSelect(){
          </div>
          <!--End Header Upper-->
 
-         <!--Sticky Header-->
-         <div class="sticky-header stricky">
-            <div class="container clearfix">
-               <!--Logo-->
-               <div class="logo float-left">
-                  <a href="index.html" class="img-responsive"><img
-                     src="images/fespedia.png" alt="" title=""></a>
-               </div>
-
-               <!--Right Col-->
-               <div class="right-col float-right">
-                  <!-- Main Menu -->
-                  <nav class="main-menu navbar-expand-md">
-                     <button class="navbar-toggler" type="button"
-                        data-toggle="collapse" data-target="#navbarSupportedContent1"
-                        aria-controls="navbarSupportedContent1" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                           class="icon-bar"></span>
-                     </button>
-
-                     <div class="navbar-collapse collapse clearfix"
-                        id="navbarSupportedContent1">
-                        <ul class="navigation clearfix">
-                           <li class="dropdown"><a href="/festival">Home</a>
-                              <ul>
-                                 <li><a href="index.html">Home Page 01</a></li>
-                                 <li><a href="index-2.html">Home Page 02</a></li>
-                              </ul></li>
-                           <li class="dropdown"><a href="#">About</a>
-                              <ul>
-                                 <li><a href="about-us.html">About Us</a></li>
-                                 <li><a href="speakers.html">Speakers</a></li>
-                                 <li><a href="speakers-details.html">Speaker Details</a></li>
-                                 <li><a href="error-page.html">Error Page</a></li>
-                              </ul></li>
-                           <li class="dropdown"><a href="#">Shedule</a>
-                              <ul>
-                                 <li><a href="shedule.html">Shedule</a></li>
-                                 <li><a href="shedule-details.html">Shedule Details</a></li>
-                              </ul></li>
-                           <li class="current dropdown"><a href="#">Sponsors</a>
-                              <ul>
-                                 <li><a href="sponsor.html">Sponsors</a></li>
-                                 <li><a href="sponsor-details.html">Sponsor Details</a></li>
-                              </ul></li>
-                           <li class="dropdown"><a href="#">Blog</a>
-                              <ul>
-                                 <li><a href="blog.html">Blog</a></li>
-                                 <li><a href="blog-single.html">Blog Details</a></li>
-                              </ul></li>
-                           <li><a href="contact-us.html">Contact us</a></li>
-                        </ul>
-                     </div>
-                  </nav>
-                  <!-- Main Menu End-->
-               </div>
-
+        <!--Sticky Header-->
+    <div class="sticky-header stricky">
+        <div class="container clearfix">
+            <!--Logo-->
+            <div class="logo float-left" style="width: 149px; height: 80px"  >
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
-         </div>
-         <!--End Sticky Header-->
+            
+            <!--Right Col-->
+            <div class="right-col float-right">
+                <!-- Main Menu -->
+                <nav class="main-menu navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                     <ul class="navigation clearfix">
+                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="map">Map</a>
+                           <ul>
+                              <li><a href="map">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
+                    </div>
+                </nav><!-- Main Menu End-->
+            </div>
+            
+        </div>
+    </div>
+    <!--End Sticky Header-->
 
-      </header>
-      <!--End Main Header -->
+</header>
+<!--End Main Header -->
 
 
 
@@ -402,7 +386,7 @@ function memberSelect(){
 										</div>
 										<!-- /.user-block -->
 										<p>
-										FESTIVAL_INTRO
+										FESTIVAL_INTRO : 
 										<c:out value="${result.festival_intro}"></c:out>
 										</p>
 										COUNTRY :
@@ -445,7 +429,7 @@ function memberSelect(){
             <ul class="footer-menu">
                 <li><a href="festival">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
             <li><a href="searchFestival">Search Festival</a></li>

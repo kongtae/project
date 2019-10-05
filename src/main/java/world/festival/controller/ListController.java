@@ -253,18 +253,8 @@ public class ListController {
 	@RequestMapping(value = "/crawlingTest", method = RequestMethod.GET,
 			produces = "application/json; charset=utf8")
 	public @ResponseBody ArrayList<String> crawlingTest(ListVO vo) {
-		System.out.println("crawlingTest으로 갈 브이오 " + vo );
 		Selenium sel = new Selenium();
 		ArrayList<String> result =  sel.crawlingTest(vo);
-		System.out.println("크롤링 리절트 값 "+result);
-		System.out.println("0번째방 "+ result.get(0));
-		System.out.println("1번째방"+ result.get(1));
-		System.out.println("2번째방"+ result.get(2));
-		System.out.println("3번째방"+ result.get(3));
-		System.out.println("4번째방"+ result.get(4));
-		System.out.println("5번째방"+ result.get(5));
-		System.out.println("6번째방"+ result.get(6));
-		System.out.println("7번째방"+ result.get(7));
 
 		return result; 
 	}
