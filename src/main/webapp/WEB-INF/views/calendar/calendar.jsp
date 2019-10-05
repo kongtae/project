@@ -230,7 +230,7 @@
 	<!--End Main Header -->
 	
 	<!-- Page Title-->
-	<section class="page-title" style="background: url(resources/images/userimage/춤추는모양.jpg); margin-top: 6%;">
+	<section class="page-title" style="background: url(resources/images/userimage/Holi.jpg); margin-top: 6%;">
     	<div class="container">
         	<div class="title-text text-center">
            	 <h3>カレンダー</h3>
