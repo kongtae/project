@@ -91,7 +91,7 @@
  	
  	
 	function AdminDeleteBul() {
-		var mainBoardNum = ${vo.mainBoardNum};
+		var bul_boardnum = ${vo.bul_boardnum};
 		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
 // 		alert(mainBoardNum);
@@ -99,7 +99,7 @@
 		$.ajax({
 			url:"AdminDeleteList",
 			type:"post",
-			data : {mainBoardNum : mainBoardNum,
+			data : {bul_boardnum : bul_boardnum,
 					admin_mainBoardNum : admin_mainBoardNum
 					},
 			success:function(result){
