@@ -40,7 +40,9 @@
 		width: 64%;
 	}
 	#submit{
-		width: 110%;
+		position: relative;
+		left: -33px;
+		width: 150%;
 	}
 </style>
 <!-- jquery -->
@@ -104,7 +106,7 @@
       </div>
       <div class="form-group has-feedback">
         <input type="email" class="form-control"  name="email" id="email" placeholder="メール">
-        <span class="glyphicon glyphicon-email form-control-feedback"></span>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
