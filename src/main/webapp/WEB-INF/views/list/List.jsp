@@ -62,7 +62,6 @@
 .s132 form .inner-form .input-field input {
   border: 0;
   display: inline-block;
-  width: 100%;
   padding: 10px 32px;
   font-size: 16px;
   color: #6c757d;
@@ -117,7 +116,7 @@
 	color: #fa334f;
 }
 #hash {
-   text-align: center;
+   padding-left: 1.7%;
 }
 </style>
 </head>
@@ -893,7 +892,7 @@ $(function() {
                               </div>
                               <div class="input-field second-wrap">
                                  <input name="searchKeyword" id="searchKeyword"
-                                    onchange="change()" type="text" class="input-field_pholder" />
+                                    onchange="change()" type="text" class="input-field_pholder" placeholder="Enter Keywords"/>
                               </div>
                               <!-- <div id="insertmark"></div> -->
                               <div class="input-field second-wrap">
