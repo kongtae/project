@@ -19,6 +19,7 @@
 		<typeAlias type="world.festival.VO.WishVO" alias="WishVO" />
 		<typeAlias type="world.festival.VO.BoardVO" alias="BoardVO" />
 		<typeAlias type="world.festival.VO.SearchFestivalVO" alias="SearchFestivalVO" />
+		<typeAlias type="world.festival.VO.CountryNameVO" alias="CountryNameVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/AdminMapper.xml" />
@@ -31,5 +32,6 @@
 		<mapper resource="mapper/BoardMapper.xml" />
 		<mapper resource="mapper/SearchFestivalMapper.xml" />
 		<mapper resource="mapper/tourAPIMapper.xml" />
+		<mapper resource="mapper/CountryNameVO.xml" />
 	</mappers> 
 </configuration>
