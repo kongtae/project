@@ -4,7 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="world.festival.dao.tourAPIMapper">
-
+	
+	<!-- 메인보드넘 조회 -->
+	<select id="mainBoardNumSelect" resultType="int">
+		SELECT
+			MAX(mainBoardNum)
+		FROM
+			mainboard
+	</select>
+	
+	<!-- 축제DB등록 -->
 	<insert id="tourAPIinsert" parameterType="ListVO">
 
 		<foreach item="item" collection="list" separator=""
@@ -34,5 +43,7 @@
 			)
 		</foreach>
 	</insert>
+	
+	
 
 </mapper>
