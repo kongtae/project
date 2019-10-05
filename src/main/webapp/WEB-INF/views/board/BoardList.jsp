@@ -59,7 +59,6 @@
 .s000 form .inner-form .input-field input {
   border: 0;
   display: inline-block;
-  width: 100%;
   padding: 10px 32px;
   font-size: 16px;
   color: #6c757d;
@@ -551,7 +550,7 @@
 					</div>
 					</div>
 					<div class="input-field second-wrap">
-					<input type="text" name="searchKeyword" id="searchKeyword" onchange="change()">
+					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="Enter Keywords" onchange="change()">
 					<!-- <div id="insertmark"></div> -->
 					<input type="hidden" name="endEvent" id="searchHidden">
 					</div>
