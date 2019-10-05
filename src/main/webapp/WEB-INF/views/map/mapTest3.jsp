@@ -290,13 +290,13 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
                 <li><a href="festival">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>

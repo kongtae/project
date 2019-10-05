@@ -87,9 +87,8 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="festival"><img src="images/fespedia.png" alt=""
-									title=""></a>
-							</div>
+								<a href="festival"><img src="images/fespedia.png" alt=""></a>
+			</div>
 						</div>
 
 						<div class="nav-outer clearfix">
