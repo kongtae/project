@@ -13,8 +13,14 @@ public class tourAPIDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	public int mainBoardNumSelect() {
+		tourAPIMapper mapper = sqlSession.getMapper(tourAPIMapper.class);
+		return mapper.mainBoardNumSelect();
+	}
+
 	public int tourAPIinsert(ArrayList<ListVO> list) {
 		tourAPIMapper mapper = sqlSession.getMapper(tourAPIMapper.class);
 		return mapper.tourAPIinsert(list);
 	}
+
 }

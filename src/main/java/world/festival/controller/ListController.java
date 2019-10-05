@@ -276,17 +276,19 @@ public class ListController {
 		ArrayList<ListVO> list = new ArrayList<>();
 
 		for (int i = 0; i < 3; i++) {
-			int r = (int) Math.floor(Math.random() * (result.size() - 1));
+			if(result.size() == 0) {
+				break;
+			}
+			int r = (int) Math.floor(Math.random() * (result.size()));
 			if(result.get(r).getOriginalFileName() == null) {
 				i--;
 			}else if(result.get(r).getOriginalFileName().equals(",,,")){
 				i--;
 			}else {
 				list.add(result.get(r));
-				result.remove(r);			
 			}
+			result.remove(r);
 		}
-		
 		return list;
 	}
 

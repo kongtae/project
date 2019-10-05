@@ -88,7 +88,6 @@
 	}
 	
 	function select() {
-
 		$.ajax({
 			url : "select",
 			type : "post",
@@ -500,7 +499,6 @@
 	<!--End Contact Info-->
 
 
-
 	<!-- Main Footer-->
 	<footer class="main-footer">
 		<div class="container">
@@ -564,13 +562,6 @@
 
 	<!-- Custom script -->
 	<script src="js/custom.js"></script>
-
-	<!--Google Map-->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-	<script src="js/map-script.js"></script>
-	<!--End Google Map APi-->
-
 	<!-- jQuery 3 -->
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->

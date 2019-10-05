@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">    
+    <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+    <link rel="icon" href="images/f.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
 <style>
@@ -62,20 +62,28 @@
    background-clip: padding-box;
    font-weight: normal;
    color: #fa334f;
+   border-color: white;
+}
+.longterm {
+	position: absolute;
+    right: 7%;
+    width: 35%;
 }
 #div_icontext {
-   display: flex;
-   justify-content: flex-end;
-   width: 83%;
+	display: flex;
+	justify-content: flex-end;
+	width: 83%;
 }
-
+#icontext {
+    position: absolute;
+    left: 58%;
+    padding-top: 1%;
+	font-family: 'Robtoto', sans-serif;
+	font-size: 27px;
+	color: #fa334f;
+}
 #hash {
    text-align: center;
-}
-
-.longterm{
-   width: 650px;
-   right: 20px;
 }
 </style>
 </head>
@@ -323,7 +331,7 @@ $(function() {
          success : output1,
          error: function(request,status,error) {
             alert("リストを読み込めませんでした。");
-            alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
+            //alert("code = "+ request.status + " message = " + request.responseText + " error = " + error);
          }
       })
    }
@@ -509,7 +517,7 @@ $(function() {
       
       for (var i = spage; i <= epage; i ++) {
          if(i == page){
-            nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+            nav += '<li class="page-item"><a class="page-link" style="padding: 1px; border-color: red;" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
          } else {
             nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
          }
@@ -556,6 +564,15 @@ $(function() {
    
       if(searchItem=="hashSearch"){//해시태그 생성
          sharp =  searchKeyword;
+      	$('#searchKeyword').val("");//해시태그 생성시 해시태그 입력창 지우기
+		if(sharp.charAt(0) != '#') {//해시태그로 시작안하면 빠꾸
+			alert("「＃」を入力してください。");
+			return false;
+		}
+		if(sharp.charAt(1) == 1 || sharp.charAt(1) == 2 || sharp.charAt(1) == 3 || sharp.charAt(1) == 4 || sharp.charAt(1) == 5 || sharp.charAt(1) == 6 || sharp.charAt(1) == 7 || sharp.charAt(1) == 8 || sharp.charAt(1) == 9 || sharp.charAt(1) == 0 ) {
+			alert("文字を先に入力してください。");
+			return false;
+		}
          sharp = sharp.replace("#", "");
          idx += 1;
          $('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
@@ -599,7 +616,7 @@ $(function() {
       //alert("sharp1 : "+sharp1);
       
       var key = sharp1.innerHTML;
-      alert("key : "+ key);
+      //alert("key : "+ key);
       var a = key.indexOf('(')+1;
       var b = key.indexOf(')');
        var key1 = key.substring(a,b); 
@@ -696,7 +713,7 @@ $(function() {
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/logo.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -750,7 +767,7 @@ $(function() {
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -828,20 +845,15 @@ $(function() {
                                        name="searchItem" id="searchItem"
                                        onchange="searchDate(this)">
                                        <option value="title"
-                                          <c:if test="${'title'==searchItem}">selected</c:if>>
-                                          タイトル</option>
+                                          <c:if test="${'title'==searchItem}">selected</c:if>>タイトル</option>
                                        <option value="country"
-                                          <c:if test="${'country'==searchItem}">selected</c:if>>
-                                          国家</option>
+                                          <c:if test="${'country'==searchItem}">selected</c:if>>国家</option>
                                        <option value="startEvent"
-                                          <c:if test="${'startEvent'==searchItem}">selected</c:if>>
-                                          期間</option>
+                                          <c:if test="${'startEvent'==searchItem}">selected</c:if>>期間</option>
                                        <option value="adress"
-                                          <c:if test="${'adress'==searchItem}">selected</c:if>>
-                                          住所</option>
+                                          <c:if test="${'adress'==searchItem}">selected</c:if>>住所</option>
                                        <option value="hashSearch"
-                                          <c:if test="${'hashSearch'==searchItem}">selected</c:if>>
-                                          #HASHTAG</option>
+                                          <c:if test="${'hashSearch'==searchItem}">selected</c:if>>#HASHTAG</option>
                                     </select>
                                  </div>
                               </div>
@@ -874,17 +886,19 @@ $(function() {
                                 </tr>
                             </thead>
                             <tbody id="list" class="table table-hover"></tbody> 
-                           
                           </table>
                          </div> 
-                       
                     </div>
-
-                    <div>
+                    <table>
+                    <tr><td><nav class="pagination"></nav></td>
+                    <td align="right" class="longterm"><a href="insertFestival"><h4 id="icontext"><b>投稿する</b></h4><img src="listImages/write_.png" title="投稿"></a>
+                    </td></tr>
+                    </table>
+                    <!-- <div>
                     <nav class="pagination"></nav>
                     <div id="div_icontext">
 					<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a>
-					</div>
+					</div> -->
 				</div>
                 </div>
            </div>
@@ -898,7 +912,7 @@ $(function() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">

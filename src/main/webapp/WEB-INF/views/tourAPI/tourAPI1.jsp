@@ -104,7 +104,7 @@
 			tourAPIselect();
 		})
 		$("#insertBtn").on('click', function() {
-			tourAPIinsert();
+			mainBoardNumSelect();
 		})
 	})
 		var tour = [];
@@ -181,6 +181,45 @@
 		};
 	}
 
+	function mainBoardNumSelect() {
+		
+		var startEvent = $('#startEvent').val();
+		var endEvent = $('#endEvent').val();
+		
+		var a = startEvent.split("-");
+		var b = endEvent.split("-");
+		if(a>b){
+			alert("検索する期間を間違えて入力しました。");
+			$('#startEvent').val("");
+			$('#endEvent').val("");
+			return false;
+		}
+		if (startEvent == null || endEvent == "") {
+			startEvent = " ";
+			alert("始まる日を入力してください。");
+			return false;
+		}
+		if (endEvent == null || endEvent == "") {
+			endEvent = " ";
+			alert("終わる日を入力してください。");
+			return false;
+		}
+		if(tour.length == 0) {
+			alert("登録するデーターがありません。");
+		}
+		
+		$.ajax({
+			type : 'post',
+			url : 'mainBoardNumSelect',
+			success : function(data){
+				tourAPIinsert();
+			},
+			error : function() {
+				alert("番号を確認できませんでした。");
+			}
+		})
+	}
+	
 	function tourAPIinsert() {
 		
 		var startEvent = $('#startEvent').val();
@@ -207,6 +246,7 @@
 		if(tour.length == 0) {
 			alert("登録するデーターがありません。");
 		}
+		
 		$.ajax({
 			url : "tourAPIinsert",
 			type : "post",
@@ -220,6 +260,7 @@
 			}
 		});
 	}
+
 </script>
 </head>
 <body>

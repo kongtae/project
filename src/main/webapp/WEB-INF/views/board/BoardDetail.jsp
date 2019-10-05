@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+    <link rel="icon" href="images/f.png" type="image/x-icon">
      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -114,12 +114,19 @@
 	            data : imageData,
 	            dataType: 'json',
 	            success : function(result) {
-	               if(result != null) {
-	                  $.each(result,function(index,item){
-	                     originalFileName = "resources/images/userimage/" +item;
-	                   $('#preview').append("<input type='image' src='"+originalFileName+"'><br>"); 
-	                  })
-	               }
+	            	if(result != null) {
+	                    $.each(result,function(index,item){
+	                  	  if(item.charAt(0)=='h'){
+	                  		  originalFileName = item;
+	                  		  $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>");
+	                  	  }else if(item == null){                		  
+	  						return false;
+	                  	  }else{
+	                       originalFileName = "resources/images/userimage/" +item;
+	                     $('#preview').append("<input type='image' class='pre' src='"+originalFileName+"'><br>"); 
+	                  	 }
+	                    })  
+	              	}
 	            },
 	            error : function() {
 	            }
@@ -270,7 +277,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="#"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="#"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -325,7 +332,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -543,7 +550,7 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">

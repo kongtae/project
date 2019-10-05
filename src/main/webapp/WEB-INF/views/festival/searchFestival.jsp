@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+<link rel="icon" href="images/f.png" type="image/x-icon">
 <style>
 #left-box {
 	float: left;
@@ -332,14 +332,19 @@ table{
 			</div>
 		</header>
 		<!-- Page Title-->
+<<<<<<< HEAD
 			<section class="page-title" style="background: url(resources/images/userimage/얼음축제.jpg); margin-top: 6%;">
+=======
+		<section class="page-title"
+			style="background: url(images/userimage/turkey balloon.jpg);">
+>>>>>>> b9cf20934eac9efdf0d7995ccd94ae735db4daa6
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>
 					<ul>
-						<li><a href="/festival">home</a></li>
+						<li><a href="">home</a></li>
 						<li>/</li>
-						<li><a href="/searchFestival">Search Festival</a></li>
+						<li><a href="searchFestival">Search Festival</a></li>
 					</ul>
 				</div>
 			</div>

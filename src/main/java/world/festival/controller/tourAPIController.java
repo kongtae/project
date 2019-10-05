@@ -34,6 +34,8 @@ public class tourAPIController {
 	@Autowired
 	private tourAPIDAO dao;
 	
+	int mainBoardNum;
+	
 	@RequestMapping(value = "/tourAPI", method = RequestMethod.GET)
 	public String tourAPI() {
 		return "tourAPI/tourAPI1";
@@ -90,17 +92,24 @@ public class tourAPIController {
 		//json.put("data", data);
 		System.out.println("json: "+json);
 	}
+	
+	@RequestMapping(value = "/mainBoardNumSelect", method = RequestMethod.POST)
+	@ResponseBody
+	public int mainBoardNumSelect() {		
+		int result = dao.mainBoardNumSelect();
+		System.out.println("result : "+result);
+		mainBoardNum = result+1;
+		return result;
+	}
 
 	@RequestMapping(value = "/tourAPIinsert", method = RequestMethod.POST)
 	@ResponseBody
 	public int tourAPIinsert(@RequestBody ArrayList<ListVO> list) {
+		System.out.println("mainBoardNum : "+mainBoardNum);
 		
-		
-		int i = 300;
 		for (ListVO vo : list) {
-			//vo.setStartEvent();
-			vo.setMainBoardNum(i);
-			i++;
+			vo.setMainBoardNum(mainBoardNum);
+			mainBoardNum++;
 			vo.setCountry("KR");
 			vo.setFestival_intro(vo.getTitle());
 		}
