@@ -91,7 +91,7 @@
  	
  	
 	function AdminDeleteBul() {
-		var mainBoardNum = ${vo.mainBoardNum};
+		var bul_boardnum = ${vo.bul_boardnum};
 		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
 // 		alert(mainBoardNum);
@@ -99,7 +99,7 @@
 		$.ajax({
 			url:"AdminDeleteList",
 			type:"post",
-			data : {mainBoardNum : mainBoardNum,
+			data : {bul_boardnum : bul_boardnum,
 					admin_mainBoardNum : admin_mainBoardNum
 					},
 			success:function(result){
@@ -245,7 +245,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="festival"><img src="images/logo.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -301,7 +301,7 @@
         <div class="container clearfix">
             <!--Logo-->
             <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/logo.png" alt="" title=""></a>
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
             </div>
             
             <!--Right Col-->
@@ -505,7 +505,6 @@
 		</c:forEach>
 	</table>
                         <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
                         </div>
                     </div>
                 </div>

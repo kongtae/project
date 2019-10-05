@@ -991,6 +991,7 @@ $(function() {
 
 
 
+<script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>
@@ -1003,6 +1004,7 @@ $(function() {
 <script src="js/isotope.js"></script>
 <script src="js/bxslider.js"></script>
 <script src="js/validate.js"></script>
+
 
 <!-- Custom script -->
 <script src="js/custom.js"></script>
