@@ -313,13 +313,10 @@
 						var title = item.title;
 						
 						if(image.charAt(0)=='h'){
-							alert("123 : "+image.charAt(image.length-1));
 							if(image.charAt(image.length-1) == ','){
 								var a= image.indexOf(',');
-								alert("a : "+a);
 								image = image.substring(0,a);
 							}
-							alert("image : "+image);
 							imageurl = image;
 						}else {
 							var a= image.indexOf(',');
@@ -335,7 +332,7 @@
 					});						
 				},
 				error: function(){
-					alert("실패");
+					//alert("실패");
 				}
 			});
 		}

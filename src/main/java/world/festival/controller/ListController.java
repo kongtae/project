@@ -273,14 +273,13 @@ public class ListController {
 	@ResponseBody
 	public ArrayList<ListVO> selectMain() {
 		ArrayList<ListVO> result = dao.selectMain();
-		System.out.println("result : "+result);
 		ArrayList<ListVO> list = new ArrayList<>();
-		System.out.println("resultsize"+result.size());
 
 		for (int i = 0; i < 3; i++) {
-			int r = (int) Math.floor(Math.random() * (result.size()+1));
-			System.out.println("r : "+r);
-			System.out.println("result : "+result.get(r).getOriginalFileName());
+			if(result.size() == 0) {
+				break;
+			}
+			int r = (int) Math.floor(Math.random() * (result.size()));
 			if(result.get(r).getOriginalFileName() == null) {
 				i--;
 			}else if(result.get(r).getOriginalFileName().equals(",,,")){
@@ -289,11 +288,7 @@ public class ListController {
 				list.add(result.get(r));
 			}
 			result.remove(r);
-			if(result.size() == 0) {
-				break;
-			}
 		}
-		System.out.println("list : "+list);
 		return list;
 	}
 
