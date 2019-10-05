@@ -90,6 +90,8 @@ body {
   min-height: calc(100vh - 101px);
   background-color: #ecf0f5;
   z-index: 800;
+  width: 100%;
+ 
 }
 @media (max-width: 767px) {
   .content-wrapper {

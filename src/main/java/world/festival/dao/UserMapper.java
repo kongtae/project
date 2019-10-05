@@ -23,5 +23,6 @@ public interface UserMapper {
 	public ArrayList<ListVO> selectlist(String userid);
 	//조인 리스트 가져오기
 	public ArrayList<ListVO> selectlistAll(String userid);
+	public UserVO Findpassword(UserVO vo);
 	
 }

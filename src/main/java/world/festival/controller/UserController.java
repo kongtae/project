@@ -69,6 +69,23 @@ public class UserController {
 	public String loginFrom() {
 		return "member/loginForm";
 	}
+	
+	//비밀번호 찾기
+	@RequestMapping(value = "/FindPassword", method = RequestMethod.GET)
+	public String FindPassword() {
+		return "member/FindPassword";
+	}
+	
+	//비밀번호 찾기
+	@RequestMapping(value = "/Findpassword", method = RequestMethod.POST)
+	@ResponseBody
+	public UserVO Findpassword(UserVO vo, HttpSession session) {
+		UserVO result = dao.Findpassword(vo);
+		if(result != null) {
+			session.setAttribute("loginid", result.getUserid());
+		}
+		return result;
+	}
 
 	//로그인  어드민도 포함
 	@RequestMapping(value = "/loginForm1", method = RequestMethod.POST)
