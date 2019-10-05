@@ -67,7 +67,7 @@
 		var admin_mainBoardNum =${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
 // 		alert(mainBoardNum);
-		else if(datacheck=="Recovery")
+		if(datacheck=="Recovery")
 		{
 			alert("이미 복구된 내용입니다.")
 			return false;
@@ -90,11 +90,27 @@
  	
  	
  	
-  	function BoardDelete() {
-  			if(confirm("삭제하시겠습니까?")){
-  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
-  			}
-  	}
+	function AdminDeleteBul() {
+		var mainBoardNum = ${vo.mainBoardNum};
+		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
+		var datacheck ="${vo.datacheck}";
+// 		alert(mainBoardNum);
+
+		$.ajax({
+			url:"AdminDeleteList",
+			type:"post",
+			data : {mainBoardNum : mainBoardNum,
+					admin_mainBoardNum : admin_mainBoardNum
+					},
+			success:function(result){
+				location.href="adminListPage";
+			}
+// 			},
+// 			error{
+// 				alert("실패");
+// 			}
+		});
+	}
    	//댓글 작성시 유효성검사
   	function replywriteBoard() {
 		var replytext = document.getElementById("replytext");
@@ -381,7 +397,7 @@
                          	                      <c:if test="${sessionScope.adminid !=null}">
                                <div align="right">
                                <input type="button" value="復旧" onclick="BulRecovery()">
-                               <input type="button" value="削除" onclick="AdminDeleteFestival()">
+                               <input type="button" value="削除" onclick="AdminDeleteBul()">
 <!--                                <input type="button" value="削除" onclick="DeleteFestival()"> -->
                      		</div>
                     		 </c:if>                      
@@ -524,49 +540,56 @@
 
 
 <!-- Main Footer-->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-area text-center">
-            <div class="footer-logo">
-                <figure>
-                    <a href="festival"><img src="images/logo-2.png" alt=""></a>
-                </figure>
-            </div>
+		<footer class="main-footer"
+			>
+			<div class="container">
+				<div class="footer-area text-center">
+					<div class="footer-logo">
+						<figure>
+						<c:if test="${sessionScope.adminid != null}">
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						</figure>
+					</div>
             <ul class="footer-menu">
-                <li><a href="festival">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
-            <ul class="social-links">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-        </div>            
-    </div>
-</footer>
-<!--End Main Footer-->
+					<ul class="social-links">
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<!--End Main Footer-->
 
+		<!--Footer Bottom Section-->
+		<section class="footer-bottom">
+			<div class="container">
+				<div class="copyright-text text-center">
+					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Reserved
+				</div>
+			</div>
+		</section>
+		<!--End Footer Bottom Section-->
 
-<!--Footer Bottom Section-->
-<section class="footer-bottom">
-    <div class="container">
-        <div class="copyright-text text-center">
-            Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
-        </div>
-    </div>
-</section>
-<!--End Footer Bottom Section-->
-
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-angle-up"></span>
+		</div>
 
 
 

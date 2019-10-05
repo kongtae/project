@@ -562,62 +562,57 @@ $(function() {
 </section>
 <!--End Schedule Section-->
 
-<!--Contact Info-->
-<section class="contact-info">
-    <div class="container">
-        <div class="info-area">
-            <div class="row">
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-placeholder"></i>
-                        </div>
-                        <div class="text">
-                            <p>184 Collins Street West <br>Victoria, United States, 8007</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-phone-call"></i>
-                        </div>
-                        <div class="text">
-                            <p>(1800) 123 4567 <br>(1800) 123 4568</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-sm-12">
-                    <div class="contact-info-item-one">
-                        <div class="icon-box">
-                            <i class="flaticon-e-mail-envelope"></i>
-                        </div>
-                        <div class="text">
-                            <p>
-                                <a href="#">info@wiscon.com</a>
-                                <a href="#">support@wiscon.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Main Footer-->
+		<footer class="main-footer"
+			>
+			<div class="container">
+				<div class="footer-area text-center">
+					<div class="footer-logo">
+						<figure>
+						<c:if test="${sessionScope.adminid != null}">
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						</figure>
+					</div>
+            <ul class="footer-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+				<li><a href="searchFestival">Search Festival</a></li>
+            </ul>
+					<ul class="social-links">
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<!--End Main Footer-->
 
-<!--Footer Bottom Section-->
-<section class="footer-bottom">
-    <div class="container">
-        <div class="copyright-text text-center">
-            Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
-        </div>
-    </div>
-</section>
-<!--End Footer Bottom Section-->
+		<!--Footer Bottom Section-->
+		<section class="footer-bottom">
+			<div class="container">
+				<div class="copyright-text text-center">
+					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Reserved
+				</div>
+			</div>
+		</section>
+		<!--End Footer Bottom Section-->
 
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-angle-up"></span>
+		</div>
 
 
 

@@ -89,7 +89,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="#"><img src="images/logo.png" alt=""
+								<a href="#"><img src="images/fespedia.png" alt=""
 									title=""></a>
 							</div>
 						</div>
@@ -416,7 +416,7 @@
             <ul class="footer-menu">
                 <li><a href="festival">Home</a></li>
                 <li><a href="listForm">List</a></li>
-                <li><a href="Calendar">Calendar</a></li>
+                <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>
