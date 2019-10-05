@@ -28,6 +28,73 @@
         height: 500px;
         width: 770px;
       }
+      .pre{
+         width: 370px;
+         height: auto;
+      }
+      .info_ {
+         position: absolute;
+         padding-left: 5%;
+      }
+      .buttonS{
+        background-color: #3c8dbc;
+       border-color: #367fa9;
+       margin-right: 5px;
+       display: white;
+       margin-bottom: 0;
+       font-weight: 400;
+       text-align: center;
+       white-space: nowrap;
+       -ms-touch-action: manipulation;
+       touch-action: manipulation;
+       cursor: pointer;
+       background-image: none;
+       border: 1px solid transparent;
+       padding: 6px 12px;
+       font-size: 14px;
+       line-height: 1.42857143;
+       border-radius: 4px;
+       user-select: none;
+       color: white;
+      }
+        .buttonD{
+        background-color: red;
+       border-color: red;
+       margin-right: 5px;
+       display: white;
+       margin-bottom: 0;
+       font-weight: 400;
+       text-align: center;
+       white-space: nowrap;
+       -ms-touch-action: manipulation;
+       touch-action: manipulation;
+       cursor: pointer;
+       background-image: none;
+       border: 1px solid transparent;
+       padding: 6px 12px;
+       font-size: 14px;
+       line-height: 1.42857143;
+       border-radius: 4px;
+       user-select: none;
+       color: white;
+      }
+      .tableSecond{
+     padding: 45px 40px;
+     margin-top: 25px;
+     margin-bottom: 30px;
+     text-align: center;
+     background: #ffffff;
+     border: 3px solid #eaeaea;
+     font-size: 15px;
+     text-align: center;
+      }
+      .comments {
+         padding-left: 4%;
+        padding-right: 4%;
+       padding-bottom: 3%;
+      }
+      
+      
     </style>
     <script src="js/jquery.js"></script>
  <script>
