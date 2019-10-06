@@ -384,7 +384,7 @@
 					<!--Logo-->
 					<div class="logo float-left">
 						<a href="index.html" class="img-responsive"><img
-							src="images/logo.png" alt="" title=""></a>
+							src="images/fespedia.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -437,11 +437,11 @@
 		<section class="page-title" style="background: url(resources/images/userimage/fefe.jpg); margin-top: 6%;">
 			<div class="container">
 				<div class="title-text text-center">
-					<h3>Events Schedule</h3>
+					<h3>「管理者用」API登録</h3>
 					<ul>
-						<li><a href="index.html">home</a></li>
+						<li><a href="festival">home</a></li>
 						<li>/</li>
-						<li>Schedule</li>
+						<li><a href="tourAPI">「管理者用」API登録</a></li>
 					</ul>
 				</div>
 			</div>
@@ -491,52 +491,7 @@
 		</section>
 		<!--End Schedule Section-->
 
-		<!--Contact Info-->
-		<section class="contact-info">
-			<div class="container">
-				<div class="info-area">
-					<div class="row">
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-placeholder"></i>
-								</div>
-								<div class="text">
-									<p>
-										184 Collins Street West <br>Victoria, United States, 8007
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-phone-call"></i>
-								</div>
-								<div class="text">
-									<p>
-										(1800) 123 4567 <br>(1800) 123 4568
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-4 col-md-6 col-sm-12">
-							<div class="contact-info-item-one">
-								<div class="icon-box">
-									<i class="flaticon-e-mail-envelope"></i>
-								</div>
-								<div class="text">
-									<p>
-										<a href="#">info@wiscon.com</a> <a href="#">support@wiscon.com</a>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--End Contact Info-->
+	
 
 		<!-- Main Footer-->
 		<footer class="main-footer"
