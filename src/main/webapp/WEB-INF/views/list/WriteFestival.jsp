@@ -45,7 +45,6 @@
 	.longbar{
 			width: 300px;	
 	}
-	
 	.pre1{
 		width: 370px;
 		height: auto;
@@ -71,12 +70,64 @@
     	margin-right: 1%;
 
 	}
-
-	.uploadButton {
-
-	  }
-
-
+	.filebox {
+	padding-bottom: 5%;
+	}
+	.filebox label { 
+	position: absolute; 
+	display: inline-block; 
+	padding: .5em .75em; 
+	color: white; 
+	font-size: inherit; 
+	line-height: normal; 
+	vertical-align: middle; 
+	background-color: #fa334f; 
+	cursor: pointer; 
+	border: 1px solid #ebebeb; 
+	border-bottom-color: #e2e2e2; 
+	border-radius: .25em; 
+	} 
+	.filebox input[type="file"] {
+	position: absolute; 
+	width: 1px; 
+	height: 1px; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+	}
+	.filebox input[type="button"] {
+	margin-left: 35%;
+    display: inline-block;
+    padding: .5em .75em;
+    color: black;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #DDDDDD;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+	}
+	.table_text {
+	margin-top: 2.5%;
+	}
+	.table_text p {
+	margin-bottom: 0;
+    position: absolute;
+    display: contents;
+	}
+	.table_text input[type="date"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	} *
+	.table_text input[type="text"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -88,7 +139,7 @@ $(function() {
 var sharp = "";
 var idx = 0;
 
-function checkValue() {
+	function checkValue() {
 	
 	var title = document.getElementById("title");
 	var startEvent = document.getElementById("startEvent");
@@ -96,8 +147,6 @@ function checkValue() {
 	var adress = document.getElementById("adress");
 	var country = document.getElementById("country");
 	var surround_place = document.getElementById("surround_place");
-	
-	
 	
 	if (title.value == '' || title.value.length == 0) {
 		alert('タイトルを入力してください。');
@@ -317,42 +366,6 @@ function writeFestival() {
             </div>
         </div>
     </div>
-    <!--End Header Upper-->
-    
-    <!--Sticky Header-->
-    <div class="sticky-header stricky">
-        <div class="container clearfix">
-            <!--Logo-->
-            <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
-            </div>
-            
-            <!--Right Col-->
-            <div class="right-col float-right">
-                <!-- Main Menu -->
-                <nav class="main-menu navbar-expand-md">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
-									<ul>
-										<li><a href="#">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
    <!--End Header Upper-->
 
 			<!--Sticky Header-->
@@ -433,26 +446,36 @@ function writeFestival() {
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%;">
                         <h6>祭りの写真</h6>
                     </div> 
                     
-           <div id="preview"></div>
+           			<div id="preview"></div>
            			<div class="uploadButton">
                 	<i class="fa fa-paperclip"></i> ファイル添付
+                	<div class="filebox">
+                	<label for="uploadFileName">ファイル選択</label>
                 	<input type="file" class="uploadButton" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" class="uploadButton" onclick="delete1()" value="1番目の写真を消す">
-                     
+					</div>
+                    
                     <div id="preview2"></div>
 			 		<i class="fa fa-paperclip"></i> ファイル添付
+			 		<div class="filebox">
+			 		<label for="uploadFileName2">ファイル選択</label>
 					<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" onclick="delete2()" value="2番目の写真を消す">	
+                    </div>
                     
                     <div id="preview3"></div>	
-					<i class="fa fa-paperclip"></i> ファイル添付	
+					<i class="fa fa-paperclip"></i> ファイル添付
+					<div class="filebox">
+			 		<label for="uploadFileName3">ファイル選択</label>
 					<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 					<input type="button" onclick="delete3()" value="3番目の写真を消す">
                		</div>
+               		</div>
+               		
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
@@ -470,7 +493,7 @@ function writeFestival() {
 	 					<table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="writeFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
+		                <td><button type="button" class="btn btn-primary" style="background-color: #fa334f; border-color: #fa334f;" onclick="writeFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
@@ -489,12 +512,12 @@ function writeFestival() {
 									<div class="wrapper">
   
 									
-									<table>	
-										<tr><td>祭りの開始日:<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日:<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
-					             	都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
-					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
+									<table class="table_text">	
+										<tr><td><p>祭りの開始日: </p><input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
+										<tr><td><p>祭りの終了日: </p><input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
+					             		<tr><td><p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
+					             		<p>都市: </p><input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
+					             		<p>住所: </p><input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
@@ -536,7 +559,11 @@ function writeFestival() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
+<<<<<<< HEAD
                     <a href="festival"><img src="resources/images/fespedia_w.png" alt=""></a>
+=======
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
+>>>>>>> dfad06570f33f3ed840c8d4212aedeb4e95fd781
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -580,7 +607,10 @@ function writeFestival() {
 
 
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> dfad06570f33f3ed840c8d4212aedeb4e95fd781
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

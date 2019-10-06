@@ -29,9 +29,12 @@
         height: 500px;
         width: 770px;
       }
-      
+      .info_ {
+      	position: absolute;
+      	padding-left: 5%;
+      }
       .buttonS{
-        background-color: #3c8dbc;
+		background-color: #3c8dbc;
     	border-color: #367fa9;
     	margin-right: 5px;
     	display: white;
@@ -51,7 +54,6 @@
 	    user-select: none;
 	    color: white;
       }
-      
         .buttonD{
         background-color: red;
     	border-color: red;
@@ -73,11 +75,9 @@
 	    user-select: none;
 	    color: white;
       }
-      
       .tableSecond{
-
 	  padding: 45px 40px;
-	  margin-top: 25px;
+	  margin-top: 55px;
 	  margin-bottom: 30px;
 	  text-align: center;
 	  background: #ffffff;
@@ -87,13 +87,19 @@
       
       
       }
- 
+      .redColor{
+      		color: 
+      }
+      .comments {
+      	padding-left: 4%;
+ 	    padding-right: 4%;
+    	padding-bottom: 3%;
+      }
     .pre1{
 		width: 370px;
 		height: auto;
 	}
-      
-    </style>
+	</style>
     <script src="js/jquery.js"></script>
  <script>
  
@@ -415,7 +421,7 @@
                     <div class="image-box">
 
                          <div class="event-details">
-                         	<div>
+                         	<div class="info_">
                          <h1><b>祭りの詳細情報</b></h1>
 
 
@@ -468,8 +474,10 @@
         </div>                
     </div>
 </section>
+<br>
+
 <!--End Schedule Details-->
-<section>
+<section class="comments">
 	<div class="blog-left-title">
                     <h6>Comments ${replycount}</h6>
                 </div>
@@ -481,17 +489,18 @@
 				<td rowspan="1">
 				 <div class="blog-comment-area">
                     <div class="image-box">
-                        <figure>
 							<c:if test="${replylist.originalFileName == null}">
-								<img src="images/userimage/login_icon.png" alt="">
+								<img src="images/userimage/user_icon.png" alt="">
 							</c:if>
 							<c:if test="${replylist.originalFileName != null}">
                              <img src="images/userimage/${replylist.originalFileName}" alt="">
 							</c:if>
-							${replylist.userid}
-                        </figure>
+                    </div>
                     </div>
 				</td>
+				<td rowspan="1">
+       		    &nbsp   &nbsp ${replylist.userid}
+       		    </td>
 				<td rowspan="1">
 				&nbsp	&nbsp ${replylist.replytext}
 				</td>
@@ -507,14 +516,8 @@
 		</tr>
 		</c:forEach>
 	</table>
-                        <div class="link-btn" id="updatebtn">
-                            <a href="#" ><i class="fas fa-reply"></i>Replay</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-left-title">
-                    <h6>Post Comments</h6>
-                </div>
+	</section>
+                       
                 <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywriteBoard" method="post">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -535,10 +538,7 @@
                         </div>
                     </div>
                 </form>
-                <div>
 </div>
-
-</section>
 
 
 

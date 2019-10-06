@@ -21,6 +21,7 @@ public class AdminListVO {
 	private Date endEvent;
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
+	private String hashtag;
 	private String datacheck;
 	private String hashtag;
 }
