@@ -91,9 +91,7 @@
       
       
       }
-      .redColor{
-            color: 
-      }
+  
       .comments {
          padding-left: 4%;
         padding-right: 4%;
