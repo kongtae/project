@@ -63,6 +63,7 @@
   border: 0;
   display: inline-block;
   padding: 10px 32px;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #6c757d;
 }
