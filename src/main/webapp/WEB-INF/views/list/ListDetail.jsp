@@ -756,7 +756,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("住所が正しくではありません。");
+            alert("住所が正しく入力してください。");
           }
         });
       }
