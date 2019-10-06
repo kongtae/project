@@ -31,10 +31,12 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <link rel="icon" href="images/f.png" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 </head>
 <style>
 .title-text h3 {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'M PLUS 1p', sans-serif;
 }
 .title-text ul {
 	font-family: 'Robtoto', sans-serif;
