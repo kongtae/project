@@ -396,7 +396,7 @@ $(function() {
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -423,7 +423,7 @@ $(function() {
             <ul>
                 <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Schedule</li>
+                <li><a href="map">Map</a></li>
             </ul>
         </div>                
     </div>
