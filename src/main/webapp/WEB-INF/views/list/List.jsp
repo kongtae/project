@@ -29,6 +29,7 @@
     <link rel="icon" href="images/f.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    
 <style>
 .infoboxes article {
    color: #191919;

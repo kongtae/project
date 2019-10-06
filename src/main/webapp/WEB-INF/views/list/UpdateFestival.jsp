@@ -4,12 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 
 <style>
@@ -24,10 +25,30 @@
 	    -webkit-text-stroke-width: thick;
 	}
 	#hashtag1{
-		width: 92%;
+		width: 91.8%;
     	display: inline;
     	margin-bottom: 2%;
     	margin-right: 1%;
+	}
+	.table_text {
+	margin-top: 2.5%;
+	}
+	.table_text p {
+	margin-bottom: 0;
+    position: absolute;
+    display: contents;
+	}
+	.table_text input[type="date"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	} *
+	.table_text input[type="text"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 16.5px;
+    color: #495057;
 	}
 </style>
 <!-- Custom script -->
@@ -469,7 +490,7 @@
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%;">
                         <h6>祭りの写真</h6>
                     </div> 
 			  
@@ -516,7 +537,7 @@
 		              <table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>修正</button>
+		                <td><button type="button" class="btn btn-primary" style="background-color: #fa334f; border-color: #fa334f;" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>修正</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
@@ -533,12 +554,12 @@
 								    <div class="form-group">
 					                     <textarea name="festival_intro" id="festival_intro" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.festival_intro}</textarea> 
 									
-									<table>	
-										<tr><td>祭りがは祭りの開始日：<input type="date" name="startEvent" value="${vo.startEvent }" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日：<input type="date" name="endEvent" value="${vo.endEvent }" id="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>
-					             	都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place" value="${vo.surround_place}"><br> 
-					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。" value="${vo.adress}">
+									<table class="table_text">	
+										<tr><td><p>祭りがは祭りの開始日： </p><input type="date" name="startEvent" value="${vo.startEvent }" id="startEvent">から</td></tr>
+										<tr><td><p>祭りの終了日： </p><input type="date" name="endEvent" value="${vo.endEvent }" id="endEvent">まで行います。</td></tr>
+					             		<tr><td><p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>
+					             		<p>都市: </p><input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place" value="${vo.surround_place}"><br> 
+					             		<p>住所: </p><input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。" value="${vo.adress}">
 										<input type="hidden" name="mainBoardNum" value="${vo.mainBoardNum }"></td></tr>
 					             	</table> 
 					              </div>

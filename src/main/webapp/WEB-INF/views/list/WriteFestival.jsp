@@ -41,6 +41,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon">
     <link rel="icon" href="resources/images/favicon.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 	.longbar{
 			width: 300px;	
@@ -78,7 +80,8 @@
 	display: inline-block; 
 	padding: .5em .75em; 
 	color: white; 
-	font-size: inherit; 
+	font-family: 'M PLUS 1p', sans-serif;
+	font-size: 16.5px;
 	line-height: normal; 
 	vertical-align: middle; 
 	background-color: #fa334f; 
@@ -102,7 +105,8 @@
     display: inline-block;
     padding: .5em .75em;
     color: black;
-    font-size: inherit;
+    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 16.5px;
     line-height: normal;
     vertical-align: middle;
     background-color: #DDDDDD;
@@ -126,6 +130,8 @@
 	.table_text input[type="text"] {
 	border-radius: 0.25rem;
     border: 1.5px solid #ebebeb;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 16.5px;
     color: #495057;
 	}
 </style>
