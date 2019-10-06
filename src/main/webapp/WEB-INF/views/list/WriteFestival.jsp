@@ -110,6 +110,24 @@
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
 	}
+	.table_text {
+	margin-top: 2.5%;
+	}
+	.table_text p {
+	margin-bottom: 0;
+    position: absolute;
+    display: contents;
+	}
+	.table_text input[type="date"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	} *
+	.table_text input[type="text"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -348,7 +366,6 @@ function writeFestival() {
             </div>
         </div>
     </div>
-
    <!--End Header Upper-->
 
 			<!--Sticky Header-->
@@ -495,12 +512,12 @@ function writeFestival() {
 									<div class="wrapper">
   
 									
-									<table>	
-										<tr><td>祭りの開始日:<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日:<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
-					             	都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
-					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
+									<table class="table_text">	
+										<tr><td><p>祭りの開始日: </p><input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
+										<tr><td><p>祭りの終了日: </p><input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
+					             		<tr><td><p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
+					             		<p>都市: </p><input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
+					             		<p>住所: </p><input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
@@ -586,10 +603,6 @@ function writeFestival() {
 
 
 </div>
-
-
-
-
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
