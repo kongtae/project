@@ -35,7 +35,7 @@ public class MapDAO {
 		return mapper.selectCountry();
 	}
 
-	public ArrayList<MapVO> selectMap() {
+	public ArrayList<ListVO> selectMap() {
 		MapMapper mapper = sqlSession.getMapper(MapMapper.class);
 		return mapper.selectMap();
 	}

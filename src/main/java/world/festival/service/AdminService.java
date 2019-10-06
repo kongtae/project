@@ -29,8 +29,8 @@ public class AdminService {
 
 
 	public boolean AdminwriteFestival(AdminListVO adminvo, MultipartHttpServletRequest request) {
-//		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
-		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+	//	String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
 		File dir = new File(path);
 		if(!dir.isDirectory()){
 			dir.mkdir();
@@ -74,8 +74,8 @@ public class AdminService {
 	}
 
 	public boolean AdminBoardWrite(AdminBoardVO adminvo, MultipartHttpServletRequest request) {
-//		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
-		String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
+		String path = "C:/Users/kita/Desktop/conduct/gitfolder/gitworkspace/project/src/main/webapp/resources/images/userimage/";
+	//	String path = "C:/Users/김성민/git/project/src/main/webapp/resources/images/userimage/";
 		File dir = new File(path);
 		if(!dir.isDirectory()){
 			dir.mkdir();
@@ -183,6 +183,11 @@ public class AdminService {
 	public BoardVO RecoveryReadBul(BoardVO vo) {
 		BoardVO listvo = admindao.RecoveryReadBul(vo);
 		return listvo;
+	}
+
+	public void AdminDeleteBul(BoardVO vo1) {
+		admindao.AdminDeleteBul(vo1);
+		
 	}
 
 

@@ -54,5 +54,7 @@ public interface AdminMapper {
 	public BoardVO RecoveryReadBul(BoardVO vo);
 
 	public void AdminwriteBoard(AdminBoardVO adminvo1);
+
+	public void AdminDeleteBul(BoardVO vo1);
 	
 }

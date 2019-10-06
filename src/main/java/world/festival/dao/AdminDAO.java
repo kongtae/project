@@ -130,5 +130,10 @@ public class AdminDAO {
 		
 	}
 
+	public void AdminDeleteBul(BoardVO vo1) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		mapper.AdminDeleteBul(vo1);
+	}
+
 
 }

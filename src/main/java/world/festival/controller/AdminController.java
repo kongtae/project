@@ -32,21 +32,19 @@ import world.festival.service.ListService;
  */
 @Controller
 public class AdminController {
+	
 	@Autowired
 	private ListService listserivce;
-	
 	@Autowired
 	private BoardService boardserivce;
-	
 	@Autowired
 	private ListDAO listdao;
-	
 	@Autowired
 	private AdminService adminservice;
 	@Autowired
 	private AdminDAO admindao;
 	
-	//어드민 페이지!
+	//�뼱�뱶誘� �럹�씠吏�!
 		@RequestMapping(value = "/adminListPage", method = {RequestMethod.GET, RequestMethod.POST})
 		public String adminPage(HttpSession session, Model model) {
 	
@@ -58,14 +56,14 @@ public class AdminController {
 			String adminid=(String)session.getAttribute("adminid");
 			System.out.println(adminid);
 			ArrayList<AdminListVO> adminlistvo = adminservice.selectListAll();
-			System.out.println("축제 게시판 추가 수정 삭제 내용을 보여주는 친구 " +adminlistvo);
+			System.out.println("異뺤젣 寃뚯떆�뙋 異붽� �닔�젙 �궘�젣 �궡�슜�쓣 蹂댁뿬二쇰뒗 移쒓뎄 " +adminlistvo);
 			model.addAttribute("adminlistvo", adminlistvo); 
 			
 	
 			return adminlistvo;
 		}
 		
-//		/어드민 페이지!
+//		/�뼱�뱶誘� �럹�씠吏�!
 		@RequestMapping(value = "/adminBulPage", method = {RequestMethod.GET, RequestMethod.POST})
 		public String adminBulPage(HttpSession session, Model model) {
 	
@@ -79,12 +77,12 @@ public class AdminController {
 			System.out.println(adminid);
 			ArrayList<AdminBoardVO> adminbulvo = adminservice.selectBulAll();
 			model.addAttribute("adminbulvo", adminbulvo); 
-			System.out.println("축제 게시판 추가 수정 삭제 내용을 보여주는 친구 " +adminbulvo);
+			System.out.println("異뺤젣 寃뚯떆�뙋 異붽� �닔�젙 �궘�젣 �궡�슜�쓣 蹂댁뿬二쇰뒗 移쒓뎄 " +adminbulvo);
 	
 			return adminbulvo;
 		}
 		
-		//bulpage 검색 요청
+		//bulpage 寃��깋 �슂泥�
 		@RequestMapping(value = "/AdminBoardSelectOne", method = {RequestMethod.GET, RequestMethod.POST})
 		public @ResponseBody ArrayList<AdminBoardVO> AdminBoardSelectOne(Model model,
 				@RequestParam(value="searchItem",defaultValue="title")String searchItem,
@@ -93,18 +91,18 @@ public class AdminController {
 			System.out.println("keyword "+searchKeyword);
 			ArrayList<AdminBoardVO> BoardSelectOne1 = new ArrayList<AdminBoardVO>();
 			if(searchItem.equals("inputdate")){
-			System.out.println("if문안으로 들어오나?");
+			System.out.println("if臾몄븞�쑝濡� �뱾�뼱�삤�굹?");
 			BoardSelectOne1 = adminservice.AdminBoardSelectOne1(searchItem,searchKeyword);	
-			System.out.println("BoardSelectOne리스트 출력111"+BoardSelectOne1);
+			System.out.println("BoardSelectOne由ъ뒪�듃 異쒕젰111"+BoardSelectOne1);
 			return BoardSelectOne1;
 			}
 			ArrayList<AdminBoardVO> BoardSelectOne2 = adminservice.AdminBoardSelectOne2(searchItem,searchKeyword);
 			model.addAttribute("searchItem",searchItem);
 			model.addAttribute("searchKeyword",searchKeyword);
-			System.out.println("BoardSelectOne리스트 출력222"+BoardSelectOne2);
+			System.out.println("BoardSelectOne由ъ뒪�듃 異쒕젰222"+BoardSelectOne2);
 			return BoardSelectOne2;
 			}
-		//adminList 검색 요청
+		//adminList 寃��깋 �슂泥�
 		
 		@RequestMapping(value = "/AdminListSelectOne", method = {RequestMethod.GET, RequestMethod.POST})
 		public @ResponseBody ArrayList<AdminListVO> AdminListSelectOne(String endEvent,Model model,
@@ -115,24 +113,24 @@ public class AdminController {
 			System.out.println("end "+endEvent);
 			ArrayList<AdminListVO> selectOne1 = new ArrayList<AdminListVO>();
 			if(searchItem.equals("startEvent")){
-			System.out.println("if문안으로 들어오나?");
+			System.out.println("if臾몄븞�쑝濡� �뱾�뼱�삤�굹?");
 			selectOne1 = adminservice.AdminListSelectOne1(endEvent,searchItem,searchKeyword);	
-			System.out.println("리스트 출력111"+selectOne1);
+			System.out.println("由ъ뒪�듃 異쒕젰111"+selectOne1);
 			return selectOne1;
 			}
 			ArrayList<AdminListVO> selectOne2 = adminservice.AdminListSelectOne2(searchItem,searchKeyword);
 			model.addAttribute("searchItem",searchItem);
 			model.addAttribute("searchKeyword",searchKeyword);
-			System.out.println("리스트 출력222"+selectOne2);
+			System.out.println("由ъ뒪�듃 異쒕젰222"+selectOne2);
 			return selectOne2;
 			}
 		
-		//어드민 보드(자유게시판) 디테일
+		//�뼱�뱶誘� 蹂대뱶(�옄�쑀寃뚯떆�뙋) �뵒�뀒�씪
 		@RequestMapping(value = "/AdminBoardDetailGO", method = {RequestMethod.GET, RequestMethod.POST})
 		public String AdminBoardDetailGO(AdminBoardVO vo1 , ReplyVO vo,Model model,HttpSession hs) {
 			AdminBoardVO vo2 = admindao.readAdminBoard(vo1);
 			model.addAttribute("vo", vo2);
-			System.out.println("보드디테일단의 BoardVO 의 값 :" + vo2);
+			System.out.println("蹂대뱶�뵒�뀒�씪�떒�쓽 BoardVO �쓽 媛� :" + vo2);
 
 			return "admin/adminBoardDetail";
 		}
@@ -143,7 +141,7 @@ public class AdminController {
 		public String AdminlistDetailGO(AdminListVO vo1,Model model, HttpSession hs,RedirectAttributes rttr) {
 			AdminListVO vo2 = admindao.readAdminList(vo1);
 			model.addAttribute("vo", vo2);
-			System.out.println("보드디테일단의 BoardVO 의 값 :" + vo2);
+			System.out.println("蹂대뱶�뵒�뀒�씪�떒�쓽 BoardVO �쓽 媛� :" + vo2);
 
 				
 			return "admin/adminListDetail";
@@ -183,13 +181,12 @@ public class AdminController {
 		}
 		
 		
-//		ListRecovery
 		@RequestMapping(value = "/BulRecovery", method = {RequestMethod.GET, RequestMethod.POST})
 		@ResponseBody
 		public String BulRecovery(BoardVO vo, AdminBoardVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
 			BoardVO vo1 = adminservice.RecoveryReadBul(vo);
 			AdminBoardVO adminvo1 = admindao.readAdminBoard(adminvo);
-			System.out.println("불 vo"+vo);
+			System.out.println("遺� vo"+vo);
 			if(adminvo.getDatacheck().equals("buldelete"))
 			{
 				boardserivce.RewriteBoard(vo1);
@@ -208,5 +205,13 @@ public class AdminController {
 			return "board/BoardList";
 		}
 		
-//		AdminDeleteBul
+		@RequestMapping(value = "/AdminDeleteBul", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String AdminDeleteBul(BoardVO vo, AdminBoardVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
+//			ListVO vo1 = adminservice.RecoveryRead(vo);
+			BoardVO vo1 = adminservice.RecoveryReadBul(vo);
+			adminservice.AdminDeleteBul(vo1);
+			return "board/BoardList";
+		}
+		
 }

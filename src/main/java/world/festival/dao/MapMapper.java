@@ -14,6 +14,6 @@ public interface MapMapper {
 
 	public ArrayList<CountryNameVO> selectCountry();
 
-	public ArrayList<MapVO> selectMap();
+	public ArrayList<ListVO> selectMap();
 	
 }

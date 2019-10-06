@@ -31,12 +31,19 @@
 	background: #191919;
 }
 </style>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+$(function () {
+    $('#home1').on('click', function(){
+    	location.href = "festival";
+    });
+    $('#home2').on('click', function(){
+    	location.href = "festival";
+    });
+ });
+</script>
 </head>
-
 <body>
-
-
-
 	<div class="boxed_wrapper">
 
 		<!--Start Preloader -->
@@ -119,7 +126,7 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="">Home</a></li>
+										<li class="dropdown" id="home1"><a href="">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -177,7 +184,7 @@
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown" id="home2"><a href="">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -264,7 +271,7 @@
 		<section class="footer-bottom">
 			<div class="container">
 				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
 					Reserved
 				</div>
 			</div>

@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA</title>
     
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,6 +101,12 @@ $(function() {
 			page = 0;
 			setPage();		
 	})
+	$('#home1').on('click', function(){
+    	location.href = "festival";
+    });
+    $('#home2').on('click', function(){
+    	location.href = "festival";
+    });
 })
 		
 	 function printAll() {
@@ -402,7 +408,7 @@ $(function() {
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
+                    <div class="logo" id="home1"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -472,7 +478,7 @@ $(function() {
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home2"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -578,7 +584,7 @@ $(function() {
 </section>
 <!--End Schedule Section-->
 
-<!-- Main Footer-->
+		<!-- Main Footer-->
 		<footer class="main-footer"
 			>
 			<div class="container">
@@ -618,7 +624,7 @@ $(function() {
 		<section class="footer-bottom">
 			<div class="container">
 				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
 					Reserved
 				</div>
 			</div>
@@ -629,9 +635,6 @@ $(function() {
 		<div class="scroll-to-top scroll-to-target" data-target="html">
 			<span class="fa fa-angle-up"></span>
 		</div>
-
-
-
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.fancybox.js"></script>

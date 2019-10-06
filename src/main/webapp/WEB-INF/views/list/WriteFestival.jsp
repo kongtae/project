@@ -27,7 +27,7 @@
 <!-- Custom script -->
 <script src="resources/js/custom.js"></script>
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -134,12 +134,18 @@
 
 $(function() {
 	$('#hashtagPlus').on('click', hashtag2);
+	$('#home1').on('click', function(){
+    	location.href = "festival";
+    });
+    $('#home2').on('click', function(){
+    	location.href = "festival";
+    });
 });
 
 var sharp = "";
 var idx = 0;
 
-function checkValue() {
+	function checkValue() {
 	
 	var title = document.getElementById("title");
 	var startEvent = document.getElementById("startEvent");
@@ -147,6 +153,7 @@ function checkValue() {
 	var adress = document.getElementById("adress");
 	var country = document.getElementById("country");
 	var surround_place = document.getElementById("surround_place");
+
 	
 	
 	
@@ -336,7 +343,7 @@ function writeFestival() {
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home1"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -369,42 +376,46 @@ function writeFestival() {
         </div>
     </div>
     <!--End Header Upper-->
-    
-    <!--Sticky Header-->
-    <div class="sticky-header stricky">
-        <div class="container clearfix">
-            <!--Logo-->
-            <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
-            </div>
-            
-            <!--Right Col-->
-            <div class="right-col float-right">
-                <!-- Main Menu -->
-                <nav class="main-menu navbar-expand-md">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
-									<ul>
-										<li><a href="#">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
-									<ul>
+
+			<!--Sticky Header-->
+			<div class="sticky-header stricky">
+				<div class="container clearfix">
+					<!--Logo-->
+					<div class="logo float-left">
+						<a href="" class="img-responsive"><img
+							src="images/fespedia.png" alt="" title=""></a>
+					</div>
+
+					<!--Right Col-->
+					<div class="right-col float-right">
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent1"
+								aria-controls="navbarSupportedContent1" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+
+							<div class="navbar-collapse collapse clearfix"
+								id="navbarSupportedContent1">
+								<ul class="navigation clearfix">
+									<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown"><a href="#">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
 										<li><a href="boardList">Board</a></li>
 									</ul></li>
 								</ul>
@@ -549,68 +560,58 @@ function writeFestival() {
 
 <!--Contact Info-->
 
-
-<!-- Main Footer-->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-area text-center">
-            <div class="footer-logo">
-                <figure>
-                    <a href="festival"><img src="resources/images/logo-2.png" alt=""></a>
-                </figure>
-            </div>
+		<!-- Main Footer-->
+		<footer class="main-footer"
+			>
+			<div class="container">
+				<div class="footer-area text-center">
+					<div class="footer-logo">
+						<figure>
+						<c:if test="${sessionScope.adminid != null}">
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						</figure>
+					</div>
             <ul class="footer-menu">
-                <li><a href="festival">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
                 <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
-            <ul class="social-links">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-        </div>            
-    </div>
-</footer>
-<!--End Main Footer-->
+					<ul class="social-links">
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<!--End Main Footer-->
 
+		<!--Footer Bottom Section-->
+		<section class="footer-bottom">
+			<div class="container">
+				<div class="copyright-text text-center">
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
+					Reserved
+				</div>
+			</div>
+		</section>
+		<!--End Footer Bottom Section-->
 
-<!--Footer Bottom Section-->
-<section class="footer-bottom">
-    <div class="container">
-        <div class="copyright-text text-center">
-            Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
-        </div>
-    </div>
-</section>
-<!--End Footer Bottom Section-->
-
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
-
-
-
-
-</div>
-
-
-<script>
-  $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace('editor1')
-    //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
-  })
-</script>
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-angle-up"></span>
+		</div>
+	</div>
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');
