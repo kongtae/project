@@ -121,7 +121,7 @@ $(function() {
 var sharp = "";
 var idx = 0;
 
-function checkValue() {
+	function checkValue() {
 	
 	var title = document.getElementById("title");
 	var startEvent = document.getElementById("startEvent");
