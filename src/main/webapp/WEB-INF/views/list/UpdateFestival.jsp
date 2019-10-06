@@ -517,7 +517,7 @@
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
 		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>修正</button>
-		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                <button type="reset" class="btn btn-default" id="reset"><i class="fa fa-ｓtimes"></i>取消</button>
 		                </td>
 						</tr>					              
 		              </table>
@@ -742,8 +742,6 @@
  	 	 $('#preview0').empty();
  	 	 $('#preview1').empty();
  	 	 $('#preview2').empty();
- 	 	 $('#hashtag1').empty();
- 	 	 $('#hash').empty();
 	 });
 </script>
 </html>

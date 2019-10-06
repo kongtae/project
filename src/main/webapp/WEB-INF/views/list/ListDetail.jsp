@@ -536,7 +536,7 @@
                             </div>
                              
                                <div align="right">
-                               <input type="button" id ="class="buttonS" value="修正" onclick="UpdateFestival()">
+                               <input type="button" class="buttonS" value="修正" onclick="UpdateFestival()">
                                <input type="button" class="buttonD" value="削除" onclick="DeleteFestival()">
                      </div>
                      <br>
