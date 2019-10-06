@@ -226,6 +226,58 @@
 		</div>
 		<!--End Header Upper-->
 		
+		<!--Sticky Header-->
+			<div class="sticky-header stricky">
+				<div class="container clearfix">
+					<!--Logo-->
+					<div class="logo float-left" style="width: 179px; height: 80px; background: white;" >
+						<a href="" class="img-responsive"><img
+							src="images/fespedia.png" alt="" title=""></a>
+					</div>
+
+					<!--Right Col-->
+					<div class="right-col float-right">
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent1"
+								aria-controls="navbarSupportedContent1" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+
+							<div class="navbar-collapse collapse clearfix"
+								id="navbarSupportedContent1">
+								<ul class="navigation clearfix">
+									<li class="dropdown"><a href="fastival">HOME</a></li>
+									<li class="dropdown"><a href="listForm">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="calendar">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="map">Map</a>
+										<ul>
+										<li><a href="map">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+										<li><a href="boardList">Board</a></li>
+									</ul></li>
+								</ul>
+							</div>
+						</nav>
+						<!-- Main Menu End-->
+					</div>
+
+				</div>
+			</div>
+			<!--End Sticky Header-->
+		
+		
 	</header>
 	<!--End Main Header -->
 	
@@ -303,7 +355,7 @@
 		<span class="fa fa-angle-up"></span>
 	</div>
 
-<!-- 	<script src="js/jquery.js"></script> -->
+	<script src="js/jquery.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.fancybox.js"></script>
@@ -333,20 +385,19 @@
 
 
 	<!-- jQuery 3 -->
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- 	<script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 	<!-- Bootstrap 3.3.7 -->
-	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
 	<!-- jQuery UI 1.11.4 -->
-	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- 	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script> -->
 	<!-- Slimscroll -->
-	<script
-		src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- 	<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script> -->
 	<!-- FastClick -->
-	<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- 	<script src="bower_components/fastclick/lib/fastclick.js"></script> -->
 	<!-- AdminLTE App -->
-	<script src="dist/js/adminlte.min.js"></script>
+<!-- 	<script src="dist/js/adminlte.min.js"></script> -->
 	<!-- AdminLTE for demo purposes -->
-	<script src="dist/js/demo.js"></script>
+<!-- 	<script src="dist/js/demo.js"></script> -->
 	<!-- fullCalendar -->
 	<script src="bower_components/moment/moment.js"></script>
 	<script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>

@@ -92,6 +92,10 @@
 	  font-size: 15px;
 	  text-align: center;
       }
+      .f_place {
+      color: #848484;
+      padding-left: 5%;
+      }
       .comments {
       	padding-left: 4%;
  	    padding-right: 4%;
@@ -562,7 +566,7 @@
                         </div>
                   </div>
                     <div class="event-details">
-                        <h5><b>${vo.country}・${vo.surround_place}の名所</b></h5>
+                        <h5><b class="f_place">${vo.country}・${vo.surround_place}の名所</b></h5>
                         <div class="tableSecond">
                             <table class="table table-hover">
                                 <thead>
@@ -658,15 +662,13 @@
 </div>
 
 
-
-
 <!-- Main Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -690,7 +692,6 @@
 </footer>
 <!--End Main Footer-->
 
-</section>
 
 <!--Footer Bottom Section-->
 <section class="footer-bottom">
