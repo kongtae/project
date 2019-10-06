@@ -368,7 +368,7 @@ INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURR
 MAINBOARD_SEQ.nextval, 'チャイナジョイ' , '中国' , '中国上海新国際博覧センター ' , 'チャイナジョイ(ChinaJoy)は、中国上海の大規模展示場である上海新国際博覧会で毎年開かれるゲーム展示会(ゲームショー)をいう。' ,'上海', sysdate , ' 2019-08-02' , '2019-08-05' , 'https://dbscthumb-phinf.pstatic.net/2868_000_1/20140107163243008_JUT7SM8NL.jpg/ff13_1_6_i1.jpg?type=w492_fst&wm=N' , '#アジア, #ゲーム,');
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
-MAINBOARD_SEQ.nextval, '上海モーターショー' , '中国' , '中国上海新国際博覧会センター。' , '1985年から開始した上海モーターショーは、浦東近くで2年ごとに開催される。 北京モーターショーとともに中国の二大モーターショーだ。' , '上海' ,  sysdate , '2019-04-18' , '2019-04-25' , 'https://joonnoh.files.wordpress.com/2019/04/image-2.png,' , '#アジア,#モーターショー,');
+MAINBOARD_SEQ.nextval, '上海モーターショー' , '中国' , '中国上海新国際博覧会センター' , '1985年から開始した上海モーターショーは、浦東近くで2年ごとに開催される。 北京モーターショーとともに中国の二大モーターショーだ。' , '上海' ,  sysdate , '2019-04-18' , '2019-04-25' , 'https://joonnoh.files.wordpress.com/2019/04/image-2.png,' , '#アジア,#モーターショー,');
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, 'ラマダン' , 'サウジアラビア' , 'サウジアラビア以外のイスラム国家' , 'アラビア語で「暑い月」を意味する。 天使ガブリエル(Gabriel)はムハンマドに《コーラン》を教えた神聖な月と考えて、イスラム教徒はこの期間、日の出から日没まで義務的に断食して、毎日5回の祈祷を捧げる。 旅行者、病人、妊婦などは免除されるが、その代わりその後別に数日間断食しなければならない。' , 'リヤド' ,  sysdate , '2020-04-23' , '2020-05-23' , 'https://dbscthumb-phinf.pstatic.net/2765_000_34/20180930204502552_9FBXULHDY.jpg/281513.jpg?type=m250&wm=N,' , '#アジア,#宗教');
