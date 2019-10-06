@@ -386,15 +386,24 @@ function writeBoard() {
             <table class="buttonL">
 			<tr>	              	
              <td align="left"><h1>投稿欄</h1></td>
+
             <td> <button type="button" class="btn btn-primary" style="background-color: #fa334f; border-color: #fa334f;" onclick="writeBoard()"><i class="fa fa-envelope-o"></i> 投稿</button>
               <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
-             </td>
              </tr>
             </table>  
-					              	<br>
-					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
-					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" >
-					              </div>
+				<br>
+				<c:if test="${sessionScope.loginid!=null }">
+					<input type="text" name="userid" class="form-control" value="${sessionScope.loginid}" disabled="disabled">
+					<input type="text" id="title" name="title" class="form-control" placeholder="タイトル" >
+				</c:if>
+				<c:if test="${sessionScope.adminid!=null }">
+					<input type="text" name="userid" class="form-control" value="${sessionScope.adminid}" disabled="disabled">
+					<input type="text" id="title" name="title" class="form-control" placeholder="タイトル" >
+				</c:if>
+			 </div>
+					              
+					              
+					              
 					              <div class="form-group">
 					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
 									<table class="table_text">	

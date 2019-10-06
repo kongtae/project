@@ -560,7 +560,11 @@ function writeFestival() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
+<<<<<<< HEAD
+                    <a href="festival"><img src="resources/images/fespedia_w.png" alt=""></a>
+=======
                     <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
+>>>>>>> dfad06570f33f3ed840c8d4212aedeb4e95fd781
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -604,6 +608,10 @@ function writeFestival() {
 
 
 </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> dfad06570f33f3ed840c8d4212aedeb4e95fd781
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

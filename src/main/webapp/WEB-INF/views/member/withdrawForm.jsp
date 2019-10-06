@@ -200,7 +200,7 @@
 					<ul>
 						<li><a href="/festival">home</a></li>
 						<li>/</li>
-						<li>Withdraw</li>
+						<li style="color: white;">Withdraw</li>
 					</ul>
 				</div>
 			</div>
@@ -245,7 +245,7 @@
 						</figure>
 					</div>
             <ul class="footer-menu">
-                <li><a href="">Home</a></li>
+                <li><a href="festival">Home</a></li>
                 <li><a href="listForm">List</a></li>
                 <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>

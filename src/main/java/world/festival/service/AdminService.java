@@ -185,5 +185,10 @@ public class AdminService {
 		return listvo;
 	}
 
+	public void AdminDeleteBul(BoardVO vo1) {
+		admindao.AdminDeleteBul(vo1);
+		
+	}
+
 
 }
