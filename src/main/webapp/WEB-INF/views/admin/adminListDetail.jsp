@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -94,13 +94,18 @@
     	padding-bottom: 3%;
       }
       
->>>>>>> 42317027842b3a0e7f5394475c674382185d8196
     </style>
    <script src="js/jquery.js" charset="utf-8"></script>
  <script>
  
     $(function () {
        imagePrint();
+       $('#home1').on('click', function(){
+       	location.href = "festival";
+       });
+       $('#home2').on('click', function(){
+       	location.href = "festival";
+       });
     });
     
     var originalFileName = "";
@@ -380,7 +385,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                      <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown" id="home1"><a href="/festival">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>                     
@@ -435,7 +440,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown" id="home2"><a href="/festival">Home</a></li>
                         <li class="dropdown"><a href="#">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
@@ -661,11 +666,7 @@
    
 </div>
 
-
-
-
-
-<!-- Main Footer-->
+		<!-- Main Footer-->
 		<footer class="main-footer"
 			>
 			<div class="container">
@@ -705,7 +706,7 @@
 		<section class="footer-bottom">
 			<div class="container">
 				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
 					Reserved
 				</div>
 			</div>
@@ -716,8 +717,6 @@
 		<div class="scroll-to-top scroll-to-target" data-target="html">
 			<span class="fa fa-angle-up"></span>
 		</div>
-
-
 
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

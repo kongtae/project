@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 
-<title>Search Festival</title>
+<title>FESPEDIA | Search Festival</title>
 <!-- responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -65,6 +65,12 @@ table{
 <script>
 	$(function() {
 		push_image();
+		$('#home1').on('click', function(){
+	    	location.href = "festival";
+	    });
+	    $('#home2').on('click', function(){
+	    	location.href = "festival";
+	    });
 	})
 
 	var check = 0;
@@ -362,7 +368,7 @@ table{
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="">Home</a></li>
+										<li class="dropdown" id="home1"><a href="">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -420,7 +426,7 @@ table{
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="">Home</a></li>
+									<li class="dropdown" id="home2"><a href="">Home</a></li>
 									<li class="dropdown"><a href="#">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -465,6 +471,8 @@ table{
 		</div>
 		
 		</header>
+		
+		
 		
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>

@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -98,7 +98,12 @@
  
  $(function () {
 	    imagePrint();
-	    
+	    $('#home1').on('click', function(){
+	    	location.href = "festival";
+	    });
+	    $('#home2').on('click', function(){
+	    	location.href = "festival";
+	    });
 	 });
  
 	 var originalFileName = "";
@@ -325,7 +330,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="Home">Home</a></li>
+								<li class="dropdown" id="home1"><a href="Home">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -379,7 +384,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="#">Home</a></li>
+								<li class="dropdown" id="home2"><a href="#">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -575,9 +580,7 @@
 
 </section>
 
-
-
-<!-- Main Footer-->
+		<!-- Main Footer-->
 		<footer class="main-footer"
 			>
 			<div class="container">
@@ -617,7 +620,7 @@
 		<section class="footer-bottom">
 			<div class="container">
 				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
 					Reserved
 				</div>
 			</div>
@@ -628,8 +631,6 @@
 		<div class="scroll-to-top scroll-to-target" data-target="html">
 			<span class="fa fa-angle-up"></span>
 		</div>
-
-
 
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
