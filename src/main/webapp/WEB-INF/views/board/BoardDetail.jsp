@@ -439,7 +439,13 @@
                                <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
                                <input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
                      </div>
-                     </c:if>                          
+                     </c:if>   
+                      <c:if test="${sessionScope.adminid !=null}">
+                            <div align="right">
+                               <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
+                               <input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
+                     </div>
+                     </c:if>                            
                           <div class="tableSecond">
                         <table class="table table-hover">
                            <tr>
