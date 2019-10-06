@@ -447,10 +447,7 @@ table{
 			</div>
 			<!--End Sticky Header-->
 		<!-- Page Title-->
-
 			<section class="page-title" style="background: url(resources/images/userimage/turkeyBalloon.jpg); margin-top: 6%;">
-
-
 			<div class="container">
 				<div class="title-text text-center">
 					<h3>Search Festival</h3>

@@ -11,19 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<!-- <script src="resources/js/jquery.js"></script>  -->
-<!-- <script src="resources/js/popper.min.js"></script> -->
-<!-- <script src="resources/js/bootstrap.min.js"></script> -->
-<!-- <script src="resources/js/jquery.fancybox.js"></script> -->
-<!-- <script src="resources/js/owl.js"></script> -->
-<!-- <script src="resources/js/wow.js"></script> -->
-<!-- <script src="resources/js/jquery.countTo.js"></script> -->
-<!-- <script src="resources/js/jquery.countdown.min.js"></script> -->
-<!-- <script src="resources/js/appear.js"></script> -->
-<!-- <script src="resources/js/jquery-ui.js"></script> -->
-<!-- <script src="resources/js/isotope.js"></script> -->
-<!-- <script src="resources/js/bxslider.js"></script> -->
-<!-- <script src="resources/js/validate.js"></script> -->
+
 <style>
 #hashtagPlus{
 		width: 6%;
@@ -549,11 +537,7 @@
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-<<<<<<< HEAD
-                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
-=======
                     <a href="festival"><img src="resources/images/fespedia_w.png" alt=""></a>
->>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -615,26 +599,6 @@
 
 </div>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
-<!-- jQuery 3 -->
-<script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="resources/bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="resources/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="resources/dist/js/demo.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

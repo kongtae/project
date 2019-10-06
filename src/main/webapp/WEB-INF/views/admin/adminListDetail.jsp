@@ -94,6 +94,7 @@
     	padding-bottom: 3%;
       }
       
+>>>>>>> 42317027842b3a0e7f5394475c674382185d8196
     </style>
    <script src="js/jquery.js" charset="utf-8"></script>
  <script>
