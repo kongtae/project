@@ -22,7 +22,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     <link rel="icon" href="images/f.png" type="image/x-icon">
-
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 .infoboxes article {
 	color: #191919;
@@ -65,7 +66,7 @@
 }
 #searchItem {
     border: 0;
-    font-family: 'Robtoto', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 17px;
     color: #fa334f;
     padding-top: 10%;
@@ -74,6 +75,7 @@
 #searchOne {
 	border-radius: 3%;
     background: #fa334f;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     color: white;
 }
 .inner-box {
@@ -108,7 +110,7 @@
 }
 #icontext {
     padding-top: 0.5%;
-	font-family: 'Robtoto', sans-serif;
+	font-family: 'M PLUS 1p', sans-serif;
 	font-size: 29px;
 	color: #fa334f;
 }

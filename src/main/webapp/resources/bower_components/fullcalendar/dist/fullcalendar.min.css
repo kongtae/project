@@ -723,7 +723,8 @@ a.fc-more:hover {
 	{
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
-	box-sizing: content-box
+	box-sizing: content-box;
+	font-family: 'M PLUS Rounded 1c', sans-serif
 }
 
 .fc-view, .fc-view>table {

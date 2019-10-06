@@ -22,6 +22,9 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <link rel="icon" href="images/f.png" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
 .main-footer:before {
@@ -209,7 +212,7 @@
 
 			<div class="main-slider-carousel owl-carousel owl-theme">
 
-				<div class="slide info0"></div>
+				<div class="slide info0" style="font-family: 'Sawarabi Gothic', sans-serif;"></div>
 
 				<div class="slide info1"></div>
 

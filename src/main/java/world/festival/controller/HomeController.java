@@ -25,8 +25,4 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "nullpoint", method = RequestMethod.GET)
-	public String nullpoint() {
-		throw new NullPointerException();
-	}
 }
