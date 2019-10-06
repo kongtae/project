@@ -40,7 +40,9 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/boardList"/>
+			<mapping path="/board**"/>
+			<mapping path="/Board**"/>
+			<mapping path="/admin**"/>
 			<beans:ref bean="FestivalInterceptor"/>
 		</interceptor>
 	</interceptors>

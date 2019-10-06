@@ -200,203 +200,10 @@
 	<div class="preloader"></div>
 	<!--End Preloader -->
 
-	<!-- Main Header-->
-	<header class="main-header">
-
-		<!--Header Top-->
-		<div class="header-top">
-			<div class="container">
-				<div class="clearfix"
-					style="font-size: 16px; color: #848484; line-height: 26px; font-weight: 400; font-family: 'Roboto', sans-serif;">
-					<!--Top Left-->
-					<div class="top-left">
-						<ul class="header-info-list">
-							<li><span class="icon fa fa-envelope"
-								style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Email</strong>
-								SC.IT@MASTER.COM</li>
-							<li><span class="icon fa fa-map-marker"
-								style="font-family: 'Font Awesome 5 Free'; font-weight: 900;"></span><strong>Location</strong>
-								Trade Center COEX, SEOUL 135-731 KOREA</li>
-						</ul>
-					</div>
-					<!--Top Right-->
-					<div class="top-right">
-						<!--Social Box-->
-						<ul class="social-box">
-					<c:if test="${sessionScope.loginid == null}" >
-									<c:if test="${sessionScope.adminid == null}" >
-									<li><a href="registermember">Sign Up</a></li>
-									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
-								</c:if>
-								
-								<c:if test="${sessionScope.loginid != null}">
-									<li><a href="memberPage">UserPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--Header-Upper-->
-		<div class="header-upper">
-			<div class="container">
-				<div class="clearfix">
-
-					<div class="float-left logo-box">
-						<div class="logo" style="width: 179px; height: 80px;">
-							<a href="/festival"><img src="images/fespedia.png" alt=""
-								title=""></a>
-						</div>
-					</div>
-
-					<div class="nav-outer clearfix">
-
-						<!-- Main Menu -->
-						<nav class="main-menu navbar-expand-md">
-							<div class="navbar-header">
-								<button class="navbar-toggler" type="button"
-									data-toggle="collapse" data-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent" aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-										class="icon-bar"></span>
-								</button>
-							</div>
-
-							<div class="navbar-collapse collapse clearfix"
-								id="navbarSupportedContent">
-								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="/festival">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
-										<ul>
-											<li><a href="listForm">List</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">Calendar</a>
-										<ul>
-											<li><a href="calendar">Calendar</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">Map</a>
-										<ul>
-											<li><a href="#">Map</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="boardList">Board</a>
-										<ul>
-											<li><a href="boardList">Board</a></li>
-										</ul></li>
-								</ul>
-							</div>
-
-						</nav>
-
-						<!--Button Box-->
-						<div class="button-box">
-							<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
-						</div>
-
-						<!--Search Box Outer-->
-						<div class="search-box-outer">
-							<div class="dropdown">
-								<button class="search-box-btn dropdown-toggle" type="button"
-									id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"></button>
-								<ul class="dropdown-menu pull-right search-panel"
-									aria-labelledby="dropdownMenu3">
-									<li class="panel-outer">
-										<div class="form-container">
-											<form method="post" action="blog.html">
-												<div class="form-group">
-													<input type="search" name="field-name" value=""
-														placeholder="Search Here" required>
-													<button type="submit" class="search-btn">
-														<span class="fa fa-search"></span>
-													</button>
-												</div>
-											</form>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!--End Header Upper-->
+		
 
 		<!--Sticky Header-->
-		<div class="sticky-header stricky">
-			<div class="container clearfix">
-				<!--Logo-->
-				<div class="logo float-left">
-					<a href="festival" class="img-responsive"><img
-						src="images/logo.png" alt="" title=""></a>
-				</div>
-
-				<!--Right Col-->
-				<div class="right-col float-right">
-					<!-- Main Menu -->
-					<nav class="main-menu navbar-expand-md">
-						<button class="navbar-toggler" type="button"
-							data-toggle="collapse" data-target="#navbarSupportedContent1"
-							aria-controls="navbarSupportedContent1" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-
-						<div class="navbar-collapse collapse clearfix"
-							id="navbarSupportedContent1">
-							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="#">Home</a>
-									<ul>
-										<li><a href="festival">Home Page 01</a></li>
-										<li><a href="index-2.html">Home Page 02</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">About</a>
-									<ul>
-										<li><a href="about-us.html">About Us</a></li>
-										<li><a href="speakers.html">Speakers</a></li>
-										<li><a href="speakers-details.html">Speaker Details</a></li>
-										<li><a href="error-page.html">Error Page</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Shedule</a>
-									<ul>
-										<li><a href="shedule.html">Shedule</a></li>
-										<li><a href="shedule-details.html">Shedule Details</a></li>
-									</ul></li>
-								<li class="current dropdown"><a href="#">Sponsors</a>
-									<ul>
-										<li><a href="sponsor.html">Sponsors</a></li>
-										<li><a href="sponsor-details.html">Sponsor Details</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="blog-single.html">Blog Details</a></li>
-									</ul></li>
-								<li><a href="contact-us.html">Contact us</a></li>
-							</ul>
-						</div>
-					</nav>
-					<!-- Main Menu End-->
-				</div>
-
-			</div>
-		</div>
-		<!--End Sticky Header-->
-
-	</header>
+		
 	<!--End Main Header -->
 
 	<div class="register-box">
@@ -415,11 +222,7 @@
 						readonly="readonly"> <span
 						class="glyphicon glyphicon-ok form-control-feedback" id="ok"></span>
 				</div>
-				<div class="form-group has-feedback">
-					<input type="text" class="form-control" name="username"
-						id="username"> <span
-						class="glyphicon glyphicon-user form-control-feedback"></span>
-				</div>
+				
 				<div class="form-group has-feedback">
 					<input type="email" class="form-control" name="email" id="email">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -442,7 +245,7 @@
 				<div>
 					<input type="file" id="imagePreview" name="uploadFileName" value="사진첨부"
 						accept="image/png,image/jpg,image/gif,image/jpeg"> 
-						<img id="image" src="images/guest.png">
+						<img id="image" src="images/userimage/ico_login.png">
 				</div>
 
 				<div class="row">
@@ -461,105 +264,8 @@
 	</div>
 	<!-- /.register-box -->
 
-	<!--Contact Info-->
-	<section class="contact-info">
-		<div class="container">
-			<div class="info-area">
-				<div class="row">
-					<div class="col-xl-4 col-md-6 col-sm-12">
-						<div class="contact-info-item-one">
-							<div class="icon-box">
-								<i class="flaticon-placeholder"></i>
-							</div>
-							<div class="text">
-								<p>
-									184 Collins Street West <br>Victoria, United States, 8007
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 col-sm-12">
-						<div class="contact-info-item-one">
-							<div class="icon-box">
-								<i class="flaticon-phone-call"></i>
-							</div>
-							<div class="text">
-								<p>
-									(1800) 123 4567 <br>(1800) 123 4568
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 col-sm-12">
-						<div class="contact-info-item-one">
-							<div class="icon-box">
-								<i class="flaticon-e-mail-envelope"></i>
-							</div>
-							<div class="text">
-								<p>
-									info@wiscon.com <br>support@wiscon.com
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--End Contact Info-->
 
-
-		<!-- Main Footer-->
-		<footer class="main-footer"
-			>
-			<div class="container">
-				<div class="footer-area text-center">
-					<div class="footer-logo">
-						<figure>
-						<c:if test="${sessionScope.adminid != null}">
-							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
-						</c:if>
-						<c:if test="${sessionScope.adminid == null}">
-							<a href=""><img src="images/fespedia_w.png" alt=""></a>
-						</c:if>
-						</figure>
-					</div>
-            <ul class="footer-menu">
-                <li><a href="">Home</a></li>
-                <li><a href="listForm">List</a></li>
-                <li><a href="calendar">Calendar</a></li>
-                <li><a href="map">Map</a></li>
-                <li><a href="boardList">Board</a></li>
-				<li><a href="searchFestival">Search Festival</a></li>
-            </ul>
-					<ul class="social-links">
-						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
-						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
-						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</footer>
-		<!--End Main Footer-->
-
-		<!--Footer Bottom Section-->
-		<section class="footer-bottom">
-			<div class="container">
-				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
-					Reserved
-				</div>
-			</div>
-		</section>
-		<!--End Footer Bottom Section-->
-
-		<!--Scroll to top-->
-		<div class="scroll-to-top scroll-to-target" data-target="html">
-			<span class="fa fa-angle-up"></span>
-		</div>
+	
 
 
 	<script src="js/jquery.js"></script>
@@ -579,27 +285,14 @@
 	<!-- Custom script -->
 	<script src="js/custom.js"></script>
 	<!-- jQuery 3 -->
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- 	<script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 	<!-- Bootstrap 3.3.7 -->
-	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
 	<!-- iCheck -->
-	<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- 	<script src="plugins/iCheck/icheck.min.js"></script> -->
 	<!-- bootstrap datepicker -->
-	<script
-		src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-	<script>
-		$(function() {
-			$('input').iCheck({
-				checkboxClass : 'icheckbox_square-blue',
-				radioClass : 'iradio_square-blue',
-				increaseArea : '20%' /* optional */
-			});
-			//Date picker
-			$('#datepicker').datepicker({
-				autoclose : true
-			})
-		});
-	</script>
+	
+
 </body>
 </body>
 </html>
