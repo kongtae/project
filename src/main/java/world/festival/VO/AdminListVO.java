@@ -19,9 +19,8 @@ public class AdminListVO {
 	private Date inputTime;
 	private Date startEvent;
 	private Date endEvent;
-	private String originalFileName;  // originalFileName;
+	private String originalFileName;  
 	private String saveFileName;
 	private String hashtag;
 	private String datacheck;
-	private String hashtag;
 }

@@ -188,15 +188,15 @@
      function replywrite() {
       var replytext = document.getElementById("replytext");
       var name = document.getElementById("name").value;
-      if(replytext.value.length==0)
-      {
-         alert("コメントを入力してください。");
-         return false;   /*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
-      }
       if(name.length=="")
       {
          alert("ログインをお先にしてください。");
          return false;
+      }
+      if(replytext.value.length==0)
+      {
+         alert("コメントを入力してください。");
+         return false;   /*리턴이 없으면 아무것도 입력이 되지않을때 바로 서브밋이 된다*/
       }
          document.getElementById("replywrite").submit();
       }

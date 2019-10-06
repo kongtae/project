@@ -151,15 +151,15 @@
 		var replytext = document.getElementById("replytext");
 		var userid = document.getElementById("userid").value;
 		
-		if(replytext.value.length==0)
-		{
-			alert("コメントの内容を入力してください。");
-			return false;	
-		}
 		if(userid.length=="")
 		{
 			alert("ログインをお先にしてください。");
 			return false;
+		}
+		if(replytext.value.length==0)
+		{
+			alert("コメントの内容を入力してください。");
+			return false;	
 		}
 			document.getElementById("replywriteBoard").submit();
 		}
