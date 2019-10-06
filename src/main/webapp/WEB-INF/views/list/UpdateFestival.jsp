@@ -520,7 +520,7 @@
 		              <table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>投稿</button>
+		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>修正</button>
 		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
 		                </td>
 						</tr>					              
