@@ -130,6 +130,13 @@ $(function () {
 
 function BoardUpdate() {
 
+		var title = document.getElementById("title");
+		if (title.value == '' || title.value.length == 0) {
+			alert('タイトルを入力してください。');
+			title.focus();
+			return false;
+		}
+	
 		var form = $("#BoardUpdateID")[0];
 		var formData = new FormData(form);
 		
