@@ -433,7 +433,7 @@ function writeFestival() {
                         <h6>祭りの写真</h6>
                     </div> 
                     
-           <div id="preview"></div>
+           			<div id="preview"></div>
            			<div class="uploadButton">
                 	<i class="fa fa-paperclip"></i> ファイル添付
                 	<div class="filebox">
@@ -458,6 +458,7 @@ function writeFestival() {
 					<input type="button" onclick="delete3()" value="3番目の写真を消す">
                		</div>
                		</div>
+               		
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
@@ -541,7 +542,7 @@ function writeFestival() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="images/fespedia.png" alt=""></a>
+                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
