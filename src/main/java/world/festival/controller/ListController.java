@@ -40,13 +40,10 @@ public class ListController {
 	
 	@Autowired
 	private WishService wishsrvice;
-
 	
 	@Autowired
 	private AdminService adminservice;
 	
-//	private ReplyService service;
-
 	
 	@RequestMapping(value = "/listForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listForm() {
