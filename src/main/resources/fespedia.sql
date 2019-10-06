@@ -39,6 +39,9 @@ CREATE TABLE MEMBER(
     savedfilename VARCHAR2(200)
 );
 
+insert into MEMBER(adminid, userid, userpwd, email) 
+    values('aa','aa','aa','aaa@naver.com');  
+
 CREATE TABLE MAINBOARD(
     ADMINID VARCHAR2(20) CONSTRAINT MAINBOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
     MAINBOARDNUM NUMBER NOT NULL PRIMARY KEY,      
