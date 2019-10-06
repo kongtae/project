@@ -146,7 +146,7 @@ Insert into countryname values( 'BG' , 'Bulgaria', 'ブルガリア', '불가리
 Insert into countryname values( 'BA' , 'Bosnia and Herzegovina',' ','보스니아 헤르체코비나' );
 Insert into countryname values( 'BN' , 'Brunei', 'ブルネイ', '브루나이' );
 Insert into countryname values( 'BO' , 'Bolivia', 'ボリビア', '볼리비아' );
-Insert into countryname values( 'JP ', 'Japan', '日本', '일본' );
+Insert into countryname values( 'JP', 'Japan', '日本', '일본' );
 Insert into countryname values( 'BI' , 'Burundi', 'ブルンジ', '부룬디' );
 Insert into countryname values( 'BJ' , 'Benin', 'ベナン', '베냉' );
 Insert into countryname values( 'BT' , 'Bhutan', 'ブタン', '부탄' );
