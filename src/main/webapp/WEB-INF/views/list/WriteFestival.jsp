@@ -147,6 +147,7 @@ var idx = 0;
 	var adress = document.getElementById("adress");
 	var country = document.getElementById("country");
 	var surround_place = document.getElementById("surround_place");
+
 	
 	if (title.value == '' || title.value.length == 0) {
 		alert('タイトルを入力してください。');
