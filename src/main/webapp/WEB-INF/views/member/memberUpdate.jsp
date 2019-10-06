@@ -64,6 +64,9 @@
     color: #444;
     border-top: 1px solid #d2d6de;
 }
+.wrapper{
+		background:  url(resources/images/userimage/E3.jpg);
+}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
@@ -190,6 +193,7 @@
 	};
 </script>
 </head>
+<body class="wrapper">
 <body class="hold-transition register-page">
 
 	<!--Start Preloader -->
@@ -596,5 +600,6 @@
 			})
 		});
 	</script>
+</body>
 </body>
 </html>
