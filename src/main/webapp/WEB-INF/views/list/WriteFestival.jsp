@@ -317,7 +317,6 @@ function writeFestival() {
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <!--End Header Upper-->
     
     <!--Sticky Header-->
@@ -354,8 +353,6 @@ function writeFestival() {
 										<li><a href="#">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
-									<ul>
-=======
    <!--End Header Upper-->
 
 			<!--Sticky Header-->
@@ -397,7 +394,6 @@ function writeFestival() {
 										</ul></li>
 									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
->>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
 										<li><a href="boardList">Board</a></li>
 									</ul></li>
 								</ul>
@@ -540,7 +536,7 @@ function writeFestival() {
         <div class="footer-area text-center">
             <div class="footer-logo">
                 <figure>
-                    <a href="festival"><img src="resources/images/logo-2.png" alt=""></a>
+                    <a href="festival"><img src="resources/images/fespedia_w.png" alt=""></a>
                 </figure>
             </div>
             <ul class="footer-menu">
@@ -585,16 +581,6 @@ function writeFestival() {
 
 </div>
 
-
-
-  $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace('editor1')
-    //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
-  })
-</script>
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

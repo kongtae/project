@@ -268,11 +268,13 @@ WHERE
 
 <!-- AdminwriteBoard -->
 
-<!-- <delete id="AdminDeleteBul" parameterType="BoardVO" > -->
-<!-- 		DELETE  -->
-<!-- 		BUL_BOARD  -->
-<!-- 		WHERE  -->
-<!-- 		BUL_BOARDNUM = #{bul_boardnum} -->
-<!-- </delete> -->
+<delete id="AdminDeleteBul" parameterType="BoardVO" >
+		DELETE 
+		BUL_BOARD 
+		WHERE 
+		BUL_BOARDNUM = #{bul_boardnum}
+</delete>
+
+
 
 </mapper>

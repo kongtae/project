@@ -80,15 +80,21 @@ public class BoardController {
 	@ResponseBody
 	public String BoardWrite(BoardVO vo, HttpSession session, MultipartHttpServletRequest request) {
 		String userid = (String)session.getAttribute("loginid");
-		vo.setUserid(userid);
+		if(userid != null){
+			vo.setUserid(userid);
+		}else{
+			String adminid = (String)session.getAttribute("adminid");
+			vo.setUserid(adminid);
+		}
 		System.out.println("蹂대뱶�씪�씠�듃�쓽 vo : "+vo);
+		
 		boolean result = service.BoardWrite(vo,request);
 		System.out.println("蹂대뱶 �씤�꽕�듃 result:"+result);
 		
 		
 		//�옄�쑀寃뚯떆�뙋�쓣 李얠븘���꽌 admin�뿉 異붽�
 		AdminBoardVO adminvo = adminservice.selectBul();
-		System.out.println("�옒 李얠븘 �솕�뒗吏� �솗�씤"+adminvo);
+		System.out.println("잘 찾아 오는거인가요?"+adminvo);
 		adminvo.setDatacheck("bulinsert");
 		adminservice.AdminBoardWrite(adminvo, request);
 		return "success";
@@ -96,6 +102,12 @@ public class BoardController {
 	@RequestMapping(value = "/boardPrintAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<BoardVO> boardPrintAll() {
 		ArrayList<BoardVO> list = dao.boardPrintAll();
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getUserid().equals("aa"))
+			{
+				list.get(i).setUserid("管理者");
+			}
+		}
 		System.out.println("�옄�쑀寃뚯떆�뙋 �쟾泥댁텧�젰" + list);
 		return list;
 	}

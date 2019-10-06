@@ -183,7 +183,6 @@ public class AdminController {
 		}
 		
 		
-//		ListRecovery
 		@RequestMapping(value = "/BulRecovery", method = {RequestMethod.GET, RequestMethod.POST})
 		@ResponseBody
 		public String BulRecovery(BoardVO vo, AdminBoardVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
@@ -208,5 +207,13 @@ public class AdminController {
 			return "board/BoardList";
 		}
 		
-//		AdminDeleteBul
+		@RequestMapping(value = "/AdminDeleteBul", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public String AdminDeleteBul(BoardVO vo, AdminBoardVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
+//			ListVO vo1 = adminservice.RecoveryRead(vo);
+			BoardVO vo1 = adminservice.RecoveryReadBul(vo);
+			adminservice.AdminDeleteBul(vo1);
+			return "board/BoardList";
+		}
+		
 }

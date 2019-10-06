@@ -22,4 +22,5 @@ public class AdminListVO {
 	private String originalFileName;  // originalFileName;
 	private String saveFileName;
 	private String datacheck;
+	private String hashtag;
 }
