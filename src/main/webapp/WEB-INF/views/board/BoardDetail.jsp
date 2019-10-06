@@ -495,7 +495,7 @@
 				 <div class="blog-comment-area">
                     <div class="image-box">
 							<c:if test="${replylist.originalFileName == null}">
-								<img src="images/userimage/user_icon.png" alt="">
+								<img src="images/userimage/ico_login.png" alt="">
 							</c:if>
 							<c:if test="${replylist.originalFileName != null}">
                              <img src="images/userimage/${replylist.originalFileName}" alt="">
