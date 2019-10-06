@@ -82,7 +82,8 @@
 		festival_intro = #{festival_intro},
 		startEvent = #{startEvent},
 		endEvent = #{endEvent},
-		hashtag = #{hashtag}
+		hashtag = #{hashtag},
+		surround_place = #{surround_place}
 		<if test="originalFileName != null and saveFileName !=null">
 			, originalfileName = #{originalFileName}
 			,saveFileName = #{saveFileName}

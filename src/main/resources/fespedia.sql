@@ -350,7 +350,7 @@ INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/hiphop.jpg', '#ヒッ�
 SET DEFINE OFF;
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
-MAINBOARD_SEQ.nextval, 'モンゴルのナダム(naadam)祭り', 'モンゴル', 'モンゴル全地域', '本来のナダムは宗教的意味と軍事訓練の意味が強かったが、今日は全国的な祝祭行事を通じて国民の結束という政治的意味に変化。', 'モンゴル全地域　' ,SYSDATE, '2020-07-11', '2020-07-13','https://dbscthumb-phinf.pstatic.net/2361_000_1/20190722220651199_6U4HINFBG.png/gb40_80_i1.png?type=h345_fst_n&wm=Y, https://dbscthumb-phinf.pstatic.net/2361_000_1/20190723200746685_VHTQ4YFH5.png/gb40_80_i2.png?type=h345_fst_n&wm=Y,','#伝統,#スポーツ,#アジア,');
+MAINBOARD_SEQ.nextval, 'モンゴルのナダム(naadam)祭り', 'モンゴル', 'モンゴル全地域', '本来のナダムは宗教的意味と軍事訓練の意味が強かったが、今日は全国的な祝祭行事を通じて国民の結束という政治的意味に変化。', 'モンゴル全地域' ,SYSDATE, '2020-07-11', '2020-07-13','https://dbscthumb-phinf.pstatic.net/2361_000_1/20190722220651199_6U4HINFBG.png/gb40_80_i1.png?type=h345_fst_n&wm=Y, https://dbscthumb-phinf.pstatic.net/2361_000_1/20190723200746685_VHTQ4YFH5.png/gb40_80_i2.png?type=h345_fst_n&wm=Y,','#伝統,#スポーツ,#アジア,');
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, 'プケットのベジタリアンフェスティバル', 'タイ' , 'プケット', 'タイでソンクレラン祭り(Songkran Festival)の次に規模の大きい祭りだ。 雨期が終わって建機が始まる時期、タイ暦の上では12月15日、望の日、グレゴリオ暦では10月末から11月の間に開催する。'　, 'プケット'　,sysdate, '2019-10-19', '2019-10-26',　'https://i2.wp.com/www.phuketvegetarian.com/wp-content/uploads/2018/09/phuketvegetarian-05.jpg?resize=360%2C240&ssl=1, https://i0.wp.com/www.phuketvegetarian.com/wp-content/uploads/2018/09/phuketvegetarian-08.jpg?resize=360%2C240&ssl=1,',　'#飲食, #アジア,');

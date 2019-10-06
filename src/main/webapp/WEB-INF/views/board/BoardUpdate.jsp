@@ -433,7 +433,7 @@ function BoardUpdate() {
 					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px">${vo.contents}</textarea>
 									<table>	
  					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>  
-				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
+				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place" value="${vo.surround_place}"><br> 
 				           			住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}">
 				           			 <input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
 				           			 </td></tr> 

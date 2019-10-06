@@ -742,6 +742,8 @@
  	 	 $('#preview0').empty();
  	 	 $('#preview1').empty();
  	 	 $('#preview2').empty();
+ 	 	 $('#hashtag1').empty();
+ 	 	 $('#hash').empty();
 	 });
 </script>
 </html>
