@@ -54,7 +54,7 @@
 		display: inline-block;
 	}
 	.wrapper{
-		background:  url(resources/images/userimage/turkeyBalloon.jpg);
+		background:  url(resources/images/userimage/fire.jpg);
 	}
 	#title{
 		color: white;	
