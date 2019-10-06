@@ -30,6 +30,7 @@ public class SearchFestivalController {
 	@RequestMapping(value = "/CheckSearch", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer CheckSearch(String key) {
+		//String key1 = dao.keySearch(key);
 		Integer result = dao.CheckSearch(key);
 		return result;
 	}
@@ -44,9 +45,7 @@ public class SearchFestivalController {
 	@RequestMapping(value = "/reset", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer reset() {
-		System.out.println("reset");
 		Integer result = dao.reset();
-		System.out.println("result : "+result);
 		return result;
 	}
 	
@@ -54,7 +53,6 @@ public class SearchFestivalController {
 	@ResponseBody
 	public ArrayList<SearchFestivalVO> pushImage() {
 		ArrayList<SearchFestivalVO> list = dao.pushImage();
-		System.out.println(list);
 		return list;
 	}
 }

@@ -24,9 +24,4 @@ public class HomeController {
 	public String festival(Locale locale, Model model) {
 		return "home";
 	}
-	
-	@RequestMapping(value = "nullpoint", method = RequestMethod.GET)
-	public String nullpoint() {
-		throw new NullPointerException();
-	}
 }

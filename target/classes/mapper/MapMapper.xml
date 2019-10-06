@@ -31,7 +31,7 @@
 		countryname
 </select>
 
-<select id="selectMap" resultType="MapVO">
+<select id="selectMap" resultType="ListVO">
 	SELECT 
 		*
 	FROM 

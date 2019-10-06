@@ -110,7 +110,7 @@ public class tourAPIController {
 		for (ListVO vo : list) {
 			vo.setMainBoardNum(mainBoardNum);
 			mainBoardNum++;
-			vo.setCountry("KR");
+			vo.setCountry("大韓民国");
 			vo.setFestival_intro(vo.getTitle());
 		}
 		int result = dao.tourAPIinsert(list);

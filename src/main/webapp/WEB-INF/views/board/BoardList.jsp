@@ -8,7 +8,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +22,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     <link rel="icon" href="images/f.png" type="image/x-icon">
-
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 .infoboxes article {
 	color: #191919;
@@ -65,7 +66,7 @@
 }
 #searchItem {
     border: 0;
-    font-family: 'Robtoto', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 17px;
     color: #fa334f;
     padding-top: 10%;
@@ -74,6 +75,7 @@
 #searchOne {
 	border-radius: 3%;
     background: #fa334f;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     color: white;
 }
 .inner-box {
@@ -108,7 +110,7 @@
 }
 #icontext {
     padding-top: 0.5%;
-	font-family: 'Robtoto', sans-serif;
+	font-family: 'M PLUS 1p', sans-serif;
 	font-size: 29px;
 	color: #fa334f;
 }
@@ -142,6 +144,12 @@
 					page = 0;
 					setPage();		
 			})
+			$('#home1').on('click', function(){
+		    	location.href = "festival";
+		    });
+		    $('#home2').on('click', function(){
+		    	location.href = "festival";
+		    });
 		})
 		
 		function boardPrintAll() {
@@ -424,7 +432,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home1"><a href="/festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>									
@@ -479,8 +487,8 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="listForm">List</a>
+								<li class="dropdown" id="home2"><a href="/festival">Home</a></li>
+								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>										
 									</ul></li>
@@ -596,53 +604,57 @@
 </section>
 <!--End Schedule Section-->
 
-
-
-<!-- Main Footer-->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-area text-center">
-            <div class="footer-logo">
-                <figure>
-                    <a href="festival"><img src="images/fespedia_w.png" alt=""></a>
-                </figure>
-            </div>
+		<!-- Main Footer-->
+		<footer class="main-footer"
+			>
+			<div class="container">
+				<div class="footer-area text-center">
+					<div class="footer-logo">
+						<figure>
+						<c:if test="${sessionScope.adminid != null}">
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						</figure>
+					</div>
             <ul class="footer-menu">
-                <li><a href="festival">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
                 <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
-            <ul class="social-links">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-        </div>            
-    </div>
-</footer>
-<!--End Main Footer-->
+					<ul class="social-links">
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<!--End Main Footer-->
 
+		<!--Footer Bottom Section-->
+		<section class="footer-bottom">
+			<div class="container">
+				<div class="copyright-text text-center">
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
+					Reserved
+				</div>
+			</div>
+		</section>
+		<!--End Footer Bottom Section-->
 
-<!--Footer Bottom Section-->
-<section class="footer-bottom">
-    <div class="container">
-        <div class="copyright-text text-center">
-            Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
-        </div>
-    </div>
-</section>
-<!--End Footer Bottom Section-->
-
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-angle-up"></span>
+		</div>
 
 <script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>

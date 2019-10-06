@@ -58,6 +58,15 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <style>
+#main-footer {
+    background: #fff;
+    padding: 15px;
+    color: #444;
+    border-top: 1px solid #d2d6de;
+}
+.wrapper{
+		background:  url(resources/images/userimage/E3.jpg);
+}
 </style>
 <!-- jquery -->
 <script src="resources/js/jquery-3.4.1.js"></script>
@@ -184,198 +193,17 @@
 	};
 </script>
 </head>
+<body class="wrapper">
 <body class="hold-transition register-page">
 
 	<!--Start Preloader -->
 	<div class="preloader"></div>
 	<!--End Preloader -->
 
-		<!-- Main Header-->
-		<header class="main-header">
-
-			<!--Header Top-->
-			<div class="header-top">
-				<div class="container">
-					<div class="clearfix">
-						<!--Top Left-->
-						<div class="top-left">
-							<ul class="header-info-list">
-								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									SC.IT@MASTER.COM</li>
-								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									Trade Center COEX, SEOUL 135-731 KOREA</li>
-							</ul>
-						</div>
-						<!--Top Right-->
-						<div class="top-right">
-							<!--Social Box-->
-							<ul class="social-box">
-							
-							<c:if test="${sessionScope.loginid == null}" >
-									<c:if test="${sessionScope.adminid == null}" >
-									<li><a href="registermember">Sign Up</a></li>
-									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
-								</c:if>
-								
-								<c:if test="${sessionScope.loginid != null}">
-									<li><a href="memberPage">UserPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--Header-Upper-->
-			
-		<div class="header-upper">
-			<div class="container">
-				<div class="clearfix">
-
-					<div class="float-left logo-box">
-						<div class="logo" style="width: 179px; height: 80px;">
-							<a href="/festival"><img src="images/fespedia.png" alt=""
-								title=""></a>
-						</div>
-					</div>
-
-					<div class="nav-outer clearfix">
-
-						<!-- Main Menu -->
-						<nav class="main-menu navbar-expand-md">
-							<div class="navbar-header">
-								<button class="navbar-toggler" type="button"
-									data-toggle="collapse" data-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent" aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-										class="icon-bar"></span>
-								</button>
-							</div>
-
-							<div class="navbar-collapse collapse clearfix"
-								id="navbarSupportedContent">
-								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="/festival">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
-										<ul>
-											<li><a href="listForm">List</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">Calendar</a>
-										<ul>
-											<li><a href="calendar">Calendar</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="#">Map</a>
-										<ul>
-											<li><a href="#">Map</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="boardList">Board</a>
-										<ul>
-											<li><a href="boardList">Board</a></li>
-										</ul></li>
-								</ul>
-							</div>
-
-						</nav>
-
-						<!--Button Box-->
-						<div class="button-box">
-							<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
-						</div>
-
-						<!--Search Box Outer-->
-						<div class="search-box-outer">
-							<div class="dropdown">
-								<button class="search-box-btn dropdown-toggle" type="button"
-									id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"></button>
-								<ul class="dropdown-menu pull-right search-panel"
-									aria-labelledby="dropdownMenu3">
-									<li class="panel-outer">
-										<div class="form-container">
-											<form method="post" action="blog.html">
-												<div class="form-group">
-													<input type="search" name="field-name" value=""
-														placeholder="Search Here" required>
-													<button type="submit" class="search-btn">
-														<span class="fa fa-search"></span>
-													</button>
-												</div>
-											</form>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!--End Header Upper-->
+		
 
 		<!--Sticky Header-->
-			<div class="sticky-header stricky">
-				<div class="container clearfix">
-					<!--Logo-->
-					<div class="logo float-left" style="width: 149px; height: 80px;">
-						<a href="" class="img-responsive"><img src="images/fespedia.png"  alt="" title=""></a>
-					</div>
-
-					<!--Right Col-->
-					<div class="right-col float-right">
-						<!-- Main Menu -->
-						<nav class="main-menu navbar-expand-md">
-							<button class="navbar-toggler" type="button"
-								data-toggle="collapse" data-target="#navbarSupportedContent1"
-								aria-controls="navbarSupportedContent1" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-
-							<div class="navbar-collapse collapse clearfix"
-								id="navbarSupportedContent1">
-								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="festival">Home</a></li>
-									<li class="dropdown"><a href="listForm">List</a>
-										<ul>
-											<li><a href="listForm">List</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="calendar">Calendar</a>
-										<ul>
-											<li><a href="calendar">Calendar</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="map">Map</a>
-										<ul>
-										<li><a href="map">Map</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="boardList">Board</a>
-										<ul>
-										<li><a href="boardList">Board</a></li>
-									</ul></li>
-								</ul>
-							</div>
-						</nav>
-						<!-- Main Menu End-->
-					</div>
-
-				</div>
-			</div>
-			<!--End Sticky Header-->
-
-		</header>
-		<!--End Main Header -->
-
+		
 	<!--End Main Header -->
 
 	<div class="register-box">
@@ -417,7 +245,7 @@
 				<div>
 					<input type="file" id="imagePreview" name="uploadFileName" value="사진첨부"
 						accept="image/png,image/jpg,image/gif,image/jpeg"> 
-						<img id="image" src="images/guest.png">
+						<img id="image" src="images/userimage/ico_login.png">
 				</div>
 
 				<div class="row">
@@ -438,20 +266,6 @@
 
 
 	
-	<!--Footer Bottom Section-->
-	<section class="footer-bottom">
-		<div class="container">
-			<div class="copyright-text text-center">
-				Copyright &copy; <a href="festival">FESPEDIA</a> 2019. All Rights Reserved
-			</div>
-		</div>
-	</section>
-	<!--End Footer Bottom Section-->
-
-	<!--Scroll to top-->
-	<div class="scroll-to-top scroll-to-target" data-target="html">
-		<span class="fa fa-angle-up"></span>
-	</div>
 
 
 	<script src="js/jquery.js"></script>
@@ -479,5 +293,6 @@
 	<!-- bootstrap datepicker -->
 	
 
+</body>
 </body>
 </html>
