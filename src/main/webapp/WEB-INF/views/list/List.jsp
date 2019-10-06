@@ -28,7 +28,7 @@
     <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     <link rel="icon" href="images/f.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
-
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 .infoboxes article {
    color: #191919;
@@ -47,7 +47,6 @@
   justify-content: end;
   align-items: baseline;
   padding-left: 1%;
-  font-family: 'Poppins', sans-serif;
 }
 .s132 form {
   width: 100%;
@@ -68,7 +67,7 @@
 }
 #searchItem {
     border: 0;
-    font-family: 'Robtoto', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 17px;
     color: #fa334f;
     padding-top: 10%;
@@ -78,6 +77,8 @@
 	border-radius: 3%;
     background: #fa334f;
     color: white;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: large;
 }
 .inner-box {
 	padding-top: 1.5%;
@@ -111,7 +112,7 @@
 }
 #icontext {
     padding-top: 0.5%;
-	font-family: 'Robtoto', sans-serif;
+	font-family: 'M PLUS 1p', sans-serif;
 	font-size: 29px;
 	color: #fa334f;
 }

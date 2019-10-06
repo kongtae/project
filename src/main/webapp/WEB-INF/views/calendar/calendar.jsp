@@ -54,14 +54,10 @@
   <![endif]-->
 
 <!-- Google Font -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 
-.title-text h3 {
-	font-family: 'Poppins', sans-serif;
-}
 .title-text ul {
 	font-family: 'Robtoto', sans-serif;
 }

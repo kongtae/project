@@ -155,6 +155,8 @@ var idx = 0;
 	var surround_place = document.getElementById("surround_place");
 
 	
+	
+	
 	if (title.value == '' || title.value.length == 0) {
 		alert('タイトルを入力してください。');
 		title.focus();
@@ -373,46 +375,7 @@ function writeFestival() {
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <!--End Header Upper-->
-    
-    <!--Sticky Header-->
-    <div class="sticky-header stricky">
-        <div class="container clearfix">
-            <!--Logo-->
-            <div class="logo float-left">
-                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
-            </div>
-            
-            <!--Right Col-->
-            <div class="right-col float-right">
-                <!-- Main Menu -->
-                <nav class="main-menu navbar-expand-md">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-							<ul class="navigation clearfix">
-								<li class="dropdown" id="home2"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
-									<ul>
-										<li><a href="#">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
-									<ul><li><a href="boardList">Board</a></li>
-=======
-   <!--End Header Upper-->
 
 			<!--Sticky Header-->
 			<div class="sticky-header stricky">
@@ -454,7 +417,6 @@ function writeFestival() {
 									<li class="dropdown"><a href="boardList">Board</a>
 										<ul>
 										<li><a href="boardList">Board</a></li>
->>>>>>> 0abf9eaf9a3edfaca2cf040d10a46724e59aeca0
 									</ul></li>
 								</ul>
 							</div>
@@ -497,7 +459,7 @@ function writeFestival() {
                         <h6>祭りの写真</h6>
                     </div> 
                     
-           			<div id="preview"></div>
+           <div id="preview"></div>
            			<div class="uploadButton">
                 	<i class="fa fa-paperclip"></i> ファイル添付
                 	<div class="filebox">
@@ -522,7 +484,6 @@ function writeFestival() {
 					<input type="button" onclick="delete3()" value="3番目の写真を消す">
                		</div>
                		</div>
-               		
                 </div>
             </div>
             <div class="col-xl-8 col-md-12 col-sm-12">
@@ -650,7 +611,7 @@ function writeFestival() {
 		<div class="scroll-to-top scroll-to-target" data-target="html">
 			<span class="fa fa-angle-up"></span>
 		</div>
-
+	</div>
 </body>
 <script>
     var upload = document.querySelector('#uploadFileName');

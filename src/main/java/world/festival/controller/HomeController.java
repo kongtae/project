@@ -24,6 +24,4 @@ public class HomeController {
 	public String festival(Locale locale, Model model) {
 		return "home";
 	}
-	
-
 }
