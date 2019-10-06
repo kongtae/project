@@ -110,6 +110,24 @@
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
 	}
+	.table_text {
+	margin-top: 2.5%;
+	}
+	.table_text p {
+	margin-bottom: 0;
+    position: absolute;
+    display: contents;
+	}
+	.table_text input[type="date"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	} *
+	.table_text input[type="text"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -350,7 +368,6 @@ function writeFestival() {
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <!--End Header Upper-->
     
     <!--Sticky Header-->
@@ -388,49 +405,6 @@ function writeFestival() {
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-=======
-   <!--End Header Upper-->
-
-			<!--Sticky Header-->
-			<div class="sticky-header stricky">
-				<div class="container clearfix">
-					<!--Logo-->
-					<div class="logo float-left">
-						<a href="" class="img-responsive"><img
-							src="images/fespedia.png" alt="" title=""></a>
-					</div>
-
-					<!--Right Col-->
-					<div class="right-col float-right">
-						<!-- Main Menu -->
-						<nav class="main-menu navbar-expand-md">
-							<button class="navbar-toggler" type="button"
-								data-toggle="collapse" data-target="#navbarSupportedContent1"
-								aria-controls="navbarSupportedContent1" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-
-							<div class="navbar-collapse collapse clearfix"
-								id="navbarSupportedContent1">
-								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
-										<ul>
-											<li><a href="listForm">List</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="calendar">Calendar</a>
-										<ul>
-											<li><a href="calendar">Calendar</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="map">Map</a>
-										<ul>
-										<li><a href="map">Map</a></li>
-										</ul></li>
-									<li class="dropdown"><a href="boardList">Board</a>
-										<ul>
->>>>>>> d26d6f8ed6c857cfa75433217223ccadb474b93c
 										<li><a href="boardList">Board</a></li>
 									</ul></li>
 								</ul>
@@ -535,12 +509,12 @@ function writeFestival() {
 									<div class="wrapper">
   
 									
-									<table>	
-										<tr><td>祭りの開始日:<input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
-										<tr><td>祭りの終了日:<input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
-					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
-					             	都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
-					             	住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
+									<table class="table_text">	
+										<tr><td><p>祭りの開始日: </p><input type="date" name="startEvent" value="" id="startEvent">から</td></tr>
+										<tr><td><p>祭りの終了日: </p><input type="date" name="endEvent" id="endEvent">まで行います。</td></tr>
+					             		<tr><td><p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br> 
+					             		<p>都市: </p><input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br>
+					             		<p>住所: </p><input class="longbar" id="adress" type="text" name="adress" placeholder="住所を入力してください。"></td></tr>
 					             	</table>
 					              </div>
 					            </div>
@@ -628,7 +602,7 @@ function writeFestival() {
 </div>
 
 
-
+<script>
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
