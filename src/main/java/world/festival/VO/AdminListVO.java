@@ -23,5 +23,4 @@ public class AdminListVO {
 	private String saveFileName;
 	private String hashtag;
 	private String datacheck;
-	private String hashtag;
 }

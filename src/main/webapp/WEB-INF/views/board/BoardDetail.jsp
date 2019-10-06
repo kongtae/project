@@ -113,7 +113,7 @@
 	 var imageData = {'bul_boardnum' : bulb};
 	 function imagePrint() {
 	         $.ajax({
-	            url : "imagePrintBoard",
+	            url : "BoardimagePrint",
 	            type : "post",
 	            data : imageData,
 	            dataType: 'json',
@@ -509,7 +509,7 @@
 				</td>
 			<c:if test="${sessionScope.loginid == replylist.userid}">
 				<td>
-					&nbsp&nbsp<input type="button" value="修正" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+					&nbsp&nbsp<input type="button" id="updatebtn" value="修正" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
 					<input type="button" value="削除" class="buttonD" onclick="replyDelete('${replylist.replynum}')">
 				</td>
 			</c:if>

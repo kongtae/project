@@ -121,7 +121,7 @@ public class UserController {
 		UserVO us=new UserVO();
 		us.setUserid(userid);
 		ArrayList<ListVO> result=service.selectlistAll(userid);
-		System.out.println("내가원하는대로 값 가져오는지 확인:"+result);
+		System.out.println("내가원하는대로 값 가져오는지 확인:!:"+result);
 		model.addAttribute("list", result);
 		model.addAttribute("listsize", result.size());
 		return "member/memberPage";
