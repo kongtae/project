@@ -566,7 +566,7 @@
                         </div>
                   </div>
                     <div class="event-details">
-                        <h5><b class="f_place">${vo.country}・${vo.surround_place}の名所</b></h5>
+                        <h5><b class="f_place">${vo.country}<c:if test="${vo.surround_place!=null}">&nbsp・&nbsp${vo.surround_place}</c:if>の名所</b></h5>
                         <div class="tableSecond">
                             <table class="table table-hover">
                                 <thead>
