@@ -34,7 +34,7 @@
 <script src="resources/js/custom.js"></script>
 
 
-    <title>Wiscon || Responsive HTML 5 Template</title>
+    <title>FESPEDIA</title>
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,12 +52,10 @@
 	.longbar{
 			width: 300px;	
 	}
-	
 	.pre1{
 		width: 370px;
 		height: auto;
 	}
-
 	.buttonL{
 		width: 680px;
 	}
@@ -108,6 +106,12 @@
 	    imagePrint();
 	    $('#hashtagPlus').on('click', hashtag2);
 	    hashtagPrint();
+	    $('#home1').on('click', function(){
+	    	location.href = "festival";
+	    });
+	    $('#home2').on('click', function(){
+	    	location.href = "festival";
+	    });
 	 });
 	 
 	 function checkValue() {
@@ -184,7 +188,7 @@
 	      }
 	 
 	var sharp = [];
-	var hashtagBtn = "${vo.hashtag}";	//#ㅁㄴㅇ,#123,
+	var hashtagBtn = "${vo.hashtag}";
 	 function hashtagPrint() {
 		var hashtagBtn1 = hashtagBtn;
 		var a ;
@@ -220,31 +224,23 @@
 	 		return false;
 	 	}
 	 	sharp1 = hashtag1;
-	 //	alert(sharp1);
 	 	sharp1 = sharp1.replace("#", "");
 	 	idx += 1;
 	 	$('#hash').append("<span id="+sharp1+">"+hashtag1+"<button id="+idx+" value="+hashtag1+" onclick='btnClick("+sharp1+")'>X</button></span>");
 	 	hashtagBtn += hashtag1+',';
-	 //	alert("hashtagBtn : "+hashtagBtn);
 	 	return false;
 	 }
 	 
 	 
 	 function btnClick(sharp1){
-		//	alert("sharp1 : "+sharp1);
-			
 			var key3 = sharp1.innerHTML;
-		//	alert("key : "+ key3);
 			var a = key3.indexOf('(')+1;
 			var b = key3.indexOf(')');
 			var key1 = key3.substring(a,b);
 			var key2 = key1;
 			key1 = "#"+key1+",";
-		//	alert("key1 : "+key1);
-		//	alert("key2 : "+key2);
 			hashtagBtn = hashtagBtn.replace(key1, "");
 			$('#'+key2).remove();
-		//	alert("hashtagBtn : "+hashtagBtn);
 			return false;
 		}
 	 
@@ -365,7 +361,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home1"><a href="festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>									
@@ -420,7 +416,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home2"><a href="festival">Home</a></li>
 								<li class="dropdown"><a href="#">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>										
@@ -574,54 +570,57 @@
 </form>
 <!--End Schedule Details-->
 
-
-
-
-<!-- Main Footer-->
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-area text-center">
-            <div class="footer-logo">
-                <figure>
-                    <a href="festival"><img src="resources/images/fespedia_w.png" alt=""></a>
-                </figure>
-            </div>
+		<!-- Main Footer-->
+		<footer class="main-footer"
+			>
+			<div class="container">
+				<div class="footer-area text-center">
+					<div class="footer-logo">
+						<figure>
+						<c:if test="${sessionScope.adminid != null}">
+							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						<c:if test="${sessionScope.adminid == null}">
+							<a href=""><img src="images/fespedia_w.png" alt=""></a>
+						</c:if>
+						</figure>
+					</div>
             <ul class="footer-menu">
-                <li><a href="festival">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
                 <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
 				<li><a href="searchFestival">Search Festival</a></li>
             </ul>
-            <ul class="social-links">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-vine"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-        </div>            
-    </div>
-</footer>
-<!--End Main Footer-->
+					<ul class="social-links">
+						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<!--End Main Footer-->
 
+		<!--Footer Bottom Section-->
+		<section class="footer-bottom">
+			<div class="container">
+				<div class="copyright-text text-center">
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
+					Reserved
+				</div>
+			</div>
+		</section>
+		<!--End Footer Bottom Section-->
 
-<!--Footer Bottom Section-->
-<section class="footer-bottom">
-    <div class="container">
-        <div class="copyright-text text-center">
-            Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
-        </div>
-    </div>
-</section>
-<!--End Footer Bottom Section-->
-
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-angle-up"></span>
+		</div>
 <script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

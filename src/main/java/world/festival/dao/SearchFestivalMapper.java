@@ -15,4 +15,6 @@ public interface SearchFestivalMapper {
 
 	public ArrayList<SearchFestivalVO> pushImage();
 
+	public String keySearch(String key);
+
 }

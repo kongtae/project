@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 
-<title>Wiscon || Responsive HTML 5 Template</title>
+<title>FESPEDIA | withdraw</title>
 <!-- responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +22,17 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+$(function () {
+    $('#home1').on('click', function(){
+    	location.href = "festival";
+    });
+    $('#home2').on('click', function(){
+    	location.href = "festival";
+    });
+ });
+</script>
 </head>
 
 <body>
@@ -108,7 +118,7 @@
 								<div class="navbar-collapse collapse clearfix"
 									id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="dropdown"><a href="">Home</a></li>
+										<li class="dropdown" id="home1"><a href="">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -162,7 +172,7 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
-                        <li class="dropdown"><a href="/festival">Home</a></li>
+                        <li class="dropdown" id="home2"><a href="/festival">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
@@ -229,7 +239,7 @@
 		<!--End Schedule Section-->
 
 
-	<!-- Main Footer-->
+		<!-- Main Footer-->
 		<footer class="main-footer"
 			>
 			<div class="container">
@@ -269,7 +279,7 @@
 		<section class="footer-bottom">
 			<div class="container">
 				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">World Festival</a> 2019. All Rights
+					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
 					Reserved
 				</div>
 			</div>
@@ -299,11 +309,6 @@
 		<!-- Custom script -->
 		<script src="js/custom.js"></script>
 
-		<!--Google Map-->
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
-		<script src="js/map-script.js"></script>
-		<!--End Google Map APi-->
 		<script>
 		
 		$("#withdraw").click(function(){
