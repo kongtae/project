@@ -143,10 +143,10 @@ Insert into countryname values('BD', 'Bangladesh', 'バングラデシュ', '방
 Insert into countryname values( 'BE', 'Belgium', 'ベルギー', '벨기에' );
 Insert into countryname values('BF', 'Burkina Faso', 'ブルキナファソ', ' 부르키나파소');
 Insert into countryname values( 'BG' , 'Bulgaria', 'ブルガリア', '불가리아' );
-Insert into countryname values( 'BA' , 'Bosnia and Herzegovina',' ','보스니아 헤르체코비나' );
+Insert into countryname values( 'BA' , 'Bosnia and Herzegovina','ボスニア・ヘルツェゴビナ','보스니아 헤르체코비나' );
 Insert into countryname values( 'BN' , 'Brunei', 'ブルネイ', '브루나이' );
 Insert into countryname values( 'BO' , 'Bolivia', 'ボリビア', '볼리비아' );
-Insert into countryname values( 'JP ' , 'Japan', '日本', '일본' );
+Insert into countryname values( 'JP', 'Japan', '日本', '일본' );
 Insert into countryname values( 'BI' , 'Burundi', 'ブルンジ', '부룬디' );
 Insert into countryname values( 'BJ' , 'Benin', 'ベナン', '베냉' );
 Insert into countryname values( 'BT' , 'Bhutan', 'ブタン', '부탄' );
@@ -350,7 +350,7 @@ INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/hiphop.jpg', '#ヒッ�
 SET DEFINE OFF;
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
-MAINBOARD_SEQ.nextval, 'モンゴルのナダム(naadam)祭り', 'モンゴル', 'モンゴル全地域', '本来のナダムは宗教的意味と軍事訓練の意味が強かったが、今日は全国的な祝祭行事を通じて国民の結束という政治的意味に変化。', 'モンゴル全地域　' ,SYSDATE, '2020-07-11', '2020-07-13','https://dbscthumb-phinf.pstatic.net/2361_000_1/20190722220651199_6U4HINFBG.png/gb40_80_i1.png?type=h345_fst_n&wm=Y, https://dbscthumb-phinf.pstatic.net/2361_000_1/20190723200746685_VHTQ4YFH5.png/gb40_80_i2.png?type=h345_fst_n&wm=Y,','#伝統,#スポーツ,#アジア,');
+MAINBOARD_SEQ.nextval, 'モンゴルのナダム(naadam)祭り', 'モンゴル', 'モンゴル全地域', '本来のナダムは宗教的意味と軍事訓練の意味が強かったが、今日は全国的な祝祭行事を通じて国民の結束という政治的意味に変化。', 'モンゴル全地域' ,SYSDATE, '2020-07-11', '2020-07-13','https://dbscthumb-phinf.pstatic.net/2361_000_1/20190722220651199_6U4HINFBG.png/gb40_80_i1.png?type=h345_fst_n&wm=Y, https://dbscthumb-phinf.pstatic.net/2361_000_1/20190723200746685_VHTQ4YFH5.png/gb40_80_i2.png?type=h345_fst_n&wm=Y,','#伝統,#スポーツ,#アジア,');
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, 'プケットのベジタリアンフェスティバル', 'タイ' , 'プケット', 'タイでソンクレラン祭り(Songkran Festival)の次に規模の大きい祭りだ。 雨期が終わって建機が始まる時期、タイ暦の上では12月15日、望の日、グレゴリオ暦では10月末から11月の間に開催する。'　, 'プケット'　,sysdate, '2019-10-19', '2019-10-26',　'https://i2.wp.com/www.phuketvegetarian.com/wp-content/uploads/2018/09/phuketvegetarian-05.jpg?resize=360%2C240&ssl=1, https://i0.wp.com/www.phuketvegetarian.com/wp-content/uploads/2018/09/phuketvegetarian-08.jpg?resize=360%2C240&ssl=1,',　'#飲食, #アジア,');
@@ -374,7 +374,7 @@ INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURR
 MAINBOARD_SEQ.nextval, 'ラマダン' , 'サウジアラビア' , 'サウジアラビア以外のイスラム国家' , 'アラビア語で「暑い月」を意味する。 天使ガブリエル(Gabriel)はムハンマドに《コーラン》を教えた神聖な月と考えて、イスラム教徒はこの期間、日の出から日没まで義務的に断食して、毎日5回の祈祷を捧げる。 旅行者、病人、妊婦などは免除されるが、その代わりその後別に数日間断食しなければならない。' , 'リヤド' ,  sysdate , '2020-04-23' , '2020-05-23' , 'https://dbscthumb-phinf.pstatic.net/2765_000_34/20180930204502552_9FBXULHDY.jpg/281513.jpg?type=m250&wm=N,' , '#アジア,#宗教');
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
-MAINBOARD_SEQ.nextval, 'さっぽろホワイトイルミネーション' , '日本' , '日本北海道札幌' , '日本で開かれる光の祭典で、毎年11月雪に覆われた札幌に色とりどりの美しい光や照明を加えた姿でホワイトイルミネーション(White illumination)と呼ぶ。 日本初の光の祭典で1981年に初めて開始され、札幌の名所大通公園を中心に札幌駅、駅前通り、ススキノ市内などで光点灯が行われる。 札幌市、札幌観光協会、札幌商工会議所が主催し、札幌ホワイトイルミネーション実行委員会が主管して開催される。' , '札幌' ,  sysdate , '2019-11-22' , '2019-03-15' , 'https://postfiles.pstatic.net/20150101_134/sooyong8721_1420113509044K6zkB_JPEG/20141212_161951_LLS.JPG?type=w2,https://postfiles.pstatic.net/20150101_116/sooyong8721_1420113510806luWSI_JPEG/IMG_2616.JPG?type=w2,' , '#アジア, #カーニバル,');
+MAINBOARD_SEQ.nextval, 'さっぽろホワイトイルミネーション' , '日本' , '日本北海道札幌' , '日本で開かれる光の祭典で、毎年11月雪に覆われた札幌に色とりどりの美しい光や照明を加えた姿でホワイトイルミネーション(White illumination)と呼ぶ。 日本初の光の祭典で1981年に初めて開始され、札幌の名所大通公園を中心に札幌駅、駅前通り、ススキノ市内などで光点灯が行われる。 札幌市、札幌観光協会、札幌商工会議所が主催し、札幌ホワイトイルミネーション実行委員会が主管して開催される。' , '札幌' ,  sysdate , '2019-11-22' , '2020-03-15' , 'https://postfiles.pstatic.net/20150101_134/sooyong8721_1420113509044K6zkB_JPEG/20141212_161951_LLS.JPG?type=w2,https://postfiles.pstatic.net/20150101_116/sooyong8721_1420113510806luWSI_JPEG/IMG_2616.JPG?type=w2,' , '#アジア, #カーニバル,');
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, '広崎桜祭り' , '日本' , '青森県広崎公園' , '春の"広崎桜祭り"と竹と木を利用して作った骨組みに紙をつけて作った武者人形や、鳥と動物を作ってその中に灯りを灯して車や自動車に乗せて街を行進する"東北地方"を代表する夏の"広崎ネプタ祭り"など、"広崎"には四季を通じて行われる行事も多彩だ。' , '広崎' ,  sysdate , ' 2019-04-23' , '2019-05-03' , 'https://post-phinf.pstatic.net/MjAxOTA0MDdfMTA4/MDAxNTU0NjIxNDYwMzU3.0wfCTCpUDI8xPLyM1fTgBhQxIahpUmKAoJVoCNW20Cog.WkeylbFP7e-CiIU7c-lL4S2YQS0TOIg_my-gI3L3r20g.JPEG/%EC%A4%91%EC%95%99%EC%9D%BC%EB%B3%B4.jpg?type=w1200,' , '#アジア, #桜,');
@@ -396,7 +396,6 @@ MAINBOARD_SEQ.nextval, 'ボローニャ児童図書展' , 'イタリア' , 'イ�
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, 'ニースカーニバル' , 'フランス' , 'ニース　マセナ' , 'ニースカーニバルは、フランス南部の地中海沿岸の中心都市ニース(Nice)で毎年四旬節(四旬節)の前日まで2週間にわたって開かれるカーニバルだ。 カーニバルは、全世界のカトリック諸国を中心に盛大に行われるキリスト教の祭典で、復活祭を基準に、フェスティバルのスタート日が毎年変わり、普通1月末から2月の間に始まり、四旬節前日(Mardi Gras、懺悔の火曜日)に終わる。' , 'ニース' ,  sysdate , '2020-02-15' , '2020-03-01' , 'https://dbscthumb-phinf.pstatic.net/2890_000_1/20140310141203913_4ZBWAFP1O.jpg/fb40_11_i2.jpg?type=w575_fst&wm=N,https://dbscthumb-phinf.pstatic.net/2890_000_1/20140310141203910_LPHAPE81E.jpg/fb40_11_i3.jpg?type=w575_fst&wm=N,','#ヨーロッパ,#カーニバル,');
-
 
 INSERT INTO mainboard(MAINBOARDNUM, TITLE, COUNTRY, ADRESS, FESTIVAL_INTRO, SURROUND_PLACE, INPUTTIME, STARTEVENT, ENDEVENT, ORIGINALFILENAME, HASHTAG) VALUES(
 MAINBOARD_SEQ.nextval, 'アビニョンフェスティバル' , 'フランス' , 'アビニョン法王庁' , 'アビニョンはフランス南東部のボクリューズ州の州都だ。 人口10万人にもならないこの小さな都市が毎年夏になると、世界各国から集まった数十万人の人出で賑わっていた芸術祝祭の都市に変わる。 3週間開かれるアビニョンフェスティバルからだ。' , 'アビニョン' ,  sysdate , '2019-07-04' , '2019-07-23' , 'https://dbscthumb-phinf.pstatic.net/2890_000_1/20140813160754453_R7QDJPI54.jpg/fb40_59_i1.jpg?type=w575_fst&wm=N,' , '#ヨーロッパ,#芸術,');

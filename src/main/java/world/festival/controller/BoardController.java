@@ -44,7 +44,7 @@ public class BoardController {
 		return "board/BoardList";
 	}
 
-	@RequestMapping(value = "/insertBoard", method = RequestMethod.GET)
+	@RequestMapping(value = "/Boardinsert", method = RequestMethod.GET)
 	public String insertBoard() {
 
 		return "board/BoardWrite";
@@ -165,7 +165,7 @@ public class BoardController {
 		return "board/BoardList";
 	}
 	
-	@RequestMapping(value = "/imagePrintBoard", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/BoardimagePrint", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrintBoard(BoardVO vo) {
 		System.out.println("�씠誘몄��봽由고듃 諛쏆� 遺덈낫�뱶�꽆 : "+vo.getBul_boardnum());

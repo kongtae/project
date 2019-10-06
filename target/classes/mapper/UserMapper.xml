@@ -131,9 +131,9 @@
 <select id="selectlistAll" parameterType="String" resultType="ListVO">
 SELECT  
 	maintb.mainBoardNum, maintb.TITLE, maintb.COUNTRY, maintb.ADRESS, maintb.FESTIVAL_INTRO, 
-	maintb.STARTEVENT, maintb.ENDEVENT, mb.originalfilename
+	maintb.STARTEVENT, maintb.ENDEVENT
 FROM
-	member mb, WISHLIST wb, MAINBOARD maintb
+	WISHLIST wb, MAINBOARD maintb
 WHERE
 	maintb.MAINBOARDNUM = wb.MAINBOARDNUM
 AND

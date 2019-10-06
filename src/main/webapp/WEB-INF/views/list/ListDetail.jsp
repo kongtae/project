@@ -615,7 +615,7 @@
              <div class="blog-comment-area">
                     <div class="image-box">
                      <c:if test="${replylist.originalFileName == null}">
-                        <img src="images/userimage/user_icon.png" alt="">
+                        <img src="images/userimage/ico_login.png" alt="">
                      </c:if>
                      <c:if test="${replylist.originalFileName != null}">
                         <img src="images/userimage/${replylist.originalFileName}" alt="">
@@ -635,7 +635,7 @@
          <c:if test="${sessionScope.loginid == replylist.userid}">
             <td>
                &nbsp&nbsp
-               <input type="button" class="buttonS" value="修正" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+               <input type="button" id="updatebtn" class="buttonS" value="修正" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
            		<input type="button" class="buttonD" value="削除" onclick="replyDelete('${replylist.replynum}')">
             </td>
          </c:if>
