@@ -327,13 +327,13 @@ INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/sea.jpg', '#海');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/spring.jpg', '#春');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/mountain.jpg', '#山');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/sports.jpg', '#スポーツ');
-INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/america.jpg', '#アメリカ祭り');
-INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/asia.jpg', '#アジア祭り');
-INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/africa.jpg', '#アフリカ祭り');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/america.jpg', '#アメリカ');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/asia.jpg', '#アジア');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/africa.jpg', '#アフリカ');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/expo.jpg', '#博覧会');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/summer.jpg', '#夏');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/movie.jpg', '#映画祭');
-INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/oceania.jpg', '#オセアニア祭り');
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/oceania.jpg', '#オセアニア');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/wine.jpg', '#ワイン');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/europe.jpg', '#ヨーロッパ');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/food.jpg', '#飲食');
@@ -345,7 +345,7 @@ INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/costume.jpg', '#コス�
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/christmas.jpg', '#クリスマス');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/specialproduct.jpg', '#特産物');
 INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/halloween.jpg', '#ハロウィン');
-INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/hiphop.jpg', '#ヒップホップ');　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+INSERT INTO SEARCHFESTIVAL VALUES('images/searchFestival/hiphop.jpg', '#ヒップホップ');　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
 
 SET DEFINE OFF;
 
