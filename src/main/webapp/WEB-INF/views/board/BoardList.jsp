@@ -490,17 +490,17 @@
 									<ul>
 										<li><a href="listForm">List</a></li>										
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Board</a>
+								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
-										<li><a href="#">Board</a></li>
+										<li><a href="boardList">Board</a></li>
 									</ul></li>
 							</ul>
                     </div>

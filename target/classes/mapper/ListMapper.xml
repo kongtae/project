@@ -24,7 +24,7 @@
 			,#{originalFileName},#{saveFileName},#{hashtag}
 			</when>
 			<otherwise>
-			,null,null,'#축제,'
+			,null,null,'#祭り,'
 			</otherwise>
 		</choose>
 	)

@@ -136,13 +136,8 @@
 		var mainBoardNum =${vo.mainBoardNum};
 		var admin_mainBoardNum =${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
-// 		alert(mainBoardNum);
-		if(datacheck=="feinsert")
-		{	
-			alert("復旧するものがありません。");
-			return false;
-		}
-		else if(datacheck=="Recovery")
+
+		if(datacheck=="Recovery")
 		{
 			alert("すでに復旧されたものです。")
 			return false;
@@ -169,12 +164,17 @@
 		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
 // 		alert(mainBoardNum);
-
+		if(datacheck=="fedelete")
+		{
+			alert("이미 삭제된 친구");
+			return;
+		}
 		$.ajax({
 			url:"AdminDeleteList",
 			type:"post",
 			data : {mainBoardNum : mainBoardNum,
-					admin_mainBoardNum : admin_mainBoardNum
+					admin_mainBoardNum : admin_mainBoardNum,
+					datacheck : datacheck
 					},
 			success:function(result){
 				location.href="adminListPage";

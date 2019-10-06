@@ -51,9 +51,59 @@
 	.buttonL{
 			width: 910px;
 	}
-	
-
-
+	.filebox {
+	padding-bottom: 5%;
+	}
+	.filebox label { 
+	position: absolute; 
+	display: inline-block; 
+	padding: .5em .75em; 
+	color: white; 
+	font-size: inherit; 
+	line-height: normal; 
+	vertical-align: middle; 
+	background-color: #fa334f; 
+	cursor: pointer; 
+	border: 1px solid #ebebeb; 
+	border-bottom-color: #e2e2e2; 
+	border-radius: .25em; 
+	} 
+	.filebox input[type="file"] {
+	position: absolute; 
+	width: 1px; 
+	height: 1px; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+	}
+	.filebox input[type="button"] {
+	margin-left: 35%;
+    display: inline-block;
+    padding: .5em .75em;
+    color: black;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #DDDDDD;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+	}
+	.table_text {
+	margin-top: 2.5%;
+	}
+	.table_text p {
+	margin-bottom: 0;
+    position: absolute;
+    display: contents;
+	}
+	.table_text input[type="text"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
+	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
@@ -67,6 +117,13 @@ $(function () {
  });
 
 function writeBoard() {
+	
+		var title = document.getElementById("title");
+		if (title.value == '' || title.value.length == 0) {
+			alert('タイトルを入力してください。');
+			title.focus();
+			return false;
+		}
 
 		var form = $("#BoardWriteID")[0];
 		var formData = new FormData(form);
@@ -288,26 +345,35 @@ function writeBoard() {
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%;">
                         <h6>写真</h6>
                     </div> 
                     
-                    <div id="preview"></div>
+            <div id="preview"></div>
+            	<div class="uploadButton">
                 <i class="fa fa-paperclip"></i> ファイル添付
+                <div class="filebox">
+                <label for="uploadFileName">ファイル選択</label>
                 <input type="file" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
                 <input type="button" onclick="delete1()" value="1番目の写真を消す"> 
-                    
+                </div>
+                
                 <div id="preview2"></div>
 			 	<i class="fa fa-paperclip"></i> ファイル添付
+			 	<div class="filebox">
+			 	<label for="uploadFileName2">ファイル選択</label>
 				<input type="file" id="uploadFileName2" name="uploadFileName2" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
                 <input type="button" onclick="delete2()" value="2番目の写真を消す">
+                </div>
                     
                 <div id="preview3"></div>
 				<i class="fa fa-paperclip"></i> ファイル添付	
+				<div class="filebox">
+				<label for="uploadFileName3">ファイル選択</label>
 				<input type="file" id="uploadFileName3" name="uploadFileName3" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
 				<input type="button" onclick="delete3()" value="3番目の写真を消す">
-          
-         
+          		</div>
+          		</div>
                 </div>
             </div>
             
@@ -327,21 +393,31 @@ function writeBoard() {
             <table class="buttonL">
 			<tr>	              	
              <td align="left"><h1>投稿欄</h1></td>
-            <td> <button type="button" class="btn btn-primary" onclick="writeBoard()"><i class="fa fa-envelope-o"></i> 投稿</button>
+
+            <td> <button type="button" class="btn btn-primary" style="background-color: #fa334f; border-color: #fa334f;" onclick="writeBoard()"><i class="fa fa-envelope-o"></i> 投稿</button>
               <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
-             </td>
              </tr>
             </table>  
-					              	<br>
-					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
-					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" >
-					              </div>
+				<br>
+				<c:if test="${sessionScope.loginid!=null }">
+					<input type="text" name="userid" class="form-control" value="${sessionScope.loginid}" disabled="disabled">
+					<input type="text" id="title" name="title" class="form-control" placeholder="タイトル" >
+				</c:if>
+				<c:if test="${sessionScope.adminid!=null }">
+					<input type="text" name="userid" class="form-control" value="${sessionScope.adminid}" disabled="disabled">
+					<input type="text" id="title" name="title" class="form-control" placeholder="タイトル" >
+				</c:if>
+			 </div>
+					              
+					              
+					              
 					              <div class="form-group">
 					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
-									<table>	
- 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。"><br>  
-				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
-				           			住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。"></td></tr> 
+									<table class="table_text">	
+ 					             	<tr><td>
+ 					             	<p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder=" 国の名前を入力してください。"><br>  
+				           			<p>都市: </p><input class="longbar" type="text" id="surround_place" placeholder=" 都市名を入力してください。" name="surround_place"><br> 
+				           			<p>住所: </p><input class="longbar" id="adress" type="text" name="adress" placeholder=" 地域を入力してください。"></td></tr> 
 					             	</table> 
 					              </div>
 					            </div>

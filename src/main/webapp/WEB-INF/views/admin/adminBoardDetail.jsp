@@ -163,15 +163,20 @@
 		var admin_mainBoardNum = ${vo.admin_mainBoardNum};
 		var datacheck ="${vo.datacheck}";
 // 		alert(mainBoardNum);
-
+		if(datacheck=="buldelete")
+		{
+			alert("이미 삭제된 친구");
+			return;
+		}
 		$.ajax({
-			url:"AdminDeleteList",
+			url:"AdminDeleteBul",
 			type:"post",
 			data : {bul_boardnum : bul_boardnum,
-					admin_mainBoardNum : admin_mainBoardNum
+					admin_mainBoardNum : admin_mainBoardNum,
+					datacheck : datacheck
 					},
 			success:function(result){
-				location.href="adminListPage";
+				location.href="adminBulPage";
 			}
 // 			},
 // 			error{
