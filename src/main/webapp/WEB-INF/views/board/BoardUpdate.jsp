@@ -421,7 +421,7 @@ function BoardUpdate() {
 		                <tr>
 		              	<td align="left"><h1>投稿欄</h1></td>
 		                <td><button type="button" class="btn btn-primary" onclick="BoardUpdate()"><i class="fa fa-envelope-o"></i>修正</button>
-		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                <button type="reset" class="btn btn-default" id="reset" onclick="onclick=history.back(-1); return false;"><i class="fa fa-ｓtimes"></i>取消</button>
 		                </td>
 						</tr>					              
 		              </table>

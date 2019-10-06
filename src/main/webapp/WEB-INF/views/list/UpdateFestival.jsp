@@ -517,7 +517,7 @@
 		                <tr>
 		              	<td align="left"><h1>祭りの投稿欄</h1></td>
 		                <td><button type="button" class="btn btn-primary" onclick="updateFestival()"><i class="fa fa-envelope-o"></i>修正</button>
-		                <button type="reset" class="btn btn-default" id="reset"><i class="fa fa-ｓtimes"></i>取消</button>
+		                <button type="reset" class="btn btn-default" id="reset" onclick="onclick=history.back(-1); return false;"><i class="fa fa-ｓtimes"></i>取消</button>
 		                </td>
 						</tr>					              
 		              </table>
