@@ -31,7 +31,6 @@ public class MapService {
 					vo.setCountry(countryNameVO.getCountrycode());
 				}				
 			}
-			System.out.println("나라이름 : "+vo.getCountry());
 		}
 		return list;
 	}
@@ -82,9 +81,7 @@ public class MapService {
 				vo.setCountry(cvo.getCountryJP());
 				result.add(vo);
 			}
-			System.out.println("result개수 : "+result.size());
 		}
-
 		//ArrayList<ListVO> result = dao.countryList(country);
 	
 	return result;

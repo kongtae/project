@@ -50,7 +50,6 @@ public class MapController {
 	
 	@RequestMapping(value = "/countryList", method = RequestMethod.GET)
 	public String countryList(String country, Model model) {
-		System.out.println("country : "+country);
 		String country1 = service.countryList(country);
 		model.addAttribute("country", country1);
 		 return "map/countryList";
