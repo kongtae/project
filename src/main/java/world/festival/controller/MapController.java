@@ -37,25 +37,12 @@ public class MapController {
 	@ResponseBody
 	public HashMap<String, Integer> selectMap1() {
 		ArrayList<CountryNameVO> cList = dao.selectCountry();
-		ArrayList<MapVO> mList = service.selectMap1(cList);
-		ArrayList<MapVO> list = dao.selectMap1();	//나라랑 개수출력
+		ArrayList<ListVO> mList = service.selectMap1(cList);
+		ArrayList<MapVO> list = service.countList(mList, cList);
+		//ArrayList<MapVO> list = dao.selectMap1();	//나라랑 개수출력
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
-		//System.out.println(list);
-		//System.out.println(" 개수 : "+list.size());
-		//System.out.println("이름 개수 : "+cList.size());
+
 		for (MapVO vo : list) {
-//			for (CountryNameVO countryNameVO : cList) {
-//				if(vo.getCountry().equals(countryNameVO.getCountrycode())) {
-//					vo.setCountry(countryNameVO.getCountrycode());
-//				}else if(vo.getCountry().equals(countryNameVO.getCountryEng())) {
-//					vo.setCountry(countryNameVO.getCountrycode());
-//				}else if(vo.getCountry().equals(countryNameVO.getCountryJP())) {
-//					vo.setCountry(countryNameVO.getCountrycode());
-//				}else if(vo.getCountry().equals(countryNameVO.getCountryKR())) {
-//					vo.setCountry(countryNameVO.getCountrycode());
-//				}				
-//			}
-			//System.out.println("나라이름 : "+vo.getCountry());
 			result.put(vo.getCountry(), vo.getFestivalCount());			
 		}
 		return result;
@@ -64,26 +51,15 @@ public class MapController {
 	@RequestMapping(value = "/countryList", method = RequestMethod.GET)
 	public String countryList(String country, Model model) {
 		System.out.println("country : "+country);
-		ArrayList<CountryNameVO> cList = dao.selectCountry();
-		for (CountryNameVO countryNameVO : cList) {
-			if(country.equals(countryNameVO.getCountrycode())) {
-				country = countryNameVO.getCountryJP();
-			}else if(country.equals(countryNameVO.getCountryEng())) {
-				country = countryNameVO.getCountryJP();
-			}else if(country.equals(countryNameVO.getCountryJP())) {
-				country = countryNameVO.getCountryJP();
-			}else if(country.equals(countryNameVO.getCountryKR())) {
-				country = countryNameVO.getCountryJP();
-			}				
-		}
-		model.addAttribute("country", country);
+		String country1 = service.countryList(country);
+		model.addAttribute("country", country1);
 		 return "map/countryList";
 	}
 	
 	@RequestMapping(value = "/printCountryList", method = RequestMethod.GET)
 	@ResponseBody
 	public ArrayList<ListVO> printCountryList(String country) {
-		ArrayList<ListVO> list = dao.countryList(country);
+		ArrayList<ListVO> list = service.printCountryList(country);
 		 return list;
 	}
 	

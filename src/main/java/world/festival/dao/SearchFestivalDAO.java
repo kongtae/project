@@ -34,6 +34,11 @@ public class SearchFestivalDAO {
 		SearchFestivalMapper mapper = sqlSession.getMapper(SearchFestivalMapper.class); 
 		return mapper.pushImage();
 	}
+
+	public String keySearch(String key) {
+		SearchFestivalMapper mapper = sqlSession.getMapper(SearchFestivalMapper.class); 
+		return mapper.keySearch(key);
+	}
 	
 	
 

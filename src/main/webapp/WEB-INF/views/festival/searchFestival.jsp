@@ -115,8 +115,7 @@ table{
 	function leftBtn() {
 		var a = fesimages[ry].lastIndexOf('/') + 1;
 		var b = fesimages[ry].indexOf('.');
-		var key1 = "";
-		key1 = fesimages[ry].substring(a, b);
+		var key1 = fesnames[ry];
 		CheckSearch(key1);
 		fesimages.splice(ry, 1);
 		fesnames.splice(ry, 1);
@@ -136,7 +135,7 @@ table{
 	function rightBtn() {
 		var a = fesimages[rn].lastIndexOf('/') + 1;
 		var b = fesimages[rn].indexOf('.');
-		var key1 = fesimages[rn].substring(a, b);
+		var key1 = fesnames[rn];
 		CheckSearch(key1);
 		fesimages.splice(ry, 1);
 		fesnames.splice(ry, 1);
@@ -217,8 +216,8 @@ table{
 				+ ("00" + (s.getMonth() + 1)).slice(-2) + "-"
 				+ ("00" + s.getDate()).slice(-2);
 		var e = new Date(selectResult[0].endEvent);
-		var end = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2)
-				+ "-" + ("00" + s.getDate()).slice(-2);
+		var end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2)
+				+ "-" + ("00" + e.getDate()).slice(-2);
 		$('#image-box').append(
 				"<div id='left-box'><div class='tableSecond'><br><h1 id='tit1'>お勧め①</h1><br><table class='table table-hover'><tr><td><b>分類</b></td><td><b>詳細情報</b></td></tr>"+
                  "<tr><td>#HASHTAG</td><td>"+hashtag+"</td></tr><tr><td>タイトル</td><td>"+title+"</td></tr><tr><td>内容</td><td>"+intro+"</td>"+
@@ -254,8 +253,8 @@ table{
 				+ ("00" + (s.getMonth() + 1)).slice(-2) + "-"
 				+ ("00" + s.getDate()).slice(-2);
 		var e = new Date(selectResult[1].endEvent);
-		var end = s.getFullYear() + "-" + ("00" + (s.getMonth() + 1)).slice(-2)
-				+ "-" + ("00" + s.getDate()).slice(-2);
+		var end = e.getFullYear() + "-" + ("00" + (e.getMonth() + 1)).slice(-2)
+				+ "-" + ("00" + e.getDate()).slice(-2);
 		$('#image-box').append(
 				"<div id='left-box'><div class='tableSecond'><br><h1 id='tit2'>お勧め②</h1><br><table class='table table-hover'><tr><td><b>分類</b></td><td><b>詳細情報</b></td></tr>"+
                  "<tr><td>#HASHTAG</td><td>"+hashtag+"</td></tr><tr><td>タイトル</td><td>"+title+"</td></tr><tr><td>内容</td><td>"+intro+"</td>"+
