@@ -565,7 +565,7 @@ $(function() {
                                 <tr>
                                     <th class="srial">#</th>
                                     <th class="session">タイトル</th>
-                                    <th class="time">등록날짜</th>
+                                    <th class="time">登録日</th>
                                     <th class="speakers">期間</th>
                                     <th class="venue">DATACHECK</th>
                                 </tr>

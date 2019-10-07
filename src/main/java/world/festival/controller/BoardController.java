@@ -62,8 +62,9 @@ public class BoardController {
 	@RequestMapping(value = "/boardUpdate", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String boardUpdate(BoardVO vo, HttpSession session, MultipartHttpServletRequest request) {
-		String userid = (String)session.getAttribute("loginid");
+		String userid=(String)session.getAttribute("loginid");
 		vo.setUserid(userid);
+		
 		System.out.println("업데이트 자체가 안되는 이유는 무엇? "+vo);
 		AdminBoardVO adminlist= adminservice.selectupBoard(vo.getBul_boardnum());
 		adminlist.setDatacheck("bulupdateBef");
