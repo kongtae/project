@@ -21,6 +21,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 .infoboxes article {
 	color: #191919;
@@ -396,7 +398,7 @@ $(function() {
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -423,7 +425,7 @@ $(function() {
             <ul>
                 <li><a href="festival">home</a></li>
                 <li>/</li>
-                <li>Schedule</li>
+                <li><a href="map">Map</a></li>
             </ul>
         </div>                
     </div>

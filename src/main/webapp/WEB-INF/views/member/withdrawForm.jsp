@@ -22,6 +22,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 $(function () {
@@ -227,11 +228,12 @@ $(function () {
 						
 					</div>
 					<div class="schedule-content clearfix">
-						<b style="color: orange;">会員脱退後にはID <b style="color: #fa334f">${sessionScope.loginid}</b> で　再加入することはできず、IDとデータは復旧できません。<br> 
-						   掲示板型サービスに残っている書き込みは脱退後、削除することはできません。</b>
+						<b style="color: orange; font-size: 25px;">会員脱退後にはID <b style="color: #fa334f; font-size: 30px;">${sessionScope.loginid}</b> で　再加入することはできず、IDとデータは復旧できません。<br> 
+						   掲示板型サービスに残っている書き込みは脱退後、削除することはできません。
+						</b>
 						<br>
-						<b><input type="checkbox" name="" id="check"/>&nbsp;&nbsp;&nbsp;案内事項を全て確認しており、これに同意します。</b>
-						<a id="withdraw" class="theme-btn btn-style-one">脱退</a>
+						<b><input type="checkbox" style="font-size: 20px;"name="" id="check"/>&nbsp;&nbsp;&nbsp;案内事項を全て確認しており、これに同意します。</b>
+						<a id="withdraw" style="color: white; font-size: 18px;" class="theme-btn btn-style-one">脱退</a>
 					</div>
 				</div>
 			</div>

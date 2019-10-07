@@ -22,7 +22,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+   <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
@@ -79,7 +79,7 @@
 <script src="js/jquery.js"></script>
 <script>
 var page = '';
-var countPerPage = 5;
+var countPerPage = 10;
 var pageBlock = 5;
 var pageBlockCount = '';
 var totalPageCount = '';
@@ -436,7 +436,7 @@ $(function() {
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -489,7 +489,7 @@ $(function() {
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -565,7 +565,7 @@ $(function() {
                                 <tr>
                                     <th class="srial">#</th>
                                     <th class="session">タイトル</th>
-                                    <th class="time">등록날짜</th>
+                                    <th class="time">登録日</th>
                                     <th class="speakers">期間</th>
                                     <th class="venue">DATACHECK</th>
                                 </tr>

@@ -21,8 +21,8 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <link rel="icon" href="images/f.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 
 <!-- == -->
 <!-- Tell the browser to be responsive to screen width -->
@@ -383,11 +383,12 @@ function memberSelect(){
 									begin="0">
 									<div class="post">
 										<div>
-											<span class="username"> <strong><a href="listDetailGO?mainBoardNum=${result.mainBoardNum}">
+											<span class="username"> <strong>
 											TITLE:
+											<a href="listDetailGO?mainBoardNum=${result.mainBoardNum}">
 											<c:out value="${result.title}"></c:out></strong>
-											</a>
 											</span>
+											</a>
 											<!-- <span class="description"></span> -->
 										</div>
 										<!-- /.user-block -->

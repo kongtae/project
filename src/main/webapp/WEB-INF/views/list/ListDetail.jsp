@@ -24,7 +24,7 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
      
-     
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -44,7 +44,6 @@
         background-color: #3c8dbc;
     	border-color: #367fa9;
     	margin-right: 5px;
-    	display: white;
 	    margin-bottom: 0;
 	    font-weight: 400;
 	    text-align: center;
@@ -55,7 +54,8 @@
 	    background-image: none;
 	    border: 1px solid transparent;
 	    padding: 6px 12px;
-	    font-size: 14px;
+	    font-family: 'M PLUS Rounded 1c', sans-serif;
+    	font-size: 17px;
 	    line-height: 1.42857143;
 	    border-radius: 4px;
 	    user-select: none;
@@ -65,7 +65,6 @@
         background-color: red;
     	border-color: red;
     	margin-right: 5px;
-    	display: white;
 	    margin-bottom: 0;
 	    font-weight: 400;
 	    text-align: center;
@@ -76,7 +75,8 @@
 	    background-image: none;
 	    border: 1px solid transparent;
 	    padding: 6px 12px;
-	    font-size: 14px;
+	    font-family: 'M PLUS 1p', sans-serif;
+	    font-size: 17px;
 	    line-height: 1.42857143;
 	    border-radius: 4px;
 	    user-select: none;
@@ -495,7 +495,7 @@
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%; margin-top: 24%;">
                         <h6>祭りの写真</h6>
                            <c:if test="${sessionScope.loginid == null }">
                        		<a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
@@ -597,6 +597,7 @@
             </div>
         </div>                
     </div>
+    </div>
 </section>
 <br>
 
@@ -614,7 +615,7 @@
              <div class="blog-comment-area">
                     <div class="image-box">
                      <c:if test="${replylist.originalFileName == null}">
-                        <img src="images/userimage/user_icon.png" alt="">
+                        <img src="images/userimage/ico_login.png" alt="">
                      </c:if>
                      <c:if test="${replylist.originalFileName != null}">
                         <img src="images/userimage/${replylist.originalFileName}" alt="">
@@ -634,7 +635,7 @@
          <c:if test="${sessionScope.loginid == replylist.userid}">
             <td>
                &nbsp&nbsp
-               <input type="button" class="buttonS" value="修正" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+               <input type="button" id="updatebtn" class="buttonS" value="修正" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
            		<input type="button" class="buttonD" value="削除" onclick="replyDelete('${replylist.replynum}')">
             </td>
          </c:if>
@@ -755,7 +756,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("住所が正しくではありません。");
+            alert("住所が正しく入力してください。");
           }
         });
       }

@@ -10,4 +10,6 @@ public interface tourAPIMapper {
 	
 	public int tourAPIinsert(ArrayList<ListVO> list);
 
+	public void set(int mainBoardNum);
+
 }

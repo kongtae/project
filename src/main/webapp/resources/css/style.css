@@ -89,18 +89,18 @@
 html,
 body { height: 100% }
 body {
-  font-size: 16px;
+  font-size: 16.5px;
   color: #848484;
   line-height: 26px;
   font-weight: 400;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 button:focus{
   outline: none;
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'M PLUS 1p', sans-serif;
 }
 a,
 a:hover,
@@ -383,6 +383,7 @@ select:focus {
 .header-top .top-left .header-info-list li{
   position:relative;
   color:#555555;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   margin-right: 24px;
   display: inline-block;
@@ -391,6 +392,7 @@ select:focus {
 .header-top .top-left .header-info-list li strong{
   position:relative;
   color:#222222;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 16px;
   margin-right: 6px;
@@ -433,6 +435,7 @@ select:focus {
 .header-top .top-right .social-box li a{
   position: relative;
   color: #fa334f;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   -webkit-transition:all 300ms ease;
   -ms-transition:all 300ms ease;
@@ -2666,6 +2669,7 @@ select:focus {
   display: inline-block;
 }
 .main-footer .footer-menu li a{
+  font-family: 'Roboto', sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 26px;
@@ -2706,6 +2710,7 @@ select:focus {
   background: #202020;
 }
 .copyright-text{
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 26px;
   color: #ffffff;
@@ -3728,6 +3733,7 @@ select:focus {
   box-shadow: 0 0 5px 1px #f5eded;
 }
 .shedule-left-side .text-title h6{
+  font-family: 'M PLUS 1p', sans-serif;
   font-size: 20px;
   font-weight: 500;
   color: #777777;
@@ -3815,9 +3821,10 @@ select:focus {
   margin-bottom: 20px;
 }
 .shedule-right-side .image-box p{
-  font-size: 16px;
+  font-size: 16.5px;
   color: #777777;
   line-height: 28px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 400;
 }
 .event-details .inner-box{
@@ -4291,6 +4298,7 @@ select:focus {
   transition:all 300ms ease;
 }
 .blog-left-title h6 {
+  font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 500;
   color: #333333;
@@ -4390,6 +4398,7 @@ select:focus {
   color:#888888;
   line-height:26px;
   padding:12px 20px;
+  font-family: 'Roboto', sans-serif;
   font-weight:400;
   background: #fafafa;
   border:1px solid #ededed;

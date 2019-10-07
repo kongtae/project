@@ -43,6 +43,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="resources/images/f.png" type="image/x-icon">
     <link rel="icon" href="resources/images/f.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 	.longbar{
 			width: 300px;	
@@ -401,18 +403,18 @@ function writeBoard() {
 				<br>
 				<c:if test="${sessionScope.loginid!=null }">
 					<input type="text" name="userid" class="form-control" value="${sessionScope.loginid}" disabled="disabled">
-					<input type="text" id="title" name="title" class="form-control" placeholder="タイトル" >
+					<input type="text" id="title" name="title" class="form-control" placeholder="タイトルを記入してください。" >
 				</c:if>
 				<c:if test="${sessionScope.adminid!=null }">
 					<input type="text" name="userid" class="form-control" value="${sessionScope.adminid}" disabled="disabled">
-					<input type="text" id="title" name="title" class="form-control" placeholder="タイトル" >
+					<input type="text" id="title" name="title" class="form-control" placeholder="タイトルを記入してください。" >
 				</c:if>
 			 </div>
 					              
 					              
 					              
 					              <div class="form-group">
-					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px"></textarea>
+					                <textarea name="contents" id="contents" class="form-control" placeholder="内容を記入してください。" style="height: 300px"></textarea>
 									<table class="table_text">	
  					             	<tr><td>
  					             	<p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder=" 国の名前を入力してください。"><br>  

@@ -23,4 +23,10 @@ public class tourAPIDAO {
 		return mapper.tourAPIinsert(list);
 	}
 
+	public void set(int mainBoardNum) {
+		tourAPIMapper mapper = sqlSession.getMapper(tourAPIMapper.class);
+		mapper.set(mainBoardNum);
+		
+	}
+
 }

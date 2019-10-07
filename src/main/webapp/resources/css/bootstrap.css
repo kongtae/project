@@ -137,6 +137,7 @@ dfn {
 
 b,
 strong {
+  font-family: 'M PLUS 1p', sans-serif;
   font-weight: bolder;
 }
 
@@ -1678,6 +1679,8 @@ pre code {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 17.5px;
 }
 
 .table thead th {
@@ -1958,7 +1961,8 @@ pre code {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 1.1rem;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -2490,6 +2494,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
+  font-family: 'M PLUS 1p', sans-serif;
+  font-size: 16.5px;
 }
 
 .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
