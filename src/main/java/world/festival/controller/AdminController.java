@@ -160,10 +160,11 @@ public class AdminController {
 				adminservice.AdminwriteFestival(adminvo1);
 				return "list/List";
 			}
-			else if(adminvo.getDatacheck().equals("feupdateAft") || adminvo.getDatacheck().equals("feupdateBef") || adminvo.getDatacheck().equals("upRecovery"))
+			
+			else if(adminvo.getDatacheck().equals("feupdateAft") || adminvo.getDatacheck().equals("feupdateBef")
+					|| adminvo.getDatacheck().equals("upRecovery") || adminvo.getDatacheck().equals("feinsert") )
 			{
 				int result = listserivce.ReupdateFestival(vo1);
-				System.out.println("result 결과 : "+result);
 				if(result == 0){
 					listserivce.RewriteFestival(vo1);
 					adminvo1.setDatacheck("delRecovery");
@@ -205,19 +206,20 @@ public class AdminController {
 				adminservice.AdminBoardWrite(adminvo1);
 				return "board/BoardList";
 			}
-			else if(adminvo.getDatacheck().equals("bulupdateBef") || adminvo.getDatacheck().equals("bulupdateAft"))
+			
+			else if(adminvo.getDatacheck().equals("bulupdateBef") || adminvo.getDatacheck().equals("bulupdateAft")
+					|| adminvo.getDatacheck().equals("upRecovery") || adminvo.getDatacheck().equals("bulinsert"))
 			{
 				int result = boardserivce.ReupdateBoard(vo1);
-//				adminservice.AdminBoardWrite(adminvo1);
-			
 				if(result == 0)
 				{
 					boardserivce.RewriteBoard(vo1);
-					adminvo1.setDatacheck("upRecovery");
+					adminvo1.setDatacheck("delRecovery");
 					adminservice.AdminBoardWrite(adminvo1);
 					return "board/BoardList";
 				}
-					
+				adminvo1.setDatacheck("upRecovery");
+				adminservice.AdminBoardWrite(adminvo1);
 				return "board/BoardList";
 			}
 
