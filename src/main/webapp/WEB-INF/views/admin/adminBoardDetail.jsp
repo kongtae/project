@@ -169,7 +169,7 @@
 // 		alert(mainBoardNum);
 		if(datacheck=="buldelete")
 		{
-			alert("이미 삭제된 친구");
+			alert("すでに削除された投稿です.");
 			return;
 		}
 		$.ajax({
