@@ -431,6 +431,7 @@
                             <div class="info_">
                             <h1><b>祭りの詳細情報</b></h1>
                             </div>
+                            
                             <c:if test="${sessionScope.loginid == vo.userid}">
                             <div align="right">
                                <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">

@@ -515,9 +515,7 @@
                    
                     <div id="preview" class="pre">
                     </div>
-                    <div class="image-box" id="image-box">
-
-               </div>
+                    <div class="image-box" id="image-box"></div>
                 </div>
             </div>
 
@@ -526,9 +524,6 @@
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-           <!--              <figure>
-                            <img src="images/resources/schedule-10.jpg" alt="">
-                        </figure> -->
                         
                          <div class="event-details">
                             <div class="info_">
