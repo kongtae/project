@@ -29,6 +29,7 @@
     <link rel="icon" href="images/f.png" type="image/x-icon">    
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    
 <style>
 .infoboxes article {
    color: #191919;
@@ -62,6 +63,7 @@
   border: 0;
   display: inline-block;
   padding: 10px 32px;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   color: #6c757d;
 }
@@ -771,7 +773,7 @@ $(function() {
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                      <ul class="navigation clearfix">
                         <li class="dropdown" id="home1"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="listForm">List</a>
+                        <li class="dropdown"><a href="/listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
                            </ul></li>

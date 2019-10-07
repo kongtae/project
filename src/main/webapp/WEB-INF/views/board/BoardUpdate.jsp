@@ -43,6 +43,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="resources/images/f.png" type="image/x-icon">
     <link rel="icon" href="resources/images/f.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 	.longbar{
 			width: 300px;	
@@ -95,6 +97,19 @@
     border: 1px solid #ebebeb;
     border-bottom-color: #e2e2e2;
     border-radius: .25em;
+	}
+	.table_text {
+	margin-top: 2.5%;
+	}
+	.table_text p {
+	margin-bottom: 0;
+    position: absolute;
+    display: contents;
+	}
+	.table_text input[type="text"] {
+	border-radius: 0.25rem;
+    border: 1.5px solid #ebebeb;
+    color: #495057;
 	}
 </style>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -320,7 +335,7 @@ function BoardUpdate() {
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -362,7 +377,7 @@ function BoardUpdate() {
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%;">
                         <h6>写真</h6>
                     </div> 
               
@@ -420,21 +435,21 @@ function BoardUpdate() {
 					  <table class="buttonL">
 		                <tr>
 		              	<td align="left"><h1>投稿欄</h1></td>
-		                <td><button type="button" class="btn btn-primary" onclick="BoardUpdate()"><i class="fa fa-envelope-o"></i>修正</button>
-		                <input type="reset" class="btn btn-default" value="取消" id="reset"><i class="fa fa-ｓtimes"></i>
+		                <td><button type="button" class="btn btn-primary" style="background-color: #fa334f; border-color: #fa334f;" onclick="BoardUpdate()"><i class="fa fa-envelope-o"></i>修正</button>
+		                <button type="reset" class="btn btn-default" id="reset" onclick="onclick=history.back(-1); return false;"><i class="fa fa-ｓtimes"></i>取消</button>
 		                </td>
 						</tr>					              
 		              </table>
 					              	<br>
-					              	<input type="text" name="userid" class="form-control" value="작성자:${sessionScope.loginid}" disabled="disabled">
-					                <input type="text" id="title" name="title" class="form-control" placeholder="타이틀。" value="${vo.title}" >
+					              	<input type="text" name="userid" class="form-control" value="${sessionScope.loginid}" disabled="disabled">
+					                <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを記入してください。" value="${vo.title}" >
 					              </div>
 					              <div class="form-group">
-					                <textarea name="contents" id="contents" class="form-control" placeholder="내용。" style="height: 300px">${vo.contents}</textarea>
-									<table>	
- 					             	<tr><td>国家:<input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>  
-				           			都市:<input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
-				           			住所:<input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}">
+					                <textarea name="contents" id="contents" class="form-control" placeholder="内容を記入してください。" style="height: 300px">${vo.contents}</textarea>
+									<table class="table_text">	
+ 					             	<tr><td><p>国家: </p><input class="longbar" id="country" type="text" name="country" placeholder="国の名前を入力してください。" value="${vo.country}"><br>  
+				           			<p>都市: </p><input class="longbar" type="text" id="surround_place" placeholder="都市名を入力してください。" name="surround_place"><br> 
+				           			<p>住所: </p><input class="longbar" id="adress" type="text" name="adress" placeholder="地域を入力してください。" value="${vo.adress}">
 				           			 <input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
 				           			 </td></tr> 
 					             	</table> 
