@@ -114,6 +114,8 @@ public class tourAPIController {
 			vo.setFestival_intro(vo.getTitle());
 		}
 		int result = dao.tourAPIinsert(list);
+		
+		dao.set(mainBoardNum);
 		return result;
 	}
 

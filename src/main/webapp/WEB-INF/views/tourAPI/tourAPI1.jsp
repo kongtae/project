@@ -23,7 +23,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
 <style>

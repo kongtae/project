@@ -113,7 +113,7 @@ $(function () {
  var imageData = {'bul_boardnum' : bulb};
  function imagePrint() {
          $.ajax({
-            url : "imagePrintBoard",
+            url : "BoardimagePrint",
             type : "post",
             data : imageData,
             dataType: 'json',

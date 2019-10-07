@@ -576,7 +576,7 @@
 		</c:if>
 		<c:if test="${sessionScope.adminid != null}">
 		<h4 id="icontext"><b>投稿する</b></h4>
-		<a href="insertBoard"><img src="listImages/write_.png" title="投稿"></a>
+		<a href="Boardinsert"><img src="listImages/write_.png" title="投稿"></a>
 		</c:if>
 	</div>
 			        

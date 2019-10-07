@@ -432,12 +432,16 @@
 
 
                          	</div>
-                         	<c:if test="${sessionScope.loginid !=null}">
 	                         	<div align="right">
+                         	<c:if test="${sessionScope.loginid !=null}">
 	                         	<input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
 	                         	<input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
+							</c:if>   
+							<c:if test="${sessionScope.adminid !=null}">
+	                         	<input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
+	                         	<input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
+							</c:if>                           
 							</div>
-							</c:if>                          
                           <div class="tableSecond">
                         <table class="table table-hover">
                         	<tr>

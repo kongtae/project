@@ -86,15 +86,22 @@ public class ListController {
 	@RequestMapping(value = "/updateFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String updateFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request , RedirectAttributes rttr) {
+		
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
+		
+		AdminListVO adminlist= adminservice.selectupList(vo.getMainBoardNum());
+		adminlist.setDatacheck("feupdateBef");
+		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
+		adminservice.AdminwriteFestival(adminlist, request);
+		
 		System.out.println("업데이트VO: "+vo);
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		boolean result = service.updateFestival(vo,request);
 		System.out.println("result:"+result);
 		
-		AdminListVO adminlist= adminservice.selectupList(vo.getMainBoardNum());
-		adminlist.setDatacheck("feupdate");
+		adminlist= adminservice.selectupList(vo.getMainBoardNum());
+		adminlist.setDatacheck("feupdateAft");
 		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
 		adminservice.AdminwriteFestival(adminlist, request);
 		return "success"; 

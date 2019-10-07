@@ -22,7 +22,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+   <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
 
@@ -79,7 +79,7 @@
 <script src="js/jquery.js"></script>
 <script>
 var page = '';
-var countPerPage = 5;
+var countPerPage = 10;
 var pageBlock = 5;
 var pageBlockCount = '';
 var totalPageCount = '';

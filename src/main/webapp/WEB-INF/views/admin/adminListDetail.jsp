@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */

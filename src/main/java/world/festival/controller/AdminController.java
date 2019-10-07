@@ -159,7 +159,7 @@ public class AdminController {
 				adminservice.AdminwriteFestival(adminvo1);
 				return "list/List";
 			}
-			else if(adminvo.getDatacheck().equals("feupdate"))
+			else if(adminvo.getDatacheck().equals("feupdateAft") || adminvo.getDatacheck().equals("feupdateBef"))
 			{
 				listserivce.ReupdateFestival(vo1);
 				adminvo1.setDatacheck("upRecovery");
@@ -194,7 +194,7 @@ public class AdminController {
 				adminservice.AdminBoardWrite(adminvo1);
 				return "board/BoardList";
 			}
-			else if(adminvo.getDatacheck().equals("bulupdate"))
+			else if(adminvo.getDatacheck().equals("bulupdateBef") || adminvo.getDatacheck().equals("bulupdateAft"))
 			{
 				boardserivce.ReupdateBoard(vo1);
 				adminvo1.setDatacheck("upRecovery");

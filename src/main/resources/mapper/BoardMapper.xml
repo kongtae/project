@@ -51,7 +51,7 @@
 		</if>
 		WHERE 
 		bul_boardnum = #{bul_boardnum}
-		and userid = #{userid}
+		and (userid = #{userid} or adminid='aa')
 </update>
 
 <delete id="BoardDelete" parameterType="BoardVO">
