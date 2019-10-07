@@ -149,7 +149,7 @@
        location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
    }
      function BoardDelete() {
-           if(confirm("삭제하시겠습니까?")){
+           if(confirm("削除しますか?")){
            location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
            }
      }

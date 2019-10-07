@@ -95,9 +95,9 @@ public class ListDAO {
 		mapper.RewriteFestival(vo);
 	}
 
-	public void ReupdateFestival(ListVO vo1) {
+	public int ReupdateFestival(ListVO vo1) {
 		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
-		mapper.ReupdateFestival(vo1);
+		return mapper.ReupdateFestival(vo1);
 	}
 
 	public int mainBoardNum() {
