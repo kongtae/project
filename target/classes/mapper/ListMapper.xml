@@ -10,7 +10,7 @@
 	INSERT INTO
 		MAINBOARD (mainBoardNum,title,country,adress,festival_intro,surround_place,inputTime,startEvent,endEvent,originalFileName,saveFileName,hashtag)
 	VALUES (
-		MAINBOARD_SEQ.nextval,
+		#{mainBoardNum},
 		#{title},
 		#{country},
 		#{adress},
@@ -176,5 +176,13 @@
 				WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
+
+<!-- 메인보드넘 조회 -->
+<select id="mainBoardNum" resultType="int">
+	SELECT
+		MAX(mainBoardNum)
+	FROM
+		mainboard
+</select>
 
 </mapper>

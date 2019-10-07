@@ -67,11 +67,13 @@ public class ListController {
 	@RequestMapping(value = "/writeFestival", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String writeFestival(ListVO vo, HttpSession session, MultipartHttpServletRequest request) {
+		int mainBoardNum = dao.mainBoardNum();
+		System.out.println("등록 멘넘 : "+mainBoardNum);
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
+		vo.setMainBoardNum(mainBoardNum+1);
 		System.out.println("인설트VO: "+vo);
 		System.out.println("리퀘스트 총 몇개? " +request.toString());
-		System.out.println("hashtag : "+vo.getHashtag());
 		boolean result = service.writeFestival(vo,request);
 		System.out.println("result:"+result);
 		

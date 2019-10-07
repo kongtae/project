@@ -100,5 +100,10 @@ public class ListDAO {
 		return mapper.ReupdateFestival(vo1);
 	}
 
+	public int mainBoardNum() {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.mainBoardNum();
+	}
+
 
 }

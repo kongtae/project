@@ -34,4 +34,6 @@ public interface ListMapper {
 
 	public ArrayList<ListVO> selectMain();
 
+	public int mainBoardNum();
+
 }
