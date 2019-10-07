@@ -233,7 +233,7 @@ $(function () {
 						</b>
 						<br>
 						<b><input type="checkbox" style="font-size: 20px;"name="" id="check"/>&nbsp;&nbsp;&nbsp;案内事項を全て確認しており、これに同意します。</b>
-						<a id="withdraw" style="color: white; font-size: 18px;" class="theme-btn btn-style-one">脱退</a>
+						<a id="withdraw" style="background-color: #fa334f; border-color: #fa334f; color: white; font-size: 17px" class="btn btn-primary">脱退</a>
 					</div>
 				</div>
 			</div>
