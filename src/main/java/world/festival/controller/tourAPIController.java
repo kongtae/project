@@ -24,15 +24,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import world.festival.VO.AdminListVO;
 import world.festival.VO.ListVO;
 import world.festival.dao.CalendarDAO;
 import world.festival.dao.tourAPIDAO;
+import world.festival.service.AdminService;
 
 @Controller
 public class tourAPIController {
 	
 	@Autowired
 	private tourAPIDAO dao;
+	
+	@Autowired
+	private AdminService adminservice;
 	
 	int mainBoardNum;
 	
@@ -95,8 +100,13 @@ public class tourAPIController {
 	
 	@RequestMapping(value = "/mainBoardNumSelect", method = RequestMethod.POST)
 	@ResponseBody
-	public int mainBoardNumSelect() {		
-		int result = dao.mainBoardNumSelect();
+	public int mainBoardNumSelect() {
+		int result = 0;
+		try {
+			result = dao.mainBoardNumSelect();			
+		} catch (Exception e) {
+			result= 0;
+		}
 		System.out.println("result : "+result);
 		mainBoardNum = result+1;
 		return result;
@@ -114,6 +124,9 @@ public class tourAPIController {
 			vo.setFestival_intro(vo.getTitle());
 		}
 		int result = dao.tourAPIinsert(list);
+		ListVO vo = new ListVO();
+		vo.setMainBoardNum(mainBoardNum);
+		System.out.println("vo num : "+vo.getMainBoardNum());
 		return result;
 	}
 
