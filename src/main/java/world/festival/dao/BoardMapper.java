@@ -31,7 +31,7 @@ public interface BoardMapper {
 
 	public void RewriteBoard(BoardVO vo1);
 
-	public void ReupdateBoard(BoardVO vo1);
+	public int ReupdateBoard(BoardVO vo1);
 
 	
 }

@@ -186,7 +186,7 @@
        location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
    }
      function DeleteFestival() {
-           if(confirm("削除しますか？?")){
+           if(confirm("削除しますか?")){
            location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
            }
      }

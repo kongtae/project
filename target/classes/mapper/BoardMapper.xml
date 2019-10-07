@@ -56,7 +56,7 @@
 </update>
 
 <delete id="BoardDelete" parameterType="BoardVO">
-delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and (userid = #{userid} or adminid =aa)
+delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and (userid = #{userid} or adminid = 'aa')
 </delete>
 
 <select id="replyList" parameterType="ReplyVO" resultType="ReplyVO">
@@ -100,6 +100,7 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and (userid = #{useri
 <insert id="RewriteBoard" parameterType="BoardVO">
 	INSERT INTO
 		bul_board (
+		adminid,
 		bul_boardnum,
 		userid,
 		title,
@@ -112,6 +113,7 @@ delete from BUL_BOARD where bul_boardnum = #{bul_boardnum} and (userid = #{useri
 		originalFileName,
 		savedFileName)
 	VALUES (
+		'aa',
 		#{bul_boardnum},
 		#{userid},
 		#{title},

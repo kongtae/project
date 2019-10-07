@@ -134,8 +134,8 @@ public class BoardService {
 		
 	}
 
-	public void ReupdateBoard(BoardVO vo1) {
-		dao.ReupdateBoard(vo1);
+	public int ReupdateBoard(BoardVO vo1) {
+		return dao.ReupdateBoard(vo1);
 		
 	}
 

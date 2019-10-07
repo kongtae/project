@@ -151,17 +151,25 @@ public class AdminController {
 		@ResponseBody
 		public String ListRecovery(ListVO vo, AdminListVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
 			ListVO vo1 = adminservice.RecoveryRead(vo);
+			System.out.println("VO1 : "+vo1);
 			AdminListVO adminvo1 = admindao.readAdminList(adminvo);
-			if(adminvo.getDatacheck().equals("fedelete"))
+			if(adminvo.getDatacheck().equals("fedelete") || adminvo.getDatacheck().equals("adDelete"))
 			{
 				listserivce.RewriteFestival(vo1);
 				adminvo1.setDatacheck("delRecovery");
 				adminservice.AdminwriteFestival(adminvo1);
 				return "list/List";
 			}
-			else if(adminvo.getDatacheck().equals("feupdateAft") || adminvo.getDatacheck().equals("feupdateBef"))
+			else if(adminvo.getDatacheck().equals("feupdateAft") || adminvo.getDatacheck().equals("feupdateBef") || adminvo.getDatacheck().equals("upRecovery"))
 			{
-				listserivce.ReupdateFestival(vo1);
+				int result = listserivce.ReupdateFestival(vo1);
+				System.out.println("result 결과 : "+result);
+				if(result == 0){
+					listserivce.RewriteFestival(vo1);
+					adminvo1.setDatacheck("delRecovery");
+					adminservice.AdminwriteFestival(adminvo1);
+					return "list/List";
+				}
 				adminvo1.setDatacheck("upRecovery");
 				adminservice.AdminwriteFestival(adminvo1);
 				return "list/List";
@@ -175,6 +183,9 @@ public class AdminController {
 		@ResponseBody
 		public String AdminDeleteList(ListVO vo, AdminListVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
 			ListVO vo1 = adminservice.RecoveryRead(vo);
+			AdminListVO adminvo1 = admindao.readAdminList(adminvo);
+			adminvo1.setDatacheck("adDelete");
+			adminservice.AdminwriteFestival(adminvo1);
 			
 			adminservice.AdminDeleteList(vo1);
 			return "list/List";
@@ -196,9 +207,17 @@ public class AdminController {
 			}
 			else if(adminvo.getDatacheck().equals("bulupdateBef") || adminvo.getDatacheck().equals("bulupdateAft"))
 			{
-				boardserivce.ReupdateBoard(vo1);
-				adminvo1.setDatacheck("upRecovery");
-				adminservice.AdminBoardWrite(adminvo1);
+				int result = boardserivce.ReupdateBoard(vo1);
+//				adminservice.AdminBoardWrite(adminvo1);
+			
+				if(result == 0)
+				{
+					boardserivce.RewriteBoard(vo1);
+					adminvo1.setDatacheck("upRecovery");
+					adminservice.AdminBoardWrite(adminvo1);
+					return "board/BoardList";
+				}
+					
 				return "board/BoardList";
 			}
 

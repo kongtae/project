@@ -158,7 +158,7 @@
 		)
 </insert>
 
-<update id="ReupdateFestival" parameterType="ListVO">
+<update id="ReupdateFestival" parameterType="ListVO" >
 		UPDATE
 		MAINBOARD
 	SET
