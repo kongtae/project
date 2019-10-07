@@ -145,8 +145,8 @@ public class ListService {
 		
 	}
 
-	public void ReupdateFestival(ListVO vo1) {
-		dao.ReupdateFestival(vo1);
+	public int ReupdateFestival(ListVO vo1) {
+		return dao.ReupdateFestival(vo1);
 		
 	}
 

@@ -17,9 +17,8 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"

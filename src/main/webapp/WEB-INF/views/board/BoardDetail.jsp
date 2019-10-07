@@ -32,201 +32,199 @@
         width: 770px;
       }
       .info_ {
-      	position: absolute;
-      	padding-left: 5%;
+         position: absolute;
+         padding-left: 5%;
       }
       .buttonS{
-		background-color: #3c8dbc;
-    	border-color: #367fa9;
-    	margin-right: 5px;
-    	display: white;
-	    margin-bottom: 0;
-	    font-weight: 400;
-	    text-align: center;
-	    white-space: nowrap;
-	    -ms-touch-action: manipulation;
-	    touch-action: manipulation;
-	    cursor: pointer;
-	    background-image: none;
-	    border: 1px solid transparent;
-	    padding: 6px 12px;
-	    font-family: 'M PLUS Rounded 1c', sans-serif;
-    	font-size: 17px;
-	    line-height: 1.42857143;
-	    border-radius: 4px;
-	    user-select: none;
-	    color: white;
+      background-color: #3c8dbc;
+       border-color: #367fa9;
+       margin-right: 5px;
+       display: white;
+       margin-bottom: 0;
+       font-weight: 400;
+       text-align: center;
+       white-space: nowrap;
+       -ms-touch-action: manipulation;
+       touch-action: manipulation;
+       cursor: pointer;
+       background-image: none;
+       border: 1px solid transparent;
+       padding: 6px 12px;
+       font-family: 'M PLUS Rounded 1c', sans-serif;
+       font-size: 17px;
+       line-height: 1.42857143;
+       border-radius: 4px;
+       user-select: none;
+       color: white;
       }
         .buttonD{
         background-color: red;
-    	border-color: red;
-    	margin-right: 5px;
-    	display: white;
-	    margin-bottom: 0;
-	    font-weight: 400;
-	    text-align: center;
-	    white-space: nowrap;
-	    -ms-touch-action: manipulation;
-	    touch-action: manipulation;
-	    cursor: pointer;
-	    background-image: none;
-	    border: 1px solid transparent;
-	    padding: 6px 12px;
-	    font-family: 'M PLUS Rounded 1c', sans-serif;
-    	font-size: 17px;
-	    line-height: 1.42857143;
-	    border-radius: 4px;
-	    user-select: none;
-	    color: white;
+       border-color: red;
+       margin-right: 5px;
+       display: white;
+       margin-bottom: 0;
+       font-weight: 400;
+       text-align: center;
+       white-space: nowrap;
+       -ms-touch-action: manipulation;
+       touch-action: manipulation;
+       cursor: pointer;
+       background-image: none;
+       border: 1px solid transparent;
+       padding: 6px 12px;
+       font-family: 'M PLUS Rounded 1c', sans-serif;
+       font-size: 17px;
+       line-height: 1.42857143;
+       border-radius: 4px;
+       user-select: none;
+       color: white;
       }
       .tableSecond{
-	  padding: 45px 40px;
-	  margin-top: 55px;
-	  margin-bottom: 30px;
-	  text-align: center;
-	  background: #ffffff;
-	  border: 3px solid #eaeaea;
-	  font-size: 15px;
-	  text-align: center;
+     padding: 45px 40px;
+     margin-top: 55px;
+     margin-bottom: 30px;
+     text-align: center;
+     background: #ffffff;
+     border: 3px solid #eaeaea;
+     font-size: 15px;
+     text-align: center;
       
       
       }
-      .redColor{
-      		color: 
-      }
+  
       .comments {
-      	padding-left: 4%;
- 	    padding-right: 4%;
-    	padding-bottom: 3%;
+         padding-left: 4%;
+        padding-right: 4%;
+       padding-bottom: 3%;
       }
     .pre1{
-		width: 370px;
-		height: auto;
-	}
-	</style>
+      width: 370px;
+      height: auto;
+   }
+   </style>
     <script src="js/jquery.js"></script>
  <script>
  
  $(function () {
-	    imagePrint();
-	    $('#home1').on('click', function(){
-	    	location.href = "festival";
-	    });
-	    $('#home2').on('click', function(){
-	    	location.href = "festival";
-	    });
-	 });
+       imagePrint();
+       $('#home1').on('click', function(){
+          location.href = "festival";
+       });
+       $('#home2').on('click', function(){
+          location.href = "festival";
+       });
+    });
  
-	 var originalFileName = "";
-	 var bulb = ${vo.bul_boardnum};
-	 var imageData = {'bul_boardnum' : bulb};
-	 function imagePrint() {
-	         $.ajax({
-	            url : "BoardimagePrint",
-	            type : "post",
-	            data : imageData,
-	            dataType: 'json',
-	            success : function(result) {
-	            	if(result != null) {
-	                    $.each(result,function(index,item){
-	                  	  if(item.charAt(0)=='h'){
-	                  		  originalFileName = item;
-	                  		  $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
-	                  	  }else if(item == null){                		  
-	  						return false;
-	                  	  }else{
-	                       originalFileName = "resources/images/userimage/" +item;
-	                     $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>"); 
-	                  	 }
-	                    })  
-	              	}
-	            },
-	            error : function() {
-	            }
-	         });
-	      }
+    var originalFileName = "";
+    var bulb = ${vo.bul_boardnum};
+    var imageData = {'bul_boardnum' : bulb};
+    function imagePrint() {
+            $.ajax({
+               url : "BoardimagePrint",
+               type : "post",
+               data : imageData,
+               dataType: 'json',
+               success : function(result) {
+                  if(result != null) {
+                       $.each(result,function(index,item){
+                          if(item.charAt(0)=='h'){
+                             originalFileName = item;
+                             $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>");
+                          }else if(item == null){                        
+                       return false;
+                          }else{
+                          originalFileName = "resources/images/userimage/" +item;
+                        $('#preview').append("<input type='image' class='pre1' src='"+originalFileName+"'><br>"); 
+                         }
+                       })  
+                    }
+               },
+               error : function() {
+               }
+            });
+         }
  
  
- 	function BoardUpdateGO() {
- 		location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
-	}
-  	function BoardDelete() {
-  			if(confirm("삭제하시겠습니까?")){
-  			location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
-  			}
-  	}
-   	//댓글 작성시 유효성검사
-  	function replywriteBoard() {
-		var replytext = document.getElementById("replytext");
-		var userid = document.getElementById("userid").value;
-		
-		if(userid.length=="")
-		{
-			alert("ログインをお先にしてください。");
-			return false;
-		}
-		if(replytext.value.length==0)
-		{
-			alert("コメントの内容を入力してください。");
-			return false;	
-		}
-			document.getElementById("replywriteBoard").submit();
-		}
-  		//화면 새로고침
-		function refreshMemList(){
-			location.reload();
-		}
-		
-		//댓글 삭제
-  		function replyDelete(replynum)
-  		{
-  			$.ajax({
-  				url:'replyDeleteBoard',
-  				type:'get',
-  				data:
-  				{
-  					mainboardnum : document.getElementById("bul_boardnum").value,
-  					replynum : replynum
-  				},
-  				success:function(){
-  					refreshMemList();
-  				},
-  				error: function(){
-   					alert("削除に失敗しました");
-  				}
-  				
-  			});
-  		}
-  		 
-  		//댓글 수정
-   			function replymodify(replynum,text) {
-  			var offset = $("#updatebtn").offset();
-  			$("html, body").animate({scrollTop:offset.top},400)
-  				
-			document.getElementById("replytext").value=text;
-			document.getElementById("replysubmit").value="Send Message";
+    function BoardUpdateGO() {
+       location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
+   }
+     function BoardDelete() {
+           if(confirm("削除しますか?")){
+           location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
+           }
+     }
+      //댓글 작성시 유효성검사
+     function replywriteBoard() {
+      var replytext = document.getElementById("replytext");
+      var userid = document.getElementById("userid").value;
+      
+      if(userid.length=="")
+      {
+         alert("ログインをお先にしてください。");
+         return false;
+      }
+      if(replytext.value.length==0)
+      {
+         alert("コメントの内容を入力してください。");
+         return false;   
+      }
+         document.getElementById("replywriteBoard").submit();
+      }
+        //화면 새로고침
+      function refreshMemList(){
+         location.reload();
+      }
+      
+      //댓글 삭제
+        function replyDelete(replynum)
+        {
+           $.ajax({
+              url:'replyDeleteBoard',
+              type:'get',
+              data:
+              {
+                 mainboardnum : document.getElementById("bul_boardnum").value,
+                 replynum : replynum
+              },
+              success:function(){
+                 refreshMemList();
+              },
+              error: function(){
+                  alert("削除に失敗しました");
+              }
+              
+           });
+        }
+         
+        //댓글 수정
+            function replymodify(replynum,text) {
+           var offset = $("#updatebtn").offset();
+           $("html, body").animate({scrollTop:offset.top},400)
+              
+         document.getElementById("replytext").value=text;
+         document.getElementById("replysubmit").value="Send Message";
 
-			document.getElementById("replysubmit").onclick=function(){
-				var updatext = document.getElementById("replytext").value;
-				location.href="replyUpdateBoard?replynum="+replynum
-						+"&bul_boardnum=${vo.bul_boardnum}&replytext="+updatext;
-			}
-			
-			var message="end";
-			var result00="startEvent";
-			
-			var result33 = document.getElementById("searchHidden");
-			if(message=="end"){
-				result33.setAttribute("type", "reset");
-			}
-			$("input[type='reset']").on('click',
-			function() {
-				result33.setAttribute("type", "hidden");
-				refreshMemList();
-			})
-			
+         document.getElementById("replysubmit").onclick=function(){
+            var updatext = document.getElementById("replytext").value;
+            location.href="replyUpdateBoard?replynum="+replynum
+                  +"&bul_boardnum=${vo.bul_boardnum}&replytext="+updatext;
+         }
+         
+         var message="end";
+         var result00="startEvent";
+         
+         var result33 = document.getElementById("searchHidden");
+         if(message=="end"){
+            result33.setAttribute("type", "reset");
+         }
+         $("input[type='reset']").on('click',
+         function() {
+            result33.setAttribute("type", "hidden");
+            refreshMemList();
+         })
+         
 
-		} 
+      } 
 
   
  </script>
@@ -251,34 +249,34 @@
                 <!--Top Left-->
                 <div class="top-left">
                     <ul class="header-info-list">
-                    			<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
-									SC.IT@MASTER.COM</li>
-								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
-									Trade Center COEX, SEOUL 135-731 KOREA</li>
+                             <li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+                           SC.IT@MASTER.COM</li>
+                        <li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+                           Trade Center COEX, SEOUL 135-731 KOREA</li>
                     </ul>
                 </div>
                 <!--Top Right-->
-					<div class="top-right">
-					<!--Social Box-->
-					<ul class="social-box">
-							<c:if test="${sessionScope.loginid == null}" >
-									<c:if test="${sessionScope.adminid == null}" >
-									<li><a href="registermember">Sign Up</a></li>
-									<li><a href="loginForm">Sign in</a></li>
-									</c:if>
-								</c:if>
-								
-								<c:if test="${sessionScope.loginid != null}">
-									<li><a href="memberPage">UserPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-								
-								<c:if test="${sessionScope.adminid !=null}">
-									<li><a href="adminListPage">AdminListPage</a></li>
-									<li><a href="adminBulPage">AdminBulPage</a></li>
-									<li><a href="logout">Logout</a></li>
-								</c:if>
-					</ul>
+               <div class="top-right">
+               <!--Social Box-->
+               <ul class="social-box">
+                     <c:if test="${sessionScope.loginid == null}" >
+                           <c:if test="${sessionScope.adminid == null}" >
+                           <li><a href="registermember">Sign Up</a></li>
+                           <li><a href="loginForm">Sign in</a></li>
+                           </c:if>
+                        </c:if>
+                        
+                        <c:if test="${sessionScope.loginid != null}">
+                           <li><a href="memberPage">UserPage</a></li>
+                           <li><a href="logout">Logout</a></li>
+                        </c:if>
+                        
+                        <c:if test="${sessionScope.adminid !=null}">
+                           <li><a href="adminListPage">AdminListPage</a></li>
+                           <li><a href="adminBulPage">AdminBulPage</a></li>
+                           <li><a href="logout">Logout</a></li>
+                        </c:if>
+               </ul>
                 </div>
             </div>
         </div>
@@ -306,32 +304,32 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-							<ul class="navigation clearfix">
-								<li class="dropdown" id="home1"><a href="Home">Home</a></li>
-								<li class="dropdown"><a href="listForm">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>										
-									</ul></li>
-								<li class="dropdown"><a href="calendar">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="map">Map</a>
-									<ul>
-										<li><a href="map">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
-									<ul>
-										<li><a href="boardList">Board</a></li>
-									</ul></li>
-							</ul>
+                     <ul class="navigation clearfix">
+                        <li class="dropdown" id="home1"><a href="Home">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>                              
+                           </ul></li>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="map">Map</a>
+                           <ul>
+                              <li><a href="map">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
                         </div>
                         
                     </nav>
-					<!--Button Box-->
-					<div class="button-box">
-						<a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
-					</div>
+               <!--Button Box-->
+               <div class="button-box">
+                  <a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
+               </div>
                     
                 </div>
                
@@ -359,25 +357,25 @@
                     </button>
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-							<ul class="navigation clearfix">
-								<li class="dropdown" id="home2"><a href="#">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
-									<ul>
-										<li><a href="listForm">List</a></li>									
-									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
-									<ul>
-										<li><a href="calendar">Calendar</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
-									<ul>
-										<li><a href="#">Map</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="boardList">Board</a>
-									<ul>
-										<li><a href="boardList">Board</a></li>
-									</ul></li>
-							</ul>
+                     <ul class="navigation clearfix">
+                        <li class="dropdown" id="home2"><a href="#">Home</a></li>
+                        <li class="dropdown"><a href="#">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>                           
+                           </ul></li>
+                        <li class="dropdown"><a href="#">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="#">Map</a>
+                           <ul>
+                              <li><a href="#">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
                     </div>
                 </nav><!-- Main Menu End-->
             </div>
@@ -430,53 +428,56 @@
                     <div class="image-box">
 
                          <div class="event-details">
-                         	<div class="info_">
+                            <div class="info_">
                             <h1><b>祭りの詳細情報</b></h1>
-
-
-
-                         	</div>
-                         	<c:if test="${sessionScope.loginid !=null}">
-	                         <div align="right">
-	                         	<input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
-	                         	<input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
-							</div>
-							</c:if>                          
+                            </div>
+                            <c:if test="${sessionScope.loginid == vo.userid}">
+                            <div align="right">
+                               <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
+                               <input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
+                     </div>
+                     </c:if>   
+                      <c:if test="${sessionScope.adminid !=null}">
+                            <div align="right">
+                               <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
+                               <input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
+                     </div>
+                     </c:if>                            
                           <div class="tableSecond">
                         <table class="table table-hover">
-                        	<tr>
-                        	<td><b>分類</b></td><td><b>詳細情報</b></td>
-                        	</tr>
-                         	<tr>
-                        		<td>ユーザー名</td><td>${vo.userid}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>タイトル</td><td>${vo.title}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>内容</td><td>${vo.contents}</td>
-                        	</tr>
-							<tr>
-                        		<td>投稿日</td><td>${vo.inputdate}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>国家</td><td>${vo.country}</td>
-                        	</tr>
-                        	<tr>
-                        		<td>都市</td><td>${vo.surround_place}</td>
-                        	</tr>
-							<tr>
-                        		<td>住所</td><td>${vo.adress}</td>
-                        	</tr>
+                           <tr>
+                           <td><b>分類</b></td><td><b>詳細情報</b></td>
+                           </tr>
+                            <tr>
+                              <td>ユーザー名</td><td>${vo.userid}</td>
+                           </tr>
+                           <tr>
+                              <td>タイトル</td><td>${vo.title}</td>
+                           </tr>
+                           <tr>
+                              <td>内容</td><td>${vo.contents}</td>
+                           </tr>
+                     <tr>
+                              <td>投稿日</td><td>${vo.inputdate}</td>
+                           </tr>
+                           <tr>
+                              <td>国家</td><td>${vo.country}</td>
+                           </tr>
+                           <tr>
+                              <td>都市</td><td>${vo.surround_place}</td>
+                           </tr>
+                     <tr>
+                              <td>住所</td><td>${vo.adress}</td>
+                           </tr>
                         </table>
                         </div>
                         </div>
-        			 </div>
+                  </div>
                   
                     
                         <div>
                         <input type="hidden" id="address" value="${vo.adress}">
-                    	<!-- <input id="submit" type="button" value="Geocode"> -->
+                       <!-- <input id="submit" type="button" value="Geocode"> -->
                         </div>
                     <div id="googleMap"></div>
             </div>
@@ -488,45 +489,45 @@
 
 <!--End Schedule Details-->
 <section class="comments">
-	<div class="blog-left-title">
+   <div class="blog-left-title">
                     <h6>Comments ${replycount}</h6>
                 </div>
-		
+      
                
         <table class="reply">
         <c:forEach items="${replylist}" var="replylist">
-			<tr>
-				<td rowspan="1">
-				 <div class="blog-comment-area">
+         <tr>
+            <td rowspan="1">
+             <div class="blog-comment-area">
                     <div class="image-box">
-							<c:if test="${replylist.originalFileName == null}">
-								<img src="images/userimage/ico_login.png" alt="">
-							</c:if>
-							<c:if test="${replylist.originalFileName != null}">
+                     <c:if test="${replylist.originalFileName == null}">
+                        <img src="images/userimage/ico_login.png" alt="">
+                     </c:if>
+                     <c:if test="${replylist.originalFileName != null}">
                              <img src="images/userimage/${replylist.originalFileName}" alt="">
-							</c:if>
+                     </c:if>
                     </div>
                     </div>
-				</td>
-				<td rowspan="1">
-       		    &nbsp   &nbsp ${replylist.userid}
-       		    </td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.replytext}
-				</td>
-				<td rowspan="1">
-				&nbsp	&nbsp ${replylist.inputdate}
-				</td>
-			<c:if test="${sessionScope.loginid == replylist.userid}">
-				<td>
-					&nbsp&nbsp<input type="button" id="updatebtn" value="修正" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
-					<input type="button" value="削除" class="buttonD" onclick="replyDelete('${replylist.replynum}')">
-				</td>
-			</c:if>
-		</tr>
-		</c:forEach>
-	</table>
-	</section>
+            </td>
+            <td rowspan="1">
+                 &nbsp   &nbsp ${replylist.userid}
+                 </td>
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.replytext}
+            </td>
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.inputdate}
+            </td>
+         <c:if test="${sessionScope.loginid == replylist.userid}">
+            <td>
+               &nbsp&nbsp<input type="button" id="updatebtn" value="修正" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+               <input type="button" value="削除" class="buttonD" onclick="replyDelete('${replylist.replynum}')">
+            </td>
+         </c:if>
+      </tr>
+      </c:forEach>
+   </table>
+   </section>
                        
                 <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywriteBoard" method="post">
                     <div class="row">
@@ -534,7 +535,7 @@
                             <div class="form-group">
                                 <input type="text" name="userid" value="${sessionScope.loginid}" id="userid" readonly="readonly">
                             </div>
-						<input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
+                  <input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
@@ -550,57 +551,57 @@
                 </form>
 </div>
 
-		<!-- Main Footer-->
-		<footer class="main-footer"
-			>
-			<div class="container">
-				<div class="footer-area text-center">
-					<div class="footer-logo">
-						<figure>
-						<c:if test="${sessionScope.adminid != null}">
-							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
-						</c:if>
-						<c:if test="${sessionScope.adminid == null}">
-							<a href=""><img src="images/fespedia_w.png" alt=""></a>
-						</c:if>
-						</figure>
-					</div>
+      <!-- Main Footer-->
+      <footer class="main-footer"
+         >
+         <div class="container">
+            <div class="footer-area text-center">
+               <div class="footer-logo">
+                  <figure>
+                  <c:if test="${sessionScope.adminid != null}">
+                     <a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+                  </c:if>
+                  <c:if test="${sessionScope.adminid == null}">
+                     <a href=""><img src="images/fespedia_w.png" alt=""></a>
+                  </c:if>
+                  </figure>
+               </div>
             <ul class="footer-menu">
                 <li><a href="">Home</a></li>
                 <li><a href="listForm">List</a></li>
                 <li><a href="calendar">Calendar</a></li>
                 <li><a href="map">Map</a></li>
                 <li><a href="boardList">Board</a></li>
-				<li><a href="searchFestival">Search Festival</a></li>
+            <li><a href="searchFestival">Search Festival</a></li>
             </ul>
-					<ul class="social-links">
-						<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-						<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
-						<li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
-						<li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
-						<li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</footer>
-		<!--End Main Footer-->
+               <ul class="social-links">
+                  <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+                  <li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+                  <li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+               </ul>
+            </div>
+         </div>
+      </footer>
+      <!--End Main Footer-->
 
-		<!--Footer Bottom Section-->
-		<section class="footer-bottom">
-			<div class="container">
-				<div class="copyright-text text-center">
-					Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
-					Reserved
-				</div>
-			</div>
-		</section>
-		<!--End Footer Bottom Section-->
+      <!--Footer Bottom Section-->
+      <section class="footer-bottom">
+         <div class="container">
+            <div class="copyright-text text-center">
+               Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
+               Reserved
+            </div>
+         </div>
+      </section>
+      <!--End Footer Bottom Section-->
 
-		<!--Scroll to top-->
-		<div class="scroll-to-top scroll-to-target" data-target="html">
-			<span class="fa fa-angle-up"></span>
-		</div>
+      <!--Scroll to top-->
+      <div class="scroll-to-top scroll-to-target" data-target="html">
+         <span class="fa fa-angle-up"></span>
+      </div>
 
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

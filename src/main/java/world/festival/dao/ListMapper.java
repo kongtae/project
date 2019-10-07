@@ -30,8 +30,10 @@ public interface ListMapper {
 	//복구 파일로 쓰기!
 	public void RewriteFestival(ListVO vo);
 	//업데이트
-	public void ReupdateFestival(ListVO vo1);
+	public int ReupdateFestival(ListVO vo1);
 
 	public ArrayList<ListVO> selectMain();
+
+	public int mainBoardNum();
 
 }

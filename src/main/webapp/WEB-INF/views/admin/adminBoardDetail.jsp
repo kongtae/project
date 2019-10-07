@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
      <style>
       /* Always set the map height explicitly to define the size of the div
@@ -400,7 +400,7 @@
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>

@@ -21,8 +21,8 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <link rel="icon" href="images/f.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 
 <!-- == -->
 <!-- Tell the browser to be responsive to screen width -->

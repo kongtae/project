@@ -186,7 +186,7 @@
        location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
    }
      function DeleteFestival() {
-           if(confirm("削除しますか？?")){
+           if(confirm("削除しますか?")){
            location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
            }
      }
@@ -756,7 +756,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert("住所が正しくではありません。");
+            alert("住所が正しく入力してください。");
           }
         });
       }

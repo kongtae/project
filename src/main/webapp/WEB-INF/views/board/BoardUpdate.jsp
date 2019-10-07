@@ -128,7 +128,7 @@ $(function () {
  var imageData = {'bul_boardnum' : bulb};
  function imagePrint() {
          $.ajax({
-            url : "imagePrintBoard",
+            url : "BoardimagePrint",
             type : "post",
             data : imageData,
             dataType: 'json',
@@ -335,7 +335,7 @@ function BoardUpdate() {
 									</ul></li>
 								<li class="dropdown"><a href="#">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>

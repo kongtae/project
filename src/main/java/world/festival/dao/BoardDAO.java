@@ -73,14 +73,11 @@ public class BoardDAO {
 		
 	}
 
-	public void ReupdateBoard(BoardVO vo1) {
+	public int ReupdateBoard(BoardVO vo1) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		mapper.ReupdateBoard(vo1);
+	 return	mapper.ReupdateBoard(vo1);
 		
 	}
-
-
-
 
 
 }
