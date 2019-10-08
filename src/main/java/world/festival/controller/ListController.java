@@ -115,8 +115,10 @@ public class ListController {
 		ListVO vo1 = dao.listDetail(vo);
 		String userid=(String)hs.getAttribute("loginid");
 		String hashtag = vo1.getHashtag();
-		int i = hashtag.lastIndexOf(',');
-		hashtag = hashtag.replace(hashtag.substring(i), "");
+		if(hashtag != null) {
+			int i = hashtag.lastIndexOf(',');
+			hashtag = hashtag.replace(hashtag.substring(i), "");			
+		}
 		vo1.setHashtag(hashtag);
 		vo.setUserid(userid);
 		ArrayList<ReplyVO> replylist=service.replyList(vo.getMainBoardNum());

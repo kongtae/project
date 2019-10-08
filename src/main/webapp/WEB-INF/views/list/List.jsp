@@ -381,7 +381,11 @@ $(function() {
       var hashtag1 = "";
    
    function selectHashtag(searchKeyword){
-       hashtag1 += searchKeyword+",";
+	   if(searchKeyword != ""){
+       		hashtag1 += searchKeyword+",";		   
+	   }else{
+		   hashtag1 += searchKeyword;
+	   }
        $('#xbtn').click(function (){
           hashtag1.replace(/searchKeyword/gi, '');
       });
@@ -603,24 +607,30 @@ $(function() {
       var searchItem = $("#searchItem").val();
       var searchKeyword = $("#searchKeyword").val();
       var endEvent = $("#searchHidden").val();
-   
+   		
       if(searchItem=="hashSearch"){//해시태그 생성
-         sharp =  searchKeyword;
-      	$('#searchKeyword').val("");//해시태그 생성시 해시태그 입력창 지우기
-		if(sharp.charAt(0) != '#'　&& sharp.charAt(0) != '＃') {//해시태그로 시작안하면 빠꾸
-			alert("「＃」を入力してください。");
-			return false;
+    	if(searchKeyword.charAt(0) == '＃'){
+   		  searchKeyword = searchKeyword.replace("＃", "#");
+    	  }
+	         sharp =  searchKeyword;
+      if(searchKeyword == ""){
+      }else {
+    	  if(sharp.charAt(0) != '#') {//해시태그로 시작안하면 빠꾸
+		alert("「＃」を入力してください。");
+		return false;
 		}
-		if(sharp.charAt(1) == 1 || sharp.charAt(1) == 2 || sharp.charAt(1) == 3 || sharp.charAt(1) == 4 || sharp.charAt(1) == 5 || sharp.charAt(1) == 6 || sharp.charAt(1) == 7 || sharp.charAt(1) == 8 || sharp.charAt(1) == 9 || sharp.charAt(1) == 0 ) {
+      if(sharp.charAt(1) == 1 || sharp.charAt(1) == 2 || sharp.charAt(1) == 3 || sharp.charAt(1) == 4 || sharp.charAt(1) == 5 || sharp.charAt(1) == 6 || sharp.charAt(1) == 7 || sharp.charAt(1) == 8 || sharp.charAt(1) == 9 || sharp.charAt(1) == 0 ) {
 			alert("文字を先に入力してください。");
 			return false;
 		}
+      	$('#searchKeyword').val("");//해시태그 생성시 해시태그 입력창 지우기
          sharp = sharp.replace("#", "");
          idx += 1;
          $('#hash').append("<span id="+sharp+">"+searchKeyword+"<button id="+idx+" value="+searchKeyword+" onclick='btnClick("+sharp+")'>X</button></span>");
+		} 
          selectHashtag(searchKeyword);
-         return false;
-      } 
+         return false;			
+      }
       if(searchItem!="hashSearch"){//다른 카테고리 선택시 해시태그 삭제
          $('#hash').empty();
       }
@@ -651,25 +661,24 @@ $(function() {
       var hashtag1 = "";
    
    function selectHashtag(searchKeyword){
-       hashtag1 += searchKeyword+",";
+	   if(searchKeyword != ""){
+       hashtag1 += searchKeyword+",";		   
+	   }else{
+	   hashtag1 += searchKeyword;
+	   }
          hashtagPrint();
    }
    function btnClick(sharp1){
-      //alert("sharp1 : "+sharp1);
-      
       var key = sharp1.innerHTML;
-      //alert("key : "+ key);
       var a = key.indexOf('(')+1;
       var b = key.indexOf(')');
        var key1 = key.substring(a,b); 
       var key2 = key1;
        key1 = "#"+key1+",";
-       //alert("key1 : "+key1);
-       //alert("key2 : "+key2);
        hashtag1 = hashtag1.replace(key1, "");
-       //alert("hashtag1 : "+hashtag1);
        hashtagPrint();
        $('#'+key2).empty();
+		change();
    }
    
    function hashtagPrint(){

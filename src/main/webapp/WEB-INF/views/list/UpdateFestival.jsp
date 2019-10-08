@@ -236,6 +236,10 @@
 	 
 	 function hashtag2() {
 	 	var hashtag1 = document.getElementById("hashtag1").value;
+	 	document.getElementById("hashtag1").value = "";
+	 	if(hashtag1.charAt(0) == '＃'){
+			  hashtag1 = hashtag1.replace("＃", "#");
+		  }
 	 	if(hashtag1.charAt(0) != '#') {
 	 		alert("「＃」を入力してください。");
 	 		return false;

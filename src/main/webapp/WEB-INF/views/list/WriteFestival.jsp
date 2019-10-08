@@ -194,11 +194,20 @@ var hashtag = "";
 
 function hashtag2() {
 	var hashtag1 = document.getElementById("hashtag1").value;
+	document.getElementById("hashtag1").value = "";
+	if(hashtag1.charAt(0) == '＃'){
+		  hashtag1 = hashtag1.replace("＃", "#");
+	  }
 	if(hashtag1.charAt(0) != '#') {
 		alert("「＃」を入力してください。");
 		return false;
 	}
+	if(hashtag1.charAt(1) == 1 || hashtag1.charAt(1) == 2 || hashtag1.charAt(1) == 3 || hashtag1.charAt(1) == 4 || hashtag1.charAt(1) == 5 || hashtag1.charAt(1) == 6 || hashtag1.charAt(1) == 7 || hashtag1.charAt(1) == 8 || hashtag1.charAt(1) == 9 || hashtag1.charAt(1) == 0 ) {
+ 		alert("文字を先に入力してください。");
+ 		return false;
+ 	}
 	sharp = hashtag1;
+	$('#searchKeyword').val("");
 //	alert(sharp);
 	sharp = sharp.replace("#", "");
 	idx += 1;
