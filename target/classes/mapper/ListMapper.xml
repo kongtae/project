@@ -21,10 +21,18 @@
 		#{endEvent}
 		<choose>
 			<when test="originalFileName != null and saveFileName != null and hashtag != ''">
-			,#{originalFileName},#{saveFileName},#{hashtag}
+			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
-			,null,null,'#祭り,'
+			,null,null,
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="hashtag != ''">
+			,#{hashtag}
+			</when>
+			<otherwise>
+			,'#祭り,'
 			</otherwise>
 		</choose>
 	)

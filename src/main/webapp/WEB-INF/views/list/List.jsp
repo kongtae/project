@@ -607,7 +607,7 @@ $(function() {
       if(searchItem=="hashSearch"){//해시태그 생성
          sharp =  searchKeyword;
       	$('#searchKeyword').val("");//해시태그 생성시 해시태그 입력창 지우기
-		if(sharp.charAt(0) != '#') {//해시태그로 시작안하면 빠꾸
+		if(sharp.charAt(0) != '#'　&& sharp.charAt(0) != '＃') {//해시태그로 시작안하면 빠꾸
 			alert("「＃」を入力してください。");
 			return false;
 		}

@@ -1,109 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <title>FESPEDIA</title>
-    <!-- responsive meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FESPEDIA</title>
+<!-- responsive meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- For IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- For IE -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- master stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+<!-- master stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
-    <link rel="icon" href="images/f.png" type="image/x-icon">
-    
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-     <style>
-      /* Always set the map height explicitly to define the size of the div
+<!-- Favicon -->
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+<link rel="icon" href="images/f.png" type="image/x-icon">
+
+<link
+	href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap"
+	rel="stylesheet">
+<style>
+/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #googleMap {
-        height: 500px;
-        width: 770px;
-      }
-      .info_ {
-         position: absolute;
-         padding-left: 5%;
-      }
-      .buttonS{
-      background-color: #3c8dbc;
-       border-color: #367fa9;
-       margin-right: 5px;
-       display: white;
-       margin-bottom: 0;
-       font-weight: 400;
-       text-align: center;
-       white-space: nowrap;
-       -ms-touch-action: manipulation;
-       touch-action: manipulation;
-       cursor: pointer;
-       background-image: none;
-       border: 1px solid transparent;
-       padding: 6px 12px;
-       font-family: 'M PLUS Rounded 1c', sans-serif;
-       font-size: 17px;
-       line-height: 1.42857143;
-       border-radius: 4px;
-       user-select: none;
-       color: white;
-      }
-        .buttonD{
-        background-color: red;
-       border-color: red;
-       margin-right: 5px;
-       display: white;
-       margin-bottom: 0;
-       font-weight: 400;
-       text-align: center;
-       white-space: nowrap;
-       -ms-touch-action: manipulation;
-       touch-action: manipulation;
-       cursor: pointer;
-       background-image: none;
-       border: 1px solid transparent;
-       padding: 6px 12px;
-       font-family: 'M PLUS Rounded 1c', sans-serif;
-       font-size: 17px;
-       line-height: 1.42857143;
-       border-radius: 4px;
-       user-select: none;
-       color: white;
-      }
-      .tableSecond{
-     padding: 45px 40px;
-     margin-top: 55px;
-     margin-bottom: 30px;
-     text-align: center;
-     background: #ffffff;
-     border: 3px solid #eaeaea;
-     font-size: 15px;
-     text-align: center;
-      
-      
-      }
-  
-      .comments {
-         padding-left: 4%;
-        padding-right: 4%;
-       padding-bottom: 3%;
-      }
-    .pre1{
-      width: 370px;
-      height: auto;
-   }
-   </style>
-    <script src="js/jquery.js"></script>
- <script>
+#googleMap {
+	height: 500px;
+	width: 770px;
+}
+
+.info_ {
+	position: absolute;
+	padding-left: 5%;
+}
+
+.buttonS {
+	background-color: #3c8dbc;
+	border-color: #367fa9;
+	margin-right: 5px;
+	display: white;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 17px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	user-select: none;
+	color: white;
+}
+
+.buttonD {
+	background-color: red;
+	border-color: red;
+	margin-right: 5px;
+	display: white;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 17px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	user-select: none;
+	color: white;
+}
+
+.tableSecond {
+	padding: 45px 40px;
+	margin-top: 55px;
+	margin-bottom: 30px;
+	text-align: center;
+	background: #ffffff;
+	border: 3px solid #eaeaea;
+	font-size: 15px;
+	text-align: center;
+}
+
+.comments {
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-bottom: 3%;
+}
+
+.pre1 {
+	width: 370px;
+	height: auto;
+}
+</style>
+<script src="js/jquery.js"></script>
+<script>
  
  $(function () {
        imagePrint();
@@ -228,9 +233,207 @@
 
   
  </script>
-    
+
 </head>
 <body>
+
+	<div class="boxed_wrapper">
+
+
+		<!--Start Preloader -->
+		<div class="preloader"></div>
+		<!--End Preloader -->
+
+		<!-- Main Header-->
+		<header class="main-header">
+
+			<!--Header Top-->
+			<div class="header-top">
+				<div class="container">
+					<div class="clearfix">
+						<!--Top Left-->
+						<div class="top-left">
+							<ul class="header-info-list">
+								<li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+									SC.IT@MASTER.COM</li>
+								<li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+									Trade Center COEX, SEOUL 135-731 KOREA</li>
+							</ul>
+						</div>
+						<!--Top Right-->
+						<div class="top-right">
+							<!--Social Box-->
+							<ul class="social-box">
+								<c:if test="${sessionScope.loginid == null}">
+									<c:if test="${sessionScope.adminid == null}">
+										<li><a href="registermember">Sign Up</a></li>
+										<li><a href="loginForm">Sign in</a></li>
+									</c:if>
+								</c:if>
+
+								<c:if test="${sessionScope.loginid != null}">
+									<li><a href="memberPage">UserPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+
+								<c:if test="${sessionScope.adminid !=null}">
+									<li><a href="adminListPage">AdminListPage</a></li>
+									<li><a href="adminBulPage">AdminBulPage</a></li>
+									<li><a href="logout">Logout</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--Header-Upper-->
+			<div class="header-upper">
+				<div class="container">
+					<div class="clearfix">
+
+						<div class="float-left logo-box">
+							<div class="logo">
+								<a href="#"><img src="images/fespedia.png" alt=""
+									title="ホームへ"></a>
+							</div>
+						</div>
+
+						<div class="nav-outer clearfix">
+
+							<!-- Main Menu -->
+							<nav class="main-menu navbar-expand-md">
+								<div class="navbar-header">
+									<button class="navbar-toggler" type="button"
+										data-toggle="collapse" data-target="#navbarSupportedContent"
+										aria-controls="navbarSupportedContent" aria-expanded="false"
+										aria-label="Toggle navigation">
+										<span class="icon-bar"></span> <span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+
+								<div class="navbar-collapse collapse clearfix"
+									id="navbarSupportedContent">
+									<ul class="navigation clearfix">
+										<li class="dropdown" id="home1"><a href="Home">Home</a></li>
+										<li class="dropdown"><a href="listForm">List</a>
+											<ul>
+												<li><a href="listForm">List</a></li>
+											</ul></li>
+										<li class="dropdown"><a href="calendar">Calendar</a>
+											<ul>
+												<li><a href="calendar">Calendar</a></li>
+											</ul></li>
+										<li class="dropdown"><a href="map">Map</a>
+											<ul>
+												<li><a href="map">Map</a></li>
+											</ul></li>
+										<li class="dropdown"><a href="boardList">Board</a>
+											<ul>
+												<li><a href="boardList">Board</a></li>
+											</ul></li>
+									</ul>
+								</div>
+
+							</nav>
+							<!--Button Box-->
+							<div class="button-box">
+								<a href="searchFestival" class="theme-btn btn-style-one">Search
+									Festival</a>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!--End Header Upper-->
+
+			<!--Sticky Header-->
+			<div class="sticky-header stricky">
+				<div class="container clearfix">
+					<!--Logo-->
+					<div class="logo float-left">
+						<a href="festival" class="img-responsive"><img
+							src="images/fespedia.png" alt="" title=""></a>
+					</div>
+
+					<!--Right Col-->
+					<div class="right-col float-right">
+						<!-- Main Menu -->
+						<nav class="main-menu navbar-expand-md">
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent1"
+								aria-controls="navbarSupportedContent1" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+
+							<div class="navbar-collapse collapse clearfix"
+								id="navbarSupportedContent1">
+								<ul class="navigation clearfix">
+									<li class="dropdown" id="home2"><a href="#">Home</a></li>
+									<li class="dropdown"><a href="#">List</a>
+										<ul>
+											<li><a href="listForm">List</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="#">Calendar</a>
+										<ul>
+											<li><a href="calendar">Calendar</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="#">Map</a>
+										<ul>
+											<li><a href="#">Map</a></li>
+										</ul></li>
+									<li class="dropdown"><a href="boardList">Board</a>
+										<ul>
+											<li><a href="boardList">Board</a></li>
+										</ul></li>
+								</ul>
+							</div>
+						</nav>
+						<!-- Main Menu End-->
+					</div>
+
+				</div>
+			</div>
+			<!--End Sticky Header-->
+
+		</header>
+		<!--End Main Header -->
+
+
+		<!-- Page Title-->
+		<section class="page-title"
+			style="background: url(images/background/page-title-4.jpg);">
+			<div class="container">
+				<div class="title-text text-center">
+					<h3>会員掲示板</h3>
+					<ul>
+						<li><a href="festival">home</a></li>
+						<li>/</li>
+						<li><a href="boardList">Board</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- End Page Title-->
+
+
+		<!--Schedule Details-->
+		<section class="schedule-details">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-4 col-md-12 col-sm-12">
+						<div class="shedule-left-side">
+							<div class="text-title"
+								style="margin-bottom: 5%; margin-top: 26%;">
+								<h6>写真</h6>
+							</div>
+							<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
+=======
     
 <div class="boxed_wrapper">
 
@@ -414,6 +617,7 @@
                         <h6>写真</h6>
                     </div> 
 <!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
+>>>>>>> 29390c01c831f665a8722386da4036efab3889c5
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
@@ -656,9 +860,11 @@
         });
       }
     </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
+
+
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
     </script>
-</div>
+	</div>
 </body>
 </html>
