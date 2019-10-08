@@ -20,11 +20,19 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null and hashtag != ''">
-			,#{originalFileName},#{saveFileName},#{hashtag}
+			<when test="originalFileName != null and saveFileName != null">
+			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
-			,null,null,'#祭り,'
+			,null,null
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="hashtag != ''">
+			,#{hashtag}
+			</when>
+			<otherwise>
+			,'#祭り,'
 			</otherwise>
 		</choose>
 	)
@@ -35,13 +43,13 @@
 		* 
 	FROM 
 		MAINBOARD 
-	ORDER BY 
-		mainBoardNum desc
-
+	order by mainBoardNum DESC
 </select>
 
 <select id="listDetail" parameterType="ListVO" resultType="ListVO">
 	Select * from MAINBOARD where mainBoardNum = #{mainBoardNum}
+	ORDER BY 
+		mainBoardNum desc
 </select>
 
 <select id="selectOne" parameterType="map" resultType="ListVO">
@@ -70,11 +78,13 @@
 		select * from MAINBOARD 
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
+		ORDER BY 
+		mainBoardNum desc
 </select>
 
 <update id="updateFestival" parameterType="ListVO">
 	UPDATE
-		MAINBOARD
+		MAINBOARD 
 	SET
 		title = #{title},
 		country = #{country},
@@ -83,11 +93,13 @@
 		startEvent = #{startEvent},
 		endEvent = #{endEvent},
 		hashtag = #{hashtag},
-		surround_place = #{surround_place}
-		<if test="originalFileName != null and saveFileName !=null">
-			, originalfileName = #{originalFileName}
-			,saveFileName = #{saveFileName}
-		</if>
+		surround_place = #{surround_place} 
+		<choose>
+		<when test="originalFileName != null and saveFileName !=null">
+			,originalfileName = #{originalFileName} 
+			,saveFileName = #{saveFileName} 
+		</when>
+		</choose>
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
@@ -96,6 +108,8 @@
 		select originalFileName from MAINBOARD 
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
+		ORDER BY 
+		mainBoardNum desc
 </select>
 
 <select id="selectHashtag" parameterType="String" resultType="ListVO">
@@ -107,6 +121,7 @@
     <foreach item="item" collection="array" open="" separator="OR" close="">
             hashtag LIKE '%' ||  #{item} || '%'
     </foreach>
+    	order by mainBoardNum DESC
 </select>
 
 <select id="selectMain" resultType="ListVO">
@@ -179,10 +194,9 @@
 
 <!-- 메인보드넘 조회 -->
 <select id="mainBoardNum" resultType="int">
-	SELECT
-		MAX(mainBoardNum)
-	FROM
-		mainboard
+	select nvl2(max(mainboardnum),max(mainboardnum),0)
+	from
+	mainboard
 </select>
 
 </mapper>
