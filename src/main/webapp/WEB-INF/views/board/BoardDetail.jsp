@@ -149,7 +149,7 @@
        location.href="boardUpdateGO?bul_boardnum=${vo.bul_boardnum}";
    }
      function BoardDelete() {
-           if(confirm("삭제하시겠습니까?")){
+           if(confirm("削除しますか?")){
            location.href="BoardDelete?bul_boardnum=${vo.bul_boardnum}";
            }
      }
@@ -288,7 +288,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="#"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -305,7 +305,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home1"><a href="Home">Home</a></li>
+                        <li class="dropdown" id="home1"><a href="">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>                              
@@ -358,18 +358,18 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home2"><a href="#">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
+                        <li class="dropdown" id="home2"><a href="">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>                           
                            </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
                               <li><a href="calendar">Calendar</a></li>
                            </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
+                        <li class="dropdown"><a href="map">Map</a>
                            <ul>
-                              <li><a href="#">Map</a></li>
+                              <li><a href="map">Map</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="boardList">Board</a>
                            <ul>
@@ -427,55 +427,64 @@
                 <div class="shedule-right-side">
                     <div class="image-box">
 
-                         <div class="event-details">
-                            <div class="info_">
-                            <h1><b>祭りの詳細情報</b></h1>
+								<div class="event-details">
+									<div class="info_">
+										<h1>
+											<b>祭りの詳細情報</b>
+										</h1>
+									</div>
 
-
-
-                            </div>
-                            <c:if test="${sessionScope.loginid !=null}">
-                            <div align="right">
-                               <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
-                               <input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
-                     </div>
-                     </c:if>   
-                      <c:if test="${sessionScope.adminid !=null}">
-                            <div align="right">
-                               <input type="button" class="buttonS" value="修正" onclick="BoardUpdateGO()">
-                               <input type="button" class="buttonD" value="削除" onclick="BoardDelete()">
-                     </div>
-                     </c:if>                            
-                          <div class="tableSecond">
-                        <table class="table table-hover">
-                           <tr>
-                           <td><b>分類</b></td><td><b>詳細情報</b></td>
-                           </tr>
-                            <tr>
-                              <td>ユーザー名</td><td>${vo.userid}</td>
-                           </tr>
-                           <tr>
-                              <td>タイトル</td><td>${vo.title}</td>
-                           </tr>
-                           <tr>
-                              <td>内容</td><td>${vo.contents}</td>
-                           </tr>
-                     <tr>
-                              <td>投稿日</td><td>${vo.inputdate}</td>
-                           </tr>
-                           <tr>
-                              <td>国家</td><td>${vo.country}</td>
-                           </tr>
-                           <tr>
-                              <td>都市</td><td>${vo.surround_place}</td>
-                           </tr>
-                     <tr>
-                              <td>住所</td><td>${vo.adress}</td>
-                           </tr>
-                        </table>
-                        </div>
-                        </div>
-                  </div>
+									<div align="right">
+									<c:if test="${sessionScope.loginid == vo.userid}">
+											<input type="button" class="buttonS" value="修正"
+												onclick="BoardUpdateGO()"> <input type="button"
+												class="buttonD" value="削除" onclick="BoardDelete()">
+									</c:if>
+									<c:if test="${sessionScope.adminid !=null}">
+											<input type="button" class="buttonS" value="修正"
+												onclick="BoardUpdateGO()"> <input type="button"
+												class="buttonD" value="削除" onclick="BoardDelete()">
+									</c:if>
+									</div>
+									
+									<div class="tableSecond">
+										<table class="table table-hover">
+											<tr>
+												<td><b>分類</b></td>
+												<td><b>詳細情報</b></td>
+											</tr>
+											<tr>
+												<td>ユーザー名</td>
+												<td>${vo.userid}</td>
+											</tr>
+											<tr>
+												<td>タイトル</td>
+												<td>${vo.title}</td>
+											</tr>
+											<tr>
+												<td>内容</td>
+												<td>${vo.contents}</td>
+											</tr>
+											<tr>
+												<td>投稿日</td>
+												<td>${vo.inputdate}</td>
+											</tr>
+											<tr>
+												<td>国家</td>
+												<td>${vo.country}</td>
+											</tr>
+											<tr>
+												<td>都市</td>
+												<td>${vo.surround_place}</td>
+											</tr>
+											<tr>
+												<td>住所</td>
+												<td>${vo.adress}</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
                   
                     
                         <div>

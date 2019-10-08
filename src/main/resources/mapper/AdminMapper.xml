@@ -34,7 +34,8 @@ INSERT INTO
 		ENDEVENT,
 		originalFileName,
 		SAVEFILENAME,
-		datacheck
+		datacheck,
+		HASHTAG
 		)
 	VALUES
 	 (
@@ -49,7 +50,7 @@ INSERT INTO
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null">
+			<when test="originalFileName != null and saveFileName != null" >
 			,#{originalFileName} ,#{saveFileName}
 			</when>
 			<otherwise>
@@ -57,6 +58,7 @@ INSERT INTO
 			</otherwise>
 		</choose>
 		,#{datacheck}
+		,#{hashtag}
 		)
 </insert>
 <!-- 리스트 정보 보드넘 찾아서 값 찾아오기 -->
@@ -249,6 +251,7 @@ WHERE
 
 <select id="RecoveryReadBul" parameterType="BoardVO" resultType="BoardVO">
 SELECT
+	adminid,
     BUL_BOARDNUM,
     USERID,
     TITLE,

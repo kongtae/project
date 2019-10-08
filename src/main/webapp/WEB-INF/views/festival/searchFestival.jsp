@@ -22,6 +22,8 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <link rel="icon" href="images/f.png" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
 #left-box {
 	float: left;
@@ -112,10 +114,10 @@ table{
 			check -= 1;
 			return random_image();
 		}
-		$('#image-box').append("<div id='left-box'><div id ='left-text' class='title-text text-center'><h3><a href='javascript:leftBtn();'>"+ fesnames[ry] +"</a>"
-			+"</h3><div id='left-image'><img src=" + fesimages[ry] + " border=0></div></div></div>");
-		$('#image-box').append("<div id='right-box'><div id ='right-text' class='title-text text-center'><h3><a href='javascript:rightBtn();'>"+ fesnames[rn] +"</a>"
-			+"</h3><div id='right-image'><img src=" + fesimages[rn] + " border=0></div></div></div>");
+		$('#image-box').append("<div id='left-box'><div id ='left-text' class='title-text text-center'><h3 style='position: absolute; padding: 1%; font-weight: bold; font-size: 50px; text-shadow: 2px 2px 5px white; margin-left: 2%;'><a href='javascript:leftBtn();'>"+ fesnames[ry] +"</a>"
+			+"</h3><div id='left-image' style='width: 99%; max-height: 350px; overflow: hidden; border: 5px; border-radius: 2%; margin-left: 0.5%; margin-top: 1%; margin-bottom: 1%;'><img src=" + fesimages[ry] + " border=0></div></div></div>");
+		$('#image-box').append("<div id='right-box'><div id ='right-text' class='title-text text-center'><h3 style='position: absolute; padding: 1%; font-weight: bold; font-size: 50px; text-shadow: 2px 2px 5px white; margin-left: 2%;'><a href='javascript:leftBtn();'><a href='javascript:rightBtn();'>"+ fesnames[rn] +"</a>"
+			+"</h3><div id='right-image'style='width: 99%; max-height: 350px; overflow: hidden; border: 5px; border-radius: 2%; margin-left: 0.5%; margin-top: 1%; margin-bottom: 1%;'><img src=" + fesimages[rn] + " border=0></div></div></div>");
 	}
 
 	function leftBtn() {
@@ -346,8 +348,7 @@ table{
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="festival"><img src="images/fespedia.png" alt=""
-									title=""></a>
+								<a href="festival"><img src="images/fespedia.png" alt="" title=""></a>
 							</div>
 						</div>
 
@@ -373,7 +374,7 @@ table{
 										<ul>
 											<li><a href="listForm">List</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="Calendar">Calendar</a>
+									<li class="dropdown"><a href="calendar">Calendar</a>
 										<ul>
 											<li><a href="calendar">Calendar</a></li>
 										</ul></li>
@@ -407,8 +408,7 @@ table{
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="festival" class="img-responsive"><img
-							src="images/fespedia.png" alt="" title=""></a>
+						<a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -427,7 +427,7 @@ table{
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
 									<li class="dropdown" id="home2"><a href="">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
+									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
 										</ul></li>

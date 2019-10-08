@@ -187,8 +187,6 @@ public class AdminService {
 
 	public void AdminDeleteBul(BoardVO vo1) {
 		admindao.AdminDeleteBul(vo1);
-		
 	}
-
 
 }

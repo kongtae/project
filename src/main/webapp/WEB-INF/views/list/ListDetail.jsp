@@ -186,7 +186,7 @@
        location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
    }
      function DeleteFestival() {
-           if(confirm("削除しますか？?")){
+           if(confirm("削除しますか?")){
            location.href="deleteFestival?mainBoardNum=${vo.mainBoardNum}";
            }
      }
@@ -373,7 +373,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -390,7 +390,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home1"><a href="/festival">Home</a></li>
+                        <li class="dropdown" id="home1"><a href="">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
@@ -443,18 +443,18 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home2"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
+                        <li class="dropdown" id="home2"><a href="">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
                            </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
                               <li><a href="calendar">Calendar</a></li>
                            </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
+                        <li class="dropdown"><a href="map">Map</a>
                            <ul>
-                              <li><a href="#">Map</a></li>
+                              <li><a href="map">Map</a></li>
                            </ul></li>
                         <li class="dropdown"><a href="boardList">Board</a>
                            <ul>
@@ -515,9 +515,7 @@
                    
                     <div id="preview" class="pre">
                     </div>
-                    <div class="image-box" id="image-box">
-
-               </div>
+                    <div class="image-box" id="image-box"></div>
                 </div>
             </div>
 
@@ -526,9 +524,6 @@
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="shedule-right-side">
                     <div class="image-box">
-           <!--              <figure>
-                            <img src="images/resources/schedule-10.jpg" alt="">
-                        </figure> -->
                         
                          <div class="event-details">
                             <div class="info_">

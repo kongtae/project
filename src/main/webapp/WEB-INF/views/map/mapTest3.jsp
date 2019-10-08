@@ -171,8 +171,7 @@ $(function () {
 					<div class="float-left logo-box">
 						<div class="logo"
 							style="width: 179px; height: 80px; background: white;">
-							<a href="/festival"><img src="images/fespedia.png" alt=""
-								title=""></a>
+							<a href="festival"><img src="images/fespedia.png" alt="" title=""></a>
 						</div>
 					</div>
 

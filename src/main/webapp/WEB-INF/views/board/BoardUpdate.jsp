@@ -128,7 +128,7 @@ $(function () {
  var imageData = {'bul_boardnum' : bulb};
  function imagePrint() {
          $.ajax({
-            url : "imagePrintBoard",
+            url : "BoardimagePrint",
             type : "post",
             data : imageData,
             dataType: 'json',
@@ -270,7 +270,7 @@ function BoardUpdate() {
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown" id="home1"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home1"><a href="">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>								
@@ -324,16 +324,16 @@ function BoardUpdate() {
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown" id="home2"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown" id="home2"><a href="">Home</a></li>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
 										<li><a href="map">Map</a></li>
 									</ul></li>

@@ -22,6 +22,7 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="images/f.png" type="image/x-icon">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 $(function () {
@@ -123,7 +124,7 @@ $(function () {
 										<ul>
 											<li><a href="listForm">List</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="Calendar">Calendar</a>
+									<li class="dropdown"><a href="calendar">Calendar</a>
 										<ul>
 											<li><a href="calendar">Calendar</a></li>
 										</ul></li>
@@ -172,7 +173,7 @@ $(function () {
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home2"><a href="/festival">Home</a></li>
+                        <li class="dropdown" id="home2"><a href="festival">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
@@ -232,7 +233,7 @@ $(function () {
 						</b>
 						<br>
 						<b><input type="checkbox" style="font-size: 20px;"name="" id="check"/>&nbsp;&nbsp;&nbsp;案内事項を全て確認しており、これに同意します。</b>
-						<a id="withdraw" style="color: white; font-size: 18px;" class="theme-btn btn-style-one">脱退</a>
+						<a id="withdraw" style="background-color: #fa334f; border-color: #fa334f; color: white; font-size: 17px" class="btn btn-primary">脱退</a>
 					</div>
 				</div>
 			</div>

@@ -62,16 +62,24 @@ public class BoardController {
 	@RequestMapping(value = "/boardUpdate", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public String boardUpdate(BoardVO vo, HttpSession session, MultipartHttpServletRequest request) {
-		String userid = (String)session.getAttribute("loginid");
+		String userid=(String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		System.out.println("boardUpdate 吏꾩쭨 �떎�뻾 �븷 嫄곕떎! �뾽�뜲�씠�듃�븷 蹂대뱶 遺��씠�삤"+vo);
+		
+		System.out.println("업데이트 자체가 안되는 이유는 무엇? "+vo);
+		AdminBoardVO adminlist= adminservice.selectupBoard(vo.getBul_boardnum());
+		adminlist.setDatacheck("bulupdateBef");
+		System.out.println("업데이트 전 내용?"+adminlist);
+		adminservice.AdminBoardWrite(adminlist, request);
+		
+		System.out.println("boardUpdate ds"+vo);
 		boolean result = service.boardUpdate(vo,request);
 		System.out.println("boardUpdate 吏꾩쭨 �떎�뻾�뻽�떎! 洹� 寃곌낵 媛믪�??" + result);
 		
-		AdminBoardVO adminlist= adminservice.selectupBoard(vo.getBul_boardnum());
-		adminlist.setDatacheck("bulupdate");
-		System.out.println("�뼱�뱶誘� �옒 李얠븘�솕�뒗吏� �솗�씤"+adminlist);
+		adminlist= adminservice.selectupBoard(vo.getBul_boardnum());
+		adminlist.setDatacheck("bulupdateAft");
+		System.out.println("업데이트 전 내용?"+adminlist);
 		adminservice.AdminBoardWrite(adminlist, request);
+		
 		
 		return "success";
 	}
