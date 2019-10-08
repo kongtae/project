@@ -110,10 +110,12 @@ public class BoardController {
 	@RequestMapping(value = "/boardPrintAll", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody ArrayList<BoardVO> boardPrintAll() {
 		ArrayList<BoardVO> list = dao.boardPrintAll();
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getUserid().equals("aa"))
-			{
-				list.get(i).setUserid("管理者");
+		if(list.size() > 0) {
+			for (int i = 0; i < list.size(); i++) {
+				if(list.get(i).getUserid().equals("aa"))
+				{
+					list.get(i).setUserid("管理者");
+				}
 			}
 		}
 		System.out.println("�옄�쑀寃뚯떆�뙋 �쟾泥댁텧�젰" + list);
@@ -127,15 +129,30 @@ public class BoardController {
 		System.out.println("item "+searchItem);
 		System.out.println("keyword "+searchKeyword);
 		ArrayList<BoardVO> BoardSelectOne1 = new ArrayList<BoardVO>();
+		if(searchKeyword.equals("管理者")) {
+			searchKeyword = "aa";
+		}
 		if(searchItem.equals("inputdate")){
 		System.out.println("if臾몄븞�쑝濡� �뱾�뼱�삤�굹?");
 		BoardSelectOne1 = service.BoardSelectOne1(searchItem,searchKeyword);	
+		for (int i = 0; i < BoardSelectOne1.size(); i++) {
+			if(BoardSelectOne1.get(i).getUserid().equals("aa"))
+			{
+				BoardSelectOne1.get(i).setUserid("管理者");
+			}
+		}
 		System.out.println("BoardSelectOne由ъ뒪�듃 異쒕젰111"+BoardSelectOne1);
 		return BoardSelectOne1;
 		}
 		ArrayList<BoardVO> BoardSelectOne2 = service.BoardSelectOne2(searchItem,searchKeyword);
 		model.addAttribute("searchItem",searchItem);
 		model.addAttribute("searchKeyword",searchKeyword);
+		for (int i = 0; i < BoardSelectOne2.size(); i++) {
+			if(BoardSelectOne2.get(i).getUserid().equals("aa"))
+			{
+				BoardSelectOne2.get(i).setUserid("管理者");
+			}
+		}
 		System.out.println("BoardSelectOne由ъ뒪�듃 異쒕젰222"+BoardSelectOne2);
 		return BoardSelectOne2;
 		}
