@@ -50,6 +50,8 @@
 
 <select id="listDetail" parameterType="ListVO" resultType="ListVO">
 	Select * from MAINBOARD where mainBoardNum = #{mainBoardNum}
+	ORDER BY 
+		mainBoardNum desc
 </select>
 
 <select id="selectOne" parameterType="map" resultType="ListVO">
@@ -78,6 +80,8 @@
 		select * from MAINBOARD 
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
+		ORDER BY 
+		mainBoardNum desc
 </select>
 
 <update id="updateFestival" parameterType="ListVO">
@@ -104,6 +108,8 @@
 		select originalFileName from MAINBOARD 
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
+		ORDER BY 
+		mainBoardNum desc
 </select>
 
 <select id="selectHashtag" parameterType="String" resultType="ListVO">
@@ -115,6 +121,8 @@
     <foreach item="item" collection="array" open="" separator="OR" close="">
             hashtag LIKE '%' ||  #{item} || '%'
     </foreach>
+    ORDER BY 
+		mainBoardNum desc
 </select>
 
 <select id="selectMain" resultType="ListVO">
@@ -187,10 +195,9 @@
 
 <!-- 메인보드넘 조회 -->
 <select id="mainBoardNum" resultType="int">
-	SELECT
-		MAX(mainBoardNum)
-	FROM
-		mainboard
+	select nvl2(max(mainboardnum),max(mainboardnum),0)
+	from
+	mainboard
 </select>
 
 </mapper>

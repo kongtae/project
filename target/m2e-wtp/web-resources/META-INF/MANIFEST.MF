@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: ￪ﾹﾀ￬ﾄﾱ￫ﾯﾼ
 Build-Jdk: 1.8.0_221
-=======
-Built-By: mac
-Build-Jdk: 1.8.0_202
->>>>>>> ed1cb4778bb983aa860ad27234b1a587b5b643bb
 Created-By: Maven Integration for Eclipse
 
