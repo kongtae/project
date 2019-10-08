@@ -348,8 +348,7 @@ table{
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="festival"><img src="images/fespedia.png" alt=""
-									title=""></a>
+								<a href="festival"><img src="images/fespedia.png" alt="" title=""></a>
 							</div>
 						</div>
 
@@ -375,7 +374,7 @@ table{
 										<ul>
 											<li><a href="listForm">List</a></li>
 										</ul></li>
-									<li class="dropdown"><a href="Calendar">Calendar</a>
+									<li class="dropdown"><a href="calendar">Calendar</a>
 										<ul>
 											<li><a href="calendar">Calendar</a></li>
 										</ul></li>
@@ -409,8 +408,7 @@ table{
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="festival" class="img-responsive"><img
-							src="images/fespedia.png" alt="" title=""></a>
+						<a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -429,7 +427,7 @@ table{
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
 									<li class="dropdown" id="home2"><a href="">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
+									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
 										</ul></li>

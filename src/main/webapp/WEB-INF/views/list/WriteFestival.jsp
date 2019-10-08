@@ -346,7 +346,7 @@ function writeFestival() {
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown" id="home1"><a href="/festival">Home</a></li>
+								<li class="dropdown" id="home1"><a href="festival">Home</a></li>
 								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
@@ -385,8 +385,7 @@ function writeFestival() {
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left">
-						<a href="" class="img-responsive"><img
-							src="images/fespedia.png" alt="" title=""></a>
+						<a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -405,7 +404,7 @@ function writeFestival() {
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
 									<li class="dropdown"><a href="">Home</a></li>
-									<li class="dropdown"><a href="#">List</a>
+									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
 										</ul></li>

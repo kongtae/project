@@ -25,6 +25,7 @@
 <!--     <link rel="icon" href="images/favicon.png" type="image/x-icon"> -->
     <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
     <!-- <link href="css/paging.css" rel="stylesheet" type="text/css" media="all"> -->
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 
 <style>
 .infoboxes article {
@@ -37,6 +38,49 @@
 .infoboxes article .fa {
 	color: #FFFFFF;
 	background-color: #CF4845;
+}
+.s132 {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+  padding-left: 1%;
+}
+.s132 form {
+  width: 100%;
+  max-width: 380px;
+}
+.s132 form .inner-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.s132 form .inner-form .input-field input {
+  border: 0;
+  display: inline-block;
+  padding: 10px 32px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #6c757d;
+}
+#searchItem {
+    border: 0;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 17px;
+    color: #fa334f;
+    padding-top: 10%;
+    padding-bottom: 12%;
+}
+#searchOne {
+	border-radius: 3%;
+    background: #fa334f;
+    color: white;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: large;
+}
+.inner-box {
+	padding-top: 1.5%;
 }
 .pagination {
 	display: block;
@@ -58,6 +102,7 @@
 	background-clip: padding-box;
 	font-weight: normal;
 	color: #fa334f;
+	border-color: white;
 }
 #div_icontext {
 	display: flex;
@@ -65,8 +110,7 @@
 	width: 83%;
 }
 #icontext {
-	padding: 1.5%;
-	padding-rigth: 2px;
+	padding-bottom: 5%;
 	padding-left: 2px;
 	font-family: 'Robtoto', sans-serif;
 	font-size: 30px;
@@ -247,7 +291,7 @@ $(function() {
 		
 		for (var i = spage; i <= epage; i ++) {
 			if(i == page){
-				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
+				nav += '<li class="page-item"><a class="page-link" style="padding: 1px; border-color: red;" href="#'+i+'" data-value ="'+i+'"><strong>'+i+'</strong></a></li>';
 			} else {
 				nav += '<li class="page-item"><a class="page-link" href="#'+i+'" data-value ="'+i+'">'+i+'</a></li>';
 			}
@@ -390,7 +434,7 @@ $(function() {
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title=""></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -407,18 +451,18 @@ $(function() {
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
 							<ul class="navigation clearfix">
-								<li class="dropdown" id="home1"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown" id="home1"><a href="">Home</a></li>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -460,19 +504,19 @@ $(function() {
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="dropdown" id="home2"><a href="/festival">Home</a></li>
-								<li class="dropdown"><a href="#">List</a>
+								<li class="dropdown" id="home2"><a href="">Home</a></li>
+								<li class="dropdown"><a href="listForm">List</a>
 									<ul>
 										<li><a href="listForm">List</a></li>
 										
 									</ul></li>
-								<li class="dropdown"><a href="#">Calendar</a>
+								<li class="dropdown"><a href="calendar">Calendar</a>
 									<ul>
 										<li><a href="calendar">Calendar</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="#">Map</a>
+								<li class="dropdown"><a href="map">Map</a>
 									<ul>
-										<li><a href="#">Map</a></li>
+										<li><a href="map">Map</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="boardList">Board</a>
 									<ul>
@@ -511,7 +555,7 @@ $(function() {
 <section class="schedule-section" id="schedule-tab">
 	<div id="div_icontext">
 		
-		<a href="adminListPage"><h4 id="icontext"><b>To&nbspAdminListPage</b></h4></a>
+		<a href="adminListPage"><h4 id="icontext"><b>Go&nbspAdminListPage</b></h4></a>
 <!-- 		<a href="insertFestival"><img src="listImages/write.png" title="投稿"></a> -->
 	</div>
     <div class="container">
@@ -519,10 +563,12 @@ $(function() {
       		<div class="schedule-content clearfix">
 			            <div class="inner-box  table-responsive">      
 					<div id="hash"></div>
-					<table>
-					
-					<tr><td>
-					<select name="searchItem" id="searchItem" onchange="searchDate(this)">
+					<div class="s132">
+					<form>
+					<div class="inner-form">
+					<div class="input-field first-wrap">
+					<div class="input-select">
+					<select class="choices-single-defaul" name="searchItem" id="searchItem" onchange="searchDate(this)">
 					<option value="title" <c:if test="${'title'==searchItem}">selected</c:if>>
 					タイトル
 					</option>
@@ -536,13 +582,22 @@ $(function() {
 					DATACHECK
 					</option>
 					</select>
-					</td>
-					<td><input type="text" name="searchKeyword" id="searchKeyword" onchange="change()"></td>
-					<td id="insertmark"></td>
-					<td><input type="hidden" name="endEvent" id="searchHidden">
-					<input type="button" value="検索" id="searchOne" onclick='selectOne()'>
-					</td></tr>
- 					 </table>
+					</div>
+					</div>
+					<div class="input-field second-wrap">
+                                 <input name="searchKeyword" id="searchKeyword"
+                                    onchange="change()" type="text" class="input-field_pholder" placeholder="Enter Keywords"/>
+                              </div>
+                              <div class="input-field second-wrap">
+                                 <input type="hidden" name="endEvent" id="searchHidden">
+                              </div>
+                              <div class="input-field third-wrap">
+                                 <input type="button" value="検索" id="searchOne" onclick='selectOne()'>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                     
 			            <div class="inner-box  table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -560,12 +615,12 @@ $(function() {
                          </div> 
                        
                     </div>
+                    <nav class="pagination"></nav>
                 </div>
             </div>
-            <nav class="pagination"></nav>
            </div>
+           </section>
        </div>
-</section>
 <!--End Schedule Section-->
 
 		<!-- Main Footer-->

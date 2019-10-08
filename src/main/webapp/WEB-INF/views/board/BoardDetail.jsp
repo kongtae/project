@@ -433,17 +433,203 @@
 								<h6>写真</h6>
 							</div>
 							<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
+=======
+    
+<div class="boxed_wrapper">
+
+
+<!--Start Preloader -->
+<div class="preloader"></div>
+<!--End Preloader -->
+
+<!-- Main Header-->
+<header class="main-header">
+    
+    <!--Header Top-->
+    <div class="header-top">
+        <div class="container">
+            <div class="clearfix">
+                <!--Top Left-->
+                <div class="top-left">
+                    <ul class="header-info-list">
+                             <li><span class="icon fa fa-envelope"></span><strong>Email</strong>
+                           SC.IT@MASTER.COM</li>
+                        <li><span class="icon fa fa-map-marker"></span><strong>Location</strong>
+                           Trade Center COEX, SEOUL 135-731 KOREA</li>
+                    </ul>
+                </div>
+                <!--Top Right-->
+               <div class="top-right">
+               <!--Social Box-->
+               <ul class="social-box">
+                     <c:if test="${sessionScope.loginid == null}" >
+                           <c:if test="${sessionScope.adminid == null}" >
+                           <li><a href="registermember">Sign Up</a></li>
+                           <li><a href="loginForm">Sign in</a></li>
+                           </c:if>
+                        </c:if>
+                        
+                        <c:if test="${sessionScope.loginid != null}">
+                           <li><a href="memberPage">UserPage</a></li>
+                           <li><a href="logout">Logout</a></li>
+                        </c:if>
+                        
+                        <c:if test="${sessionScope.adminid !=null}">
+                           <li><a href="adminListPage">AdminListPage</a></li>
+                           <li><a href="adminBulPage">AdminBulPage</a></li>
+                           <li><a href="logout">Logout</a></li>
+                        </c:if>
+               </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Header-Upper-->
+    <div class="header-upper">
+        <div class="container">
+            <div class="clearfix">
+                
+                <div class="float-left logo-box">
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
+                </div>
+                
+                <div class="nav-outer clearfix">
+                
+                    <!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md">
+                        <div class="navbar-header">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                     <ul class="navigation clearfix">
+                        <li class="dropdown" id="home1"><a href="">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>                              
+                           </ul></li>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="map">Map</a>
+                           <ul>
+                              <li><a href="map">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
+                        </div>
+                        
+                    </nav>
+               <!--Button Box-->
+               <div class="button-box">
+                  <a href="searchFestival" class="theme-btn btn-style-one">Search Festival</a>
+               </div>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <!--End Header Upper-->
+    
+    <!--Sticky Header-->
+    <div class="sticky-header stricky">
+        <div class="container clearfix">
+            <!--Logo-->
+            <div class="logo float-left">
+                <a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
+            </div>
+            
+            <!--Right Col-->
+            <div class="right-col float-right">
+                <!-- Main Menu -->
+                <nav class="main-menu navbar-expand-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                     <ul class="navigation clearfix">
+                        <li class="dropdown" id="home2"><a href="">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
+                           <ul>
+                              <li><a href="listForm">List</a></li>                           
+                           </ul></li>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
+                           <ul>
+                              <li><a href="calendar">Calendar</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="map">Map</a>
+                           <ul>
+                              <li><a href="map">Map</a></li>
+                           </ul></li>
+                        <li class="dropdown"><a href="boardList">Board</a>
+                           <ul>
+                              <li><a href="boardList">Board</a></li>
+                           </ul></li>
+                     </ul>
+                    </div>
+                </nav><!-- Main Menu End-->
+            </div>
+            
+        </div>
+    </div>
+    <!--End Sticky Header-->
+
+</header>
+<!--End Main Header -->
+
+
+<!-- Page Title-->
+<section class="page-title" style="background: url(images/background/page-title-4.jpg);">
+    <div class="container">
+        <div class="title-text text-center">
+            <h3>会員掲示板</h3>
+            <ul>
+                <li><a href="festival">home</a></li>
+                <li>/</li>
+                <li><a href="boardList">Board</a></li>
+            </ul>
+        </div>                
+    </div>
+</section>
+<!-- End Page Title-->
+
+
+<!--Schedule Details-->
+<section class="schedule-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-md-12 col-sm-12">
+                <div class="shedule-left-side">
+                    <div class="text-title" style="margin-bottom: 5%; margin-top: 26%;">
+                        <h6>写真</h6>
+                    </div> 
+<!--                     <div class="shedule-image-box text-center" id="removeImg"> 미리보기 공간
+>>>>>>> 29390c01c831f665a8722386da4036efab3889c5
                         <figure>
                             <img src="resources/images/schedule-9.jpg" alt="" >
                         </figure>
                     </div> -->
-							<div id="preview"></div>
-							<div class="image-box" id="image-box"></div>
-						</div>
-					</div>
-					<div class="col-xl-8 col-md-12 col-sm-12">
-						<div class="shedule-right-side">
-							<div class="image-box">
+                    <div id="preview">
+                    </div>
+                     <div class="image-box" id="image-box"></div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-md-12 col-sm-12">
+                <div class="shedule-right-side">
+                    <div class="image-box">
 
 								<div class="event-details">
 									<div class="info_">
@@ -451,20 +637,20 @@
 											<b>祭りの詳細情報</b>
 										</h1>
 									</div>
+
+									<div align="right">
 									<c:if test="${sessionScope.loginid == vo.userid}">
-										<div align="right">
 											<input type="button" class="buttonS" value="修正"
 												onclick="BoardUpdateGO()"> <input type="button"
 												class="buttonD" value="削除" onclick="BoardDelete()">
-										</div>
 									</c:if>
 									<c:if test="${sessionScope.adminid !=null}">
-										<div align="right">
 											<input type="button" class="buttonS" value="修正"
 												onclick="BoardUpdateGO()"> <input type="button"
 												class="buttonD" value="削除" onclick="BoardDelete()">
-										</div>
 									</c:if>
+									</div>
+									
 									<div class="tableSecond">
 										<table class="table table-hover">
 											<tr>
@@ -503,160 +689,153 @@
 									</div>
 								</div>
 							</div>
+                  
+                    
+                        <div>
+                        <input type="hidden" id="address" value="${vo.adress}">
+                       <!-- <input id="submit" type="button" value="Geocode"> -->
+                        </div>
+                    <div id="googleMap"></div>
+            </div>
+        </div>                
+    </div>
+    </div>
+</section>
+<br>
 
+<!--End Schedule Details-->
+<section class="comments">
+   <div class="blog-left-title">
+                    <h6>Comments ${replycount}</h6>
+                </div>
+      
+               
+        <table class="reply">
+        <c:forEach items="${replylist}" var="replylist">
+         <tr>
+            <td rowspan="1">
+             <div class="blog-comment-area">
+                    <div class="image-box">
+                     <c:if test="${replylist.originalFileName == null}">
+                        <img src="images/userimage/ico_login.png" alt="">
+                     </c:if>
+                     <c:if test="${replylist.originalFileName != null}">
+                             <img src="images/userimage/${replylist.originalFileName}" alt="">
+                     </c:if>
+                    </div>
+                    </div>
+            </td>
+            <td rowspan="1">
+                 &nbsp   &nbsp ${replylist.userid}
+                 </td>
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.replytext}
+            </td>
+            <td rowspan="1">
+            &nbsp   &nbsp ${replylist.inputdate}
+            </td>
+         <c:if test="${sessionScope.loginid == replylist.userid}">
+            <td>
+               &nbsp&nbsp<input type="button" id="updatebtn" value="修正" class="buttonS" onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
+               <input type="button" value="削除" class="buttonD" onclick="replyDelete('${replylist.replynum}')">
+            </td>
+         </c:if>
+      </tr>
+      </c:forEach>
+   </table>
+   </section>
+                       
+                <form name="contact_form" class="default-form post-comment" action="replywriteBoard" id="replywriteBoard" method="post">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" name="userid" value="${sessionScope.loginid}" id="userid" readonly="readonly">
+                            </div>
+                  <input type="hidden" name="bul_boardnum" id="bul_boardnum" value="${vo.bul_boardnum}">
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <textarea name="replytext" id="replytext" class="form-control textarea required" placeholder="Your Message"></textarea>
+                               
+                            </div>
+                            <div class="form-group bottom">
+                                <button type="button" id="replysubmit" onclick="replywriteBoard()" value="Send Message" class="theme-btn btn-style-one">Send Message</button>
+                                 <input type="hidden" class="theme-btn btn-style-one" name="endEvent" id="searchHidden" value="reset" >
+                            </div>
+                        </div>
+                    </div>
+                </form>
+</div>
 
-							<div>
-								<input type="hidden" id="address" value="${vo.adress}">
-								<!-- <input id="submit" type="button" value="Geocode"> -->
-							</div>
-							<div id="googleMap"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<br>
+      <!-- Main Footer-->
+      <footer class="main-footer"
+         >
+         <div class="container">
+            <div class="footer-area text-center">
+               <div class="footer-logo">
+                  <figure>
+                  <c:if test="${sessionScope.adminid != null}">
+                     <a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
+                  </c:if>
+                  <c:if test="${sessionScope.adminid == null}">
+                     <a href=""><img src="images/fespedia_w.png" alt=""></a>
+                  </c:if>
+                  </figure>
+               </div>
+            <ul class="footer-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="listForm">List</a></li>
+                <li><a href="calendar">Calendar</a></li>
+                <li><a href="map">Map</a></li>
+                <li><a href="boardList">Board</a></li>
+            <li><a href="searchFestival">Search Festival</a></li>
+            </ul>
+               <ul class="social-links">
+                  <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
+                  <li><a href="https://kr.linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="https://www.pinterest.co.kr/"><i class="fab fa-pinterest"></i></a></li>
+                  <li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+               </ul>
+            </div>
+         </div>
+      </footer>
+      <!--End Main Footer-->
 
-		<!--End Schedule Details-->
-		<section class="comments">
-			<div class="blog-left-title">
-				<h6>Comments ${replycount}</h6>
-			</div>
+      <!--Footer Bottom Section-->
+      <section class="footer-bottom">
+         <div class="container">
+            <div class="copyright-text text-center">
+               Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights
+               Reserved
+            </div>
+         </div>
+      </section>
+      <!--End Footer Bottom Section-->
 
+      <!--Scroll to top-->
+      <div class="scroll-to-top scroll-to-target" data-target="html">
+         <span class="fa fa-angle-up"></span>
+      </div>
 
-			<table class="reply">
-				<c:forEach items="${replylist}" var="replylist">
-					<tr>
-						<td rowspan="1">
-							<div class="blog-comment-area">
-								<div class="image-box">
-									<c:if test="${replylist.originalFileName == null}">
-										<img src="images/userimage/ico_login.png" alt="">
-									</c:if>
-									<c:if test="${replylist.originalFileName != null}">
-										<img src="images/userimage/${replylist.originalFileName}"
-											alt="">
-									</c:if>
-								</div>
-							</div>
-						</td>
-						<td rowspan="1">&nbsp &nbsp ${replylist.userid}</td>
-						<td rowspan="1">&nbsp &nbsp ${replylist.replytext}</td>
-						<td rowspan="1">&nbsp &nbsp ${replylist.inputdate}</td>
-						<c:if test="${sessionScope.loginid == replylist.userid}">
-							<td>&nbsp&nbsp<input type="button" id="updatebtn" value="修正"
-								class="buttonS"
-								onclick="replymodify('${replylist.replynum}','${replylist.replytext }')">
-								<input type="button" value="削除" class="buttonD"
-								onclick="replyDelete('${replylist.replynum}')">
-							</td>
-						</c:if>
-					</tr>
-				</c:forEach>
-			</table>
-		</section>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery.countTo.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/isotope.js"></script>
+<script src="js/bxslider.js"></script>
+<script src="js/validate.js"></script>
 
-		<form name="contact_form" class="default-form post-comment"
-			action="replywriteBoard" id="replywriteBoard" method="post">
-			<div class="row">
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div class="form-group">
-						<input type="text" name="userid" value="${sessionScope.loginid}"
-							id="userid" readonly="readonly">
-					</div>
-					<input type="hidden" name="bul_boardnum" id="bul_boardnum"
-						value="${vo.bul_boardnum}">
-				</div>
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="form-group">
-						<textarea name="replytext" id="replytext"
-							class="form-control textarea required" placeholder="Your Message"></textarea>
+<!-- Custom script -->
+<script src="js/custom.js"></script>
 
-					</div>
-					<div class="form-group bottom">
-						<button type="button" id="replysubmit" onclick="replywriteBoard()"
-							value="Send Message" class="theme-btn btn-style-one">Send
-							Message</button>
-						<input type="hidden" class="theme-btn btn-style-one"
-							name="endEvent" id="searchHidden" value="reset">
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-
-	<!-- Main Footer-->
-	<footer class="main-footer">
-		<div class="container">
-			<div class="footer-area text-center">
-				<div class="footer-logo">
-					<figure>
-						<c:if test="${sessionScope.adminid != null}">
-							<a href="tourAPI"><img src="images/fespedia_w.png" alt=""></a>
-						</c:if>
-						<c:if test="${sessionScope.adminid == null}">
-							<a href=""><img src="images/fespedia_w.png" alt=""></a>
-						</c:if>
-					</figure>
-				</div>
-				<ul class="footer-menu">
-					<li><a href="">Home</a></li>
-					<li><a href="listForm">List</a></li>
-					<li><a href="calendar">Calendar</a></li>
-					<li><a href="map">Map</a></li>
-					<li><a href="boardList">Board</a></li>
-					<li><a href="searchFestival">Search Festival</a></li>
-				</ul>
-				<ul class="social-links">
-					<li><a href="https://www.facebook.com/"><i
-							class="fab fa-facebook-f"></i></a></li>
-					<li><a href="https://twitter.com/"><i
-							class="fab fa-twitter"></i></a></li>
-					<li><a href="https://vine.co/"><i class="fab fa-vine"></i></a></li>
-					<li><a href="https://kr.linkedin.com/"><i
-							class="fab fa-linkedin-in"></i></a></li>
-					<li><a href="https://www.pinterest.co.kr/"><i
-							class="fab fa-pinterest"></i></a></li>
-					<li><a href="https://www.instagram.com"><i
-							class="fab fa-instagram"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
-	<!--End Main Footer-->
-
-	<!--Footer Bottom Section-->
-	<section class="footer-bottom">
-		<div class="container">
-			<div class="copyright-text text-center">
-				Copyright &copy; <a href="#">FESPEDIA</a> 2019. All Rights Reserved
-			</div>
-		</div>
-	</section>
-	<!--End Footer Bottom Section-->
-
-	<!--Scroll to top-->
-	<div class="scroll-to-top scroll-to-target" data-target="html">
-		<span class="fa fa-angle-up"></span>
-	</div>
-
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.fancybox.js"></script>
-	<script src="js/owl.js"></script>
-	<script src="js/wow.js"></script>
-	<script src="js/jquery.countTo.js"></script>
-	<script src="js/jquery.countdown.min.js"></script>
-	<script src="js/appear.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/isotope.js"></script>
-	<script src="js/bxslider.js"></script>
-	<script src="js/validate.js"></script>
-
-	<!-- Custom script -->
-	<script src="js/custom.js"></script>
-
-	<script>
+    <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('googleMap'), {
           zoom: 18,
@@ -681,6 +860,8 @@
         });
       }
     </script>
+
+
 	<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6uy9uWZtnlBIODo1H__1TNEJoPTQNXsk&callback=initMap">
     </script>

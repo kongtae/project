@@ -152,8 +152,7 @@ $(function () {
 					<div class="float-left logo-box">
 						<div class="logo"
 							style="width: 179px; height: 80px; background: white;">
-							<a href="/festival"><img src="images/fespedia.png" alt=""
-								title=""></a>
+							<a href="festival"><img src="images/fespedia.png" alt="" title=""></a>
 						</div>
 					</div>
 
@@ -174,7 +173,7 @@ $(function () {
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent">
 								<ul class="navigation clearfix">
-									<li class="dropdown" id="home1"><a href="/festival">Home</a></li>
+									<li class="dropdown" id="home1"><a href="">Home</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>
@@ -238,8 +237,7 @@ $(function () {
 				<div class="container clearfix">
 					<!--Logo-->
 					<div class="logo float-left" style="width: 179px; height: 80px; background: white;" >
-						<a href="" class="img-responsive"><img
-							src="images/fespedia.png" alt="" title=""></a>
+						<a href="festival" class="img-responsive"><img src="images/fespedia.png" alt="" title=""></a>
 					</div>
 
 					<!--Right Col-->
@@ -257,7 +255,7 @@ $(function () {
 							<div class="navbar-collapse collapse clearfix"
 								id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown" id="home2"><a href="fastival">HOME</a></li>
+									<li class="dropdown" id="home2"><a href="">HOME</a></li>
 									<li class="dropdown"><a href="listForm">List</a>
 										<ul>
 											<li><a href="listForm">List</a></li>

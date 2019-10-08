@@ -21,6 +21,8 @@
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="images/f.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
      <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -40,7 +42,6 @@
         background-color: #3c8dbc;
     	border-color: #367fa9;
     	margin-right: 5px;
-    	display: white;
 	    margin-bottom: 0;
 	    font-weight: 400;
 	    text-align: center;
@@ -51,7 +52,8 @@
 	    background-image: none;
 	    border: 1px solid transparent;
 	    padding: 6px 12px;
-	    font-size: 14px;
+	    font-family: 'M PLUS Rounded 1c', sans-serif;
+    	font-size: 17px;
 	    line-height: 1.42857143;
 	    border-radius: 4px;
 	    user-select: none;
@@ -61,7 +63,6 @@
         background-color: red;
     	border-color: red;
     	margin-right: 5px;
-    	display: white;
 	    margin-bottom: 0;
 	    font-weight: 400;
 	    text-align: center;
@@ -72,7 +73,8 @@
 	    background-image: none;
 	    border: 1px solid transparent;
 	    padding: 6px 12px;
-	    font-size: 14px;
+	    font-family: 'M PLUS 1p', sans-serif;
+	    font-size: 17px;
 	    line-height: 1.42857143;
 	    border-radius: 4px;
 	    user-select: none;
@@ -368,7 +370,7 @@
             <div class="clearfix">
                 
                 <div class="float-left logo-box">
-                    <div class="logo"><a href="/festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
+                    <div class="logo"><a href="festival"><img src="images/fespedia.png" alt="" title="ホームへ"></a></div>
                 </div>
                 
                 <div class="nav-outer clearfix">
@@ -385,7 +387,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home1"><a href="/festival">Home</a></li>
+                        <li class="dropdown" id="home1"><a href="">Home</a></li>
                         <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>                     
@@ -440,17 +442,17 @@
                     
                     <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                      <ul class="navigation clearfix">
-                        <li class="dropdown" id="home2"><a href="/festival">Home</a></li>
-                        <li class="dropdown"><a href="#">List</a>
+                        <li class="dropdown" id="home2"><a href="">Home</a></li>
+                        <li class="dropdown"><a href="listForm">List</a>
                            <ul>
                               <li><a href="listForm">List</a></li>
                           
                            </ul></li>
-                        <li class="dropdown"><a href="#">Calendar</a>
+                        <li class="dropdown"><a href="calendar">Calendar</a>
                            <ul>
                               <li><a href="calendar">Calendar</a></li>
                            </ul></li>
-                        <li class="dropdown"><a href="#">Map</a>
+                        <li class="dropdown"><a href="map">Map</a>
                            <ul>
                               <li><a href="map">Map</a></li>
                            </ul></li>
@@ -493,7 +495,7 @@
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
                 <div class="shedule-left-side">
-                    <div class="text-title">
+                    <div class="text-title" style="margin-bottom: 5%; margin-top: 18%;">
                         <h6>祭りの写真</h6>
                            <c:if test="${sessionScope.loginid == null }">
                        <a href="" ><img src="images/dislike.png" id="loginne" onclick="loginneed()" /></a>
@@ -533,7 +535,7 @@
                         </figure> -->
                         
                          <div class="event-details">
-                            <div>
+                            <div class="info_">
                          <h1><b>祭りの詳細情報</b></h1>
                    
 
@@ -637,9 +639,6 @@
 <!--                             <a href="#" ><i class="fas fa-reply"></i>Replay</a> -->
 <!--                         </div> -->
                     </div>
-                </div>
-                <div class="blog-left-title">
-                    <h6>Post Comments</h6>
                 </div>
                 <form name="contact_form" class="default-form post-comment" action="replywrite" id="replywrite" method="post">
                     <div class="row">
