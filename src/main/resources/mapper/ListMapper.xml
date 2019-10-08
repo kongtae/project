@@ -43,9 +43,7 @@
 		* 
 	FROM 
 		MAINBOARD 
-	ORDER BY 
-		mainBoardNum desc
-
+	order by mainBoardNum DESC
 </select>
 
 <select id="listDetail" parameterType="ListVO" resultType="ListVO">
@@ -115,6 +113,7 @@
     <foreach item="item" collection="array" open="" separator="OR" close="">
             hashtag LIKE '%' ||  #{item} || '%'
     </foreach>
+    	order by mainBoardNum DESC
 </select>
 
 <select id="selectMain" resultType="ListVO">
