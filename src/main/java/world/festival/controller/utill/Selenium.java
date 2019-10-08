@@ -30,9 +30,9 @@ import world.festival.VO.ListVO;
 		//Properties
 		public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
 		//새암이형경로
-		public static final String WEB_DRIVER_PATH = "C:/Users/kita/Desktop/install/chromedriver_win32/chromedriver.exe";
+//		public static final String WEB_DRIVER_PATH = "C:/Users/kita/Desktop/install/chromedriver_win32/chromedriver.exe";
 	//C:\Users\김성민\Desktop\pro\chromedriver_win32
-		//public static final String WEB_DRIVER_PATH = "C:/Users/김성민/Desktop/pro/chromedriver_win32/chromedriver.exe";
+		public static final String WEB_DRIVER_PATH = "C:/Users/김성민/Desktop/pro/chromedriver_win32/chromedriver.exe";
 		private String base_url;
 	
 		public Selenium() {
