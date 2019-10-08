@@ -461,13 +461,13 @@ function writeFestival() {
                         <h6>祭りの写真</h6>
                     </div> 
                     
-           <div id="preview"></div>
            			<div class="uploadButton">
+           			<div id="preview"></div>
                 	<i class="fa fa-paperclip"></i> ファイル添付
                 	<div class="filebox">
                 	<label for="uploadFileName">ファイル選択</label>
                 	<input type="file" class="uploadButton" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-					<input type="button" class="uploadButton" onclick="delete1()" value="1番目の写真を消す">
+					<input type="button" onclick="delete1()" value="1番目の写真を消す">
 					</div>
                     
                     <div id="preview2"></div>
