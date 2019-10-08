@@ -20,11 +20,11 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null and hashtag != ''">
+			<when test="originalFileName != null and saveFileName != null">
 			,#{originalFileName},#{saveFileName}
 			</when>
 			<otherwise>
-			,null,null,
+			,null,null
 			</otherwise>
 		</choose>
 		<choose>
@@ -43,9 +43,7 @@
 		* 
 	FROM 
 		MAINBOARD 
-	ORDER BY 
-		mainBoardNum desc
-
+	order by mainBoardNum DESC
 </select>
 
 <select id="listDetail" parameterType="ListVO" resultType="ListVO">
@@ -86,7 +84,7 @@
 
 <update id="updateFestival" parameterType="ListVO">
 	UPDATE
-		MAINBOARD
+		MAINBOARD 
 	SET
 		title = #{title},
 		country = #{country},
@@ -95,11 +93,13 @@
 		startEvent = #{startEvent},
 		endEvent = #{endEvent},
 		hashtag = #{hashtag},
-		surround_place = #{surround_place}
-		<if test="originalFileName != null and saveFileName !=null">
-			, originalfileName = #{originalFileName}
-			,saveFileName = #{saveFileName}
-		</if>
+		surround_place = #{surround_place} 
+		<choose>
+		<when test="originalFileName != null and saveFileName !=null">
+			,originalfileName = #{originalFileName} 
+			,saveFileName = #{saveFileName} 
+		</when>
+		</choose>
 		WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
@@ -121,8 +121,7 @@
     <foreach item="item" collection="array" open="" separator="OR" close="">
             hashtag LIKE '%' ||  #{item} || '%'
     </foreach>
-    ORDER BY 
-		mainBoardNum desc
+    	order by mainBoardNum DESC
 </select>
 
 <select id="selectMain" resultType="ListVO">

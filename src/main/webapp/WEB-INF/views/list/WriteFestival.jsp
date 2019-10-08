@@ -194,11 +194,20 @@ var hashtag = "";
 
 function hashtag2() {
 	var hashtag1 = document.getElementById("hashtag1").value;
+	document.getElementById("hashtag1").value = "";
+	if(hashtag1.charAt(0) == '＃'){
+		  hashtag1 = hashtag1.replace("＃", "#");
+	  }
 	if(hashtag1.charAt(0) != '#') {
 		alert("「＃」を入力してください。");
 		return false;
 	}
+	if(hashtag1.charAt(1) == 1 || hashtag1.charAt(1) == 2 || hashtag1.charAt(1) == 3 || hashtag1.charAt(1) == 4 || hashtag1.charAt(1) == 5 || hashtag1.charAt(1) == 6 || hashtag1.charAt(1) == 7 || hashtag1.charAt(1) == 8 || hashtag1.charAt(1) == 9 || hashtag1.charAt(1) == 0 ) {
+ 		alert("文字を先に入力してください。");
+ 		return false;
+ 	}
 	sharp = hashtag1;
+	$('#searchKeyword').val("");
 //	alert(sharp);
 	sharp = sharp.replace("#", "");
 	idx += 1;
@@ -461,13 +470,13 @@ function writeFestival() {
                         <h6>祭りの写真</h6>
                     </div> 
                     
-           <div id="preview"></div>
            			<div class="uploadButton">
+           			<div id="preview"></div>
                 	<i class="fa fa-paperclip"></i> ファイル添付
                 	<div class="filebox">
                 	<label for="uploadFileName">ファイル選択</label>
                 	<input type="file" class="uploadButton" id="uploadFileName" name="uploadFileName" multiple="multiple"  accept="image/png,image/jpg,image/gif,image/jpeg">
-					<input type="button" class="uploadButton" onclick="delete1()" value="1番目の写真を消す">
+					<input type="button" onclick="delete1()" value="1番目の写真を消す">
 					</div>
                     
                     <div id="preview2"></div>
