@@ -168,7 +168,7 @@
 // 		alert(mainBoardNum);
 		if(datacheck=="fedelete")
 		{
-			alert("이미 삭제된 친구");
+			alert("すでに削除されたものです。");
 			return;
 		}
 		$.ajax({
