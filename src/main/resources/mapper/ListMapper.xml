@@ -95,8 +95,12 @@
 		hashtag = #{hashtag},
 		surround_place = #{surround_place} 
 		<choose>
-		<when test="originalFileName != null and saveFileName !=null">
+		<when test="originalFileName != null">
 			,originalfileName = #{originalFileName} 
+		</when>
+		</choose>
+		<choose>
+		<when test="saveFileName !=null">
 			,saveFileName = #{saveFileName} 
 		</when>
 		</choose>
@@ -162,11 +166,19 @@
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null">
-			,#{originalFileName},#{saveFileName}
+			<when test="originalFileName != null">
+			,#{originalFileName}
 			</when>
 			<otherwise>
-			,null,null
+			,null
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="saveFileName != null">
+			,#{saveFileName}
+			</when>
+			<otherwise>
+			,null
 			</otherwise>
 		</choose>
 		,#{hashtag}
@@ -184,10 +196,22 @@
 		startEvent = #{startEvent},
 		endEvent = #{endEvent},
 		hashtag = #{hashtag}
-		<if test="originalFileName != null and saveFileName !=null">
-			, originalfileName = #{originalFileName}
-			,saveFileName = #{saveFileName}
-		</if>
+		<choose>
+			<when test="originalFileName != null">
+			,#{originalFileName},
+			</when>
+			<otherwise>
+			,null
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="saveFileName != null">
+			,#{saveFileName}
+			</when>
+			<otherwise>
+			,null
+			</otherwise>
+		</choose>
 				WHERE 
 		mainBoardNum = #{mainBoardNum}
 </update>
@@ -197,6 +221,14 @@
 	select nvl2(max(mainboardnum),max(mainboardnum),0)
 	from
 	mainboard
+</select>
+
+<select id="select" parameterType="int" resultType="ListVO">
+		select *
+		FROM
+			mainboard 
+		WHERE 
+		mainBoardNum = #{mainBoardNum}
 </select>
 
 </mapper>

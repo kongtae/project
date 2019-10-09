@@ -141,9 +141,6 @@ public class AdminController {
 		public String AdminlistDetailGO(AdminListVO vo1,Model model, HttpSession hs,RedirectAttributes rttr) {
 			AdminListVO vo2 = admindao.readAdminList(vo1);
 			model.addAttribute("vo", vo2);
-			System.out.println("蹂대뱶�뵒�뀒�씪�떒�쓽 BoardVO �쓽 媛� :" + vo2);
-
-				
 			return "admin/adminListDetail";
 		}
 //		ListRecovery
