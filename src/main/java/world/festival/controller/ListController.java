@@ -41,9 +41,11 @@ public class ListController {
 	@Autowired
 	private WishService wishsrvice;
 
-	
 	@Autowired
 	private AdminService adminservice;
+
+	@Autowired
+	private AdminDAO admindao;
 	
 //	private ReplyService service;
 
@@ -91,16 +93,13 @@ public class ListController {
 		
 		String userid = (String)session.getAttribute("loginid");
 		vo.setUserid(userid);
-		
-		AdminListVO adminlist= adminservice.selectupList(vo.getMainBoardNum());
+		AdminListVO adminlist = adminservice.selectupList(vo.getMainBoardNum());
 		adminlist.setDatacheck("feupdateBef");
-		System.out.println("어드민 잘 찾아왔는지 확인"+adminlist);
+		System.out.println("원래사진 : "+adminlist.getOriginalFileName());
 		adminservice.AdminwriteFestival(adminlist, request);
-		
 		System.out.println("업데이트VO: "+vo);
-		System.out.println("리퀘스트 총 몇개? " +request.toString());
 		boolean result = service.updateFestival(vo,request);
-		System.out.println("result:"+result);
+		System.out.println("result:"+result);			
 		
 		adminlist= adminservice.selectupList(vo.getMainBoardNum());
 		adminlist.setDatacheck("feupdateAft");
@@ -239,13 +238,28 @@ public class ListController {
 	@RequestMapping(value = "/imagePrint", method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public ArrayList<String> imagePrint(ListVO vo) {
-		ListVO lvo = dao.imagePrint(vo);
+		int mainboardnum = vo.getMainBoardNum();
 		ArrayList<String> ilist = new ArrayList<>();
-		if(lvo != null) {
-			String a[] = lvo.getOriginalFileName().split(",");
-			for (int i = 0; i < a.length; i++) {
-				ilist.add(a[i]);
-			}
+		ListVO vo3 = dao.select(mainboardnum);
+		AdminListVO vo1 = new AdminListVO();
+		if(vo3 == null) {
+			vo1.setMainBoardNum(vo.getMainBoardNum());
+			vo1.setDatacheck("fedelete");
+			AdminListVO vo2 = admindao.adImagePrint(vo1);
+			if(vo2 != null) {
+				String a[] = vo2.getOriginalFileName().split(",");
+				for (int i = 0; i < a.length; i++) {
+					ilist.add(a[i]);
+				}
+			}			
+		}else {
+			ListVO lvo = dao.imagePrint(vo);
+			if(lvo != null) {
+				String a[] = lvo.getOriginalFileName().split(",");
+				for (int i = 0; i < a.length; i++) {
+					ilist.add(a[i]);
+				}
+			}			
 		}
 		return ilist; 
 	}

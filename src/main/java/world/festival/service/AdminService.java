@@ -35,7 +35,6 @@ public class AdminService {
 		if(!dir.isDirectory()){
 			dir.mkdir();
 		}
-		
 		Iterator<String> files = request.getFileNames();
 		String savedFilename = UUID.randomUUID().toString();
 		System.out.println("files"+files);
@@ -47,10 +46,13 @@ public class AdminService {
 			fileName1 = mFile.getOriginalFilename();
 			fileName += mFile.getOriginalFilename()+",";
 			System.out.println("실제파일이름"+fileName);
+			if(fileName1.equals("")) {
+				System.out.println("어드민 나가");
+				break;
+			}
 			try {
 				mFile.transferTo(new File(path+fileName1));
 			} catch (Exception e) {
-				// TODO: handle exception
 				e.printStackTrace();
 			}
 			adminvo.setSaveFileName(savedFilename);
