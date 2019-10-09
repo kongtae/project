@@ -188,7 +188,7 @@ public class ListController {
 	public String deleteFestival(ListVO vo,RedirectAttributes rttr) {
 		AdminListVO adminvo=adminservice.selectupList(vo.getMainBoardNum());
 		adminvo.setDatacheck("fedelete");
-		System.out.println("잘 찾와왔느지 확인");
+		System.out.println("잘 찾와왔느지 확인"+adminvo);
 		adminservice.AdminwriteFestival(adminvo);
 		
 		System.out.println("삭제할 vo "+vo);

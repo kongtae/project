@@ -181,6 +181,7 @@
          });
       }
     
+ 
     
     function UpdateFestival() {
        location.href="updateFestivalGO?mainBoardNum=${vo.mainBoardNum}";
@@ -547,7 +548,8 @@
                               <td>タイトル</td><td>${vo.title}</td>
                            </tr>
                            <tr>
-                              <td>内容</td><td>${vo.festival_intro}</td>
+                              <td>内容</td>
+                              <td colspan="2"><textarea name="contents"  id="contents" class="form-control" readonly="readonly" style="height: 300px; background: white; border: 0px" >${vo.festival_intro}</textarea></td>
                            </tr>
                      <tr>
                               <td>期間</td><td>${vo.startEvent}~${vo.endEvent}</td>

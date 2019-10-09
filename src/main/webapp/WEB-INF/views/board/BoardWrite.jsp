@@ -406,8 +406,9 @@ function writeBoard() {
 					<input type="text" id="title" name="title" class="form-control" placeholder="タイトルを記入してください。" >
 				</c:if>
 				<c:if test="${sessionScope.adminid!=null }">
-					<input type="text" name="userid" class="form-control" value="${sessionScope.adminid}" disabled="disabled">
+					<input type="text" class="form-control" value="管理者" disabled="disabled">
 					<input type="text" id="title" name="title" class="form-control" placeholder="タイトルを記入してください。" >
+					<input type="hidden" name="userid" class="form-control" value="${sessionScope.adminid}" disabled="disabled">
 				</c:if>
 			 </div>
 					              

@@ -456,6 +456,10 @@
 												onclick="BoardUpdateGO()"> <input type="button"
 												class="buttonD" value="削除" onclick="BoardDelete()">
 									</c:if>
+									<c:if test="${sessionScope.loginid != vo.userid}">
+											<input type="button" style="width: 0px; height: 0px; background: white; border: 0px" >
+											<input type="button" style="width: 0px; height: 0px; background: white; border: 0px; display: none;">
+									</c:if>
 									<c:if test="${sessionScope.adminid !=null}">
 											<input type="button" class="buttonS" value="修正"
 												onclick="BoardUpdateGO()"> <input type="button"
@@ -479,7 +483,7 @@
 											</tr>
 											<tr>
 												<td>内容</td>
-												<td>${vo.contents}</td>
+												<td><textarea name="contents" id="contents" class="form-control" readonly="readonly" style="height: 300px; background: white; border: 0px" >${vo.contents}</textarea></td>
 											</tr>
 											<tr>
 												<td>投稿日</td>

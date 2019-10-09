@@ -165,6 +165,10 @@ public class BoardController {
 		System.out.println("bul_boardnum �쓽  媛�111 : " + vo1.getBul_boardnum());
 		System.out.println("bul �쁽�옱 �엳�듃 �닔 " +  vo1.getHit());
 		BoardVO vo2 = dao.readBoard(vo1);
+		if(vo2.getUserid().equals("aa"))
+		{
+			vo2.setUserid("管理者");
+		}
 		model.addAttribute("vo", vo2);
 		System.out.println("蹂대뱶�뵒�뀒�씪�떒�쓽 BoardVO �쓽 媛� :" + vo2);
 		ArrayList<ReplyVO> replylist=service.replyList(vo);
