@@ -115,9 +115,9 @@ table{
 			return random_image();
 		}
 		$('#image-box').append("<div id='left-box'><div id ='left-text' class='title-text text-center'><h3 style='position: absolute; padding: 1%; font-weight: bold; font-size: 50px; text-shadow: 2px 2px 5px white; margin-left: 2%;'><a href='javascript:leftBtn();'>"+ fesnames[ry] +"</a>"
-			+"</h3><div id='left-image' style='width: 99%; max-height: 350px; overflow: hidden; border: 5px; border-radius: 2%; margin-left: 0.5%; margin-top: 1%; margin-bottom: 1%;'><img src=" + fesimages[ry] + " border=0></div></div></div>");
+			+"</h3><div id='left-image' style='width: 99%; max-height: 800px; overflow: hidden; border: 5px; border-radius: 2%; margin-left: 0.5%; margin-top: 1%; margin-bottom: 1%;'><img src=" + fesimages[ry] + " border=0></div></div></div>");
 		$('#image-box').append("<div id='right-box'><div id ='right-text' class='title-text text-center'><h3 style='position: absolute; padding: 1%; font-weight: bold; font-size: 50px; text-shadow: 2px 2px 5px white; margin-left: 2%;'><a href='javascript:leftBtn();'><a href='javascript:rightBtn();'>"+ fesnames[rn] +"</a>"
-			+"</h3><div id='right-image'style='width: 99%; max-height: 350px; overflow: hidden; border: 5px; border-radius: 2%; margin-left: 0.5%; margin-top: 1%; margin-bottom: 1%;'><img src=" + fesimages[rn] + " border=0></div></div></div>");
+			+"</h3><div id='right-image'style='width: 99%; max-height: 800px; overflow: hidden; border: 5px; border-radius: 2%; margin-left: 0.5%; margin-top: 1%; margin-bottom: 1%;'><img src=" + fesimages[rn] + " border=0></div></div></div>");
 	}
 
 	function leftBtn() {

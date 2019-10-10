@@ -480,7 +480,12 @@
                         	<td><b>分類</b></td><td><b>詳細情報</b></td>
                         	</tr>
                          	<tr>
+                         		<c:if test="${vo.userid == 'aa' }">
+                        		<td>ユーザー名</td><td>管理者</td>
+                        		</c:if>
+                        		<c:if test="${vo.userid != 'aa' }">
                         		<td>ユーザー名</td><td>${vo.userid}</td>
+                        		</c:if>
                         	</tr>
                         	<tr>
                         		<td>タイトル</td><td>${vo.title}</td>

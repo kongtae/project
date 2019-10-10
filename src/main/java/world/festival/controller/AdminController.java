@@ -76,6 +76,13 @@ public class AdminController {
 			String adminid=(String)session.getAttribute("adminid");
 			System.out.println(adminid);
 			ArrayList<AdminBoardVO> adminbulvo = adminservice.selectBulAll();
+			for (int i = 0; i < adminbulvo.size(); i++) {
+				if(adminbulvo.get(i).getUserid().equals("aa"))
+				{
+					adminbulvo.get(i).setUserid("管理者");
+				}
+					
+			}
 			model.addAttribute("adminbulvo", adminbulvo); 
 			System.out.println("異뺤젣 寃뚯떆�뙋 異붽� �닔�젙 �궘�젣 �궡�슜�쓣 蹂댁뿬二쇰뒗 移쒓뎄 " +adminbulvo);
 	
@@ -141,9 +148,6 @@ public class AdminController {
 		public String AdminlistDetailGO(AdminListVO vo1,Model model, HttpSession hs,RedirectAttributes rttr) {
 			AdminListVO vo2 = admindao.readAdminList(vo1);
 			model.addAttribute("vo", vo2);
-			System.out.println("蹂대뱶�뵒�뀒�씪�떒�쓽 BoardVO �쓽 媛� :" + vo2);
-
-				
 			return "admin/adminListDetail";
 		}
 //		ListRecovery
@@ -189,6 +193,7 @@ public class AdminController {
 			adminservice.AdminwriteFestival(adminvo1);
 			
 			adminservice.AdminDeleteList(vo1);
+			adminservice.AdminwriteFestival(adminvo1);
 			return "list/List";
 		}
 		
@@ -199,7 +204,7 @@ public class AdminController {
 			BoardVO vo1 = adminservice.RecoveryReadBul(vo);
 			AdminBoardVO adminvo1 = admindao.readAdminBoard(adminvo);
 			System.out.println("遺� vo"+vo);
-			if(adminvo.getDatacheck().equals("buldelete"))
+			if(adminvo.getDatacheck().equals("buldelete") || adminvo.getDatacheck().equals("adDelete"))
 			{
 				boardserivce.RewriteBoard(vo1);
 				adminvo1.setDatacheck("delRecovery");
@@ -231,7 +236,11 @@ public class AdminController {
 		public String AdminDeleteBul(BoardVO vo, AdminBoardVO adminvo, Model model, HttpSession hs,RedirectAttributes rttr) {
 //			ListVO vo1 = adminservice.RecoveryRead(vo);
 			BoardVO vo1 = adminservice.RecoveryReadBul(vo);
+			AdminBoardVO adminvo1 = admindao.readAdminBoard(adminvo);
+			adminvo1.setDatacheck("adDelete");
+			
 			adminservice.AdminDeleteBul(vo1);
+			adminservice.AdminBoardWrite(adminvo1);
 			return "board/BoardList";
 		}
 		

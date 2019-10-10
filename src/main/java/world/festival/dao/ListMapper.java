@@ -36,4 +36,6 @@ public interface ListMapper {
 
 	public int mainBoardNum();
 
+	public ListVO select(int mainboardnum);
+
 }

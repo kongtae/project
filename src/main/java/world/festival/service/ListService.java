@@ -121,6 +121,10 @@ public class ListService {
 				fileName1 = mFile.getOriginalFilename();
 				fileName += mFile.getOriginalFilename()+",";
 				System.out.println("실제파일이름"+fileName);
+				if(fileName1.equals("")) {
+					System.out.println("서비스 나가");
+					break;
+				}
 				try {
 					mFile.transferTo(new File(path+fileName1));
 				} catch (Exception e) {

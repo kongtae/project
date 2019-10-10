@@ -135,5 +135,10 @@ public class AdminDAO {
 		mapper.AdminDeleteBul(vo1);
 	}
 
+	public AdminListVO adImagePrint(AdminListVO vo1) {
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		return mapper.adImagePrint(vo1);
+	}
+
 
 }

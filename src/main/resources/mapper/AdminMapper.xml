@@ -50,11 +50,19 @@ INSERT INTO
 		#{startEvent},
 		#{endEvent}
 		<choose>
-			<when test="originalFileName != null and saveFileName != null" >
-			,#{originalFileName} ,#{saveFileName}
+			<when test="originalFileName != null" >
+			,#{originalFileName}
 			</when>
 			<otherwise>
-			,null, null
+			,null
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="saveFileName != null" >
+			,#{saveFileName}
+			</when>
+			<otherwise>
+			, null
 			</otherwise>
 		</choose>
 		,#{datacheck}
@@ -278,6 +286,13 @@ WHERE
 		BUL_BOARDNUM = #{bul_boardnum}
 </delete>
 
-
+<select id="adImagePrint" parameterType="AdminListVO" resultType="AdminListVO">
+		select originalFileName from ADMIN_MAINBOARD 
+		WHERE 
+		mainBoardNum = #{mainBoardNum} and
+		datacheck = #{datacheck}
+		ORDER BY 
+		mainBoardNum desc
+</select>
 
 </mapper>

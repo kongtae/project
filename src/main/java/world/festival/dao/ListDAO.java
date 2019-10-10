@@ -105,5 +105,10 @@ public class ListDAO {
 		return mapper.mainBoardNum();
 	}
 
+	public ListVO select(int mainboardnum) {
+		ListMapper mapper = sqlSession.getMapper(ListMapper.class);
+		return mapper.select(mainboardnum);
+	}
+
 
 }

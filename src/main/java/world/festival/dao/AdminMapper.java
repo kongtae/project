@@ -56,5 +56,7 @@ public interface AdminMapper {
 	public void AdminwriteBoard(AdminBoardVO adminvo1);
 
 	public void AdminDeleteBul(BoardVO vo1);
+
+	public AdminListVO adImagePrint(AdminListVO vo1);
 	
 }
