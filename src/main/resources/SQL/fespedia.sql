@@ -121,13 +121,14 @@ CREATE TABLE ADMIN_BUL_BOARD(
      USERID VARCHAR2(20) NOT NULL,   
       BUL_BOARDNUM NUMBER NOT NULL,  
      TITLE VARCHAR2(1000) NOT NULL, 
+     HIT NUMBER DEFAULT 0,                                     
      CONTENTS VARCHAR2(2000),
-      COUNTRY VARCHAR2(50),  
-    ADRESS VARCHAR2(100),      
-    INPUTDATE      DATE  DEFAULT SYSDATE,                    
-    HIT NUMBER DEFAULT 0,                                            
-    ORIGINALFILENAME   VARCHAR2(1000),                     
-    SAVEDFILENAME   VARCHAR2(200),                       
+      COUNTRY VARCHAR2(50),
+     SURROUND_PLACE VARCHAR2(200),
+      ADRESS VARCHAR2(100), 
+     ORIGINALFILENAME   VARCHAR2(1000),                     
+    savedfilename   VARCHAR2(200),                          
+    INPUTDATE      DATE  DEFAULT SYSDATE,                   
     DATACHECK VARCHAR2(100) NOT NULL                      
 );
 

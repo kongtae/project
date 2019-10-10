@@ -294,7 +294,7 @@
 
 						<div class="float-left logo-box">
 							<div class="logo">
-								<a href="#"><img src="images/fespedia.png" alt=""
+								<a href="/festival"><img src="images/fespedia.png" alt=""
 									title="ホームへ"></a>
 							</div>
 						</div>
