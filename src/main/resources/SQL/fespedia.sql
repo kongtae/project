@@ -38,7 +38,10 @@ CREATE TABLE MEMBER(
 );
 
 insert into MEMBER(adminid, userid, userpwd, email) 
-    values('aa','aa','aa','aaa@naver.com');  
+    values('aa','aa','aa','aaa@naver.com');
+insert into MEMBER(adminid, userid, userpwd, email) 
+    values('aa','test1','123','aaa@naver.com');
+
 
 CREATE TABLE MAINBOARD(
     ADMINID VARCHAR2(20) CONSTRAINT MAINBOARD_ADMINID_FK REFERENCES ADMINMEMBER(ADMINID) ON DELETE CASCADE,
